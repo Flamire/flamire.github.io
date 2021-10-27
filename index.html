@@ -48,7 +48,7 @@
     
     <title>
         
-        Hexo
+        Flamblog
     </title>
 
     <!-- Favicons -->
@@ -217,11 +217,11 @@
 
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Hexo">
+    <meta name="application-name" content="Flamblog">
     <meta name="msapplication-starturl" content="http://flamire.github.io/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Hexo">
+    <meta name="apple-mobile-web-app-title" content="Flamblog">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="apple-touch-icon" href="/img/favicon.svg">
 
@@ -235,7 +235,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://flamire.github.io/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hexo">
+    <meta property="og:title" content="Flamblog">
     <meta property="og:image" content="/img/favicon.svg">
     <meta property="og:description" content="">
     
@@ -259,7 +259,7 @@
     "@type": "Website",
     "publisher": {
         "@type": "Organization",
-        "name": "Hexo",
+        "name": "Flamblog",
         "logo": "/img/favicon.svg"
     },
     "url": "http://flamire.github.io",
@@ -375,7 +375,7 @@
     <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
         <!-- Blog Title -->
         <div>
-            <strong>Hexo</strong>
+            <strong>Flamblog</strong>
         </div>
         <div class="section-spacer"></div>
 
@@ -399,7 +399,7 @@
             
 
             
-                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hexo&url=http://flamire.github.io&pic=http://flamire.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
+                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Flamblog&url=http://flamire.github.io&pic=http://flamire.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
                     <li class="mdl-menu__item mdl-js-ripple-effect">
                         Share to Weibo
                     </li>
@@ -407,7 +407,7 @@
             
 
             
-                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=Hexo&url=http://flamire.github.io&via=Flamire" target="_blank">
+                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=Flamblog&url=http://flamire.github.io&via=Flamire" target="_blank">
                     <li class="mdl-menu__item mdl-js-ripple-effect">
                         Share to Twitter
                     </li>
@@ -746,7 +746,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Hexo
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Flamblog
             
         </div>
 
@@ -902,6 +902,22 @@ console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/bolln
 
                 </main>
             </div>
-        </body>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
     
 </html>
