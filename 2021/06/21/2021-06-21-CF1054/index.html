@@ -48,6 +48,8 @@
     
     <title>
         
+            CF1054 | 
+        
         Flamblog
     </title>
 
@@ -57,7 +59,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",CF,题解">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Flamblog">
-    <meta name="msapplication-starturl" content="http://flamire.github.io/">
+    <meta name="msapplication-starturl" content="http://flamire.github.io/2021/06/21/2021-06-21-CF1054/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Flamblog">
@@ -233,13 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://flamire.github.io/">
+    <meta property="og:url" content="http://flamire.github.io/2021/06/21/2021-06-21-CF1054/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Flamblog">
+    <meta property="og:title" content="CF1054 | Flamblog">
     <meta property="og:image" content="/img/favicon.svg">
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="CF"> <meta property="og:article:tag" content="题解"> 
 
+    
+        <meta property="article:published_time" content="Mon Jun 21 2021 00:00:00 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 27 2021 14:52:33 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,35 +252,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://flamire.github.io" />
+        <link rel="canonical" href="http://flamire.github.io/2021/06/21/2021-06-21-CF1054/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
+
+
 <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "Website",
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://flamire.github.io/2021/06/21/2021-06-21-CF1054/index.html",
+    "headline": "CF1054",
+    "datePublished": "Mon Jun 21 2021 00:00:00 GMT+0800",
+    "dateModified": "Wed Oct 27 2021 14:52:33 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Flamire",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
     "publisher": {
         "@type": "Organization",
         "name": "Flamblog",
-        "logo": "/img/favicon.svg"
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.svg"
+        }
     },
-    "url": "http://flamire.github.io",
-    "image": {
-        "@type": "ImageObject",
-        "url": "/img/favicon.svg"
-    },
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "http://flamire.github.io"
-    },
-    "description": ""
+    "keywords": ",CF,题解",
+    "description": "",
 }
 </script>
-
-
 
 
     
@@ -309,678 +322,281 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
+                    <!-- Post TOC -->
+
     
-        <!-- Paradox Header -->
-        <!-- Daily pic -->
-<div class="mdl-card mdl-shadow--2dp daily-pic mdl-cell mdl-cell--8-col index-top-block">
-
-    <!-- Pic & Slogan -->
-    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.jpg)">
-        <p class="index-top-block-slogan"><a href="#">
-        
-            
-                Hi, nice to meet you
-            
-        
-        </a></p>
-    </div>
-
-    <!-- Avatar & Name -->
-    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-        <!-- Author Avatar -->
-        <div id="author-avatar">
-            <img src="/img/avatar.png" width="32px" height="32px" alt="avatar">
-        </div>
-        <div>
-            <strong>Flamire</strong>
-        </div>
-    </div>
-</div>
-
-        <!-- Blog info -->
-<div class="mdl-card mdl-shadow--2dp something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
-
-    <!-- Search -->
-    
-    <!-- Google -->
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
-        <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
-            <i class="material-icons mdl-color-text--white" role="presentation">search</i>
-        </label>
-
-        <form autocomplete="off" id="search-form" method="get" action="//google.com/search" accept-charset="UTF-8" class="mdl-textfield__expandable-holder" target="_blank">
-            <input class="mdl-textfield__input search-input" type="search" name="q" id="search" placeholder="">
-            <label id="search-form-label" class="mdl-textfield__label" for="search"></label>
-
-            <input type="hidden" name="sitesearch" value="http://flamire.github.io">
-        </form>
-    </div>
-
-
-
-
-
-
-
-    <!-- LOGO -->
-    <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
-        <a href="#" target="_blank">
-            <img src="/img/logo.png" alt="logo" />
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
         </a>
     </div>
+    -->
 
-    <!-- Infomation -->
-    <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
-        <!-- Blog Title -->
-        <div>
-            <strong>Flamblog</strong>
-        </div>
-        <div class="section-spacer"></div>
 
-        <!-- Pages -->
-        <button id="show-pages-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">view_carousel</i>
-            <span class="visuallyhidden">Pages</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="show-pages-button">
-            
-        </ul>
-
-        <!-- Menu -->
-        <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">more_vert</i>
-            <span class="visuallyhidden">show menu</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
-            
-
-            
-
-            
-                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Flamblog&url=http://flamire.github.io&pic=http://flamire.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        Share to Weibo
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=Flamblog&url=http://flamire.github.io&via=Flamire" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        Share to Twitter
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://flamire.github.io" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        Share to Facebook
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://plus.google.com/share?url=http://flamire.github.io" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        Share to Google+
-                    </li>
-                </a>
-            
-
-            
-
-            
-
-            
-        </ul>
-    </div>
-</div>
-
+    <!-- Left aligned menu below button -->
     
-    <div class="locate-thumbnail-symbol"></div>
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
 
-    <!-- Pin on top -->
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#A"><span class="post-toc-number">1.</span> <span class="post-toc-text">A</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B"><span class="post-toc-number">2.</span> <span class="post-toc-text">B</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C"><span class="post-toc-number">3.</span> <span class="post-toc-text">C</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#D"><span class="post-toc-number">4.</span> <span class="post-toc-text">D</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-3"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#E"><span class="post-toc-number">5.</span> <span class="post-toc-text">E</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-4"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-4"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#F"><span class="post-toc-number">6.</span> <span class="post-toc-text">F</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-5"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-5"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/10/25/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Welcome to Hexo! This is your very first po...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/10/25/hello-world/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Oct 25, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/10/23/2021-10-23-csps2021/">CSP-S 2021 爆炸记</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            破防了破防了，，，
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/10/23/2021-10-23-csps2021/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Oct 23, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/07/30/2021-07-30-noi2021/">NOI 2021 游记</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            7.20
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/07/30/2021-07-30-noi2021/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Jul 30, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/06/25/2021-06-25-tdpc_translate/">tdpc 题面翻译</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            题解先鸽着。
-一套 atcoder 的老少咸宜的 dp 题，题目比较有代表性（就是比较裸的意思）
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/06/25/2021-06-25-tdpc_translate/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Jun 25, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/06/24/2021-06-24-CF1539/">CF1539</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            A
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/06/24/2021-06-24-CF1539/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Jun 24, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/06/21/2021-06-21-CF1054/">CF1054</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            不要弃赛！！！！！11
-A...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/06/21/2021-06-21-CF1054/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Jun 21, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/06/04/2021-06-04-CF993/">CF993</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            有 blog 了，发过来了
-被整个机房吊起来打了/dk
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/06/04/2021-06-04-CF993/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Jun 04, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/05/19/2021-05-19-THUSC2021/">THUSC2021</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            梦游了一周，不知道自己在干啥
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/05/19/2021-05-19-THUSC2021/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>May 19, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2020/11/08/2020-11-08-csps2020/">csps2020</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            退役了，游锤子
-上来先看了一遍所有题，感觉只有 T1 可做，于是去看了 T1
-T1 日期题，出题人爬爬爬，读题花了 10...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2020/11/08/2020-11-08-csps2020/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Nov 08, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                CF1054
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Flamire</strong>
+        <span>Jun 21, 2021</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/CF/" rel="tag">CF</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CF1054&url=http://flamire.github.io/2021/06/21/2021-06-21-CF1054/index.html&pic=http://flamire.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CF1054&url=http://flamire.github.io/2021/06/21/2021-06-21-CF1054/index.html&via=Flamire" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://flamire.github.io/2021/06/21/2021-06-21-CF1054/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://flamire.github.io/2021/06/21/2021-06-21-CF1054/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>不要弃赛！！！！！11</p>
+<h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>Masha 在 $x$ 层，她要去第 $y$ 层，她可以乘电梯或者走楼梯，电梯现在在 $z$ 层，并且关着门，走楼梯一层需要 $t_1$ 的时间，乘电梯一层需要 $t_2$ 的时间，电梯开关门需要 $t_3$ 的时间，问楼梯和电梯哪个更优</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>直接模拟即可。</p>
+<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>一开始有一个空的数组，执行 $n$ 次操作，每次操作将现在数组中的 mex 添加到后面，现在给出 $a$，问能不能通过这种方式生成，若不能请输出第一个出错的下标，$1\le n\le10^5$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>通过这种方式生成的数组一定是 $0,1,\cdots,n-1$，所以找到第一个 $a_i\neq i$ 的下标即可</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个小朋友排成一列，每个小朋友有若干糖果，且 $1\le \text{糖果数}\le n$，现在给出 $l_i,r_i$，分别表示第 $i$ 个小朋友左边有多少个糖果数大于他的与第 $i$ 个小朋友右边有多少个糖果数大于他的，请判断是否可能形成这种局面，如果可能，请构造一种每个小朋友糖果数量的方案数，$1\le n\le1000$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>判一下 $l_i&gt;i-1$ 与 $r_i&gt;n-i$ 的情况，显然每个小朋友糖果数量的排名就是 $l_i+r_i+1$，判断一下个数是否合法即可</p>
+<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>有一个长度为 $n$ 的序列 $a_i$，其中每个元素都在 $[0,2^k-1]$ 之间，你可以将其中若干个元素异或上 $2^k-1$，要求使得最后异或和不为 $0$ 的尽量多，求最多为多少，$1\le n\le200000,1\le k\le30$</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑求出前缀和，则每次操作就是选择一个后缀将前缀和都取反，那么可以视作为选择一个前缀和将其取反</p>
+<p>于是问题变成，你有 $n+1$ 个数，$s_0,s_1,\cdots,s_n$，你要让满足 $s_i\neq s_j,i\neq j$ 的无序数对 $(i,j)$ 尽量多</p>
+<p>考虑相反的问题，让相同数对尽量少，显然值为 $x$ 的项与值为 $x$ 取反的项无本质区别，我们可以开一个桶将其存起来</p>
+<p>显然只有一个桶内的数可能会生成相同数对，可以证明如果 $x$ 桶中有 $a$ 个数，则最终序列中有 $\lfloor\frac a2\rfloor$ 个 $x$，$\lceil\frac a2\rceil$ 个 $x$ 取反是最优的</p>
+<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>你有一个 $n$ 行 $m$ 列的字符串矩阵，给定一个初始矩阵以及一个目标矩阵，你需要通过操作将初始矩阵变成目标矩阵，每次操作你可以选择两个格子 $A$ 与 $B$，满足 $A$ 中的字符串非空且 $A$ 与 $B$ 有公共行或公共列，并将 $A$ 中字符串的尾部拼接到 $B$ 中字符串的头部，请构造一种方案，要求操作次数小于等于字符串总长的 $4$ 倍，$1\le n,m\le300$</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>一个简单的想法是将所有 0 聚集到一起，将所有 1 聚集到一起，然后再挨个分配</p>
+<p>具体方案：<img src="https://i.loli.net/2021/06/20/kzHCnhrK5iPe4dV.png" alt="CF1054E.png" style="zoom:50%;" /></p>
+<p>左为第一轮，我们将所有原串中的字符均改变位置，将矩形划分为若干区域，如上移动</p>
+<p>右为第二轮，此时我们只需要将剩余的 1 移到右下角即可</p>
+<p>0 的情况对称</p>
+<p>接下来考虑如何分配</p>
+<p>将 $s$ 的最后一个字符放到 $t$ 前，得到 $s^\prime,t^\prime$，相当于将 $t^\prime$ 倒序的最后一个字符放到 $s^\prime$ 倒序前面</p>
+<p>那么我们考虑将目标矩阵中的每个字符串倒序，然后再将其变为左下角 0，右下角 1，我们将这个操作序列倒序就得到了如何分配</p>
+<h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>平面直角坐标系上有两种电线，一种是红线，连接 $y$ 相同的点，一种是蓝线，连接 $x$ 相同的点，可以出现自环，自环可以为蓝或红</p>
+<p>同色的电线没有重合部分，异色电线恰好有 $n$ 个交点 $(x_i,y_i)$，请构造一种使用电线数最少且符合要求的连接方案，$1\le n\le1000$</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>考虑电线两端一定是交点最优，我们可以先将每个点连两个自环，在这个基础上尽可能地去省电线</p>
+<p>我们可以对于每一个 $x$ 坐标，连接一些相邻点之间的电线，最后把连续的电线合并到一起，达到省电线的目的，对 $y$ 坐标同样处理</p>
+<p>显然这样我们保证了异色相交的点都满足条件，接下来需要保证的就是中间不出现多余的交点，那么我们就会得到若干“某红线不能与某蓝线同时存在”，而红蓝内部没有这类要求，这是二分图最大独立集问题，网络流解决即可</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://flamire.github.io/2021/06/21/2021-06-21-CF1054/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://flamire.github.io/2021/06/21/2021-06-21-CF1054/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2021/06/24/2021-06-24-CF1539/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2021/06/04/2021-06-04-CF993/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -1274,12 +890,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-
-    <!-- Swiftye -->
-    
-
-    <!-- Local Search-->
-    
 
 
 <!-- UC Browser Compatible -->
