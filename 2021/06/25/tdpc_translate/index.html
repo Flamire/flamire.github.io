@@ -48,7 +48,7 @@
     
     <title>
         
-            CF1539 | 
+            tdpc 题面翻译 | 
         
         Flamiblog
     </title>
@@ -58,8 +58,9 @@
     <link rel="icon" href="/img/favicon.svg">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content=",CF,题解">
+    <meta name="description" itemprop="description" content="题解先鸽着。
+一套 atcoder 的老少咸宜的 dp 题，题目比较有代表性（就是比较裸的意思）">
+    <meta name="keywords" content=",misc">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +221,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Flamiblog">
-    <meta name="msapplication-starturl" content="http://flamire.github.io/2021/06/24/2021-06-24-CF1539/">
+    <meta name="msapplication-starturl" content="http://flamire.github.io/2021/06/25/tdpc_translate/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Flamiblog">
@@ -235,16 +236,17 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://flamire.github.io/2021/06/24/2021-06-24-CF1539/">
+    <meta property="og:url" content="http://flamire.github.io/2021/06/25/tdpc_translate/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CF1539 | Flamiblog">
+    <meta property="og:title" content="tdpc 题面翻译 | Flamiblog">
     <meta property="og:image" content="/img/favicon.svg">
-    <meta property="og:description" content="">
-    <meta property="og:article:tag" content="CF"> <meta property="og:article:tag" content="题解"> 
+    <meta property="og:description" content="题解先鸽着。
+一套 atcoder 的老少咸宜的 dp 题，题目比较有代表性（就是比较裸的意思）">
+    <meta property="og:article:tag" content="misc"> 
 
     
-        <meta property="article:published_time" content="Thu Jun 24 2021 00:00:00 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 27 2021 18:37:39 GMT+0800">
+        <meta property="article:published_time" content="Fri Jun 25 2021 00:00:00 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 27 2021 18:14:51 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -252,7 +254,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://flamire.github.io/2021/06/24/2021-06-24-CF1539/index.html" />
+        <link rel="canonical" href="http://flamire.github.io/2021/06/25/tdpc_translate/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +266,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://flamire.github.io/2021/06/24/2021-06-24-CF1539/index.html",
-    "headline": "CF1539",
-    "datePublished": "Thu Jun 24 2021 00:00:00 GMT+0800",
-    "dateModified": "Wed Oct 27 2021 18:37:39 GMT+0800",
+    "mainEntityOfPage": "http://flamire.github.io/2021/06/25/tdpc_translate/index.html",
+    "headline": "tdpc 题面翻译",
+    "datePublished": "Fri Jun 25 2021 00:00:00 GMT+0800",
+    "dateModified": "Wed Oct 27 2021 18:14:51 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Flamire",
@@ -285,8 +287,9 @@
             "url": "/img/favicon.svg"
         }
     },
-    "keywords": ",CF,题解",
-    "description": "",
+    "keywords": ",misc",
+    "description": "题解先鸽着。
+一套 atcoder 的老少咸宜的 dp 题，题目比较有代表性（就是比较裸的意思）",
 }
 </script>
 
@@ -351,7 +354,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#A"><span class="post-toc-number">1.</span> <span class="post-toc-text">A</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B"><span class="post-toc-number">2.</span> <span class="post-toc-text">B</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C"><span class="post-toc-number">3.</span> <span class="post-toc-text">C</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#D"><span class="post-toc-number">4.</span> <span class="post-toc-text">D</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-3"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#E"><span class="post-toc-number">5.</span> <span class="post-toc-text">E</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-4"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-4"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#F"><span class="post-toc-number">6.</span> <span class="post-toc-text">F</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-5"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-5"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#A-%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88-contest"><span class="post-toc-number">1.</span> <span class="post-toc-text">A - コンテスト(contest)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#B-%E3%82%B2%E3%83%BC%E3%83%A0-game"><span class="post-toc-number">2.</span> <span class="post-toc-text">B - ゲーム(game)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-%E3%83%88%E3%83%BC%E3%83%8A%E3%83%A1%E3%83%B3%E3%83%88-tournament"><span class="post-toc-number">3.</span> <span class="post-toc-text">C - トーナメント(tournament)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#D-%E3%82%B5%E3%82%A4%E3%82%B3%E3%83%AD-dice"><span class="post-toc-number">4.</span> <span class="post-toc-text">D - サイコロ(dice)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#E-%E6%95%B0-number"><span class="post-toc-number">5.</span> <span class="post-toc-text">E - 数(number)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#F-%E6%BA%96%E6%80%A5-semiexp"><span class="post-toc-number">6.</span> <span class="post-toc-text">F - 準急(semiexp)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#G-%E8%BE%9E%E6%9B%B8%E9%A0%86-lexicographical"><span class="post-toc-number">7.</span> <span class="post-toc-text">G - 辞書順(lexicographical)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#H-%E3%83%8A%E3%83%83%E3%83%97%E3%82%B6%E3%83%83%E3%82%AF-knapsack"><span class="post-toc-number">8.</span> <span class="post-toc-text">H - ナップザック(knapsack)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#I-%E3%82%A4%E3%82%A6%E3%82%A3-iwi"><span class="post-toc-number">9.</span> <span class="post-toc-text">I - イウィ(iwi)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#J-%E3%83%9C%E3%83%BC%E3%83%AB-ball"><span class="post-toc-number">10.</span> <span class="post-toc-text">J - ボール(ball)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#K-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88-target"><span class="post-toc-number">11.</span> <span class="post-toc-text">K - ターゲット(target)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#L-%E7%8C%AB-cat"><span class="post-toc-number">12.</span> <span class="post-toc-text">L - 猫(cat)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#M-%E5%AE%B6-house"><span class="post-toc-number">13.</span> <span class="post-toc-text">M - 家(house)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#N-%E6%9C%A8-tree"><span class="post-toc-number">14.</span> <span class="post-toc-text">N - 木(tree)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#O-%E6%96%87%E5%AD%97%E5%88%97-string"><span class="post-toc-number">15.</span> <span class="post-toc-text">O - 文字列(string)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#P-%E3%81%86%E3%81%AA%E3%81%8E-eel"><span class="post-toc-number">16.</span> <span class="post-toc-text">P - うなぎ(eel)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-%E9%80%A3%E7%B5%90-concatenation"><span class="post-toc-number">17.</span> <span class="post-toc-text">Q - 連結(concatenation)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#R-%E3%82%B0%E3%83%A9%E3%83%95-graph"><span class="post-toc-number">18.</span> <span class="post-toc-text">R - グラフ(graph)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#S-%E3%83%9E%E3%82%B9%E7%9B%AE-grid"><span class="post-toc-number">19.</span> <span class="post-toc-text">S - マス目(grid)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#T-%E3%83%95%E3%82%A3%E3%83%9C%E3%83%8A%E3%83%83%E3%83%81-sequence"><span class="post-toc-number">20.</span> <span class="post-toc-text">T - フィボナッチ(sequence)</span></a></li></ol>
     </ul>
     
 
@@ -383,7 +386,7 @@
         
     
             <p class="article-headline-p">
-                CF1539
+                tdpc 题面翻译
             </p>
         </div>
 
@@ -402,7 +405,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Flamire</strong>
-        <span>Jun 24, 2021</span>
+        <span>Jun 25, 2021</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -426,7 +429,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-none-link" href="/tags/CF/" rel="tag">CF</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a>
+        <a class="post_tag-none-link" href="/tags/misc/" rel="tag">misc</a>
     </ul>
     
 
@@ -443,7 +446,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CF1539&url=http://flamire.github.io/2021/06/24/2021-06-24-CF1539/index.html&pic=http://flamire.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=tdpc 题面翻译&url=http://flamire.github.io/2021/06/25/tdpc_translate/index.html&pic=http://flamire.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 Share to Weibo
             </li>
@@ -452,7 +455,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CF1539&url=http://flamire.github.io/2021/06/24/2021-06-24-CF1539/index.html&via=Flamire" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=tdpc 题面翻译&url=http://flamire.github.io/2021/06/25/tdpc_translate/index.html&via=Flamire" target="_blank">
             <li class="mdl-menu__item">
                 Share to Twitter
             </li>
@@ -461,7 +464,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://flamire.github.io/2021/06/24/2021-06-24-CF1539/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://flamire.github.io/2021/06/25/tdpc_translate/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Facebook
             </li>
@@ -470,7 +473,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://flamire.github.io/2021/06/24/2021-06-24-CF1539/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://flamire.github.io/2021/06/25/tdpc_translate/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Google+
             </li>
@@ -495,32 +498,70 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <span id="more"></span>
-<h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人参加比赛，第 $i$ 个人在 $ix$ 时刻开始，在 $ix+t$ 时刻结束，每个人的不满意度为他结束比赛时恰好开始比赛或开始了比赛但还未结束的人数，求所有人，$1\le n,x,t\le10^9$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑首先将 $t-=t\%x$，这样问题就转化为 $x$ 的整倍上的问题，答案就为 $\sum_{i=1}^n\min(\frac tx,n-i)$，分 $n-i$ 与 $\frac tx$ 大小讨论即可</p>
-<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>定义小写字母串上的操作 $f(s)$ 为将 $s$ 中的每个 <code>a</code> 替换为 1 个 <code>a</code>，将每个 <code>b</code> 替换为 2 个 <code>b</code>，将每个 <code>c</code> 替换为 3 个 <code>c</code>，给出一个长度为 $n$ 的字符串 $s$，有 $q$ 次询问，每次给出 $l,r$，求 $|f(s[l:r])|$</p>
-<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>前缀和</p>
-<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个数 $a_1,a_2,\cdots,a_n$，你至多可以添加 $k$ 个任意的数，然后将其分为若干组（下标不一定连续），使得每组排序后任意相邻两个元素的差不超过 $x$，问最小组数，$1\le n\le200000,0\le k\le10^{18},1\le x\le10^{18}$</p>
-<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>首先将 $a$ 排序，一开始假设每个数自成一组，考虑如果要将相邻两个数合到一个组内至少需要添加多少个数，不难得到如果相邻两个数之间的差是 $y$，若 $x|y$，则需要 $\frac yx-1$ 个数，否则需要 $\lfloor\frac yx\rfloor$ 个数，我们每合并一组数，组数就会减少 1，所以要尽量多合并，那么将需要的数的个数从小到大排序，贪心选择即可</p>
-<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 种商品，每种商品多有无限个，价格均为 $2$，你需要买 $a_i$ 件第 $i$ 种商品，并且当你购买了 $\ge b_i$ 件商品时，第 $i$ 种商品的价格会降为 $1$，你现在要安排买商品的顺序，使花费最小，求这个最小花费，$1\le n\le10^5,1\le b_i\le10^{14},1\le\sum a_i\le10^{14}$</p>
-<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑花费最小相当于价格为 $1$ 的商品买的尽量多</p>
-<p>令 $N=\sum a_i$，我们倒着考虑，考虑购买 $b_i$ 件商品后价格为 $1$，等价于在买的顺序的后 $N-b_i$ 件时价格为 $1$</p>
-<p>一个贪心的想法是，从后往前填，我们每次找到满足当前填的数的个数 $\le N-b_i$，且 $b_i$ 最大的还未填进去的商品，然后将其放在当前位置，这样可以使价格为 $1$ 的商品尽量多</p>
-<p>但 $N$ 是 $10^{14}$ 量级，显然无法直接模拟，考虑不同的 $b_i$ 最多只有 $n$ 个，我们可以将商品按 $b_i$ 排序，每次从大到小把商品批量填入即可</p>
-<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>你的左手与右手中分别有一张卡片，上面都是 $0$，有 $n$ 次询问，每次询问给出 $x,l_1,r_1,l_2,r_2$，你需要选择你的一张卡片，将其换成 $x$，使得交换后你的左手卡片在 $[l_1,r_1]$ 中，右手卡片在 $[l_2,r_2]$，问能不能满足所有要求，如果能请给出一种交换方案，$2\le n\le10^5,2\le m\le10^9$</p>
-<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>令 $dpL[i]$ 为前 $i$ 次交换后，第 $i$ 次交换了左手上的卡片，且右手的卡片能连续满足的最大的下标的要求（即右手上的卡片能满足 $[i,dpL[i]]$ 中的所有右手要求），$dpR[i]$ 同理</p>
-<p>我们预处理数组 $goL[i]$ 及 $goR[i]$，表示左右手第 $i$ 张卡片能连续满足的最大的下标，若全不能满足，则为 $i-1$，可以通过二分+st表求出</p>
-<p>考虑第 $i+1$ 位要换哪只手，以从 $dpL$ 出发的转移为例，$dpR$ 同理</p>
-<p>如果要换左手，则必须满足 $goL[i+1]\ge i+1$ 且 $dpL[i]\ge i+1$，转移式为 $dpL[i+1]=\max(dpL[i+1],dpL[i])$</p>
-<p>如果要换右手，则必须满足 $goR[i+1]\ge i+1$ 且 $goL[i]\ge i+1$，转移式为 $dpR[i+1]=\max(dpR[i+1],goL[i])$</p>
-<p>最后判断 $dpL[n]$ 与 $dpR[n]$ 是否 $\ge n$ 即可</p>
-<h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个数 $a_1,a_2,\cdots,a_n$，定义 $f(l,r,x)$ 为将 $a_l,a_{l+1},\cdots,a_r$ 从小到大排序后（相等的元素谁在前都可以）原下标为 $x$ 的元素到子区间的中点的最大距离（差的绝对值），若区间长度为奇数，则其中点为 $\frac{l+r}2$，否则其中点为 $\frac{l+r+1}2$，求 $f$ 的最大值，$1\le n\le200000$</p>
-<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>不难发现一个长度为 $len$ 的区间的中点为 $\lfloor\frac{len}2\rfloor+1$，对于一个元素 $a_i$，我们分两种情况考虑：</p>
+        <p>题解先鸽着。</p>
+<p>一套 atcoder 的<del>老少咸宜</del>的 dp 题，题目比较有代表性<del>（就是比较裸的意思）</del></p>
+<span id="more"></span>
+<h2 id="A-コンテスト-contest"><a href="#A-コンテスト-contest" class="headerlink" title="A - コンテスト(contest)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_contest">A</a> - コンテスト(contest)</h2><p>一场比赛有 $n$ 道题，第 $i$ 道题分数为 $a_i$，你现在可以选择做一个子集的题（可以为空），得到的总分为这个子集中的题目分数之和，求总分有多少种</p>
+<p>$1\le n\le100,1\le a_i\le100$</p>
+<h2 id="B-ゲーム-game"><a href="#B-ゲーム-game" class="headerlink" title="B - ゲーム(game)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_game">B</a> - ゲーム(game)</h2><p>两个数组 $a,b$，分别有 $n,m$ 项，有两个玩家轮流进行操作，每次操作玩家可以取走一个非空数组内的第一个元素，两个玩家都希望自己的得分最大，问先手的得分</p>
+<p>$1\le n,m,a_i,b_i\le1000$</p>
+<h2 id="C-トーナメント-tournament"><a href="#C-トーナメント-tournament" class="headerlink" title="C - トーナメント(tournament)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_tournament">C</a> - トーナメント(tournament)</h2><p>有 $2^k$ 个人进行淘汰赛，流程如下：</p>
+<ul>
+<li>第一轮 $1$ 和 $2$ 比赛，$3$ 和 $4$ 比赛，$5$ 和 $6$ 比赛，$\cdots$</li>
+<li>第二轮 $1$ 和 $2$ 中的胜者与 $3$ 和 $4$ 中的胜者比赛，$5$ 和 $6$ 中的胜者与 $7$ 和 $8$ 中的胜者比赛，$\cdots$</li>
+<li>第三轮 (($1$ 和 $2$ 中的胜者)与($3$ 和 $4$ 中的胜者))中的胜者与(($5$ 和 $6$ 中的胜者)与($7$ 和 $8$ 中的胜者))中的胜者比赛，$\cdots$</li>
+<li>经过 $k$ 轮后剩下的那个人是 shengzhe</li>
+</ul>
+<p>每个人有一个能力值 $r_i$，如果能力值为 $a$ 与 $b$ 的两个人比赛，则能力值为 $a$ 的人获胜的概率为 $1/(1+10^{(a-b)/400})$，求第 $i$ 个人成为 shengzhe 的概率</p>
+<p>$1\le k\le10,0\le r_i\le4000$</p>
+<h2 id="D-サイコロ-dice"><a href="#D-サイコロ-dice" class="headerlink" title="D - サイコロ(dice)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_dice">D</a> - サイコロ(dice)</h2><p>将一个 $6$ 面的骰子扔 $n$ 遍，求最后所有点数的乘积是 $D$ 的倍数的概率</p>
+<p>$1\le n\le100,1\le D\le10^{18}$</p>
+<h2 id="E-数-number"><a href="#E-数-number" class="headerlink" title="E - 数(number)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_number">E</a> - 数(number)</h2><p>求小于 $N$ 的正整数中数字和是 $D$ 的倍数的数的个数，答案对 $10^9+7$ 取模</p>
+<p>$1\le N\le10^{10000},1\le D\le100$</p>
+<h2 id="F-準急-semiexp"><a href="#F-準急-semiexp" class="headerlink" title="F - 準急(semiexp)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_semiexp">F</a> - 準急(semiexp)</h2><p>一条电车线上有 $n$ 个站点，你现在要选择一些电车停靠的站点，需要满足以下两个要求：</p>
+<ul>
+<li>必须在 $1$ 和 $n$ 停靠</li>
+<li>不能在连续的 $k$ 站都停靠</li>
+</ul>
+<p>$2\le k\le n\le10^6$</p>
+<h2 id="G-辞書順-lexicographical"><a href="#G-辞書順-lexicographical" class="headerlink" title="G - 辞書順(lexicographical)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_lexicographical">G</a> - 辞書順(lexicographical)</h2><p>将小写字母串 $s$ 的所有非空子序列按字典序从小到大排序，求第 $k$ 个，如果不存在则输出 <code>Eel</code></p>
+<p>$1\le|s|\le10^6,1\le k\le10^{18}$</p>
+<h2 id="H-ナップザック-knapsack"><a href="#H-ナップザック-knapsack" class="headerlink" title="H - ナップザック(knapsack)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_knapsack">H</a> - ナップザック(knapsack)</h2><p>有 $n$ 个物品，第 $i$ 个物品重量为 $w_i$，价值为 $v_i$，颜色为 $c_i$，你需要选择其中的一部分物品放入背包，使得背包中的物品重量之和不超过 $W$，颜色种数不超过 $C$，求最大的价值和</p>
+<p>$1\le n\le100,1\le W\le10000,1\le C\le50,1\le w_i,v_i\le10000,1\le c_i\le50$</p>
+<h2 id="I-イウィ-iwi"><a href="#I-イウィ-iwi" class="headerlink" title="I - イウィ(iwi)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_iwi">I</a> - イウィ(iwi)</h2><p>给定一个只包含 <code>i</code> 与 <code>w</code> 的字符串 $s$，每次操作你可以删掉一个连续的 <code>iwi</code>，问最多能操作多少次。</p>
+<p>$1 \le |s| \le 300$。</p>
+<h2 id="J-ボール-ball"><a href="#J-ボール-ball" class="headerlink" title="J - ボール(ball)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_ball">J</a> - ボール(ball)</h2><p>你现在有 $n$ 个东西，第 $i$ 个在坐标 $x_i$ 的位置。你要投球来砸中这 $n$ 个东西，如果你尝试向坐标为 $x$ 的地方投球，那么会等概率砸中 $x-1, x, x+1$ 中的一个位置。求在最佳策略下（你可以根据之前的落球点来进行决策），将所有东西都砸到的期望最小投球次数。</p>
+<p>$1 \le n \le 16, 0 \le x_i \le 15$。$x_i$ 互不相同。</p>
+<h2 id="K-ターゲット-target"><a href="#K-ターゲット-target" class="headerlink" title="K - ターゲット(target)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_target">K</a> - ターゲット(target)</h2><p>若圆 $C_1, C_2, \cdots, C_k$ 满足对于所有在 $[1, k - 1]$ 中的 $i$，圆 $C_i$ strictly 包含 $C_{i+1}$，则称它们是一个大小为 $k$ 的 <em>target</em>。给定 $n$ 个圆，第 $i$ 个圆圆心为 $(x_i,0)$，半径为 $r_i$，请选出一个子集，求能组成的最大 <em>target</em> 的大小。</p>
+<p>$1\le n\le10^5,0\le x_i\le10^9,1\le r_i\le10^9$。</p>
+<h2 id="L-猫-cat"><a href="#L-猫-cat" class="headerlink" title="L - 猫(cat)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_cat">L</a> - 猫(cat)</h2><p>你现在有 $n$ 只猫，猫 $i$ 和猫 $j$ 的相配度是 $f_{i, j}$。一个猫的幸福度是跟它距离 $1$ 以内的猫跟它的相配度的和。你现在要把猫 $1$ 到猫 $n$ 在数轴上排列，若 $i$ 只猫的坐标为 $x_i$（$x_i$ 不一定为整数），则需要满足 $x_1&lt;x_2&lt;\cdots&lt;x_n$，求最大的幸福值总和</p>
+<p>$1\le n\le1000,|f_{i,j}|\le1000,f_{i,i}=0,f_{i,j}=f_{j,i}$</p>
+<h2 id="M-家-house"><a href="#M-家-house" class="headerlink" title="M - 家(house)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_house">M</a> - 家(house)</h2><p>有一个 $H$ 层的房子，每层的构造都一样，有 $R$ 个房间，任意一层的第 $i$ 个房间与第 $j$ 个房间有双向通路当且仅当 $g_{i,j}=1$，每一个房间都有向下的楼梯，楼梯只能下不能上，求你从 $H$ 层的第 $1$ 个房间到达 $1$ 层的第 $1$ 个房间且不经过重复房间的方案数，答案对 $10^9+7$ 取模</p>
+<p>$2\le H\le10^9,1\le R\le16,0\le g_{i,j}\le1,g_{i,i}=0,g_{i,j}=g_{j,i}$</p>
+<h2 id="N-木-tree"><a href="#N-木-tree" class="headerlink" title="N - 木(tree)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_tree">N</a> - 木(tree)</h2><p>你要将一棵 $n$ 个节点的树描在纸上，第 $i$ 条边连接第 $a_i$ 个点与第 $b_i$ 个点，起初所有边没有被描出，你需要依次描出这些边，使得任何时刻所有已经描出的<strong>边</strong>都在一个连通块内，求有多少种合法的描边顺序，对 $10^9+7$ 取模</p>
+<p>$2\le n\le1000,1\le a_i,b_i\le n$</p>
+<h2 id="O-文字列-string"><a href="#O-文字列-string" class="headerlink" title="O - 文字列(string)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_string">O</a> - 文字列(string)</h2><p><del>经典咏流传</del></p>
+<p>求满足以下条件的字符串个数，答案对 $10^9+7$ 取模：</p>
 <ol>
-<li>$a_i$ 在中点左边的方案，我们令所有 $&lt; a_i$ 的元素为 $0$，则 $a_i$ 为最靠左的 $1$，设 $0$ 的个数为 $zero$，则距离为 $\lfloor\frac{len}2\rfloor+1-(zero+1)=\lfloor\frac{len}2\rfloor-zero$，我们可以将 $\lfloor\frac{len}2\rfloor$ 均摊成每个数 $0.5$，将 $-zero$ 均摊每个 $0$ 分得 $-1$，所以每个 $0$ 贡献 $-0.5$，每个 $1$ 贡献 $0.5$，但当 $len$ 为奇数时，这样算出的是一个浮点数，这是因为我们多加了一个 $\lfloor\frac{len}2\rfloor$ 的 $0.5$，所以下取整即可，考虑将贡献 $\times2$，从小到大枚举 $a_i$，每次查询包含 $i$ 的最大子段和，处理完 $a_i$ 后将 $a_i$ 从 $1$ 变为 $0$（贡献 $-2$），需要维护前缀和的区间加，区间查询最小值最大值，线段树维护 </li>
-<li>$a_i$ 在中点右边的方案，令所有 $\le a_i$ 的元素为 $0$，距离为 $zero-\lfloor\frac{len}2\rfloor-1$，奇数时多减了一个 $0.5$，所以需要向上取整，每个 $1$ 贡献 $-0.5$，每个 $0$ 贡献 $0.5$，其余处理相似</li>
+<li><code>a</code> 恰好出现了 $freq_1$ 次，<code>b</code> 恰好出现了 $freq_2$ 次，$\cdots$，<code>z</code> 恰好出现了 $freq_{26}$ 次，且不包含其他字符</li>
+<li>相邻的字符不能相同</li>
 </ol>
-<p>最后两部分取 max 即可</p>
+<p>$0\le freq_i\le10$，至少有一个 $freq_i$ 大于 $0$</p>
+<h2 id="P-うなぎ-eel"><a href="#P-うなぎ-eel" class="headerlink" title="P - うなぎ(eel)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_eel">P</a> - うなぎ(eel)</h2><p>有一棵 $n$ 个节点的树，求有多少选出 $k$ 条没有公共点的路径的方案（交换顺序算作相同），答案对 $10^9+7$ 取模</p>
+<p>$2\le n\le1000,1\le k\le50$</p>
+<h2 id="Q-連結-concatenation"><a href="#Q-連結-concatenation" class="headerlink" title="Q - 連結(concatenation)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_concatenation">Q</a> - 連結(concatenation)</h2><p>有 $n$ 个 $01$ 串 $w_1,w_2,\cdots,w_n$，你需要从中选择一些字符串并拼接成一个新的字符串（同一个字符串可以选择多次），问你总共能拼出多少本质不同的长度为 $L$ 的 $01$ 串（字符串相同但分法不同也算作一种）</p>
+<p>$1\le n\le510,1\le|w_i|\le8,\le L\le100$，$w_i$ 互不相同</p>
+<h2 id="R-グラフ-graph"><a href="#R-グラフ-graph" class="headerlink" title="R - グラフ(graph)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_graph">R</a> - グラフ(graph)</h2><p>一张 $n$ 个点的有向图，$g_{i,j}=1$ 表示 $i$ 到 $j$ 有一条有向边，起初所有点都是白色的，现在你要选择两条路径（不一定是简单路径），并将它们所经过的点全部染黑，求黑点最多有多少个</p>
+<p>$1\le n\le300$</p>
+<h2 id="S-マス目-grid"><a href="#S-マス目-grid" class="headerlink" title="S - マス目(grid)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_grid">S</a> - マス目(grid)</h2><p>有一个 $h\times w$ 的矩形，你要将其中一个包含 $(1,1)$ 与 $(h,w)$ 的四连通块染成黑色，求方案数，答案对 $10^9+7$ 取模</p>
+<p>$2\le h\le6,2\le w\le100$</p>
+<h2 id="T-フィボナッチ-sequence"><a href="#T-フィボナッチ-sequence" class="headerlink" title="T - フィボナッチ(sequence)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci">T</a> - フィボナッチ(sequence)</h2><p>数列 $\{a_i\}$ 满足：</p>
+<ul>
+<li>$a_1=a_2=\cdots=a_k=1$</li>
+<li>$a_i=a_{i-1}+a_{i-2}+\cdots+a_{i-k}(i&gt;k)$</li>
+</ul>
+<p>求 $a_n\bmod10^9+7$</p>
+<p>$2\le k\le1000,1\le k\le10^9$</p>
 
         
     
@@ -539,8 +580,8 @@
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://flamire.github.io/2021/06/24/2021-06-24-CF1539/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://flamire.github.io/2021/06/24/2021-06-24-CF1539/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://flamire.github.io/2021/06/25/tdpc_translate/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://flamire.github.io/2021/06/25/tdpc_translate/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 <script type="text/ls-javascript" id="disqus-thread-script">
@@ -570,7 +611,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2021/06/25/2021-06-25-tdpc_translate/" id="post_nav-newer" class="prev-content">
+        <a href="/2021/07/30/noi2021/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -584,7 +625,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2021/06/21/2021-06-21-CF1054/" id="post_nav-older" class="next-content">
+        <a href="/2021/06/24/CF1539/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
