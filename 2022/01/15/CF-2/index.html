@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Sat Jan 15 2022 00:00:00 GMT+0800">
-        <meta property="article:modified_time" content="Sat Jan 15 2022 23:37:00 GMT+0800">
+        <meta property="article:modified_time" content="Sun Jan 16 2022 21:21:55 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://flamire.github.io/2022/01/15/CF-2/index.html",
     "headline": "Red Right Hand",
     "datePublished": "Sat Jan 15 2022 00:00:00 GMT+0800",
-    "dateModified": "Sat Jan 15 2022 23:37:00 GMT+0800",
+    "dateModified": "Sun Jan 16 2022 21:21:55 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Flamire",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-CF871E-Restore-the-Tree"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.  CF871E - Restore the Tree</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-CF871E-Restore-the-Tree-Euclid"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.  CF871E - Restore the Tree [Euclid]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-CF839E-Mother-of-Dragons-Keter"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.  CF839E - Mother of Dragons [Keter]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -496,13 +496,18 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>[TOC]</p>
-<h2 id="1-CF871E-Restore-the-Tree"><a href="#1-CF871E-Restore-the-Tree" class="headerlink" title="1.  CF871E - Restore the Tree"></a>1.  CF871E - Restore the Tree</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>有一棵 $n$ 个点的树，有人从上面挑了 $k$ 个点，并告诉了你这 $k$ 个点中每个点到所有点的距离（相当于给你了一个 $k\times n$ 的距离矩阵），请你构造一棵符合条件的树，无法构成则输出 $-1$</p>
+<h2 id="1-CF871E-Restore-the-Tree-Euclid"><a href="#1-CF871E-Restore-the-Tree-Euclid" class="headerlink" title="1.  CF871E - Restore the Tree [Euclid]"></a>1.  CF871E - Restore the Tree [Euclid]</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>有一棵 $n$ 个点的树，有人从上面挑了 $k$ 个点，并告诉了你这 $k$ 个点中每个点到所有点的距离（相当于给你了一个 $k\times n$ 的距离矩阵），请你构造一棵符合条件的树，无法构成则输出 $-1$</p>
 <p>$2\le n\le30000,1\le k\le\min(200,n)$</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>考虑随便从这 $k$ 个点中挑出一个点作为根，那么我们能确定每个点的深度，由此，我们可以求出这 $k$ 个点到根的路径上有哪些点，我们称这些点组成了「已知树」</p>
 <p>接下来，我们考虑所有不在「已知树」中的点 $x$，对于这 $k$ 个点中的每个点 $y$，我们知道 $dep_y,dep_x,dis(x,y)$，那么我们可以求出 $dep_{lca(x,y)}$，而我们又知道 $y$ 到根的路径，因此我们知道 $lca(x,y)$</p>
 <p>一个点 $x$ 会产生 $k$ 个 lca，这 $k$ 个 lca 一定要在一条到根的链上，我们将这 $k$ 个 lca 中最深的称为 $x$ 的「切入点」</p>
 <p>我们将所有不在「已知树」内的点按深度考虑，依次往「已知树」上挂，我们对「已知树」的每个点维护当前考虑的深度向上一层的该点的子孙 $link$，然后将新来的点它的「切入点」的 $link$ 下面，到下一个深度时更新对每个「已知树」中的点的 $link$（这个「已知树」不包含后来挂上去的点）</p>
 <p>复杂度 $O(nk)$</p>
+<h2 id="2-CF839E-Mother-of-Dragons-Keter"><a href="#2-CF839E-Mother-of-Dragons-Keter" class="headerlink" title="2.  CF839E - Mother of Dragons [Keter]"></a>2.  CF839E - Mother of Dragons [Keter]</h2><h3 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h3><p>有一个 $n$ 个点的无向图，你需要给每一个点赋一个实数点权 $a_i$ 使 $\sum a_i=k$，一条边 $(u,v)$ 的权值为 $a_ua_v$，求权值和的最大值</p>
+<p>$1\le n\le40,1\le k\le1000$</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>结论：最优方案是取出原图的最大团，并将 $k$ 的权值平均分给团中的点</p>
+<p>证明先鸽着。</p>
+<p>我们只要找出最大团即可解决这个问题，考虑折半解决，我们枚举其中一半的点的集合，然后统计另一边的点集最大能为多少，复杂度 $O(2^{\frac n2}n)$</p>
 
         
     
