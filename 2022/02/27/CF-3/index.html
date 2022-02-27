@@ -48,7 +48,7 @@
     
     <title>
         
-            Archives: 2021/4 | 
+            Bippity Jippity Bugaboos | 
         
         Flamiblog
     </title>
@@ -59,7 +59,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",题解,CF">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Flamiblog">
-    <meta name="msapplication-starturl" content="http://flamire.github.io/archives/2021/04/">
+    <meta name="msapplication-starturl" content="http://flamire.github.io/2022/02/27/CF-3/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Flamiblog">
@@ -235,13 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://flamire.github.io/archives/2021/04/">
+    <meta property="og:url" content="http://flamire.github.io/2022/02/27/CF-3/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Archives: 2021/4 | Flamiblog">
+    <meta property="og:title" content="Bippity Jippity Bugaboos | Flamiblog">
     <meta property="og:image" content="/img/favicon.svg">
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="题解"> <meta property="og:article:tag" content="CF"> 
 
+    
+        <meta property="article:published_time" content="Sun Feb 27 2022 21:35:32 GMT+0800">
+        <meta property="article:modified_time" content="Sun Feb 27 2022 21:35:33 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -249,13 +252,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://flamire.github.io/archives/2021/04/index.html" />
+        <link rel="canonical" href="http://flamire.github.io/2022/02/27/CF-3/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://flamire.github.io/2022/02/27/CF-3/index.html",
+    "headline": "Bippity Jippity Bugaboos",
+    "datePublished": "Sun Feb 27 2022 21:35:32 GMT+0800",
+    "dateModified": "Sun Feb 27 2022 21:35:33 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Flamire",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Flamiblog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.svg"
+        }
+    },
+    "keywords": ",题解,CF",
+    "description": "",
+}
+</script>
 
 
     
@@ -289,94 +322,265 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-CF1214H-Tiles-Replacement-Euclid"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.  CF1214H - Tiles Replacement [Euclid]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2021/04/11/BJOI2021/">BJOI2021</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2021/04/11/BJOI2021/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Flamire's avatar">
-            </div>
-            <div>
-                <strong>Flamire</strong>
-                <span>Apr 11, 2021</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                Bippity Jippity Bugaboos
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Flamire</strong>
+        <span>Feb 27, 2022</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/CF/" rel="tag">CF</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Bippity Jippity Bugaboos&url=http://flamire.github.io/2022/02/27/CF-3/index.html&pic=http://flamire.github.io/img/favicon.svg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Bippity Jippity Bugaboos&url=http://flamire.github.io/2022/02/27/CF-3/index.html&via=Flamire" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://flamire.github.io/2022/02/27/CF-3/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://flamire.github.io/2022/02/27/CF-3/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>[TOC]</p>
+<h2 id="1-CF1214H-Tiles-Replacement-Euclid"><a href="#1-CF1214H-Tiles-Replacement-Euclid" class="headerlink" title="1.  CF1214H - Tiles Replacement [Euclid]"></a>1.  CF1214H - Tiles Replacement [Euclid]</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>给定一棵 $n$ 个点的树，要求将其每个点染上 $1\sim k$ 中的一种颜色，使得任意长为 $k$ 的路径均包含 $k$ 种不同的颜色，要求给出构造或判定无解</p>
+<p>$1\le k\le n\le2\times10^5$</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>我们找出这棵树的直径 $u\leftrightarrow v$，如果直径 $&lt;k$ 那么随便构造，可以发现直径上的点的染色是固定的（所有情况均对称）</p>
+<p>考虑直径 $\ge k$ 的情况，如果有一条支链 $x\leftrightarrow y$ 和 $u\leftrightarrow v$ 的公共点为 $x$，且 $len(u\leftrightarrow y)\ge k\land len(v\leftrightarrow y)\ge k$，那么不难发现当 $k\ge2$ 时一定无解，$k=2$ 的情况可以特判掉</p>
+<p>一条支链 $x\leftrightarrow y$ 一定至多和直径的一边形成长度 $\ge k$ 的链</p>
+<p>如果没有形成长度 $\ge k$ 的点那和其他链也不可能形成，因此随意染色即可</p>
+<p>否则我们按照支链上的点 $x$ 到直径的距离以及支链与直径相交的点的颜色来给 $x$ 染色即可，只有这样染色不会产生跨过支链与直径的链不符合要求的情况，那我们需要考虑是否会形成支链内部的链不符合要求</p>
+<p>这是不可能的，设我们考虑的两条支链为 $x\leftrightarrow y,x\leftrightarrow z$，那么 $len(y\leftrightarrow z)\le len(x\leftrightarrow y)+len(x\leftrightarrow z)$，如果 $len(x\leftrightarrow y)+len(x\leftrightarrow z)\ge k$，那么由于 $len(u\leftrightarrow prv(x))+len(x\leftrightarrow y)&lt;k$（我们假设 $len(u\leftrightarrow prv(x))\le len(v\leftrightarrow nxt(x))$，其中 $prv(x)$ 和 $nxt(x)$ 分别表示 $x$ 在直径上前后的点），所以 $len(u\leftrightarrow prv(x))\le len(x\leftrightarrow y)$，则 $u\leftrightarrow v$ 不为直径，矛盾</p>
+<p>按这种方式构造即可，复杂度 $O(n)$</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://flamire.github.io/2022/02/27/CF-3/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://flamire.github.io/2022/02/27/CF-3/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/10007/06/07/hello-world/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2022/01/28/WC2022/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
