@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Sun Feb 27 2022 21:35:32 GMT+0800">
-        <meta property="article:modified_time" content="Sun Feb 27 2022 21:35:33 GMT+0800">
+        <meta property="article:modified_time" content="Tue May 10 2022 22:38:26 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://flamire.github.io/2022/02/27/CF-3/index.html",
     "headline": "Bippity Jippity Bugaboos",
     "datePublished": "Sun Feb 27 2022 21:35:32 GMT+0800",
-    "dateModified": "Sun Feb 27 2022 21:35:33 GMT+0800",
+    "dateModified": "Tue May 10 2022 22:38:26 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Flamire",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-CF1214H-Tiles-Replacement-Euclid"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.  CF1214H - Tiles Replacement [Euclid]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-CF1214H-Tiles-Replacement-Euclid"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.  CF1214H - Tiles Replacement [Euclid]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-CF1131G-Most-Dangerous-Shark-Euclid"><span class="post-toc-number">2.</span> <span class="post-toc-text">3. CF1131G - Most Dangerous Shark [Euclid]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E9%9D%A2-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">题面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">题解</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -505,6 +505,15 @@
 <p>否则我们按照支链上的点 $x$ 到直径的距离以及支链与直径相交的点的颜色来给 $x$ 染色即可，只有这样染色不会产生跨过支链与直径的链不符合要求的情况，那我们需要考虑是否会形成支链内部的链不符合要求</p>
 <p>这是不可能的，设我们考虑的两条支链为 $x\leftrightarrow y,x\leftrightarrow z$，那么 $len(y\leftrightarrow z)\le len(x\leftrightarrow y)+len(x\leftrightarrow z)$，如果 $len(x\leftrightarrow y)+len(x\leftrightarrow z)\ge k$，那么由于 $len(u\leftrightarrow prv(x))+len(x\leftrightarrow y)&lt;k$（我们假设 $len(u\leftrightarrow prv(x))\le len(v\leftrightarrow nxt(x))$，其中 $prv(x)$ 和 $nxt(x)$ 分别表示 $x$ 在直径上前后的点），所以 $len(u\leftrightarrow prv(x))\le len(x\leftrightarrow y)$，则 $u\leftrightarrow v$ 不为直径，矛盾</p>
 <p>按这种方式构造即可，复杂度 $O(n)$</p>
+<h2 id="3-CF1131G-Most-Dangerous-Shark-Euclid"><a href="#3-CF1131G-Most-Dangerous-Shark-Euclid" class="headerlink" title="3. CF1131G - Most Dangerous Shark [Euclid]"></a>3. CF1131G - Most Dangerous Shark [Euclid]</h2><h3 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h3><p>给定一个长为 $m$ 的骨牌序列，第 $i$ 个骨牌高度为 $a_i$，代价为 $c_i$</p>
+<p>第 $i$ 个骨牌向左倒会使 $[i-a_i+1,i-1]$ 内的骨牌均向左倒，向右倒同理</p>
+<p>你手动推倒第 $i$ 个骨牌会花费 $c_i$ 的代价，问将所有骨牌推到最少需要多少代价</p>
+<p>$1\le m\le10^7$</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>考虑 $O(n^2)$ dp，设 $f_i$ 表示前 $i$ 个骨牌推倒的最小代价，$f_i=\min(f[l_i-1]+c_i,f[j-1]+c_j\{r_j\ge i\})$，其中 $l_i,r_i$ 分别表示将 $i$ 向左/向右推倒经过连锁反应能够推倒的最左边/最右边</p>
+<p>考虑 $l_i,r_i$ 怎么求</p>
+<p>不难发现 $l_i=\min(l_j)\{i-a_i+1\le j\le i-1\}$，那么我们可以用一个单调栈来维护，每次算出 $f_i$ 将 $f_{i-a_i+1}$ 至 $f_{i-1}$ 均弹出，加入 $f_i$，复杂度 $O(m)$</p>
+<p>考虑 $[i,r_i]$ 之间要么是相离要么是包含，因此形成树状关系，我们模拟建这棵树的过程，每到一个 $i$ 删除所有 $r_j&lt;i$ 的点，把 $[i,r_i]$ 入栈，然后取栈中最小值作为 $f_i$ 的值，复杂度 $O(m)$</p>
+<p>总复杂度 $O(m)$</p>
 
         
     
