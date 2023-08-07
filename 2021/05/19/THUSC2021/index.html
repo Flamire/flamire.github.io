@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>THUSC2021 | Yes?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="梦游了一周，不知道自己在干啥">
+<meta property="og:type" content="article">
+<meta property="og:title" content="THUSC2021">
+<meta property="og:url" content="http://example.com/2021/05/19/THUSC2021/index.html">
+<meta property="og:site_name" content="Yes?">
+<meta property="og:description" content="梦游了一周，不知道自己在干啥">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-27T10:14:04.000Z">
+<meta property="article:author" content="Flamire">
+<meta property="article:tag" content="游记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Yes?" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yes?</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-THUSC2021" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/19/THUSC2021/" class="article-date">
+  <time class="dt-published" datetime="2021-05-18T16:00:00.000Z" itemprop="datePublished">2021-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      THUSC2021
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>梦游了一周，不知道自己在干啥</p>
+<span id="more"></span>
+
+<h3 id="12-9"><a href="#12-9" class="headerlink" title="12.9"></a>12.9</h3><p>出去玩回北京还没坐热就又要去 ZJ 了，感觉很奇妙</p>
+<p>火车上电了一路，中间去打了会月赛，切了两道题就又去电竞了</p>
+<p><del>钻石工业化生产</del></p>
+<p>到酒店 22:30 就被赶去睡觉了</p>
+<h3 id="12-10"><a href="#12-10" class="headerlink" title="12.10"></a>12.10</h3><p>XJ 集训第一天</p>
+<p>上来先看 T1，想了一堆奇怪的 dp，都没法转移，果断放弃</p>
+<p>然后看 T3，感觉似乎可以枚举最后序列中的两个位置然后统计它们对应的括号在原来为逆序对的方案数，想了一个 $O(n^4)$ 的做法，直接弃了</p>
+<p>最后看 T2，感觉操作貌似和环有什么关系，于是就把字符串排到了环上，然后发现每次操作是把头指针向前挪一位并选择是否交换两个元素，感觉枚举最后所有 1 的位置并把环切成两段，然后一段逆时针转，一段顺时针转，其中顺时针的圈数是 1 的个数有关的，逆时针的圈数是和最远的 1 的距离有关的，但是细节很多+复杂度显然爆炸，所以就没写</p>
+<p>最后只写了一个 T1 的 10pts 暴力，10+0+0&#x3D;10，被全世界吊打，给 BNDS 丢脸了</p>
+<p><del>orz xcyle 手刃 T2，吊打 XJ 所有人</del></p>
+<p><del>对面的 hehezhou 一直在电，这就是神仙吗</del></p>
+<p>后来发现我 T2 的思路和正解很接近，虽然说再给我几个小时我可能也调不出来</p>
+<p>下午+晚上尝试改题，改 T2 改到一半被恶心吐了</p>
+<p><del>本来要面 dX，结果没面到</del></p>
+<h3 id="12-11"><a href="#12-11" class="headerlink" title="12.11"></a>12.11</h3><p>XJ 集训第二天</p>
+<p>把所有题都看了一遍，感觉只有 T1 可做</p>
+<p>结果 T1 只想到 $O(n^5)$ 的做法，细节还特别多</p>
+<p>看旁边的 xcyle 飞速切掉了，十分害怕，于是也开始想正解，结果想到还剩 45min 的时候没有任何结果，发现暴力还没写，于是开始 rush 暴力，rush 的过程中还发现自己是 $O(n^6)$ 的，后来调不出来直接弃疗，静静地看着旁边的 xcyle 卷题</p>
+<p>最后啥也没交，0+0+0&#x3D;0</p>
+<p><del>由于初试爆0，您无权查看高分代码，请下次努力</del></p>
+<p>下午听讲题，T1 感觉很玄妙，再给我任意多的时间也做不出来（</p>
+<p>比赛经验分享听到一半就跑路了，然后用看周围神仙电竞的空闲时间把 T1 改了</p>
+<p><del>Mr_Wu 带着我们用酒店房卡吃饭，好耶！</del></p>
+<h3 id="12-12"><a href="#12-12" class="headerlink" title="12.12"></a>12.12</h3><p>XJ 集训第三天</p>
+<p>开场把所有题都看了一遍</p>
+<blockquote>
+<p>hehezhou：这个 T2 就是道诈骗题啊</p>
+</blockquote>
+<p><del>诈骗题：指看着像是诈骗题，但又不是诈骗题，却诈骗你在上面浪费时间的题</del></p>
+<p>然后我就被诈骗去看了 T2，看了 1h 没有任何思路，直接弃掉</p>
+<p>旁边的外校选手貌似直接切掉了 T1，感觉好强</p>
+<p>去看了看 T1，貌似可以枚举每个行和对角线是否涂，然后直接压成 long long，吸取了上次考试的教训，先写完暴力</p>
+<p>交上去 15pts</p>
+<blockquote>
+<p>hehezhou：T1 的部分分是假的</p>
+</blockquote>
+<p>我人傻了</p>
+<p>xcyle 直接熟练运用二分技巧得出第一个点是 n&#x3D;8, m&#x3D;9，然后就是喜闻乐见的面向数据编程</p>
+<p>结果发现我 $2^{72}$ long long 存不下了，于是打了个多模 hash</p>
+<p>然后去看 T3，想了一会感觉可以直接黑白拆开考虑，然后就不知道了，不太会处理重叠的情况</p>
+<p>百度搜索 生命游戏，然后刷 <a target="_blank" rel="noopener" href="https://www.conwaylife.com/">wiki</a> 刷了 1h+，想起来自己还没有写 T3 的 10 分 sb 分，又回来打了一下</p>
+<p>最后 20+0+10&#x3D;30，终于不是 BNDS 垫底了！！！！11</p>
+<p>听讲题在 Mr_Wu 的帮助下听懂了 T1T3，感觉 T3 太恶心就没改</p>
+<p>下午照例刷生命游戏 wiki+看神仙打 generals</p>
+<p>晚上想起来还要改题，于是就把 T1 改了，把 day1 的 T3 改了</p>
+<h3 id="12-13"><a href="#12-13" class="headerlink" title="12.13"></a>12.13</h3><p>XJ 集训第四天</p>
+<p>终于争气了一回<del>（指排名在前 50%）</del></p>
+<p>看 T1 感觉很有思路啊！想都没想就开始码，过了样例直接交了，Wrong Answer 0pts</p>
+<p>然后是非常下饭的调试阶段，ST 表 $i,j$ 写反花了好长时间才看出来，并发现自己的 $t&#x3D;2$ subtask 假了，获得了 30pts</p>
+<p>在考场外稍稍冷静了一下，没有得到任何有用的结果，<del>于是加入原力的黑暗面</del>，试图暴力过题</p>
+<p>写了个找到第一个满足区间并不为空，然后直接往后暴力 dp 的 $O(n^2)$ 做法，50pts</p>
+<p>考虑到 dp 递增，于是写了个一旦不为最小值直接 break，70pts</p>
+<p>如果 dp 递增那么 dp 可以直接 $O(n)$ 求得，100pts</p>
+<p>于是就最慢的点不到 400ms 踩爆 std</p>
+<p>然后在 T2T3 上随便拿了点分，100+10+15&#x3D;125</p>
+<p>讲题时听懂了 T1，改了，但没完全改<del>（就是没调出来的意思）</del></p>
+<h3 id="12-14"><a href="#12-14" class="headerlink" title="12.14"></a>12.14</h3><p>上午把昨天 T1 改了，然后看 xcyle 打块</p>
+<p>看到一半 xxy 起来讲话，虽然我一个字都没听懂就是了，问 xcyle 说他也没有听懂</p>
+<p>听说下午要被赶出机房，就进入颓废模式</p>
+<p>下午回到酒店，开始颓废</p>
+<p><del>Mr_Wu pvp 好菜啊，果然卷王的技能点都点在有用的东西上吗</del></p>
+<p>晚上教练带我们出去吃饭<del>（看 saint 和教练喝酒）</del>，回到酒店开始和教练打牌</p>
+<p><del>Mr_Wu 打牌也好菜啊</del></p>
+<p>明天就 thusc 了，然而没有期望就没有压力</p>
+<h3 id="12-15"><a href="#12-15" class="headerlink" title="12.15"></a>12.15</h3><p>THUSC Day1</p>
+<p>先去报道，领了个紫色的牌子，直接强行脱离组织</p>
+<p>不能试机就一直在空调底下颓废，一直颓到拍合照</p>
+<p><del>ZJ 好热啊啊啊啊啊啊啊啊啊啊啊啊啊啊</del></p>
+<p>然后回国际交流中心开幕式啥的</p>
+<p><del>致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞致辞</del></p>
+<p>其中那个预告片和报告是认真听了的，虽然感觉每个学校都是这么介绍的（</p>
+<p><del>去了 THU 就不用在 BNDS 那点破地探险了</del></p>
+<p>谁也没面到就上了大巴，路上人被颠傻了，延误了好长时间<del>（CF 传统艺能）</del>，手机还没电了（</p>
+<p>考试的时候上来直接看的 T1</p>
+<p>因为之前说 D1T1 一般都是一道签到题，于是开始死磕 T1，然后直接把自己的脑袋磕碎了</p>
+<p>花了 2.5h 只想到了一个 $O(n^2)$ 的做法，心态有点差，直接转行暴力人</p>
+<p>先把 T1 的 50pts 码完，然后按实现难度排了个序，感觉通信题不太阳间，T3-&gt;T2-&gt;T4</p>
+<p>先写完了 T3 的 20pts，然后去看 T2，手玩了一堆部分分，写了 4 个 sol，期望得分 60pts，然而交上去只有 50pts，$O(n^2)$ 做法第 3 个包 T 了，甚是不懂，本地数据开 O2 0.7s 就能过</p>
+<p>没时间看 T4 了，最后 50+50+20+0&#x3D;120</p>
+<p>貌似 T2 的链的部分分还要反过来跑一边，挂掉 10pts</p>
+<p>出来发现全世界都切题了，于是我这个暴力人被吊着打</p>
+<blockquote>
+<p>学长：是不是除了 Flamire 都切题了？</p>
+</blockquote>
+<p>不过线段树合并，点分治，fwt 我一个都不会，知识储备不足实锤了</p>
+<h3 id="12-16"><a href="#12-16" class="headerlink" title="12.16"></a>12.16</h3><p>THUSC Day2</p>
+<p>早上照常延误，9:00 开始，于是就打了 20min 的五子棋，最后 won 2 lost 6，<del>相比省选有所进步</del></p>
+<p>发题，懒得读十多页的 guide.pdf，直接看 bmp 了</p>
+<p>读懂花了 40min 左右，然后开始码，眼瞎没看见 cpp-reference 于是纠结了半天 fwrite 怎么用</p>
+<p>以为运行 <code>make</code> 就是运行 Makefile，于是跑了一遍，发现 CE 了，然后开始拷问出题人</p>
+<blockquote>
+<p>Flamire：运行 Makefile 显示 *T^#G*@HD(*CG*&amp;CST*@D#</p>
+<p>管理员：运行 make</p>
+</blockquote>
+<p>然后开始在文件夹里找 make 文件，然后没找到，重新下了一遍也不行，于是又拷问出题人</p>
+<blockquote>
+<p>Flamire：未找到 make 文件</p>
+<p>管理员：make 不是文件</p>
+</blockquote>
+<p><del>wtm</del></p>
+<p>肉眼比对了一遍，没有发现区别就信心满满地交了，然后 WA0</p>
+<p>本地乖乖 diff 了一遍，发现不同，但是不知道是哪里锅了，于是写了个比较器，比出那个字节不一样，改完交就过了</p>
+<p>然后看 triangle，看了眼 guide.pdf，发现并没有任何有用信息，于是跑去看 math&amp;geometry.pdf，一开始并没有注意到几何库里给了 Plane 类</p>
+<p>解了半天方程，终于发现 library.pdf 中有直线和平面的交点函数，信心满满地就开始码高斯消元</p>
+<p>码完高斯消元才发现 Plane 类可以用 3 个点初始化，极其下饭</p>
+<p>写完之后跑了一遍，电脑直接卡死（其实是因为处理指针的时候用了 new），但好歹跑出了结果，交上去直接过掉</p>
+<p>感觉 cornellbox 不太阳间，于是直接看了 balls，写完之后直接运行……</p>
+<p>然后卡了 3min，得到了进程被杀死的结果，心里 mmp</p>
+<p>又尝试了一遍，又被杀死</p>
+<blockquote>
+<p>Flamire：运行 balls 卡机+进程被杀死</p>
+<p>管理员：占用内存过多</p>
+<p>Flamire：即使将函数删空也会被杀死，如何处理？</p>
+</blockquote>
+<p>然后管理员就不理我了</p>
+<p>最后 40+20&#x3D;60，被吊锤</p>
+<p>紫金港体验极差，到会场的时候已经讲到 T4 了</p>
+<p><del>居然还有吐槽大会这种环节</del></p>
+<p>感觉 T4 貌似还有点可做，是我蠢了</p>
+<p>然后是听工程题，发现 balls 原来是依赖于 cornellbox 的？？？我直接谔谔</p>
+<p>科普了一大堆光线渲染的知识，然后疯狂延迟，到 17:30 才领完纸跑路</p>
+<p>回去的路上开始快乐颓废</p>
+<h3 id="12-inf"><a href="#12-inf" class="headerlink" title="12.inf"></a>12.inf</h3><p>两天 110+60&#x3D;170，“成绩良好”，被所有人吊着锤<br>、<br>就当是来观光，见见世面的8</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/19/THUSC2021/" data-id="cll0xh3f20016qsnc7fr30m24" data-title="THUSC2021" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/04/CF993/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CF993
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/11/BJOI2021/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">BJOI2021</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoAR/" rel="tag">SoAR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AT/" style="font-size: 14px;">AT</a> <a href="/tags/CF/" style="font-size: 18px;">CF</a> <a href="/tags/SoAR/" style="font-size: 10px;">SoAR</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/other/" style="font-size: 12px;">other</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 16px;">游记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/10007/06/">June 10007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1899/11/">November 1899</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/10007/06/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/CF-3/">Bippity Jippity Bugaboos</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/12/transcript-3/">transcript-3</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/29/CSP2022/">CSP2022</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/03/ARC149/">ARC149</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Flamire<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

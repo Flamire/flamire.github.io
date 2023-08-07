@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>8月做题记录 | Yes?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[TOC]  #1  CF1519E - Off by One题面给定第一象限内的 $n$ 个点（不一定是整点） 每次你可以选择两个点 $a,b$，如果你能够将两个点分别向 $x$ 轴正方向或 $y$ 轴正方向移动一格，满足移动后 $(0,0)$ 与 $a,b$ 三点共线，则你可以将这两个点删除 问你最多能删除多少次 $1\le n\le2\times10^5$ 题解考虑如果两点斜率相同，那么这两">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8月做题记录">
+<meta property="og:url" content="http://example.com/2021/08/31/202108/index.html">
+<meta property="og:site_name" content="Yes?">
+<meta property="og:description" content="[TOC]  #1  CF1519E - Off by One题面给定第一象限内的 $n$ 个点（不一定是整点） 每次你可以选择两个点 $a,b$，如果你能够将两个点分别向 $x$ 轴正方向或 $y$ 轴正方向移动一格，满足移动后 $(0,0)$ 与 $a,b$ 三点共线，则你可以将这两个点删除 问你最多能删除多少次 $1\le n\le2\times10^5$ 题解考虑如果两点斜率相同，那么这两">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T08:01:34.000Z">
+<meta property="article:author" content="Flamire">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Yes?" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yes?</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-202108" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/31/202108/" class="article-date">
+  <time class="dt-published" datetime="2021-08-30T16:00:00.000Z" itemprop="datePublished">2021-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      8月做题记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<hr>
+<h3 id="1-CF1519E-Off-by-One"><a href="#1-CF1519E-Off-by-One" class="headerlink" title="#1  CF1519E - Off by One"></a>#1  CF1519E - Off by One</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定第一象限内的 $n$ 个点（不一定是整点）</p>
+<p>每次你可以选择两个点 $a,b$，如果你能够将两个点分别向 $x$ 轴正方向或 $y$ 轴正方向移动一格，满足移动后 $(0,0)$ 与 $a,b$ 三点共线，则你可以将这两个点删除</p>
+<p>问你最多能删除多少次</p>
+<p>$1\le n\le2\times10^5$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑如果两点斜率相同，那么这两点一定与 $(0,0)$ 三点共线</p>
+<p>一个点最多生成出两种斜率，我们把每个斜率看成一张图中的点，给出的 $n$ 个点看做连接他所生成的两种斜率的边，那么我们就构建出了一张无向图，每次我们可以选择两条有公共点的边将其删除</p>
+<p>考虑树的情况是非常好做的，只要每次选择深度最深的点，将其所有还未删除的儿子边与它自己的父亲边配对，如果无法全部删除则将父亲边上传到该点的父亲处理，这样能达到理论最优 $\lfloor\frac e2\rfloor$ 次</p>
+<p>考虑将树的情况延伸到图上，我们可以找出原图的一棵 dfs 树，这样除了树边就只有返祖边，每次考虑节点时优先配对返祖边即可</p>
+<p>复杂度 $O(n\log n)$，瓶颈在于离散化</p>
+<h3 id="2-CF1517E-Group-Photo"><a href="#2-CF1517E-Group-Photo" class="headerlink" title="#2  CF1517E - Group Photo"></a>#2  CF1517E - Group Photo</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个球，你要将每个球染成黑色或白色，每个球有一个权值 $a_i$，设最后染黑的下标是 ${c_1,c_2,\cdots,c_k}$，染白的下标是 ${p_1,p_2,\cdots,p_m}$，你需要满足：</p>
+<ul>
+<li>$\forall2\le x\le k-1,c_{x+1}-c_x\ge c_x-c_{x-1}$</li>
+<li>$\forall2\le x\le m-1,p_{x+1}-p_x\le p_x-p_{x-1}$</li>
+<li>$\sum a_{c_i}&lt;\sum a_{p_i}$</li>
+</ul>
+<p>求合法染色方案数，对 $998244353$ 取模</p>
+<p>$1\le n\le2\times10^5$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>手玩发现答案一定形如 <code>PP...PCC..CC</code> 或 <code>(P)CC...CCPCPC...PCPCPP...PPP(C)</code></p>
+<p>第一种可以直接 $O(n)$ 统计个数，对于第二种，我们可以分别枚举首尾是否有 <code>P</code> 和 <code>C</code>，然后枚举第一段 <code>C</code> 的长度，当固定了 <code>C</code> 段的长度后，我们只需知道 <code>P</code> 段的长度即可确定染色方案</p>
+<p>考虑 <code>P</code> 段越长，$\sum a_{p_i}-\sum a_{c_i}$ 越大，于是我们可以二分求解，复杂度 $O(n\log n)$</p>
+<hr>
+<p>以下内容纯属口胡，没有具体实现，但感觉比较可行（？）</p>
+<p>考虑 <code>C</code> 段的长度同奇偶时，随着 <code>C</code> 段变长，$\sum a_{c_i}$ 必定不降，那么 <code>P</code> 段的最小长度也一定不降，于是可以用 two-pointer $O(n)$ 解决</p>
+<h3 id="3-CF217E-Alien-DNA"><a href="#3-CF217E-Alien-DNA" class="headerlink" title="#3  CF217E - Alien DNA"></a>#3  CF217E - Alien DNA</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一个字符串，进行 $n$ 次如下操作：每次给定一个下标区间 $[l_i,r_i]$，将这个区间内所有下标与 $l_i$ 异奇偶的字符复制一份并插入在 $[l_i,r_i]$ 后，然后将与 $l_i$ 同奇偶的字符复制一份并插入在异奇偶字符之后，求操作后的前 $k$ 位</p>
+<p>$1\le n\le5000,1\le k\le3\times10^6$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>考虑如果 $r&gt;k$，那么一定毫无意义</p>
+<p>考虑我们进行了一次 $[l_n,r_n]$，那么我们只需要知道前 $r+\max(0,k-2(r_n-l_n+1))$ 个字符就推出可以后面的操作序列，所以我们可以求出执行完前 $n-1$ 次操作需要的位数 $len_{n-1}$，以此类推，我们可以求出 $len_{n-2},len_{n-3},\cdots,len_0$</p>
+<p>考虑我们第 $i$ 次操作只会插入 $len_{i+1}-len_i$ 个我们在意的字符，所以可以直接平衡树暴力维护，按顺序暴力插入字符，达到 $len_{i+1}$ 时停止，这样平衡树内最多只会插入 $k$ 次，复杂度 $O(k\log k)$</p>
+<h3 id="4-CF1516E-Baby-Ehab-Plays-with-Permutations"><a href="#4-CF1516E-Baby-Ehab-Plays-with-Permutations" class="headerlink" title="#4  CF1516E - Baby Ehab Plays with Permutations"></a>#4  CF1516E - Baby Ehab Plays with Permutations</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定整数 $n$ 与 $K$，对于 $k&#x3D;1,2,\cdots,K$，询问长度为 $n$ 的 $p_i&#x3D;i$ 的排列，进行 $k$ 次交换两个不同位置上的数的操作后能得到多少不同的排列</p>
+<p>$1\le n\le10^9,1\le K\le200$</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑可以将一个排列看成一堆环，那么每次交换可以把一个环分成两个环，或者将两个环合并成一个环</p>
+<p>那么对于一个环的长度分别为 $a_1,a_2,\cdots,a_c$ 的排列，其最少通过 $\sum_{i&#x3D;1}^c(a_i-1)$ 次操作得出，也即 $n-c$</p>
+<p>问题转化为，我们将 $n$ 个不同的球排成 $n-k$ 个环的方案数，这个问题实际上就是第一类斯特林数，但查阅资料得第一类斯特林数没有实用的通项公式</p>
+<p>考虑 $n$ 特别大，而 $k$ 相对较小，所以会有许多自环（长度为 $1$ 的环）</p>
+<p>我们枚举自环的个数，那么最多剩下 $O(k)$ 个点属于非自环，直接 dp 处理即可，复杂度 $O(k^3)$</p>
+<h3 id="5-ARC125C-LIS-to-Original-Sequence"><a href="#5-ARC125C-LIS-to-Original-Sequence" class="headerlink" title="#5  ARC125C - LIS to Original Sequence"></a>#5  ARC125C - LIS to Original Sequence</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定整数 $n,k$，以及序列 $a(1\le a_1&lt;a_2&lt;\cdots&lt;a_k\le n)$，求字典序最小的长度为 $n$ 的排列 $p$，满足 $a$ 是 $p$ 的一个 LIS</p>
+<p>$1\le k\le n\le2\times10^5$</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>考虑向序列 $a$ 中插数，那么每次我们考虑一个位置后最小能插什么数</p>
+<p>我们发现，假设我们现在已经插入了一些数，还没有插入的数的集合是 $S$，那么我们可以将 $S$ 从大到小排序，大于 $a_k$ 的插入在 $a_k$ 之前，否则插入在 $a_k$ 之后，这样可以得到一组合法的解，这启示我们只要插入该数不违反性质那么必定可以构造出一组可行解</p>
+<p>所以我们依次考虑 $a_i$ 与 $a_{i+1}$ 之间插入什么数，如果当前还未插入的数中最小的大于 $a_{i+1}$，那么我们可以不插入任何数，否则我们可以将最小的数插入到 $a_i$ 与 $a_{i+1}$ 之间，此时如果再插入数必定会导致 LIS 长度 $&gt;k$，不符条件</p>
+<p>复杂度 $O(n\log n)$，不过可能可以做到 $O(n)$？</p>
+<h3 id="6-ARC125D-Unique-Subsequence"><a href="#6-ARC125D-Unique-Subsequence" class="headerlink" title="#6  ARC125D - Unique Subsequence"></a>#6  ARC125D - Unique Subsequence</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>给定一个长度为 $n$ 的序列 $a$，我们称一个子序列 $b_1,b_2,…,b_k$ 是好的，当且仅当存在唯一的 $idx_1,idx_2,…,idx_k$ 满足 $\forall1\le i\le n,a[idx_i]&#x3D;b_i$，求 $a$ 的好的非空子序列个数</p>
+<p>$1\le n\le2\times10^5$</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>考虑你可以贪心地匹配子序列，所以对于一个下标 $i$，如果子序列前一项是 $x$，那么上一项应当取到 $last_{i,x}$，表示 $i$ 前面的第一个 $x$</p>
+<p>那么我们令 $dp_i$ 表示只考虑前 $i$ 个数的情况下选了 $i$ 的好子序列的数量，可以得到转移方程 $dp_i&#x3D;\sum_{x&#x3D;1}^n[last_{i,x}\ge last_{i,a[i]}]dp_x$，BIT 优化转移即可，复杂度 $O(n\log n)$</p>
+<h3 id="7-AGC025D-Choosing-Points"><a href="#7-AGC025D-Choosing-Points" class="headerlink" title="#7  AGC025D - Choosing Points"></a>#7  AGC025D - Choosing Points</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>给定 $n,d_1,d_2$，要求选出 $n^2$ 个整点 $(x,y)(0\le x,y&lt;2n)$，满足不存在任意两个点距离为 $\sqrt{d_1}$ 或 $\sqrt{d_2}$，$1\le n\le300,d_1,d_2\le2\times10^5$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>结论：当我们将一个点阵内距离为 $\sqrt d$ 的点连边时，形成的图一定是一个二分图</p>
+<p>证明：考虑 $d$ 模 $4$ 的余数，如果 $d\equiv0\pmod4$，那么 $\Delta x$ 与 $\Delta y$ 必然都是偶数，可以将坐标轴除以 $2$，并将点阵拆成 4 个子问题，规约成其他情况，如果 $d\equiv1\pmod4$，那么 $\Delta x$ 与 $\Delta y$ 必然一个是偶数，一个是奇数，按 $x+y$ 的奇偶性分成两个集合即可，如果 $d\equiv2\pmod4$，那么 $\Delta x$ 与 $\Delta y$ 必然都是奇数，按 $x$ 的奇偶性分成两个集合即可</p>
+<p>那么问题转化为，我们有两张二分图，现在要选择 $n^2$ 个节点，使得这些节点在两个二分图上都两两不相邻</p>
+<p>称第一个二分图的两个集合为 $S_1,S_2$，第二个二分图的两个集合为 $T_1,T_2$，那么我们可以得到四个互不相交的集合 $S_1\cap T_1,S_1\cap T_2,S_2\cap T_1,S_2\cap T_2$，这四个集合内部一定两两不相邻，根据抽屉原理，必定有一个集合的大小不小于 $\frac14\times 4n^2&#x3D;n^2$，输出该集合的 $n^2$ 个点即可</p>
+<p>复杂度 $O(n^2\sqrt d)$，瓶颈在建二分图上</p>
+<h3 id="8-ARC125E-Snack"><a href="#8-ARC125E-Snack" class="headerlink" title="#8  ARC125E - Snack"></a>#8  ARC125E - Snack</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>你有 $n$ 种零食，第 $i$ 种有 $a_i$ 块，你要把它们分给 $m$ 个小朋友，第 $i$ 个小朋友同一种零食最多拿到 $b_i$ 块，一共拿到的零食不超过 $c_i$ 块，问最多能发出多少块零食</p>
+<p>$1\le n,m\le2\times10^5,1\le a_i,c_i\le10^{12}，1\le b_i\le10^7$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>考虑一个显然的最大流模型，源点向每个小朋友连 $c_i$ 的边，每个小朋友向每种零食连 $b_i$ 的边，每种零食向汇点连 $a_i$ 的边，但复杂度显然爆炸了</p>
+<p>考虑最大流&#x3D;最小割，我们模拟这个割的过程，考虑枚举我们割掉的 $a_i$ 边的数量 $k$，那么此时对于每个小朋友，我们让他和汇点与源点其中一个不连通的代价是 $\min(c_i,(n-k)b_i)$，考虑这个两个东西的差是关于 $k$ 的一次函数，按照差的零点排序即可，复杂度 $O(n\log n)$</p>
+<h3 id="9-CF1558D-Top-Notch-Insertions"><a href="#9-CF1558D-Top-Notch-Insertions" class="headerlink" title="#9  CF1558D - Top-Notch Insertions"></a>#9  CF1558D - Top-Notch Insertions</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>给定 $n,m$，以及 $m$ 次操作 $x_i,y_i$，定义选择排序为：枚举 $i$ 从 $2$ 到 $n$，如果 $a_i&lt;a_{i-1}$，那么找到第一个 $a_j$ 使得 $a_j&gt;a_i$，将 $a_i$ 插入至 $a_j$ 之前，我们称这一步为执行 $i$ 到 $j$ 的插入</p>
+<p>问有多少数列 $a$ 满足每个元素均在 $[1,n]$ 中，并且依次执行了 $x_i$ 到 $y_i$ 的插入，对 $998244353$ 取模</p>
+<p>$1\le n\le2\times10^5,0\le m&lt;n$</p>
+<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><p>考虑我们可以求出元素的相对大小关系，每次 $x_i$ 插入到 $y_i$ 的操作，相当于令当前排名为第 $y_i+1$ 的数必须大于第 $y_i$ 个数，直接倒过来用树状数组上二分维护即可</p>
+<p>我们得到哪些数必须大于前面的数时，我们可以直接组合数计算答案，复杂度 $O(m\log n)$</p>
+<h3 id="10-CF679E-Bear-and-Bad-Powers-of-42"><a href="#10-CF679E-Bear-and-Bad-Powers-of-42" class="headerlink" title="#10  CF679E - Bear and Bad Powers of 42"></a>#10  CF679E - Bear and Bad Powers of 42</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>有一个长度为 $n$ 的序列 $a$，一开始每个数都不是 42 的次幂，有 $m$ 次操作，每次操作有以下三种：</p>
+<ol>
+<li>给定 $x$，求 $a[x]$</li>
+<li>给定 $l,r,x$，将 $a[l:r]$ 中的所有数赋值为 $x$，保证 $x$ 不是 42 的次幂</li>
+<li>给定 $l,r,x$，将 $a[l:r]$ 中所有数加 $x$，然后重复这个操作直到 $a[l:r]$ 中没有 42 的次幂</li>
+</ol>
+<p>$1\le n,q\le10^5,1\le t_i,x\le10^9$</p>
+<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1"><a href="#做法-1" class="headerlink" title="做法 1"></a>做法 1</h5><p>考虑如果没有 2 操作，那么一个数最多会“越过” $O(\log_{42}a_i)$ 次 42 的次幂，所有数一共会越过 $O(n\log_{42}a_i)$ 次 42 的次幂</p>
+<p>加上 2 操作后，这个结论就不成立了，但考虑一次赋值之后，被赋值的区间进行任何 1,3 操作得到的结果都是一样的，所以我们可以当做一个连续段整体处理，这样一共会有 $O(n\log_{42}a_i+m\log_{42}a_i)$ 次“越过”操作</p>
+<p>那么我们可以用平衡树来维护，每个节点维护一个连续段，2 操作取出对应的区间，将它们合并成一个点即可，3 操作可以暴力区间加模拟，每次从根开始 dfs 找到所有“越过” 42 次幂的节点并更新，然后判断有没有距离下一个 42 次幂为 0 的节点即可</p>
+<p>复杂度 $O(n\log_{42}a_i\log n)$</p>
+<h5 id="做法-2"><a href="#做法-2" class="headerlink" title="做法 2"></a>做法 2</h5><p>考虑上述做法太难写，所以就有了线段树做法</p>
+<p>我们直接用线段树维护 $a$ 序列，我们将有赋值 tag 的节点视作一个连续段，可以证明这样复杂度是正确的</p>
+<p>具体地，我们定义势能 $S$ 为每个连续段能“越过”的次数之和</p>
+<p>每次 2 操作最多增加 $\log_{42}a_i$ 的势能，而每次 3 操作内的区间加会让势能至少减 1，付出的代价为一次区间修改</p>
+<p>复杂度 $O(n\log_{42}a_i\log n)$</p>
+<h3 id="11-CF1562E-Rescue-Niwen"><a href="#11-CF1562E-Rescue-Niwen" class="headerlink" title="#11  CF1562E - Rescue Niwen!"></a>#11  CF1562E - Rescue Niwen!</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>给定长度为 $n$ 的字符串 $a$，将其所有子串按照左端点为第一关键字，右端点为第二关键字排序，求该序列的最长严格上升子序列（字典序）</p>
+<p>$1\le n\le5000$</p>
+<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><p>结论：如果我们取了 $a[l:r]$，那么我们一定会取 $a[l:n]$</p>
+<p>证明：考虑如果我们 LIS 中连续地取了 $a[l_1:r_1]$ 和 $a[l_2:r_2]$（$l_1&lt;l_2,r_1\neq n$），令 $p$ 为 $a[l_1:n]$ 与 $a[l_2:n]$ 的 lcp 长度，如果 $p&lt;r_2-l_2+1$，那么 $a[l_2:r_2]$ 一定大于 $a[l_1:n]$ 的所有前缀，所以我们可以加入 $a[l_1:n]$ 的所有前缀，否则，$a[l_2:r_2]$ 一定是 $a[l_1:n]$ 的前缀，将其替换为 $a[l_1:n]$ 的前缀一定更优</p>
+<p>有了这个结论，我们令 $dp_i$ 表示考虑完 $s[i:n]$，且必须选 $s[i:n]$ 的 LIS 长度，可以使用 SA $O(n^2)$ 处理所有 lcp，复杂度 $O(n^2)$</p>
+<h3 id="12-CF1408G-Clusterization-Counting"><a href="#12-CF1408G-Clusterization-Counting" class="headerlink" title="#12  CF1408G - Clusterization Counting"></a>#12  CF1408G - Clusterization Counting</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n$ 个点的无向完全图，边权是一个长度为 $[1,\frac{n(n+1)}2]$ 的排列，你要把这 $n$ 个节点分成 $k$ 个集合，满足对于任意四个点（可能相同）$s,f,x,y$，满足 $s,f,x$ 属于同一个集合，$y$ 与 $x$ 不同集合，$a_{s,f}&lt;a_{x,y}$</p>
+<p>请你对每个 $k\in[1,n]$，求出该问题的答案</p>
+<p>求方案数，对 $998244353$ 取模，$1\le n\le1500$</p>
+<h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><p>考虑建出 Kruskal 重构树，那么一个集合就是在树上的一个子树，那么对于每一棵子树，我们可以暴力求出其中节点之间连边的最大权值，如果该权值大于父节点的权值，那么该子树就不能选择，树形 dp 即可</p>
+<p>复杂度 $O(n^2)$</p>
+<h3 id="13-CF1515F-Phoenix-and-Earthquake"><a href="#13-CF1515F-Phoenix-and-Earthquake" class="headerlink" title="#13  CF1515F - Phoenix and Earthquake"></a>#13  CF1515F - Phoenix and Earthquake</h3><h4 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n$ 个点 $m$ 条边的无向连通图，一开始都是不可用的，以及一个整数 $x$，每个点有一个权值，对于一条边，你可以花费两个端点 $x$ 的权值让其变得可用，权值可以在可用边之间流通，问你能不能让所有点都通过可用边联通，如果可以给出构造</p>
+<p>$1\le n,m\le 3\times10^5$</p>
+<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><p>结论：对于任意一棵树，如果其节点权值和 $\ge(n-1)x$，那么一定可以构造</p>
+<p>证明：考虑一个点的树显然可行，对于一棵多于一个点的树，考虑其点的权值，如果有一个点的权值 $\ge x$，那么我们可以把这个点和与其相邻的一个点合并，否则，每个点的权值都 $&lt;x$，此时如果存在两个点的权值和 $&lt;x$，那么总和 $&lt;(n-1)x$，矛盾，所以任意一条边的权值都足够将这条边变得可用，任选一条边即可，于是可以通过归纳证明原命题</p>
+<p>我们找出原树中的一棵生成树，按照上述证法模拟，使用启发式合并节点即可</p>
+<p>复杂度 $O(n\log n)$</p>
+<h3 id="14-CF1556D-Take-a-Guess"><a href="#14-CF1556D-Take-a-Guess" class="headerlink" title="#14  CF1556D - Take a Guess"></a>#14  CF1556D - Take a Guess</h3><h4 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
+<p>有一个长度为 $n$ 的数列 $a$，每次可以询问两个下标不同的数的按位与&#x2F;按位或，要求在 $2n$ 次操作内找出第 $k$ 大</p>
+<p>$3\le n\le10^4$</p>
+<h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1（赛时做法）"><a href="#做法-1（赛时做法）" class="headerlink" title="做法 1（赛时做法）"></a>做法 1（赛时做法）</h5><p>按位分析。</p>
+<p>考虑询问所有的 $(i-1,i)$ 的与&#x2F;或，对于每一个二进制位，我们可以得出任意两个相邻的数是均为 1，均为 0，还是一个 1 一个 0</p>
+<p>如果我们确定了这一位中的任意一个数，我们必然可以推出这一位的所有数的取值</p>
+<p>那么我们只用考虑任意两个二进制位没有相邻的数均为 1 或均为 0 的情况，这时候我们查询 $(1,3)$ 的与就能得到 $a_1$ 在这一位上的值，询问次数 $2n-1$，可以对每个 $[3i,3i+2]$ 做一次，做到 $O(\frac{5n}3+C)$ 的询问次数，其中 $C$ 是不超过 $4$ 的常数</p>
+<h5 id="做法-2-1"><a href="#做法-2-1" class="headerlink" title="做法 2"></a>做法 2</h5><p>$(a&amp;b)+(a|b)&#x3D;a+b$，可以考虑每位证明</p>
+<p>直接查询得到 $a_1+a_2,a_2+a_3,\cdots,a_n+a_1$，解方程即可</p>
+<p>询问次数 $2n$</p>
+<h3 id="15-CF1556E-Equilibrium"><a href="#15-CF1556E-Equilibrium" class="headerlink" title="#15  CF1556E - Equilibrium"></a>#15  CF1556E - Equilibrium</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>定义两个长度为 $len$ 的序列 $a,b$ 上的一次操作为，选择一个偶数 $k$，并选择 $k$ 个下标 $pos_1,pos_2,\cdots,pos_k(1\le pos_1&lt;pos_2&lt;\cdots&lt;pos_k\le len)$，将 $a_{pos_1},b_{pos_2},a_{pos_3},b_{pos_4},\cdots,a_{pos_{k-1}},b_{pos_k}$ 加 $1$</p>
+<p>现在给出 $n,q$，以及两个长度为 $n$ 的序列 $a,b$，有 $q$ 次询问，每次询问给出 $l,r$，问在 $a[l:r]$ 与 $b[l:r]$ 上最少进行多少次操作才能使 $a[l:r]&#x3D;b[l:r]$，如果不可能则输出 $-1$</p>
+<p>$2\le n\le10^5,1\le q\le10^5$</p>
+<h4 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h4><p>考虑任意一个前缀，$a$ 加的次数一定比 $b$ 多，所以如果有一个前缀，满足 $a$ 的前缀和小于 $b$ 的前缀和，则一定无法做到，如果 $a$ 的和不等于 $b$ 的和，同样无法做到</p>
+<p>我们按下标依次考虑，定义数组 $(x,y)$ 表示当前 $k$ 为奇数的操作有 $x$ 次，当前 $k$ 为偶数的操作有 $y$ 次，我们考虑加入 $a_i,b_i$ 带来的影响：</p>
+<ol>
+<li>$a_i\le b_i$，则我们需要 $b_i-a_i$ 次在 $b$ 上的 $+1$ 来让这两个元素相等，于是 $(x,y)$ 会变为 $(x-b_i+a_i,y+b_i-a_i)$</li>
+<li>$a_i&gt;b_i$，则我们需要 $a_i-b_i$ 次在 $a$ 上的 $+1$ 来让这两个元素相等，于是 $(x,y)$ 会变为 $(x+a_i-b_i,y-a_i+b_i)$</li>
+</ol>
+<p>不难发现这两种其实是等价的，原问题相当于询问最小的 $t$，使得初始为 $(0,t)$，执行操作中的任意时刻数对的两个数均非负，也就相当于 $t$ 加上任意一个 $b$ 的前缀和减去 $a$ 的前缀和均保持非负，使用 ST 表查询最大值即可</p>
+<p>复杂度 $O(n\log n+q)$</p>
+<h3 id="16-CF1556F-Sports-Betting"><a href="#16-CF1556F-Sports-Betting" class="headerlink" title="#16  CF1556F - Sports Betting"></a>#16  CF1556F - Sports Betting</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>有一个 $n$ 个点的竞赛图，每个点有点权 $a_i$，连接 $(i,j)$ 的边有 $\frac{a_i}{a_i+a_j}$ 的概率向 $j$，有 $\frac{a_j}{a_i+a_j}$ 的概率向 $i$，定义一个点是好的当且仅当它能到达所有其他点，求好点的期望个数，对 $10^9+7$ 取模</p>
+<p>$1\le n\le14,1\le a_i\le10^6$</p>
+<h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><p>结论 1：竞赛图存在一条长度为 $n$ 的哈密尔顿路径</p>
+<p>证明 1：使用归纳，考虑一个节点的图显然存在，考虑如果小于 $n$ 个点的每个图都存在，那么 $n$ 个点的每个图也都存在，我们选择一个点 $x$，将剩下的 $n-1$ 个节点分为两部分，一部分连向 $x$，另一部分由 $x$ 连出，将这两部分的哈密尔顿路与 $x$ 拼在一起即可得到原图的哈密尔顿路</p>
+<p>结论 2：竞赛图 SCC 缩点后存在一条路径通过所有 SCC</p>
+<p>证明 2：考虑竞赛图 SCC 缩点后一定包含一个竞赛图，而这个竞赛图有一条长度为点数的哈密尔顿路径，所以存在一条路径通过所有 SCC</p>
+<p>那么对于任意一个图缩完点后，由于缩完点的图是一个 DAG，在这条链上的第一个 SCC 能到达其他所有的点，但剩下的点都不能到达这个 SCC，所以只有这个 SCC 内的点是好的</p>
+<p>我们只要求出一个点集 $S$ 内的点为一个 SCC 的概率就可以求出答案</p>
+<p>我们令 $dp_S$ 表示点集 $S$ 不为一个 SCC 的概率，不难得到转移方程 $dp_S&#x3D;\sum\limits_{T\subset S,T\neq \empty}(1-dp[T])\times edgeW$，其中 $edgeW$ 表示 $T$ 内所有的点连向 $\overline T$ 的概率之积</p>
+<p>$ans&#x3D;\sum\limits_{S\subset ALL,S\neq\empty}(1-dp_S)\times edgeW$，其中 $edgeW$ 表示 $S$ 内所有点连向 $\overline S$ 的概率之积</p>
+<p>但求解 $edgeW$ 是 $O(n^2)$ 的，总复杂度 $O(3^nn^2)$，无法接受</p>
+<p>考虑预处理 $w_{i,S}$ 表示 $i$ 连向 $S$ 内所有点的概率之积，复杂度变为 $O(3^nn)$，可以通过</p>
+<h3 id="17-CF1513F-Swapping-Problem"><a href="#17-CF1513F-Swapping-Problem" class="headerlink" title="#17  CF1513F - Swapping Problem"></a>#17  CF1513F - Swapping Problem</h3><h4 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h4><p>有两个长度为 $n$ 的数组 $a,b$，你可以交换 $b$ 中的两个数（可以不交换），求 $\sum|a_i-b_i|$</p>
+<p>$1\le n\le2\times10^5$</p>
+<h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><p>我们可以将每个 $(a_i,b_i)$ 看成数轴上的线段，那么当 $(a_i,b_i)$ 与 $(a_j,b_j)$ 相交的时候才可能使答案更优</p>
+<p>经过手模我们发现一定是一个 $b&lt;a$ 与一个 $a&lt;b$ 相交的情况会对答案产生贡献</p>
+<p>有两种情况：</p>
+<ol>
+<li>$[l_1,r_1]$ 包含 $[l_2,r_2]$，会产生 $-2(r_2-l_2)$ 的贡献</li>
+<li>$[l_1,r_1]$ 与 $[l_2,r_2]$ 相交但不包含 $(r_2&lt;r_1)$，会产生 $-2(r_2-l_1)$ 的贡献</li>
+</ol>
+<p>树状数组二维数点即可，$O(n\log n)$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/31/202108/" data-id="cll0xh3ep0000qsnc72x6f1oc" data-title="8月做题记录" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/23/csps2021/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSP-S 2021 爆炸记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/30/noi2021/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">NOI 2021 游记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoAR/" rel="tag">SoAR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AT/" style="font-size: 14px;">AT</a> <a href="/tags/CF/" style="font-size: 18px;">CF</a> <a href="/tags/SoAR/" style="font-size: 10px;">SoAR</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/other/" style="font-size: 12px;">other</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 16px;">游记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/10007/06/">June 10007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1899/11/">November 1899</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/10007/06/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/CF-3/">Bippity Jippity Bugaboos</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/12/transcript-3/">transcript-3</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/29/CSP2022/">CSP2022</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/03/ARC149/">ARC149</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Flamire<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

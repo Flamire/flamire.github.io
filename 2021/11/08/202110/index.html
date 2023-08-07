@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>10月做题记录 | Yes?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[TOC] 1.  CF1404D - Game of Pairs题面交互题。 Aob 和 Blice 在进行游戏，有一个正整数 $n$，首先，Aob 需要将 $1,2,\cdots,2n$ 分为 $n$ 对，接着 Blice 需要每对当中选取一个数，如果选取的数和是 $2n$ 的倍数，那么 Blice 胜，否则 Aob 胜 你的任务是，交互器会给你一个正整数 $n$，你可以选择作为 Aob 或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10月做题记录">
+<meta property="og:url" content="http://example.com/2021/11/08/202110/index.html">
+<meta property="og:site_name" content="Yes?">
+<meta property="og:description" content="[TOC] 1.  CF1404D - Game of Pairs题面交互题。 Aob 和 Blice 在进行游戏，有一个正整数 $n$，首先，Aob 需要将 $1,2,\cdots,2n$ 分为 $n$ 对，接着 Blice 需要每对当中选取一个数，如果选取的数和是 $2n$ 的倍数，那么 Blice 胜，否则 Aob 胜 你的任务是，交互器会给你一个正整数 $n$，你可以选择作为 Aob 或">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/202110_1.png">
+<meta property="article:published_time" content="2021-11-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T10:01:24.000Z">
+<meta property="article:author" content="Flamire">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/202110_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Yes?" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yes?</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-202110" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/11/08/202110/" class="article-date">
+  <time class="dt-published" datetime="2021-11-07T16:00:00.000Z" itemprop="datePublished">2021-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      10月做题记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h3 id="1-CF1404D-Game-of-Pairs"><a href="#1-CF1404D-Game-of-Pairs" class="headerlink" title="1.  CF1404D - Game of Pairs"></a>1.  CF1404D - Game of Pairs</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
+<p><code>Aob</code> 和 <code>Blice</code> 在进行游戏，有一个正整数 $n$，首先，<code>Aob</code> 需要将 $1,2,\cdots,2n$ 分为 $n$ 对，接着 <code>Blice</code> 需要每对当中选取一个数，如果选取的数和是 $2n$ 的倍数，那么 <code>Blice</code> 胜，否则 <code>Aob</code> 胜</p>
+<p>你的任务是，交互器会给你一个正整数 $n$，你可以选择作为 <code>Aob</code> 或 <code>Blice</code> 来玩这个游戏，并取得胜利</p>
+<p>如果你选择了 <code>Aob</code>，那么你需要给出一种划分方式，将 $1,2,\cdots,2n$ 分为 $n$ 对，使得 <code>Blice</code> 无法获胜</p>
+<p>如果你选择了 <code>Blice</code>，那么交互库会给出划分方式，而你需要从每对中选出一个数使其和为 $2n$ 的倍数</p>
+<p>$1\le n\le5\cdot10^5$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>我们不妨将数列为 $0,1,\cdots,2n-1$</p>
+<p>考虑当 $2\mid n$ 时，$n\nmid0+1+\cdots+(n-1)$。因此，我们可以在 $n$ 为偶数时，选择 <code>Aob</code>，并将 $i$ 与 $i+n$ 分在一组</p>
+<p>当 $2\nmid n$ 时，$n\mid0+1+\cdots (n-1)$，所以我们可以考虑尽量选出余数互不相同的数</p>
+<p>这样的话，我们 $i$ 与 $i+n$ 中只能够选择一个，且必须选一个，那么“选且仅选一个”关系形成了一个二分图，而一个合法的黑白染色对应着一种选法，这里我们不妨假设选出所有黑点，而我们要求的就是满足 $\ge n$ 的数有偶数个的染色方案</p>
+<p>每个连通块有两种染色方式，两种染色方式的 $\ge n$ 的数个数的奇偶性可能为：奇奇，偶偶，奇偶。而由于 $n$ 是奇数，所以至少有一个“奇偶”，那么我们可以先将所有“奇奇”与“偶偶”选完，然后再用一个“奇偶”将奇偶性调节为偶数，剩下的“奇偶”均选择个数为偶数的选择方式</p>
+<h3 id="2-CF8E-Beads"><a href="#2-CF8E-Beads" class="headerlink" title="2.  CF8E - Beads"></a>2.  CF8E - Beads</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>我们定义两个 01 串是等价的，当且仅当可以从第一个 01 串反转每一位&#x2F;前后翻转&#x2F;翻转并反转得到第二个 01 串。</p>
+<p>我们将除全 0 串与全 1 串除外的所有长度为 $n$ 的 01 串分为若干组，满足同组内的 01 串都是等价的，不同组内的 01 串一定不等价，我们将这些组按其中字典序最小的串排序，求第 $k$ 组的字典序最小的串</p>
+<p>$1\le n\le50,1\le k\le10^{16}$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>先把全 0 串与全 1 串加上，方便讨论</p>
+<p>考虑什么样的串会成为组中的最小串，显然，它需要小于等于它的反转&#x2F;翻转&#x2F;反转翻转串，那么它的第一位一定是 0，如果末位是 0，那么它一定小于反转翻转串，只用考虑翻转串，这要求 $s[2:\lfloor\frac n2\rfloor]$ 小于等于翻转后的 $s[n-\lfloor\frac n2\rfloor+1:n-1]$，对于末位是 1 的情况同理</p>
+<p>那么我们可以考虑直接枚举答案的前 25 位分别算有多少个串符合要求，如果和超过了 $k$，那么我们按字典序遍历这个块内的符合要求的串，找到第 $k$ 个即可</p>
+<p>复杂度 $O(2^{\frac n2})$</p>
+<h3 id="3-CF11D-Simple-Task"><a href="#3-CF11D-Simple-Task" class="headerlink" title="3.  CF11D - Simple Task"></a>3.  CF11D - Simple Task</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，保证无重边自环，求该图的简单环个数，$1\le n\le19$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>考虑令 $dp[i][j][S]$ 表示从 $i$ 到 $j$，经过的点集为 $S$ 的路径数，最后统计 $\sum dp[u][v]<a href="(u,v">S</a>\in E)$，但这样显然会将环算重，因为可以从环上的任意一个节点开始走一圈回到环上与其相邻的节点，所以考虑固定起点</p>
+<p>令 $dp[i][S]$ 表示从 $S$ 中编号最小的点到 $i$，且经过集合为 $S$ 的路径数，这样便可以 $O(n^22^n)$ 解决本题</p>
+<h3 id="4-CF15D-Map"><a href="#4-CF15D-Map" class="headerlink" title="4.  CF15D - Map"></a>4.  CF15D - Map</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>有一个 $n\times m$ 的网格，每个格子内都有一个数值 $a_{i,j}$，定义一个子矩阵的权值为 $\sum a_{x,y}-a_{min}$，其中 $a_{min}$ 为这个子矩阵内所有数的最小值</p>
+<p>有一个人，要剪这个网格，每次他会从没被剪掉中选择权值最小的 $a\times b$ 的子矩阵，如果这样不唯一那么选择最靠上的，如果这样仍不唯一那么选择剩下的中最靠左的，将这个子矩阵剪掉，这样重复直到不能找出 $a\times b$ 的子矩阵为止</p>
+<p>求每次剪掉的子矩阵的左上角坐标及子矩阵权值</p>
+<p>$1\le a\le n\le1000,1\le b\le m\le1000$</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑我们可以通过单调队列预处理出每个 $a\times b$ 子矩阵的最小值，那么我们可以预处理出每个 $a\times b$ 子矩阵的权值，然后按题意模拟即可</p>
+<h3 id="5-CF1580D-Subsequence"><a href="#5-CF1580D-Subsequence" class="headerlink" title="5.  CF1580D - Subsequence"></a>5.  CF1580D - Subsequence</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>有一个长度为 $n$ 的数列 $a$，定义长度为 $m$ 的子序列 $a_{b_1},a_{b_2},\cdots,a_{b_m}$ 的权值如下：<br>$$<br>\sum_{i&#x3D;1}^m(m\cdot a_{b_i})-\sum_{i&#x3D;1}^m\sum_{j&#x3D;1}^mf(\min(b_i,b_j),\max(b_i,b_j))<br>$$<br>其中 $f(i,j)$ 表示 $\min(a_i,a_{i+1},\cdots,a_j)$，求权值最大的长度为 $m$ 的子序列</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>牛逼题。</p>
+<p>将贡献变换：<br>$$<br>&#x3D;\sum_{i&#x3D;1}^m\sum_{j&#x3D;1}^m(a_{b_i}-f(\min(b_i,b_j),\max(b_i,b_j)))\<br>&#x3D;\sum_{i&#x3D;1}^m\sum_{j&#x3D;i+1}^m(a_i+a_j-2\min(a_i,a_{i+1},\cdots,a_j))<br>$$<br>可以发现，这类似于笛卡尔树上的路径长度 $dis_u+dis_v-2dis_{LCA(u,v)}$，只要我们令每条边的权值为父亲与儿子的点权差即可，转化为笛卡尔树上的问题，树形背包求解，复杂度 $O(nm)$</p>
+<h3 id="6-CF19E-Fairy"><a href="#6-CF19E-Fairy" class="headerlink" title="6.  CF19E - Fairy"></a>6.  CF19E - Fairy</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，求有哪些边满足删掉这条边之后可以使这个图变成二分图</p>
+<p>$1\le n\le10^4,0\le m\le10^4$</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>神仙题。</p>
+<p>引理：对于一个无向图，我们找出它的任意一棵 dfs 树，那么一定可以通过只含有一条非树边的环异或得到所有简单环</p>
+<p>证明：咕咕咕</p>
+<p>考虑相当于我们要删一条边破坏掉所有的奇环，于是答案就是奇环的交集</p>
+<p>但这显然没法直接求。考虑所有只含一条非树边的奇环，我们显然要破坏这些环，所以答案一定在这些环的交集上，这可以通过树上差分求出</p>
+<p>同时，我们发现，我们删的边一定不能在只含一条非树边的偶环上，否则就会出现下图的情况</p>
+<p><img src="/202110_1.png"></p>
+<p>其中蓝色为偶环，红色为奇环，紫色构成了一个奇环，因此删除绿链上的边无法消除所有奇环，这是因为紫环是由蓝环异或红环得到，而绿链在这两个环中都存在，于是被抵消掉了（感性理解）</p>
+<p>因此我们建出 dfs 树后打差分标记即可</p>
+<p>注意处理图不连通以及本身就是二分图的情况</p>
+<p>复杂度 $O(m\log m)$（昂，瓶颈是排序输出）</p>
+<h3 id="7-CF39C-Moon-Craters"><a href="#7-CF39C-Moon-Craters" class="headerlink" title="7.  CF39C - Moon Craters"></a>7.  CF39C - Moon Craters</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>数轴上有 $n$ 个圆，第 $i$ 个圆的圆心为 $c_i$，半径为 $r_i$，你需要选出尽可能多的圆，使得选出的圆中没有两个圆有两个交点</p>
+<p>$1\le n\le2000$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>显然可以将圆转换为区间，考虑答案与具体坐标无关，所以可以离散化</p>
+<p>令 $dp[l][r]$ 为坐标 $[l,r]$ 内的圆能够选出的数量</p>
+<p>如果有一个圆对应的区间为 $[l,r]$，那么我们一定会选该圆，将 dp 值加一即可</p>
+<p>如果有其他圆左端点为 $l$，那么我们依次考虑是否选择，即对于圆 $(l,k)$，转移方程为 $dp[l][r]\leftarrow dp[l][k]+dp[k][r]$</p>
+<p>同时，我们可以舍弃所有左端点为 $l$ 的圆，并把左端点向右挪一位，$dp[l][r]\leftarrow dp[l+1][r]$</p>
+<p>复杂度 $O(n^2)$</p>
+<h3 id="8-CF49E-Common-Ancestor"><a href="#8-CF49E-Common-Ancestor" class="headerlink" title="8.  CF49E - Common Ancestor"></a>8.  CF49E - Common Ancestor</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>给定两个字符串 $s,t$，有 $n$ 种变换规则 $a_i\rightarrow b_ic_i$，表示可以将一个 $a_i$ 字符变为 $b_i$ 与 $c_i$</p>
+<p>称 $S$ 是 $s,t$ 的公共祖先，当且仅当 $S$ 通过这 $n$ 种变换规则分别变成 $s$ 和 $t$，求 $S$ 的最小长度</p>
+<p>$1\le n\le50$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>就这也配黑题？？？</p>
+<p>令 $dps[l][r][x]$ 表示 $s[l:r]$ 是否能由字符 $x$ 得出，转移时枚举第一步使用的变换规则 $x\rightarrow ab$，然后枚举断点 $k$ 从 $dps[l][k][a]&amp;dps[k+1][r][b]$ 转移即可，这一步复杂度 $O(|s|^3n)$，对于 $t$ 同样处理出 $dpt[l][r][x]$</p>
+<p>令 $f[i][j]$ 表示 $s[1:i]$ 与 $t[1:j]$ 的答案，这里直接暴力枚举上一个字符是由哪个区间变换而来的即可，复杂度 $O(|s|^2|t|^2n)$</p>
+<h3 id="9-CF73D-FreeDiv"><a href="#9-CF73D-FreeDiv" class="headerlink" title="9.  CF73D - FreeDiv"></a>9.  CF73D - FreeDiv</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，你需要依次执行以下两步操作：</p>
+<ol>
+<li>在图中任意连边</li>
+<li>继续加边，需满足每个连通块所直接相连的这一步添加的边不超过 $k$ 条，且与每个点直接相连的这一步添加的边不超过 $1$ 条</li>
+</ol>
+<p>要求经过这两步后图联通，求第一步最少添加的边数</p>
+<p>$1\le n,k\le10^6,0\le m\le10^6$</p>
+<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><p>我们可以将每个连通块看做一个点，那么第二步的限制就相当于每个连通块的度数不超过 $k$ 且不超过这个连通块内点数</p>
+<p>考虑将每个连通块视为一个点之后我们一定要连出一个树，那么当且仅当 $\sum_{u}\min(deg_u,k)\ge2(cnt-1)$ 的时候我们才能连出一个数，其中 $deg_i$ 表示连通块 $i$ 中包含的点数，$cnt$ 表示连通块个数</p>
+<p>考虑没有 $\min$ 的情况，那么将某两个连通块在第一步连边时会导致 $cnt$ 减 $1$，其他的均不变，所以相当于在不等式左边减 $2$，那么我们只要一直选任意两个连通块即可</p>
+<p>但现在有了 $\min$，我们的 $deg_u$ 超过一个值就会产生损失，而我们想让这个不等式尽快成立就需要最小化损失，我们每次取点数最少的两个连通块连在一起即可，用堆维护</p>
+<p>复杂度 $O(n\log n)$</p>
+<h3 id="10-CF1017F-The-Neutral-Zone"><a href="#10-CF1017F-The-Neutral-Zone" class="headerlink" title="10.  CF1017F - The Neutral Zone"></a>10.  CF1017F - The Neutral Zone</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>设整数 $x$ 的质因数分解为 $p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}$，定义 $f(x)&#x3D;Ax^3+Bx^2+Cx+D$，$\textrm{exlog}_f(x)&#x3D;\alpha_1f(p_1)+\alpha_2f(p_2)+\cdots+\alpha_kf(p_k)$</p>
+<p>给定整数 $n$，求 $\sum_{i&#x3D;1}^n\textrm{exlog}_f(i)$，答案对 $2^{32}$ 取模</p>
+<p>$1\le n\le3\times10^8$，空间 $16MB$</p>
+<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1"><a href="#做法-1" class="headerlink" title="做法 1"></a>做法 1</h5><p>分块打表，将所有 $B$ 的倍数的答案打表，然后暴力计算中间的每一个 $\textrm{exlog}_f(i)$</p>
+<h5 id="做法-2"><a href="#做法-2" class="headerlink" title="做法 2"></a>做法 2</h5><p>考虑如果我们求出了所有质数，那么我对于一个质数 $p$，可以在 $O(\log_pn)$ 的时间内求出 $p$ 对答案产生的贡献，而质数约有 $O(\frac n{\ln n})$ 个，所以这部分是 $O(n)$</p>
+<p>使用欧拉筛空间会爆掉，所以考虑使用埃氏筛，这样我们只用存 $3\times10^8$ 个 bool，使用 bitset 存储仍然是 $37.5MB$ 左右</p>
+<p>考虑质数一定是 $6k+1$ 与 $6k+5$ 型的，所以只用存 $10^8$ 个 bool，可以存下</p>
+<h5 id="做法-3"><a href="#做法-3" class="headerlink" title="做法 3"></a>做法 3</h5><p>考虑分块埃筛，先筛出 $1\sim\sqrt n$ 内的质数，然后将每 $s$ 个数分为一块，对每一个块内的数用 $1\sim\sqrt n$ 的质数筛一遍，复杂度 $O(s\sqrt n+n\log\log n)$，空间复杂度 $O(s)$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/11/08/202110/" data-id="cll0xh3es0001qsnc2h9k5er2" data-title="10月做题记录" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/11/21/noip2021/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          NOIP2021 游记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/10/23/csps2021/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSP-S 2021 爆炸记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoAR/" rel="tag">SoAR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AT/" style="font-size: 14px;">AT</a> <a href="/tags/CF/" style="font-size: 18px;">CF</a> <a href="/tags/SoAR/" style="font-size: 10px;">SoAR</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/other/" style="font-size: 12px;">other</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 16px;">游记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/10007/06/">June 10007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1899/11/">November 1899</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/10007/06/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/CF-3/">Bippity Jippity Bugaboos</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/12/transcript-3/">transcript-3</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/29/CSP2022/">CSP2022</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/03/ARC149/">ARC149</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Flamire<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

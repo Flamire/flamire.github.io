@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ARC149 | Yes?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="有个弱智忘了有 arc 了，晚 10min 进场，我不说是谁">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARC149">
+<meta property="og:url" content="http://example.com/2022/10/03/ARC149/index.html">
+<meta property="og:site_name" content="Yes?">
+<meta property="og:description" content="有个弱智忘了有 arc 了，晚 10min 进场，我不说是谁">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T07:51:46.000Z">
+<meta property="article:author" content="Flamire">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="AT">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Yes?" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yes?</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ARC149" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/03/ARC149/" class="article-date">
+  <time class="dt-published" datetime="2022-10-02T16:00:00.000Z" itemprop="datePublished">2022-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      ARC149
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>有个弱智忘了有 arc 了，晚 10min 进场，我不说是谁</p>
+<span id="more"></span>
+
+<h3 id="A-Repdigit-Number"><a href="#A-Repdigit-Number" class="headerlink" title="A - Repdigit Number"></a>A - Repdigit Number</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $n,m$，求最大的正整数 $x$，满足 $x\le10^n,m|x$，且 $x$ 十进制表示中各数位均相同</p>
+<p>$1\le n\le10^5,1\le m\le10^9$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>最多只有 $9n$ 中可能的 $x$，我们可以预处理出形如 $11\cdots1$ 的数模 $m$ 的余数，然后暴力计算即可</p>
+<h3 id="B-Two-LIS-Sum"><a href="#B-Two-LIS-Sum" class="headerlink" title="B - Two LIS Sum"></a>B - Two LIS Sum</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>给定两个长为 $n$ 的排列 $a_i,b_i$，你每次可以选择一个 $i$ 并执行 <code>swap(a[i],a[i+1]), swap(b[i],b[i+1])</code></p>
+<p>问两个排列的 LIS 长度之和最大是多少</p>
+<p>$2\le n\le3\times10^5$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>显然我们可以对任意 $i,j$ 执行 <code>swap(a[i],a[j]),swap(b[i],b[j])</code></p>
+<p>我们一定可以从 $a$ 中找出一个不在 LIS 上的下标，将这个下标换到一个使 $a$ 的 LIS 长度 $+1$ 的位置上，那么这样 $b$ 的 LIS 长度最多 $-1$，因此我们可以执行这项操作，一定不会更劣</p>
+<p>也就是说最后 $a$ 的 LIS 长度为 $n$，那么答案就是此时 $b$ 的 LIS 长度</p>
+<p>复杂度 $O(n\log n)$</p>
+<h3 id="C-Avoid-Prime-Sum"><a href="#C-Avoid-Prime-Sum" class="headerlink" title="C - Avoid Prime Sum"></a>C - Avoid Prime Sum</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>构造一个 $n\times n$ 的网格，每个格子上写一个数，满足 $1\sim n^2$ 都恰好出现一次，并且任意两个四联通格子和不为质数</p>
+<p>$3\le n\le1000$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>考虑两个奇数加在一起一定是合数，两个偶数加在一起一定也是合数，那么我们上面填奇数，下面填偶数，这样只需要处理中间的交界处</p>
+<p>我们考虑使用 $3$ 的倍数来做这件事情，我们将奇数中模 $3$ 余 $1$ 的数与偶数中模 $3$ 余 $2$ 的数放在边界处，这样的数一边大约有 $\frac{n^2}6$ 个，因此当 $n\ge6$ 时这种构造可行，对于 $n&#x3D;3,4,5$ 时我们手动构造</p>
+<h3 id="D-Simultaneous-Sugoroku"><a href="#D-Simultaneous-Sugoroku" class="headerlink" title="D - Simultaneous Sugoroku"></a>D - Simultaneous Sugoroku</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>数轴上有 $n$ 个点，坐标依次为 $x_1,x_2,\cdots,x_n$，有 $m$ 次操作，第 $i$ 次操作的属性为 $d_i$， 一个属性为 $d$ 的操作会使每一个负半轴上的点向正方向移动 $d$ 的距离，使每一个正半轴上的点向负方向移动 $d$ 的距离（$0$ 上的点不变）</p>
+<p>问每个点会不会到 $0$，如果会，输出最早到达 $0$ 的操作，否则输出最后的坐标</p>
+<p>$1\le n\le3\times10^5,1\le x_n\le10^6$</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>我们直接对 $1\sim10^6$ 全部求出答案</p>
+<p>考虑如果某一时刻有两个点的坐标为 $x$ 和 $-x$，那么这两个点之后的坐标一定一直互为相反数，因此我们可以放在一起计算</p>
+<p>那么我们一开始是一个 $1\sim10^6$ 的连续段，如果经过操作后这个连续段跨过了 $0$，那么我们将比较短的那一边的数用长的那边的数计算，这样每一次操作后我们的数一定还是数轴一边的一个连续段，可以 $O(1)$ 维护</p>
+<p>这样每个数对复杂度的贡献都是 $O(1)$（也即在被合并到另一边时贡献），总复杂度 $O(n+m)$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/03/ARC149/" data-id="cll0xh3ex000dqsnchqac4dpp" data-title="ARC149" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/29/CSP2022/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSP2022
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/01/CF1738/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CF1738</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoAR/" rel="tag">SoAR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AT/" style="font-size: 14px;">AT</a> <a href="/tags/CF/" style="font-size: 18px;">CF</a> <a href="/tags/SoAR/" style="font-size: 10px;">SoAR</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/other/" style="font-size: 12px;">other</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 16px;">游记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/10007/06/">June 10007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1899/11/">November 1899</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/10007/06/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/CF-3/">Bippity Jippity Bugaboos</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/12/transcript-3/">transcript-3</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/29/CSP2022/">CSP2022</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/03/ARC149/">ARC149</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Flamire<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

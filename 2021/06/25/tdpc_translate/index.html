@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>tdpc 题面翻译 | Yes?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="题解先鸽着。 一套 atcoder 的老少咸宜的 dp 题，题目比较有代表性（就是比较裸的意思）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tdpc 题面翻译">
+<meta property="og:url" content="http://example.com/2021/06/25/tdpc_translate/index.html">
+<meta property="og:site_name" content="Yes?">
+<meta property="og:description" content="题解先鸽着。 一套 atcoder 的老少咸宜的 dp 题，题目比较有代表性（就是比较裸的意思）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-27T10:14:52.000Z">
+<meta property="article:author" content="Flamire">
+<meta property="article:tag" content="misc">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Yes?" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yes?</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-tdpc_translate" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/25/tdpc_translate/" class="article-date">
+  <time class="dt-published" datetime="2021-06-24T16:00:00.000Z" itemprop="datePublished">2021-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      tdpc 题面翻译
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>题解先鸽着。</p>
+<p>一套 atcoder 的<del>老少咸宜</del>的 dp 题，题目比较有代表性<del>（就是比较裸的意思）</del></p>
+<span id="more"></span>
+
+<h2 id="A-コンテスト-contest"><a href="#A-コンテスト-contest" class="headerlink" title="A - コンテスト(contest)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_contest">A</a> - コンテスト(contest)</h2><p>一场比赛有 $n$ 道题，第 $i$ 道题分数为 $a_i$，你现在可以选择做一个子集的题（可以为空），得到的总分为这个子集中的题目分数之和，求总分有多少种</p>
+<p>$1\le n\le100,1\le a_i\le100$</p>
+<h2 id="B-ゲーム-game"><a href="#B-ゲーム-game" class="headerlink" title="B - ゲーム(game)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_game">B</a> - ゲーム(game)</h2><p>两个数组 $a,b$，分别有 $n,m$ 项，有两个玩家轮流进行操作，每次操作玩家可以取走一个非空数组内的第一个元素，两个玩家都希望自己的得分最大，问先手的得分</p>
+<p>$1\le n,m,a_i,b_i\le1000$</p>
+<h2 id="C-トーナメント-tournament"><a href="#C-トーナメント-tournament" class="headerlink" title="C - トーナメント(tournament)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_tournament">C</a> - トーナメント(tournament)</h2><p>有 $2^k$ 个人进行淘汰赛，流程如下：</p>
+<ul>
+<li>第一轮 $1$ 和 $2$ 比赛，$3$ 和 $4$ 比赛，$5$ 和 $6$ 比赛，$\cdots$</li>
+<li>第二轮 $1$ 和 $2$ 中的胜者与 $3$ 和 $4$ 中的胜者比赛，$5$ 和 $6$ 中的胜者与 $7$ 和 $8$ 中的胜者比赛，$\cdots$</li>
+<li>第三轮 (($1$ 和 $2$ 中的胜者)与($3$ 和 $4$ 中的胜者))中的胜者与(($5$ 和 $6$ 中的胜者)与($7$ 和 $8$ 中的胜者))中的胜者比赛，$\cdots$</li>
+<li>经过 $k$ 轮后剩下的那个人是 shengzhe</li>
+</ul>
+<p>每个人有一个能力值 $r_i$，如果能力值为 $a$ 与 $b$ 的两个人比赛，则能力值为 $a$ 的人获胜的概率为 $1&#x2F;(1+10^{(a-b)&#x2F;400})$，求第 $i$ 个人成为 shengzhe 的概率</p>
+<p>$1\le k\le10,0\le r_i\le4000$</p>
+<h2 id="D-サイコロ-dice"><a href="#D-サイコロ-dice" class="headerlink" title="D - サイコロ(dice)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_dice">D</a> - サイコロ(dice)</h2><p>将一个 $6$ 面的骰子扔 $n$ 遍，求最后所有点数的乘积是 $D$ 的倍数的概率</p>
+<p>$1\le n\le100,1\le D\le10^{18}$</p>
+<h2 id="E-数-number"><a href="#E-数-number" class="headerlink" title="E - 数(number)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_number">E</a> - 数(number)</h2><p>求小于 $N$ 的正整数中数字和是 $D$ 的倍数的数的个数，答案对 $10^9+7$ 取模</p>
+<p>$1\le N\le10^{10000},1\le D\le100$</p>
+<h2 id="F-準急-semiexp"><a href="#F-準急-semiexp" class="headerlink" title="F - 準急(semiexp)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_semiexp">F</a> - 準急(semiexp)</h2><p>一条电车线上有 $n$ 个站点，你现在要选择一些电车停靠的站点，需要满足以下两个要求：</p>
+<ul>
+<li>必须在 $1$ 和 $n$ 停靠</li>
+<li>不能在连续的 $k$ 站都停靠</li>
+</ul>
+<p>$2\le k\le n\le10^6$</p>
+<h2 id="G-辞書順-lexicographical"><a href="#G-辞書順-lexicographical" class="headerlink" title="G - 辞書順(lexicographical)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_lexicographical">G</a> - 辞書順(lexicographical)</h2><p>将小写字母串 $s$ 的所有非空子序列按字典序从小到大排序，求第 $k$ 个，如果不存在则输出 <code>Eel</code></p>
+<p>$1\le|s|\le10^6,1\le k\le10^{18}$</p>
+<h2 id="H-ナップザック-knapsack"><a href="#H-ナップザック-knapsack" class="headerlink" title="H - ナップザック(knapsack)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_knapsack">H</a> - ナップザック(knapsack)</h2><p>有 $n$ 个物品，第 $i$ 个物品重量为 $w_i$，价值为 $v_i$，颜色为 $c_i$，你需要选择其中的一部分物品放入背包，使得背包中的物品重量之和不超过 $W$，颜色种数不超过 $C$，求最大的价值和</p>
+<p>$1\le n\le100,1\le W\le10000,1\le C\le50,1\le w_i,v_i\le10000,1\le c_i\le50$</p>
+<h2 id="I-イウィ-iwi"><a href="#I-イウィ-iwi" class="headerlink" title="I - イウィ(iwi)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_iwi">I</a> - イウィ(iwi)</h2><p>给定一个只包含 <code>i</code> 与 <code>w</code> 的字符串 $s$，每次操作你可以删掉一个连续的 <code>iwi</code>，问最多能操作多少次。</p>
+<p>$1 \le |s| \le 300$。</p>
+<h2 id="J-ボール-ball"><a href="#J-ボール-ball" class="headerlink" title="J - ボール(ball)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_ball">J</a> - ボール(ball)</h2><p>你现在有 $n$ 个东西，第 $i$ 个在坐标 $x_i$ 的位置。你要投球来砸中这 $n$ 个东西，如果你尝试向坐标为 $x$ 的地方投球，那么会等概率砸中 $x-1, x, x+1$ 中的一个位置。求在最佳策略下（你可以根据之前的落球点来进行决策），将所有东西都砸到的期望最小投球次数。</p>
+<p>$1 \le n \le 16, 0 \le x_i \le 15$。$x_i$ 互不相同。</p>
+<h2 id="K-ターゲット-target"><a href="#K-ターゲット-target" class="headerlink" title="K - ターゲット(target)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_target">K</a> - ターゲット(target)</h2><p>若圆 $C_1, C_2, \cdots, C_k$ 满足对于所有在 $[1, k - 1]$ 中的 $i$，圆 $C_i$ strictly 包含 $C_{i+1}$，则称它们是一个大小为 $k$ 的 <em>target</em>。给定 $n$ 个圆，第 $i$ 个圆圆心为 $(x_i,0)$，半径为 $r_i$，请选出一个子集，求能组成的最大 <em>target</em> 的大小。</p>
+<p>$1\le n\le10^5,0\le x_i\le10^9,1\le r_i\le10^9$。</p>
+<h2 id="L-猫-cat"><a href="#L-猫-cat" class="headerlink" title="L - 猫(cat)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_cat">L</a> - 猫(cat)</h2><p>你现在有 $n$ 只猫，猫 $i$ 和猫 $j$ 的相配度是 $f_{i, j}$。一个猫的幸福度是跟它距离 $1$ 以内的猫跟它的相配度的和。你现在要把猫 $1$ 到猫 $n$ 在数轴上排列，若 $i$ 只猫的坐标为 $x_i$（$x_i$ 不一定为整数），则需要满足 $x_1&lt;x_2&lt;\cdots&lt;x_n$，求最大的幸福值总和</p>
+<p>$1\le n\le1000,|f_{i,j}|\le1000,f_{i,i}&#x3D;0,f_{i,j}&#x3D;f_{j,i}$</p>
+<h2 id="M-家-house"><a href="#M-家-house" class="headerlink" title="M - 家(house)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_house">M</a> - 家(house)</h2><p>有一个 $H$ 层的房子，每层的构造都一样，有 $R$ 个房间，任意一层的第 $i$ 个房间与第 $j$ 个房间有双向通路当且仅当 $g_{i,j}&#x3D;1$，每一个房间都有向下的楼梯，楼梯只能下不能上，求你从 $H$ 层的第 $1$ 个房间到达 $1$ 层的第 $1$ 个房间且不经过重复房间的方案数，答案对 $10^9+7$ 取模</p>
+<p>$2\le H\le10^9,1\le R\le16,0\le g_{i,j}\le1,g_{i,i}&#x3D;0,g_{i,j}&#x3D;g_{j,i}$</p>
+<h2 id="N-木-tree"><a href="#N-木-tree" class="headerlink" title="N - 木(tree)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_tree">N</a> - 木(tree)</h2><p>你要将一棵 $n$ 个节点的树描在纸上，第 $i$ 条边连接第 $a_i$ 个点与第 $b_i$ 个点，起初所有边没有被描出，你需要依次描出这些边，使得任何时刻所有已经描出的<strong>边</strong>都在一个连通块内，求有多少种合法的描边顺序，对 $10^9+7$ 取模</p>
+<p>$2\le n\le1000,1\le a_i,b_i\le n$</p>
+<h2 id="O-文字列-string"><a href="#O-文字列-string" class="headerlink" title="O - 文字列(string)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_string">O</a> - 文字列(string)</h2><p><del>经典咏流传</del></p>
+<p>求满足以下条件的字符串个数，答案对 $10^9+7$ 取模：</p>
+<ol>
+<li><code>a</code> 恰好出现了 $freq_1$ 次，<code>b</code> 恰好出现了 $freq_2$ 次，$\cdots$，<code>z</code> 恰好出现了 $freq_{26}$ 次，且不包含其他字符</li>
+<li>相邻的字符不能相同</li>
+</ol>
+<p>$0\le freq_i\le10$，至少有一个 $freq_i$ 大于 $0$</p>
+<h2 id="P-うなぎ-eel"><a href="#P-うなぎ-eel" class="headerlink" title="P - うなぎ(eel)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_eel">P</a> - うなぎ(eel)</h2><p>有一棵 $n$ 个节点的树，求有多少选出 $k$ 条没有公共点的路径的方案（交换顺序算作相同），答案对 $10^9+7$ 取模</p>
+<p>$2\le n\le1000,1\le k\le50$</p>
+<h2 id="Q-連結-concatenation"><a href="#Q-連結-concatenation" class="headerlink" title="Q - 連結(concatenation)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_concatenation">Q</a> - 連結(concatenation)</h2><p>有 $n$ 个 $01$ 串 $w_1,w_2,\cdots,w_n$，你需要从中选择一些字符串并拼接成一个新的字符串（同一个字符串可以选择多次），问你总共能拼出多少本质不同的长度为 $L$ 的 $01$ 串（字符串相同但分法不同也算作一种）</p>
+<p>$1\le n\le510,1\le|w_i|\le8,\le L\le100$，$w_i$ 互不相同</p>
+<h2 id="R-グラフ-graph"><a href="#R-グラフ-graph" class="headerlink" title="R - グラフ(graph)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_graph">R</a> - グラフ(graph)</h2><p>一张 $n$ 个点的有向图，$g_{i,j}&#x3D;1$ 表示 $i$ 到 $j$ 有一条有向边，起初所有点都是白色的，现在你要选择两条路径（不一定是简单路径），并将它们所经过的点全部染黑，求黑点最多有多少个</p>
+<p>$1\le n\le300$</p>
+<h2 id="S-マス目-grid"><a href="#S-マス目-grid" class="headerlink" title="S - マス目(grid)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_grid">S</a> - マス目(grid)</h2><p>有一个 $h\times w$ 的矩形，你要将其中一个包含 $(1,1)$ 与 $(h,w)$ 的四连通块染成黑色，求方案数，答案对 $10^9+7$ 取模</p>
+<p>$2\le h\le6,2\le w\le100$</p>
+<h2 id="T-フィボナッチ-sequence"><a href="#T-フィボナッチ-sequence" class="headerlink" title="T - フィボナッチ(sequence)"></a><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci">T</a> - フィボナッチ(sequence)</h2><p>数列 ${a_i}$ 满足：</p>
+<ul>
+<li>$a_1&#x3D;a_2&#x3D;\cdots&#x3D;a_k&#x3D;1$</li>
+<li>$a_i&#x3D;a_{i-1}+a_{i-2}+\cdots+a_{i-k}(i&gt;k)$</li>
+</ul>
+<p>求 $a_n\bmod10^9+7$</p>
+<p>$2\le k\le1000,1\le k\le10^9$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/25/tdpc_translate/" data-id="cll0xh3f7002eqsnc9ta00izf" data-title="tdpc 题面翻译" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/" rel="tag">misc</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/30/noi2021/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          NOI 2021 游记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/06/24/CF1539/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CF1539</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoAR/" rel="tag">SoAR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AT/" style="font-size: 14px;">AT</a> <a href="/tags/CF/" style="font-size: 18px;">CF</a> <a href="/tags/SoAR/" style="font-size: 10px;">SoAR</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/other/" style="font-size: 12px;">other</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 16px;">游记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/10007/06/">June 10007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1899/11/">November 1899</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/10007/06/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/CF-3/">Bippity Jippity Bugaboos</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/12/transcript-3/">transcript-3</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/29/CSP2022/">CSP2022</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/03/ARC149/">ARC149</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Flamire<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Yes?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Yes?">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Yes?">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Flamire">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Yes?" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yes?</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/10007/06/07/hello-world/" class="article-date">
+  <time class="dt-published" datetime="+010007-06-06T16:00:00.000Z" itemprop="datePublished">10007-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/10007/06/07/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2021/11/01/h84TWpUGwICtPbc.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/10007/06/07/hello-world/" data-id="cll0xh3f3001aqsnc3txfe39g" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CF-3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/07/CF-3/" class="article-date">
+  <time class="dt-published" datetime="2023-08-07T13:46:53.135Z" itemprop="datePublished">2023-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/07/CF-3/">Bippity Jippity Bugaboos</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h2 id="1-CF1214H-Tiles-Replacement-Euclid"><a href="#1-CF1214H-Tiles-Replacement-Euclid" class="headerlink" title="1.  CF1214H - Tiles Replacement [Euclid]"></a>1.  CF1214H - Tiles Replacement [Euclid]</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>给定一棵 $n$ 个点的树，要求将其每个点染上 $1\sim k$ 中的一种颜色，使得任意长为 $k$ 的路径均包含 $k$ 种不同的颜色，要求给出构造或判定无解</p>
+<p>$1\le k\le n\le2\times10^5$</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>我们找出这棵树的直径 $u\leftrightarrow v$，如果直径 $&lt;k$ 那么随便构造，可以发现直径上的点的染色是固定的（所有情况均对称）</p>
+<p>考虑直径 $\ge k$ 的情况，如果有一条支链 $x\leftrightarrow y$ 和 $u\leftrightarrow v$ 的公共点为 $x$，且 $len(u\leftrightarrow y)\ge k\land len(v\leftrightarrow y)\ge k$，那么不难发现当 $k\ge2$ 时一定无解，$k&#x3D;2$ 的情况可以特判掉</p>
+<p>一条支链 $x\leftrightarrow y$ 一定至多和直径的一边形成长度 $\ge k$ 的链</p>
+<p>如果没有形成长度 $\ge k$ 的点那和其他链也不可能形成，因此随意染色即可</p>
+<p>否则我们按照支链上的点 $x$ 到直径的距离以及支链与直径相交的点的颜色来给 $x$ 染色即可，只有这样染色不会产生跨过支链与直径的链不符合要求的情况，那我们需要考虑是否会形成支链内部的链不符合要求</p>
+<p>这是不可能的，设我们考虑的两条支链为 $x\leftrightarrow y,x\leftrightarrow z$，那么 $len(y\leftrightarrow z)\le len(x\leftrightarrow y)+len(x\leftrightarrow z)$，如果 $len(x\leftrightarrow y)+len(x\leftrightarrow z)\ge k$，那么由于 $len(u\leftrightarrow prv(x))+len(x\leftrightarrow y)&lt;k$（我们假设 $len(u\leftrightarrow prv(x))\le len(v\leftrightarrow nxt(x))$，其中 $prv(x)$ 和 $nxt(x)$ 分别表示 $x$ 在直径上前后的点），所以 $len(u\leftrightarrow prv(x))\le len(x\leftrightarrow y)$，则 $u\leftrightarrow v$ 不为直径，矛盾</p>
+<p>按这种方式构造即可，复杂度 $O(n)$</p>
+<h2 id="3-CF1131G-Most-Dangerous-Shark-Euclid"><a href="#3-CF1131G-Most-Dangerous-Shark-Euclid" class="headerlink" title="3.  CF1131G - Most Dangerous Shark [Euclid]"></a>3.  CF1131G - Most Dangerous Shark [Euclid]</h2><h3 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h3><p>给定一个长为 $m$ 的骨牌序列，第 $i$ 个骨牌高度为 $a_i$，代价为 $c_i$</p>
+<p>第 $i$ 个骨牌向左倒会使 $[i-a_i+1,i-1]$ 内的骨牌均向左倒，向右倒同理</p>
+<p>你手动推倒第 $i$ 个骨牌会花费 $c_i$ 的代价，问将所有骨牌推到最少需要多少代价</p>
+<p>$1\le m\le10^7$</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>考虑 $O(n^2)$ dp，设 $f_i$ 表示前 $i$ 个骨牌推倒的最小代价，$f_i&#x3D;\min(f[l_i-1]+c_i,f[j-1]+c_j{r_j\ge i})$，其中 $l_i,r_i$ 分别表示将 $i$ 向左&#x2F;向右推倒经过连锁反应能够推倒的最左边&#x2F;最右边</p>
+<p>考虑 $l_i,r_i$ 怎么求</p>
+<p>不难发现 $l_i&#x3D;\min(l_j){i-a_i+1\le j\le i-1}$，那么我们可以用一个单调栈来维护，每次算出 $f_i$ 将 $f_{i-a_i+1}$ 至 $f_{i-1}$ 均弹出，加入 $f_i$，复杂度 $O(m)$</p>
+<p>考虑 $[i,r_i]$ 之间要么是相离要么是包含，因此形成树状关系，我们模拟建这棵树的过程，每到一个 $i$ 删除所有 $r_j&lt;i$ 的点，把 $[i,r_i]$ 入栈，然后取栈中最小值作为 $f_i$ 的值，复杂度 $O(m)$</p>
+<p>总复杂度 $O(m)$</p>
+<h2 id="4-CF1028G-Guess-the-number-Euclid"><a href="#4-CF1028G-Guess-the-number-Euclid" class="headerlink" title="4.  CF1028G - Guess the number [Euclid]"></a>4.  CF1028G - Guess the number [Euclid]</h2><h3 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h3><p>有一个在 $[1,10004205361450474]$ 内的数 $x$，你有 $5$ 次询问。</p>
+<p>每次询问你需要给出一个数 $k$ 和一个长为 $k$ 的整数序列 $a$，满足 $k\le10^4,a_1&lt;a_2&lt;\cdots&lt;a_k$，如果 $k&gt;x$，那么你会当场死亡，如果存在一个 $a_i$ 等于 $x$，那么你胜利，否则，交互库会返回在这些数中有多少个数小于 $x$</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>定义 $f(l,v)$ 表示最大的 $r-l+1$ 使得如果我们知道 $x\in[l,r]$，那么我们能在 $v$ 次操作内确定 $x$</p>
+<p>不难发现当 $l\ge10000$ 且 $v$ 相同时 $f(l,v)$ 的值一定是不变</p>
+<p>$f(l,v)$ 的值可以通过下面的代码求出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">long long cur=l,ans=0;</span><br><span class="line">for(int i=1;i&lt;=l;++i)</span><br><span class="line">&#123;</span><br><span class="line">	ans+=f(cur,v-1)+1;</span><br><span class="line">	cur+=f(cur,v-1)+1;</span><br><span class="line">&#125;</span><br><span class="line">ans+=f(cur,v-1);</span><br></pre></td></tr></table></figure>
+
+<p>那么我们不难发现 $cur$ 一旦大于 $10^4$ 之后就可以快速计算，而同样不难发现 $f(l,v)$ 增长的很快，所以计算的复杂度是正确的</p>
+<p>然后根据这个来进行询问即可</p>
+<h2 id="5-CF991F-Concise-and-clear"><a href="#5-CF991F-Concise-and-clear" class="headerlink" title="5.  CF991F - Concise and clear"></a>5.  CF991F - Concise and clear</h2><h3 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h3><p>给定一个整数 $n$，要求输出满足如下条件的最短算式：</p>
+<ol>
+<li>只包含 <code>0~9</code>，<code>+</code>，<code>*</code>，<code>^</code>(乘方)</li>
+<li>禁止连续使用乘方运算，如 <code>2^3^4</code></li>
+<li>算式的结果等于 $n$</li>
+</ol>
+<p>$1\le n\le10^{10}$</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>提前特判掉 $10^{10}$，那么如果答案不是直接将原数输出，其字符数一定 $\le9$</p>
+<p>答案一定是如下形式之一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a^b+c^d+x</span><br><span class="line">a^b*c^d+x</span><br><span class="line">k*a^b*c^d</span><br><span class="line">a*b^c+d^e</span><br><span class="line">a^b+c^d</span><br><span class="line">a^b*c^d</span><br><span class="line">a*b^c+x</span><br><span class="line">b^c+x</span><br><span class="line">a*b^c</span><br><span class="line">b^c</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+
+<p>前四种形式最少有 $9$ 个字符，因此涉及的操作数必须是一位数，$9^5$ 枚举即可</p>
+<p>考虑 <code>a^b</code> 的形式只有 $O(\sqrt n)$ 种，可以预处理出来放到 <code>map</code> 里</p>
+<p>对于 <code>a^b+c^d</code> 和 <code>a^b*c^d</code> 可以枚举 <code>a^b</code> 然后在 <code>map</code> 中查询 <code>c^d</code></p>
+<p>对于 <code>a*b^c+x</code> 不难发现 <code>x</code> 最多是三位数，因此可以枚举 <code>x,b,c</code> 然后计算 <code>a</code></p>
+<p>剩下的情况比较简单</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/07/CF-3/" data-id="cll0xh3ey000iqsnc0ph0bnv8" data-title="Bippity Jippity Bugaboos" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-transcript-3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/12/transcript-3/" class="article-date">
+  <time class="dt-published" datetime="2023-05-11T16:00:00.000Z" itemprop="datePublished">2023-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/05/12/transcript-3/">transcript-3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>xcyle</strong>: 这个然后该怎么画啊？快过来教教我。</p>
+<p><strong>Mr_Wu</strong>: 好，我来教教你。</p>
+<hr>
+<p>*<strong>Mr_Wu</strong> 画画*</p>
+<p><strong>wenhao801</strong>: 搁这耳分解呐？</p>
+<p><strong>Mr_Wu</strong>: （笑）耳分解！诶来个耳分解，我们来画个耳分解吧。</p>
+<p><strong>wenhao801</strong>: 大耳朵。</p>
+<p><strong>wenhao801</strong>: 我全看不懂了。</p>
+<p><strong>wenhao801</strong>: 你这耳朵挺长啊。</p>
+<p><strong>xcyle</strong>: 蝎子。</p>
+<hr>
+<p><strong>acniu</strong>(自发地): *狂笑声*</p>
+<p><strong>Mr_Wu</strong>: ?</p>
+<p><strong>acniu</strong>: 学得没那味。</p>
+<p><strong>wenhao801</strong>: 疯子在左边，式子在右边。</p>
+<p><strong>Flamire</strong>: 中间是什么？</p>
+<p><strong>wenhao801</strong>: 中间是诗。</p>
+<p><strong>Mr_Wu</strong>：中间是语文。</p>
+<p><strong>xcyle</strong>: 诶这张黑板上画的都是什么啊？</p>
+<hr>
+<p><strong>Flamire</strong>: 不行，你得留一点推式子的空间，要不然汪就全给你扬了</p>
+<p><strong>Mr_Wu</strong>: 全给你扬喽！！！</p>
+<p><strong>xcyle</strong>: 不是汪要是想推式子就借他张草稿纸呗。</p>
+<p><strong>Mr_Wu</strong>: 草。</p>
+<hr>
+<p><strong>Mr_Wu</strong>:（漏气般的笑声）</p>
+<hr>
+<p>*关灯*</p>
+<p><strong>Flamire</strong>: 一会天黑了，天黑就睡觉。</p>
+<p><strong>wenhao801</strong>: 天黑而作。</p>
+<p><strong>Mr_Wu</strong>: 诶我真的有点困了，咱把灯打开呗。</p>
+<p><strong>Flamire</strong>: 不行。你要困你就睡觉呗。</p>
+<p><strong>wenhao801</strong>: 这机房全都疯了。</p>
+<hr>
+<p>unknown(自发地)：*笑声*</p>
+<p><strong>wenhao801</strong>: 嗯，知道了。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: dududu↗du↘du↗du~</p>
+<hr>
+<p><strong>Flamire</strong>: 啊啊啊——————————————</p>
+<p><strong>wenhao801</strong>: 啊。</p>
+<p><strong>Flamire</strong>: *咆哮*</p>
+<p><strong>Mr_Wu</strong>: 666。</p>
+<hr>
+<p><strong>Flamire</strong>: 我怎么感觉我在逐渐向 <strong>Mr_Wu</strong> 靠近。</p>
+<p><strong>wenhao801</strong>: 嗯嗯，全疯了。</p>
+<p><strong>Mr_Wu</strong>: 嘿嘿！</p>
+<p><strong>wenhao801</strong>: 哟哟哟！</p>
+<p><strong>wenhao801</strong>: 这么厉害！</p>
+<hr>
+<p>unknown: 我在干什么？</p>
+<p><strong>acniu</strong>: 他在榨西瓜汁！</p>
+<hr>
+<p><strong>xcyle</strong>: 就我这是我画的一个豌豆射手，然后牛说很像，很像吹风机。</p>
+<p><strong>xcyle</strong>: 我画的 pvz，左边是向日葵和豌豆射手，右边是僵尸。</p>
+<hr>
+<p><strong>Mr_Wu</strong>(自发地): 哎我害怕。</p>
+<hr>
+<p><strong>xcyle</strong>: 左边是牛鬼蛇神。左边（笑）是牛鬼蛇神。</p>
+<p><strong>xcyle</strong>: 我感觉这都能写一个山海经了。</p>
+<p><strong>Flamire</strong>: 我觉得可以。</p>
+<p><strong>xcyle</strong>: 山 海 经</p>
+<hr>
+<p><strong>Flamire</strong>: 为什么，为什么你能用人民币付钱，为什么 steam 一直让我用香港 dollar 付钱。</p>
+<p><strong>Mr_Wu</strong>: 你可真牛逼。</p>
+<hr>
+<p><strong>acniu</strong>: WOW——————oooooOoOooOOOOoOoOOoWOOOOWW——————————</p>
+<p><strong>wenhao801</strong>: ？</p>
+<p><strong>acniu</strong>: 你是 flama？</p>
+<p><strong>acniu</strong>: fla——ma——</p>
+<hr>
+<p><strong>Flamire</strong>: 我是小花！一朵名叫小花的花。</p>
+<p><strong>wenhao801</strong>: 你是疯子。</p>
+<hr>
+<p><strong>xcyle</strong>(庄严地): 吊死鬼。</p>
+<p><strong>acniu</strong>: 诶？吊死鬼。</p>
+<p><strong>xcyle</strong>: 你还记得，在 8 楼画的那个大蜘蛛吗。</p>
+<p><strong>Mr_Wu</strong>: 画了个大蜘蛛——！</p>
+<p><strong>Flamire</strong>: 那个不是千足虫吗？</p>
+<p><strong>acniu</strong>: 原先其实是 <strong>JQ6561</strong>。</p>
+<p><strong>xcyle</strong>: 主要那个脸太正经了，我印象很深刻。</p>
+<hr>
+<p><strong>Flamire</strong>(to <strong>Mr_Wu</strong>): 诶你是不是胃穿孔国王啊？</p>
+<p><strong>Mr_Wu</strong>: …有人听懂了嘛？</p>
+<p><strong>wenhao801</strong>: 没有。</p>
+<p><strong>Mr_Wu</strong>: 哦。</p>
+<p><strong>acniu</strong>: 胃穿孔国王！</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 我的 vp 结束了，让我们来看看我的排名吧！</p>
+<p><strong>Mr_Wu</strong>: 哇！哇！哇哇哇！哇！哇！！</p>
+<p><strong>skicean</strong>: 怎么了？</p>
+<p><strong>Mr_Wu</strong>: *开水壶*</p>
+<hr>
+<p><strong>Mr_Wu</strong>(娇喘): 啊~！不要压着我！不要压着我！不要压着我！！！</p>
+<p><strong>xcyle</strong>: 我没压着你。</p>
+<p><strong>wenhao801</strong>: 我草他妈正常一点。</p>
+<hr>
+<p><strong>xcyle</strong>: 恶魔医生让患者给他偷偷生下九十四个孩子。</p>
+<p><strong>wenhao801</strong>: ？</p>
+<p><strong>Mr_Wu</strong>: ？</p>
+<p><strong>xcyle</strong>: 诶怎么生下一堆孩子？</p>
+<p><strong>Flamire</strong>: 不是，怎么生九十四个孩子啊。</p>
+<hr>
+<p><strong>Flamire</strong>: 一会汪回来，五个疯子。</p>
+<p><strong>Mr_Wu</strong>: 为什么汪没有变成疯子？我觉得这很神奇。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 哎呦适当放松一下。 *打开 undertale*</p>
+<p><strong>Flamire</strong>: 这就是信息学竞赛。</p>
+<hr>
+<p><strong>xcyle</strong>: 诶是不是学 oi 的都很会画画啊？我记得 le0n 也很会画画。</p>
+<p><strong>Flamire</strong>: 他画的不是多边形战士吗。</p>
+<p><strong>Mr_Wu</strong>: 什么是多边形战士？</p>
+<p><strong>xcyle</strong>: 确实。多 边 形 战 士。</p>
+<p><strong>Mr_Wu</strong>: 什么意思啊？</p>
+<p><strong>Flamire</strong>: 就是那个直角多边形那个。</p>
+<hr>
+<p><strong>wenhao801</strong>: 我瞎了。</p>
+<p><strong>Flamire</strong>: 你都把人弄瞎了。</p>
+<p><strong>acniu</strong>: 瞎得好。</p>
+<p><strong>Mr_Wu</strong>: 是我错了，对不起，我会赔医药费的！</p>
+<p><strong>wenhao801</strong>: 草。</p>
+<p><strong>xcyle</strong>: 诶怎么画虾啊？</p>
+<hr>
+<p>*<strong>Flamire</strong> 调题*</p>
+<p><strong>skicean</strong>: 不是，这个题你就直接对拍就好了，为什么不对拍啊。</p>
+<p><strong>Flamire</strong>: 对拍不是，最后的手段吗。</p>
+<p><strong>skicean</strong>: 那你一上来就用最后的手段不好吗。</p>
+<p><strong>Flamire</strong>: 你打扑克牌上来就出王炸吗。</p>
+<p><strong>skicean</strong>: 但是你打扑克牌王炸用完了就没了，你这个东西王炸用完了还有。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 为什么我前两题都不会证啊，这也太难了吧。</p>
+<p><strong>skicean</strong>: 那你也太菜了吧。</p>
+<hr>
+<p><strong>xcyle</strong>: 诶怎么画羊驼啊？</p>
+<hr>
+<p><strong>xcyle</strong>: 诶怎么画 [] 啊？</p>
+<p><strong>Flamire</strong>: 你就先画一个桃子。</p>
+<p>*<strong>xcyle</strong>: draws*</p>
+<p><strong>Flamire</strong>: 不行，不行，你应该保持全年龄向。</p>
+<p><strong>Flamire</strong>: 擦掉。</p>
+<p><strong>xcyle</strong>(吟唱): 擦掉，擦掉，一定要擦掉！</p>
+<p><strong>xcyle</strong>: 不是，那蜡笔小新还经常画 [] 呢。</p>
+<p><strong>acniu</strong>: 我感觉这个像那个大便超人。</p>
+<p><strong>Mr_Wu</strong>: 不行，**我**要把他擦掉。</p>
+<p><strong>Mr_Wu</strong>: 害怕了。</p>
+<p><strong>xcyle</strong>: 是和开心超人差不多吗？</p>
+<hr>
+<p>*<strong>Mr_Wu</strong> 的 2022bpm 键盘声*</p>
+<hr>
+<p>*响指声*</p>
+<hr>
+<p><strong>acniu</strong>: 诶，这是什么？汪的日记吗？</p>
+<p><strong>Flamire</strong>: 你觉得汪会写日记吗？正经人谁写日记啊。</p>
+<p><strong>xcyle</strong>: 汪又不是正经人。</p>
+<p><strong>skicean</strong>: 不，正经人才会写日记。</p>
+<p><strong>acniu</strong>: 写日记的人都不正经。</p>
+<p><strong>xcyle</strong>: 汪是正常人吗？</p>
+<p><strong>xcyle</strong>: 汪是正常人得看和谁比。</p>
+<hr>
+<p>*金属的敲击声*</p>
+<hr>
+<p>*打枪似的键盘声*</p>
+<hr>
+<p>*tetr noises*</p>
+<hr>
+<p><strong>skicean</strong>(自发地): 如果大海——♪♪♪♪♪♪能够——♪♪♪带回昨日的爱♪♪♪♪————</p>
+<p><strong>skicean</strong>: 唉！</p>
+<hr>
+<p>*鼠标点击声*</p>
+<p><strong>Mr_Wu</strong>: 嗯？</p>
+<p><strong>Mr_Wu</strong>: 讨厌。</p>
+<p><strong>Mr_Wu</strong>: *叹气*</p>
+<p><strong>Mr_Wu</strong>: *哈欠*</p>
+<hr>
+<p><strong>skicean</strong>: 你应该说西内！快说西内！</p>
+<p><strong>acniu</strong>: 西内？</p>
+<p><strong>xcyle</strong>: 什么是西内？</p>
+<p><strong>acniu</strong>: 空你吸哇 [sic]</p>
+<p><strong>skicean</strong>: だめに————诶什么来着？</p>
+<p><strong>wenhao801</strong>: 完了听不懂了。</p>
+<p><strong>xcyle</strong>: 高级。</p>
+<hr>
+<p>*瓶盖的声音*</p>
+<p><strong>xcyle</strong>: 我草，什么意思。</p>
+<p><strong>xcyle</strong>: 不是，你要不去参加弹瓶盖比赛吧。你是不是能入选弹瓶盖北京省队啊。</p>
+<hr>
+<p>*<strong>Mr_Wu</strong> writes a passage*</p>
+<p><strong>Mr_Wu</strong>: 诶你要不来翻译一下这篇文章？什么主题？</p>
+<p><strong>wenhao801</strong>: 我看看噢，最右边这个 da me ni……</p>
+<p><strong>Mr_Wu</strong>: 诶这个是什么语言？</p>
+<p><strong>Mr_Wu</strong>: 算了，这其实是中文。</p>
+<p><strong>wenhao801</strong>: 我觉得有人是大疯子。</p>
+<p><strong>skicean</strong>: 大风起兮云飞扬！</p>
+<p><strong>xcyle</strong>: 不是你这中心论点都不明确啊。</p>
+<p><strong>wenhao801</strong>: 给我看看。</p>
+<p><strong>wenhao801</strong>: 怎么还有个引号啊，怎么还有个 &amp; 啊，这是 &amp; 吗，这是啥啊？</p>
+<p><strong>wenhao801</strong>: 不是怎么没有个问号啊，问号跟叹号连着。</p>
+<p><strong>wenhao801</strong>: 这五个点是啥意思啊。</p>
+<p><strong>Mr_Wu</strong>: 要不还是不浪费你的时间了，其实我是瞎写的！</p>
+<p><strong>Mr_Wu</strong>: 就是随机游走，对不起！</p>
+<p><strong>wenhao801</strong>: 草！！！！！</p>
+<p><strong>Mr_Wu</strong>: 对不起！！！</p>
+<p><strong>skicean</strong>: 你应该说私密马赛。</p>
+<p><strong>Mr_Wu</strong>: 私密马赛！私密马赛！私密马赛！</p>
+<hr>
+<p><strong>xcyle</strong>: 诶可口可乐好喝还是百事可乐好喝？</p>
+<p><strong>Mr_Wu</strong>: 可口可乐。</p>
+<p><strong>Mr_Wu</strong>: 可乐都挺好喝的。</p>
+<p><strong>Mr_Wu</strong>: 话说感觉，吃汉堡的时候没有可乐就会死掉，这是为什么？</p>
+<p><strong>Flamire</strong>: 我觉得可能是他们的营销手段。</p>
+<p><strong>Flamire</strong>: 就是他们在汉堡里加入了某种物质。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 秦兆阳在犇犇里发了一个金色限定版已结束，然后他的主页就变成绿色了。</p>
+<hr>
+<p><strong>Mr_Wu</strong>(毫无征兆地): 嘀嘀嘀。</p>
+<hr>
+<p><strong>acniu</strong>: 话说他这个 fw 是怎么改颜色的。</p>
+<p><strong>Mr_Wu</strong>: 不是 latex 吗？</p>
+<p><strong>acniu</strong>: 他用了几个 latex。</p>
+<p><strong>acniu</strong>: 他是每个 fw 都是一个还是整个是一个。</p>
+<p><strong>Mr_Wu</strong>: 应该每个都是独立的吧。</p>
+<p><strong>xcyle</strong>: 不是为啥 fw 是废物啊。</p>
+<p><strong>Flamire</strong>: 我是富翁。</p>
+<p><strong>Mr_Wu</strong>: 富翁。</p>
+<p><strong>wenhao801</strong>: 都金色限定了。</p>
+<p><strong>xcyle</strong>: 我是房屋。</p>
+<p><strong>wenhao801</strong>: 你是疯子。</p>
+<p><strong>xcyle</strong>: 我是番外。</p>
+<p><strong>xcyle</strong>: 有没有可能是我是父王啊。</p>
+<hr>
+<p><strong>Flamire</strong>: 什么是大漠孤烟长，长河落日大。</p>
+<p><strong>acniu</strong>: 大漠孤烟长，长河落日大！</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 什么奇怪的声音。</p>
+<hr>
+<p>*沉重的砸击声*</p>
+<hr>
+<p>*意义不明的嘟囔声*</p>
+<hr>
+<p><strong>acniu</strong>: 天苍苍，其正色邪？其真无马耶！</p>
+<p><strong>skicean</strong>: 其真无 flama 耶。</p>
+<p><strong>Mr_Wu</strong>: 什么莫名其妙的。</p>
+<p><strong>acniu</strong>: 天之苍苍，其真无马耶！其真不知马也！</p>
+<p><strong>acniu</strong>: 北冥有鱼。其名为鲲。𫐓以为轮，其曲中规。</p>
+<p><strong>xcyle</strong>: 诶这是啥来着，劝学吗。</p>
+<p><strong>Mr_Wu</strong>: 劝退学是吗。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 我好像理解不能了。</p>
+<p><strong>Mr_Wu</strong>: 感觉好像有自己的想法。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 诶，他说的有道理。</p>
+<p><strong>Flamire</strong>: 他说啥了。</p>
+<p><strong>Mr_Wu</strong>: 呵，你是不承认吗？你是不是不承认。</p>
+<hr>
+<p>*口技声*</p>
+<hr>
+<p>*哈欠声*</p>
+<hr>
+<p>*磨牙声*</p>
+<hr>
+<p><strong>Mr_Wu</strong>: hoho。</p>
+<p><strong>Mr_Wu</strong>: hoho！</p>
+<p><strong>Mr_Wu</strong>: sirender。</p>
+<p><strong>Mr_Wu</strong>: serraoder。</p>
+<p><strong>Mr_Wu</strong>: 不行！代码是机密！</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 你这个好像已经录一个小时了。</p>
+<p><strong>Flamire</strong>: 没事你继续。</p>
+<hr>
+<p><strong>acniu</strong>: 什么？</p>
+<p><strong>Mr_Wu</strong>: 啥玩意。</p>
+<p><strong>acniu</strong>: 什么？</p>
+<p><strong>Mr_Wu</strong>: 咋了。</p>
+<p><strong>acniu</strong>: 什么？</p>
+<p><strong>Mr_Wu</strong>: 咋了。</p>
+<p><strong>acniu</strong>: 阴阳。</p>
+<p><strong>Mr_Wu</strong>: ……阴阳。</p>
+<p><strong>Flamire</strong>: 神秘。</p>
+<p><strong>Mr_Wu</strong>: 诶，马哥，他说的有道理。</p>
+<p><strong>wenhao801</strong>: 不，没道理。</p>
+<p><strong>Flamire</strong>: 马哥？</p>
+<p><strong>Mr_Wu</strong>: 就是你，你是弗拉马。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: hi, what’s wrong with you?</p>
+<hr>
+<p><strong>Mr_Wu</strong>: wow，你有点厉害。</p>
+<hr>
+<p><strong>skicean</strong>: 诶，点分治怎么做？</p>
+<p><strong>Mr_Wu</strong>: 就是你先找到这棵树的分治中心。</p>
+<p><strong>skicean</strong>: 然后呢？</p>
+<p><strong>Mr_Wu</strong>: 这个点怎么找到呢，就是你先对这棵树进行深度优先搜索。</p>
+<p><strong>xcyle</strong>(激动地): 我草你妈你不还得交钱吗。别写点分治，写点分治还得交钱。</p>
+<p><strong>Mr_Wu</strong>: 诶，对啊，你写点分治还得交给我钱。</p>
+<p>&lt;前情提要&gt;</p>
+<p><strong>Mr_Wu</strong>: 我发明了深度优先搜索，这个算法就是你一直搜，直到你搜不了了回溯接着搜。</p>
+<p><strong>Mr_Wu</strong>: 我是不是可以申请版权，用 dfs 的人都必须给我交钱。</p>
+<p><strong>Mr_Wu</strong>: 那你写一次 tarjan 是不是就也得给我交钱。</p>
+<p>&lt;&#x2F;前情提要&gt;</p>
+<p><strong>wenhao801</strong>: 你要保护发明者的正规版权。</p>
+<p><strong>Mr_Wu</strong>: 嘿嘿嘿呵↗。</p>
+<p><strong>xcyle</strong>: 你还得交钱，要不然学不了。</p>
+<hr>
+<p><strong>Flamire</strong>: 感觉 <strong>Mr_Wu</strong> 的眼睛有的时候会两只都朝外。</p>
+<p><strong>acniu</strong>(to <strong>Mr_Wu</strong>): 你的眼睛真的会朝外吗？</p>
+<p><strong>wenhao801</strong>: 他说的其实挺对的。</p>
+<p><strong>Mr_Wu</strong>: ？？？</p>
+<hr>
+<p><strong>skicean</strong>: 就是你按照那个 dfs 序吗。</p>
+<p><strong>xcyle</strong>: 不，按照 bfs 序，按照 dfs 序还得交钱。</p>
+<p><strong>wenhao801</strong>: 对，你用 bfs 就不用交钱了。</p>
+<p><strong>Mr_Wu</strong>: 用 bfs 的钱比 dfs 要贵 10 倍，你想好。</p>
+<p><strong>wenhao801</strong>: 他妈 bfs 是我发明的。</p>
+<p><strong>Flamire</strong>: 不是你看你用 bfs 是不是得建一个队列，那你是不是还得给发明队列的人交钱。</p>
+<p><strong>wenhao801</strong>: 他妈队列也是我发明的行吧。</p>
+<p><strong>Mr_Wu</strong>: 我觉得 ccf 可以靠这个发家致富。</p>
+<p><strong>Flamire</strong>: 那 ccf 怎么证明这个算法是他发明的。</p>
+<p><strong>Mr_Wu</strong>: 他说是，那就是。</p>
+<p><strong>xcyle</strong>: 话说为什么字母不收费，就我打的这个小写字母。</p>
+<p><strong>xcyle</strong>: 那人好傻啊，现在这么多人用这个，一个字一块钱，他不知道能赚多少钱。</p>
+<p><strong>wenhao801</strong>: 牛逼。</p>
+<p><strong>Mr_Wu</strong>: yayyyyyy↗↗↗↗↗↗↗↗↗↗↗↗~~~~~</p>
+<p><strong>Mr_Wu</strong>: 一 个 字 一 块 钱</p>
+<p><strong>Mr_Wu</strong>: 资产高度集中。</p>
+<p><strong>Flamire</strong>: 诶那会不会有人盗版小写字母。</p>
+<p><strong>Flamire</strong>: 你看那些小写字母不都有一堆版本吗。</p>
+<p><strong>Flamire</strong>: 那他是不是更赚啊。</p>
+<p><strong>xcyle</strong>: 说话也要交钱，交说话的版权。</p>
+<p><strong>wenhao801</strong>: 都他妈我发明的，交钱！</p>
+<hr>
+<p><strong>xcyle</strong>: 诶今晚有讲题吗？</p>
+<p><strong>wenhao801</strong>: 我问老汪，老汪说徐先友在喝酒，所以还没有。</p>
+<p>*众人惊讶*</p>
+<p><strong>skicean</strong>: ？真的？</p>
+<p><strong>Mr_Wu</strong>: 我擦，我擦，hehe。</p>
+<p><strong>wenhao801</strong>: “老徐又去喝花酒了”。</p>
+<p><strong>xcyle</strong>: 老 徐 又 去 喝 花 酒 了</p>
+<p><strong>xcyle</strong>: 不是汪为什么突然发这个，不觉得很尴尬吗。</p>
+<p><strong>xcyle</strong>: 前面也没有人问啊。</p>
+<p><strong>xcyle</strong>: 汪是不是社交恐怖分子啊。</p>
+<hr>
+<p>*暴躁敲桌子声*</p>
+<p><strong>Mr_Wu</strong>: share an corner or an edge.</p>
+<hr>
+<p><strong>skicean</strong>: 话说你知道花酒是啥意思吗。</p>
+<p><strong>Flamire</strong>: 不知道，咋了。</p>
+<p><strong>skicean</strong>: 你去搜一下，搜一下就知道了。</p>
+<p>百度百科：花酒，读音huā jiǔ，汉语词语，以花酿成的酒。在妓院中狎妓饮宴。</p>
+<p><strong>Flamire</strong>: wtf。</p>
+<hr>
+<p>*硬物摩擦的声音*</p>
+<hr>
+<p><strong>Mr_Wu</strong>: surprise。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 是我疯了吗。</p>
+<hr>
+<p><strong>acniu</strong>: 嗯塔塔！</p>
+<p><strong>acniu</strong>: 吗塔塔！</p>
+<hr>
+<p><strong>skicean</strong>: 春城花飞飞♪♪♪——蛇虫四处追♪♪♪♪♪♪————</p>
+<p><strong>skicean</strong>: 不怕妖孽来♪♪♪——我道↘显神威♪♪♪♪♪♪♪♪♪——————</p>
+<p><strong>skicean</strong>: 春城花飞飞♪♪♪♪♪——蛇虫四处追♪♪♪♪♪♪♪♪————</p>
+<p><strong>skicean</strong>: 不怕妖孽来♪♪♪♪♪♪♪♪——我道↘显神威♪♪♪♪♪♪♪♪♪♪♪——————</p>
+<p><strong>wenhao801</strong>: 我知道了！</p>
+<p><strong>Mr_Wu</strong>: 魔道显神威！</p>
+<p><strong>skicean</strong>: 夜来风雨声，这样的法术还死撑！</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 哦，我知道了，我是弱智。</p>
+<p><strong>Mr_Wu</strong>: 诶，我真的是弱智吗？我不是弱智。</p>
+<p><strong>Mr_Wu</strong>: 哦我确实是弱智。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: hey, what’s wrong?</p>
+<p>*诡异的低语声*</p>
+<hr>
+<p>*诡异的低语声*</p>
+<hr>
+<p>*拍手声*</p>
+<hr>
+<p><strong>Flamire</strong>: 快把代码发给我。</p>
+<p><strong>skicean</strong>: 行，发给你了。</p>
+<p><strong>Flamire</strong>: 谢谢你。</p>
+<p><strong>Flamire</strong>: 你为什么发给我一个博客的链接啊。</p>
+<p><strong>Flamire</strong>: 为什么不直接把代码存成文件发给我啊。</p>
+<p><strong>skicean</strong>: 因为我要涨博客访问量。</p>
+<hr>
+<p><strong>Flamire</strong>: 他还要让我登录。</p>
+<p><strong>Flamire</strong>: 我不知道我博客园密码是什么啊。</p>
+<p><strong>xcyle</strong>: 那你再注册一个吧。</p>
+<p><strong>xcyle</strong>: 不是，人家访问量重要。</p>
+<p>*推椅子*</p>
+<hr>
+<p><strong>Flamire</strong>: 快给我代码。</p>
+<p><strong>skicean</strong>: 不行，你还得再注册一个。</p>
+<p><strong>wenhao801</strong>: 我草。什么人啊。</p>
+<p><strong>wenhao801</strong>: 就他妈 1 的访问量你自己访问一下不行吗。</p>
+<p><strong>Mr_Wu</strong>: 有人崩溃了。</p>
+<p><strong>acniu</strong>: 哔哔哔。</p>
+<p><strong>xcyle</strong>: 必须访问，都给我访问。</p>
+<p><strong>xcyle</strong>: 不访问是吧，不访问也别想活着。</p>
+<hr>
+<p><strong>skicean</strong>: 春城花飞飞♪♪♪——蛇虫四处追♪♪♪♪♪♪————</p>
+<p><strong>wenhao801</strong>(高音): 哎呦我草！！！！！！</p>
+<p>*沉重的敲击声*</p>
+<hr>
+<p><strong>Flamire</strong>: 你快点把代码给我。</p>
+<p><strong>Flamire</strong>: 要不然我们的精神安全都不保了。</p>
+<p><strong>Mr_Wu</strong>: 叭叭叭，叭叭叭。</p>
+<hr>
+<p><strong>xcyle</strong>: 什么叫这样的法术还死撑啊。</p>
+<p><strong>xcyle</strong>: 是对手的法术不厉害吗。</p>
+<hr>
+<p><strong>Flamire</strong>: 这是谁写的啊。<strong>acniu</strong> 写的。</p>
+<p><strong>Flamire</strong>: 你怎么写代码这么毒瘤啊。</p>
+<p><strong>Flamire</strong>: 你把一个 void 函数当返回值 return 了。</p>
+<p><strong>acniu</strong>: 你说啥？</p>
+<p><strong>Flamire</strong>: 我说你的代码。</p>
+<p><strong>acniu</strong>: 你说我把一个 void 函数的返回值返回是吗。</p>
+<p><strong>Flamire</strong>: 对。</p>
+<p><strong>acniu</strong>: 这咋了。</p>
+<p><strong>skicean</strong>: 这么写不是挺帅的吗！</p>
+<p><strong>acniu</strong>: 对啊，不是挺帅的吗。</p>
+<p><strong>xcyle</strong>: 对啊，这么写不是少一行吗。</p>
+<p><strong>Flamire</strong>: 你把两个语句写在一行也能少一行。</p>
+<p><strong>xcyle</strong>: 但你这样就要多写一个分号，多写一个分号和大括号。</p>
+<hr>
+<p><strong>Flamire</strong>(to <strong>Mr_Wu</strong>): 诶你禅境路径还写错了。禅境是土字旁的那个境。</p>
+<p><strong>Flamire</strong>: 而且你到底在干什么啊。</p>
+<p><strong>acniu</strong>: 他在 undertale。</p>
+<p><strong>acniu</strong>: 他好像刚开始。</p>
+<p><strong>acniu</strong>(棒读): Hello, I’m Flowey, Yayyyyyyy</p>
+<hr>
+<p><strong>skicean</strong>: 何方妖孽来，我道显神威！</p>
+<hr>
+<p><strong>acniu</strong>(棒读): 你在耍我吗，你是脑残吗，给我撞子弹，给我撞友谊颗粒。</p>
+<p><strong>acniu</strong>(棒读): 你个蠢货，在这个世界，不是杀人就是被杀。谁会错过这个大好机会。</p>
+<p><strong>acniu</strong>(棒读): 死吧，嘿嘿嘿嘿嘿。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: auugggghhhhhhhhhh。</p>
+<hr>
+<p><strong>skicean</strong>: <strong>acniu</strong>，你能不能过来一下。</p>
+<p><strong>acniu</strong>: 不行。</p>
+<p><strong>skicean</strong>: 哎呦。</p>
+<p><strong>wenhao801</strong>: 那你就过去一下。</p>
+<p><strong>skicean</strong>: 那我就过去一下。</p>
+<p><strong>wenhao801</strong>: 牛逼。</p>
+<p><strong>acniu</strong>: 吼哈哈哈哈！</p>
+<p><strong>skicean</strong>: ??????????</p>
+<p><strong>skicean</strong>: 不是，你为什么要学这种东西。</p>
+<p><strong>acniu</strong>: 吼哈哈哈哈！诶嘿嘿嘿嘿嘿！</p>
+<hr>
+<p><strong>skicean</strong>: 春城花飞飞♪♪♪————</p>
+<p><strong>wenhao801</strong>: 飞你妈呢！</p>
+<hr>
+<p><strong>acniu</strong>: 诶，来点苦力怕吧。</p>
+<p><strong>acniu</strong>: 有人要苦力怕吗？</p>
+<hr>
+<p><strong>acniu</strong>: 嘿嘿嘿嘿！</p>
+<p><strong>acniu</strong>: 咿嘿嘿嘿嘿嘿嘿！</p>
+<hr>
+<p><strong>acniu</strong>: 大 森 林 ！</p>
+<hr>
+<p><strong>Flamire</strong>: 疯了。</p>
+<p><strong>Flamire</strong>: <strong>Mr_Wu</strong> 别电了。</p>
+<p><strong>Flamire</strong>: 你再电竞你就电死了。</p>
+<hr>
+<p>*深渊尖啸*</p>
+<hr>
+<p><strong>Flamire</strong>: 6。</p>
+<hr>
+<p><strong>acniu</strong>: 桥。</p>
+<p><strong>acniu</strong>: 桥就是 bridge。</p>
+<p><strong>acniu</strong>: 桥就是不睿智。</p>
+<p><strong>Flamire</strong>: 那睿智是什么。</p>
+<hr>
+<p><strong>xcyle</strong>: 不是这打不死啊。</p>
+<p><strong>skicean</strong>: 那，那</p>
+<p><strong>Flamire</strong>: 那你也得冲一把啊。</p>
+<p><strong>xcyle</strong>: 你等他飞出来的。</p>
+<p><strong>xcyle</strong>: 唉，你这样他一会就跑了。别动他。</p>
+<p><strong>xcyle</strong>: 686。</p>
+<p><strong>wenhao801</strong>: 别太快！别太快！心急吃不了热豆腐。</p>
+<p><strong>xcyle</strong>: 你来。</p>
+<p>*击打声*</p>
+<p><strong>wenhao801</strong>: 死了吗？</p>
+<p><strong>xcyle</strong>: 没死。</p>
+<p><strong>wenhao801</strong>: 没死？</p>
+<p><strong>wenhao801</strong>: 真是个傻逼。</p>
+<p><strong>skicean</strong>: 我觉得蚊子是 NPC 问题。</p>
+<hr>
+<p><strong>acniu</strong>: 调情。调情。</p>
+<p><strong>acniu</strong>: 抱歉，我现在正在忙。</p>
+<p><strong>acniu</strong>: 威胁。</p>
+<p><strong>acniu</strong>: 幽灵在哭泣。</p>
+<p><strong>acniu</strong>: 幽灵说，我很好，谢谢你。</p>
+<p><strong>xcyle</strong>: 幽灵。可怜。大哭。</p>
+<hr>
+<p><strong>Flamire</strong>(to <strong>Mr_Wu</strong>): 我想看你玩 undertale 的实况。</p>
+<p><strong>Flamire</strong>: 你要不开个直播间吧。</p>
+<p><strong>wenhao801</strong>: 牛逼。</p>
+<p><strong>Mr_Wu</strong>: 牛逼。</p>
+<hr>
+<p><strong>Flamire</strong>: 蚊子又回来了。</p>
+<p>*一系列的拍打声*</p>
+<hr>
+<p><strong>xcyle</strong>: 诶，海绵宝宝开头那个船长是不是海盗啊。</p>
+<p><strong>acniu</strong>: 那个不是瞎了一只眼睛吗。</p>
+<p><strong>acniu</strong>: 诶，那他为什么不戴墨镜的。</p>
+<p><strong>xcyle</strong>: 因为他不是瞎子。</p>
+<p><strong>acniu</strong>: 那可以一边墨镜一边透明啊。</p>
+<p><strong>xcyle</strong>: 诶眼镜能不能只戴一边。</p>
+<p><strong>Flamire</strong>: 你的眼镜分我一半！</p>
+<p><strong>xcyle</strong>: 怎么只戴一边？</p>
+<p><strong>acniu</strong>: 你可以直接把镜片扣下来。</p>
+<hr>
+<p><strong>Flamire</strong>: <strong>Mr_Wu</strong>，你在家里打游戏必须开直播然后发到疯马院（注：bnds-oi 群）里。</p>
+<hr>
+<p><strong>acniu</strong>: 桥。</p>
+<p><strong>acniu</strong>: 桥。</p>
+<p><strong>acniu</strong>: 桥。</p>
+<p><strong>acniu</strong>: 桥。</p>
+<p><strong>acniu</strong>: 敲。</p>
+<p><strong>acniu</strong>: 翘。</p>
+<hr>
+<p><strong>acniu</strong>: 诶 flama，我给你一个 galgame，你打不打。</p>
+<p><strong>Flamire</strong>: 诶，我给你推荐一个 galgame。</p>
+<p><strong>Flamire</strong>: 你去 steam 上搜索 Doki Doki Literature Club。</p>
+<p><strong>acniu</strong>: ？</p>
+<p><strong>acniu</strong>: 我害怕了。</p>
+<p><strong>Flamire</strong>: why not。</p>
+<hr>
+<p><strong>Flamire</strong>: <strong>skicean</strong>，你知道 Doki Doki Literature Club 是什么吗？</p>
+<p><strong>skicean</strong>: 不是什么什么文学社是吗，是一个什么，什么文，那叫什么，是吗？</p>
+<p><strong>skicean</strong>: 诶是什么文学社吗？</p>
+<p><strong>Mr_Wu</strong>: 诶是不是就是那什么啊！是不是就那什么啊！诶是不是就是那什么！诶是不是就是那个，<br>那个！</p>
+<p><strong>wenhao801</strong>: 传递的信息挺多的。</p>
+<hr>
+<p><strong>skicean</strong>: 那个我 mo 同学玩过。</p>
+<p><strong>Flamire</strong>: 你们 mo 都是些什么人啊。</p>
+<p><strong>xcyle</strong>: 你们 oi 都是些什么人啊。</p>
+<p><strong>skicean</strong>: 心跳文学部！是吧。对，他应该打过。</p>
+<p><strong>skicean</strong>: 他还打过什么 summer pockets。</p>
+<p><strong>wenhao801</strong>: 我草。</p>
+<p><strong>Flamire</strong>: 谁啊。</p>
+<p><strong>skicean</strong>: [REDACTED]。</p>
+<p><strong>Flamire</strong>: <strong>skicean</strong> 你要不也去打吧。</p>
+<p><strong>xcyle</strong>: 不是我以为 [REDACTED] 看起来挺正常的啊。</p>
+<hr>
+<p><strong>acniu</strong>: subseteq。</p>
+<p><strong>acniu</strong>: 萨布赛特义Q。</p>
+<p><strong>Flamire</strong>: Summer Pockets eq。</p>
+<hr>
+<p>*诡异的叫声*</p>
+<hr>
+<p>*呼吸声*</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 水开喽！！！！！！！！！</p>
+<p><strong>Mr_Wu</strong>(低声): 水开喽！！！！！！！！！</p>
+<hr>
+<p><strong>acniu</strong>: 火车开始狂奔。</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 但是怎么求最大点覆盖？</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 你啥情况。</p>
+<p><strong>acniu</strong>: 我的左眼是邪王真眼。</p>
+<p><strong>acniu</strong>: 因为它的力量过于强大，所以我要将它封印起来。</p>
+<p><strong>Mr_Wu</strong>: *笑*</p>
+<p><strong>Mr_Wu</strong>: 真牛逼。（注：<strong>Mr_Wu</strong> 看番量约等于 0。）</p>
+<p><strong>acniu</strong>: 不然他可能就把整个学校毁灭。</p>
+<p><strong>Mr_Wu</strong>: 牛逼。</p>
+<p><strong>xcyle</strong>: *狂笑*（注：<strong>xcyle</strong> 看番量也约等于 0。）</p>
+<hr>
+<p><strong>Mr_Wu</strong>: 在中专怎么更好的活下去？？</p>
+<hr>
+<p><strong>skicean</strong>: 诶最小点覆盖等于什么啊？</p>
+<p><strong>xcyle</strong>: 等于总点数减去最大匹配。</p>
+<p><strong>Mr_Wu</strong>: 不是最大点覆盖等于 n 减去最小匹配吗。</p>
+<hr>
+<p><strong>xcyle</strong>: 诶最小权点覆盖等于最大权匹配吗。</p>
+<p><strong>Mr_Wu</strong>: 咕力咕噜啊！</p>
+<p><strong>Mr_Wu</strong>: 咕力咕噜。</p>
+<p><strong>Mr_Wu</strong>: 咕力咕噜！！！</p>
+<p><strong>xcyle</strong>: 这是不是——</p>
+<p><strong>acniu</strong>: 汪汪汪。</p>
+<p><strong>Mr_Wu</strong>: 咕力咕噜啊。</p>
+<p><strong>Mr_Wu</strong>: 诶，咕力咕噜。</p>
+<p><strong>Mr_Wu</strong>: 诶，咕力咕噜啊。</p>
+<p><strong>Mr_Wu</strong>: 诶，咕力咕噜。</p>
+<p><strong>acniu</strong>: 诶，咕力咕噜。</p>
+<p><strong>Mr_Wu</strong>: 诶，咕力咕噜啊！</p>
+<p><strong>acniu</strong>: 诶，咕力咕噜啊！</p>
+<p><strong>Mr_Wu</strong>: 诶，咕噜咕噜啊！！！</p>
+<p><strong>acniu</strong>: 诶，咕噜咕噜啊！！！</p>
+<p><strong>wenhao801</strong>: sb。sb。</p>
+<p><strong>Mr_Wu</strong>: 对不起，对不起，对不起，对不起。</p>
+<hr>
+<p><strong>Flamire</strong>: 什么东西。</p>
+<p><strong>acniu</strong>: 东西是东西。</p>
+<p><strong>Flamire</strong>: 为什么要这么做呢？</p>
+<p><strong>Flamire</strong>: 诶↗嗯↘啊↗↗</p>
+<p><strong>wenhao801</strong>: 我草，在干啥呢。</p>
+<p><strong>xcyle</strong>: 别跟 <strong>skicean</strong> 学坏了。</p>
+<hr>
+<p><strong>skicean</strong>: 春城花飞飞♪♪♪——蛇虫四处追♪♪♪♪♪♪————</p>
+<p>*吸气声*</p>
+<p>*麦克风噪声*</p>
+<p>*silence*</p>
+<p><strong>Mr_Wu</strong>: 欧耶！</p>
+<p><strong>skicean</strong>: 何方妖孽来♪♪♪——我道↘显神威♪♪♪♪♪♪♪♪♪——————</p>
+<p><strong>skicean</strong>: 春眠不觉晓，我处处蚊子咬！</p>
+<p><strong>skicean</strong>: 夜来风雨声，这样的法术还死撑！！</p>
+<p><strong>wenhao801</strong>: 没事吧。</p>
+<p>*麦克风噪声*</p>
+<p>*silence*</p>
+<p><strong>Mr_Wu</strong>: 欧耶！</p>
+<hr>
+<p><strong>Flamire</strong>: 不是你别就唱这几句，你把整首歌全唱了。</p>
+<p><strong>xcyle</strong>: 不是，你这歌好上头啊。</p>
+<p><strong>wenhao801</strong>: 全唱了更麻了。</p>
+<p><strong>skicean</strong>: 诶，我觉得你说的对啊。那要不再学一点吧。</p>
+<p><strong>wenhao801</strong>: ？</p>
+<p>*手机播放的声音*</p>
+<p><strong>wenhao801</strong>: 真开始学了。</p>
+<p><strong>skicean</strong>: 你家必有千年的蛇精，一条白，一条青。</p>
+<p><strong>skicean</strong>: 沉迷女色我愿意！</p>
+<p><strong>wenhao801</strong>: 你愿意。</p>
+<p>手机: 红的花是绿的草，我乐乐呵呵向前跑，踏遍青山人未老！</p>
+<p><strong>skicean</strong>: 艳阳天是——</p>
+<p><strong>wenhao801</strong>: 背课文都没这么认真。</p>
+<p><strong>skicean</strong>: 艳阳天那么风光好，红的花是绿的草，我乐乐呵呵向前跑。</p>
+<p><strong>wenhao801</strong>: 红的花为什么是绿的草！！能不能解释一下。</p>
+<p><strong>skicean</strong>: 我乐乐呵呵向前跑，踏遍青山人未老！！！</p>
+<hr>
+<p>手机: *笑声*</p>
+<p><strong>wenhao801</strong>: 草。</p>
+<p><strong>wenhao801</strong>: 这机房都什么啊。</p>
+<hr>
+<p>*诡异的音乐声*</p>
+<hr>
+<p>*笑声*</p>
+<hr>
+<p>*低语声*</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/12/transcript-3/" data-id="cll0xh3f9002mqsnc8e057oqi" data-title="transcript-3" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CSP2022" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/29/CSP2022/" class="article-date">
+  <time class="dt-published" datetime="2022-10-28T16:00:00.000Z" itemprop="datePublished">2022-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/29/CSP2022/">CSP2022</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>别写正解。</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/10/29/CSP2022/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/29/CSP2022/" data-id="cll0xh3f1000wqsnc7zep5521" data-title="CSP2022" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ARC149" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/03/ARC149/" class="article-date">
+  <time class="dt-published" datetime="2022-10-02T16:00:00.000Z" itemprop="datePublished">2022-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/03/ARC149/">ARC149</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>有个弱智忘了有 arc 了，晚 10min 进场，我不说是谁</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/10/03/ARC149/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/03/ARC149/" data-id="cll0xh3ex000dqsnchqac4dpp" data-title="ARC149" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CF1738" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/01/CF1738/" class="article-date">
+  <time class="dt-published" datetime="2022-09-30T16:00:00.000Z" itemprop="datePublished">2022-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/01/CF1738/">CF1738</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>被吊起来打了！！！！！！！！！！！！11</p>
+<p>果然我打 CF 的时候智商是随机的。</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/10/01/CF1738/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/01/CF1738/" data-id="cll0xh3f0000uqsnchmwv1g7s" data-title="CF1738" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CF1091" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/26/CF1091/" class="article-date">
+  <time class="dt-published" datetime="2022-09-25T16:00:00.000Z" itemprop="datePublished">2022-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/26/CF1091/">CF1091</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>反悔贪心。</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/09/26/CF1091/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/26/CF1091/" data-id="cll0xh3ez000mqsnc6381hvfo" data-title="CF1091" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-xcyle-medium" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/18/xcyle-medium/" class="article-date">
+  <time class="dt-published" datetime="2022-09-17T16:00:00.000Z" itemprop="datePublished">2022-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/18/xcyle-medium/">xcyle-medium</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/221180">here</a></p>
+<p>[TOC]</p>
+<h3 id="1-CF1609G-A-Stroll-Around-the-Matrix-Euclid"><a href="#1-CF1609G-A-Stroll-Around-the-Matrix-Euclid" class="headerlink" title="1.  CF1609G - A Stroll Around the Matrix [Euclid]"></a>1.  CF1609G - A Stroll Around the Matrix [Euclid]</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 ${a_1,a_2,\cdots,a_n}$ 和 ${b_1,b_2,\cdots,b_m}$，保证 $a,b$ 均凸（这里的凸定义为对于一个序列 $c$，其满足 $c_1&lt;c_2$ 且 $c_i-c_{i-1}&lt;c_{i+1}-c_i$），定义 $f(a,b)$ 的值为：有一个 $n\times m$ 的矩形，$(i,j)$ 的权值为 $a_i+b_j$，问从 $(1,1)$ 到 $(n,m)$ 的最短路径经过的格子权值和最小为多少</p>
+<p>有 $q$ 次修改，每次给 $a$ 或 $b$ 的后 $k$ 位分别加上 $d,2d,\cdots,kd$，每次修改后你需要输出 $f(a,b)$</p>
+<p>$2\le n\le100,2\le m\le10^5,1\le q\le10^5,1\le a_i,b_i\le10^{12},1\le d\le10^3$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>不难发现 $a$ 和 $b$ 一定一直都是凸的</p>
+<p>考虑 $f(a,b)$ 是什么，如果我们把这两个数组差分，那么我们首先会有一个 $(n+m-1)(a_1+b_1)$ 的代价，接下来我们可以选择往哪个方向走，如果我们第 $i$ 步跨越的两个行&#x2F;列差分为 $x$，那么会产生 $(n+m-1-i)x$ 的代价</p>
+<p>因此，如果我们能够按从小到大的顺序走 $x$ 的话，一定是最优的，而由于差分数组递增，我们可以做到这一点</p>
+<p>由于 $n$ 很小，我们可以将 $b$ 排好序，然后将 $a$ 插入到序列中，我们需要一个数据结构，支持区间加，查询第一个 $\le x$ 的数，以及查询区间和，这个可以用 平衡树&#x2F;线段树+树状数组 完成</p>
+<p>复杂度 $O(qn\log m)$</p>
+<hr>
+<h3 id="5-CF1617E-Christmas-Chocolates-Euclid"><a href="#5-CF1617E-Christmas-Chocolates-Euclid" class="headerlink" title="5.  CF1617E - Christmas Chocolates [Euclid]"></a>5.  CF1617E - Christmas Chocolates [Euclid]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>数列 $a_1,a_2,\cdots,a_n$，定义 $f(x,y)$ 为：</p>
+<p>你可以进行操作，一次操作可以选择一个 $k$ 使 $2^k\ge a_x$，并将 $a_x$ 变成 $2^k-a_x$</p>
+<p>使 $a_x&#x3D;a_y$ 的最小操作次数为 $f(x,y)$</p>
+<p>对于所有 $i,j$，求 $f(a_i,a_j)$ 的最大值，输出最大值与此时的 $i,j$</p>
+<p>$2\le n\le2\times10^5$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><h5 id="我的做法"><a href="#我的做法" class="headerlink" title="我的做法"></a>我的做法</h5><p>就硬手模。</p>
+<p>考虑操作可逆。</p>
+<p>我们可以发现，除非将一个数减成 0，否则这个数的 lowbit 一直不会变，我们将这些位删掉不考虑</p>
+<p>进行两次操作相当于在这个数的最高位 1 前面任意添加一段 1，或者把最高的 1 段删掉一个前缀</p>
+<p>转换到差分数组上相当于将第 $1$ 位反转以及第 $k$ 位翻转</p>
+<p>那么如果 $\text{lowbit}(x)\neq\text{lowbit}(y)$，一定是将两个数都变成 0</p>
+<p>否则，答案就是差分数组删掉 lcp 后 1 的个数之和</p>
+<p>（是的，很抽象）</p>
+<p>那么对于第一种情况，我们可以按 lowbit 分类，然后容易统计</p>
+<p>对于第二种情况，我们可以对每种 lowbit 开一棵 trie，然后在树上统计</p>
+<p>复杂度 $O(n\log a_i)$，空间复杂度 $O(n\log a_i)$</p>
+<h5 id="题解做法"><a href="#题解做法" class="headerlink" title="题解做法"></a>题解做法</h5><p>如果 $x+y&#x3D;2^k$ 那么就在 $(x,y)$ 之间连边，建出无向图</p>
+<p>考虑对于任意 $x$，只有一个 $y$ 满足 $y&lt;x,x+y&#x3D;2^k$，所以这个图是一棵树</p>
+<p>那么我们相当于要求这棵树上 $n$ 个点之间的最大距离，也就类似于树的直径</p>
+<p>不难发现，这个树的深度只有 $\log a_i$</p>
+<p>一种方法是只建 $n$ 个点到根（0） 路径上的点，这样只有 $O(n\log a_i)$ 个点，可以接受</p>
+<p>或者用求最远点的方法求直径，算距离的时候暴力跳父亲，复杂度也是 $O(n\log a_i)$</p>
+<hr>
+<h3 id="9-CF1661F-Teleporters-Euclid"><a href="#9-CF1661F-Teleporters-Euclid" class="headerlink" title="9.  CF1661F - Teleporters [Euclid]"></a>9.  CF1661F - Teleporters [Euclid]</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>你有一个一维数轴，初始有 $n$ 个点，坐标为 $a_1,a_2,\cdots,a_n(1\le a_1&lt;a_2&lt;\cdots&lt;a_n)$，并给定 $m\ge a_n$</p>
+<p>如果两个点坐标分别为 $x,y$，那么你从 $x$ 走到 $y$ 需要 $(x-y)^2$ 的代价</p>
+<p>问你最少要添加多少个点使得从 $0$ 到 $a_n$ 的最小代价 $\le m$</p>
+<p>注：只能添加整点</p>
+<p>$1\le n\le2\times10^5,a_i\le10^9,m\le10^{18}$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>如果我们加点，我们按照 $a$ 将数轴分成若干个部分，那么每个部分里加的点一定尽量平均分</p>
+<p>令 $cal(x,k)$ 表示一个长为 $x$ 的区间分为 $k$ 个部分的最小代价</p>
+<p>那么有一个显然的贪心，我们每次找到 $cal(x,y)-cal(x,y+1)$ 最大的区间将其加一个点，直到总代价 $\le m$</p>
+<p>但是这样复杂度太大了。</p>
+<p>我们考虑优化，推一下贡献式子可以发现如果 $\lfloor\frac xy\rfloor$ 一定的时候每次加一个点产生的贡献也一定</p>
+<p>因此，我们从堆中找到一个点后，可以直接取到 $\lfloor\frac xy\rfloor$ 改变为止，这样最多只会有 $O(n\sqrt{a_i})$ 种不同的状态</p>
+<p>总复杂度 $O(n\sqrt{a_i}\log n)$</p>
+<hr>
+<h3 id="11-CF1672H-Zigu-Zagu-Euclid-Keter"><a href="#11-CF1672H-Zigu-Zagu-Euclid-Keter" class="headerlink" title="11.  CF1672H - Zigu Zagu [Euclid&#x2F;Keter]"></a>11.  CF1672H - Zigu Zagu [Euclid&#x2F;Keter]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>对于一个 01 串 $s$，定义 $f(s)$ 为：</p>
+<p>一次操作可以删掉一个 01 交替的子串，剩下两部分拼起来，$f(s)$ 为将其删空的最少操作次数</p>
+<p>给定一个长为 $n$ 的 01 串 $a$，$q$ 次询问，每次给定 $l,r$，询问 $f(a[l:r])$</p>
+<p>$1\le n,q\le2\times10^5$</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>一次操作我们一定是删除一段极长的交替段，那么这个交替段两端一定满足 $a_{l-1}&#x3D;a_l,a_r&#x3D;a_{r+1}$，接着 $a_{l-1}$ 和 $a_{r+1}$ 会合到一起</p>
+<p>那么我们考虑满足 $a_i&#x3D;a_{i+1}$ 的数量 $x$，如果 $a_{l-1}&#x3D;a_{r+1}$，进行 $[l,r]$ 操作会让 $x$ 减 $1$，否则会让 $x$ 减 $2$</p>
+<p>也就是说，我们把所有满足 $a_i&#x3D;a_{i+1}$ 的都提出来，如果有 $&#x3D;0$ 和 $&#x3D;1$ 的相邻，那我们可以把这两个同时消掉，否则我们只能对每个单独消</p>
+<p>我们发现，如果同时存在 $&#x3D;0$ 的 $&#x3D;1$ 的，那么必定存在一个位置 $&#x3D;0$ 的和 $&#x3D;1$ 的相邻，因此答案是 $[l,r]$ 内相邻的 <code>0</code> 和相邻的 <code>1</code> 的个数的最大值</p>
+<p>复杂度 $O(n+q)$</p>
+<hr>
+<h3 id="12-CF1673F-Anti-Theft-Road-Planning-Euclid"><a href="#12-CF1673F-Anti-Theft-Road-Planning-Euclid" class="headerlink" title="12.  CF1673F - Anti-Theft Road Planning [Euclid]"></a>12.  CF1673F - Anti-Theft Road Planning [Euclid]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
+<p>给定 $n\times n$ 的矩形，$(i,j)$ 与 $(i+1,j)$ 之间有无向边相连，$(i,j)$ 与 $(i,j+1)$ 之间有边相连，你需要给每条边赋一个非负权值，使得边权总和不超过 $48000$</p>
+<p>接下来，有一个人在这个矩形上走路，初始在 $(1,1)$，这个人会移动 $k$ 次（移动的过程会影响之后的询问），每次会经过若干条边，交互库会给你这些边的边权异或和，你需要输出这个人到了哪个点，注意询问之间不互相独立</p>
+<p>$2\le n\le32,1\le k\le1024$</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>我们从 $0$ 开始数数。</p>
+<p>有一种显然的想法是我们将 $(u,v)$ 与 $(w,x)$ 之间的边权设为 $(un+v)\oplus(wn+x)$，这样一条路径的权值一定是起点异或终点，但是这样边权和超过了 $48000$</p>
+<p>我们不妨考虑一下优化，一种优化的方式是将 $un+v$ 替换为一个 $0\sim n^2-1$ 的排列 $id_{u,v}$</p>
+<p>边权和只和相邻数的异或和有关，我们需要让这个数字尽量小，不难联想到格雷码</p>
+<p>我们令 $id_{u,v}$ 后 $5$ 位为 $u$ 的格雷码，前 $5$ 位为 $v$ 的格雷码，但是这样前 $5$ 位产生的代价仍然过大</p>
+<p>因此，我们令 $id_{u,v}$ 的 $1,3,5,7,9$ 位为 $u$ 的格雷码，$0,2,4,6,8$ 位为 $v$ 的格雷码，这样估计下来是：</p>
+<p>$32(2^4\times(2^0+2^1)+2^3\times(2^2+2^3)+2^2\times(2^4+2^5)+2^1\times(2^6+2^7)+2^0\times(2^8+2^9))&#x3D;47616$</p>
+<p>复杂度 $O(n^2)$</p>
+<hr>
+<h3 id="13-Lenient-Vertex-Cover-Euclid"><a href="#13-Lenient-Vertex-Cover-Euclid" class="headerlink" title="13.  Lenient Vertex Cover [Euclid]"></a>13.  Lenient Vertex Cover [Euclid]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>一张 $n$ 个点，$m$ 条边的无向图，求一个点集，使得任意一条边都有一个端点在点集中，并且最多只有一条边两个端点都在点集中</p>
+<p>给出构造或返回无解</p>
+<p>$1\le n,m\le10^6$</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p><a target="_blank" rel="noopener" href="https://flamire.github.io/2021/11/08/202110/">CF19E。</a></p>
+<hr>
+<h3 id="14-CF1865C-Bring-Balance-Euclid-Keter"><a href="#14-CF1865C-Bring-Balance-Euclid-Keter" class="headerlink" title="14.  CF1865C - Bring Balance [Euclid&#x2F;Keter]"></a>14.  CF1865C - Bring Balance [Euclid&#x2F;Keter]</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>给定一个由 $n$ 个左括号和 $n$ 个右括号组成的括号序列 $s$，每次操作可以将其中的一个子串 reverse，问最少进行多少次操作使得 $s$ 变为合法括号串</p>
+<p>$1\le n\le10^5$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>我不理解，暂且认定为魔法。</p>
+<p>你通过魔法得知了一种操作方式，这种操作方式叫：找到前缀和最大的下标 $mx$，操作区间 $[1,mx],[mx+1,2n]$</p>
+<p>这种操作方式的正确性是可以证明的：设前缀和为 $a_i$，对于 $[1,mx]$ 中的位置 $i$，新的前缀和为 $a_{mx}-a_{i-1}$，这是非负的；对于 $[mx+1,2n]$ 中的位置 $i$，新的前缀和为 $a_{mx}+a_{n+1}-a_{i-1}&#x3D;a_{mx}-a_{i-1}$，这是非负的，因此操作方式成立</p>
+<p>那么步数最多为 $2$，我们需要判断步数是否为 $0$ 或 $1$</p>
+<p>$0$ 是好判的，考虑怎么判 $1$</p>
+<p>设我们唯一一步操作的是 $[L,R]$，显然 $[L,R]$ 一定要包含所有前缀和为负的下标</p>
+<p>我们设 $l_0$ 表示第一个前缀和为负的下标，$r_0$ 表示最后一个前缀和为负的下标</p>
+<p>令 $L_1$ 表示 $[0,l_0-1]$ 中前缀和最大的下标，$R_1$ 表示 $[r_0+1,2n]$ 中前缀和最大的下标</p>
+<p>我们可以说明：如果存在 $(L,R]$ 操作一步可行，那么 $(L_1,R_1]$ 也一定可以</p>
+<p>根据 $l_0,r_0$ 的定义，未在操作区间内的点一定满足限制</p>
+<p>根据已知，我们有 $a_R-a_{i-1}+a_L\ge0(L&lt;i\le R)$，我们要证明一定有 $a_{R_1}-a_{i-1}+a_{L_1}\ge0(L_1&lt;i\le R_i)$，若 $i\le L$ 或 $i&gt;R$，那么根据 $l_0,r_0$ 的定义一定有 $a_i\ge0$，根据 $L_1,R_1$ 的定义一定有 $a_{L_1}-a_{i-1}\ge0$ 或 $a_{R_1}-a_{i-1}\ge0$，而若 $L&lt;i\le R$，那么由于 $a_{R_1}\ge a_R,a_{l_1}\ge a_L$，一定满足 $a_{R_1}-a_{i-1}+a_{L_1}\ge0$，得证。</p>
+<p>判断输出即可，复杂度 $O(n)$</p>
+<hr>
+<h3 id="15-CF1687C-Sanae-and-Giant-Robot-Euclid"><a href="#15-CF1687C-Sanae-and-Giant-Robot-Euclid" class="headerlink" title="15.  CF1687C - Sanae and Giant Robot [Euclid]"></a>15.  CF1687C - Sanae and Giant Robot [Euclid]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的序列 $a$ 和 $b$，以及 $m$ 个区间 $[l_i,r_i]$，你需要进行若干次操作，将 $a$ 变为 $b$，每次操作选择一个 $[l_i,r_i]$，使得这段区间内 $a$ 的和等于 $b$ 的和，然后将 $a$ 中这段区间替换为 $b$ 中这段区间</p>
+<p>问是否可以完成</p>
+<p>$2\le n\le2\times10^5,1\le m\le2\times10^5$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>令 $c_i$ 为 $a_i-b_i$ 的前缀和，那么题目转化为有 $m$ 个数对 $(x_i,y_i)$，每次操作如果 $c_{x_i}&#x3D;c_{y_i}$，那么我们可以把 $[x_i,y_i]$ 内的所有 $c$ 全部赋值为 $c_{x_i}$</p>
+<p>由于我们最后需要全变为 $0$，所以每步操作一定是选择一个两边都是 $0$ 的数对，不难发现这样如果有解则一定能够找到解</p>
+<p>那么我们考虑快速模拟这个过程，我们用一个队列依次考虑值变为 $0$ 的下标，初始把所有值为 $0$ 的下标入队</p>
+<p>找到一个下标时，我们找有一个数与其相等的所有数对，判断是否能够操作，如果能，我们直接用暴力+并查集更新 $c$ 的值</p>
+<p>复杂度 $O(m\alpha(n))$</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/18/xcyle-medium/" data-id="cll0xh3f9002nqsnc7bru03az" data-title="xcyle-medium" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-AGC003" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/05/AGC003/" class="article-date">
+  <time class="dt-published" datetime="2022-09-04T16:00:00.000Z" itemprop="datePublished">2022-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/05/AGC003/">AGC003</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>怎么突然简单。</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/09/05/AGC003/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/05/AGC003/" data-id="cll0xh3ew000aqsnc03osgd2l" data-title="AGC003" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-AGC002" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/01/AGC002/" class="article-date">
+  <time class="dt-published" datetime="2022-08-31T16:00:00.000Z" itemprop="datePublished">2022-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/01/AGC002/">AGC002</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>越来越菜了，我该怎么办？？</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/09/01/AGC002/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/01/AGC002/" data-id="cll0xh3ew0008qsnc6ruofqsj" data-title="AGC002" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoAR/" rel="tag">SoAR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AT/" style="font-size: 14px;">AT</a> <a href="/tags/CF/" style="font-size: 18px;">CF</a> <a href="/tags/SoAR/" style="font-size: 10px;">SoAR</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/other/" style="font-size: 12px;">other</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 16px;">游记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/10007/06/">June 10007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1899/11/">November 1899</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/10007/06/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/CF-3/">Bippity Jippity Bugaboos</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/12/transcript-3/">transcript-3</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/29/CSP2022/">CSP2022</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/03/ARC149/">ARC149</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Flamire<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
