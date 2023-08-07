@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>AGC001 | Yes?</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="AGC001A - BBQ Easy [Safe]题面给定 $2n$ 个数 $a_1,a_2,\cdots,a_{2n}$，要求分成 $n$ 个包含两个数的组，使得每个组的最小值之和最大 $1\le n\le100$ 题解排序后求 $a_1+a_3+\cdots+a_{2n-1}$ 复杂度 $O(n\log n)$ B - Mysterious Light [Safe]题面有边长为 $n$ 的">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="The Redefine Team">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2022/08/26/agc001/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="AGC001A - BBQ Easy [Safe]题面给定 $2n$ 个数 $a_1,a_2,\cdots,a_{2n}$，要求分成 $n$ 个包含两个数的组，使得每个组的最小值之和最大 $1\le n\le100$ 题解排序后求 $a_1+a_3+\cdots+a_{2n-1}$ 复杂度 $O(n\log n)$ B - Mysterious Light [Safe]题面有边长为 $n$ 的等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AGC001">
 <meta property="og:url" content="http://example.com/2022/08/26/AGC001/index.html">
 <meta property="og:site_name" content="Yes?">
-<meta property="og:description" content="AGC001A - BBQ Easy [Safe]题面给定 $2n$ 个数 $a_1,a_2,\cdots,a_{2n}$，要求分成 $n$ 个包含两个数的组，使得每个组的最小值之和最大 $1\le n\le100$ 题解排序后求 $a_1+a_3+\cdots+a_{2n-1}$ 复杂度 $O(n\log n)$ B - Mysterious Light [Safe]题面有边长为 $n$ 的">
+<meta property="og:description" content="AGC001A - BBQ Easy [Safe]题面给定 $2n$ 个数 $a_1,a_2,\cdots,a_{2n}$，要求分成 $n$ 个包含两个数的组，使得每个组的最小值之和最大 $1\le n\le100$ 题解排序后求 $a_1+a_3+\cdots+a_{2n-1}$ 复杂度 $O(n\log n)$ B - Mysterious Light [Safe]题面有边长为 $n$ 的等">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-25T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-10-03T07:58:52.000Z">
@@ -19,103 +31,270 @@
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="AT">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Yes?" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            AGC001 -
+        
+        NewGen
+    </title>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-  
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
 
-  
-  
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.3.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    Global.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    Global.data_config = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Yes?</a>
-      </h1>
-      
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="swup-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container" id="swup">
+    
+
+    
+
+    <div class="main-content-container">
+        
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                NewGen
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
     </div>
-  </div>
+
+    <div class="window-mask"></div>
+
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-AGC001" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/08/26/AGC001/" class="article-date">
-  <time class="dt-published" datetime="2022-08-25T16:00:00.000Z" itemprop="datePublished">2022-08-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            
+                <h1 class="article-title-regular">AGC001</h1>
+            
+            </div>
+            
+                    
         
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      AGC001
-    </h1>
-  
-
-      </header>
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/redefine-avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">The Redefine Team</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2022-08-26</span>
+        <span class="mobile">2022-08-26</span>
+        <span class="hover-info">Created</span>
+    </span>
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <span id="more"></span>
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2022-10-03 15:58:52</span>
+            <span class="mobile">2022-10-03 15:58:52</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
 
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/AT/">AT</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <span id="more"></span>
 <h2 id="AGC001"><a href="#AGC001" class="headerlink" title="AGC001"></a>AGC001</h2><h3 id="A-BBQ-Easy-Safe"><a href="#A-BBQ-Easy-Safe" class="headerlink" title="A - BBQ Easy [Safe]"></a>A - BBQ Easy [Safe]</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $2n$ 个数 $a_1,a_2,\cdots,a_{2n}$，要求分成 $n$ 个包含两个数的组，使得每个组的最小值之和最大</p>
 <p>$1\le n\le100$</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>排序后求 $a_1+a_3+\cdots+a_{2n-1}$</p>
 <p>复杂度 $O(n\log n)$</p>
-<h3 id="B-Mysterious-Light-Safe"><a href="#B-Mysterious-Light-Safe" class="headerlink" title="B - Mysterious Light [Safe]"></a>B - Mysterious Light [Safe]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>有边长为 $n$ 的等边三角形 $\Delta ABC$，在 $AB$ 边上有一点 $P$，满足 $AP&#x3D;x$，从 $P$ 朝平行于 $BC$ 的方向射出一束光，这条光会在三角形的边上以及自己曾经经过的路线上反弹，求光线回到 $P$ 时经过的路线长度</p>
+<h3 id="B-Mysterious-Light-Safe"><a href="#B-Mysterious-Light-Safe" class="headerlink" title="B - Mysterious Light [Safe]"></a>B - Mysterious Light [Safe]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>有边长为 $n$ 的等边三角形 $\Delta ABC$，在 $AB$ 边上有一点 $P$，满足 $AP=x$，从 $P$ 朝平行于 $BC$ 的方向射出一束光，这条光会在三角形的边上以及自己曾经经过的路线上反弹，求光线回到 $P$ 时经过的路线长度</p>
 <p>$1\le x&lt;n\le 10^{12}$</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>考虑这条光的路径，一定是先反射两次之后在一个平行四边形内乱射</p>
 <p>定义 $F(n,m)$ 表示一个边长为 $n$ 和 $m$ 的平行四边形内，光从一个 120° 角的角平分线射出并到达对角时经过的长度</p>
-<p>那么有转移式子：<br>$$<br>F(n,m)&#x3D;\left{\begin{matrix}<br>n,&amp;n&#x3D;m\<br>F(m,n),&amp;n&lt;m\<br>F(n-m,m)+2m,&amp;n&gt;m<br>\end{matrix}\right.<br>$$<br>把减法换成取模就是 $O(\log n)$ 了</p>
+<p>那么有转移式子：</p>
+<script type="math/tex; mode=display">
+F(n,m)=\left\{\begin{matrix}
+n,&n=m\\
+F(m,n),&n<m\\
+F(n-m,m)+2m,&n>m
+\end{matrix}\right.</script><p>把减法换成取模就是 $O(\log n)$ 了</p>
 <h3 id="C-Shorten-Diameter-Safe"><a href="#C-Shorten-Diameter-Safe" class="headerlink" title="C - Shorten Diameter [Safe]"></a>C - Shorten Diameter [Safe]</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，求最少删多少点使得剩下的树联通且直径长度 $\le k$</p>
 <p>$1\le n\le2000$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>枚举删完后的直径中点，那么距离这个点 $&gt;\frac k2$ 的肯定都不能要，把所有中点的答案取一个 min 即可</p>
 <p>实现细节：在每条边之间都加一个新点，这样就避免了讨论中点在点上还是在边上的问题</p>
 <p>复杂度 $O(n^2)$</p>
-<h3 id="D-Arrays-and-Palindrome-Euclid"><a href="#D-Arrays-and-Palindrome-Euclid" class="headerlink" title="D - Arrays and Palindrome [Euclid]"></a>D - Arrays and Palindrome [Euclid]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $m$ 的正整数数组 $a$，满足 $\sum a_i&#x3D;n$，你需要重排数组 $a$ 并构造一个正整数数组 $b$，满足 $\sum b_i&#x3D;n$，且对于一个长为 $n$ 字符串 $s$，如果满足对于任意 $i$，满足 $s[(a_1+a_2+\cdots+a_{i-1}+1):(a_1+a_2+\cdots+a_i)]$ 是回文串，且对于任意 $i$，满足 $s[(b_1+b_2+\cdots+b_{i-1}+1):(b_1+b_2+\cdots+b_i)]$ 是回文串，那么可以推断出 $s$ 的所有字符全相等</p>
+<h3 id="D-Arrays-and-Palindrome-Euclid"><a href="#D-Arrays-and-Palindrome-Euclid" class="headerlink" title="D - Arrays and Palindrome [Euclid]"></a>D - Arrays and Palindrome [Euclid]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $m$ 的正整数数组 $a$，满足 $\sum a_i=n$，你需要重排数组 $a$ 并构造一个正整数数组 $b$，满足 $\sum b_i=n$，且对于一个长为 $n$ 字符串 $s$，如果满足对于任意 $i$，满足 $s[(a_1+a_2+\cdots+a_{i-1}+1):(a_1+a_2+\cdots+a_i)]$ 是回文串，且对于任意 $i$，满足 $s[(b_1+b_2+\cdots+b_{i-1}+1):(b_1+b_2+\cdots+b_i)]$ 是回文串，那么可以推断出 $s$ 的所有字符全相等</p>
 <p>给出一种构造方案，无解输出 <code>Impossible</code>。</p>
 <p>$1\le n\le10^5,1\le m\le100$</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>人类智慧题。</p>
@@ -128,167 +307,441 @@
 <p>如果 $a$ 中有 $1$ 个奇数，我们把奇数放到 $a$ 的开头，剩下的随意</p>
 <p>如果 $a$ 中的有 $2$ 个奇数，我们把奇数放到 $a$ 的开头和末尾，剩下的随意</p>
 <p>那么我们的 $b$ 就是 $[a_1-1,a_2,a_3,\cdots,a_{m-1},a_m+1]$，注意去除掉长度变成 $0$ 的段</p>
-<p>特判 $n&#x3D;1$ 的情况</p>
+<p>特判 $n=1$ 的情况</p>
 <p>复杂度 $O(n)$</p>
-<h3 id="E-BBQ-Hard-Keter"><a href="#E-BBQ-Hard-Keter" class="headerlink" title="E - BBQ Hard [Keter]"></a>E - BBQ Hard [Keter]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数组 $a_i$ 和 $b_i$，求：<br>$$<br>\sum_{i&#x3D;1}^n\sum_{j&#x3D;i+1}^n\binom{a_i+b_i+a_j+b_j}{a_i+a_j}<br>$$<br>$2\le n\le2\times10^5,1\le a_i,b_i\le2000$，对 $10^9+7$ 取模</p>
-<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>乘 $2$ 再加上 $i&#x3D;j$ 的情况，我们就可以把 $j$ 的范围也变为 $[1,n]$</p>
+<h3 id="E-BBQ-Hard-Keter"><a href="#E-BBQ-Hard-Keter" class="headerlink" title="E - BBQ Hard [Keter]"></a>E - BBQ Hard [Keter]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数组 $a_i$ 和 $b_i$，求：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n\sum_{j=i+1}^n\binom{a_i+b_i+a_j+b_j}{a_i+a_j}</script><p>$2\le n\le2\times10^5,1\le a_i,b_i\le2000$，对 $10^9+7$ 取模</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>乘 $2$ 再加上 $i=j$ 的情况，我们就可以把 $j$ 的范围也变为 $[1,n]$</p>
 <p>对于一个特定 $(i,j)$，这相当于求 $(-a_i,-b_i)$ 走到 $(a_j,b_j)$ 的情况，而我们要求的就是对于所有这些情况之和</p>
 <p>那么我们把点放在一个二维平面上，所有 $(-a_i,-b_i)$ 为起点，所有 $(a_i,b_i)$ 为终点，然后令 $dp_{x,y}$ 表示所有起点到达 $(x,y)$ 的方案数之和，直接对于每个整点转移即可</p>
 <p>复杂度 $O(n+(\max a_i)^2)$</p>
-<h3 id="F-Wide-Swap-Euclid"><a href="#F-Wide-Swap-Euclid" class="headerlink" title="F - Wide Swap [Euclid]"></a>F - Wide Swap [Euclid]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的排列 $p_i$，你可以交换两个排列中的元素 $p_i,p_j$，当且仅当 $j-i\ge k$ 且 $|p_i-p_j|&#x3D;1$</p>
+<h3 id="F-Wide-Swap-Euclid"><a href="#F-Wide-Swap-Euclid" class="headerlink" title="F - Wide Swap [Euclid]"></a>F - Wide Swap [Euclid]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的排列 $p_i$，你可以交换两个排列中的元素 $p_i,p_j$，当且仅当 $j-i\ge k$ 且 $|p_i-p_j|=1$</p>
 <p>问交换之后得到的字典序最小的排列</p>
 <p>$1\le n\le5\times10^5$</p>
-<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>我们考虑求出原排列的逆排列 $a_i$，也即「$i$ 出现在哪个位置」，那么我们可以交换 $a_i,a_j$ 当且仅当 $|i-j|&#x3D;1$ 且 $|a_i-a_j|\ge k$，这看起来就比原问题好看多了。</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>我们考虑求出原排列的逆排列 $a_i$，也即「$i$ 出现在哪个位置」，那么我们可以交换 $a_i,a_j$ 当且仅当 $|i-j|=1$ 且 $|a_i-a_j|\ge k$，这看起来就比原问题好看多了。</p>
 <p>$p$ 的字典序最小，相当于先让第一位最小，再让第二位最小，以此类推，那么就相当于在 $a$ 中让 $1$ 的位置最小，再让 $2$ 的位置最小，以此类推</p>
 <p>如果存在 $i&lt;j$，满足 $a_i&lt;a_j$，那么它们的相对顺序改变一定不优，如果满足 $|a_i-a_j|&lt;k$，那么相对顺序一定无法改变，也即如果 $i&lt;j$，$a_i&lt;a_j+k$，那么它们的相对顺序一定不会改变，这样一定是最优的 $a$</p>
 <p>因此，我们按下标顺序考虑 $a$ 序列，增量构造出排列 $b$，每次找到当前的 $b$ 中最后一个 $&lt;a_i+k$ 的数，然后将 $a_i$ 插入在这个数之后，用平衡树实现即可</p>
 <p>注意最后要把 $b$ 转回原来的排列</p>
 <p>复杂度 $O(n\log n)$</p>
 
-      
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> AGC001</li>
+        <li><strong>Author:</strong> The Redefine Team</li>
+        <li><strong>Created at:</strong> 2022-08-26 00:00:00</li>
+        
+            <li>
+                <strong>Updated at:</strong> 2022-10-03 15:58:52
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://flamire.github.io/2022/08/26/AGC001/
+        </li>
+        <li>
+            <strong>License:</strong> This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/AT/">#AT</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2022/09/01/AGC002/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">AGC002</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                        rel="next"
+                        href="/2022/08/01/202208/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">202208</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container">
+                <div class="comments-container pjax">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;Comments
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/26/AGC001/" data-id="cll0xh3eu0004qsnc224f8653" data-title="AGC001" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/09/01/AGC002/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          AGC002
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/08/01/202208/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">202208</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
     
 
-  
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-swup-reload-script>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://example.example.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT/" rel="tag">AT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF/" rel="tag">CF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoAR/" rel="tag">SoAR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+</div>
+
+            </div>
+        
     </div>
-  </div>
 
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AT/" style="font-size: 14px;">AT</a> <a href="/tags/CF/" style="font-size: 18px;">CF</a> <a href="/tags/SoAR/" style="font-size: 10px;">SoAR</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/other/" style="font-size: 12px;">other</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 16px;">游记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
-    </div>
-  </div>
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">AGC001</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AGC001"><span class="nav-text">AGC001</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-BBQ-Easy-Safe"><span class="nav-text">A - BBQ Easy [Safe]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Mysterious-Light-Safe"><span class="nav-text">B - Mysterious Light [Safe]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Shorten-Diameter-Safe"><span class="nav-text">C - Shorten Diameter [Safe]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Arrays-and-Palindrome-Euclid"><span class="nav-text">D - Arrays and Palindrome [Euclid]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-BBQ-Hard-Keter"><span class="nav-text">E - BBQ Hard [Keter]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Wide-Swap-Euclid"><span class="nav-text">F - Wide Swap [Euclid]</span></a></li></ol></li></ol>
 
-  
+    </div>
+</div>
+        </div>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/10007/06/">June 10007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1899/11/">November 1899</a></li></ul>
-    </div>
-  </div>
+</div>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/10007/06/07/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/07/CF-3/">Bippity Jippity Bugaboos</a>
-          </li>
-        
-          <li>
-            <a href="/2023/05/12/transcript-3/">transcript-3</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/29/CSP2022/">CSP2022</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/03/ARC149/">ARC149</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
-  
-</aside>
+                
+
+            </div>
+            
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">The Redefine Team</a>
+        </div>
         
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2023 Flamire<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        VISITOR COUNT&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        TOTAL PAGE VIEWS&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a></span>
+                <br>
+            <span class="theme-version-container">THEME&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.3.0</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
 </footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
 
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
     
 
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+</main>
+
+
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+        ],
+        containers: ["#swup"],
+    });
+
+    swup.on("pageView", () => {
+        Global.refresh();
+    });
+
+    // if (document.readyState === "complete") {
+    //
+    // } else {
+    //     document.addEventListener("DOMContentLoaded", () => init());
+    // }
+</script>
+
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+<script src="/js/layouts/categoryList.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
 
 
 
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
 
 
-  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
