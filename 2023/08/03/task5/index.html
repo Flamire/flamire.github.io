@@ -26,7 +26,7 @@
 <meta property="og:description" content="[TOC] 1.  CF1746F - Kazaee [Keter] ⭐题面给定数列 $a_1,a_2,\cdots,a_n$，$q$ 次操作，每次操作为以下两种中的一种：  给定 $i,x$，执行 $a_i:&#x3D;x$ 给定 $l,r,k$，判断对于任意 $x$，是否都有 $x$ 在 $a[l:r]$ 中的出现次数为 $k$ 的倍数  $1\le n,q\le3\times10^5$ 题解Sol">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-27T15:05:14.750Z">
+<meta property="article:modified_time" content="2023-09-02T01:33:36.000Z">
 <meta property="article:author" content="Flamire">
 <meta name="twitter:card" content="summary">
     
@@ -231,8 +231,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-08-27 23:05:14</span>
-            <span class="mobile">2023-08-27 23:05:14</span>
+            <span class="desktop">2023-09-02 09:33:36</span>
+            <span class="mobile">2023-09-02 09:33:36</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -324,26 +324,19 @@
 <p>对于 $1,2,\cdots,k$ 的排列对 $(p,q)$，定义 $f(p,q)$ 为：对 $i:1\rightarrow k$，依次执行 $\text{swap}(A_{p_i},A_{q_i})$，得到的最后的 $A$</p>
 <p>求有多少 $(p,q)$ 满足 $f(p,q)=B$，对 $998244353$ 取模</p>
 <p>$1\le|A|=|B|\le10000$</p>
-<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>显然，可以只考虑 $(a_i,b_i)$ 二元组 $(1,1),(0,1),(1,0)$ 个数分别是多少，而 $(0,1)$ 与 $(1,0)$ 的个数相等</p>
-<p>这启发我们记到状态 $dp_{i,j}$ 里，然后讨论第一步的交换</p>
-<p>我们发现只有几个不能 $O(1)$ 转移的情况，即 $(1,1)$ 与 $(1,1)$ 交换，可能涉及许多 $(1,1)$ 的数对</p>
-<p>但这个转移只在 $(1,1)$ 内部，因此我们可以再进行一个 $O(n^2)$ 的 dp，求出 $f_{i,j}$，从而把初值直接赋在 $dp_{i,0}$ 上</p>
-<p>复杂度 $O(n^2)$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>显然，可以只考虑 $(a_i,b_i)$ 二元组 $(1,1),(0,1),(1,0)$ 个数分别是多少，而 $(0,1)$ 与 $(1,0)$ 的个数相等</p><p>这启发我们记到状态 $dp_{i,j}$ 里，然后讨论第一步的交换</p><p>我们发现只有几个不能 $O(1)$ 转移的情况，即 $(1,1)$ 与 $(1,1)$ 交换，可能涉及许多 $(1,1)$ 的数对</p><p>但这个转移只在 $(1,1)$ 内部，因此我们可以再进行一个 $O(n^2)$ 的 dp，求出 $f_{i,j}$，从而把初值直接赋在 $dp_{i,0}$ 上</p><p>复杂度 $O(n^2)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="8-BJWC2018-Border-的四种求法-Keter-✔️"><a href="#8-BJWC2018-Border-的四种求法-Keter-✔️" class="headerlink" title="8.  BJWC2018 - Border 的四种求法 [Keter] ✔️"></a>8.  BJWC2018 - Border 的四种求法 [Keter] ✔️</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>给定一个字符串 $s$，$q$ 次询问，每次给出 $l,r$，求 $s[l:r]$ 的最大 border</p>
 <p>$1\le n,q\le2\times10^5$</p>
-<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>对于 $l<p\le r$，$s[p:r]$ 为 $s[l:r]$ 的 border 当且仅当 $lcp(l,p)+p>r$，其中 $lcp(l,p)$ 表示以 $l$ 和以 $p$ 开头的后缀的 lcp</p>
-<p>也就是说，对每个询问我们要找到最小的 $p$ 满足 $p&gt;l$ 且 $lcp(l,p)+p&gt;r$</p>
-<p>把二叉的后缀树建出来，那么 $lcp(l,p)$ 就转化为树上的 lca，并且所有后缀一定是树上的叶子</p>
-<p>把询问离线，挂到 $l$ 对应的叶子上，当询问的 $l$ 变到 sa 序上的下一个时，lca 发生的变化是比较小的，因此我们可以考虑通过一次 dfs 处理询问</p>
-<p>有一个 $O(\sum siz)$ 的暴力：我们每次 dfs 到一个点 $u$，假设接下来要进左子树，就把所有右子树的 $h_{lca}+p$ 值加到一个数据结构中，这样我们到叶子时就直接查询这个数据结构中满足条件的即可，而这个数据结构可以用一个下表为 $p$，值为 $h_u+p$ 的线段树来实现</p>
-<p>但是这样复杂度可能会很劣，考虑优化。</p>
-<p>我们在 dfs 的过程中，会涉及将子树加入数据结构的操作：</p>
-<ul>
-<li>如果需要加的子树是轻儿子，我们就暴力加，总共会加 $O(n\log n)$ 次，复杂度 $O(n\log^2n)$</li>
-<li>否则我们启发式合并得到子树内的所有 $p$ 值的 set，然后由于对这棵子树，$h_{lca}$ 是固定的，因此我们可以直接在这个 set 上查出最小的符合条件的 $p$，而这样的情况只会在我们进轻子树时发生，因此对每个叶子只用查 $O(\log n)$ 次，复杂度是 $O(n\log^2n)$ 的，启发式合并也是 $O(n\log^2n)$ 的</li>
-</ul>
-<p>因此总复杂度 $O(n\log^2n)$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>对于 $l<p\le r$，$s[p:r]$ 为 $s[l:r]$ 的 border 当且仅当 $lcp(l,p)+p>r$，其中 $lcp(l,p)$ 表示以 $l$ 和以 $p$ 开头的后缀的 lcp</p><p>也就是说，对每个询问我们要找到最小的 $p$ 满足 $p&gt;l$ 且 $lcp(l,p)+p&gt;r$</p><p>把二叉的后缀树建出来，那么 $lcp(l,p)$ 就转化为树上的 lca，并且所有后缀一定是树上的叶子</p><p>把询问离线，挂到 $l$ 对应的叶子上，当询问的 $l$ 变到 sa 序上的下一个时，lca 发生的变化是比较小的，因此我们可以考虑通过一次 dfs 处理询问</p><p>有一个 $O(\sum siz)$ 的暴力：我们每次 dfs 到一个点 $u$，假设接下来要进左子树，就把所有右子树的 $h_{lca}+p$ 值加到一个数据结构中，这样我们到叶子时就直接查询这个数据结构中满足条件的即可，而这个数据结构可以用一个下表为 $p$，值为 $h_u+p$ 的线段树来实现</p><p>但是这样复杂度可能会很劣，考虑优化。</p><p>我们在 dfs 的过程中，会涉及将子树加入数据结构的操作：</p><ul><li>如果需要加的子树是轻儿子，我们就暴力加，总共会加 $O(n\log n)$ 次，复杂度 $O(n\log^2n)$</li><li>否则我们启发式合并得到子树内的所有 $p$ 值的 set，然后由于对这棵子树，$h_{lca}$ 是固定的，因此我们可以直接在这个 set 上查出最小的符合条件的 $p$，而这样的情况只会在我们进轻子树时发生，因此对每个叶子只用查 $O(\log n)$ 次，复杂度是 $O(n\log^2n)$ 的，启发式合并也是 $O(n\log^2n)$ 的</li></ul><p>因此总复杂度 $O(n\log^2n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="9-WC2016-论战捆竹竿-Keter-✔️"><a href="#9-WC2016-论战捆竹竿-Keter-✔️" class="headerlink" title="9.  WC2016 - 论战捆竹竿 [Keter] ✔️"></a>9.  WC2016 - 论战捆竹竿 [Keter] ✔️</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>有足够多个竹竿，每个竹竿上都写着一个同样长为 $n$ 的字符串 $s$</p>
 <p>你有一个字符串 $t$，初始为空，你需要进行非零次以下操作：</p>
@@ -353,33 +346,68 @@
 <p>求在 $|t|\le w$ 的情况下，你能产生多少种 $t$ 的长度</p>
 <p>$T$ 组数据。</p>
 <p>$1\le T\le5,1\le n\le5\times10^5,1\le w\le10^{18}$</p>
-<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><p>问题相当于初始 $|t|=n$，每次我们可以选择一个 $s$ 的 border $x$，然后 $|t|\leftarrow|t|+x$，问能得到多少 $\le w$ 的 $|t|$</p>
-<p>$w\leftarrow w-n$，现在初始 $|t|=0$。</p>
-<p>这是一个经典的问题，可以用同余最短路解决，具体地，假设我们可以选择 $+a_1,+a_2,\cdots,+a_n$ 中的操作，那么我们任选一个 $+a_i$，然后通过最短路计算出来，对每个 $0\le k&lt;a_i$，能凑出来的最小的 $\equiv k\pmod{a_i}$ 的数</p>
-<p>但是这样复杂度是 $O(n^2)$ 的。</p>
-<p>考虑优化，有一个性质：长为 $n$ 字符串的 border 长度可以表示为 $O(\log n)$ 个值域不交的等差数列，这启示我们将一个等差数列放在一起处理</p>
-<p>假设当前等差数列为 $a,a+d,a+2d,\cdots,a+rd$，通过直觉，我们感受到在 $\bmod a$ 意义下进行会比较舒服，因此我们考虑如何解决 $\bmod a$ 下的问题</p>
-<p>那么我们每次相当于可以 $+d,+2d,+\cdots,+rd$，但由于建出来的边都是转圈的，所以不是很好做</p>
-<p>观察到一件事情，对于 $dis$ 最小的点，跨过它的转移一定不优，因为我们可以直接将其转变为从最小点出发的转移</p>
-<p>那么可以将这个圈从 $dis$ 最小的点处断开，而剩下的部分我们就可以用单调队列处理了</p>
-<p>但是还有一个问题：不同等差数列的模数是不同的，我们需要一种能够切换模数的方法</p>
-<p>假设现在是 $\bmod a_0$ 意义下，我们需要切换到 $\bmod a_1$ 意义下</p>
-<p>设 $f_i$ 表示 $\bmod a_0$ 意义下 $i$ 的最短路，$g_i$ 表示 $\bmod a_1$ 意义下 $i$ 的最短路</p>
-<p>由于有 $+a_1$ 的操作，所以我们仍然只需要求出来能够访问的最小的 $\equiv k\pmod{a_1}$ 的数即可</p>
-<p>$f_i$ 的意义是 $f_i+ka_0$ 均可访问，那么我们可以将 $g_{f_i\bmod a_1}$ 先用 $f_i$ 更新，然后对于每个 $i$，从 $g_i$ 向 $g_{(i+a_0)\bmod a_1}$ 转移，这样仍然可以从最小点处断开，重复一边上面的过程就可以做到换模数了</p>
-<p>总复杂度 $O(Tn\log n)$</p>
+<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>问题相当于初始 $|t|=n$，每次我们可以选择一个 $s$ 的 border $x$，然后 $|t|\leftarrow|t|+x$，问能得到多少 $\le w$ 的 $|t|$</p><p>$w\leftarrow w-n$，现在初始 $|t|=0$。</p><p>这是一个经典的问题，可以用同余最短路解决，具体地，假设我们可以选择 $+a_1,+a_2,\cdots,+a_n$ 中的操作，那么我们任选一个 $+a_i$，然后通过最短路计算出来，对每个 $0\le k&lt;a_i$，能凑出来的最小的 $\equiv k\pmod{a_i}$ 的数</p><p>但是这样复杂度是 $O(n^2)$ 的。</p><p>考虑优化，有一个性质：长为 $n$ 字符串的 border 长度可以表示为 $O(\log n)$ 个值域不交的等差数列，这启示我们将一个等差数列放在一起处理</p><p>假设当前等差数列为 $a,a+d,a+2d,\cdots,a+rd$，通过直觉，我们感受到在 $\bmod a$ 意义下进行会比较舒服，因此我们考虑如何解决 $\bmod a$ 下的问题</p><p>那么我们每次相当于可以 $+d,+2d,+\cdots,+rd$，但由于建出来的边都是转圈的，所以不是很好做</p><p>观察到一件事情，对于 $dis$ 最小的点，跨过它的转移一定不优，因为我们可以直接将其转变为从最小点出发的转移</p><p>那么可以将这个圈从 $dis$ 最小的点处断开，而剩下的部分我们就可以用单调队列处理了</p><p>但是还有一个问题：不同等差数列的模数是不同的，我们需要一种能够切换模数的方法</p><p>假设现在是 $\bmod a_0$ 意义下，我们需要切换到 $\bmod a_1$ 意义下</p><p>设 $f_i$ 表示 $\bmod a_0$ 意义下 $i$ 的最短路，$g_i$ 表示 $\bmod a_1$ 意义下 $i$ 的最短路</p><p>由于有 $+a_1$ 的操作，所以我们仍然只需要求出来能够访问的最小的 $\equiv k\pmod{a_1}$ 的数即可</p><p>$f_i$ 的意义是 $f_i+ka_0$ 均可访问，那么我们可以将 $g_{f_i\bmod a_1}$ 先用 $f_i$ 更新，然后对于每个 $i$，从 $g_i$ 向 $g_{(i+a_0)\bmod a_1}$ 转移，这样仍然可以从最小点处断开，重复一边上面的过程就可以做到换模数了</p><p>总复杂度 $O(Tn\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="10-CF1864H-Asterism-Stream-Keter-⭐"><a href="#10-CF1864H-Asterism-Stream-Keter-⭐" class="headerlink" title="10.  CF1864H - Asterism Stream [Keter] ⭐"></a>10.  CF1864H - Asterism Stream [Keter] ⭐</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>你有一个数 $x$，初始为 $1$，每一步操作你有 $\frac12$ 的概率 $x\leftarrow x+1$，另 $\frac12$ 的概率 $x\leftarrow2x$</p>
 <p>$t$ 次询问，每次给定 $n$，求 $x\ge n$ 的期望操作次数，对 $998244353$ 取模</p>
 <p>$1\le t\le100,1\le n\le10^{18}$</p>
-<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><p>在讨论区看到一个有趣的做法，遂写。</p>
-<p>首先将操作反过来，定义 $f(i)$ 表示 $x&gt;n$ 的期望操作次数，那么有递推式：</p>
-<script type="math/tex; mode=display">
-f(n)=1+\frac12\left(f(n-1)+f\left(\left\lfloor\frac n2\right\rfloor\right)\right)</script><p>但是这个我们不太会搞。</p>
-<p>然后伟大的 amiya 先生说，你的矩阵里存 $[f(n),f(\lfloor n/2\rfloor),f(\lfloor n/4\rfloor),\cdots,1]$，就可以转移了</p>
-<p>具体地，$n\rightarrow n+1$ 的转移只和 $n$ 二进制表示中末尾 1 的个数有关系，用 $M_{ct1(n)}$ 表示</p>
-<p>我们可以用 $O(\log^4n)$ 的时间，对每个 $k$，预处理出 $\prod_{i=0}^{2^k-2}M_{ct1(i)}$，由此便可以在 $O(\log^3n)$ 的时间内处理每个询问</p>
-<p>那么最后的复杂度就为 $O(\log^4n+t\log^3n)$</p>
+<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>在讨论区看到一个有趣的做法，遂写。</p><p>首先将操作反过来，定义 $f(i)$ 表示 $x&gt;n$ 的期望操作次数，那么有递推式：</p><script type="math/tex; mode=display">f(n)=1+\frac12\left(f(n-1)+f\left(\left\lfloor\frac n2\right\rfloor\right)\right)</script><p>但是这个我们不太会搞。</p><p>然后伟大的 amiya 先生说，你的矩阵里存 $[f(n),f(\lfloor n/2\rfloor),f(\lfloor n/4\rfloor),\cdots,1]$，就可以转移了</p><p>具体地，$n\rightarrow n+1$ 的转移只和 $n$ 二进制表示中末尾 1 的个数有关系，用 $M_{ct1(n)}$ 表示</p><p>我们可以用 $O(\log^4n)$ 的时间，对每个 $k$，预处理出 $\prod_{i=0}^{2^k-2}M_{ct1(i)}$，由此便可以在 $O(\log^3n)$ 的时间内处理每个询问</p><p>那么最后的复杂度就为 $O(\log^4n+t\log^3n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="11-六省联考-2017-相逢是问候-Euclid"><a href="#11-六省联考-2017-相逢是问候-Euclid" class="headerlink" title="11.  六省联考 2017 - 相逢是问候 [Euclid]"></a>11.  六省联考 2017 - 相逢是问候 [Euclid]</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数组 $a_1,a_2,\cdots,a_n$，以及常数 $c,p$，你需要维护 $m$ 次操作，每次操作为以下两种中的一种：</p>
+<ul>
+<li><code>0 l r</code>，对所有 $i\in[l,r]$ 执行 $a_i\leftarrow c^{a_i}$</li>
+<li><code>1 l r</code>，求 $\sum_{i=l}^ra_i\bmod p$</li>
+</ul>
+<p>$1\le n,m\le5\times10^4,1\le p\le10^8,0&lt;c&lt;p,0\le a_i&lt;p$</p>
+<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>根据扩展欧拉定理，一个数叠 $O(\log p)$ 层次方塔后结果就不会变了，因此对于每个数只会有 $O(\log p)$ 次变化</p><p>那么我们用一棵线段树来维护，每次对区间内仍变化的位置暴力修改</p><p>而每次修改需要求一遍次方塔，这可以用扩展欧拉定理解决，复杂度 $O(\log^2p)$，加上分块快速幂就是 $O(\log p)$</p><p>那么总复杂度 $O(m\log^2p)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="12-湖北省选模拟-2023-棋圣-Euclid"><a href="#12-湖北省选模拟-2023-棋圣-Euclid" class="headerlink" title="12.  湖北省选模拟 2023 - 棋圣 [Euclid]"></a>12.  湖北省选模拟 2023 - 棋圣 [Euclid]</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n$ 个点 $m$ 条边的简单无向连通图，边有边权，初始有 $k$ 个节点上分别有一个棋子，这些棋子可能是黑子或白子，颜色和棋子位置由输入给定</p>
+<p>你可以进行若干次（可以为零）以下操作：</p>
+<p>选择任意一个没有棋子的点 $u$，然后对每个棋子，设其在节点 $v$，你需要选择一条 $v\rightarrow u$ 的简单路径，然后让这个棋子沿这条路径走一步（一个节点可能）</p>
+<p>最后对于每一对有边直接相连的黑白棋子，你会获得这条边边权的收益</p>
+<p>求最大收益</p>
+<p>$3\le n\le100,n-1\le m\le\frac12n(n-1),1\le k\le n-1$，边权 $\le10^5$</p>
+<h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>如果这张图有一个不为链的生成树，这显然是一个二分图，那么我们可以将所有点在度数 $\ge3$ 的点上反复摩擦，一定将可以将所有在这棵树左部点上的棋子聚到一起，右部点上的棋子聚到一起</p><p>对于二分图，我们可以将这些点运送到边权最大的边两端，这样一定是最优的</p><p>如果不是二分图，我们可以用奇环来让黑点都在左部点，白点都在右部点，这样再运送到边权最大的边两端</p><p>但我们还需要考虑链的情况。</p><p>注意到链是二分图，并且棋子的相对顺序不会改变，并且相邻棋子之间的距离不增，那么我们可以进行一个 dp，令 $f_{i,l,r}$ 表示链的前 $i$ 个位置，第 $i$ 个位置上有 $[l,r]$ 的棋子，转移 $O(n)$</p><p>最后的复杂度就是 $O(n^4)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="13-湖北省选模拟-2023-环山危路-Keter"><a href="#13-湖北省选模拟-2023-环山危路-Keter" class="headerlink" title="13.  湖北省选模拟 2023 - 环山危路 [Keter]"></a>13.  湖北省选模拟 2023 - 环山危路 [Keter]</h3><h4 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h4><p>$n$ 个点的竞赛图，$m$ 次询问，每次询问形如：</p>
+<p>给定 $t,k,s_1,s_2,\cdots,s_k$，求以 $s_1,s_2,\cdots,s_k$ 为源点，$t$ 为汇点，所有边容量都为 $1$ 的最大流</p>
+<p>$1\le n\le3000,1\le m,\sum k\le30000$</p>
+<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>一般最大流的模型不是很好考虑，因此我们转成最小割</p><p>设最后源点所处连通块为 $S$，汇点所处连通块为 $T$，那么由于任意两个点之间都有边，最小割的边数可以表示为 $\sum_{u\in T}in_u-\frac12|T|(|T|-1)$</p><p>也就是说，当 $|T|$ 一定时，$\sum_{u\in T}in_u$ 越小越好</p><p>那么每次询问，我们按 $in$ 排序，贪心扫一遍对每个 $|T|$ 求出最小的 $\sum_{u\in T}in_u$ 即可</p><p>复杂度 $O(n^2+nm)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="14-湖北省选模拟-2023-山路长环-Safe"><a href="#14-湖北省选模拟-2023-山路长环-Safe" class="headerlink" title="14.  湖北省选模拟 2023 - 山路长环 [Safe]"></a>14.  湖北省选模拟 2023 - 山路长环 [Safe]</h3><h4 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h4><p>按如下方式定义 $F(w_1,w_2,\cdots,w_k)$：</p>
+<p>两个人在一个长为 $k$ 的环上玩游戏，第 $i$ 条边边权为 $w_i$，有一个棋子一开始在某个节点上，两个人轮流移动棋子，每一步可以将棋子移到其某个相邻点，然后将经过边的边权减少任意正整数，但需要保证边权始终非负</p>
+<p>无法操作者输，$F(w_1,w_2,\cdots,w_k)$ 的值为有多少棋子初始位置使得先手必胜</p>
+<p>给定长为 $n$ 的数列 $a_1,a_2,\cdots,a_n$，$q$ 次操作，每次操作为以下两种中的一种：</p>
+<ul>
+<li><code>1 x y</code>，执行 $a_x\leftarrow y$</li>
+<li><code>2 l r</code>，输出 $F(a_l,a_{l+1},\cdots,a_r)$</li>
+</ul>
+<p>$1\le n,q\le3\times10^5,0\le y,a_i\le10^6$</p>
+<h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑当 $w_1,w_2,\cdots,w_k$ 确定时，如何判断某个特定起点是否合法</p><p>观察到一件事情，如果当前棋子相邻的两条出边有一条边权为 $0$，则棋子下一步一定把另一条出边的边权变为 $0$，否则对手下一步可以让棋子再走回来，并将这条出边的边权变为 $0$</p><p>分情况讨论，首先是有边权为 $0$ 的情况，这种情况我们可以从边权为 $0$ 的位置拆开，转化成链上的问题</p><p>如果当前棋子位置的两边，有一边有奇数条边，那么先手直接走过去并把边权变为 $0$，就能保证获胜</p><p>而两边都是偶数条边的情况，后手可以采取类似的策略取得胜利</p><p>因此获胜的点数只和非零连续段的长度有关</p><p>考虑没有边权为 $0$ 的情况，如果 $k$ 是奇数，那么先手直接把一条边边权取成 $0$ 一定必胜</p><p>如果 $k$ 是偶数，那么谁先取出一条 $0$ 边谁输，这意味着两个人都不能走边权为 $1$ 的边，而这和我们直接把原问题的所有边权 $-1$ 没有任何区别，所以我们可以将边权不断 $-1$，直到有边权为 $0$ 的边为止，也就是我们只关心不为最小值的连续段的长度</p><p>这些信息是容易放到线段树上维护的，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 
         </div>
@@ -393,7 +421,7 @@ f(n)=1+\frac12\left(f(n-1)+f\left(\left\lfloor\frac n2\right\rfloor\right)\right
         <li><strong>Created at:</strong> 2023-08-03 00:00:00</li>
         
             <li>
-                <strong>Updated at:</strong> 2023-08-27 23:05:14
+                <strong>Updated at:</strong> 2023-09-02 09:33:36
             </li>
         
         <li>
@@ -418,13 +446,13 @@ f(n)=1+\frac12\left(f(n-1)+f\left(\left\lfloor\frac n2\right\rfloor\right)\right
                     <div class="article-prev">
                         <a class="prev"
                         rel="prev"
-                        href="/10007/06/07/hello-world/"
+                        href="/2023/09/01/task6/"
                         >
                             <span class="left arrow-icon flex-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-title-item">task6</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -503,7 +531,7 @@ f(n)=1+\frac12\left(f(n-1)+f\left(\left\lfloor\frac n2\right\rfloor\right)\right
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">task5</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-CF1746F-Kazaee-Keter-%E2%AD%90"><span class="nav-text">1.  CF1746F - Kazaee [Keter] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-CF1696F-Tree-Recovery-Keter-%E2%AD%90"><span class="nav-text">2.  CF1696F - Tree Recovery [Keter] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1738G-Anti-Increasing-Addicts-Euclid"><span class="nav-text">3.  CF1738G - Anti-Increasing Addicts [Euclid]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-CF1637F-Towers-Keter"><span class="nav-text">4.  CF1637F - Towers [Keter]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-AGC053C-Random-Card-Game-Keter-%E2%9C%94%EF%B8%8F"><span class="nav-text">5.  AGC053C - Random Card Game [Keter] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-AGC052C-Nondivisible-Prefix-Sums-Keter-%E2%AD%90"><span class="nav-text">6.  AGC052C - Nondivisible Prefix Sums [Keter] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-AGC019E-Shuffle-and-Swap-Euclid"><span class="nav-text">7.  AGC019E - Shuffle and Swap [Euclid]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-BJWC2018-Border-%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%B1%82%E6%B3%95-Keter-%E2%9C%94%EF%B8%8F"><span class="nav-text">8.  BJWC2018 - Border 的四种求法 [Keter] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-WC2016-%E8%AE%BA%E6%88%98%E6%8D%86%E7%AB%B9%E7%AB%BF-Keter-%E2%9C%94%EF%B8%8F"><span class="nav-text">9.  WC2016 - 论战捆竹竿 [Keter] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-CF1864H-Asterism-Stream-Keter-%E2%AD%90"><span class="nav-text">10.  CF1864H - Asterism Stream [Keter] ⭐</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-CF1746F-Kazaee-Keter-%E2%AD%90"><span class="nav-text">1.  CF1746F - Kazaee [Keter] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-CF1696F-Tree-Recovery-Keter-%E2%AD%90"><span class="nav-text">2.  CF1696F - Tree Recovery [Keter] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1738G-Anti-Increasing-Addicts-Euclid"><span class="nav-text">3.  CF1738G - Anti-Increasing Addicts [Euclid]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-CF1637F-Towers-Keter"><span class="nav-text">4.  CF1637F - Towers [Keter]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-AGC053C-Random-Card-Game-Keter-%E2%9C%94%EF%B8%8F"><span class="nav-text">5.  AGC053C - Random Card Game [Keter] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-AGC052C-Nondivisible-Prefix-Sums-Keter-%E2%AD%90"><span class="nav-text">6.  AGC052C - Nondivisible Prefix Sums [Keter] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-AGC019E-Shuffle-and-Swap-Euclid"><span class="nav-text">7.  AGC019E - Shuffle and Swap [Euclid]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-BJWC2018-Border-%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%B1%82%E6%B3%95-Keter-%E2%9C%94%EF%B8%8F"><span class="nav-text">8.  BJWC2018 - Border 的四种求法 [Keter] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-WC2016-%E8%AE%BA%E6%88%98%E6%8D%86%E7%AB%B9%E7%AB%BF-Keter-%E2%9C%94%EF%B8%8F"><span class="nav-text">9.  WC2016 - 论战捆竹竿 [Keter] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-CF1864H-Asterism-Stream-Keter-%E2%AD%90"><span class="nav-text">10.  CF1864H - Asterism Stream [Keter] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E5%85%AD%E7%9C%81%E8%81%94%E8%80%83-2017-%E7%9B%B8%E9%80%A2%E6%98%AF%E9%97%AE%E5%80%99-Euclid"><span class="nav-text">11.  六省联考 2017 - 相逢是问候 [Euclid]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E6%B9%96%E5%8C%97%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F-2023-%E6%A3%8B%E5%9C%A3-Euclid"><span class="nav-text">12.  湖北省选模拟 2023 - 棋圣 [Euclid]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E6%B9%96%E5%8C%97%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F-2023-%E7%8E%AF%E5%B1%B1%E5%8D%B1%E8%B7%AF-Keter"><span class="nav-text">13.  湖北省选模拟 2023 - 环山危路 [Keter]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E6%B9%96%E5%8C%97%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F-2023-%E5%B1%B1%E8%B7%AF%E9%95%BF%E7%8E%AF-Safe"><span class="nav-text">14.  湖北省选模拟 2023 - 山路长环 [Safe]</span></a></li></ol>
 
     </div>
 </div>
