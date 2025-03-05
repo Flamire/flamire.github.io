@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2023-11-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-17T07:32:49.213Z">
+<meta property="article:modified_time" content="2025-03-05T09:50:14.779Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-12-17 15:32:49</span>
-            <span class="mobile">2024-12-17 15:32:49</span>
+            <span class="desktop">2025-03-05 17:50:14</span>
+            <span class="mobile">2025-03-05 17:50:14</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -299,17 +299,11 @@
 </ul>
 <p>求最后第 $n$ 个队列有多少种本质不同的情况，对 $998244353$ 取模</p>
 <p>$2\le n\le300$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>本质不同的一种思路就是考察什么样的状态满足条件</p>
-<p>直接在最后的序列上考虑这个问题，设其为 $q$，首先 $q_1$ 一定是 <code>B</code>，因为 $s_n$ 是 <code>B</code></p>
-<p>那么 $s_n$ 前面的极长的一段每个 <code>R</code> 会导致 $q$ 的最后一个还未确定的位置必须是 <code>R</code></p>
-<p>$s_n$ 前面第一个 <code>B</code> 相当于选定一个位置 $id$，钦定 $q_{id}$ 为 <code>B</code></p>
-<p>接下来前面极长的一段每个 <code>R</code> 会导致 $q[id+1:n]$ 或 $q[1:id-1]$ 的最后一个还未确定的位置必须是 <code>R</code></p>
-<p>依此类推。</p>
-<p>那么不难想到考虑最后的队列每个 <code>B</code> 前面的 <code>R</code> 个数，设第 $i+1$ 个 <code>B</code> 前面有 $d_i$ 个 <code>R</code>（第 $1$ 个 <code>B</code> 前面一定没有 <code>R</code>）</p>
-<p>我们可以按任意顺序加入这些 <code>B</code>，遇到每个 <code>R</code> 我们可以选择给任意一个已经加入的 <code>B</code> 的 $d$ 值 $+1$，那么不难发现一个加入顺序合法的充要条件是 $\forall t_i\le \sum_{j=1}^id_j$，其中 $t_i$ 表示 $s$ 中第 $i$ 个 <code>B</code> 前面有多少 <code>A</code></p>
-<p>因此我们一定将 $d$ 从小到大排序</p>
-<p>那么我们可以设出 dp，令 $dp_{i,j,k}$ 表示考虑了所有 $\le i$ 的 $d$，用了 $j$ 个 <code>A</code>，$k$ 个 <code>B</code>，转移是调和级数，因此复杂度 $O(n^3\ln n)$</p>
-<p>但是注意到如果我们倒着 dp，考虑所有 $\ge i$ 的 $d$，那么 $k$ 只用枚举到 $\frac ni$，复杂度就是 $\sum_i\frac{n^3}{i^2}=O(n^3)$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>本质不同的一种思路就是考察什么样的状态满足条件</p><p>直接在最后的序列上考虑这个问题，设其为 $q$，首先 $q_1$ 一定是 <code>B</code>，因为 $s_n$ 是 <code>B</code></p><p>那么 $s_n$ 前面的极长的一段每个 <code>R</code> 会导致 $q$ 的最后一个还未确定的位置必须是 <code>R</code></p><p>$s_n$ 前面第一个 <code>B</code> 相当于选定一个位置 $id$，钦定 $q_{id}$ 为 <code>B</code></p><p>接下来前面极长的一段每个 <code>R</code> 会导致 $q[id+1:n]$ 或 $q[1:id-1]$ 的最后一个还未确定的位置必须是 <code>R</code></p><p>依此类推。</p><p>那么不难想到考虑最后的队列每个 <code>B</code> 前面的 <code>R</code> 个数，设第 $i+1$ 个 <code>B</code> 前面有 $d_i$ 个 <code>R</code>（第 $1$ 个 <code>B</code> 前面一定没有 <code>R</code>）</p><p>我们可以按任意顺序加入这些 <code>B</code>，遇到每个 <code>R</code> 我们可以选择给任意一个已经加入的 <code>B</code> 的 $d$ 值 $+1$，那么不难发现一个加入顺序合法的充要条件是 $\forall t_i\le \sum_{j=1}^id_j$，其中 $t_i$ 表示 $s$ 中第 $i$ 个 <code>B</code> 前面有多少 <code>A</code></p><p>因此我们一定将 $d$ 从小到大排序</p><p>那么我们可以设出 dp，令 $dp_{i,j,k}$ 表示考虑了所有 $\le i$ 的 $d$，用了 $j$ 个 <code>A</code>，$k$ 个 <code>B</code>，转移是调和级数，因此复杂度 $O(n^3\ln n)$</p><p>但是注意到如果我们倒着 dp，考虑所有 $\ge i$ 的 $d$，那么 $k$ 只用枚举到 $\frac ni$，复杂度就是 $\sum_i\frac{n^3}{i^2}=O(n^3)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="2-USACO22OPEN-Hoof-and-Brain-S"><a href="#2-USACO22OPEN-Hoof-and-Brain-S" class="headerlink" title="2.  USACO22OPEN - Hoof and Brain [S]"></a>2.  USACO22OPEN - Hoof and Brain [S]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的有向图，在上面玩一个游戏：</p>
 <p>初始将两个棋子分别放在节点 $a$ 和节点 $b$，两个玩家分别扮演 “脑” 和 “蹄” 的角色</p>
@@ -317,14 +311,11 @@
 <p>如果某一回合 “蹄” 无法操作则 “脑” 胜，如果游戏可以无限进行下去则 “蹄” 胜</p>
 <p>$q$ 次询问，每次给定一对 $a,b$，求胜者</p>
 <p>$2\le n\le10^5,1\le m\le2\times10^5,1\le q\le10^5$</p>
-<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>观察一些事情：</p>
-<ul>
-<li>如果走到了没有出边的点，那么 “脑” 必胜，因此我们可以将这些点删除</li>
-<li>如果一个点出边只有一条，那么 “脑” 让棋子沿着这条边走一定不会变劣，因此我们可以将这些点缩起来</li>
-</ul>
-<p>考虑这个和广义串并联图很像，删 $0$ 度点，缩 $1$ 度点，合并重边</p>
-<p>那么我们直接用启发式合并随便缩一下，容易发现此时两个棋子属于同一个点是 “脑” 胜的充要条件</p>
-<p>复杂度 $O(n\log n)$ 或 $O(n\log^2n)$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>观察一些事情：</p><ul><li>如果走到了没有出边的点，那么 “脑” 必胜，因此我们可以将这些点删除</li><li>如果一个点出边只有一条，那么 “脑” 让棋子沿着这条边走一定不会变劣，因此我们可以将这些点缩起来</li></ul><p>考虑这个和广义串并联图很像，删 $0$ 度点，缩 $1$ 度点，合并重边</p><p>那么我们直接用启发式合并随便缩一下，容易发现此时两个棋子属于同一个点是 “脑” 胜的充要条件</p><p>复杂度 $O(n\log n)$ 或 $O(n\log^2n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="3-AGC021F-Trinity-E"><a href="#3-AGC021F-Trinity-E" class="headerlink" title="3.  AGC021F - Trinity [E]"></a>3.  AGC021F - Trinity [E]</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>一个 $n\times m$ 的方格，你需要计数能够生成的本质不同三元组 $(A_{1..n},B_{1..m},C_{1..m})$ 的数量：</p>
 <ul>
@@ -334,29 +325,11 @@
 </ul>
 <p>对 $998244353$ 取模</p>
 <p>$1\le n\le8000,1\le m\le200$</p>
-<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>就这也配金牌题。</p>
-<p>但是为什么大家都能想到最简洁的计数方式，我就不行。</p>
-<p>观察 $A$ 的地位和 $B,C$ 不一样，因此我们考虑计算确定 $A$ 后 $B,C$ 的数量</p>
-<p>首先，对于空行或空列的情况我们可以直接忽略，最后乘上组合数</p>
-<p>那么对于第 $i$ 列，我们需要讨论两种情况：</p>
-<ul>
-<li>存在 $A_x=i$，假设最左的 $A_x=i$ 左边有 $vl$ 个 $A_x&lt;i$，最右的 $A_x=i$ 右边有 $vr$ 个 $A_x&lt;i$，那么这一列会贡献 $(vl+1)(vr+1)$ 的系数</li>
-<li>不存在 $A_x=i$，设 $A_x&lt;i$ 的个数为 $v$，那么这一行会贡献 $\frac12v(v+1)$ 的系数</li>
-</ul>
-<p>这个东西看起来就很能 dp，设 $dp_{i,j}$ 表示考虑了前 $i$ 列，$A_x\le i$ 的共有 $j$ 个，转移分三种情况：</p>
-<ul>
-<li>不存在 $A_x=i+1$，转移为：$\frac12j(j+1)\times dp_{i,j}\rightarrow dp_{i+1,j}$</li>
-<li>存在恰好 $1$ 个 $A_x=i+1$，我们枚举这个位置在哪两个 $A_x\le i$ 之间，转移为：$\sum_{x=0}^j(x+1)(j-x+1)\times dp_{i,j}\rightarrow dp_{i+1,j+1}$</li>
-<li>存在 $\ge2$ 个 $A_x=i+1$，我们枚举一共有多少个这样的位置 $x$，以及最左边的和最右边的分别在哪两个 $A_x\le i$ 之间 $l,r$，转移为：$\sum_{l+r\le j}(l+1)(r+1)\binom{j-l-r+x-2}{x-2}\times dp_{i,j}\rightarrow dp_{i,j+x}$</li>
-</ul>
-<p>前两种情况容易做到 $O(nm)$，考虑第三种情况：</p>
-<p>首先，这个式子和 $l,r$ 单独相关的部分很少，那么我们先枚举一个 $T=l+r$，式子变为：</p>
-<script type="math/tex; mode=display">
-\sum_{T=0}^j\sum_{l+r=T}(l+1)(r+1)\binom{j-T+x-2}{x-2}\times dp_{i,j}</script><p>注意到 $\sum_{l+r=T}(l+1)(r+1)=\sum_{l+r=T+2}lr=\binom{T+3}{3}$，这个可以通过组合意义或者上指标范德蒙德卷积得到，式子变为：</p>
-<script type="math/tex; mode=display">
-\sum_{T=0}^j\binom{T+3}3\binom{j-T+x-2}{x-2}\times dp_{i,j}</script><p>这也是一个上指标范德蒙德卷积：</p>
-<script type="math/tex; mode=display">
-\binom{j+x-2}{x-2}\times dp_{i,j}\rightarrow dp_{i+1,j+x}</script><p>显然卷积，复杂度 $O(nm\log n)$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>就这也配金牌题。</p><p>但是为什么大家都能想到最简洁的计数方式，我就不行。</p><p>观察 $A$ 的地位和 $B,C$ 不一样，因此我们考虑计算确定 $A$ 后 $B,C$ 的数量</p><p>首先，对于空行或空列的情况我们可以直接忽略，最后乘上组合数</p><p>那么对于第 $i$ 列，我们需要讨论两种情况：</p><ul><li>存在 $A_x=i$，假设最左的 $A_x=i$ 左边有 $vl$ 个 $A_x&lt;i$，最右的 $A_x=i$ 右边有 $vr$ 个 $A_x&lt;i$，那么这一列会贡献 $(vl+1)(vr+1)$ 的系数</li><li>不存在 $A_x=i$，设 $A_x&lt;i$ 的个数为 $v$，那么这一行会贡献 $\frac12v(v+1)$ 的系数</li></ul><p>这个东西看起来就很能 dp，设 $dp_{i,j}$ 表示考虑了前 $i$ 列，$A_x\le i$ 的共有 $j$ 个，转移分三种情况：</p><ul><li>不存在 $A_x=i+1$，转移为：$\frac12j(j+1)\times dp_{i,j}\rightarrow dp_{i+1,j}$</li><li>存在恰好 $1$ 个 $A_x=i+1$，我们枚举这个位置在哪两个 $A_x\le i$ 之间，转移为：$\sum_{x=0}^j(x+1)(j-x+1)\times dp_{i,j}\rightarrow dp_{i+1,j+1}$</li><li>存在 $\ge2$ 个 $A_x=i+1$，我们枚举一共有多少个这样的位置 $x$，以及最左边的和最右边的分别在哪两个 $A_x\le i$ 之间 $l,r$，转移为：$\sum_{l+r\le j}(l+1)(r+1)\binom{j-l-r+x-2}{x-2}\times dp_{i,j}\rightarrow dp_{i,j+x}$</li></ul><p>前两种情况容易做到 $O(nm)$，考虑第三种情况：</p><p>首先，这个式子和 $l,r$ 单独相关的部分很少，那么我们先枚举一个 $T=l+r$，式子变为：</p><script type="math/tex; mode=display">\sum_{T=0}^j\sum_{l+r=T}(l+1)(r+1)\binom{j-T+x-2}{x-2}\times dp_{i,j}</script><p>注意到 $\sum_{l+r=T}(l+1)(r+1)=\sum_{l+r=T+2}lr=\binom{T+3}{3}$，这个可以通过组合意义或者上指标范德蒙德卷积得到，式子变为：</p><script type="math/tex; mode=display">\sum_{T=0}^j\binom{T+3}3\binom{j-T+x-2}{x-2}\times dp_{i,j}</script><p>这也是一个上指标范德蒙德卷积：</p><script type="math/tex; mode=display">\binom{j+x-2}{x-2}\times dp_{i,j}\rightarrow dp_{i+1,j+x}</script><p>显然卷积，复杂度 $O(nm\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="4-AGC021E-Ball-Eat-Chameleons-S"><a href="#4-AGC021E-Ball-Eat-Chameleons-S" class="headerlink" title="4.  AGC021E - Ball Eat Chameleons [S]"></a>4.  AGC021E - Ball Eat Chameleons [S]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个变色龙，初始都为蓝色，你向它们喂食了 $k$ 个球，每个球可能是红球或蓝球，你喂食一个球之后它会立刻被某一个变色龙吃掉</p>
 <p>变色龙会按照如下方式变色：</p>
@@ -367,113 +340,79 @@
 </ul>
 <p>已知你喂食完之后所有变色龙均为红色，求你喂食的球的长为 $k$ 的颜色序列有多少种可能，对 $998244353$</p>
 <p>$1\le n,k\le5\times10^5$</p>
-<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>就这也配银牌题。</p>
-<p>首先如果 $n&gt;k$ 那么答案显然是 $0$​，先判掉</p>
-<p>称红色数大于蓝色数的变色龙为真红，红色数等于蓝色数的变色龙为半红</p>
-<p>注意到一个半红满足条件当且仅当它最后一个吃的球是蓝色</p>
-<p>考虑枚举一共有多少个红球，设红球数为 $R$，蓝球数为 $B$：</p>
-<ul>
-<li><p>如果 $R-B\ge k$，那么显然任意顺序都可以，答案即为 $\binom kR$，判掉</p>
-</li>
-<li><p>如果 $R&lt;B$，显然任意顺序都不可以，答案为 $0$，判掉</p>
-</li>
-<li><p>如果 $R&gt;B,R-B&lt;k$，显然每个真红都恰好多 $1$ 个是最优的，因此我们可以算出真红的数量 $x$ 和半红的数量 $y$，同时不难发现半红一定都恰好吃了一个红球一个蓝球，因为多余的球可以让真红吃掉，那么限制相当于我们的颜色序列能选出 $y$ 个不交的 <code>RB</code> 子序列，也就是第 $B-y+i$ 个 <code>B</code> 前面至少有 $i$ 个 <code>R</code>，也就是任意前缀红色 - 蓝色 $\ge-(B-y)$，这个可以直接折线法</p>
-</li>
-<li>如果 $R=B$，那么最后一个球一定是蓝色，去掉之后就转化成了前面的情况</li>
-</ul>
-<p>复杂度 $O(k)$</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>就这也配银牌题。</p><p>首先如果 $n&gt;k$ 那么答案显然是 $0$​，先判掉</p><p>称红色数大于蓝色数的变色龙为真红，红色数等于蓝色数的变色龙为半红</p><p>注意到一个半红满足条件当且仅当它最后一个吃的球是蓝色</p><p>考虑枚举一共有多少个红球，设红球数为 $R$，蓝球数为 $B$：</p><ul><li><p>如果 $R-B\ge k$，那么显然任意顺序都可以，答案即为 $\binom kR$，判掉</p></li><li><p>如果 $R&lt;B$，显然任意顺序都不可以，答案为 $0$，判掉</p></li><li><p>如果 $R&gt;B,R-B&lt;k$，显然每个真红都恰好多 $1$ 个是最优的，因此我们可以算出真红的数量 $x$ 和半红的数量 $y$，同时不难发现半红一定都恰好吃了一个红球一个蓝球，因为多余的球可以让真红吃掉，那么限制相当于我们的颜色序列能选出 $y$ 个不交的 <code>RB</code> 子序列，也就是第 $B-y+i$ 个 <code>B</code> 前面至少有 $i$ 个 <code>R</code>，也就是任意前缀红色 - 蓝色 $\ge-(B-y)$，这个可以直接折线法</p></li><li>如果 $R=B$，那么最后一个球一定是蓝色，去掉之后就转化成了前面的情况</li></ul><p>复杂度 $O(k)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="5-AGC023E-Inversions-S"><a href="#5-AGC023E-Inversions-S" class="headerlink" title="5.  AGC023E - Inversions [S]"></a>5.  AGC023E - Inversions [S]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定序列 $a_1,a_2,\cdots,a_n$，求所有满足 $\forall p_i\le a_i$ 的 $1\sim n$ 的排列 $p$ 的逆序对数之和，对 $10^9+7$ 取模</p>
 <p>$1\le n\le2\times10^5$</p>
-<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>为什么我能精准开到 sb 题。</p>
-<p>根据典，先把 $a$ 排序，设第 $i$ 个位置对应的原下标为 $I_i$，那么逆序对分为两种：</p>
-<ul>
-<li>$i<j,I_i<I_j,p_i>p_j$</li>
-<li>$i<j,I_i>I_j,p_i&lt;p_j$</li>
-</ul>
-<p>第一种看起来更好做，所以我们先做第一种</p>
-<p>令 $b_i=a_i-i+1$，不难发现答案即为 $\prod_{x=1}^n[x\neq i][x\neq j]b_x\times\binom{b_i}2$</p>
-<p>令 $c_i=\prod_{j=1}^i\frac{b_j-1}{b_j}$，$v_i=\frac{b_i}{c_{i-1}}$，$S=\prod_{x=1}^nb_x$，整理可得答案为 $\frac12S\times\frac{v_i}{v_j}$，这个就是一个二维偏序，树状数组维护一下即可</p>
-<p>第二种不好做，因此我们容斥，变成第一种，就做完了</p>
-<p>注意处理除 $0$ 的情况，复杂度 $O(n\log n)$</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>为什么我能精准开到 sb 题。</p><p>根据典，先把 $a$ 排序，设第 $i$ 个位置对应的原下标为 $I_i$，那么逆序对分为两种：</p><ul><li>$i<j,I_i<I_j,p_i>p_j$</li><li>$i<j,I_i>I_j,p_i&lt;p_j$</li></ul><p>第一种看起来更好做，所以我们先做第一种</p><p>令 $b_i=a_i-i+1$，不难发现答案即为 $\prod_{x=1}^n[x\neq i][x\neq j]b_x\times\binom{b_i}2$</p><p>令 $c_i=\prod_{j=1}^i\frac{b_j-1}{b_j}$，$v_i=\frac{b_i}{c_{i-1}}$，$S=\prod_{x=1}^nb_x$，整理可得答案为 $\frac12S\times\frac{v_i}{v_j}$，这个就是一个二维偏序，树状数组维护一下即可</p><p>第二种不好做，因此我们容斥，变成第一种，就做完了</p><p>注意处理除 $0$ 的情况，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="6-AGC045D-Lamps-and-Buttons-E"><a href="#6-AGC045D-Lamps-and-Buttons-E" class="headerlink" title="6.  AGC045D - Lamps and Buttons [E]"></a>6.  AGC045D - Lamps and Buttons [E]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 盏灯，初始前 $A$ 盏灯是亮的，剩下的灯是灭的</p>
 <p>有一个随机生成的排列 $p$，你不知道 $p$ 是什么，按下 $i$ 个按钮后第 $p_i$ 个灯会改变状态</p>
 <p>你每次可以选择一个亮的灯 $i$，然后按下第 $i$ 个按钮，任意时刻你都可以知道有哪些灯点亮</p>
 <p>你的目标是让所有灯都点亮，求在随机生成排列 $p$ 且使用最优策略的情况下，你能点亮所有灯的概率，对 $10^9+7$ 取模</p>
 <p>$2\le n\le10^7,1\le A\le\min(n-1,5000)$</p>
-<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>我的做法太愚蠢了，于是进行一个 editorial 的搬运。</p>
-<p>最优策略一定是先随便按一个灯 $i$，如果 $p_i=i$ 那么就寄了，否则可以确定 $i$ 所属的这个环并将它们都点亮</p>
-<p>由于排列随机，所以一开始按哪个灯都一样，不妨假设按的是最小的还没确定的灯</p>
-<p>那么一个排列 $p$ 合法当且仅当 $[1,A]$ 内的第一个自环 $t$（没有则 $t=A+1$），$[A+1,n]$ 内所有灯所属的环包含一个 $&lt;t$ 的元素</p>
-<p>那么枚举第一个自环 $t$，$[1,t-1]$ 内的点一定不能有自环，这个我们可以用容斥搞掉，现在的问题就是限定 $[A+1,n]$ 的灯所属的环必须有一个 $&lt;t$ 的元素</p>
-<p>相当于给定 $a,b,c$，要求 $[a+b+1:a+b+c]$ 内的元素一定的环一定要包含一个 $[1:a]$ 的元素，我们可以按 $[1:a]\rightarrow[a+b+1:a+b+c]\rightarrow[a+1:a+b]$ 的顺序依次将元素插入到排列中，总方案数是 $a(a+b+c)/(a+c)$</p>
-<p>总复杂度 $O(A^2+n)$</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>我的做法太愚蠢了，于是进行一个 editorial 的搬运。</p><p>最优策略一定是先随便按一个灯 $i$，如果 $p_i=i$ 那么就寄了，否则可以确定 $i$ 所属的这个环并将它们都点亮</p><p>由于排列随机，所以一开始按哪个灯都一样，不妨假设按的是最小的还没确定的灯</p><p>那么一个排列 $p$ 合法当且仅当 $[1,A]$ 内的第一个自环 $t$（没有则 $t=A+1$），$[A+1,n]$ 内所有灯所属的环包含一个 $&lt;t$ 的元素</p><p>那么枚举第一个自环 $t$，$[1,t-1]$ 内的点一定不能有自环，这个我们可以用容斥搞掉，现在的问题就是限定 $[A+1,n]$ 的灯所属的环必须有一个 $&lt;t$ 的元素</p><p>相当于给定 $a,b,c$，要求 $[a+b+1:a+b+c]$ 内的元素一定的环一定要包含一个 $[1:a]$ 的元素，我们可以按 $[1:a]\rightarrow[a+b+1:a+b+c]\rightarrow[a+1:a+b]$ 的顺序依次将元素插入到排列中，总方案数是 $a(a+b+c)/(a+c)$</p><p>总复杂度 $O(A^2+n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="7-USACO21OPEN-Routing-Schemes-E"><a href="#7-USACO21OPEN-Routing-Schemes-E" class="headerlink" title="7.  USACO21OPEN - Routing Schemes [E]"></a>7.  USACO21OPEN - Routing Schemes [E]</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点的无重边无自环有向图，保证恰好有 $k$ 条边 $u\rightarrow v$ 满足 $u&gt;v$，其余均满足 $u&lt;v$</p>
 <p>每个点为起点或终点或都不是，保证起点终点数量相同且都为 $S$</p>
 <p>你需要选定 $S$ 条边不相交的路径，使得每一条的路径都从某一个起点出发，到某一个终点结束，并且路径起点两两不同，路径终点两两不同，且每条边恰好被经过依次</p>
 <p>求方案数，对 $10^9+7$ 取模，数据保证有解</p>
 <p>$1\le n\le100,0\le k\le2$</p>
-<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1"><a href="#做法-1" class="headerlink" title="做法 1"></a>做法 1</h5><p>考虑 $k=0$，由于保证有解，那么我们的路径一定是从一个 DAG 上往下走，到了每一个点我们需要分配每条路径走哪条出边，容易发现所有分配方式都合法，那么答案就是 $\prod d_i!$，其中 $d_i$ 是出度 $+[i\text{ 是终点}]$</p>
-<p>考虑 $k=1$，由于这条重边 $u\rightarrow v$ 必须被经过，我们可以认为 $u$ 是一个新的终点，$v$ 是一个新的起点，然后直接运行 $k=0$ 的算法</p>
-<p>但是这样有可能出现的情况就是起点 $v$ 匹配的终点是 $u$，形成了一个环，我们需要把这种情况减掉</p>
-<p>那么就相当于删掉一条 $v\rightarrow u$ 的路径，将这条路径上的点的 $d_v$ 减 $1$，这个是容易用 dp 做的</p>
-<p>考虑 $k=2$，那么现在有两条重边 $u_0\rightarrow v_0,u_1\rightarrow v_1$，用一些容斥可以得到 $ans=tot-(v_0\rightarrow u_0)-(v_1\rightarrow u_1)+(v_0\rightarrow u_0,v_1\rightarrow u_1)-(v_0\rightarrow u_1,v_1\rightarrow u_1)$</p>
-<p>继续用 dp 求解即可，复杂度 $O(n^3)$ </p>
-<h5 id="做法-2"><a href="#做法-2" class="headerlink" title="做法 2"></a>做法 2</h5><p>考虑建一个虚点 $U$，所有终点向 $U$ 连边，$U$ 向所有起点连边</p>
-<p>那么答案就是这张图的欧拉回路数量，除掉 $\frac1{(S!)^2}$</p>
-<p>直接 BEST 定理，复杂度 $O(n^3)$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1"><a href="#做法-1" class="headerlink" title="做法 1"></a>做法 1</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑 $k=0$，由于保证有解，那么我们的路径一定是从一个 DAG 上往下走，到了每一个点我们需要分配每条路径走哪条出边，容易发现所有分配方式都合法，那么答案就是 $\prod d_i!$，其中 $d_i$ 是出度 $+[i\text{ 是终点}]$</p><p>考虑 $k=1$，由于这条重边 $u\rightarrow v$ 必须被经过，我们可以认为 $u$ 是一个新的终点，$v$ 是一个新的起点，然后直接运行 $k=0$ 的算法</p><p>但是这样有可能出现的情况就是起点 $v$ 匹配的终点是 $u$，形成了一个环，我们需要把这种情况减掉</p><p>那么就相当于删掉一条 $v\rightarrow u$ 的路径，将这条路径上的点的 $d_v$ 减 $1$，这个是容易用 dp 做的</p><p>考虑 $k=2$，那么现在有两条重边 $u_0\rightarrow v_0,u_1\rightarrow v_1$，用一些容斥可以得到 $ans=tot-(v_0\rightarrow u_0)-(v_1\rightarrow u_1)+(v_0\rightarrow u_0,v_1\rightarrow u_1)-(v_0\rightarrow u_1,v_1\rightarrow u_1)$</p><p>继续用 dp 求解即可，复杂度 $O(n^3)$ </p>
+              </div>
+            </details>
+<h5 id="做法-2"><a href="#做法-2" class="headerlink" title="做法 2"></a>做法 2</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑建一个虚点 $U$，所有终点向 $U$ 连边，$U$ 向所有起点连边</p><p>那么答案就是这张图的欧拉回路数量，除掉 $\frac1{(S!)^2}$</p><p>直接 BEST 定理，复杂度 $O(n^3)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="8-USACO21FEB-Minimizing-Edges-E"><a href="#8-USACO21FEB-Minimizing-Edges-E" class="headerlink" title="8.  USACO21FEB - Minimizing Edges [E]"></a>8.  USACO21FEB - Minimizing Edges [E]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向连通图 $G$（可能有自环），定义布尔函数 $f_G(a,b)$ 的值为是否存在从 $1$ 到 $a$ 且恰好经过 $b$ 条边的路径（不一定要是简单路径）</p>
 <p>定义 $G^\prime$ 和 $G$ 是等价的当且仅当对于所有 $1\le a\le n,0\le b$，都有 $f_G(a,b)=f_{G^\prime}(a,b)$</p>
 <p>求 $G^\prime$ 的边数最小值</p>
 <p>$1\le n\le10^5,1\le m\le2\times10^5$</p>
-<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>注意到 $G^\prime$ 和 $G$ 等价相当于所有点 $i$ 在两个图上经过偶数条边的最短路 $d_{0,i}$ 和经过奇数条边的最短路 $d_{1,i}$ 长度完全相等</p>
-<p>首先如果 $G$ 是二分图，那么答案显然是直接建一棵最短路树，判掉</p>
-<p>我们称所有 $d_{0,i},d_{1,i}$ 为变量，那么除了 $d_{0,0}$ 外，每一个变量一定都要有一个前驱</p>
-<p>一条边能够让至多两个变量找到前驱，我们最后需要让所有变量都找到前驱，因此我们希望贡献为 $2$ 的边尽量多，注意到由于原图 $G$ 是一个合法构造，所以只要连出的贡献为 $2$ 的边合法，就一定可以将剩下的每个点分别用用一条边构造出一个合法的解，因此我们只要最大化贡献为 $2$ 的边即可</p>
-<p>贡献为 $2$ 的边有两种：$(a,b)-(a-1,b-1),(a,b)-(a-1,b+1)$</p>
-<p>我们做的事情很像对于变量（$d_{0,i}$ 与 $d_{1,i}$）做最大匹配，如果两个变量能同时被一条边消去就在它们之间连边，在上面两种情况也即分别连边 $a-b$ 以及 $a-(b+1)$</p>
-<p>尝试画一下这个图可以发现每个不同的 $d_{0,i}+d_{1,i}$ 之间都是独立的，并且在同一个 $d_{0,i}+d_{1,i}$ 内图是一条链，这条链的其中一个端点上有一个自环</p>
-<p>那么直接贪心做最大匹配即可，复杂度 $O(n)$ 或 $O(n\log n)$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到 $G^\prime$ 和 $G$ 等价相当于所有点 $i$ 在两个图上经过偶数条边的最短路 $d_{0,i}$ 和经过奇数条边的最短路 $d_{1,i}$ 长度完全相等</p><p>首先如果 $G$ 是二分图，那么答案显然是直接建一棵最短路树，判掉</p><p>我们称所有 $d_{0,i},d_{1,i}$ 为变量，那么除了 $d_{0,0}$ 外，每一个变量一定都要有一个前驱</p><p>一条边能够让至多两个变量找到前驱，我们最后需要让所有变量都找到前驱，因此我们希望贡献为 $2$ 的边尽量多，注意到由于原图 $G$ 是一个合法构造，所以只要连出的贡献为 $2$ 的边合法，就一定可以将剩下的每个点分别用用一条边构造出一个合法的解，因此我们只要最大化贡献为 $2$ 的边即可</p><p>贡献为 $2$ 的边有两种：$(a,b)-(a-1,b-1),(a,b)-(a-1,b+1)$</p><p>我们做的事情很像对于变量（$d_{0,i}$ 与 $d_{1,i}$）做最大匹配，如果两个变量能同时被一条边消去就在它们之间连边，在上面两种情况也即分别连边 $a-b$ 以及 $a-(b+1)$</p><p>尝试画一下这个图可以发现每个不同的 $d_{0,i}+d_{1,i}$ 之间都是独立的，并且在同一个 $d_{0,i}+d_{1,i}$ 内图是一条链，这条链的其中一个端点上有一个自环</p><p>那么直接贪心做最大匹配即可，复杂度 $O(n)$ 或 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="9-USACO21FEB-Counting-Graphs-E"><a href="#9-USACO21FEB-Counting-Graphs-E" class="headerlink" title="9.  USACO21FEB - Counting Graphs [E]"></a>9.  USACO21FEB - Counting Graphs [E]</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向连通图 $G$（可能有自环），定义布尔函数 $f_G(a,b)$ 的值为是否存在从 $1$ 到 $a$ 且恰好经过 $b$ 条边的路径（不一定要是简单路径）</p>
 <p>定义 $G^\prime$ 和 $G$ 是等价的当且仅当对于所有 $1\le a\le n,0\le b$，都有 $f_G(a,b)=f_{G^\prime}(a,b)$</p>
 <p>求有多少与 $G$ 等价的 $G^\prime$，对 $10^9+7$ 取模</p>
 <p>$1\le n\le100,n-1\le m\le\frac{n^2+n}{2}$</p>
-<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><p>二分图是好做的，先判掉</p>
-<p>求出每个点经过偶数条边的最短路 $d_{0,i}$ 和经过奇数条边的最短路 $d_{1,i}$</p>
-<p>那么一个 $G^\prime$ 与 $G$ 等价当且仅当所有边 $(u,v)$ 都满足 $|d_{0,u}-d_{1,v}|\le1,|d_{0,v}-d_{1,u}|\le1$，且每个 $d_{0,i},d_{1,i}$ 都能找到一个前驱</p>
-<p>如果没有前驱的限制答案就是 $2^{\text{满足条件的边的条数}}$，有了限制不是很好搞，所以我们容斥一下变成不存在前驱</p>
-<p>那么如果我们枚举一个变量的子集，钦定它们没有前驱，就相当于钦定一些边不能被连，那么答案就是 $2$ 的此时剩下边数次方</p>
-<p>考虑如何表示剩下边数，注意到我们直接减掉每个被钦定的点的度数，算重的部分是比较好看的，具体地，只会有两种情况算重：</p>
-<ul>
-<li>$(a,b)-(a+1,b-1)$，同时钦定 $a+1,b$</li>
-<li>$(a,b)-(a+1,b+1)$，同时钦定 $a+1,b+1$</li>
-</ul>
-<p>注意到可以套上一题的结论，这些情况的限制对于每个 $d_{0,i}+d_{1,i}$ 都是独立的，且形成一条链，容易想到在每一条链上分别 dp，最后把除掉的 $2$ 乘起来</p>
-<p>对于一条链，令 $dp_{i,j}$ 表示当前转移到了链上的第 $i$ 个节点，这个节点被钦定了 $j$ 个点，注意两种边的转移是不同的，具体地：</p>
-<ul>
-<li>对于第一种边，我们枚举下一个节点选了多少个 $k$，那么会算重 $jk$ 条边，转移系数就是 $\binom{cnt_{i+1}}{k}\times 2^{-k\cdot deg_{i+1}}\times2^{jk}\times(-1)^k$</li>
-<li>对于第二种边，注意到每个 $a+1$ 只有可能和一个 $b+1$ 重复，我们枚举下一个节点选了多少 $k$，并枚举有多少条重复的边，转移系数是 $\binom jx\binom{cnt_{i+1}-j}{k-x}\times 2^{-k\cdot deg_{i+1}}\times 2^{x\cdot p}\times(-1)^k$，其中 $p$ 为距离对 $(a,b)$ 的数量（每个能重复的 $a+1$ 和 $b+1$ 都有 $p$ 条被算重的边）</li>
-</ul>
-<p>注意特判最后一个自环，会额外算重 $\frac12j(j-1)$ 条边</p>
-<p>状态数是 $O(n)$，转移复杂度是 $O(n^2)$，总复杂度 $O(n^3)$</p>
+<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>二分图是好做的，先判掉</p><p>求出每个点经过偶数条边的最短路 $d_{0,i}$ 和经过奇数条边的最短路 $d_{1,i}$</p><p>那么一个 $G^\prime$ 与 $G$ 等价当且仅当所有边 $(u,v)$ 都满足 $|d_{0,u}-d_{1,v}|\le1,|d_{0,v}-d_{1,u}|\le1$，且每个 $d_{0,i},d_{1,i}$ 都能找到一个前驱</p><p>如果没有前驱的限制答案就是 $2^{\text{满足条件的边的条数}}$，有了限制不是很好搞，所以我们容斥一下变成不存在前驱</p><p>那么如果我们枚举一个变量的子集，钦定它们没有前驱，就相当于钦定一些边不能被连，那么答案就是 $2$ 的此时剩下边数次方</p><p>考虑如何表示剩下边数，注意到我们直接减掉每个被钦定的点的度数，算重的部分是比较好看的，具体地，只会有两种情况算重：</p><ul><li>$(a,b)-(a+1,b-1)$，同时钦定 $a+1,b$</li><li>$(a,b)-(a+1,b+1)$，同时钦定 $a+1,b+1$</li></ul><p>注意到可以套上一题的结论，这些情况的限制对于每个 $d_{0,i}+d_{1,i}$ 都是独立的，且形成一条链，容易想到在每一条链上分别 dp，最后把除掉的 $2$ 乘起来</p><p>对于一条链，令 $dp_{i,j}$ 表示当前转移到了链上的第 $i$ 个节点，这个节点被钦定了 $j$ 个点，注意两种边的转移是不同的，具体地：</p><ul><li>对于第一种边，我们枚举下一个节点选了多少个 $k$，那么会算重 $jk$ 条边，转移系数就是 $\binom{cnt_{i+1}}{k}\times 2^{-k\cdot deg_{i+1}}\times2^{jk}\times(-1)^k$</li><li>对于第二种边，注意到每个 $a+1$ 只有可能和一个 $b+1$ 重复，我们枚举下一个节点选了多少 $k$，并枚举有多少条重复的边，转移系数是 $\binom jx\binom{cnt_{i+1}-j}{k-x}\times 2^{-k\cdot deg_{i+1}}\times 2^{x\cdot p}\times(-1)^k$，其中 $p$ 为距离对 $(a,b)$ 的数量（每个能重复的 $a+1$ 和 $b+1$ 都有 $p$ 条被算重的边）</li></ul><p>注意特判最后一个自环，会额外算重 $\frac12j(j-1)$ 条边</p><p>状态数是 $O(n)$，转移复杂度是 $O(n^2)$，总复杂度 $O(n^3)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="10-USACO21JAN-Paint-by-Letters-S"><a href="#10-USACO21JAN-Paint-by-Letters-S" class="headerlink" title="10.  USACO21JAN - Paint by Letters [S]"></a>10.  USACO21JAN - Paint by Letters [S]</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n\times m$ 的大写字母矩阵，$q$ 次询问，每次询问给定一个子矩形，求只保留这个子矩形，会形成多少字母相同的四连通块</p>
 <p>$1\le n,m,q\le1000$</p>
-<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1-1"><a href="#做法-1-1" class="headerlink" title="做法 1"></a>做法 1</h5><p>连通性没有什么好的维护方式，因此考虑转化</p>
-<p>考虑到对每个连通块都有 $V-E+F=1$（排除了无限面），而 $V$ 和 $E$ 都是好算的，考虑如何算 $F$</p>
-<p>注意到算 $P$ 的好处是我们只用统计被完全包含在子矩形内部的面，因此我们可以讲面视作矩形，而面只有 $O(nm)$ 个，我们是可以提前预处理的</p>
-<p>提前预处理出来之后就是一个四维偏序问题，因此直接上 bitset，$O(\frac{n^3+qn^2}{\omega})$，轻微卡空间</p>
-<h5 id="做法-2-1"><a href="#做法-2-1" class="headerlink" title="做法 2"></a>做法 2</h5><p>如果两个字符不同，那么我们在这两个字符之间修建一堵墙</p>
-<p>这样会得到一个 $(n+1)\times(m+1)$ 的网格图，我们要算的就是这张图的面数 $F$</p>
-<p>$F=V-E+C+1$，$V$ 和 $E$ 都是好算的，考虑如何算 $C$</p>
-<p>要算的就是完全被包含在询问子矩形内部的连通块个数</p>
-<p>我们对每个连通块钦定一个点作为代表元，直接统计子矩形内代表元个数</p>
-<p>但是这样会多算一些东西，而注意到所有多算的东西一定经过子矩形边界，那么我们枚举每个边界上的点，判断它所属的连通块是否被多算了即可</p>
-<p>复杂度 $O(n^2+qn)$</p>
+<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1-1"><a href="#做法-1-1" class="headerlink" title="做法 1"></a>做法 1</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>连通性没有什么好的维护方式，因此考虑转化</p><p>考虑到对每个连通块都有 $V-E+F=1$（排除了无限面），而 $V$ 和 $E$ 都是好算的，考虑如何算 $F$</p><p>注意到算 $P$ 的好处是我们只用统计被完全包含在子矩形内部的面，因此我们可以讲面视作矩形，而面只有 $O(nm)$ 个，我们是可以提前预处理的</p><p>提前预处理出来之后就是一个四维偏序问题，因此直接上 bitset，$O(\frac{n^3+qn^2}{\omega})$，轻微卡空间</p>
+              </div>
+            </details>
+<h5 id="做法-2-1"><a href="#做法-2-1" class="headerlink" title="做法 2"></a>做法 2</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>如果两个字符不同，那么我们在这两个字符之间修建一堵墙</p><p>这样会得到一个 $(n+1)\times(m+1)$ 的网格图，我们要算的就是这张图的面数 $F$</p><p>$F=V-E+C+1$，$V$ 和 $E$ 都是好算的，考虑如何算 $C$</p><p>要算的就是完全被包含在询问子矩形内部的连通块个数</p><p>我们对每个连通块钦定一个点作为代表元，直接统计子矩形内代表元个数</p><p>但是这样会多算一些东西，而注意到所有多算的东西一定经过子矩形边界，那么我们枚举每个边界上的点，判断它所属的连通块是否被多算了即可</p><p>复杂度 $O(n^2+qn)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="11-USACO21JAN-Minimum-Cost-Paths-S"><a href="#11-USACO21JAN-Minimum-Cost-Paths-S" class="headerlink" title="11.  USACO21JAN - Minimum Cost Paths [S]"></a>11.  USACO21JAN - Minimum Cost Paths [S]</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>有一个 $n\times m$ 的方格，给定 $c_1,c_2,\cdots,c_y$，如果你在 $(x,y)$，你可以选择进行以下两种操作中的一种：</p>
 <ul>
@@ -482,9 +421,11 @@
 </ul>
 <p>$q$ 次询问，每次询问给定 $a,b$，查询 $(1,1)$ 到 $(a,b)$ 的最短路</p>
 <p>$2\le n\le10^9,2\le m\le2\times10^5,1\le q\le2\times10^5$</p>
-<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><p>直接套用 JOISC2021 京都观光 的结论，只会访问下凸壳上的点，且一定是按照斜率归并排序</p>
-<p>把询问按 $b$ 离线然后模拟即可</p>
-<p>复杂度 $O(q\log m)$</p>
+<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>直接套用 JOISC2021 京都观光 的结论，只会访问下凸壳上的点，且一定是按照斜率归并排序</p><p>把询问按 $b$ 离线然后模拟即可</p><p>复杂度 $O(q\log m)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="12-USACO21JAN-Sum-of-Distances-S"><a href="#12-USACO21JAN-Sum-of-Distances-S" class="headerlink" title="12.  USACO21JAN - Sum of Distances [S]"></a>12.  USACO21JAN - Sum of Distances [S]</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>给定 $k$ 张无向连通图 $G_1,G_2,\cdots,G_k$，第 $i$ 张图有 $n_i$ 个点 $m_i$ 条边</p>
 <p>按如下方式构建一张 $\prod n_i$ 个点的无向图 $G$：</p>
@@ -494,13 +435,11 @@
 </ul>
 <p>对所有 $(1,1,\cdots,1)$ 能到的边，求 $(1,1,\cdots,1)$ 到这些点的最短路径长度之和，对 $10^9+7$ 取模</p>
 <p>$\sum n_i\le10^5,\sum m_i\le 2\times10^5,2\le k\le5\times10^4$</p>
-<h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><p>相当于我们在每张图上都有一个棋子，初始在 $1$，每次将所有棋子同时移动一步，问所有能到达状态的最短路</p>
-<p>枚举最短路是奇数还是偶数，那么我们可以得到一个状态 $(x_1,x_2,\cdots,x_k)$ 的最短路是 $\min(\max d_{0,x_i},\max d_{1,x_i})$</p>
-<p>直接算距离 $\ge x$ 的点数量， 所有点按 $d_{0,i},d_{1,i}$ 是否 $\ge x$ 可以被分为 $4$ 类，那么最短路 $\ge x$ 当且仅当 $k$ 个点中有一个 $d_{0,x_i}\ge x$，且有一个 $d_{1,x_i}\ge x$</p>
-<p>通过容斥计算，设 $c_{S,i}$ 表示第 $i$ 张图内状态为 $S$ 的点数，那么答案就是：</p>
-<script type="math/tex; mode=display">
-\prod(c_{00,i}+c_{01,i}+c_{10,i}+c_{11,i})-\prod(c_{00,i}+c_{10,i})-\prod(c_{00,i}+c_{01,i})+\prod c_{00,i}</script><p>随着 $x$ 不断增大，点的状态会发生改变，注意到改变只有 $O(n)$ 次，所以每次用逆元除掉再乘回来就好了</p>
-<p>复杂度 $O(n\log n)$</p>
+<h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>相当于我们在每张图上都有一个棋子，初始在 $1$，每次将所有棋子同时移动一步，问所有能到达状态的最短路</p><p>枚举最短路是奇数还是偶数，那么我们可以得到一个状态 $(x_1,x_2,\cdots,x_k)$ 的最短路是 $\min(\max d_{0,x_i},\max d_{1,x_i})$</p><p>直接算距离 $\ge x$ 的点数量， 所有点按 $d_{0,i},d_{1,i}$ 是否 $\ge x$ 可以被分为 $4$ 类，那么最短路 $\ge x$ 当且仅当 $k$ 个点中有一个 $d_{0,x_i}\ge x$，且有一个 $d_{1,x_i}\ge x$</p><p>通过容斥计算，设 $c_{S,i}$ 表示第 $i$ 张图内状态为 $S$ 的点数，那么答案就是：</p><script type="math/tex; mode=display">\prod(c_{00,i}+c_{01,i}+c_{10,i}+c_{11,i})-\prod(c_{00,i}+c_{10,i})-\prod(c_{00,i}+c_{01,i})+\prod c_{00,i}</script><p>随着 $x$ 不断增大，点的状态会发生改变，注意到改变只有 $O(n)$ 次，所以每次用逆元除掉再乘回来就好了</p><p>复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="13-LNOI2022-串-K"><a href="#13-LNOI2022-串-K" class="headerlink" title="13.  LNOI2022 - 串 [K]"></a>13.  LNOI2022 - 串 [K]</h3><h4 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的字符串 $S$，你需要求最大的 $l$，使得存在一个 $(T_0,T_1,\cdots,T_l)$ 满足：</p>
 <ul>
@@ -509,20 +448,11 @@
 <li>对所有 $i$，存在一个长度为 $|T_i|+1$ 的 $S$ 的子串 $S^\prime_i$，使得 $T_{i-1}$ 是 $S^\prime_i$ 的前缀，且 $T_i$ 是 $S^\prime_i$ 的后缀</li>
 </ul>
 <p>$1\le n\le5\times10^5$</p>
-<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><p>什么。</p>
-<p>我们可以把这个看作是在一个子串的图上的最长路，注意到每个子串如果可达</p>
-<p>首先，如果 $T_0$ 非空，那么我们可以把每个字符串的第一个字符删去，得到的还是合法的答案</p>
-<p>注意到每次从 $[l,r]$ 到 $[l+1,r+2]$ 可以构造出一个长为 $\lfloor\frac n2\rfloor$ 的答案</p>
-<p>但是答案显然可以大于这个，具体地，如果我们经过了一个出现了两次的子串，那么我们可以选择“往回跳”</p>
-<p>结论：任何一个出现了两次的子串一定能从空串抵达</p>
-<p>证明：</p>
-<p>考虑这个子串的两次出现 $[l_1,r_1],[l_2,r_2]$：</p>
-<ul>
-<li>如果 $r_1&lt;l_2$，那么 $r_2\ge 2len$，从某个位置开始直接用 $[l,r]\rightarrow[l+1,r+2]$ </li>
-<li>如果 $r_1\ge l_2$，那么我们进行归纳，也就是要求存在 $x&gt;0$ 使得 $[l_2-x,r_2-2x]$ 可达，取 $x=l_2-l_1$ 即可完成归纳</li>
-</ul>
-<p>考虑最后的一次回跳，那么这个子串一定可以是任意出现 $\ge2$ 次的子串，我们枚举所有这样的子串，根据长度计算一下答案取 max，用 SAM 加速一下即可</p>
-<p>复杂度 $O(n)$</p>
+<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>什么。</p><p>我们可以把这个看作是在一个子串的图上的最长路，注意到每个子串如果可达</p><p>首先，如果 $T_0$ 非空，那么我们可以把每个字符串的第一个字符删去，得到的还是合法的答案</p><p>注意到每次从 $[l,r]$ 到 $[l+1,r+2]$ 可以构造出一个长为 $\lfloor\frac n2\rfloor$ 的答案</p><p>但是答案显然可以大于这个，具体地，如果我们经过了一个出现了两次的子串，那么我们可以选择“往回跳”</p><p>结论：任何一个出现了两次的子串一定能从空串抵达</p><p>证明：</p><p>考虑这个子串的两次出现 $[l_1,r_1],[l_2,r_2]$：</p><ul><li>如果 $r_1&lt;l_2$，那么 $r_2\ge 2len$，从某个位置开始直接用 $[l,r]\rightarrow[l+1,r+2]$ </li><li>如果 $r_1\ge l_2$，那么我们进行归纳，也就是要求存在 $x&gt;0$ 使得 $[l_2-x,r_2-2x]$ 可达，取 $x=l_2-l_1$ 即可完成归纳</li></ul><p>考虑最后的一次回跳，那么这个子串一定可以是任意出现 $\ge2$ 次的子串，我们枚举所有这样的子串，根据长度计算一下答案取 max，用 SAM 加速一下即可</p><p>复杂度 $O(n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="14-CF1408H-Rainbow-Triples-K-✔️"><a href="#14-CF1408H-Rainbow-Triples-K-✔️" class="headerlink" title="14.  CF1408H - Rainbow Triples [K] ✔️"></a>14.  CF1408H - Rainbow Triples [K] ✔️</h3><h4 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数组 $a_1,a_2,\cdots,a_n$，你需要找到尽可能多的三元组 $(i_{1..m},j_{1..m},k_{1..m})$，使得：</p>
 <ul>
@@ -532,36 +462,25 @@
 </ul>
 <p>求最大个数</p>
 <p>$1\le n\le5\times10^5,0\le a_i\le n$</p>
-<h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><p>好好好。</p>
-<p>原题的限制太紧了，我们可以进行一些松。</p>
-<p>令 $z$ 为 $0$ 的个数，那么答案显然的上界为 $\lfloor\frac z2\rfloor$</p>
-<p>注意到如果一个 $j$ 左侧的 $0$ 个数 $\ge\lfloor\frac z2\rfloor$，那么不管剩下的东西怎么选，左边一定能找到一个匹配的 $0$，右侧同理</p>
-<p>设第 $\lfloor\frac z2\rfloor$ 个 $0$ 的位置为 $id$</p>
-<p>也就是说，在第 $id$ 个 $0$ 左侧的 $j$，我们只需为它匹配一个左边的 $0$，右侧的只需要匹配一个右边的 $0$，然后把最大匹配和 $\lfloor\frac z2\rfloor$ 取 min 即可</p>
-<p>接下来考虑互不相同的限制，对于每种数，不难发现只有 $id$ 左侧的第一个 $x$ 和右侧的第一个 $y$ 有用</p>
-<p>那么相当于一种数 $i$ 会向 $x$ 前面的每个 $0$ 连边，向 $y$ 后面的每个 $0$ 连边，我们要求这个二分图的最大流</p>
-<p>直接跑肯定不行，考虑转最小割模拟</p>
-<p>一种数 $i$ 不用割当且仅当一个前缀的 $0$ 和一个后缀的 $0$ 都被割掉，意味着我们最后割掉的一定是若干种数，以及一个前缀的 $0$ 和一个后缀的 $0$</p>
-<p>枚举割掉的前缀，维护割每个后缀的答案，前缀变化一步进行的操作就是若干次区间修改，可以用线段树维护</p>
-<p>复杂度 $O(n\log n)$</p>
+<h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>好好好。</p><p>原题的限制太紧了，我们可以进行一些松。</p><p>令 $z$ 为 $0$ 的个数，那么答案显然的上界为 $\lfloor\frac z2\rfloor$</p><p>注意到如果一个 $j$ 左侧的 $0$ 个数 $\ge\lfloor\frac z2\rfloor$，那么不管剩下的东西怎么选，左边一定能找到一个匹配的 $0$，右侧同理</p><p>设第 $\lfloor\frac z2\rfloor$ 个 $0$ 的位置为 $id$</p><p>也就是说，在第 $id$ 个 $0$ 左侧的 $j$，我们只需为它匹配一个左边的 $0$，右侧的只需要匹配一个右边的 $0$，然后把最大匹配和 $\lfloor\frac z2\rfloor$ 取 min 即可</p><p>接下来考虑互不相同的限制，对于每种数，不难发现只有 $id$ 左侧的第一个 $x$ 和右侧的第一个 $y$ 有用</p><p>那么相当于一种数 $i$ 会向 $x$ 前面的每个 $0$ 连边，向 $y$ 后面的每个 $0$ 连边，我们要求这个二分图的最大流</p><p>直接跑肯定不行，考虑转最小割模拟</p><p>一种数 $i$ 不用割当且仅当一个前缀的 $0$ 和一个后缀的 $0$ 都被割掉，意味着我们最后割掉的一定是若干种数，以及一个前缀的 $0$ 和一个后缀的 $0$</p><p>枚举割掉的前缀，维护割每个后缀的答案，前缀变化一步进行的操作就是若干次区间修改，可以用线段树维护</p><p>复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="15-CF1552G-A-Serious-Referee-E"><a href="#15-CF1552G-A-Serious-Referee-E" class="headerlink" title="15.  CF1552G - A Serious Referee [E]"></a>15.  CF1552G - A Serious Referee [E]</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>对于一个 $1\sim n$ 的排列 $a$，我们定义一个 $k$ 步操作：每步操作给定一个 $a$ 的子序列 $p$，将 $p$ 排序后原位放回</p>
 <p>请判断对于任意初始排列 $a$，执行完操作后是否都有 $a=[1,2,\cdots,n]$</p>
 <p>$1\le n\le40,1\le k\le10$</p>
-<h4 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法"><a href="#Flamire-做法" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>首先注意到我们只需要判断是否对于任意 $01$ 串都能排成有序的即可，证明把 $0$ 看作 $\le i$ 的数，把 $1$ 看作 $&gt;i$ 的数即可</p>
-<p>那么考虑倒推，最后一定是 $000\cdots1111$ 的形式，我们每步操作是将 $p_i$ 内的子序列任意重排（操作前需要保证 $p_i$ 有序）</p>
-<p>任意重排提示我们只用考虑 $01$ 的个数，那么我们提出如下的一个 dp：</p>
-<p>倒着考虑操作，时刻维护一个集合的集合 $S=\{S_0,S_1,S_2,\cdots\}$，每次到 $i$ 的时候我们把 $p_i$ 元素的集合 $T_i$ 加入 $S$，然后将所有原来的 $S_j$ 变为 $S_i\setminus T_i$</p>
-<p>也即把所有位置按后面最近一次被操作的时间分类，特别地，我们规定 $S_0$ 表示后面未被操作过的元素</p>
-<p>然后我们的 dp 状态记录 $i$ 以及当前 $S$ 中每个集合分别有多少个 $0$，注意到 $S_0$ 的 $0$ 一定都在最前面，并且其它集合的 $0$ 一定可以任意重排</p>
-<p>转移的时候枚举 $T_i$ 从其它集合“抢走”了多少个 $0$ 即可</p>
-<p>复杂度 $O((\frac nk+1)^k\times\text{poly}(n,k))$，常数大。</p>
-<h5 id="题解做法"><a href="#题解做法" class="headerlink" title="题解做法"></a>题解做法</h5><p>直接爆搜。</p>
-<p>依然观察到我们将任意 $01$ 串排成有序即可</p>
-<p>正着考虑，注意到我们对一个子序列排序时不关心原来 $01$ 的位置关心，只需要知道原来 $01$ 分别有多少个即可</p>
-<p>那么直接搜索，我们的每个状态是一个包含 <code>?01</code> 的串，<code>?</code> 表示我们从未操作过这个位置，因此我们不关心它是神秘</p>
-<p>当对一个子序列排序时，我们枚举包含的所有 <code>?</code> 有多少 $0/1$，容易发现这样做我们的总决策是 $O((\frac nk+1)^k)$ 的</p>
-<p>那么复杂度就是 $O((\frac nk+1)^k\times\text{poly}(n,k))$</p>
+<h4 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法"><a href="#Flamire-做法" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先注意到我们只需要判断是否对于任意 $01$ 串都能排成有序的即可，证明把 $0$ 看作 $\le i$ 的数，把 $1$ 看作 $&gt;i$ 的数即可</p><p>那么考虑倒推，最后一定是 $000\cdots1111$ 的形式，我们每步操作是将 $p_i$ 内的子序列任意重排（操作前需要保证 $p_i$ 有序）</p><p>任意重排提示我们只用考虑 $01$ 的个数，那么我们提出如下的一个 dp：</p><p>倒着考虑操作，时刻维护一个集合的集合 $S=\{S_0,S_1,S_2,\cdots\}$，每次到 $i$ 的时候我们把 $p_i$ 元素的集合 $T_i$ 加入 $S$，然后将所有原来的 $S_j$ 变为 $S_i\setminus T_i$</p><p>也即把所有位置按后面最近一次被操作的时间分类，特别地，我们规定 $S_0$ 表示后面未被操作过的元素</p><p>然后我们的 dp 状态记录 $i$ 以及当前 $S$ 中每个集合分别有多少个 $0$，注意到 $S_0$ 的 $0$ 一定都在最前面，并且其它集合的 $0$ 一定可以任意重排</p><p>转移的时候枚举 $T_i$ 从其它集合“抢走”了多少个 $0$ 即可</p><p>复杂度 $O((\frac nk+1)^k\times\text{poly}(n,k))$，常数大。</p>
+              </div>
+            </details>
+<h5 id="题解做法"><a href="#题解做法" class="headerlink" title="题解做法"></a>题解做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>直接爆搜。</p><p>依然观察到我们将任意 $01$ 串排成有序即可</p><p>正着考虑，注意到我们对一个子序列排序时不关心原来 $01$ 的位置关心，只需要知道原来 $01$ 分别有多少个即可</p><p>那么直接搜索，我们的每个状态是一个包含 <code>?01</code> 的串，<code>?</code> 表示我们从未操作过这个位置，因此我们不关心它是神秘</p><p>当对一个子序列排序时，我们枚举包含的所有 <code>?</code> 有多少 $0/1$，容易发现这样做我们的总决策是 $O((\frac nk+1)^k)$ 的</p><p>那么复杂度就是 $O((\frac nk+1)^k\times\text{poly}(n,k))$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="16-CF1672G-Cross-Xor-E"><a href="#16-CF1672G-Cross-Xor-E" class="headerlink" title="16.  CF1672G - Cross Xor [E]"></a>16.  CF1672G - Cross Xor [E]</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>给定 $n\times m$ 的 <code>?01</code> 矩阵，你需要将每个  <code>?</code> 替换为 <code>0</code> 或 <code>1</code>，使得替换完后的矩阵可以从全 0 矩阵经过若干次如下操作得到：</p>
 <ul>
@@ -569,40 +488,31 @@
 </ul>
 <p>求方案数，对 $998244353$ 取模</p>
 <p>$1\le n,m\le2000$</p>
-<h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><p>打个表先。观察到：</p>
-<ul>
-<li>$n,m$ 都为偶数时，线性基大小为 $nm$</li>
-<li>$n,m$ 有一个偶数，不妨设是 $n$，线性基大小为 $nm-n+1$</li>
-<li>$n,m$ 都为奇数，线性基大小为 $(n-1)(m-1)+1$</li>
-</ul>
-<p>那么我们对着凑。</p>
-<p>当 $n,m$ 都为偶数时，把所有 $i=x\lor j=y$ 的点 $(i,j)$ 都操作一遍等价于将 $(x,y)$ 异或 $1$，因此所有状态均可达，统计答案是容易的</p>
-<p>当 $n$ 为偶数，$m$ 为奇数时，注意到每次操作一定会使每一行的异或值全部反转，这显然是 $n-1$ 个自由元，那么一个状态可达当且仅当每一行的异或值全相等，对着这个做即可</p>
-<p>当 $n,m$ 都为奇数时，注意到每一次操作一定会使每行每列的异或值全反转，思考一下就可以发现这是 $n+m-2$ 个自由元，那么一个状态可达当且仅当每行每列的异或值全相等</p>
-<p>现在一个点会对两个变量做贡献，注意到有一个结论：如果每个数的 $1$ 的个数都为 $2$，那么我们把一个数看成这两个位之间的边，线性基大小即为 $\text{位数}-\text{连通块个数}$，用这个结论就可以统计答案了</p>
-<p>复杂度 $O(nm)$</p>
+<h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>打个表先。观察到：</p><ul><li>$n,m$ 都为偶数时，线性基大小为 $nm$</li><li>$n,m$ 有一个偶数，不妨设是 $n$，线性基大小为 $nm-n+1$</li><li>$n,m$ 都为奇数，线性基大小为 $(n-1)(m-1)+1$</li></ul><p>那么我们对着凑。</p><p>当 $n,m$ 都为偶数时，把所有 $i=x\lor j=y$ 的点 $(i,j)$ 都操作一遍等价于将 $(x,y)$ 异或 $1$，因此所有状态均可达，统计答案是容易的</p><p>当 $n$ 为偶数，$m$ 为奇数时，注意到每次操作一定会使每一行的异或值全部反转，这显然是 $n-1$ 个自由元，那么一个状态可达当且仅当每一行的异或值全相等，对着这个做即可</p><p>当 $n,m$ 都为奇数时，注意到每一次操作一定会使每行每列的异或值全反转，思考一下就可以发现这是 $n+m-2$ 个自由元，那么一个状态可达当且仅当每行每列的异或值全相等</p><p>现在一个点会对两个变量做贡献，注意到有一个结论：如果每个数的 $1$ 的个数都为 $2$，那么我们把一个数看成这两个位之间的边，线性基大小即为 $\text{位数}-\text{连通块个数}$，用这个结论就可以统计答案了</p><p>复杂度 $O(nm)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="17-CF1610G-AmShZ-Wins-a-Bet-E-⭐"><a href="#17-CF1610G-AmShZ-Wins-a-Bet-E-⭐" class="headerlink" title="17.  CF1610G - AmShZ Wins a Bet [E] ⭐"></a>17.  CF1610G - AmShZ Wins a Bet [E] ⭐</h3><h4 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h4><p>给定一个括号串 $s$（不一定合法），保证 $s_1$ 为 <code>)</code></p>
 <p>你每次可以从中删除一个左括号 $s_i$ 和一个右括号 $s_j$，需要满足 $i&lt;j$</p>
 <p>求能得到的字典序最小的串</p>
 <p>$1\le |s|\le3\times10^5$</p>
-<h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><p>观察一下性质，如果我们删除了左括号 $s_i$，那么一起删除的右括号一定是 $s_i$ 后面第一个右括号，这样一定不会更劣</p>
-<p>那么 $s_j$ 一定是 $s_i$ 后面第一个右括号，$s_i$ 一定是 $s_j$ 前面第一个左括号，那么也就是 $s_i,s_j$ 相邻</p>
-<p>也就是说我们最后删除的一定是若干个匹配括号子串</p>
-<p>那么不难想到一个 dp：$f_i$ 表示 $s[i:n]$ 能删出的字典序最小的串</p>
-<p>如果 $s_i$ 为左括号，且与之匹配的右括号为 $y$，那么有转移式 $f_i\leftarrow\min(s_i+f_{i+1},f_{y+1})$，若不存在 $y$ 则 $f_i\leftarrow s_i+f_{i+1}$</p>
-<p>注意到一个 $f_i$ 一定是后面某个 $f$ 值加上一个字符，因此可以倍增优化，即我们存 $f_i$ 的前 $2^j$ 个字符的哈希值，以及走过 $2^j$ 个字符会到哪个位置的 $f$，转移就是 $O(\log n)$ 二分出 lcp</p>
-<p>复杂度 $O(n\log n)$</p>
+<h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>观察一下性质，如果我们删除了左括号 $s_i$，那么一起删除的右括号一定是 $s_i$ 后面第一个右括号，这样一定不会更劣</p><p>那么 $s_j$ 一定是 $s_i$ 后面第一个右括号，$s_i$ 一定是 $s_j$ 前面第一个左括号，那么也就是 $s_i,s_j$ 相邻</p><p>也就是说我们最后删除的一定是若干个匹配括号子串</p><p>那么不难想到一个 dp：$f_i$ 表示 $s[i:n]$ 能删出的字典序最小的串</p><p>如果 $s_i$ 为左括号，且与之匹配的右括号为 $y$，那么有转移式 $f_i\leftarrow\min(s_i+f_{i+1},f_{y+1})$，若不存在 $y$ 则 $f_i\leftarrow s_i+f_{i+1}$</p><p>注意到一个 $f_i$ 一定是后面某个 $f$ 值加上一个字符，因此可以倍增优化，即我们存 $f_i$ 的前 $2^j$ 个字符的哈希值，以及走过 $2^j$ 个字符会到哪个位置的 $f$，转移就是 $O(\log n)$ 二分出 lcp</p><p>复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="18-CF1470E-Strange-Permutation-S"><a href="#18-CF1470E-Strange-Permutation-S" class="headerlink" title="18.  CF1470E - Strange Permutation [S]"></a>18.  CF1470E - Strange Permutation [S]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $1\sim n$ 的排列 $p$，现在我们翻转了它的若干个不交区间，代价为所有区间的 $r-l$ 之和</p>
 <p>考虑所有代价不超过 $c$ 的操作方式，我们将它们得到的排列写出来按字典序排序并去重</p>
 <p>$q$ 次询问，每次给定 $i,j$，查询排名为 $j$ 的排列第 $i$ 项的值</p>
 <p>$1\le n\le3\times10^5,1\le c\le4,1\le q\le3\times10^5$</p>
-<h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><p>考虑一种显然的思路，顺次确定每一位是什么，那么我们需要求出一个数组 $h_{i,j}$，表示 $a[i:n]$ 这段后缀使用 $\le j$ 的代价能够生成的排列数</p>
-<p>但是这样做是 $O(nqc)$ 的，复杂度过高，考虑优化</p>
-<p>注意到我们进行的 $a_i\neq i$ 的转移个数只有 $O(c)$ 个，因此我们可以考虑快速跳过一段 $a_i=i$ 的转移</p>
-<p>那么我们就需要求出在 $\le j$ 的代价下，从 $i$ 开始 $a_i<i$ 的转移能生成的排列个数 $f_{i,j}$，以及 $a_i>i$ 的转移能生成的排列个数 $g_{i,j}$，我们就可以通过二分来快速求出下一个 $a_i\neq i$ 的位置</p>
-<p>复杂度 $O(nc^2+qc\log n)$</p>
+<h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑一种显然的思路，顺次确定每一位是什么，那么我们需要求出一个数组 $h_{i,j}$，表示 $a[i:n]$ 这段后缀使用 $\le j$ 的代价能够生成的排列数</p><p>但是这样做是 $O(nqc)$ 的，复杂度过高，考虑优化</p><p>注意到我们进行的 $a_i\neq i$ 的转移个数只有 $O(c)$ 个，因此我们可以考虑快速跳过一段 $a_i=i$ 的转移</p><p>那么我们就需要求出在 $\le j$ 的代价下，从 $i$ 开始 $a_i<i$ 的转移能生成的排列个数 $f_{i,j}$，以及 $a_i>i$ 的转移能生成的排列个数 $g_{i,j}$，我们就可以通过二分来快速求出下一个 $a_i\neq i$ 的位置</p><p>复杂度 $O(nc^2+qc\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="19-CF1450H2-Multithreading-Hard-Version-E"><a href="#19-CF1450H2-Multithreading-Hard-Version-E" class="headerlink" title="19.  CF1450H2 - Multithreading (Hard Version) [E]"></a>19.  CF1450H2 - Multithreading (Hard Version) [E]</h3><h4 id="题面-18"><a href="#题面-18" class="headerlink" title="题面"></a>题面</h4><p>圆周上有 $n$ 个点，保证 $n$ 为偶数，每个点的为 <code>b</code>，<code>w</code>，<code>?</code> 的一种，你需要将所有 <code>?</code> 分别染成 <code>b</code> 和 <code>w</code> 中的一种</p>
 <p>按照如下方式定义这个圆周的权值 $f$：</p>
@@ -613,21 +523,11 @@
 <p>对所有将 <code>?</code> 染色的方案，求 $f$ 之和，对 $998244353$ 取模</p>
 <p>由于这个问题太简单，所以还有 $m$ 次修改，每次将一个点修改为 <code>bw?</code> 中的一个，每次修改后你需要输出这个问题新的答案</p>
 <p>$2\le n\le2\times10^5,0\le m\le2\times10^5$</p>
-<h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><p>手玩一下可以发现一个结论：对于一个 <code>bw</code> 染色，我们按照任意位置剪成一个序列，每次将相邻相等的字符删去，$f$ 值即为最后剩下的字符数除 $2$</p>
-<p>不想证明了，感觉很对。</p>
-<p>注意到我们将所有偶数位置的字符取反后这个东西就等于 $\frac12|cnt_B-cnt_W|$</p>
-<p>那么我们可以列出单次询问的式子，设 $cnt_B-cnt_W=a$，$cnt_?=b$，答案即为：</p>
-<script type="math/tex; mode=display">
-\sum_{i=0}^b[4|a+2i]\binom bi\frac{a+2i}{4}</script><p>至此，已经可以 $O(n)$ 计算单次答案</p>
-<p>注意到我们需要求的实际上是形如下面两个式子的东西（其中 $a,b,h,x$ 均为给定常数）：</p>
-<script type="math/tex; mode=display">
-\sum_{i=0}^h\binom bii[i\equiv x\pmod2]\\\sum_{i=0}^h\binom bi[i\equiv x\pmod2]</script><p>注意到 $\binom bii=\binom{b-1}{i-1}b$，因此第一种情况可以转化成第二种情况</p>
-<p>如果我们要求的是组合数前缀和，注意到 $h,b$ 每次的变化只有 $O(1)$，因此是可以快速推出的</p>
-<p>那么我们继续考虑，如果 $h=b$，那么我们知道这个式子的值等于总和的一半，因此我们考虑同样的做法</p>
-<p>把这个式子看成从 $b$ 个中选 $\le h$ 个，且必须选奇数/偶数个，按第一个有没有选建立双射，那么我们可以得到在 $h\equiv x\pmod2$ 的情况下，原式等于：</p>
-<script type="math/tex; mode=display">
-\frac12\left(\sum_{i=0}^h\binom bi+\binom{b-1}h\right)</script><p>也就可以求了。</p>
-<p>复杂度 $O(n+m)$</p>
+<h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>手玩一下可以发现一个结论：对于一个 <code>bw</code> 染色，我们按照任意位置剪成一个序列，每次将相邻相等的字符删去，$f$ 值即为最后剩下的字符数除 $2$</p><p>不想证明了，感觉很对。</p><p>注意到我们将所有偶数位置的字符取反后这个东西就等于 $\frac12|cnt_B-cnt_W|$</p><p>那么我们可以列出单次询问的式子，设 $cnt_B-cnt_W=a$，$cnt_?=b$，答案即为：</p><script type="math/tex; mode=display">\sum_{i=0}^b[4|a+2i]\binom bi\frac{a+2i}{4}</script><p>至此，已经可以 $O(n)$ 计算单次答案</p><p>注意到我们需要求的实际上是形如下面两个式子的东西（其中 $a,b,h,x$ 均为给定常数）：</p><script type="math/tex; mode=display">\sum_{i=0}^h\binom bii[i\equiv x\pmod2]\\\sum_{i=0}^h\binom bi[i\equiv x\pmod2]</script><p>注意到 $\binom bii=\binom{b-1}{i-1}b$，因此第一种情况可以转化成第二种情况</p><p>如果我们要求的是组合数前缀和，注意到 $h,b$ 每次的变化只有 $O(1)$，因此是可以快速推出的</p><p>那么我们继续考虑，如果 $h=b$，那么我们知道这个式子的值等于总和的一半，因此我们考虑同样的做法</p><p>把这个式子看成从 $b$ 个中选 $\le h$ 个，且必须选奇数/偶数个，按第一个有没有选建立双射，那么我们可以得到在 $h\equiv x\pmod2$ 的情况下，原式等于：</p><script type="math/tex; mode=display">\frac12\left(\sum_{i=0}^h\binom bi+\binom{b-1}h\right)</script><p>也就可以求了。</p><p>复杂度 $O(n+m)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="20-CF1540D-Inverse-Inversions-S"><a href="#20-CF1540D-Inverse-Inversions-S" class="headerlink" title="20.  CF1540D - Inverse Inversions [S]"></a>20.  CF1540D - Inverse Inversions [S]</h3><h4 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h4><p>对于一个 $1\sim n$ 的排列 $p$，按如下方式定义 $b$：$b_i$ 为满足 $j<i,p_j>p_i$ 的 $j$ 个数</p>
 <p>现在给定 $b_1,b_2,\cdots,b_n$，有 $q$ 次操作，每次操作为以下两种中的一个：</p>
@@ -636,40 +536,33 @@
 <li><code>2 i</code>，查询当前 $b$ 对应的 $p_i$，保证有解</li>
 </ul>
 <p>$1\le n,q\le10^5,0\le b_i&lt;i$</p>
-<h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><p>注意到每次查询相当于我们有一个变量 $c\leftarrow b_x$，然后 $x$ 枚举 $i+1$ 到 $n$，如果 $b_x\le c$，那么就令 $c\leftarrow c+1$</p>
-<p>注意到这个就是分段函数，但是有修改</p>
-<p>那么套一个分块就好了，每次修改一个位置暴力重建当前块，复杂度 $O(n\sqrt n\log n)$</p>
+<h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到每次查询相当于我们有一个变量 $c\leftarrow b_x$，然后 $x$ 枚举 $i+1$ 到 $n$，如果 $b_x\le c$，那么就令 $c\leftarrow c+1$</p><p>注意到这个就是分段函数，但是有修改</p><p>那么套一个分块就好了，每次修改一个位置暴力重建当前块，复杂度 $O(n\sqrt n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="21-CF700E-Cool-Slogans-K-✔️"><a href="#21-CF700E-Cool-Slogans-K-✔️" class="headerlink" title="21.  CF700E - Cool Slogans [K] ✔️"></a>21.  CF700E - Cool Slogans [K] ✔️</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的小写字符串 $s$，求最大的 $k$，使得存在非空字符串序列 $t_1,t_2,\cdots,t_k$ 满足：</p>
 <ul>
 <li>$t_i$ 均为 $s$ 的子串，且 $t_{i-1}$ 在 $t_i$ 中至少出现 $2$ 次</li>
 </ul>
 <p>$1\le n\le2\times10^5$</p>
-<h4 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h4><p>好题！</p>
-<p>注意到一定存在一个最优解满足 $t_{i-1}$ 是 $t_i$ 的 border，否则我们可以去头去尾，一定不劣</p>
-<p>那么这题相当于问的是 $s$ 的子串最多有多少 border</p>
-<p>建 sam，sam 上一个节点对应的是若干个 endpos 集合相同的后缀</p>
-<p>观察：对于一个子串 $p$，它的 border 一定是它的一个后缀，那么它只关心它所有后缀中，答案最大的中，长度最小的 $\text{mn}(p)$</p>
-<p>因为如果 $q$ 是 $p$ 的 border，那么删除 $p$ 和 $q$ 的第一个字符后，$q$ 一定还是 $p$ 的 border</p>
-<ul>
-<li>如果 $p$ 从某个不是 $\text{mn}(p)$，但是答案和 $\text{mn}(p)$ 的串转移过来，那么 $p$ 的某一个后缀一定可以从 $\text{mn}(p)$ 转移过来，违反 $\text{mn}(p)$ 答案最大的假设</li>
-<li>如果从某个答案小于 $\text{mn}(p)$ 的串转移过来，那么 $p$ 的答案一定小于等于 $\text{mn}(p)$ 的答案，因此可以将 $p$ 舍弃</li>
-</ul>
-<p>那么现在对于每个子串，我们只需要维护它在 fail 树上的 $\text{mn}(p)$ 即可，但是如果对于所有子串一个个做复杂度仍然太慢，因此我们引入一个结论：</p>
-<p>结论：sam 节点内部的两个字符串不能呈 border 关系</p>
-<p>证明：如果对于 sam 同节点的两个字符串 $s_1,s_2$，满足 $s_2$ 是 $s_1$ 的 border，那么找到 $s_2$ 第一次出现的位置 $x$，由于 $s_1$ 是 $s_2$ 的 border，那么 $s_1$ 一定在 $x$ 前有一次出现，矛盾</p>
-<p>有了这个结论后，由于一个节点内的 endpos 都是相同的，因从我们可以直接线段树上二分，找到长度最小的可转移的串，复杂度 $O(n\log n)$</p>
+<h4 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>好题！</p><p>注意到一定存在一个最优解满足 $t_{i-1}$ 是 $t_i$ 的 border，否则我们可以去头去尾，一定不劣</p><p>那么这题相当于问的是 $s$ 的子串最多有多少 border</p><p>建 sam，sam 上一个节点对应的是若干个 endpos 集合相同的后缀</p><p>观察：对于一个子串 $p$，它的 border 一定是它的一个后缀，那么它只关心它所有后缀中，答案最大的中，长度最小的 $\text{mn}(p)$</p><p>因为如果 $q$ 是 $p$ 的 border，那么删除 $p$ 和 $q$ 的第一个字符后，$q$ 一定还是 $p$ 的 border</p><ul><li>如果 $p$ 从某个不是 $\text{mn}(p)$，但是答案和 $\text{mn}(p)$ 的串转移过来，那么 $p$ 的某一个后缀一定可以从 $\text{mn}(p)$ 转移过来，违反 $\text{mn}(p)$ 答案最大的假设</li><li>如果从某个答案小于 $\text{mn}(p)$ 的串转移过来，那么 $p$ 的答案一定小于等于 $\text{mn}(p)$ 的答案，因此可以将 $p$ 舍弃</li></ul><p>那么现在对于每个子串，我们只需要维护它在 fail 树上的 $\text{mn}(p)$ 即可，但是如果对于所有子串一个个做复杂度仍然太慢，因此我们引入一个结论：</p><p>结论：sam 节点内部的两个字符串不能呈 border 关系</p><p>证明：如果对于 sam 同节点的两个字符串 $s_1,s_2$，满足 $s_2$ 是 $s_1$ 的 border，那么找到 $s_2$ 第一次出现的位置 $x$，由于 $s_1$ 是 $s_2$ 的 border，那么 $s_1$ 一定在 $x$ 前有一次出现，矛盾</p><p>有了这个结论后，由于一个节点内的 endpos 都是相同的，因从我们可以直接线段树上二分，找到长度最小的可转移的串，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="22-CF576E-Painting-Edges-E-⭐"><a href="#22-CF576E-Painting-Edges-E-⭐" class="headerlink" title="22.  CF576E - Painting Edges [E] ⭐"></a>22.  CF576E - Painting Edges [E] ⭐</h3><h4 id="题面-21"><a href="#题面-21" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，每条边可以被染成 $k$ 种颜色之一，初始所有边都没有被染过色</p>
 <p>$q$ 次操作，每次操作给定 $e,c$，表示将第 $e$ 条边染成 $c$ 颜色</p>
 <p>此时，你需要判断这次染色后，是否会导致某一种颜色的边形成的子图不再是二分图，如果是，那么你需要输出 <code>NO</code> 并忽略这次染色，否则输出 <code>YES</code> 并执行这次染色</p>
 <p>$2\le n\le5\times10^5,1\le m,q\le5\times10^5,1\le k\le50$</p>
 <p>5s，600MB</p>
-<h4 id="题解-21"><a href="#题解-21" class="headerlink" title="题解"></a>题解</h4><p>注意到这个东西长得很像线段树分治，如果所有边存在的时间我们都知道，那么可以直接线段树分治求解</p>
-<p>但是现在边存在的时间我们不知道。</p>
-<p>因此，我们考虑可以用类似于 cdq 分治的手段将在线转化为离线</p>
-<p>考虑这样一种处理方法：直接线段树分治，在执行完一次操作后，如果当前把边 $e$ 染成了某个颜色，那么直到下一次 $e$ 被操作，其颜色一定不会改变，我们在这段时间区间上插入这条边即可</p>
-<p>复杂度 $O(n\log^2n)$</p>
+<h4 id="题解-21"><a href="#题解-21" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到这个东西长得很像线段树分治，如果所有边存在的时间我们都知道，那么可以直接线段树分治求解</p><p>但是现在边存在的时间我们不知道。</p><p>因此，我们考虑可以用类似于 cdq 分治的手段将在线转化为离线</p><p>考虑这样一种处理方法：直接线段树分治，在执行完一次操作后，如果当前把边 $e$ 染成了某个颜色，那么直到下一次 $e$ 被操作，其颜色一定不会改变，我们在这段时间区间上插入这条边即可</p><p>复杂度 $O(n\log^2n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="23-CF1063F-String-Journey-K-✔️"><a href="#23-CF1063F-String-Journey-K-✔️" class="headerlink" title="23.  CF1063F - String Journey [K] ✔️"></a>23.  CF1063F - String Journey [K] ✔️</h3><h4 id="题面-22"><a href="#题面-22" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的小写字符串 $s$，你需要选择若干个 $s$ 的子串 $s[l_1:r_1],s[l_2:r_2],\cdots,s[l_k:r_k]$，满足：</p>
 <ul>
@@ -678,123 +571,96 @@
 </ul>
 <p>求最大可能的 $k$</p>
 <p>$1\le n\le5\times10^5$</p>
-<h4 id="题解-22"><a href="#题解-22" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1-2"><a href="#做法-1-2" class="headerlink" title="做法 1"></a>做法 1</h5><p>注意到答案不超过 $O(\sqrt n)$，因此对 $O(n\sqrt n)$ 个子串暴力做转移</p>
-<p>这样空间复杂度可能会有点寄，于是我们可以考虑枚举子串长度，注意到考虑长度为 $x$ 的时候只会与长度为 $x-1$ 的串相关，因此可以把空间复杂度降到 $O(n)$</p>
-<p>复杂度 $O(n\sqrt n)$，大力卡常说不定可以通过</p>
-<h5 id="做法-2-2"><a href="#做法-2-2" class="headerlink" title="做法 2"></a>做法 2</h5><p>首先注意到一件事情：子串长度一定是 $1,2,\cdots,k$，这样一定不劣</p>
-<p>考虑一个 dp：令 $f_i$ 表示前 $i$ 个位置，选出来的最后一个字符串在 $i$ 结尾，最大的 $k$ 是多少</p>
-<p>注意到对于一个 $i$，如果存在一个合法选法使得最后一个串为 $s[j:i]$，那么对于所有 $j^\prime&gt;j$，一定也存在合法选法使得最后一个串为 $s[j^\prime:i]$</p>
-<p>考虑如何转移：从大到小枚举 $k$ 的值为多少，那么最后一个串就是 $s[i-k+1:i]$，我们需要知道 $s[i-k+1:i-1]$ 和 $s[i-k+2:i]$ 是否能在 $i-k$ 及之前结尾</p>
-<p>那么我们对这两个子串分别找到 $i-k$ 及之前最后一次出现位置 $q$，即为查询 $q$ 是否 $\ge k-1$</p>
-<p>暴力转移复杂度过高，考虑优化</p>
-<p>首先优化判断部分，如果我们知道 $s[i-k+1:i-1]$ 和 $s[i-k+2:i]$ 的 sam 节点，那么就可以线段树合并维护 endpos 集合，直接查出出现位置，$s[i-k+2:i]$ 的节点是好得出的（因为我们可以知道 $s[i-k+1:i]$ 的节点），而 $s[i-k+1:i-1]$ 可以从转移 $f_{i-1}$ 时的 sam 节点得出</p>
-<p>接下来优化枚举 $k$ 的部分，注意到 $f_{i-1}+1\ge f_i$（否则 $f_{i-1}$ 可以改得更大），所以直接从 $f_{i-1}+1$ 暴力往下枚举 $k$ 就是正确的</p>
-<p>判断 $k$ 有 $O(n)$ 次，每次判断是 $O(\log n)$ 的，总复杂度 $O(n\log n)$</p>
-<h5 id="做法-3"><a href="#做法-3" class="headerlink" title="做法 3"></a>做法 3</h5><p>其实可以继续优化。</p>
-<p>考虑优化判断部分，注意到我们需要求某个子串在 $i-k+1$ 前是否可能结束</p>
-<p>而注意到在 $i-k+1$ 之前可以结束的子串在 fail 树上是一个包含根的连通块（最深的节点可能只有一个前缀可以结束）</p>
-<p>那么我们对于每个节点记录一个 $g_i$，表示这个节点可以结束的最大长度为多少</p>
-<p>由于 $i-k+1$ 是递增的，所以当 $i-k+1$ 变化的时候我们直接加上在 $i-k+1$ 这个位置结束的串的影响即可，更新是均摊线性的，判断是 $O(1)$ 的</p>
-<p>因此总复杂度 $O(n)$</p>
+<h4 id="题解-22"><a href="#题解-22" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1-2"><a href="#做法-1-2" class="headerlink" title="做法 1"></a>做法 1</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到答案不超过 $O(\sqrt n)$，因此对 $O(n\sqrt n)$ 个子串暴力做转移</p><p>这样空间复杂度可能会有点寄，于是我们可以考虑枚举子串长度，注意到考虑长度为 $x$ 的时候只会与长度为 $x-1$ 的串相关，因此可以把空间复杂度降到 $O(n)$</p><p>复杂度 $O(n\sqrt n)$，大力卡常说不定可以通过</p>
+              </div>
+            </details>
+<h5 id="做法-2-2"><a href="#做法-2-2" class="headerlink" title="做法 2"></a>做法 2</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先注意到一件事情：子串长度一定是 $1,2,\cdots,k$，这样一定不劣</p><p>考虑一个 dp：令 $f_i$ 表示前 $i$ 个位置，选出来的最后一个字符串在 $i$ 结尾，最大的 $k$ 是多少</p><p>注意到对于一个 $i$，如果存在一个合法选法使得最后一个串为 $s[j:i]$，那么对于所有 $j^\prime&gt;j$，一定也存在合法选法使得最后一个串为 $s[j^\prime:i]$</p><p>考虑如何转移：从大到小枚举 $k$ 的值为多少，那么最后一个串就是 $s[i-k+1:i]$，我们需要知道 $s[i-k+1:i-1]$ 和 $s[i-k+2:i]$ 是否能在 $i-k$ 及之前结尾</p><p>那么我们对这两个子串分别找到 $i-k$ 及之前最后一次出现位置 $q$，即为查询 $q$ 是否 $\ge k-1$</p><p>暴力转移复杂度过高，考虑优化</p><p>首先优化判断部分，如果我们知道 $s[i-k+1:i-1]$ 和 $s[i-k+2:i]$ 的 sam 节点，那么就可以线段树合并维护 endpos 集合，直接查出出现位置，$s[i-k+2:i]$ 的节点是好得出的（因为我们可以知道 $s[i-k+1:i]$ 的节点），而 $s[i-k+1:i-1]$ 可以从转移 $f_{i-1}$ 时的 sam 节点得出</p><p>接下来优化枚举 $k$ 的部分，注意到 $f_{i-1}+1\ge f_i$（否则 $f_{i-1}$ 可以改得更大），所以直接从 $f_{i-1}+1$ 暴力往下枚举 $k$ 就是正确的</p><p>判断 $k$ 有 $O(n)$ 次，每次判断是 $O(\log n)$ 的，总复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<h5 id="做法-3"><a href="#做法-3" class="headerlink" title="做法 3"></a>做法 3</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>其实可以继续优化。</p><p>考虑优化判断部分，注意到我们需要求某个子串在 $i-k+1$ 前是否可能结束</p><p>而注意到在 $i-k+1$ 之前可以结束的子串在 fail 树上是一个包含根的连通块（最深的节点可能只有一个前缀可以结束）</p><p>那么我们对于每个节点记录一个 $g_i$，表示这个节点可以结束的最大长度为多少</p><p>由于 $i-k+1$ 是递增的，所以当 $i-k+1$ 变化的时候我们直接加上在 $i-k+1$ 这个位置结束的串的影响即可，更新是均摊线性的，判断是 $O(1)$ 的</p><p>因此总复杂度 $O(n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="24-CF526G-Spiders-Evil-Plan-E"><a href="#24-CF526G-Spiders-Evil-Plan-E" class="headerlink" title="24.  CF526G - Spiders Evil Plan [E]"></a>24.  CF526G - Spiders Evil Plan [E]</h3><h4 id="题面-23"><a href="#题面-23" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，边有边权 $w_i$，$q$ 次询问，每次询问给定 $x,y$，你需要选出至多 $y$ 条路经，使得它们的并是一个连通块，并且这个连通块包含 $x$，你需要回答这个连通块包含的边的边权和最大是多少</p>
 <p>强制在线</p>
 <p>$1\le n,q\le10^5,1\le w_i\le1000$</p>
-<h4 id="题解-23"><a href="#题解-23" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-1"><a href="#Flamire-做法-1" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>考虑经典结论：我们以 $x$ 为根进行树链剖分，那么拥有 $y$ 个叶子的虚树的最大大小就是选择前 $y$ 长的长链</p>
-<p>对应到原题上来说，我们只需要取 $2y$ 个叶子，在特判一下所有叶子都在一棵子树内的情况（因为要包含 $x$）</p>
-<p>但是现在 $x$ 不固定，并且强制在线，我们需要考虑一种不固定根的方式</p>
-<p>注意到如果我们找到了直径 $S-T$，那么最长的长链一定是 $x-S$ 或 $x-T$</p>
-<p>也就是我们要算选完一条 $S-x$ 的链后以 $x$ 为根剖分出来的前 $k$ 长的长链，注意到着等价于选完一条 $S-x$ 的链后以 $S$ 为根剖分出来的前 $k$ 长的长链，也就是说我们可以以 $S$ 为根做这个问题</p>
-<p>这时候 $S-x$ 的答案可以通过 $S-fa_x$ 做 $O(1)$ 次修改得出，用主席树维护即可</p>
-<p>对于 $T$ 的情况同理</p>
-<p>复杂度 $O(n\log n)$</p>
-<h5 id="优秀做法"><a href="#优秀做法" class="headerlink" title="优秀做法"></a>优秀做法</h5><p>仍然使用经典结论，但是这里选哪个点为根都不合适，因此我们考虑这样一种算法：</p>
-<p>首先选择直径 $S-T$，接下来选择前 $2y-2$ 长的长链，这样我们会得到一棵拥有 $2y$ 个叶子的树，这棵树在所有 $2y$ 个叶子的树中是最优的</p>
-<p>对于每个询问，如果这棵树包含了 $x$，那么直接做完了，否则我们需要做一些调整</p>
-<p>我们强行将 $x$ 这个点及其向子树内延伸到子树内的最长链加入到这棵虚树中，那么我们会得到一棵 $2y+1$ 个叶子的树，从剩下的叶子中挑一个贡献最小的删去，这个容易维护，复杂度 $O(n\log n)$</p>
+<h4 id="题解-23"><a href="#题解-23" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-1"><a href="#Flamire-做法-1" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑经典结论：我们以 $x$ 为根进行树链剖分，那么拥有 $y$ 个叶子的虚树的最大大小就是选择前 $y$ 长的长链</p><p>对应到原题上来说，我们只需要取 $2y$ 个叶子，在特判一下所有叶子都在一棵子树内的情况（因为要包含 $x$）</p><p>但是现在 $x$ 不固定，并且强制在线，我们需要考虑一种不固定根的方式</p><p>注意到如果我们找到了直径 $S-T$，那么最长的长链一定是 $x-S$ 或 $x-T$</p><p>也就是我们要算选完一条 $S-x$ 的链后以 $x$ 为根剖分出来的前 $k$ 长的长链，注意到着等价于选完一条 $S-x$ 的链后以 $S$ 为根剖分出来的前 $k$ 长的长链，也就是说我们可以以 $S$ 为根做这个问题</p><p>这时候 $S-x$ 的答案可以通过 $S-fa_x$ 做 $O(1)$ 次修改得出，用主席树维护即可</p><p>对于 $T$ 的情况同理</p><p>复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<h5 id="优秀做法"><a href="#优秀做法" class="headerlink" title="优秀做法"></a>优秀做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>仍然使用经典结论，但是这里选哪个点为根都不合适，因此我们考虑这样一种算法：</p><p>首先选择直径 $S-T$，接下来选择前 $2y-2$ 长的长链，这样我们会得到一棵拥有 $2y$ 个叶子的树，这棵树在所有 $2y$ 个叶子的树中是最优的</p><p>对于每个询问，如果这棵树包含了 $x$，那么直接做完了，否则我们需要做一些调整</p><p>我们强行将 $x$ 这个点及其向子树内延伸到子树内的最长链加入到这棵虚树中，那么我们会得到一棵 $2y+1$ 个叶子的树，从剩下的叶子中挑一个贡献最小的删去，这个容易维护，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="25-CF582D-Number-of-Binomial-Coefficients-S"><a href="#25-CF582D-Number-of-Binomial-Coefficients-S" class="headerlink" title="25.  CF582D - Number of Binomial Coefficients [S]"></a>25.  CF582D - Number of Binomial Coefficients [S]</h3><h4 id="题面-24"><a href="#题面-24" class="headerlink" title="题面"></a>题面</h4><p>给定正整数 $p,a,A$，求有多少对 $n,k$ 满足 $0\le k\le n\le A$ 且 $p^a|\binom nk$</p>
 <p>$1\le p,a\le10^9,0\le A\le10^{1000}$，保证 $p$ 为质数</p>
-<h4 id="题解-24"><a href="#题解-24" class="headerlink" title="题解"></a>题解</h4><p>注意到 $\binom nk=\frac{n!}{k!(n-k)!}$，我们知道 $n!$ 中所含 $p$ 的个数为 $\lfloor\frac np\rfloor+\lfloor\frac n{p^2}\rfloor+\cdots$，那么 $\binom nk$ 中所含 $p$ 的个数即为 $\sum_x\lfloor\frac n{p^x}\rfloor-\lfloor\frac k{p^x}\rfloor-\lfloor\frac {n-k}{p^x}\rfloor$，注意到 $\lfloor\frac n{p^x}\rfloor-\lfloor\frac k{p^x}\rfloor-\lfloor\frac {n-k}{p^x}\rfloor$ 取 $1$ 当且仅当 $k+(n-k)$ 在 $p^x$ 位上发生进位，也就是说 $\binom nk$ 中所含 $p$ 的个数即为 $k+(n-k)$ 发生的进位数</p>
-<p>这个东西似乎也叫库默尔定理。</p>
-<p>剩下的事情就是一个简单的数位 dp 了，复杂度 $O(\log^2A)$</p>
+<h4 id="题解-24"><a href="#题解-24" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到 $\binom nk=\frac{n!}{k!(n-k)!}$，我们知道 $n!$ 中所含 $p$ 的个数为 $\lfloor\frac np\rfloor+\lfloor\frac n{p^2}\rfloor+\cdots$，那么 $\binom nk$ 中所含 $p$ 的个数即为 $\sum_x\lfloor\frac n{p^x}\rfloor-\lfloor\frac k{p^x}\rfloor-\lfloor\frac {n-k}{p^x}\rfloor$，注意到 $\lfloor\frac n{p^x}\rfloor-\lfloor\frac k{p^x}\rfloor-\lfloor\frac {n-k}{p^x}\rfloor$ 取 $1$ 当且仅当 $k+(n-k)$ 在 $p^x$ 位上发生进位，也就是说 $\binom nk$ 中所含 $p$ 的个数即为 $k+(n-k)$ 发生的进位数</p><p>这个东西似乎也叫库默尔定理。</p><p>剩下的事情就是一个简单的数位 dp 了，复杂度 $O(\log^2A)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="26-CF1307F-Cow-and-Vacation-E"><a href="#26-CF1307F-Cow-and-Vacation-E" class="headerlink" title="26.  CF1307F - Cow and Vacation [E]"></a>26.  CF1307F - Cow and Vacation [E]</h3><h4 id="题面-25"><a href="#题面-25" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，部分点为特殊点，$q$ 次询问，每次给定 $s,t$，你需要从 $s$ 走一条路径到 $t$（不一定简单），使得不存在连续 $k$ 个点都不是特殊点，问是否可行</p>
 <p>$2\le n\le2\times10^5,1\le q\le2\times10^5$</p>
-<h4 id="题解-25"><a href="#题解-25" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-2"><a href="#Flamire-做法-2" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>注意到所有特殊点可以被划分成若干个连通块，一个连通块的特殊点两两直接或间接可达</p>
-<p>这个可以从每个点开始 bfs 长为 $\frac k2$ 的距离解决</p>
-<p>接下来考虑询问 $s,t$ 的情况，有两种情况：</p>
-<ul>
-<li>不经过任何特殊点，直接判掉</li>
-<li>经过特殊点，那么等价于我们需要找到一个连通块 $c$ 满足 $s\rightarrow c,c\rightarrow t$ 都有不超过 $k$ 的路径</li>
-</ul>
-<p>考虑 $s-t$ 这条路径，如果我们 $s\rightarrow c$，最后走到了 $c$ 中的特殊点 $p$，那么我们一定是在 $s-t$ 上的某个节点拐入 $p$ 的子树，并且 $s-t$ 上走过的距离大于 $p$ 上走过的距离，也就是说 $p$ 到路径上距离 $\le\frac k2$</p>
-<p>注意到：</p>
-<ul>
-<li>对于一个节点，距离它 $\le\frac k2$ 的连通块只能有一个</li>
-<li>我们只关心距离 $s-t$ 上的前 $k$ 个点</li>
-<li>总共连通块数是 $O(\frac nk)$ 的</li>
-</ul>
-<p>那么我们只要能够快速找到连通块即可，注意到每个连通块在路径上对应的是一段区间，那么使用一下并查集即可</p>
-<p>对于距离 $t$ 那一端 $\le k$ 的同样处理，处理完之后判断两个集合是否有相同元素</p>
-<p>复杂度 $O(n\min(k,\frac nk))$</p>
-<h5 id="正常做法"><a href="#正常做法" class="headerlink" title="正常做法"></a>正常做法</h5><p>首先我们将所有边中间插入一个点，这样我们需要保证不能存在连续的 $2k$ 步都没有经过特殊点</p>
-<p>其实只要检查 $s-t$ 上，从 $s$ 走 $k$ 步的点 $s^\prime$ 对应的连通块与从 $t$ 走 $k$ 步的点 $t^\prime$ 对应的连通块是否相同即可</p>
-<p>这里连通块指所有联通的特殊点，向外再扩展 $k$ 的距离</p>
-<p>说明这样做的正确性：</p>
-<p>假设我们从 $s$ 走到了某个 $p$，使得 $\text{dis}(s^\prime,p)&gt;k$</p>
-<p>那么由于 $\text{dis}(s,s^\prime)=k$，说明 $s-p$ 的路径上，在 $s-t$ 上的长度小于不在 $s-t$ 上的长度，也就是说走 $p$ 一定不如直接从 $s$ 出发走</p>
-<p>倍增跳 $k$ 步，复杂度 $O(n\log n)$</p>
+<h4 id="题解-25"><a href="#题解-25" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-2"><a href="#Flamire-做法-2" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到所有特殊点可以被划分成若干个连通块，一个连通块的特殊点两两直接或间接可达</p><p>这个可以从每个点开始 bfs 长为 $\frac k2$ 的距离解决</p><p>接下来考虑询问 $s,t$ 的情况，有两种情况：</p><ul><li>不经过任何特殊点，直接判掉</li><li>经过特殊点，那么等价于我们需要找到一个连通块 $c$ 满足 $s\rightarrow c,c\rightarrow t$ 都有不超过 $k$ 的路径</li></ul><p>考虑 $s-t$ 这条路径，如果我们 $s\rightarrow c$，最后走到了 $c$ 中的特殊点 $p$，那么我们一定是在 $s-t$ 上的某个节点拐入 $p$ 的子树，并且 $s-t$ 上走过的距离大于 $p$ 上走过的距离，也就是说 $p$ 到路径上距离 $\le\frac k2$</p><p>注意到：</p><ul><li>对于一个节点，距离它 $\le\frac k2$ 的连通块只能有一个</li><li>我们只关心距离 $s-t$ 上的前 $k$ 个点</li><li>总共连通块数是 $O(\frac nk)$ 的</li></ul><p>那么我们只要能够快速找到连通块即可，注意到每个连通块在路径上对应的是一段区间，那么使用一下并查集即可</p><p>对于距离 $t$ 那一端 $\le k$ 的同样处理，处理完之后判断两个集合是否有相同元素</p><p>复杂度 $O(n\min(k,\frac nk))$</p>
+              </div>
+            </details>
+<h5 id="正常做法"><a href="#正常做法" class="headerlink" title="正常做法"></a>正常做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先我们将所有边中间插入一个点，这样我们需要保证不能存在连续的 $2k$ 步都没有经过特殊点</p><p>其实只要检查 $s-t$ 上，从 $s$ 走 $k$ 步的点 $s^\prime$ 对应的连通块与从 $t$ 走 $k$ 步的点 $t^\prime$ 对应的连通块是否相同即可</p><p>这里连通块指所有联通的特殊点，向外再扩展 $k$ 的距离</p><p>说明这样做的正确性：</p><p>假设我们从 $s$ 走到了某个 $p$，使得 $\text{dis}(s^\prime,p)&gt;k$</p><p>那么由于 $\text{dis}(s,s^\prime)=k$，说明 $s-p$ 的路径上，在 $s-t$ 上的长度小于不在 $s-t$ 上的长度，也就是说走 $p$ 一定不如直接从 $s$ 出发走</p><p>倍增跳 $k$ 步，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="27-CF1270H-Number-of-Components-E"><a href="#27-CF1270H-Number-of-Components-E" class="headerlink" title="27.  CF1270H - Number of Components [E]"></a>27.  CF1270H - Number of Components [E]</h3><h4 id="题面-26"><a href="#题面-26" class="headerlink" title="题面"></a>题面</h4><p>对于元素互不相同的整数序列 $a_1,a_2,\cdots,a_n$，按照如下方式建图：点集为 $\{1,2,\cdots,n\}$，对于 $i&lt;j$，$i$ 和 $j$ 之间有无向边当且仅当 $a_i&lt;a_j$</p>
 <p>给定初始 $a_1,a_2,\cdots,a_n$，$q$ 次修改，每次单点修改一个 $a_i$，保证修改后 $a$ 中元素依然互不相同，每次修改后求建出的图的连通块个数</p>
 <p>$1\le n,q\le5\times10^5,1\le a_i\le10^6$</p>
-<h4 id="题解-26"><a href="#题解-26" class="headerlink" title="题解"></a>题解</h4><h5 id="题解做法-1"><a href="#题解做法-1" class="headerlink" title="题解做法"></a>题解做法</h5><p>易证每个连通块都是一个区间。</p>
-<p>那么这道题想让我们求的实际上是有多少 $i$ 满足前 $i$ 个的最小值大于 $i+1$ 及之后的最大值</p>
-<p>我们在值域上考虑这个问题，我们选择一个 $a_v$，将 $&gt;a_v$ 全部变为 $1$，其余变为 $0$，那么答案相当于有多少选择 $a_v$ 的方式使得最后得到的数列形如 $1111\cdots0000$</p>
-<p>为了计算这个，我们统计 $10$ 子串的出现次数，由于第一个元素是 $1$，最后一个元素是 $0$，所以一个 $10$ 是最小值</p>
-<p>如果满足 $a_i&gt;a_{i+1}$，那么就相当于给 $[a_{i+1},a_i)$ 内的 $a_v$ 全部加上一个 $10$</p>
-<p>最后我们需要查询所有出现过的 $a_v$ 中有多少有一个 $10$，加上单点修改也是容易用线段树维护的</p>
-<p>复杂度 $O(n\log n)$</p>
-<h5 id="Flamire-做法-3"><a href="#Flamire-做法-3" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>我们直接提出一个做法：对于每个在 $a$ 中出现的数 $x$，找到其值域后继 $y$，如果 $x$ 的出现位置在 $y$ 之前，那么将 $id_x$ 到 $id_y$ 之间所有空隙标记为不合法，答案即为最后合法空隙数 $+1$</p>
-<p>首先，这个做法肯定不可能将合法空隙算成不合法，因为每个 $id_x\rightarrow id_y$ 都是有连边的</p>
-<p>其次，我们也可以说明这个做法不可能将不合法空隙算成合法，对于原图中任意一条边 $i-j$，其满足 $a_i&lt;a_j$，在 $a_i$ 不断走向后继的过程中，一定会有一步“跨越”中间的空隙，因此一定会被我们的做法算到</p>
-<p>直接把这个套上线段树，复杂度 $O(n\log n)$</p>
+<h4 id="题解-26"><a href="#题解-26" class="headerlink" title="题解"></a>题解</h4><h5 id="题解做法-1"><a href="#题解做法-1" class="headerlink" title="题解做法"></a>题解做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>易证每个连通块都是一个区间。</p><p>那么这道题想让我们求的实际上是有多少 $i$ 满足前 $i$ 个的最小值大于 $i+1$ 及之后的最大值</p><p>我们在值域上考虑这个问题，我们选择一个 $a_v$，将 $&gt;a_v$ 全部变为 $1$，其余变为 $0$，那么答案相当于有多少选择 $a_v$ 的方式使得最后得到的数列形如 $1111\cdots0000$</p><p>为了计算这个，我们统计 $10$ 子串的出现次数，由于第一个元素是 $1$，最后一个元素是 $0$，所以一个 $10$ 是最小值</p><p>如果满足 $a_i&gt;a_{i+1}$，那么就相当于给 $[a_{i+1},a_i)$ 内的 $a_v$ 全部加上一个 $10$</p><p>最后我们需要查询所有出现过的 $a_v$ 中有多少有一个 $10$，加上单点修改也是容易用线段树维护的</p><p>复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<h5 id="Flamire-做法-3"><a href="#Flamire-做法-3" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>我们直接提出一个做法：对于每个在 $a$ 中出现的数 $x$，找到其值域后继 $y$，如果 $x$ 的出现位置在 $y$ 之前，那么将 $id_x$ 到 $id_y$ 之间所有空隙标记为不合法，答案即为最后合法空隙数 $+1$</p><p>首先，这个做法肯定不可能将合法空隙算成不合法，因为每个 $id_x\rightarrow id_y$ 都是有连边的</p><p>其次，我们也可以说明这个做法不可能将不合法空隙算成合法，对于原图中任意一条边 $i-j$，其满足 $a_i&lt;a_j$，在 $a_i$ 不断走向后继的过程中，一定会有一步“跨越”中间的空隙，因此一定会被我们的做法算到</p><p>直接把这个套上线段树，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="28-CF623E-Transforming-Sequence-K-✔️"><a href="#28-CF623E-Transforming-Sequence-K-✔️" class="headerlink" title="28.  CF623E - Transforming Sequence [K] ✔️"></a>28.  CF623E - Transforming Sequence [K] ✔️</h3><h4 id="题面-27"><a href="#题面-27" class="headerlink" title="题面"></a>题面</h4><p>对于任意一个序列 $a_1,a_2,\cdots,a_n$，定义它生成的数列 $b_1,b_2,\cdots,b_n$ 满足 $b_i=a_1|a_2|\cdots|a_i$，其中 $|$ 为按位或</p>
 <p>求有多少值域为 $[1,2^k-1]$ 的序列 $a_1,a_2,\cdots,a_n$ 满足其生成的数列 $b$ 严格递增，对 $10^9+7$ 取模</p>
 <p>$1\le n\le10^{18},1\le k\le30000$</p>
-<h4 id="题解-27"><a href="#题解-27" class="headerlink" title="题解"></a>题解</h4><p>$n$ 开 $10^{18}$ 是什么小丑数据范围。$n&gt;k$ 显然输出 $0$。</p>
-<p>fft 出 $10^9+7$ 也是小丑。</p>
-<p>考虑 dp，令 $dp_{i,j}$ 表示前 $i$ 个数，$b_i$ 有 $j$ 个 $1$ 的方案数，那么有转移式：</p>
-<script type="math/tex; mode=display">
-dp_{i,j}=\sum_{x=1}^jdp_{i-1,x}\cdot2^x\cdot\binom jx\\
-\Rightarrow\frac{dp_{i,j}}{j!}=\sum_{x=1}^j\frac{dp_{i-1,x}}{x!}\cdot2^x\cdot\frac1{(j-x)!}</script><p>令 $F_i(x)=\sum_{j=0}\frac{dp_{i,j}}{j!}x^j$，那么这相当于：</p>
-<script type="math/tex; mode=display">
-F_i(x)=(e^x-1)F_{i-1}(2x)\\
-\Rightarrow F_i(x)=\prod_{j=0}^{i-1}(e^{2^jx}-1)</script><p>我们只需要保留后 $k$ 项，并且复合 $2x$ 是可以快速进行的，因此可以倍增处理 $F_n(x)$，复杂度 $O(k\log n\log k)$</p>
+<h4 id="题解-27"><a href="#题解-27" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>$n$ 开 $10^{18}$ 是什么小丑数据范围。$n&gt;k$ 显然输出 $0$。</p><p>fft 出 $10^9+7$ 也是小丑。</p><p>考虑 dp，令 $dp_{i,j}$ 表示前 $i$ 个数，$b_i$ 有 $j$ 个 $1$ 的方案数，那么有转移式：</p><script type="math/tex; mode=display">dp_{i,j}=\sum_{x=1}^jdp_{i-1,x}\cdot2^x\cdot\binom jx\\\Rightarrow\frac{dp_{i,j}}{j!}=\sum_{x=1}^j\frac{dp_{i-1,x}}{x!}\cdot2^x\cdot\frac1{(j-x)!}</script><p>令 $F_i(x)=\sum_{j=0}\frac{dp_{i,j}}{j!}x^j$，那么这相当于：</p><script type="math/tex; mode=display">F_i(x)=(e^x-1)F_{i-1}(2x)\\\Rightarrow F_i(x)=\prod_{j=0}^{i-1}(e^{2^jx}-1)</script><p>我们只需要保留后 $k$ 项，并且复合 $2x$ 是可以快速进行的，因此可以倍增处理 $F_n(x)$，复杂度 $O(k\log n\log k)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="29-CF1534G-A-New-Beginning-E"><a href="#29-CF1534G-A-New-Beginning-E" class="headerlink" title="29.  CF1534G - A New Beginning [E]"></a>29.  CF1534G - A New Beginning [E]</h3><h4 id="题面-28"><a href="#题面-28" class="headerlink" title="题面"></a>题面</h4><p>平面上有 $n$ 个点 $(x_i,y_i)$ 需要种上土豆，你在 $(x,y)$ 给 $(X,Y)$ 种上土豆的代价为 $\max(|X-x|,|Y-y|)$</p>
 <p>你初始在 $(0,0)$，每步可以向上或向右移动 $1$，任意时刻你可以选择给任意位置种上土豆，求最小代价</p>
 <p>$1\le n\le8\times10^5$</p>
-<h4 id="题解-28"><a href="#题解-28" class="headerlink" title="题解"></a>题解</h4><p>注意到对于一个土豆 $(x_i,y_i)$，在跨过 $y=(x_i+y_i)-x$ 的时候种这个土豆是最优的</p>
-<p>那么不难想到 dp：令 $dp_{i,j}$ 表示当前在 $y=i-x$ 直线上，且 $x=j$，种完前面土豆的最小代价</p>
-<p>我们需要进行如下两种转移：</p>
-<ul>
-<li>令 $dp_{i,j}\leftarrow\min(dp_{i-1,j},dp_{i-1,j-1})$</li>
-<li>给 $dp_i$ 加上若干个斜率先为 $-1$，后为 $1$ 的分段函数</li>
-</ul>
-<p>第二个操作看起来很 slope-trick，事实上，$dp_i$ 也确实是凸的</p>
-<p>考虑第一个操作怎么维护，画一下就可以发现我们找到最低点，将最低点的段延长 $1$ 即可</p>
-<p>这个可以直接用平衡树维护，复杂度 $O(n\log n)$</p>
-<p>但实际上可以使用两个堆，一个维护正的斜率，一个维护负的斜率，容易发现每次操作都是全局打 tag 和 $O(1)$ 次堆操作，复杂度 $O(n\log n)$</p>
+<h4 id="题解-28"><a href="#题解-28" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到对于一个土豆 $(x_i,y_i)$，在跨过 $y=(x_i+y_i)-x$ 的时候种这个土豆是最优的</p><p>那么不难想到 dp：令 $dp_{i,j}$ 表示当前在 $y=i-x$ 直线上，且 $x=j$，种完前面土豆的最小代价</p><p>我们需要进行如下两种转移：</p><ul><li>令 $dp_{i,j}\leftarrow\min(dp_{i-1,j},dp_{i-1,j-1})$</li><li>给 $dp_i$ 加上若干个斜率先为 $-1$，后为 $1$ 的分段函数</li></ul><p>第二个操作看起来很 slope-trick，事实上，$dp_i$ 也确实是凸的</p><p>考虑第一个操作怎么维护，画一下就可以发现我们找到最低点，将最低点的段延长 $1$ 即可</p><p>这个可以直接用平衡树维护，复杂度 $O(n\log n)$</p><p>但实际上可以使用两个堆，一个维护正的斜率，一个维护负的斜率，容易发现每次操作都是全局打 tag 和 $O(1)$ 次堆操作，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="30-CF986F-Oppa-Funcan-Style-Remastered-S"><a href="#30-CF986F-Oppa-Funcan-Style-Remastered-S" class="headerlink" title="30.  CF986F - Oppa Funcan Style Remastered [S]"></a>30.  CF986F - Oppa Funcan Style Remastered [S]</h3><h4 id="题面-29"><a href="#题面-29" class="headerlink" title="题面"></a>题面</h4><p>$t$ 次询问，每次询问给定 $n,k$，查询 $n$ 是否能表示成若干个 $k$ 的非 $1$ 因数之和（可重复）</p>
 <p>$1\le t\le10^4,1\le n\le10^{18},1\le k\le10^{15}$，保证最多有 $50$ 种不同的 $k$</p>
-<h4 id="题解-29"><a href="#题解-29" class="headerlink" title="题解"></a>题解</h4><p>不难发现只用考虑 $k$ 的质因子。</p>
-<p>对于若干种物品的完全背包判断合法，我们有一种方式是同余最短路</p>
-<p>这道题里，我们以最小的质因子为模数做同余最短路，对于一个 $k$ 复杂度就是 $O(pa\log p )$，其中 $p$ 为最小质因子，$a$ 为质因子个数，那么复杂度也就是 $O(a\sqrt[a]{p}\log p)$</p>
-<p>当 $a\le2$ 的时候复杂度过大，但是这种情况是好特判掉的</p>
+<h4 id="题解-29"><a href="#题解-29" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>不难发现只用考虑 $k$ 的质因子。</p><p>对于若干种物品的完全背包判断合法，我们有一种方式是同余最短路</p><p>这道题里，我们以最小的质因子为模数做同余最短路，对于一个 $k$ 复杂度就是 $O(pa\log p )$，其中 $p$ 为最小质因子，$a$ 为质因子个数，那么复杂度也就是 $O(a\sqrt[a]{p}\log p)$</p><p>当 $a\le2$ 的时候复杂度过大，但是这种情况是好特判掉的</p>
+              </div>
+            </details>
 <hr>
 <h3 id="31-CF878E-Numbers-on-the-blackboard-E-⭐"><a href="#31-CF878E-Numbers-on-the-blackboard-E-⭐" class="headerlink" title="31.  CF878E - Numbers on the blackboard [E] ⭐"></a>31.  CF878E - Numbers on the blackboard [E] ⭐</h3><h4 id="题面-30"><a href="#题面-30" class="headerlink" title="题面"></a>题面</h4><p>给定 $a_1,a_2,\cdots,a_n$，按如下定义 $F(a[l:r])$：</p>
 <ul>
@@ -802,30 +668,25 @@ F_i(x)=(e^x-1)F_{i-1}(2x)\\
 </ul>
 <p>$q$ 次询问，每次给定 $l,r$，查询 $F(a[l:r])$ 对 $10^9+7$ 取模的值</p>
 <p>$1\le n,q\le10^5,|a_i|\le10^9$</p>
-<h4 id="题解-30"><a href="#题解-30" class="headerlink" title="题解"></a>题解</h4><h5 id="正常做法-1"><a href="#正常做法-1" class="headerlink" title="正常做法"></a>正常做法</h5><p>考虑最后一个数，如果 $a_r\ge0$，那么显然一开始就向前合并是最优的，否则最后向前合并是最优的，如此向前递推，就可以得到一个单次询问 $O(n)$ 做法</p>
-<p>考虑对 $r$ 扫描线，维护若干个极大的块，每次加入一个 $a_r$ 的时候，如果 $a_r\ge0$，就将 $a_r$ 向前合并，否则 $a_r$ 自成一块</p>
-<p>那么查询只需要二分出 $a_l$ 所在的块，容易用数据结构维护，复杂度 $O(n\log n)$，注意特判值特别大的情况（有一个 $&gt;10^{14}$ 的一定会和前面一直合并，因此把所有权值和 $10^{14}$ 取 $\min$ 即可）</p>
-<p>注意到上述算法等价于对于每个 $i$ 求出 $L_i$，表示第一个 $[L_i,i]$ 的值 $&lt;0$ 的位置，然后 $i\rightarrow(L_i-1)$ 建出一棵树，那么每次查询就是在这棵树上进行一个倍增，在线，复杂度 $O(n\log n)$</p>
-<h5 id="Flamire-做法-4"><a href="#Flamire-做法-4" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>首先将 $[l,r]$ 变为 $[l+1,r]$，最后暴力模拟 $a_l$</p>
-<p>我们发现，倒着考虑这个过程，那么设 $x$ 为我们当前的值，$y$ 为答案，每步执行的操作相当于：</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x:=a[i]+2*x</span><br><span class="line">if(x&lt;0):</span><br><span class="line">    y+=2*x,x=0</span><br></pre></td></tr></table></figure></div>
-<p>考虑用线段树维护这件事情，对于一个节点考虑：</p>
-<p>如果进入了一次 <code>if(x&lt;0)</code>，那么之后的值一定是确定的，并且这个值和初始的 $x$ 无关</p>
-<p>否则，我们是可以直接快速模拟这段区间的，直接将 $x$ 变为新的值</p>
-<p>这启发我们考虑类似楼房重建的线段树。</p>
-<p>对于一个节点我们维护 $ned$ 表示初始的 $x$ 最少是多少才能使中间不会进入 <code>if(x&lt;0)</code>，并对于初值 $&lt;ned$ 的情况，维护出走完右儿子后 $x$ 的值 $Fx$，维护出将其代入左儿子后 $x$ 的值 $vF$，以及 $y$ 增加的值 $vS$</p>
-<p>注意到这会涉及大数比较，并且不能直接和某个大数取 $\min$（因为会涉及加减非常大的负数的情况）</p>
-<p>一种解决方式是进一步维护出 $fned$，表示当前线段树节点初值 $x=ned$ 的时候，最后 $x$ 的值，这样我们的操作只有正数相加，以及和整型变量比较大小，可以对大数取 $\min$</p>
-<p>总复杂度 $O(n\log^2n)$，应该可以额外支持单点修改</p>
+<h4 id="题解-30"><a href="#题解-30" class="headerlink" title="题解"></a>题解</h4><h5 id="正常做法-1"><a href="#正常做法-1" class="headerlink" title="正常做法"></a>正常做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑最后一个数，如果 $a_r\ge0$，那么显然一开始就向前合并是最优的，否则最后向前合并是最优的，如此向前递推，就可以得到一个单次询问 $O(n)$ 做法</p><p>考虑对 $r$ 扫描线，维护若干个极大的块，每次加入一个 $a_r$ 的时候，如果 $a_r\ge0$，就将 $a_r$ 向前合并，否则 $a_r$ 自成一块</p><p>那么查询只需要二分出 $a_l$ 所在的块，容易用数据结构维护，复杂度 $O(n\log n)$，注意特判值特别大的情况（有一个 $&gt;10^{14}$ 的一定会和前面一直合并，因此把所有权值和 $10^{14}$ 取 $\min$ 即可）</p><p>注意到上述算法等价于对于每个 $i$ 求出 $L_i$，表示第一个 $[L_i,i]$ 的值 $&lt;0$ 的位置，然后 $i\rightarrow(L_i-1)$ 建出一棵树，那么每次查询就是在这棵树上进行一个倍增，在线，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<h5 id="Flamire-做法-4"><a href="#Flamire-做法-4" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先将 $[l,r]$ 变为 $[l+1,r]$，最后暴力模拟 $a_l$</p><p>我们发现，倒着考虑这个过程，那么设 $x$ 为我们当前的值，$y$ 为答案，每步执行的操作相当于：</p><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x:=a[i]+2*x</span><br><span class="line">if(x&lt;0):</span><br><span class="line">    y+=2*x,x=0</span><br></pre></td></tr></table></figure></div><p>考虑用线段树维护这件事情，对于一个节点考虑：</p><p>如果进入了一次 <code>if(x&lt;0)</code>，那么之后的值一定是确定的，并且这个值和初始的 $x$ 无关</p><p>否则，我们是可以直接快速模拟这段区间的，直接将 $x$ 变为新的值</p><p>这启发我们考虑类似楼房重建的线段树。</p><p>对于一个节点我们维护 $ned$ 表示初始的 $x$ 最少是多少才能使中间不会进入 <code>if(x&lt;0)</code>，并对于初值 $&lt;ned$ 的情况，维护出走完右儿子后 $x$ 的值 $Fx$，维护出将其代入左儿子后 $x$ 的值 $vF$，以及 $y$ 增加的值 $vS$</p><p>注意到这会涉及大数比较，并且不能直接和某个大数取 $\min$（因为会涉及加减非常大的负数的情况）</p><p>一种解决方式是进一步维护出 $fned$，表示当前线段树节点初值 $x=ned$ 的时候，最后 $x$ 的值，这样我们的操作只有正数相加，以及和整型变量比较大小，可以对大数取 $\min$</p><p>总复杂度 $O(n\log^2n)$，应该可以额外支持单点修改</p>
+              </div>
+            </details>
 <hr>
 <h3 id="32-CF1290E-Cartesian-Tree-K"><a href="#32-CF1290E-Cartesian-Tree-K" class="headerlink" title="32.  CF1290E - Cartesian Tree [K]"></a>32.  CF1290E - Cartesian Tree [K]</h3><h4 id="题面-31"><a href="#题面-31" class="headerlink" title="题面"></a>题面</h4><p>给定 $a_1,a_2,\cdots,a_n$，对于每个 $k=1,2,\cdots,n$，求所有 $a_i\le k$ 的元素形成的子序列建出的笛卡尔树，所有节点的子树大小之和</p>
 <p>保证 $a$ 为 $1\sim n$ 的排列</p>
 <p>$1\le n\le1.5\times10^5$</p>
-<h4 id="题解-31"><a href="#题解-31" class="headerlink" title="题解"></a>题解</h4><p>对于一个序列 $b_1,b_2,\cdots,b_k$，考虑如何求：注意到对于一个 $i$，求出左边第一个大于 $b_i$ 的位置 $L_i$，右边第一个大于 $b_i$ 的位置 $R_i$，那么 $i$ 的子树大小为 $R_i-L_i-1$</p>
-<p>考虑每次加一个数，维护 $L$ 和 $R$</p>
-<p>注意到由于加入的数一定是最大值，所以我们需要将前缀的 $R$ 对当前位置取 $\min$，后缀的 $L$ 对当前位置取 $\max$，又由于我们维护的是相对大小，所以我们需要对后缀的 $L,R$ 都 $+1$</p>
-<p>用 segbeats 维护即可，复杂度 $O(n\log^2n)$</p>
-<p>至于为什么是这个复杂度，我不知道。</p>
+<h4 id="题解-31"><a href="#题解-31" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>对于一个序列 $b_1,b_2,\cdots,b_k$，考虑如何求：注意到对于一个 $i$，求出左边第一个大于 $b_i$ 的位置 $L_i$，右边第一个大于 $b_i$ 的位置 $R_i$，那么 $i$ 的子树大小为 $R_i-L_i-1$</p><p>考虑每次加一个数，维护 $L$ 和 $R$</p><p>注意到由于加入的数一定是最大值，所以我们需要将前缀的 $R$ 对当前位置取 $\min$，后缀的 $L$ 对当前位置取 $\max$，又由于我们维护的是相对大小，所以我们需要对后缀的 $L,R$ 都 $+1$</p><p>用 segbeats 维护即可，复杂度 $O(n\log^2n)$</p><p>至于为什么是这个复杂度，我不知道。</p>
+              </div>
+            </details>
 <hr>
 <h3 id="33-CF1340F-Nastya-and-CBS-E"><a href="#33-CF1340F-Nastya-and-CBS-E" class="headerlink" title="33.  CF1340F - Nastya and CBS [E]"></a>33.  CF1340F - Nastya and CBS [E]</h3><h4 id="题面-32"><a href="#题面-32" class="headerlink" title="题面"></a>题面</h4><p>有 $k$ 种括号，第 $i$ 种左括号用 $i$ 表示，第 $i$ 种右括号用 $-i$ 表示</p>
 <p>给定长为 $n$ 的括号串 $s_1,s_2,\cdots,s_n$，$q$ 次操作，每次操作为以下两种之一：</p>
@@ -834,12 +695,11 @@ F_i(x)=(e^x-1)F_{i-1}(2x)\\
 <li><code>2 l r</code>，查询 $[l,r]$ 是不是合法括号串</li>
 </ul>
 <p>$1\le n,q\le10^5,1\le |s_i|\le k$</p>
-<h4 id="题解-32"><a href="#题解-32" class="headerlink" title="题解"></a>题解</h4><p>考虑用线段树维护，那么我们需要快速维护 $[l,m]$ 和 $[m+1,r]$</p>
-<p>注意到有用的只有一个形如的串 <code>))))(((((</code>，那么我们需要维护两个这样的串的合并</p>
-<p>使用哈希，对这个串的右括号和左括号分别哈希，那么我们需要将 $[l,m]$ 的左括号段和 $[m+1,r]$ 的右括号段进行抵消，设 $[l,m]$ 的左括号长度为 $x$，$[m+1,r]$ 的右括号段长度为 $y$，不妨设 $x\le y$</p>
-<p>那么我们需要判断 $[m+1,r]$ 的前 $x$ 个哈希值是否等于 $[l,m]$ 的后 $x$ 个的哈希值，$[l,m]$ 的我们是知道的，$[m+1,r]$ 的类似楼房重建的处理，放到线段树上查询即可</p>
-<p>查询可能需要把线段树节点拉出来做一些神秘的处理。</p>
-<p>复杂度 $O(n\log^2n)$</p>
+<h4 id="题解-32"><a href="#题解-32" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑用线段树维护，那么我们需要快速维护 $[l,m]$ 和 $[m+1,r]$</p><p>注意到有用的只有一个形如的串 <code>))))(((((</code>，那么我们需要维护两个这样的串的合并</p><p>使用哈希，对这个串的右括号和左括号分别哈希，那么我们需要将 $[l,m]$ 的左括号段和 $[m+1,r]$ 的右括号段进行抵消，设 $[l,m]$ 的左括号长度为 $x$，$[m+1,r]$ 的右括号段长度为 $y$，不妨设 $x\le y$</p><p>那么我们需要判断 $[m+1,r]$ 的前 $x$ 个哈希值是否等于 $[l,m]$ 的后 $x$ 个的哈希值，$[l,m]$ 的我们是知道的，$[m+1,r]$ 的类似楼房重建的处理，放到线段树上查询即可</p><p>查询可能需要把线段树节点拉出来做一些神秘的处理。</p><p>复杂度 $O(n\log^2n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="34-CF1517G-Starry-Night-Camping-K"><a href="#34-CF1517G-Starry-Night-Camping-K" class="headerlink" title="34.  CF1517G - Starry Night Camping [K]"></a>34.  CF1517G - Starry Night Camping [K]</h3><h4 id="题面-33"><a href="#题面-33" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个点 $(x_i,y_i)$，删除第 $i$ 个点代价为 $w_i$，你需要删除一些点，使得不存在满足如下条件的图形：</p>
 <ul>
@@ -847,64 +707,72 @@ F_i(x)=(e^x-1)F_{i-1}(2x)\\
 </ul>
 <p>求最小删除代价</p>
 <p>$1\le n\le1000,|x_i|,|y_i|\le10^9,1\le w_i\le10^9$</p>
-<h4 id="题解-33"><a href="#题解-33" class="headerlink" title="题解"></a>题解</h4><p>将所有边按横纵坐标模 $2$ 分等价类，注意到每个描述的图形相当于一条依次经过等价类 $(1,1)-(0,1)-(0,0)-(1,0)$ 的路径，满足每步走的曼哈顿距离均为 $1$</p>
-<p>那么直接网络流建图，复杂度 $O(\text{Dinic}(n,n))$</p>
+<h4 id="题解-33"><a href="#题解-33" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>将所有边按横纵坐标模 $2$ 分等价类，注意到每个描述的图形相当于一条依次经过等价类 $(1,1)-(0,1)-(0,0)-(1,0)$ 的路径，满足每步走的曼哈顿距离均为 $1$</p><p>那么直接网络流建图，复杂度 $O(\text{Dinic}(n,n))$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="35-CF1920F2-Smooth-Sailing-Hard-Version-K"><a href="#35-CF1920F2-Smooth-Sailing-Hard-Version-K" class="headerlink" title="35.  CF1920F2 - Smooth Sailing (Hard Version) [K]"></a>35.  CF1920F2 - Smooth Sailing (Hard Version) [K]</h3><h4 id="题面-34"><a href="#题面-34" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n\times m$ 的矩阵，每个格子为 <code>.</code>，<code>#</code>，<code>v</code> 中的一个，保证所有 <code>#</code> 形成一个四连通块</p>
 <p>$q$ 次询问，每次询问给定 $(x,y)$，你需要从 $(x,y)$ 出发，走一个可以经过 <code>.</code> 和 <code>v</code> 的四联通路径回到 $(x,y)$，使得走出来的路径把 <code>#</code> 形成的连通块包住，输出路径上任意时刻距离 <code>v</code> 的曼哈顿距离的最大值的最小值</p>
 <p>$3\le n,m\le10^5,9\le nm\le3\times10^5,1\le q\le3\times10^5$，保证第一行，最后一行，第一列，最后一列都没有 <code>#</code></p>
-<h4 id="题解-34"><a href="#题解-34" class="headerlink" title="题解"></a>题解</h4><p>“包住”，想到判断点是否在多边形内，有两种方法：射线法和角度法，角度法看起来没什么前途，所以我们考虑射线法</p>
-<p>从 <code>#</code> 连通块任意引一条向外的射线（取行数最大的点向下引），那么满足条件且不自交（自交一定不优）路径一共越过这条射线奇数次，那么我们拆点，将 $(x,y)$ 拆成 $(x,y,0)$ 和 $(x,y,1)$，表示当前经过了射线多少次</p>
-<p>那么问题就变为，$q$ 次询问，每次查询 $(x,y,0)$ 到 $(x,y,1)$，路径上经过的点权最小值的最大值为多少，这个可以直接 Kruskal 重构树，复杂度 $O(n\log n)$</p>
+<h4 id="题解-34"><a href="#题解-34" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>“包住”，想到判断点是否在多边形内，有两种方法：射线法和角度法，角度法看起来没什么前途，所以我们考虑射线法</p><p>从 <code>#</code> 连通块任意引一条向外的射线（取行数最大的点向下引），那么满足条件且不自交（自交一定不优）路径一共越过这条射线奇数次，那么我们拆点，将 $(x,y)$ 拆成 $(x,y,0)$ 和 $(x,y,1)$，表示当前经过了射线多少次</p><p>那么问题就变为，$q$ 次询问，每次查询 $(x,y,0)$ 到 $(x,y,1)$，路径上经过的点权最小值的最大值为多少，这个可以直接 Kruskal 重构树，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="36-CF906E-Reverses-K"><a href="#36-CF906E-Reverses-K" class="headerlink" title="36.  CF906E - Reverses [K]"></a>36.  CF906E - Reverses [K]</h3><h4 id="题面-35"><a href="#题面-35" class="headerlink" title="题面"></a>题面</h4><p>给定长度相等的小写字符串 $s,t$，你需要翻转若干个 $s$ 的不交子串，使得得到的字符串等于 $t$</p>
 <p>求最小操作次数并输出方案，如果不可能则输出 <code>-1</code></p>
 <p>$1\le|s|=|t|\le5\times10^5$</p>
-<h4 id="题解-35"><a href="#题解-35" class="headerlink" title="题解"></a>题解</h4><p>经典套路，将 $t$ 交替插入进 $s$，得到字符串 $k$，那么我们就是要将 $k$ 划分为若干个偶回文串，划分长度为 $2$ 的回文串代价为 $0$，其余代价为 $1$</p>
-<p>用 回文 dp trick 优化即可。</p>
+<h4 id="题解-35"><a href="#题解-35" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>经典套路，将 $t$ 交替插入进 $s$，得到字符串 $k$，那么我们就是要将 $k$ 划分为若干个偶回文串，划分长度为 $2$ 的回文串代价为 $0$，其余代价为 $1$</p><p>用 回文 dp trick 优化即可。</p>
+              </div>
+            </details>
 <hr>
 <h3 id="37-CF1172F-Nauuo-and-Bug-E-✔️"><a href="#37-CF1172F-Nauuo-and-Bug-E-✔️" class="headerlink" title="37.  CF1172F - Nauuo and Bug [E] ✔️"></a>37.  CF1172F - Nauuo and Bug [E] ✔️</h3><h4 id="题面-36"><a href="#题面-36" class="headerlink" title="题面"></a>题面</h4><p>给定数列 $a_1,a_2,\cdots,a_n$ 以及一个常数 $p$，$m$ 次询问，每次询问给定 $[l,r]$，求以下代码的执行结果：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ans=0</span><br><span class="line">for(int i=l;i&lt;=r;++i)</span><br><span class="line">&#123;</span><br><span class="line">	ans+=a[i];</span><br><span class="line">	if(ans&gt;=p)ans-=p;</span><br><span class="line">&#125;</span><br><span class="line">return ans;</span><br></pre></td></tr></table></figure></div>
 <p>$1\le n\le10^6,1\le m\le2\times10^5,1\le p\le10^9$</p>
-<h4 id="题解-36"><a href="#题解-36" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-5"><a href="#Flamire-做法-5" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>注意到这看起来很分段函数，但是如果直接记操作完的数关于操作前的数的函数，那么这个函数不递增，这就比较不好维护</p>
-<p>那么我们转换一下，维护 $c_x$ 表示初始值最少要是多少，才能使 $c_x$ 经过当前的线段树节点后恰好 $-xp$，注意到 $c_x$ 具有单调性，所以这个看起来比较可以维护</p>
-<p>具体地，我们对左儿子的每个 $c_x$，二分求出以 $c_x$ 作为输入，经过整个节点之后减的 $p$ 个数，那么我们将值域分成了若干段，每段内左儿子减的 $p$ 数量一定，也就是说，对于整个节点最后 $-xp$ 的点 $c_x$，我们可以恰好确定一个左儿子划分的段，那么我们就知道右儿子需要减多少 $p$，也就可以求出来 $c_x$ 的值</p>
-<p>那么合并复杂度是 $O(len\log len)$，总复杂度就是 $O(n\log^2n+m\log^2n)$</p>
-<h5 id="题解做法-2"><a href="#题解做法-2" class="headerlink" title="题解做法"></a>题解做法</h5><p>实际上合并的时候我们可以不用二分。</p>
-<p>注意到我们实际上相当于对于所有 $c_{x+1}-1+sum_{lc}-px\ge c_y$ 的点（即最大的 $-xp$ 的点经过左儿子之后仍然大于 $c_y$），可以贡献 $\max(c_y-sum_{lc}+px,c_x)$ 到 $c_{x+y}$</p>
-<p>那个 $\max$ 可以表示为 $\max(c_y,c_x+sum_{lc}-px)-(sum_{lc}-px)$，也就是说我们只要说明 $c_{x+1}-1+sum_{lc}-px$ 是递增的，那么也意味着 $c_x+sum_{lc}-px$ 是递增的，也就是说我们可以 two-pointer</p>
-<p>事实上，这确实是递增的，相邻项做差之后只需证 $c_{x+1}-c_x\ge p$</p>
-<p>注意到我们输入 $c_x$ 时，在减过第 $x$ 个 $p$ 之后，之后的最大值一定恰好为 $0$，否则会与 $c_x$ 的最小性矛盾，也就是说初值至少要加 $p$，我们才能够在后面再减一个 $p$，也就是说 $c_{x+1}-c_x\ge p$</p>
-<p>那么直接 two-pointer，可以将合并复杂度降到 $O(len)$，总复杂度就是 $O(n\log n+m\log^2n)$</p>
+<h4 id="题解-36"><a href="#题解-36" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-5"><a href="#Flamire-做法-5" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到这看起来很分段函数，但是如果直接记操作完的数关于操作前的数的函数，那么这个函数不递增，这就比较不好维护</p><p>那么我们转换一下，维护 $c_x$ 表示初始值最少要是多少，才能使 $c_x$ 经过当前的线段树节点后恰好 $-xp$，注意到 $c_x$ 具有单调性，所以这个看起来比较可以维护</p><p>具体地，我们对左儿子的每个 $c_x$，二分求出以 $c_x$ 作为输入，经过整个节点之后减的 $p$ 个数，那么我们将值域分成了若干段，每段内左儿子减的 $p$ 数量一定，也就是说，对于整个节点最后 $-xp$ 的点 $c_x$，我们可以恰好确定一个左儿子划分的段，那么我们就知道右儿子需要减多少 $p$，也就可以求出来 $c_x$ 的值</p><p>那么合并复杂度是 $O(len\log len)$，总复杂度就是 $O(n\log^2n+m\log^2n)$</p>
+              </div>
+            </details>
+<h5 id="题解做法-2"><a href="#题解做法-2" class="headerlink" title="题解做法"></a>题解做法</h5><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>实际上合并的时候我们可以不用二分。</p><p>注意到我们实际上相当于对于所有 $c_{x+1}-1+sum_{lc}-px\ge c_y$ 的点（即最大的 $-xp$ 的点经过左儿子之后仍然大于 $c_y$），可以贡献 $\max(c_y-sum_{lc}+px,c_x)$ 到 $c_{x+y}$</p><p>那个 $\max$ 可以表示为 $\max(c_y,c_x+sum_{lc}-px)-(sum_{lc}-px)$，也就是说我们只要说明 $c_{x+1}-1+sum_{lc}-px$ 是递增的，那么也意味着 $c_x+sum_{lc}-px$ 是递增的，也就是说我们可以 two-pointer</p><p>事实上，这确实是递增的，相邻项做差之后只需证 $c_{x+1}-c_x\ge p$</p><p>注意到我们输入 $c_x$ 时，在减过第 $x$ 个 $p$ 之后，之后的最大值一定恰好为 $0$，否则会与 $c_x$ 的最小性矛盾，也就是说初值至少要加 $p$，我们才能够在后面再减一个 $p$，也就是说 $c_{x+1}-c_x\ge p$</p><p>那么直接 two-pointer，可以将合并复杂度降到 $O(len)$，总复杂度就是 $O(n\log n+m\log^2n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="38-CF1523F-Favorite-Game-S"><a href="#38-CF1523F-Favorite-Game-S" class="headerlink" title="38.  CF1523F - Favorite Game [S]"></a>38.  CF1523F - Favorite Game [S]</h3><h4 id="题面-37"><a href="#题面-37" class="headerlink" title="题面"></a>题面</h4><p>你在一个二维平面上，$0$ 时刻你可以选择在任意一个位置出现，在这之后你可以花费 $1$ 的时间沿格线移动 $1$ 的距离</p>
 <p>平面上有 $n$ 个塔 $(xa_i,ya_i)$，在你第一次经过 $(xa_i,ya_i)$ 之后，你任意时刻都可以选择不花费时间瞬间回到 $(xa_i,ya_i)$</p>
 <p>有 $m$ 个任务 $(xb_i,yb_i,t_i)$，如果你第 $t_i$ 时刻在 $(xb_i,yb_i)$，那么你就可以不花费任何时间完成这个任务</p>
 <p>求最多能完成多少任务</p>
 <p>$0\le n\le14,1\le m\le100,1\le xa_i,ya_i,xb_i,yb_i\le10^6,1\le t_i\le10^9$</p>
-<h4 id="题解-37"><a href="#题解-37" class="headerlink" title="题解"></a>题解</h4><p>$n\le14$，显然状压</p>
-<p>比较显然的 dp 状态是 $dp_{S,i,j}$ 表示当前经过了 $S$ 中的塔，当前在点 $i$，已经完成了 $j$ 个任务的最小时间，状态数为 $O(2^nm^2)$，无法接受</p>
-<p>那么我们删除状态中一些没用的信息，令 $f_{S,i}$ 表示经过了 $S$ 中的塔，当前在某个塔，完成 $i$ 个任务的最小时间，$g_{S,i}$ 表示经过了 $S$ 中的塔，当前在第 $i$ 个任务处，由于此时时间已经确定，那么我们就记录最大完成任务数</p>
-<p>$f,g$ 可以预处理一些信息后枚举下一步走到哪个点，做到在每对点对之间 $O(1)$ 转移，总复杂度 $O(2^nm(n+m))$</p>
+<h4 id="题解-37"><a href="#题解-37" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>$n\le14$，显然状压</p><p>比较显然的 dp 状态是 $dp_{S,i,j}$ 表示当前经过了 $S$ 中的塔，当前在点 $i$，已经完成了 $j$ 个任务的最小时间，状态数为 $O(2^nm^2)$，无法接受</p><p>那么我们删除状态中一些没用的信息，令 $f_{S,i}$ 表示经过了 $S$ 中的塔，当前在某个塔，完成 $i$ 个任务的最小时间，$g_{S,i}$ 表示经过了 $S$ 中的塔，当前在第 $i$ 个任务处，由于此时时间已经确定，那么我们就记录最大完成任务数</p><p>$f,g$ 可以预处理一些信息后枚举下一步走到哪个点，做到在每对点对之间 $O(1)$ 转移，总复杂度 $O(2^nm(n+m))$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="39-CF671E-Organizing-a-Race-K-✔️"><a href="#39-CF671E-Organizing-a-Race-K-✔️" class="headerlink" title="39.  CF671E - Organizing a Race [K] ✔️"></a>39.  CF671E - Organizing a Race [K] ✔️</h3><h4 id="题面-38"><a href="#题面-38" class="headerlink" title="题面"></a>题面</h4><p>一条直线上有 $n$ 个加油站，每次到达第 $i$ 个加油站都会获得 $g_i$ 的油，走过第 $i$ 个加油站到第 $i+1$ 个加油站的距离会消耗 $w_i$ 的油，如果油量耗尽则不能继续行驶（但是仍可以在加油站获取油）</p>
 <p>你可以进行 $k$ 次操作，每次操作将一个 $g_i$ 加 $1$</p>
 <p>求在合理地操作的情况下，最长的区间 $[l,r]$，使得你从第 $l$ 个加油站能到第 $r$ 个加油站，并且从第 $r$ 个加油站也能到达第 $l$ 个加油站</p>
 <p>$2\le n\le10^5,0\le k,g_i\le10^9,1\le w_i\le10^9$</p>
-<h4 id="题解-38"><a href="#题解-38" class="headerlink" title="题解"></a>题解</h4><p>好题。似乎有很多种做法，这里记一种我觉得理解起来比较自然的。</p>
-<p>考虑 $l$ 到 $r$ 的合法的条件是什么，那么就相当于我们需要使 $\forall l\le k\le r,\sum_{i=l}^{k-1}g_i-w_i\ge0$，令 $c_i=\sum_{j&lt;i}g_j-w_j$，那么这个条件相当于 $c_l=\min(c[l:r])$</p>
-<p>同理，我们定义 $d_i=\sum_{j&lt;i}g_j-w_{j+1}$，$r$ 能到 $l$ 相当于 $d_r=\max(d[l:r])$</p>
-<p>一次操作给 $g_i$ 加 $1$，相当于对 $c[i-1:n]$ 全部 $+1$，对 $d[i:n]$ 全部 $+1$</p>
-<p>考虑对于 $[l,r]$，我们会怎么操作</p>
-<p>首先，找到所有比 $c_l$ 小的前缀最小值，对于里面的每个 $c_{x_i}$，相当于要求 $x_i+1$ 的位置或之前需要操作 $c_{x_{i-1}}-c_{x_i}$ 次，理解一下就可以发现直接在 $x_i+1$ 操作一定不劣（因为对 $d$ 更优）</p>
-<p>那么我们可以先把该操作的都操作了，现在 $c$ 已经满足条件了，不妨设 $d$ 变成 $d^\prime$，那么我们剩下的操作次数一定全部用在 $d_r$ 上，那么 $d_r$ 这个位置在每个操作内都被加了，于是我们需要满足的实际上是 $\max(d^\prime[l:r-1])\le d_r+k$，也就是 $\max(d^\prime[l:r-1])-d_r\le k$</p>
-<p>那么考虑对 $l$ 倒着扫描线，并维护一个前缀最小值的单调栈，由于操作之和后缀的 $d$ 相关，所以我们直接对单调栈上的所有东西做操作，就可以得到 $d^\prime$，也就是说我们会有 $O(n)$ 次对 $d^\prime$ 的区间加减操作，之后我们要查询满足 $\max(d^\prime[l:r-1])-d_r\le k$ 的最大 $r$，这个可以用楼房重建线段树维护，复杂度 $O(n\log^2n)$</p>
+<h4 id="题解-38"><a href="#题解-38" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>好题。似乎有很多种做法，这里记一种我觉得理解起来比较自然的。</p><p>考虑 $l$ 到 $r$ 的合法的条件是什么，那么就相当于我们需要使 $\forall l\le k\le r,\sum_{i=l}^{k-1}g_i-w_i\ge0$，令 $c_i=\sum_{j&lt;i}g_j-w_j$，那么这个条件相当于 $c_l=\min(c[l:r])$</p><p>同理，我们定义 $d_i=\sum_{j&lt;i}g_j-w_{j+1}$，$r$ 能到 $l$ 相当于 $d_r=\max(d[l:r])$</p><p>一次操作给 $g_i$ 加 $1$，相当于对 $c[i-1:n]$ 全部 $+1$，对 $d[i:n]$ 全部 $+1$</p><p>考虑对于 $[l,r]$，我们会怎么操作</p><p>首先，找到所有比 $c_l$ 小的前缀最小值，对于里面的每个 $c_{x_i}$，相当于要求 $x_i+1$ 的位置或之前需要操作 $c_{x_{i-1}}-c_{x_i}$ 次，理解一下就可以发现直接在 $x_i+1$ 操作一定不劣（因为对 $d$ 更优）</p><p>那么我们可以先把该操作的都操作了，现在 $c$ 已经满足条件了，不妨设 $d$ 变成 $d^\prime$，那么我们剩下的操作次数一定全部用在 $d_r$ 上，那么 $d_r$ 这个位置在每个操作内都被加了，于是我们需要满足的实际上是 $\max(d^\prime[l:r-1])\le d_r+k$，也就是 $\max(d^\prime[l:r-1])-d_r\le k$</p><p>那么考虑对 $l$ 倒着扫描线，并维护一个前缀最小值的单调栈，由于操作之和后缀的 $d$ 相关，所以我们直接对单调栈上的所有东西做操作，就可以得到 $d^\prime$，也就是说我们会有 $O(n)$ 次对 $d^\prime$ 的区间加减操作，之后我们要查询满足 $\max(d^\prime[l:r-1])-d_r\le k$ 的最大 $r$，这个可以用楼房重建线段树维护，复杂度 $O(n\log^2n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="40-CF639F-Bear-and-Chemistry-S"><a href="#40-CF639F-Bear-and-Chemistry-S" class="headerlink" title="40.  CF639F - Bear and Chemistry [S]"></a>40.  CF639F - Bear and Chemistry [S]</h3><h4 id="题面-39"><a href="#题面-39" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，$q$ 次询问，每次询问给定一个点集 $S$ 以及 $m^\prime$ 条额外边，求这张图加上这些额外边后，$S$ 内的点是否均属于一个边双</p>
 <p>$1\le n,q\le3\times10^5,\sum|S_i|,\sum m^\prime\le3\times10^5$</p>
-<h4 id="题解-39"><a href="#题解-39" class="headerlink" title="题解"></a>题解</h4><p>先对原图边双缩点，得到一个森林</p>
-<p>对每组询问把 $S$ 中的点和边的端点放在一起建虚树，然后在虚树上加边缩点，不难发现复杂度是对的</p>
-<p>复杂度 $O(n\log n)$</p>
+<h4 id="题解-39"><a href="#题解-39" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>先对原图边双缩点，得到一个森林</p><p>对每组询问把 $S$ 中的点和边的端点放在一起建虚树，然后在虚树上加边缩点，不难发现复杂度是对的</p><p>复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="41-CF1764G-Doremy’s-Perfect-DS-Class-K"><a href="#41-CF1764G-Doremy’s-Perfect-DS-Class-K" class="headerlink" title="41.  CF1764G - Doremy’s Perfect DS Class [K]"></a>41.  CF1764G - Doremy’s Perfect DS Class [K]</h3><h4 id="题面-40"><a href="#题面-40" class="headerlink" title="题面"></a>题面</h4><p>有一个长为 $n$ 的排列 $p$，你需要进行若干次如下询问，得到 $1$ 的位置：</p>
 <ul>
@@ -914,17 +782,11 @@ F_i(x)=(e^x-1)F_{i-1}(2x)\\
 <p>G1：最多 $30$ 次询问</p>
 <p>G2：最多 $25$ 次询问</p>
 <p>G3：最多 $20$ 次询问</p>
-<h4 id="题解-40"><a href="#题解-40" class="headerlink" title="题解"></a>题解</h4><p>确定 $1$，那么我们需要用 $1$ 的特殊性质来区分出来，观察发现当 $k=2$ 时，如果 $n$ 是奇数，那么 $1$ 是唯一一个只出现了一次的数，先考虑这种情况</p>
-<p>注意到如果我们查询了一个区间 $k=2$ 时的值，那么我们可以算出有多少数在这个区间内出现了一次，以及有多少数在这个区间内出现两次，那么我们询问一下 $[1,m]$ 和 $[m+1,n]$，并对比一下这两个区间出现一次的数的个数，就可以得到 $1$ 在哪边</p>
-<p>当 $n$ 是偶数时，$n$ 也只出现了一次，也就是说我们可能发现 $[1,m]$ 和 $[m+1,n]$ 各有一个落单的数，用一次 $Q(l,r,n)$ 的询问即可确定哪边是 $n$，注意到在二分过程中我们只需要判断这个一次，因此总询问数为 $21$</p>
-<p>考虑常数优化，对于最后一个二分区间，也即 $r-l+1=1$ 时进行特殊处理</p>
-<p>注意到当我们二分区间 $[l,r]$ 时，我们一定知道 $Q(1,l-1,2),Q(1,r,2),Q(l,n,2),Q(r+1,n,2)$，我们可以分三种情况讨论，容易发现这三种情况一定涵盖了所有可能：</p>
-<ul>
-<li>$Q(1,l-1,2)+1=Q(1,r,2)$，也就是说 $[l,r]$ 中不为 $1$ 的元素另一次出现在 $[1,l-1]$，那么我们查询一下 $Q(1,l,2)$ 即可判断</li>
-<li>$Q(l,n,2)=Q(r+1,n,2)+1$，也就是说 $[l,r]$ 中不为 $1$ 的元素另一次出现在 $[1,l-1]$，那么我们查询一下 $Q(r,n,2)$ 即可判断</li>
-<li>以上两种情况均不满足，说明这个区间一定是 $1$ 和 $n$，容易判断</li>
-</ul>
-<p>因此我们这一层二分只用 $1$ 次询问，也就是说最多 $20$ 次询问1</p>
+<h4 id="题解-40"><a href="#题解-40" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>确定 $1$，那么我们需要用 $1$ 的特殊性质来区分出来，观察发现当 $k=2$ 时，如果 $n$ 是奇数，那么 $1$ 是唯一一个只出现了一次的数，先考虑这种情况</p><p>注意到如果我们查询了一个区间 $k=2$ 时的值，那么我们可以算出有多少数在这个区间内出现了一次，以及有多少数在这个区间内出现两次，那么我们询问一下 $[1,m]$ 和 $[m+1,n]$，并对比一下这两个区间出现一次的数的个数，就可以得到 $1$ 在哪边</p><p>当 $n$ 是偶数时，$n$ 也只出现了一次，也就是说我们可能发现 $[1,m]$ 和 $[m+1,n]$ 各有一个落单的数，用一次 $Q(l,r,n)$ 的询问即可确定哪边是 $n$，注意到在二分过程中我们只需要判断这个一次，因此总询问数为 $21$</p><p>考虑常数优化，对于最后一个二分区间，也即 $r-l+1=1$ 时进行特殊处理</p><p>注意到当我们二分区间 $[l,r]$ 时，我们一定知道 $Q(1,l-1,2),Q(1,r,2),Q(l,n,2),Q(r+1,n,2)$，我们可以分三种情况讨论，容易发现这三种情况一定涵盖了所有可能：</p><ul><li>$Q(1,l-1,2)+1=Q(1,r,2)$，也就是说 $[l,r]$ 中不为 $1$ 的元素另一次出现在 $[1,l-1]$，那么我们查询一下 $Q(1,l,2)$ 即可判断</li><li>$Q(l,n,2)=Q(r+1,n,2)+1$，也就是说 $[l,r]$ 中不为 $1$ 的元素另一次出现在 $[1,l-1]$，那么我们查询一下 $Q(r,n,2)$ 即可判断</li><li>以上两种情况均不满足，说明这个区间一定是 $1$ 和 $n$，容易判断</li></ul><p>因此我们这一层二分只用 $1$ 次询问，也就是说最多 $20$ 次询问</p>
+              </div>
+            </details>
 <hr>
 
 		</div>
@@ -940,7 +802,7 @@ F_i(x)=(e^x-1)F_{i-1}(2x)\\
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-12-17 15:32:49
+                    :</strong> 2025-03-05 17:50:14
             </li>
         
         <li>
