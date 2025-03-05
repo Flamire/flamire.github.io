@@ -35,15 +35,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            Wonderhoy! - Redefine Your Hexo Journey.
+            Flamiblog - asdf
         
     </title>
 
@@ -187,7 +187,7 @@
             
             <a class="logo-title" href="/">
                 <h1>
-                Wonderhoy!
+                Flamiblog
                 </h1>
             </a>
         </div>
@@ -288,7 +288,7 @@
             
             <div class="sidebar-content" >
                 <div class="avatar flex justify-center">
-    <img src="/GaQMhl6bUAUrOPt.jpg">
+    <img src="/images/momo.jpg">
 </div>
                 <div class="author flex flex-col justify-center my-2.5 mx-0">
     <div class="name">Flamire</div>
@@ -422,12 +422,12 @@
                         
                             
                             [TOC]
-1.  CF1896H - Cyclic Hamming [K] ✨题面对于两个长度相等的 01 串 $a,b$，定义 $f(a,b)&#x3D;\sum[a_i\neq b_i]$
+1.  CF1896H - Cyclic Hamming [K] ✨题面对于两个长度相等的 01 串 $a,b$，定义 $f(a,b)=\sum[a_i\neq b_i]$
 给定两个长度为 $2^{k+1}$ 的由 01? 组成的串 $s,t$，求有多少将 ? 替换为 01 的方式使得：
 
 $s,t$ 均恰好有 $2^k$ 个 1
 
-对于 $t$ 的任意循环位移 $c$...
+对于 $t$ 的任意循环位移 $c$，$f(s...
                         
                     </div>
 
@@ -553,11 +553,10 @@ $s,t$ 均恰好有 $2^k$ 个 1
                         
                             
                             
-
 [TOC]
 1.  CF1329E - Dreamoon Loves AA [E]题面给定 $n,m,k$，有一个下标为 $0\sim n$ 的 AB 串 $s$，其中 $s_0$ 和 $s_n$ 必定为 A，另外有 $k$ 个位置为 A
 你需要选择恰好 $k$ 个 B 变为 A，使得更改完之后相邻两个 A 之间的距离的极差最小，求最小极差
-$1\le n\le10^{15},0\le ...
+$1\le n\le10^{15},0\le m...
                         
                     </div>
 
@@ -598,12 +597,11 @@ $1\le n\le10^{15},0\le ...
                         
                             
                             
-
 [TOC]
 1.  湖北省选模拟 2024 - 花神诞日 [E]题面给定 $n$ 个互不相同的整数 $a_1,a_2,\cdots,a_n$，以及常数 $k_1,k_2$
 求有多少种方案将这些数划分为两个非空集合 $S,T$，使得 $S$ 中任意两个数的异或 $\ge k_1$，$T$ 中任意两个数的异或 $\ge k_2$
 对 $10^9+7$ 取模
-$1\le n\le2\times...
+$1\le n\le2\times1...
                         
                     </div>
 
@@ -644,14 +642,14 @@ $1\le n\le2\times...
                         
                             
                             
-
 [TOC]
-1.  CF1375H - Set Merging [E] ⭐题面给定 $1\sim n$ 的排列 $a$，初始有 $i$ 个集合 $S_i&#x3D;{a_i}$，计数器 $cnt&#x3D;n$
+1.  CF1375H - Set Merging [E] ⭐题面给定 $1\sim n$ 的排列 $a$，初始有 $i$ 个集合 $S_i=\{a_i\}$，计数器 $cnt=n$
 你可以将两个值域不交的集合取并，具体地，每次你可以进行这样的操作：
 
 $cnt\leftarrow cnt+1$
 $S_{cnt}\leftarrow S_u\cup S_v$
-...
+
+当且仅当 $S_...
                         
                     </div>
 
@@ -1008,6 +1006,22 @@ $S_{cnt}\leftarrow S_u\cup S_v$
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

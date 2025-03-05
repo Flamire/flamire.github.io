@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            AGC002 | Wonderhoy!
+            AGC002 | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -309,8 +309,7 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>越来越菜了，我该怎么办？？</p>
 <span id="more"></span>
-
-<h1 id="AGC002"><a href="#AGC002" class="headerlink" title="AGC002"></a>AGC002</h1><h2 id="A-Range-Product-Safe"><a href="#A-Range-Product-Safe" class="headerlink" title="A - Range Product [Safe]"></a>A - Range Product [Safe]</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>给定 $a,b$，求 $\prod_{i&#x3D;a}^bi$ 是整数，负数，还是零。</p>
+<h1 id="AGC002"><a href="#AGC002" class="headerlink" title="AGC002"></a>AGC002</h1><h2 id="A-Range-Product-Safe"><a href="#A-Range-Product-Safe" class="headerlink" title="A - Range Product [Safe]"></a>A - Range Product [Safe]</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>给定 $a,b$，求 $\prod_{i=a}^bi$ 是整数，负数，还是零。</p>
 <p>$-10^9\le a\le b\le10^9$</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>直接判断区间与 $0$ 的大小关系与即可，复杂度 $O(1)$</p>
 <h2 id="B-Box-and-Ball-Safe"><a href="#B-Box-and-Ball-Safe" class="headerlink" title="B - Box and Ball [Safe]"></a>B - Box and Ball [Safe]</h2><h3 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h3><p>给定 $n$ 个盒子，初始除了第一个盒子只有一个红球之外其余盒子都只有一个白球，有 $m$ 次操作，每次随机从第 $x_i$ 个盒子里抽取一个球，放入第 $y_i$ 个盒子</p>
@@ -351,21 +350,19 @@
 <p>$1\le n,k\le2000$</p>
 <h3 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h3><p>讲过的题还不会做！！！！！！！！</p>
 <p>我们可以钦定这 $n$ 种颜色第二个球出现顺序，那么我们的答案就是这个图的拓扑序个数 $\times n!$</p>
-<img  
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="./AGC002/1.png"
                       style="zoom:80%;" 
-                >
-
+                ></p>
 <p>我们令 $dp_{i,j}$ 表示下图的拓扑序个数：</p>
-<img  
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="./AGC002/2.png"
                       style="zoom:80%;" 
-                >
-
+                ></p>
 <p>下一步只有两种选择，选择灰点或有颜色的点，如果选择灰点，那么直接从 $dp_{i-1,j}$ 转移，否则从 $dp_{i,j-1}$，并且我们还要把剩余的彩色点插到后面形成的序列中，用组合数即可</p>
 <p>复杂度 $O(n^2)$</p>
 
@@ -777,6 +774,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

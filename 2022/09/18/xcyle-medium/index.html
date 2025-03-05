@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            xcyle-medium | Wonderhoy!
+            xcyle-medium | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -309,18 +309,18 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p><a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/221180" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <p>[TOC]</p>
-<h3 id="1-CF1609G-A-Stroll-Around-the-Matrix-Euclid"><a href="#1-CF1609G-A-Stroll-Around-the-Matrix-Euclid" class="headerlink" title="1.  CF1609G - A Stroll Around the Matrix [Euclid]"></a>1.  CF1609G - A Stroll Around the Matrix [Euclid]</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 ${a_1,a_2,\cdots,a_n}$ 和 ${b_1,b_2,\cdots,b_m}$，保证 $a,b$ 均凸（这里的凸定义为对于一个序列 $c$，其满足 $c_1&lt;c_2$ 且 $c_i-c_{i-1}&lt;c_{i+1}-c_i$），定义 $f(a,b)$ 的值为：有一个 $n\times m$ 的矩形，$(i,j)$ 的权值为 $a_i+b_j$，问从 $(1,1)$ 到 $(n,m)$ 的最短路径经过的格子权值和最小为多少</p>
+<h3 id="1-CF1609G-A-Stroll-Around-the-Matrix-Euclid"><a href="#1-CF1609G-A-Stroll-Around-the-Matrix-Euclid" class="headerlink" title="1.  CF1609G - A Stroll Around the Matrix [Euclid]"></a>1.  CF1609G - A Stroll Around the Matrix [Euclid]</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $\{a_1,a_2,\cdots,a_n\}$ 和 $\{b_1,b_2,\cdots,b_m\}$，保证 $a,b$ 均凸（这里的凸定义为对于一个序列 $c$，其满足 $c_1&lt;c_2$ 且 $c_i-c_{i-1}&lt;c_{i+1}-c_i$），定义 $f(a,b)$ 的值为：有一个 $n\times m$ 的矩形，$(i,j)$ 的权值为 $a_i+b_j$，问从 $(1,1)$ 到 $(n,m)$ 的最短路径经过的格子权值和最小为多少</p>
 <p>有 $q$ 次修改，每次给 $a$ 或 $b$ 的后 $k$ 位分别加上 $d,2d,\cdots,kd$，每次修改后你需要输出 $f(a,b)$</p>
 <p>$2\le n\le100,2\le m\le10^5,1\le q\le10^5,1\le a_i,b_i\le10^{12},1\le d\le10^3$</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>不难发现 $a$ 和 $b$ 一定一直都是凸的</p>
-<p>考虑 $f(a,b)$ 是什么，如果我们把这两个数组差分，那么我们首先会有一个 $(n+m-1)(a_1+b_1)$ 的代价，接下来我们可以选择往哪个方向走，如果我们第 $i$ 步跨越的两个行&#x2F;列差分为 $x$，那么会产生 $(n+m-1-i)x$ 的代价</p>
+<p>考虑 $f(a,b)$ 是什么，如果我们把这两个数组差分，那么我们首先会有一个 $(n+m-1)(a_1+b_1)$ 的代价，接下来我们可以选择往哪个方向走，如果我们第 $i$ 步跨越的两个行/列差分为 $x$，那么会产生 $(n+m-1-i)x$ 的代价</p>
 <p>因此，如果我们能够按从小到大的顺序走 $x$ 的话，一定是最优的，而由于差分数组递增，我们可以做到这一点</p>
-<p>由于 $n$ 很小，我们可以将 $b$ 排好序，然后将 $a$ 插入到序列中，我们需要一个数据结构，支持区间加，查询第一个 $\le x$ 的数，以及查询区间和，这个可以用 平衡树&#x2F;线段树+树状数组 完成</p>
+<p>由于 $n$ 很小，我们可以将 $b$ 排好序，然后将 $a$ 插入到序列中，我们需要一个数据结构，支持区间加，查询第一个 $\le x$ 的数，以及查询区间和，这个可以用 平衡树/线段树+树状数组 完成</p>
 <p>复杂度 $O(qn\log m)$</p>
 <hr>
 <h3 id="5-CF1617E-Christmas-Chocolates-Euclid"><a href="#5-CF1617E-Christmas-Chocolates-Euclid" class="headerlink" title="5.  CF1617E - Christmas Chocolates [Euclid]"></a>5.  CF1617E - Christmas Chocolates [Euclid]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>数列 $a_1,a_2,\cdots,a_n$，定义 $f(x,y)$ 为：</p>
 <p>你可以进行操作，一次操作可以选择一个 $k$ 使 $2^k\ge a_x$，并将 $a_x$ 变成 $2^k-a_x$</p>
-<p>使 $a_x&#x3D;a_y$ 的最小操作次数为 $f(x,y)$</p>
+<p>使 $a_x=a_y$ 的最小操作次数为 $f(x,y)$</p>
 <p>对于所有 $i,j$，求 $f(a_i,a_j)$ 的最大值，输出最大值与此时的 $i,j$</p>
 <p>$2\le n\le2\times10^5$</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><h5 id="我的做法"><a href="#我的做法" class="headerlink" title="我的做法"></a>我的做法</h5><p>就硬手模。</p>
@@ -334,8 +334,8 @@
 <p>那么对于第一种情况，我们可以按 lowbit 分类，然后容易统计</p>
 <p>对于第二种情况，我们可以对每种 lowbit 开一棵 trie，然后在树上统计</p>
 <p>复杂度 $O(n\log a_i)$，空间复杂度 $O(n\log a_i)$</p>
-<h5 id="题解做法"><a href="#题解做法" class="headerlink" title="题解做法"></a>题解做法</h5><p>如果 $x+y&#x3D;2^k$ 那么就在 $(x,y)$ 之间连边，建出无向图</p>
-<p>考虑对于任意 $x$，只有一个 $y$ 满足 $y&lt;x,x+y&#x3D;2^k$，所以这个图是一棵树</p>
+<h5 id="题解做法"><a href="#题解做法" class="headerlink" title="题解做法"></a>题解做法</h5><p>如果 $x+y=2^k$ 那么就在 $(x,y)$ 之间连边，建出无向图</p>
+<p>考虑对于任意 $x$，只有一个 $y$ 满足 $y&lt;x,x+y=2^k$，所以这个图是一棵树</p>
 <p>那么我们相当于要求这棵树上 $n$ 个点之间的最大距离，也就类似于树的直径</p>
 <p>不难发现，这个树的深度只有 $\log a_i$</p>
 <p>一种方法是只建 $n$ 个点到根（0） 路径上的点，这样只有 $O(n\log a_i)$ 个点，可以接受</p>
@@ -354,14 +354,14 @@
 <p>因此，我们从堆中找到一个点后，可以直接取到 $\lfloor\frac xy\rfloor$ 改变为止，这样最多只会有 $O(n\sqrt{a_i})$ 种不同的状态</p>
 <p>总复杂度 $O(n\sqrt{a_i}\log n)$</p>
 <hr>
-<h3 id="11-CF1672H-Zigu-Zagu-Euclid-Keter"><a href="#11-CF1672H-Zigu-Zagu-Euclid-Keter" class="headerlink" title="11.  CF1672H - Zigu Zagu [Euclid&#x2F;Keter]"></a>11.  CF1672H - Zigu Zagu [Euclid&#x2F;Keter]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>对于一个 01 串 $s$，定义 $f(s)$ 为：</p>
+<h3 id="11-CF1672H-Zigu-Zagu-Euclid-Keter"><a href="#11-CF1672H-Zigu-Zagu-Euclid-Keter" class="headerlink" title="11.  CF1672H - Zigu Zagu [Euclid/Keter]"></a>11.  CF1672H - Zigu Zagu [Euclid/Keter]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>对于一个 01 串 $s$，定义 $f(s)$ 为：</p>
 <p>一次操作可以删掉一个 01 交替的子串，剩下两部分拼起来，$f(s)$ 为将其删空的最少操作次数</p>
 <p>给定一个长为 $n$ 的 01 串 $a$，$q$ 次询问，每次给定 $l,r$，询问 $f(a[l:r])$</p>
 <p>$1\le n,q\le2\times10^5$</p>
-<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>一次操作我们一定是删除一段极长的交替段，那么这个交替段两端一定满足 $a_{l-1}&#x3D;a_l,a_r&#x3D;a_{r+1}$，接着 $a_{l-1}$ 和 $a_{r+1}$ 会合到一起</p>
-<p>那么我们考虑满足 $a_i&#x3D;a_{i+1}$ 的数量 $x$，如果 $a_{l-1}&#x3D;a_{r+1}$，进行 $[l,r]$ 操作会让 $x$ 减 $1$，否则会让 $x$ 减 $2$</p>
-<p>也就是说，我们把所有满足 $a_i&#x3D;a_{i+1}$ 的都提出来，如果有 $&#x3D;0$ 和 $&#x3D;1$ 的相邻，那我们可以把这两个同时消掉，否则我们只能对每个单独消</p>
-<p>我们发现，如果同时存在 $&#x3D;0$ 的 $&#x3D;1$ 的，那么必定存在一个位置 $&#x3D;0$ 的和 $&#x3D;1$ 的相邻，因此答案是 $[l,r]$ 内相邻的 <code>0</code> 和相邻的 <code>1</code> 的个数的最大值</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>一次操作我们一定是删除一段极长的交替段，那么这个交替段两端一定满足 $a_{l-1}=a_l,a_r=a_{r+1}$，接着 $a_{l-1}$ 和 $a_{r+1}$ 会合到一起</p>
+<p>那么我们考虑满足 $a_i=a_{i+1}$ 的数量 $x$，如果 $a_{l-1}=a_{r+1}$，进行 $[l,r]$ 操作会让 $x$ 减 $1$，否则会让 $x$ 减 $2$</p>
+<p>也就是说，我们把所有满足 $a_i=a_{i+1}$ 的都提出来，如果有 $=0$ 和 $=1$ 的相邻，那我们可以把这两个同时消掉，否则我们只能对每个单独消</p>
+<p>我们发现，如果同时存在 $=0$ 的 $=1$ 的，那么必定存在一个位置 $=0$ 的和 $=1$ 的相邻，因此答案是 $[l,r]$ 内相邻的 <code>0</code> 和相邻的 <code>1</code> 的个数的最大值</p>
 <p>复杂度 $O(n+q)$</p>
 <hr>
 <h3 id="12-CF1673F-Anti-Theft-Road-Planning-Euclid"><a href="#12-CF1673F-Anti-Theft-Road-Planning-Euclid" class="headerlink" title="12.  CF1673F - Anti-Theft Road Planning [Euclid]"></a>12.  CF1673F - Anti-Theft Road Planning [Euclid]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
@@ -374,7 +374,7 @@
 <p>边权和只和相邻数的异或和有关，我们需要让这个数字尽量小，不难联想到格雷码</p>
 <p>我们令 $id_{u,v}$ 后 $5$ 位为 $u$ 的格雷码，前 $5$ 位为 $v$ 的格雷码，但是这样前 $5$ 位产生的代价仍然过大</p>
 <p>因此，我们令 $id_{u,v}$ 的 $1,3,5,7,9$ 位为 $u$ 的格雷码，$0,2,4,6,8$ 位为 $v$ 的格雷码，这样估计下来是：</p>
-<p>$32(2^4\times(2^0+2^1)+2^3\times(2^2+2^3)+2^2\times(2^4+2^5)+2^1\times(2^6+2^7)+2^0\times(2^8+2^9))&#x3D;47616$</p>
+<p>$32(2^4\times(2^0+2^1)+2^3\times(2^2+2^3)+2^2\times(2^4+2^5)+2^1\times(2^6+2^7)+2^0\times(2^8+2^9))=47616$</p>
 <p>复杂度 $O(n^2)$</p>
 <hr>
 <h3 id="13-Lenient-Vertex-Cover-Euclid"><a href="#13-Lenient-Vertex-Cover-Euclid" class="headerlink" title="13.  Lenient Vertex Cover [Euclid]"></a>13.  Lenient Vertex Cover [Euclid]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>一张 $n$ 个点，$m$ 条边的无向图，求一个点集，使得任意一条边都有一个端点在点集中，并且最多只有一条边两个端点都在点集中</p>
@@ -382,11 +382,11 @@
 <p>$1\le n,m\le10^6$</p>
 <h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p><a class="link"   target="_blank" rel="noopener" href="https://flamire.github.io/2021/11/08/202110/" >CF19E。<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <hr>
-<h3 id="14-CF1865C-Bring-Balance-Euclid-Keter"><a href="#14-CF1865C-Bring-Balance-Euclid-Keter" class="headerlink" title="14.  CF1865C - Bring Balance [Euclid&#x2F;Keter]"></a>14.  CF1865C - Bring Balance [Euclid&#x2F;Keter]</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>给定一个由 $n$ 个左括号和 $n$ 个右括号组成的括号序列 $s$，每次操作可以将其中的一个子串 reverse，问最少进行多少次操作使得 $s$ 变为合法括号串</p>
+<h3 id="14-CF1865C-Bring-Balance-Euclid-Keter"><a href="#14-CF1865C-Bring-Balance-Euclid-Keter" class="headerlink" title="14.  CF1865C - Bring Balance [Euclid/Keter]"></a>14.  CF1865C - Bring Balance [Euclid/Keter]</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>给定一个由 $n$ 个左括号和 $n$ 个右括号组成的括号序列 $s$，每次操作可以将其中的一个子串 reverse，问最少进行多少次操作使得 $s$ 变为合法括号串</p>
 <p>$1\le n\le10^5$</p>
 <h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>我不理解，暂且认定为魔法。</p>
 <p>你通过魔法得知了一种操作方式，这种操作方式叫：找到前缀和最大的下标 $mx$，操作区间 $[1,mx],[mx+1,2n]$</p>
-<p>这种操作方式的正确性是可以证明的：设前缀和为 $a_i$，对于 $[1,mx]$ 中的位置 $i$，新的前缀和为 $a_{mx}-a_{i-1}$，这是非负的；对于 $[mx+1,2n]$ 中的位置 $i$，新的前缀和为 $a_{mx}+a_{n+1}-a_{i-1}&#x3D;a_{mx}-a_{i-1}$，这是非负的，因此操作方式成立</p>
+<p>这种操作方式的正确性是可以证明的：设前缀和为 $a_i$，对于 $[1,mx]$ 中的位置 $i$，新的前缀和为 $a_{mx}-a_{i-1}$，这是非负的；对于 $[mx+1,2n]$ 中的位置 $i$，新的前缀和为 $a_{mx}+a_{n+1}-a_{i-1}=a_{mx}-a_{i-1}$，这是非负的，因此操作方式成立</p>
 <p>那么步数最多为 $2$，我们需要判断步数是否为 $0$ 或 $1$</p>
 <p>$0$ 是好判的，考虑怎么判 $1$</p>
 <p>设我们唯一一步操作的是 $[L,R]$，显然 $[L,R]$ 一定要包含所有前缀和为负的下标</p>
@@ -394,13 +394,13 @@
 <p>令 $L_1$ 表示 $[0,l_0-1]$ 中前缀和最大的下标，$R_1$ 表示 $[r_0+1,2n]$ 中前缀和最大的下标</p>
 <p>我们可以说明：如果存在 $(L,R]$ 操作一步可行，那么 $(L_1,R_1]$ 也一定可以</p>
 <p>根据 $l_0,r_0$ 的定义，未在操作区间内的点一定满足限制</p>
-<p>根据已知，我们有 $a_R-a_{i-1}+a_L\ge0(L&lt;i\le R)$，我们要证明一定有 $a_{R_1}-a_{i-1}+a_{L_1}\ge0(L_1&lt;i\le R_i)$，若 $i\le L$ 或 $i&gt;R$，那么根据 $l_0,r_0$ 的定义一定有 $a_i\ge0$，根据 $L_1,R_1$ 的定义一定有 $a_{L_1}-a_{i-1}\ge0$ 或 $a_{R_1}-a_{i-1}\ge0$，而若 $L&lt;i\le R$，那么由于 $a_{R_1}\ge a_R,a_{l_1}\ge a_L$，一定满足 $a_{R_1}-a_{i-1}+a_{L_1}\ge0$，得证。</p>
+<p>根据已知，我们有 $a_R-a_{i-1}+a_L\ge0(L<i\le R)$，我们要证明一定有 $a_{R_1}-a_{i-1}+a_{L_1}\ge0(L_1<i\le R_i)$，若 $i\le L$ 或 $i>R$，那么根据 $l_0,r_0$ 的定义一定有 $a_i\ge0$，根据 $L_1,R_1$ 的定义一定有 $a_{L_1}-a_{i-1}\ge0$ 或 $a_{R_1}-a_{i-1}\ge0$，而若 $L&lt;i\le R$，那么由于 $a_{R_1}\ge a_R,a_{l_1}\ge a_L$，一定满足 $a_{R_1}-a_{i-1}+a_{L_1}\ge0$，得证。</p>
 <p>判断输出即可，复杂度 $O(n)$</p>
 <hr>
 <h3 id="15-CF1687C-Sanae-and-Giant-Robot-Euclid"><a href="#15-CF1687C-Sanae-and-Giant-Robot-Euclid" class="headerlink" title="15.  CF1687C - Sanae and Giant Robot [Euclid]"></a>15.  CF1687C - Sanae and Giant Robot [Euclid]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的序列 $a$ 和 $b$，以及 $m$ 个区间 $[l_i,r_i]$，你需要进行若干次操作，将 $a$ 变为 $b$，每次操作选择一个 $[l_i,r_i]$，使得这段区间内 $a$ 的和等于 $b$ 的和，然后将 $a$ 中这段区间替换为 $b$ 中这段区间</p>
 <p>问是否可以完成</p>
 <p>$2\le n\le2\times10^5,1\le m\le2\times10^5$</p>
-<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>令 $c_i$ 为 $a_i-b_i$ 的前缀和，那么题目转化为有 $m$ 个数对 $(x_i,y_i)$，每次操作如果 $c_{x_i}&#x3D;c_{y_i}$，那么我们可以把 $[x_i,y_i]$ 内的所有 $c$ 全部赋值为 $c_{x_i}$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>令 $c_i$ 为 $a_i-b_i$ 的前缀和，那么题目转化为有 $m$ 个数对 $(x_i,y_i)$，每次操作如果 $c_{x_i}=c_{y_i}$，那么我们可以把 $[x_i,y_i]$ 内的所有 $c$ 全部赋值为 $c_{x_i}$</p>
 <p>由于我们最后需要全变为 $0$，所以每步操作一定是选择一个两边都是 $0$ 的数对，不难发现这样如果有解则一定能够找到解</p>
 <p>那么我们考虑快速模拟这个过程，我们用一个队列依次考虑值变为 $0$ 的下标，初始把所有值为 $0$ 的下标入队</p>
 <p>找到一个下标时，我们找有一个数与其相等的所有数对，判断是否能够操作，如果能，我们直接用暴力+并查集更新 $c$ 的值</p>
@@ -815,6 +815,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

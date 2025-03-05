@@ -37,15 +37,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            task12 | Wonderhoy!
+            task12 | Flamiblog
         
     </title>
 
@@ -132,7 +132,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -242,7 +242,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -299,18 +299,18 @@
 <p>其中第一种操作只能进行 $k_1$ 次，第二种操作只能进行 $k_2$ 次，任意一个元素最多进行一次一操作和一次二操作</p>
 <p>求操作完后 $\sum a$ 的最小值</p>
 <p>$1\le n\le5000,1\le b\le10^9,0\le k_1,k_2\le n$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑分析一些性质：设一个元素进行两种操作的状态为 $11&#x2F;01&#x2F;10&#x2F;00$，那么我们将所有数从大到小排序，那么可以得到 $11$ 一定在 $01$ 前面，类似地经过一些讨论可以得到最优解一定满足 $11\rightarrow10\rightarrow01\rightarrow00$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑分析一些性质：设一个元素进行两种操作的状态为 $11/01/10/00$，那么我们将所有数从大到小排序，那么可以得到 $11$ 一定在 $01$ 前面，类似地经过一些讨论可以得到最优解一定满足 $11\rightarrow10\rightarrow01\rightarrow00$</p>
 <p>枚举 $11$ 和 $10$ 段的长度，复杂度 $O(n^2)$</p>
 <hr>
 <h3 id="2-QOJ8526-Polygon-II-E"><a href="#2-QOJ8526-Polygon-II-E" class="headerlink" title="2.  QOJ8526 - Polygon II [E]"></a>2.  QOJ8526 - Polygon II [E]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个线段，第 $i$ 条线段长度是在 $(0,2^{a_i})$ 之间的随机实数，求这些线段能组成 $n$ 边形的方案数</p>
 <p>$3\le n\le1000,0\le a_i\le50$</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>注意到无法组成 $n$ 边形条件其实就是最大值大于等于其余的和</p>
 <p>考虑 $a_i$ 全相等怎么做。</p>
-<p>注意到 $P(\sum_{i&#x3D;1}^{n-1}x_i\le x_n)&#x3D;P(\sum_{i&#x3D;1}^n x_i\le 2^{a_n})$，那么我们就相当于需要计算 $n$ 个 $(0,1)$ 内随机的变量和 $\le j$ 的概率，设其为 $A_j$</p>
+<p>注意到 $P(\sum_{i=1}^{n-1}x_i\le x_n)=P(\sum_{i=1}^n x_i\le 2^{a_n})$，那么我们就相当于需要计算 $n$ 个 $(0,1)$ 内随机的变量和 $\le j$ 的概率，设其为 $A_j$</p>
 <p>这是一个 $n$ 维体的体积，并且这很类似一个有上界的插板，因此我们考虑容斥有多少 $x_i&lt;1$ 被满足</p>
 <p>那么我们需要计算的就是 $x_i&gt;0,\sum x_i&lt;j$ 的体积，这个就是做 $n$ 次积分，也就是 $\frac1{n!}j^n$</p>
-<p>考虑原问题，我们要计算的就是对所有 $y$，$P(\sum _{i&#x3D;1}^nx_i\le 2^y)$</p>
-<p>注意到 $(0,2^{a_i})$ 内随机可以视作 $(0,1)$ 内随机一个实数，加上每一位在 ${0,1}$ 内随机一个整数，那么就可以考虑数位 dp，设 $dp_{i,j}$ 表示我们已经决策了 $(0,1)$ 和前 $i-1$ 位的选法，向前进了 $j$ 位</p>
+<p>考虑原问题，我们要计算的就是对所有 $y$，$P(\sum _{i=1}^nx_i\le 2^y)$</p>
+<p>注意到 $(0,2^{a_i})$ 内随机可以视作 $(0,1)$ 内随机一个实数，加上每一位在 $\{0,1\}$ 内随机一个整数，那么就可以考虑数位 dp，设 $dp_{i,j}$ 表示我们已经决策了 $(0,1)$ 和前 $i-1$ 位的选法，向前进了 $j$ 位</p>
 <p>转移是容易做到 $O(n^2a)$ 的，初值 $dp_{0,i}\leftarrow A_i-A_{i-1}$</p>
 <p>复杂度 $O(n^2a)$</p>
 <hr>
@@ -333,12 +333,12 @@
 <h3 id="4-CEOI2022-Abracadabra-S"><a href="#4-CEOI2022-Abracadabra-S" class="headerlink" title="4.  CEOI2022 - Abracadabra [S]"></a>4.  CEOI2022 - Abracadabra [S]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 张牌，编号为 $[1,n]$，保证 $n$ 是偶数</p>
 <p>定义如下操作为一次洗牌：</p>
 <ul>
-<li>将牌分为两堆 $[1,n&#x2F;2]$ 和 $[n&#x2F;2+1,n]$，然后将这两堆归并起来（每次将两堆的开头较小的 push 到新序列中）</li>
+<li>将牌分为两堆 $[1,n/2]$ 和 $[n/2+1,n]$，然后将这两堆归并起来（每次将两堆的开头较小的 push 到新序列中）</li>
 </ul>
 <p>$q$ 次询问，一次询问给定一个 $t,x$，询问 $t$ 次洗牌后，第 $x$ 位置的牌是什么</p>
 <p>$2\le n\le2\times10^5,1\le q\le10^6$</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>手模一下，会发现我们可以将一个 $a_i$ 和后面一段极长的 $&lt;a_i$ 的段缩在一起，那么操作就是对段排序</p>
-<p>注意到每次洗牌会增加一些段（被 $n&#x2F;2$ 切开的），而由于段一开始是排好序的，所以唯一需要重新考虑的只有新切出来这些段，那么用平衡树维护段，$O(\text{段数}\times\log n)$ 的复杂度将这些段插入到应该去的位置，就可以维护处一次洗牌操作</p>
+<p>注意到每次洗牌会增加一些段（被 $n/2$ 切开的），而由于段一开始是排好序的，所以唯一需要重新考虑的只有新切出来这些段，那么用平衡树维护段，$O(\text{段数}\times\log n)$ 的复杂度将这些段插入到应该去的位置，就可以维护处一次洗牌操作</p>
 <p>段不会合并，所以产生段最多发生 $O(n)$ 次，而一次操作如果不产生段，就没有对序列产生改变，因此我们只需要模拟 $O(n)$ 次操作，并且最多会切 $O(n)$ 次段</p>
 <p>复杂度 $O((n+q)\log n)$</p>
 <hr>
@@ -351,7 +351,7 @@
 <hr>
 <h3 id="6-CEOI2022-Prize-S"><a href="#6-CEOI2022-Prize-S" class="headerlink" title="6.  CEOI2022 - Prize [S]"></a>6.  CEOI2022 - Prize [S]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
 <p>给定两棵 $n$ 个点的树 $T_1,T_2$，边有边权，但是你不知道，你只知道树的结构</p>
-<p>然后给定一个常数 $k$，你需要选择 ${1,2,\cdots,n}$ 的一个大小为 $k$ 的子集 $S$</p>
+<p>然后给定一个常数 $k$，你需要选择 $\{1,2,\cdots,n\}$ 的一个大小为 $k$ 的子集 $S$</p>
 <p>你选择 $S$ 之后，你可以向交互库提出不超过 $k-1$ 次询问，每次询问给出有序二元组 $(a,b)$，交互库会回答有序二元组 $(d_1(l_1,a),d_1(l_1,b),d_2(l_2,a),d_2(l_2,b))$，其中 $l_1,l_2$ 为对应树上 $a,b$ 的 $\text{LCA}$，$d_1,d_2$ 表示对应树上的距离</p>
 <p>询问过后，交互库会向你提出 $q$ 次询问，每次询问给定 $(a,b)$，你需要回答 $(d_1(a,b),d_2(a,b))$</p>
 <p>$n\le10^6,2\le k\le10^5,1\le q\le10^5$</p>
@@ -365,7 +365,7 @@
 <p>有一个常数 $D$，定义一个局面的代价为，如果想让这些人两两距离 $\ge D$，所有人需要移动的距离的最大值的最小值</p>
 <p>$q$ 次操作，每次加入一个新的人，并给定他的坐标，在所有操作前及每次操作后，输出当前的代价</p>
 <p>$1\le n,q\le2\times10^5$</p>
-<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>首先考虑二分，设阈值为 $M$，那么从 $i&#x3D;1,2,\cdots,n$ 依次考虑，每个人一定在距离上一个人 $\ge D$ 的情况下尽可能向左走，最后的位置就是 $pos_i&#x3D;\max(pos_{i-1}+D,x_i-M)$，也就是 $pos_i&#x3D;\max_j(x_j-M+D(i-j))$，如果有任意 $pos_i&gt;x_i+M$ 就失败了，也就是 $x_j-M+D(i-j)&gt;x_i+M$，移项得 $x_j-Dj&gt;x_i-Di+2M$，也就是说 $M\le\frac{x_j-Dj-(x_i-Di)}2$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>首先考虑二分，设阈值为 $M$，那么从 $i=1,2,\cdots,n$ 依次考虑，每个人一定在距离上一个人 $\ge D$ 的情况下尽可能向左走，最后的位置就是 $pos_i=\max(pos_{i-1}+D,x_i-M)$，也就是 $pos_i=\max_j(x_j-M+D(i-j))$，如果有任意 $pos_i&gt;x_i+M$ 就失败了，也就是 $x_j-M+D(i-j)&gt;x_i+M$，移项得 $x_j-Dj&gt;x_i-Di+2M$，也就是说 $M\le\frac{x_j-Dj-(x_i-Di)}2$</p>
 <p>直接用平衡树维护最大极差即可，复杂度 $O((n+q)\log n)$</p>
 <hr>
 <h3 id="8-CEOI2022-Parking-S"><a href="#8-CEOI2022-Parking-S" class="headerlink" title="8.  CEOI2022 - Parking [S]"></a>8.  CEOI2022 - Parking [S]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>有一个 $n$ 个大小为 $2$ 的栈，初始有一些元素，保证每种元素恰好出现两次，你可以进行如下操作：</p>
@@ -376,7 +376,7 @@
 <p>$1\le n\le2\times10^5$</p>
 <h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>首先将明显能合并的直接并掉，显然不会变劣</p>
 <p>考虑什么时候无解：如果有任意多栈那么显然问题是有解的，因此无解相当于求最小使用的栈的数量</p>
-<p>如果我们在一个元素的两个栈之间连边，按照这两个元素在栈顶的数量分为 $0&#x2F;1&#x2F;2$ 边</p>
+<p>如果我们在一个元素的两个栈之间连边，按照这两个元素在栈顶的数量分为 $0/1/2$ 边</p>
 <p>如果一个环全是 $1$ 边，那么我们可以用一个额外栈将这个环全排好</p>
 <p>如果有一个栈只有一个元素，那么我们也可以用一个额外栈将这条链排好</p>
 <p>否则每个环都有至少一个 $0$ 和 $2$ 边，如果只有一个 $0$ 边，那么我们也可以用一个额外栈将这个环排好</p>
@@ -405,8 +405,8 @@
 <p>$1\le n\times S\le5\times10^5$</p>
 <h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><p>$S$ 是 $2$ 的次幂已经明示分治了，并且我们可以猜测题目一定有解</p>
 <p>对于一种数，我们可以将它拆成若干整 $S$ 的颜色，和一个不足 $S$ 的颜色，不足 $S$ 的颜色在分治的时候两边分的都不超过 $\frac S2$ 即可，整 $S$ 的颜色两边都恰好分 $\frac S2$，这样两边构造出来的解一定是原题的解</p>
-<p>考虑 $S&#x3D;2$ 的情况，我们可以在相当于要同一个颜色的两个数要分属两边，那么我们对每一行的两个数建边，这就是定向问题，每一个二度点必须恰好有一个入度和出度</p>
-<p>扩展到 $S&#x3D;2^k$ 的问题的话，我们钦定每行第 $2i-1$ 个和第 $2i$ 个数分属两边，在它们之间建边，然后要求所有 $S$ 度点入度等于出度，跑欧拉回路即可</p>
+<p>考虑 $S=2$ 的情况，我们可以在相当于要同一个颜色的两个数要分属两边，那么我们对每一行的两个数建边，这就是定向问题，每一个二度点必须恰好有一个入度和出度</p>
+<p>扩展到 $S=2^k$ 的问题的话，我们钦定每行第 $2i-1$ 个和第 $2i$ 个数分属两边，在它们之间建边，然后要求所有 $S$ 度点入度等于出度，跑欧拉回路即可</p>
 <p>复杂度 $O(nS\log S)$</p>
 <hr>
 <h3 id="11-CF2018E-Complex-Segments-E-✔️"><a href="#11-CF2018E-Complex-Segments-E-✔️" class="headerlink" title="11.  CF2018E - Complex Segments [E] ✔️"></a>11.  CF2018E - Complex Segments [E] ✔️</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>定义一个区间集合 $S$ 是复杂的，当且仅当其可以被划分成若干子集，使得这些子集的大小相等，并且两个区间相交当且仅当它们处于同一个子集</p>
@@ -417,16 +417,16 @@
 <h5 id="优化-1"><a href="#优化-1" class="headerlink" title="优化 1"></a>优化 1</h5><p>设 $res_k$ 表示子集大小为 $k$ 时的段数，那么注意到一些事情就是 $k\times res_k\le n$，并且 $res_k\ge res_{k+1}$</p>
 <p>这意味着 $res_k$ 最多只有 $O(\sqrt n)$ 段，那么我们运行一个分治：在 $[l,r]$ 时候计算出 $res_{mid}$，如果等于 $res_l$ 或 $res_r$ 就把对应的一边跳过，否则暴力递归</p>
 <p>可以分析出来，我们这样最多会进行 $O(\sqrt n)$ 次 $res$ 的计算</p>
-<p>为了分析方便，我们设 $n&#x3D;2^w$</p>
-<p>那么考虑块长为 $2^d$ 的层，一共有 $2^{w-d}$ 个块，第 $2^{(w-d)&#x2F;2}$ 块之后的 $k$ 都满足 $k\ge 2^{(w+d)&#x2F;2}$，也就是说 $res_k\le 2^{(w-d)&#x2F;2}$，那么这一层最多会访问到 $O(2^{(w-d)&#x2F;2})$ 个块</p>
+<p>为了分析方便，我们设 $n=2^w$</p>
+<p>那么考虑块长为 $2^d$ 的层，一共有 $2^{w-d}$ 个块，第 $2^{(w-d)/2}$ 块之后的 $k$ 都满足 $k\ge 2^{(w+d)/2}$，也就是说 $res_k\le 2^{(w-d)/2}$，那么这一层最多会访问到 $O(2^{(w-d)/2})$ 个块</p>
 <p>对所有 $d$ 求和可以得到量级是 $O(2^{\frac w2})$ 的，也就是 $O(\sqrt n)$</p>
 <h5 id="优化-2"><a href="#优化-2" class="headerlink" title="优化 2"></a>优化 2</h5><p>考虑求一次 $res$ 的过程，我们实际上可以做到更优的复杂度</p>
 <p>注意到我们需要进行的操作有每次将一个 $[i,r]$ 加 $1$，然后求全局的最大值</p>
-<p>分析一下，只有后缀最大值将来可能有用，所以我们不妨对于 $j&#x3D;1,2,\cdots,k$，存下最后一个 $\ge j$ 的位置，那么给 $[i,r]$ 加 $1$ 时，我们需要做的就是将 $i$ 前面第一个后缀最大值删除（被后面的顶替了）</p>
+<p>分析一下，只有后缀最大值将来可能有用，所以我们不妨对于 $j=1,2,\cdots,k$，存下最后一个 $\ge j$ 的位置，那么给 $[i,r]$ 加 $1$ 时，我们需要做的就是将 $i$ 前面第一个后缀最大值删除（被后面的顶替了）</p>
 <p>这个可以用并查集实现，复杂度 $O(n\alpha(n))$</p>
 <p>将两个优化同时使用，复杂度 $O(n\sqrt n\alpha(n))$</p>
 <hr>
-<h3 id="12-CF2018F-Speedbreaker-Counting-E-K-⭐"><a href="#12-CF2018F-Speedbreaker-Counting-E-K-⭐" class="headerlink" title="12.  CF2018F - Speedbreaker Counting [E&#x2F;K] ⭐"></a>12.  CF2018F - Speedbreaker Counting [E&#x2F;K] ⭐</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>考虑一个问题 D1B：</p>
+<h3 id="12-CF2018F-Speedbreaker-Counting-E-K-⭐"><a href="#12-CF2018F-Speedbreaker-Counting-E-K-⭐" class="headerlink" title="12.  CF2018F - Speedbreaker Counting [E/K] ⭐"></a>12.  CF2018F - Speedbreaker Counting [E/K] ⭐</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>考虑一个问题 D1B：</p>
 <ul>
 <li><p>数轴上有 $n$ 个城市 $1,2,\cdots,n$</p>
 <p>第一个时刻，你可以选择一个城市然后占领它，称这个城市为你的起始城市</p>
@@ -435,13 +435,13 @@
 <p>求有多少起始城市可以满足条件</p>
 </li>
 </ul>
-<p>给定 $n$，对于 $k&#x3D;0,1,\cdots,n$，求有多少 $a_1,a_2,\cdots,a_n$，使得问题 D1B 的答案为 $k$，答案对给定质数 $p$ 取模</p>
+<p>给定 $n$，对于 $k=0,1,\cdots,n$，求有多少 $a_1,a_2,\cdots,a_n$，使得问题 D1B 的答案为 $k$，答案对给定质数 $p$ 取模</p>
 <p>$1\le n\le3000$</p>
 <p>bonus：$1\le n\le2\times10^5$</p>
 <h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><p>被爆了，火大。</p>
 <h5 id="F3-n-le3000"><a href="#F3-n-le3000" class="headerlink" title="F3 ( $n\le3000$ )"></a>F3 ( $n\le3000$ )</h5><p>钦定一种策略：从外向里，如果左边当前能删就删左边，否则删右边</p>
 <p>首先不确定起始点，进行这个策略，如果有解，那么每个点有一个删除时刻</p>
-<p>设此时最后被删除的点为 $s$，那么 $s$ 就是一个合法的起始点，接下来我们考虑把起始点换到某个 $u&lt;s$（$u&gt;s$ 的情况是对称的），那么考虑 $u$ 被删除的时刻，设删之前的区间为 $[u,r]$，那么：</p>
+<p>设此时最后被删除的点为 $s$，那么 $s$ 就是一个合法的起始点，接下来我们考虑把起始点换到某个 $u<s$（$u>s$ 的情况是对称的），那么考虑 $u$ 被删除的时刻，设删之前的区间为 $[u,r]$，那么：</p>
 <ul>
 <li>如果从 $u$ 直接开始向右走能走完 $[u,r]$，那么 $u$ 一定合法，因为 $s$ 占的过程中某一时刻会占的恰好是 $[u,r]$</li>
 <li>如果从 $u$ 直接开始向右走走不完 $[u,r]$，那么 $u$ 一定不合法，因为一个合法的点一定能走完任意一个子区间</li>
@@ -450,7 +450,7 @@
 <p>推论：合法的起始点是一个区间 $[ansl,ansr]$</p>
 <p>推论：不限制起始点的情况下，我们最后一次删右边，删完之后的右端点就是 $ansr$</p>
 <p>只考虑答案不为 $0$ 的情况，我们再枚举一个 $ansl$，钦定 $ansl$ 必须可以，但不钦定 $ansl-1$ 一定不行，最后再容斥一下，这时由一个起始点合法的条件，我们可以得到 $lim_i$ 表示 $a_i$ 由 $ansl$ 必须合法限定的下界</p>
-<p>令 $dp_{l,r,0&#x2F;1}$ 表示当前删到了 $[l,r]$，且当前左端点是否被删失败过，这个是可以转移的</p>
+<p>令 $dp_{l,r,0/1}$ 表示当前删到了 $[l,r]$，且当前左端点是否被删失败过，这个是可以转移的</p>
 <p>那么我们得到了一个 $O(n^3)$ 的做法</p>
 <p>注意到所有我们关心的 $lim$ 数组都是 $n,n-1,\cdots,2,1,2,\cdots,n-1,n$ 的子区间，因此我们直接在这个序列上进行区间 dp 即可</p>
 <p>复杂度 $O(n^2)$</p>
@@ -466,11 +466,10 @@
 <h3 id="13-AGC068A-Circular-Distance-E-⭐"><a href="#13-AGC068A-Circular-Distance-E-⭐" class="headerlink" title="13.  AGC068A - Circular Distance [E] ⭐"></a>13.  AGC068A - Circular Distance [E] ⭐</h3><h4 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h4><p>长为 $L$ 的环上有 $0,1,2,\cdots,L-1$ 这 $L$ 个位置，你需要从中选出 $n$ 个位置，定义一种选法的权值为选出的位置两两距离的最大值，距离定义为两端弧中较短的一边</p>
 <p>求所有选法的权值之和，答案对 $998244353$ 取模</p>
 <p>$2\le n\le L\le10^6$</p>
-<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><p>钦定 $0$ 必选，乘上 $L&#x2F;n$ 就是答案</p>
+<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><p>钦定 $0$ 必选，乘上 $L/n$ 就是答案</p>
 <p>考虑枚举距离最大值 $D$，那么会产生一个区间不能选，这将环拆成了两部分，那么我们对这两部分考虑</p>
-<p>具体地，设 $L&#x3D;14,D&#x3D;5$，那么我们将剩下的位置重新排列一下：</p>
+<p>具体地，设 $L=14,D=5$，那么我们将剩下的位置重新排列一下：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1  2  3  4  5</span><br><span class="line">      9 10 11 12 13</span><br></pre></td></tr></table></figure></div>
-
 <p>这样 $(1,i)$ 不能和 $(2,[i,i+D-1])$ 同时选，$(2,i)$ 不能和 $(1,[i-D+1,i])$ 同时选</p>
 <p>考虑添加 $(1,0)$ 和 $(2,??+1)$，然后我们将每个选法映射到一条 $(1,0)$ 到 $(2,??+1)$ 的路径，具体地：</p>
 <ul>
@@ -489,20 +488,20 @@
 <ul>
 <li>$S$ 和 $T$ 的 $01$ 数量分别相等</li>
 <li>$n\le|S|\le10^5$</li>
-<li>对于所有 $1\le i&lt;j\le n$，$i,j$ 在 $G(S,T)$ 中连通当且仅当 $a_i&#x3D;a_j$</li>
+<li>对于所有 $1\le i&lt;j\le n$，$i,j$ 在 $G(S,T)$ 中连通当且仅当 $a_i=a_j$</li>
 </ul>
 <p>$1\le n\le100,1\le a_i\le n$</p>
 <h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><p>注意到这实际上是在两个串的字符之间连边，但是我们最后需要保证连出来的边能通过 $S,T$ 的方式表示出来</p>
-<p>这个条件比较强，一个必要条件是不存在三条边两两交叉，因此我们考虑限定一种特殊的结构：考虑一条 $S_i$ 与 $T_j$ 相连的边，我们要求 $i&lt;j$ 的边两两不交叉，$i&gt;j$ 的边两两不交叉，$i&#x3D;j$ 的话任意分到两边</p>
+<p>这个条件比较强，一个必要条件是不存在三条边两两交叉，因此我们考虑限定一种特殊的结构：考虑一条 $S_i$ 与 $T_j$ 相连的边，我们要求 $i<j$ 的边两两不交叉，$i>j$ 的边两两不交叉，$i=j$ 的话任意分到两边</p>
 <p>在这种情况下，我们继续观察，$10^5$ 看起来像是什么 $n^2$ 的量级，因此我们考虑一些每次满足一个点的构造</p>
 <p>经过若干时间的手模，我们可以得到如下的构造策略：</p>
 <ul>
 <li>初始 $T$ 有 $n$ 个 $1$，$S$ 有 $n$ 个 $0$</li>
-<li>然后枚举 $i&#x3D;1\rightarrow n$，每次考虑满足第 $i$ 位（即将它和它后面第一个 $a_i&#x3D;a_j$ 的连，不存在则和自己连），设它要连向点 $x$，为了达成这件事情，我们把 $x$ 的当前有效位置的 $S$ 填成 $1$，然后剩下所有数的有效位置都填成 $0$，相当于将这些数整体向后平移了</li>
+<li>然后枚举 $i=1\rightarrow n$，每次考虑满足第 $i$ 位（即将它和它后面第一个 $a_i=a_j$ 的连，不存在则和自己连），设它要连向点 $x$，为了达成这件事情，我们把 $x$ 的当前有效位置的 $S$ 填成 $1$，然后剩下所有数的有效位置都填成 $0$，相当于将这些数整体向后平移了</li>
 </ul>
 <p>构造长度是 $n^2$ 量级的</p>
 <hr>
-<h3 id="15-AGC068C-Ball-Redistribution-E-K"><a href="#15-AGC068C-Ball-Redistribution-E-K" class="headerlink" title="15.  AGC068C - Ball Redistribution [E&#x2F;K]"></a>15.  AGC068C - Ball Redistribution [E&#x2F;K]</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个球和 $n$ 个盒子，分别编号为 $1\sim n$，初始你可以将每个球放到某个盒子里，然后对 $i&#x3D;1\rightarrow n$，依次执行操作：</p>
+<h3 id="15-AGC068C-Ball-Redistribution-E-K"><a href="#15-AGC068C-Ball-Redistribution-E-K" class="headerlink" title="15.  AGC068C - Ball Redistribution [E/K]"></a>15.  AGC068C - Ball Redistribution [E/K]</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个球和 $n$ 个盒子，分别编号为 $1\sim n$，初始你可以将每个球放到某个盒子里，然后对 $i=1\rightarrow n$，依次执行操作：</p>
 <ul>
 <li>将此时在 $i$ 盒子中的球拿出来，任意重排成 $x_1,x_2,\cdots,x_k$</li>
 <li>对所有 $j$，将 $x_j$ 放到盒子 $x_{(j\bmod k)+1}$ 中</li>
@@ -515,7 +514,7 @@
 <li>如果有人指向 $i$，那么 $i$ 必须只被一个人指向，并且 $i$ 在一个环里，我们会将这个环拆开连到 $i$ 上</li>
 <li>如果没有人指向 $i$，那么我们可以任选一个环，将这个环拆开连到 $i$ 上</li>
 </ul>
-<p>能一直操作 $i&#x3D;n\rightarrow1$ 就说明合法</p>
+<p>能一直操作 $i=n\rightarrow1$ 就说明合法</p>
 <p>到了这里，可以直接猜测一下每次暴力拆连通块内的环在时间复杂度和正确性上都是对的，写一下就过了</p>
 <p>std 给的做法是一些更有道理的东西：</p>
 <p>我们考虑找一些答案的判据，一个必要的条件是对于 $u$ 的任意儿子 $v$，$v$ 子树中必须至少有一个编号大于 $u$ 的节点（否则这棵子树不会被 $&gt;u$ 的操作改变）</p>
@@ -529,7 +528,7 @@
 <li>定义一次操作为选择两个相邻元素 $p_i,p_{i+1}$，满足 $p_i,p_{i+1}$ 在树上为祖孙关系，然后交换 $p_i,p_{i+1}$</li>
 <li>如果任意操作都不能得到比原来字典序更小的排列，则 $p$ 是好的</li>
 </ul>
-<p>定义 $\text{hash}(p)&#x3D;\sum_{i&#x3D;1}^nB^{i-1}p_i$，求所有好排列的 $\text{hash}$ 值之和，对 $10^9+7$ 取模</p>
+<p>定义 $\text{hash}(p)=\sum_{i=1}^nB^{i-1}p_i$，求所有好排列的 $\text{hash}$ 值之和，对 $10^9+7$ 取模</p>
 <p>$2\le n\le100$</p>
 <h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><p>注意到 $fa_i&lt;i$，这个是比较特殊的，因此我们可以对着这个发掘一些性质，不妨大胆猜测一下一个排列合法当且仅当不存在一步交换使其字典序变小，可以证明这是正确的</p>
 <p>考虑对不能一步交换变小的排列进行计数，容斥，那么就是钦定一些祖孙链，算 $\text{hash}$ 值可以看作钦定一个点，然后贡献它的位权乘它的编号</p>
@@ -538,9 +537,9 @@
 <hr>
 <h3 id="17-AGC068E-Sort-and-Match-K-✨"><a href="#17-AGC068E-Sort-and-Match-K-✨" class="headerlink" title="17.  AGC068E - Sort and Match [K] ✨"></a>17.  AGC068E - Sort and Match [K] ✨</h3><h4 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h4><p>给定 $n\times n$ 的矩阵 $a_{i,j}$，以及一个整数 $m$，对满足 $x_i\in[1,n]$ 的序列 $x_1,x_2,\cdots,x_m$，定义 $f(x)$ 为：</p>
 <ul>
-<li>设 $y$ 为 $x$ 升序排序后的结果，$f(x)&#x3D;\prod_{1\le i\le m}a_{x_i,y_i}$</li>
+<li>设 $y$ 为 $x$ 升序排序后的结果，$f(x)=\prod_{1\le i\le m}a_{x_i,y_i}$</li>
 </ul>
-<p>对所有 $k&#x3D;1,2,\cdots,n$，求所有满足 $x_1&#x3D;k$ 的序列 $x$ 的 $f(x)$ 之和，对 $998244353$ 取模</p>
+<p>对所有 $k=1,2,\cdots,n$，求所有满足 $x_1=k$ 的序列 $x$ 的 $f(x)$ 之和，对 $998244353$ 取模</p>
 <p>$1\le n\le50,1\le m\le50$</p>
 <h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><p>素质很差。</p>
 <p>考虑建边 $y_i\rightarrow x_i$，对每个 $y$，将所有出边按照对应的 $x$ 在序列中出现位置排序</p>
@@ -548,17 +547,17 @@
 <p>如果我们钦定到达一个 $y$ 时，每次使用当前还没有使用过的顺序最靠前的边，那么可以说明我们建立了一个双射</p>
 <p>因此我们只需要计算从 $1,2,\cdots,n$ 开始依次搜环的方案数</p>
 <p>定义 $dp_{i,j,k}$ 表示从 $i$ 开始，只搜 $\ge i$ 的点，现在搜到了 $j$，经过了 $k$ 条边的方案数</p>
-<p>倒过来考虑，那么 $x_1&#x3D;k$ 就是在限制倒数第二个点，容易在 dp 的时候处理</p>
+<p>倒过来考虑，那么 $x_1=k$ 就是在限制倒数第二个点，容易在 dp 的时候处理</p>
 <p>复杂度 $O(n^3m)$</p>
 <hr>
-<h3 id="18-PA2022-Chodzenie-po-linie-K"><a href="#18-PA2022-Chodzenie-po-linie-K" class="headerlink" title="18.  PA2022 - Chodzenie po linie [K]"></a>18.  PA2022 - Chodzenie po linie [K]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>给定 $1\sim n$ 的排列 $p_1,p_2,\cdots,p_n$，建一张 $n$ 个点的无向图 $G$，满足 $i$ 和 $j$ 之间有边（$i&lt;j$）当且仅当 $a_i&gt;a_j$</p>
-<p>定义 $dis(x,y)$ 为 $x,y$ 在 $G$ 中的最短路长度，如果 $x,y$ 不可达则 $dis(x,y)&#x3D;0$</p>
-<p>对每个 $x&#x3D;1,2,\cdots,n$，求 $\sum_{i&#x3D;1}^n dis(x,i)$</p>
+<h3 id="18-PA2022-Chodzenie-po-linie-K"><a href="#18-PA2022-Chodzenie-po-linie-K" class="headerlink" title="18.  PA2022 - Chodzenie po linie [K]"></a>18.  PA2022 - Chodzenie po linie [K]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>给定 $1\sim n$ 的排列 $p_1,p_2,\cdots,p_n$，建一张 $n$ 个点的无向图 $G$，满足 $i$ 和 $j$ 之间有边（$i<j$）当且仅当 $a_i>a_j$</p>
+<p>定义 $dis(x,y)$ 为 $x,y$ 在 $G$ 中的最短路长度，如果 $x,y$ 不可达则 $dis(x,y)=0$</p>
+<p>对每个 $x=1,2,\cdots,n$，求 $\sum_{i=1}^n dis(x,i)$</p>
 <p>$1\le n\le2\times10^5,1\le p_i\le n$</p>
 <h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><p>考虑对于一个点 $(i,a_i)$，它到其他位置的最短路</p>
-<p>最短路 $&gt;1$ 的点即为所有 $(j,a_j)$ 满足 $j&lt;i,a_j&lt;a_i$ 或 $j&gt;i,a_j&gt;a_i$</p>
-<p>继续扩展，我们发现最短路 $&gt;2$ 的点也形如，所有 $(j,a_j)$，满足 $j&lt;x_l,a_j&lt;y_l$ 或 $j&gt;x_r,a_j&gt;y_r$，其中 $(x_l,y_l),(x_r,y_r)$ 为某两个点</p>
-<p>这个规律对于任意最短路 $&gt;t$ 的点都是成立的，并且 $(x_l,y_l),(x_r,y_r)$ 可以从 $t-1$ 的推过来，具体地，新的 $x_l&#x3D;\min_{(k,a_k),a_k\ge y^\prime_l}k,y_l&#x3D;\min_{(k,a_k),k\ge x^\prime_l}a_k$，$x_r,y_r$ 类似</p>
+<p>最短路 $&gt;1$ 的点即为所有 $(j,a_j)$ 满足 $j<i,a_j<a_i$ 或 $j>i,a_j&gt;a_i$</p>
+<p>继续扩展，我们发现最短路 $&gt;2$ 的点也形如，所有 $(j,a_j)$，满足 $j<x_l,a_j<y_l$ 或 $j>x_r,a_j&gt;y_r$，其中 $(x_l,y_l),(x_r,y_r)$ 为某两个点</p>
+<p>这个规律对于任意最短路 $&gt;t$ 的点都是成立的，并且 $(x_l,y_l),(x_r,y_r)$ 可以从 $t-1$ 的推过来，具体地，新的 $x_l=\min_{(k,a_k),a_k\ge y^\prime_l}k,y_l=\min_{(k,a_k),k\ge x^\prime_l}a_k$，$x_r,y_r$ 类似</p>
 <p>那么我们就得到了一个 $O(n^2)$ 的算法，对每个 $x$ 用 $O(n)$ 的时间扩展一下即可</p>
 <p>毛估估一下，$(x_l,y_l)$ 看起来比较难构造很多种不同状态，所以我们大胆给这个东西加一个记忆化，发现跑的很快</p>
 <p>实际上，不同的 $(x_l,y_l)$ 数量是 $O(n\sqrt n)$ 量级的，证明有点神秘。</p>
@@ -572,7 +571,7 @@
 </ul>
 <hr>
 <h3 id="19-PKUCPC2024-Light-up-the-Statues-K-✔️"><a href="#19-PKUCPC2024-Light-up-the-Statues-K-✔️" class="headerlink" title="19.  PKUCPC2024 - Light up the Statues [K] ✔️"></a>19.  PKUCPC2024 - Light up the Statues [K] ✔️</h3><h4 id="题面-18"><a href="#题面-18" class="headerlink" title="题面"></a>题面</h4><p>数轴上有 $n$ 个雕像，一共有 $m$ 种魔法属性，第 $i$ 个雕像与第 $i-1$ 个雕像距离为 $d_i$，有一个魔法属性 $c_i$ 和代价 $p_i$</p>
-<p>当你没有魔法属性的时候，你可以在一个雕像处耗费 $p_i$ 的代价祈祷，获得属性 $c_i$，当你带着属性 $k$ 经过一个雕像时，如果 $k&#x3D;c_i$ 那么雕像 $i$ 就会被点亮</p>
+<p>当你没有魔法属性的时候，你可以在一个雕像处耗费 $p_i$ 的代价祈祷，获得属性 $c_i$，当你带着属性 $k$ 经过一个雕像时，如果 $k=c_i$ 那么雕像 $i$ 就会被点亮</p>
 <p>你如果有一个属性，那么你不能在获得其他属性，你必须回到你获得这个属性的位置，然后花费 $0$ 的代价把这个属性洗掉</p>
 <p>给定 $w_0,w_1,\cdots,w_m$，分别表示持有第 $i$ 种属性时移动一单位距离的代价</p>
 <p>你可以任意选定起点和终点，求点亮所有雕像的最小代价</p>
@@ -596,19 +595,19 @@
 </ul>
 <p>定义一个非空点集 $S$ 是好的当且仅当 $S$ 进行任意 $k\ge1$ 步移动得到的点集都是唯一的，求好的点集数量，对 $998244353$ 取模</p>
 <p>$1\le n\le2\times10^5$</p>
-<h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><p>注意到条件相当于 $k&#x3D;1$ 的时候是唯一的，并且 $k&#x3D;2$ 的时候唯一的合法方案是挪回来</p>
+<h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><p>注意到条件相当于 $k=1$ 的时候是唯一的，并且 $k=2$ 的时候唯一的合法方案是挪回来</p>
 <p>称点集内的点为黑点，点集外的点为白点，观察到我们的移动其实就是指定若干条 黑-黑-……-黑-白 的链，然后沿着链移动</p>
 <p>考虑什么样的情况是不合法的：</p>
 <ul>
 <li>两个黑色链头不能相邻，否则这两条链可以合并</li>
 <li>两个白色链尾不能相邻，否则操作一次之后可以得到上述的情况</li>
-<li>类似地，黑色链头&#x2F;白色链尾不能和链中间的元素相邻</li>
+<li>类似地，黑色链头/白色链尾不能和链中间的元素相邻</li>
 </ul>
-<p>那么我们直接设 $dp_{i,0&#x2F;1&#x2F;2&#x2F;\cdots}$，表示 $i$ 的子树匹配链匹配到一些状态，转移即可</p>
+<p>那么我们直接设 $dp_{i,0/1/2/\cdots}$，表示 $i$ 的子树匹配链匹配到一些状态，转移即可</p>
 <p>注意到黑色链头和白色链尾是对称的，因此我们可以出现一个链就乘 $2$，这样可以记得状态稍微少一点</p>
 <p>复杂度 $O(n)$</p>
 <hr>
-<h3 id="21-ARC142F-Paired-Wizards-E-⭐"><a href="#21-ARC142F-Paired-Wizards-E-⭐" class="headerlink" title="21.  ARC142F - Paired Wizards [E] ⭐"></a>21.  ARC142F - Paired Wizards [E] ⭐</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>有三个变量，$c_X,c_Y,ans$，初始 $c_X&#x3D;c_Y&#x3D;ans&#x3D;0$</p>
+<h3 id="21-ARC142F-Paired-Wizards-E-⭐"><a href="#21-ARC142F-Paired-Wizards-E-⭐" class="headerlink" title="21.  ARC142F - Paired Wizards [E] ⭐"></a>21.  ARC142F - Paired Wizards [E] ⭐</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>有三个变量，$c_X,c_Y,ans$，初始 $c_X=c_Y=ans=0$</p>
 <p>对 $X$ 执行 $1$ 操作会使 $c_X\leftarrow c_X+1$，执行 $2$ 操作会使 $ans\leftarrow ans+c_X$，对 $Y$ 执行 $1,2$ 操作是类似的</p>
 <p>有 $n$ 次事件，第 $i$ 次事件会给定 $a_i,b_i,c_i,d_i\in[1,2]$，你需要选择以下两种中的一个：</p>
 <ul>
@@ -630,7 +629,7 @@
 <p>也就是说我们做完前三种决策之后，对每个矩阵中的元素算一下最优的四操作分配方案即可，枚举量降到 $O(n^3)$</p>
 <p>考虑先做完前两个决策，那么第三种决策就是把每条斜线对一个固定的函数做 $(\min,+)$ 卷积，显然两个函数都是凸的，闵和即可优化到 $O(n^2)$</p>
 <h5 id="题解做法"><a href="#题解做法" class="headerlink" title="题解做法"></a>题解做法</h5><p>注意到枚举了三四决策之后，一决策的选择只与当前 $X$ 已经被选了多少个 $2$ 有关，二决策同理</p>
-<p>那么我们可以处理出 $f_i$ 和 $g_i$，分别表示 $X&#x2F;Y$ 选了 $i$ 个 $2$ 后，一&#x2F;二决策能得到的 $\text{位置和}-\binom{cnt_2+1}2$ 的最大值，最后在枚举三四决策后调用即可</p>
+<p>那么我们可以处理出 $f_i$ 和 $g_i$，分别表示 $X/Y$ 选了 $i$ 个 $2$ 后，一/二决策能得到的 $\text{位置和}-\binom{cnt_2+1}2$ 的最大值，最后在枚举三四决策后调用即可</p>
 <p>复杂度 $O(n^2)$</p>
 <hr>
 <h3 id="22-ARC142E-Pairing-Wizards-E-⭐"><a href="#22-ARC142E-Pairing-Wizards-E-⭐" class="headerlink" title="22.  ARC142E - Pairing Wizards [E] ⭐"></a>22.  ARC142E - Pairing Wizards [E] ⭐</h3><h4 id="题面-21"><a href="#题面-21" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人，第 $i$ 个人有两个属性 $a_i,b_i$，你可以花费 $1$ 的代价将任意 $a_i$ 增加 $1$</p>
@@ -650,7 +649,6 @@
 <hr>
 <h3 id="23-QOJ5070-Check-Pattern-is-Bad-E-❓"><a href="#23-QOJ5070-Check-Pattern-is-Bad-E-❓" class="headerlink" title="23.  QOJ5070 - Check Pattern is Bad [E] ❓"></a>23.  QOJ5070 - Check Pattern is Bad [E] ❓</h3><h4 id="题面-22"><a href="#题面-22" class="headerlink" title="题面"></a>题面</h4><p>给定 $n\times m$ 的 <code>WB?</code> 矩阵，要求将 <code>?</code> 都填成 <code>W</code> 或 <code>B</code>，使得不存在如下两种 $2\times2$ 的连续子矩阵：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WB  BW</span><br><span class="line">BW  WB</span><br></pre></td></tr></table></figure></div>
-
 <p>给出构造或判断无解</p>
 <p>$1\le n,m\le100$</p>
 <h4 id="题解-22"><a href="#题解-22" class="headerlink" title="题解"></a>题解</h4><p>首先考虑将所有 $i+j$ 为奇数的位置取反，那么不能出现的就是全 <code>W</code> 或全· <code>B</code></p>
@@ -661,12 +659,11 @@
 <hr>
 <h3 id="24-QOJ5071-Check-Pattern-is-Good-S"><a href="#24-QOJ5071-Check-Pattern-is-Good-S" class="headerlink" title="24.  QOJ5071 - Check Pattern is Good [S]"></a>24.  QOJ5071 - Check Pattern is Good [S]</h3><h4 id="题面-23"><a href="#题面-23" class="headerlink" title="题面"></a>题面</h4><p>给定 $n\times m$ 的 <code>WB?</code> 矩阵，要求将 <code>?</code> 都填成 <code>W</code> 或 <code>B</code>，使得如下两种 $2\times2$ 的连续子矩阵个数越多越好：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WB  BW</span><br><span class="line">BW  WB</span><br></pre></td></tr></table></figure></div>
-
 <p>$1\le n,m\le100$</p>
 <h4 id="题解-23"><a href="#题解-23" class="headerlink" title="题解"></a>题解</h4><p>将每个 $2\times2$ 建点，相当于限制某些全黑矩阵和某些全白矩阵不能同时出现</p>
 <p>建图跑二分图最大独立集即可</p>
 <hr>
-<h3 id="25-QOJ1429-Hit-E-K-✔️"><a href="#25-QOJ1429-Hit-E-K-✔️" class="headerlink" title="25.  QOJ1429 - Hit [E&#x2F;K] ✔️"></a>25.  QOJ1429 - Hit [E&#x2F;K] ✔️</h3><h4 id="题面-24"><a href="#题面-24" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个区间 $[l_i,r_i]$，你需要选择若干个整点，使得每个区间至少包含一个点，并且包含点最多的区间包含点数尽量少</p>
+<h3 id="25-QOJ1429-Hit-E-K-✔️"><a href="#25-QOJ1429-Hit-E-K-✔️" class="headerlink" title="25.  QOJ1429 - Hit [E/K] ✔️"></a>25.  QOJ1429 - Hit [E/K] ✔️</h3><h4 id="题面-24"><a href="#题面-24" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个区间 $[l_i,r_i]$，你需要选择若干个整点，使得每个区间至少包含一个点，并且包含点最多的区间包含点数尽量少</p>
 <p>你需要求出这个最小值并给出构造</p>
 <p>$1\le n\le10^5$</p>
 <h4 id="题解-24"><a href="#题解-24" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-1"><a href="#Flamire-做法-1" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>如果我们固定了答案，考虑判定答案 $v$ 是否合法，可以建一个差分约束模型：</p>
@@ -677,7 +674,7 @@
 </ul>
 <p>那么合法当且仅当这张图没有负环，但是我们不会判这个，我们暂且不管这件事情。</p>
 <p>继续观察性质，注意到我们只保留非 $v$ 边后会得到一个最短路，此时 $i$ 的最短路是 $[i,+\infty)$ 能选出的最多不交区间数</p>
-<p>对于一个任意 $l,r$，设 $w[l:r]$ 能选出的不交区间个数为 $c$，此时满足 $c-1\le dis_r-dis_l\le c$，也就是说设此时取所有 $dis_r-dis_l$ 的最大值 $X$，$v&#x3D;X$ 一定合法，并且我们只需要额外判断 $v&#x3D;X-1$ 是否合法</p>
+<p>对于一个任意 $l,r$，设 $w[l:r]$ 能选出的不交区间个数为 $c$，此时满足 $c-1\le dis_r-dis_l\le c$，也就是说设此时取所有 $dis_r-dis_l$ 的最大值 $X$，$v=X$ 一定合法，并且我们只需要额外判断 $v=X-1$ 是否合法</p>
 <p>但是我们仍然不会对一个 $v$ 判断是否合法。</p>
 <p>因此考虑直接跑 spfa，如果更新次数大于 50 倍点数就认为有负环，过了。</p>
 <p>事实上，可以开到两倍点数也能过。</p>
@@ -686,8 +683,8 @@
 <p>我们可以说明，答案一定为 $X$ 或 $X-1$：考察任意一个在当前方案中包含了 $X$ 个点的区间，设这 $X$ 个点从左到右为 $x_1,x_2,\cdots,x_X$，那么在任意方案内，区间内最靠左的点一定在 $x_2$ 左边，第二靠左的点一定在 $x_3$ 左边，一直这样推下去，可以得到这个区间内至少有 $X-1$ 个点</p>
 <p>那么我们需要判断 $X-1$ 是否可行</p>
 <p>考虑进行 dp，对每个点，存 $f_i$ 表示考虑了 $i$ 及 $i$ 左边的点，且必须选择 $i$ 位置的点，所有 $l\le i$ 的区间全被覆盖，是否可能</p>
-<p>我们可以贪心，如果 $i$ 可行，那么上一个选的点 $j$ 一定是在 $[j+1,i-1]$ 不包含任何区间的情况下，越靠左越好，这个是可以根据 $i$ 快速求出的，称 $j&#x3D;prv(i)$</p>
-<p>那么我们从 $i$ 开始不断找 $prv$，找 $X-1$ 次 $prv$ 得到 $k$，如果存在一个区间包含 $[k,i]$，那么这个区间一定包含了 $X$ 个点，不合法，$f_i&#x3D;0$</p>
+<p>我们可以贪心，如果 $i$ 可行，那么上一个选的点 $j$ 一定是在 $[j+1,i-1]$ 不包含任何区间的情况下，越靠左越好，这个是可以根据 $i$ 快速求出的，称 $j=prv(i)$</p>
+<p>那么我们从 $i$ 开始不断找 $prv$，找 $X-1$ 次 $prv$ 得到 $k$，如果存在一个区间包含 $[k,i]$，那么这个区间一定包含了 $X$ 个点，不合法，$f_i=0$</p>
 <p>按照这样 check 一次的复杂度是 $O(n\log n)$，总复杂度 $O(n\log n)$</p>
 <p>其实上述两个做法都可以不用 $X$ 和 $X-1$ 的优化，这样只是复杂度多一个 $\log$，出题人并没有卡。</p>
 <hr>
@@ -698,11 +695,13 @@
 <h4 id="题解-25"><a href="#题解-25" class="headerlink" title="题解"></a>题解</h4><p>有一个显然的 dp 是存对于一个 $\sum w$，最大的 $\sum p$ 是多少</p>
 <p>这个限制就很怪。因此我们考虑做一些分析</p>
 <p>设我们原来的概率为 $P$，收益为 $W$，那么加上一个 $(p_i,w_i)$ 后会变成 $\frac{p_i}{100}\cdot P(W+w_i)$，比原来优当且仅当 $\frac{p_iw_i}{100}&gt;W(1-\frac{p_i}{100})$</p>
-<p>那么首先将 $p_i&#x3D;100$ 的判掉，因为必选，那么就可以得到 $W&lt;\frac{p_i}{100-p_i}w_i$</p>
+<p>那么首先将 $p_i=100$ 的判掉，因为必选，那么就可以得到 $W&lt;\frac{p_i}{100-p_i}w_i$</p>
 <p>由于 $p_iw_i\le2\times10^5$，这意味着我们考虑完 $p_i\ge P$ 的物品时，只用保留 $\frac{2\times10^5}{100-P}$ 的状态，那么状态数就变成调和级数的了</p>
 <p>但是转移复杂度仍然过高。</p>
 <p>注意到对于同一个 $p$，我们一定取的是 $w_i$ 最大的若干个，而 $W&lt;\frac{p_i}{100-p_i}w_i$，因此如果我们取这里的 $w_i$ 为最小的选择的 $w$，就能得到我们不能选超过 $\frac{p_i}{100-p_i}$ 个当前 $p_i$ 的元素</p>
-<p>因此最后总复杂度是：<br>$$<br>\sum_{p&#x3D;1}^{99}\frac{2\times10^5}{100-p}\times\frac{p}{100-p}<br>$$<br>算一下可以发现是 $O(PW\cdot P)$ 的</p>
+<p>因此最后总复杂度是：</p>
+<script type="math/tex; mode=display">
+\sum_{p=1}^{99}\frac{2\times10^5}{100-p}\times\frac{p}{100-p}</script><p>算一下可以发现是 $O(PW\cdot P)$ 的</p>
 <hr>
 <h3 id="27-CF2023E-Tree-of-Life-E"><a href="#27-CF2023E-Tree-of-Life-E" class="headerlink" title="27.  CF2023E - Tree of Life [E]"></a>27.  CF2023E - Tree of Life [E]</h3><h4 id="题面-26"><a href="#题面-26" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，要求选出尽可能少的链，使得对于任意两条有公共点的边无序对 $(e_1,e_2)$，均在某条链中出现过一次</p>
 <p>求这个最小的链数</p>
@@ -715,17 +714,16 @@
 <hr>
 <h3 id="28-CF2035G-Go-Learn-E"><a href="#28-CF2035G-Go-Learn-E" class="headerlink" title="28.  CF2035G - Go Learn! [E]"></a>28.  CF2035G - Go Learn! [E]</h3><h4 id="题面-27"><a href="#题面-27" class="headerlink" title="题面"></a>题面</h4><p>考虑如下的二分函数：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let l = 1</span><br><span class="line">let h = n</span><br><span class="line"></span><br><span class="line">while l &lt; h:</span><br><span class="line">  let m = floor((l + h) / 2)</span><br><span class="line"></span><br><span class="line">  if a[m] &lt; k:</span><br><span class="line">    l = m + 1</span><br><span class="line">  else:</span><br><span class="line">    h = m</span><br><span class="line"></span><br><span class="line">return l</span><br></pre></td></tr></table></figure></div>
-
 <p>这是二分查找某值在递增序列中出现位置的代码</p>
 <p>现在有一个待定的数组 $a_1,a_2,\cdots,a_n$，每个元素都在 $[1,n]$ 之间，有 $m$ 个二元组 $(x_i,k_i)$，保证 $x$ 互不相同，$k$ 互不相同</p>
-<p>你需要选择这 $m$ 个二元组的一个子集 $S$，使得存在序列 $a$ 满足对于任意 $(x,k)\in S,a_x&#x3D;k$，且在 $a$ 上面运行二分查找 $k$ 能够定位到 $x$，设 $|S|$ 的最大可能大小为 $r$</p>
-<p>除此之外，你还需要求出有多少 $a$ 序列满足存在一个 $|S|&#x3D;r$ 的子集 $S$ 满足条件，对 $998244353$ 取模</p>
+<p>你需要选择这 $m$ 个二元组的一个子集 $S$，使得存在序列 $a$ 满足对于任意 $(x,k)\in S,a_x=k$，且在 $a$ 上面运行二分查找 $k$ 能够定位到 $x$，设 $|S|$ 的最大可能大小为 $r$</p>
+<p>除此之外，你还需要求出有多少 $a$ 序列满足存在一个 $|S|=r$ 的子集 $S$ 满足条件，对 $998244353$ 取模</p>
 <p>G1：$1\le m\le n\le3000$</p>
 <p>G2：$1\le m\le n\le3\times10^5$</p>
-<h4 id="题解-27"><a href="#题解-27" class="headerlink" title="题解"></a>题解</h4><p>将 $x\neq1,k&#x3D;1$ 判掉之后，$r$ 就是剩下东西关于 $x$ 和 $k$ 的 LIS</p>
+<h4 id="题解-27"><a href="#题解-27" class="headerlink" title="题解"></a>题解</h4><p>将 $x\neq1,k=1$ 判掉之后，$r$ 就是剩下东西关于 $x$ 和 $k$ 的 LIS</p>
 <p>最终这个二分会建出一个类似二叉搜索树的东西，但是值不一定有序，并且这棵树是 leafy 的</p>
 <p>但是我们可以直接尝试头铁 dp，令 $w_i$ 表示以 $i$ 结尾的 LIS 长度，令 $f_i$ 表示我们选了第 $i$ 个位置，$a[1:i]$ 满足条件的序列个数，由于我们计数的是最大值，因此我们不用让其他元素不合法（因为一个 $a$ 只可能有一个方案，否则将不是最大值）</p>
-<p>我们在从 $j$ 转移到 $i$ 的时候，需要满足 $w_j+1&#x3D;w_i$ 且 $a_j&lt;a_i$，考虑 $j$ 到 $i$ 路径上的节点的贡献，具体地：</p>
+<p>我们在从 $j$ 转移到 $i$ 的时候，需要满足 $w_j+1=w_i$ 且 $a_j&lt;a_i$，考虑 $j$ 到 $i$ 路径上的节点的贡献，具体地：</p>
 <ul>
 <li>$j$ 在跳到 LCA 之前的过程中，如果作为父亲的左儿子，那么会要求这个节点 $\ge a_j$，此时我们计入父亲的贡献，乘上一个 $(n-a_i+1)$，然后再乘上右子树内所有数的贡献（$n^{siz}$）</li>
 <li>$i$ 在跳到 LCA 之前的过程中，如果作为父亲的右儿子，那么会要求这个节点 $&lt;a_i$，此时我们计入父亲的贡献，乘上一个 $a_i-1$，然后再乘上左子树内所有数的贡献（$n^{siz}$）</li>
@@ -734,7 +732,7 @@
 <p>也就是说我们的转移可以系数写成一个关于 $j$ 和 LCA 的值 $cl_{j,\text{LCA}}$，以及一个 $i$ 和 LCA 的值 $cr_{j,LCA}$ 的乘积，再额外乘上 LCA 的贡献</p>
 <p>这个可以通过预处理，暴力转移做到 $O(n^2)$，可以通过 G1</p>
 <p>考虑优化：注意到这个贡献看起来很能拆，因此我们考虑枚举 LCA，然后一块处理左边到右边的转移</p>
-<p>由于 $cl,cr$ 的大小只有 $O(n\log n)$，依然是可以预处理的，那么忽略一点细节之后，我们就是要将左边的 $j$ 的一些信息，转移给右边的 $i$，满足 $w_i&#x3D;w_j+1$ 且 $a_j&lt;a_i$</p>
+<p>由于 $cl,cr$ 的大小只有 $O(n\log n)$，依然是可以预处理的，那么忽略一点细节之后，我们就是要将左边的 $j$ 的一些信息，转移给右边的 $i$，满足 $w_i=w_j+1$ 且 $a_j&lt;a_i$</p>
 <p>注意到对于同一种 $w$，$a$ 的值是不断递降的，因此我们先得到左边每一个 $w$，对应的 $a$ 的 vector，求出信息的前缀和，然后转移到右边时用一个指针顺着扫即可</p>
 <p>复杂度 $O(n\log n)$</p>
 <hr>
@@ -745,27 +743,27 @@
 </ul>
 <p>给出构造或判断无解</p>
 <p>$1\le n\le5\times10^5$</p>
-<h4 id="题解-28"><a href="#题解-28" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-2"><a href="#Flamire-做法-2" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>无解当且仅当 $n&#x3D;2$ 且 $a\neq b$，然后可以将问题转化为将 $a$ 排序</p>
+<h4 id="题解-28"><a href="#题解-28" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法-2"><a href="#Flamire-做法-2" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>无解当且仅当 $n=2$ 且 $a\neq b$，然后可以将问题转化为将 $a$ 排序</p>
 <p>这个操作就看着很怪啊，考虑一下有没有可以利用的东西</p>
 <p>我们发现这个操作每次会将 $a_{i-1}$ 挪到 $a_1$，因此我们考虑能不能在序列前面每次接一个元素让它变得有序</p>
 <p>但这样的问题就是我们没办法移动 $a_n$</p>
-<p>我们对于 $a_n$ 还有一种操作：用 $i&#x3D;1$ 让 $a_n$ 移动到 $a_2$，那么我们可以通过结合这些操作，将整个序列排成一个 $1\sim n$ 有序的序列，但是有些相邻元素发生了交换（交换不交），然后期望有什么办法把这个东西在 $n$ 步内排序</p>
+<p>我们对于 $a_n$ 还有一种操作：用 $i=1$ 让 $a_n$ 移动到 $a_2$，那么我们可以通过结合这些操作，将整个序列排成一个 $1\sim n$ 有序的序列，但是有些相邻元素发生了交换（交换不交），然后期望有什么办法把这个东西在 $n$ 步内排序</p>
 <p>具体地，设下一个操作的值在 $a_x$：</p>
 <ul>
-<li>$x\neq n$，那么操作 $i&#x3D;x+1$ 即可</li>
-<li>$x&#x3D;n$，且 $a_{n-1}&#x3D;a_x-1$，那么我们先操作 $i&#x3D;n$，再操作 $i&#x3D;1$，这样我们将 $a_{n-1}$ 和 $a_n$ 以原序移动到了序列开头</li>
-<li>$x&#x3D;n$，且 $a_{n-1}\neq a_x-1$，直接操作 $i&#x3D;1$，将 $a_n$ 移动到 $a_2$，产生一个交换对</li>
+<li>$x\neq n$，那么操作 $i=x+1$ 即可</li>
+<li>$x=n$，且 $a_{n-1}=a_x-1$，那么我们先操作 $i=n$，再操作 $i=1$，这样我们将 $a_{n-1}$ 和 $a_n$ 以原序移动到了序列开头</li>
+<li>$x=n$，且 $a_{n-1}\neq a_x-1$，直接操作 $i=1$，将 $a_n$ 移动到 $a_2$，产生一个交换对</li>
 </ul>
 <p>接下来考虑如何在 $n$ 步内将这个东西排序：</p>
 <p>我不会。</p>
 <p>所以考虑打打表找规律。</p>
 <p>首先，暴力告诉我们，想将 $a_n$ 直接移到 $a_1$，即将 $a$ 循环移一位，最少需要 $n$ 步</p>
 <p>但是我们发现，对于最后 $x$ 个元素，我们想将它们以某种顺序移到开头并排序，有很多种顺序都是可以在 $x$ 步内完成的</p>
-<p>那么我们按块考虑，认为一个交换对是一个 $2$ 的块，其余都是 $1$ 的块，我们打表发现所有三个块和两个块的排列方式（一共 $2^2+2^3&#x3D;12$ 种），都可以通过长度步数的操作，将其从最后挪到开头并排序的</p>
+<p>那么我们按块考虑，认为一个交换对是一个 $2$ 的块，其余都是 $1$ 的块，我们打表发现所有三个块和两个块的排列方式（一共 $2^2+2^3=12$ 种），都可以通过长度步数的操作，将其从最后挪到开头并排序的</p>
 <p>全打出来塞到程序里，一开始判断一下块数是否是奇数，是奇数就操作一下后三个块，然后每次操作后两个块即可</p>
 <p>实现的话，可以观察到操作的时候，我们相当于依次执行 $a_0\leftarrow a_{i-1},a_{i-1}\leftarrow a_i,a_i\leftarrow a_n$ 之后，整体序列就向左挪了一位，那么这是可以 $O(1)$ 模拟的，因此总复杂度 $O(n)$</p>
 <h5 id="题解做法-2"><a href="#题解做法-2" class="headerlink" title="题解做法"></a>题解做法</h5><p>事实上，我们可以用 $n+1$ 步的操作，额外保证一阶段之后，$n$ 一定在 $a_n$ 的位置</p>
-<p>那么后面排序的时候，我们可以进行 $n-1$ 操作，每次从 $a_{n-2}$ 和 $a_{n-1}$ 选一个放到序列开头，分别操作 $i&#x3D;n-1$ 或 $i&#x3D;n$</p>
+<p>那么后面排序的时候，我们可以进行 $n-1$ 操作，每次从 $a_{n-2}$ 和 $a_{n-1}$ 选一个放到序列开头，分别操作 $i=n-1$ 或 $i=n$</p>
 <p>更优雅一些。</p>
 <hr>
 <h3 id="30-QOJ9489-0100-Insertion-E"><a href="#30-QOJ9489-0100-Insertion-E" class="headerlink" title="30.  QOJ9489 - 0100 Insertion [E]"></a>30.  QOJ9489 - 0100 Insertion [E]</h3><h4 id="题面-29"><a href="#题面-29" class="headerlink" title="题面"></a>题面</h4><p>定义一个 01 串是好的当且仅当存在一种方式每次从其中删除一个 <code>0100</code> 的子段，最后得到空串</p>
@@ -775,19 +773,19 @@
 <p>那么如果我们将 0 看作 $+1$，1 看作 $-3$：</p>
 <ul>
 <li>如果有两个 1 相邻，那么显然不行</li>
-<li>如果有某个连续段长为 $1$，那么这个 1 一定要和后面的段一起删，也就是说，设这个 1 的位置为 $i$，那么设 $+1&#x2F;-3$ 后缀和为 $suf$，一个必要条件就是至少存在一个 $j$ 使得 $suf_{i+1}-suf_j\ge2$，即 $suf_{i}+3-suf_j\ge2$</li>
+<li>如果有某个连续段长为 $1$，那么这个 1 一定要和后面的段一起删，也就是说，设这个 1 的位置为 $i$，那么设 $+1/-3$ 后缀和为 $suf$，一个必要条件就是至少存在一个 $j$ 使得 $suf_{i+1}-suf_j\ge2$，即 $suf_{i}+3-suf_j\ge2$</li>
 </ul>
 <p>那我们猜一下，这就是充要条件：</p>
 <ul>
 <li>1 不相邻，且 $s_1$ 不是 1</li>
-<li>$suf_1&#x3D;0$</li>
+<li>$suf_1=0$</li>
 <li>对于任意 $i$，$suf_i\ge\min(suf[i+1:n+1])-1$</li>
 </ul>
 <p>必要性是好证明的，前两个条件显然，第三个条件如果不满足的话，一定存在一个 1 无法操作消除</p>
 <p>充分性考虑归纳：</p>
 <ul>
 <li>如果存在一个 1 后面的连续段 $\ge3$，那么操作掉这个 1 一定不存在任何问题，因为不会影响后缀和的最小值</li>
-<li>否则，所有 1 后面的连续段都 $&#x3D;2$（因为此时有 $1$ 就爆了），那么我们从左到右删一定是合法的</li>
+<li>否则，所有 1 后面的连续段都 $=2$（因为此时有 $1$ 就爆了），那么我们从左到右删一定是合法的</li>
 </ul>
 <p>直接 dp 即可，复杂度 $O(n^3)$</p>
 <hr>
@@ -807,16 +805,16 @@
 <ul>
 <li>给定一张 DAG，初始每个点有点权 $a_i$，你需要重新分配点权 $b_i$，使得对于任意有向边 $u\rightarrow v$，都有 $b_u\le b_v$，并且 $\sum w_i|b_i-a_i|^p$ 最小</li>
 </ul>
-<p>当 $p&#x3D;1$ 时，$b$ 的取值只能从原来的 $a$ 中取，那么我们有结论：</p>
+<p>当 $p=1$ 时，$b$ 的取值只能从原来的 $a$ 中取，那么我们有结论：</p>
 <ul>
-<li>对于任意两个相邻的 $a$ 值 $va_i,va_{i+1}$，当我们限制 $b_u\in{va_i,va_{i+1}}$ 时得到一组解 $b^\prime$，那么一定存在一组原问题的最优解满足 $b_u\le va_i$ 当且仅当 $b^\prime_u&#x3D;va_i$</li>
+<li>对于任意两个相邻的 $a$ 值 $va_i,va_{i+1}$，当我们限制 $b_u\in\{va_i,va_{i+1}\}$ 时得到一组解 $b^\prime$，那么一定存在一组原问题的最优解满足 $b_u\le va_i$ 当且仅当 $b^\prime_u=va_i$</li>
 </ul>
 <p>有了这个结论后，我们采用整体二分，每次取 $va_{mid},va_{mid+1}$，将点集分为不交的两部分，递归下去即可，复杂度是 $O(\text{Dinic}\cdot\log n)$</p>
 <p>当 $p&gt;1$ 时，我们有结论：</p>
 <ul>
-<li>对于任意两个值 $x$ 和 $y$（ $x&lt;y$ ），当我们限制 $b_u\in{x,y}$ 时得到一组解 $b^\prime$，那么对于限制 $b_u$ 不能在区间 $(x,y)$ 的问题，存在一组最优解满足 $b_u\le x$ 当且仅当 $b^\prime_u&#x3D;x$</li>
+<li>对于任意两个值 $x$ 和 $y$（ $x&lt;y$ ），当我们限制 $b_u\in\{x,y\}$ 时得到一组解 $b^\prime$，那么对于限制 $b_u$ 不能在区间 $(x,y)$ 的问题，存在一组最优解满足 $b_u\le x$ 当且仅当 $b^\prime_u=x$</li>
 </ul>
-<p>那么我们取 $x&#x3D;mid,y&#x3D;mid+\varepsilon$，网络流求解时差值取代价函数在 $mid$ 处的导数即可，复杂度是 $O(\text{Dinic}\cdot\log V)$</p>
+<p>那么我们取 $x=mid,y=mid+\varepsilon$，网络流求解时差值取代价函数在 $mid$ 处的导数即可，复杂度是 $O(\text{Dinic}\cdot\log V)$</p>
 <hr>
 
 		</div>
@@ -1215,6 +1213,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

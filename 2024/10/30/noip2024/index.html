@@ -37,15 +37,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            noip2024 | Wonderhoy!
+            noip2024 | Flamiblog
         
     </title>
 
@@ -132,7 +132,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -242,7 +242,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -292,7 +292,6 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>asdf。</p>
 <span id="more"></span>
-
 <p>开考前五分钟先看 T4，看了五分钟不会。</p>
 <p>然后比赛开始了，把所有题都读了一遍，T1 感觉是贪心，T2 不知道，T3 不知道，T4 ds。</p>
 <p>开 T1，想了一会，感觉先把占用过的贪掉，再从左到右贪就是对的，遂写</p>
@@ -302,7 +301,7 @@
 <p>开 T3，想了一会不会，于是重新理了一下。</p>
 <p>首先需要找到一种方式刻画这个结构，进行一些手模发现可以是一个链剖分的结构，而题目要求的东西也能在这上面体现</p>
 <p>那么就可以直接 dp 了，在草稿纸上列了一下状态定义，以及一些转移，然后就开始写了</p>
-<p>挂大样例了，感觉手调不是很会，而且迟早要拍，于是就写了个拍，用 $k&#x3D;1$ 拍</p>
+<p>挂大样例了，感觉手调不是很会，而且迟早要拍，于是就写了个拍，用 $k=1$ 拍</p>
 <p>拍出来了，调了一会调过了，大概还剩 2h。</p>
 <p>开 T4，区间 lca 可以转，然后就是序列上的问题了，想了一会会了三维偏序的做法，但是 $5\times10^5$ 感觉不一定过的去，于是想想怎么优化</p>
 <p>这个三维偏序的部分直接优化感觉不是很优前途，因此考虑找一下问题的性质，可以发现加入的区间是笛卡尔树结构的，因此更小的会顶替掉更大的，那么离线扫描线即可。</p>
@@ -710,6 +709,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            AGC003 | Wonderhoy!
+            AGC003 | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -309,20 +309,19 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>怎么突然简单。</p>
 <span id="more"></span>
-
 <h1 id="AGC003"><a href="#AGC003" class="headerlink" title="AGC003"></a>AGC003</h1><h2 id="A-Wanna-go-back-home-Safe"><a href="#A-Wanna-go-back-home-Safe" class="headerlink" title="A - Wanna go back home [Safe]"></a>A - Wanna go back home [Safe]</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>给定一个长为 $n$ 的由 <code>N,S,E,W</code> 组成的字符串，分别表示向各个方向移动一段非零的你自定的距离，问有没有一种定距离的方案使得你最后回到原点</p>
 <p>$1\le |S|\le1000$</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>如果只包含 <code>NS</code> 中的一个或只包含 <code>WE</code> 中的一个那么显然不行，否则一定可以</p>
 <h2 id="B-Simplified-mahjong-Safe"><a href="#B-Simplified-mahjong-Safe" class="headerlink" title="B - Simplified mahjong [Safe]"></a>B - Simplified mahjong [Safe]</h2><h3 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h3><p>给定一个长为 $n$ 的整数序列 $a$，你有 $a_i$ 张写着 $i$ 的卡片，你可以把两张卡配对当且仅当他们数字的差 $\le1$，每张卡只能用一次，问最多能配多少对</p>
 <p>$1\le n\le10^5$</p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>贪心，按 $1\sim n$ 的顺序考虑，我们考虑一种数的时候把它用到只剩 $0&#x2F;1$ 张，如果在 $i$ 的时候我们发现 $i-1$ 有剩余，那么我们优先和 $i-1$ 配对，然后我们将 $i$ 内的卡片两两配对，多余的剩到之后考虑</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>贪心，按 $1\sim n$ 的顺序考虑，我们考虑一种数的时候把它用到只剩 $0/1$ 张，如果在 $i$ 的时候我们发现 $i-1$ 有剩余，那么我们优先和 $i-1$ 配对，然后我们将 $i$ 内的卡片两两配对，多余的剩到之后考虑</p>
 <p>复杂度 $O(n)$</p>
 <h2 id="C-BBuBBBlesort-Safe"><a href="#C-BBuBBBlesort-Safe" class="headerlink" title="C - BBuBBBlesort! [Safe]"></a>C - BBuBBBlesort! [Safe]</h2><h3 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h3><p>有一个长为 $n$ 的数组 $a$，元素两两不同，有两种操作，一种是交换 $a_i$ 与 $a_{i+1}$，一种是交换 $a_i$ 与 $a_{i+2}$，你要将这个数组排序，问最少用几次 1 操作</p>
 <p>$1\le n\le10^5$</p>
-<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>考虑排序后 ${a_1,a_3,\cdots}$ 与 ${a_2,a_4,\cdots}$ 的集合一定都是确定的，而我们可以用 2 操作任意调整集合内部顺序</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>考虑排序后 $\{a_1,a_3,\cdots\}$ 与 $\{a_2,a_4,\cdots\}$ 的集合一定都是确定的，而我们可以用 2 操作任意调整集合内部顺序</p>
 <p>那么我们只要每次把错集合的元素交换就可以了</p>
 <p>复杂度 $O(n\log n)$</p>
-<h2 id="D-Anticube-Safe-Euclid"><a href="#D-Anticube-Safe-Euclid" class="headerlink" title="D - Anticube [Safe&#x2F;Euclid]"></a>D - Anticube [Safe&#x2F;Euclid]</h2><h3 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h3><p>给定 $n$ 个正整数 $a_i$，你要选出一个子集，使得其中任意两个数乘积不为完全立方数，求最多选出多少数</p>
+<h2 id="D-Anticube-Safe-Euclid"><a href="#D-Anticube-Safe-Euclid" class="headerlink" title="D - Anticube [Safe/Euclid]"></a>D - Anticube [Safe/Euclid]</h2><h3 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h3><p>给定 $n$ 个正整数 $a_i$，你要选出一个子集，使得其中任意两个数乘积不为完全立方数，求最多选出多少数</p>
 <p>$1\le n\le10^5,1\le a_i\le10^{10}$</p>
 <h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>相当于不能有两个数指数加起来模 $3$ 全为 $0$，那么我们可以把指数都模 $3$ 考虑，也就是暴力将所有包含立方因子的数都除掉，这一步是 $O(n\pi(10^{\frac{10}3}))$</p>
 <p>这样对于每个数，一定有一个唯一的数使得它乘起来为完全立方数，考虑如何求出这个数</p>
@@ -333,7 +332,7 @@
 <p>$1\le n,q\le10^5,1\le k_i\le10^{18}$</p>
 <h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p>不难发现只有后缀最小值有用，我们把其他的都扔掉，那么操作序列的长度递增</p>
 <p>我们倒着考虑，可以算出每个前缀当前在序列中循环出现的次数 $f_i$，一开始只有 $f_{k_q}$ 为 $1$</p>
-<p>我们每次遇到 $f$ 不为 $0$ 的点 $f_x$，找到最大的 $j$ 使得 $k_j&lt;x$，那么 $f_{x%k_j}\leftarrow f_{x% k_j}+f_x$，$f_{k_j}\leftarrow f_{k_j}+\lfloor\frac x{k_j}\rfloor f_x$</p>
+<p>我们每次遇到 $f$ 不为 $0$ 的点 $f_x$，找到最大的 $j$ 使得 $k_j&lt;x$，那么 $f_{x\%k_j}\leftarrow f_{x\% k_j}+f_x$，$f_{k_j}\leftarrow f_{k_j}+\lfloor\frac x{k_j}\rfloor f_x$</p>
 <p>这样每个数扩展一次只会生成一个新下标，而一个数最多取模 $\log$ 次就会变成 $1$，因此总复杂度 $O(n\log^2n)$（如果用 map 实现的话）</p>
 <h2 id="F-Fraction-of-Fractal-Euclid"><a href="#F-Fraction-of-Fractal-Euclid" class="headerlink" title="F - Fraction of Fractal [Euclid]"></a>F - Fraction of Fractal [Euclid]</h2><h3 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h3><p>给定一个 $h\times w$ 的黑白矩形 $a$，定义 $0$ 阶分形是一个黑格，$i$ 阶分形是一个 $h^i\times w^i$ 的黑白矩形，我们将其划分为 $h\times w$ 的矩形区域，每个区域内，如果对应的 $a$ 中格子是黑格，就在这个区域内放一个 $i-1$ 阶分形，否则这个格子全白</p>
 <p>问 $k$ 阶分形有多少个黑格，<strong>保证 $a$ 中黑色格子联通</strong></p>
@@ -342,7 +341,7 @@
 <p>如果 $a$ 上下堆叠与左右堆叠均不能联通，那么答案为 $cnt^k$，其中 $cnt$ 为黑格个数</p>
 <p>否则，我们假设上下堆叠的联通</p>
 <p>我们令 $ans_i$ 表示 $i$ 阶分形的黑格数，$cyc_i$ 表示有多少列 $j$ 满足 $(1,j)$ 为黑格且 $(h^i,j)$ 为黑格</p>
-<p>那么 $ans_i&#x3D;cnt\times ans_{i-1}-cyc_{i-1}\times edge$，其中 $cnt$ 为黑格个数，$edge$ 为满足 $a_{i,j}&#x3D;a_{i+1,j}$ 的 $(i,j)$ 个数</p>
+<p>那么 $ans_i=cnt\times ans_{i-1}-cyc_{i-1}\times edge$，其中 $cnt$ 为黑格个数，$edge$ 为满足 $a_{i,j}=a_{i+1,j}$ 的 $(i,j)$ 个数</p>
 <p>用矩阵快速幂可以做到 $O(\log k)$</p>
 
 		</div>
@@ -753,6 +752,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -38,15 +38,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            CSP-S 2021 爆炸记 | Wonderhoy!
+            CSP-S 2021 爆炸记 | Flamiblog
         
     </title>
 
@@ -133,7 +133,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -243,7 +243,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -304,22 +304,20 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>破防了破防了，，，</p>
 <span id="more"></span>
-
-
 <h3 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h3><p>考前动员（？）</p>
 <p>19:00 就放了是我没想到的，于是把 801 拖到 8 楼玩了一圈</p>
 <p><del>整活了一个小时，然后被 one 抓获并带回图书馆</del></p>
 <h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><p>考场在首师附<del>（已经有心理阴影了）</del></p>
-<p>14:00 左右进的考场，写了个对拍器，然后开始下五子棋，获得 0:6 的光荣战绩&#x2F;cy</p>
+<p>14:00 左右进的考场，写了个对拍器，然后开始下五子棋，获得 0:6 的光荣战绩/cy</p>
 <p>上来先看的 T1，手模了一会猜了个结论，看起来很对就去写了，写完对拍大概 15:50</p>
 <p>然后去看 T2，发现比 T1 简单几万倍，打了个区间 dp 过了大样例直接走人（虽然中途写挂了好多次，这时候似乎还剩 16:40</p>
 <p>看 T3，手模几遍就会了，<del>甚至还怀疑太简单是不是假了</del>，写完也是测完大样例就跑了</p>
 <p>开始想 T4 的时候还剩 50min 左右，感觉部分分都非常不可做，过了 10min 左右感觉 $k\le2$ 可以网络流，但因为<strong>不在考纲范围内</strong>，于是觉得有更简单的做法，但实在没想出来就开始写</p>
 <p>写到一半感觉过不了 $n\le500$，于是考虑使用对偶图最短路优化，开始写的时候已经 18:10 了，于是直接放弃，把交上去的代码复制下来测了一遍</p>
-<p>预估：100+100+100+0&#x3D;300</p>
+<p>预估：100+100+100+0=300</p>
 <p>出了考场发现人均 300+T4奇怪玩意，被吊打了</p>
 <p>想了一下发现 $k\le50$ 扩展一下 $k\le2$ 就可以，感觉自己是个 sb</p>
-<p>赛后在 InfOJ 上自测 T3 挂分了&#x2F;cy， 检查一遍发现是找与第一个数相等的数的时候，是依次从前到后枚举，如果不等于就令 <code>id=i</code>，于是当前两个数相等的时候就会挂掉，属实破防了&#x2F;cy</p>
+<p>赛后在 InfOJ 上自测 T3 挂分了/cy， 检查一遍发现是找与第一个数相等的数的时候，是依次从前到后枚举，如果不等于就令 <code>id=i</code>，于是当前两个数相等的时候就会挂掉，属实破防了/cy</p>
 
 		</div>
 
@@ -725,6 +723,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

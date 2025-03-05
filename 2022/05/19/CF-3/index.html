@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            Bippity Jippity Bugaboos | Wonderhoy!
+            Bippity Jippity Bugaboos | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -311,7 +311,7 @@
 <h2 id="1-CF1214H-Tiles-Replacement-Euclid"><a href="#1-CF1214H-Tiles-Replacement-Euclid" class="headerlink" title="1.  CF1214H - Tiles Replacement [Euclid]"></a>1.  CF1214H - Tiles Replacement [Euclid]</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>给定一棵 $n$ 个点的树，要求将其每个点染上 $1\sim k$ 中的一种颜色，使得任意长为 $k$ 的路径均包含 $k$ 种不同的颜色，要求给出构造或判定无解</p>
 <p>$1\le k\le n\le2\times10^5$</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>我们找出这棵树的直径 $u\leftrightarrow v$，如果直径 $&lt;k$ 那么随便构造，可以发现直径上的点的染色是固定的（所有情况均对称）</p>
-<p>考虑直径 $\ge k$ 的情况，如果有一条支链 $x\leftrightarrow y$ 和 $u\leftrightarrow v$ 的公共点为 $x$，且 $len(u\leftrightarrow y)\ge k\land len(v\leftrightarrow y)\ge k$，那么不难发现当 $k\ge2$ 时一定无解，$k&#x3D;2$ 的情况可以特判掉</p>
+<p>考虑直径 $\ge k$ 的情况，如果有一条支链 $x\leftrightarrow y$ 和 $u\leftrightarrow v$ 的公共点为 $x$，且 $len(u\leftrightarrow y)\ge k\land len(v\leftrightarrow y)\ge k$，那么不难发现当 $k\ge2$ 时一定无解，$k=2$ 的情况可以特判掉</p>
 <p>一条支链 $x\leftrightarrow y$ 一定至多和直径的一边形成长度 $\ge k$ 的链</p>
 <p>如果没有形成长度 $\ge k$ 的点那和其他链也不可能形成，因此随意染色即可</p>
 <p>否则我们按照支链上的点 $x$ 到直径的距离以及支链与直径相交的点的颜色来给 $x$ 染色即可，只有这样染色不会产生跨过支链与直径的链不符合要求的情况，那我们需要考虑是否会形成支链内部的链不符合要求</p>
@@ -321,18 +321,17 @@
 <p>第 $i$ 个骨牌向左倒会使 $[i-a_i+1,i-1]$ 内的骨牌均向左倒，向右倒同理</p>
 <p>你手动推倒第 $i$ 个骨牌会花费 $c_i$ 的代价，问将所有骨牌推到最少需要多少代价</p>
 <p>$1\le m\le10^7$</p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>考虑 $O(n^2)$ dp，设 $f_i$ 表示前 $i$ 个骨牌推倒的最小代价，$f_i&#x3D;\min(f[l_i-1]+c_i,f[j-1]+c_j{r_j\ge i})$，其中 $l_i,r_i$ 分别表示将 $i$ 向左&#x2F;向右推倒经过连锁反应能够推倒的最左边&#x2F;最右边</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>考虑 $O(n^2)$ dp，设 $f_i$ 表示前 $i$ 个骨牌推倒的最小代价，$f_i=\min(f[l_i-1]+c_i,f[j-1]+c_j\{r_j\ge i\})$，其中 $l_i,r_i$ 分别表示将 $i$ 向左/向右推倒经过连锁反应能够推倒的最左边/最右边</p>
 <p>考虑 $l_i,r_i$ 怎么求</p>
-<p>不难发现 $l_i&#x3D;\min(l_j){i-a_i+1\le j\le i-1}$，那么我们可以用一个单调栈来维护，每次算出 $f_i$ 将 $f_{i-a_i+1}$ 至 $f_{i-1}$ 均弹出，加入 $f_i$，复杂度 $O(m)$</p>
+<p>不难发现 $l_i=\min(l_j)\{i-a_i+1\le j\le i-1\}$，那么我们可以用一个单调栈来维护，每次算出 $f_i$ 将 $f_{i-a_i+1}$ 至 $f_{i-1}$ 均弹出，加入 $f_i$，复杂度 $O(m)$</p>
 <p>考虑 $[i,r_i]$ 之间要么是相离要么是包含，因此形成树状关系，我们模拟建这棵树的过程，每到一个 $i$ 删除所有 $r_j&lt;i$ 的点，把 $[i,r_i]$ 入栈，然后取栈中最小值作为 $f_i$ 的值，复杂度 $O(m)$</p>
 <p>总复杂度 $O(m)$</p>
 <h2 id="4-CF1028G-Guess-the-number-Euclid"><a href="#4-CF1028G-Guess-the-number-Euclid" class="headerlink" title="4.  CF1028G - Guess the number [Euclid]"></a>4.  CF1028G - Guess the number [Euclid]</h2><h3 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h3><p>有一个在 $[1,10004205361450474]$ 内的数 $x$，你有 $5$ 次询问。</p>
-<p>每次询问你需要给出一个数 $k$ 和一个长为 $k$ 的整数序列 $a$，满足 $k\le10^4,a_1&lt;a_2&lt;\cdots&lt;a_k$，如果 $k&gt;x$，那么你会当场死亡，如果存在一个 $a_i$ 等于 $x$，那么你胜利，否则，交互库会返回在这些数中有多少个数小于 $x$</p>
+<p>每次询问你需要给出一个数 $k$ 和一个长为 $k$ 的整数序列 $a$，满足 $k\le10^4,a_1<a_2<\cdots<a_k$，如果 $k>x$，那么你会当场死亡，如果存在一个 $a_i$ 等于 $x$，那么你胜利，否则，交互库会返回在这些数中有多少个数小于 $x$</p>
 <h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>定义 $f(l,v)$ 表示最大的 $r-l+1$ 使得如果我们知道 $x\in[l,r]$，那么我们能在 $v$ 次操作内确定 $x$</p>
 <p>不难发现当 $l\ge10000$ 且 $v$ 相同时 $f(l,v)$ 的值一定是不变</p>
 <p>$f(l,v)$ 的值可以通过下面的代码求出：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">long long cur=l,ans=0;</span><br><span class="line">for(int i=1;i&lt;=l;++i)</span><br><span class="line">&#123;</span><br><span class="line">	ans+=f(cur,v-1)+1;</span><br><span class="line">	cur+=f(cur,v-1)+1;</span><br><span class="line">&#125;</span><br><span class="line">ans+=f(cur,v-1);</span><br></pre></td></tr></table></figure></div>
-
 <p>那么我们不难发现 $cur$ 一旦大于 $10^4$ 之后就可以快速计算，而同样不难发现 $f(l,v)$ 增长的很快，所以计算的复杂度是正确的</p>
 <p>然后根据这个来进行询问即可</p>
 <h2 id="5-CF991F-Concise-and-clear"><a href="#5-CF991F-Concise-and-clear" class="headerlink" title="5.  CF991F - Concise and clear"></a>5.  CF991F - Concise and clear</h2><h3 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h3><p>给定一个整数 $n$，要求输出满足如下条件的最短算式：</p>
@@ -345,7 +344,6 @@
 <h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>提前特判掉 $10^{10}$，那么如果答案不是直接将原数输出，其字符数一定 $\le9$</p>
 <p>答案一定是如下形式之一：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a^b+c^d+x</span><br><span class="line">a^b*c^d+x</span><br><span class="line">k*a^b*c^d</span><br><span class="line">a*b^c+d^e</span><br><span class="line">a^b+c^d</span><br><span class="line">a^b*c^d</span><br><span class="line">a*b^c+x</span><br><span class="line">b^c+x</span><br><span class="line">a*b^c</span><br><span class="line">b^c</span><br><span class="line">x</span><br></pre></td></tr></table></figure></div>
-
 <p>前四种形式最少有 $9$ 个字符，因此涉及的操作数必须是一位数，$9^5$ 枚举即可</p>
 <p>考虑 <code>a^b</code> 的形式只有 $O(\sqrt n)$ 种，可以预处理出来放到 <code>map</code> 里</p>
 <p>对于 <code>a^b+c^d</code> 和 <code>a^b*c^d</code> 可以枚举 <code>a^b</code> 然后在 <code>map</code> 中查询 <code>c^d</code></p>
@@ -760,6 +758,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

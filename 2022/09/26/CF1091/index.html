@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            CF1091 | Wonderhoy!
+            CF1091 | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -309,10 +309,9 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>反悔贪心。</p>
 <span id="more"></span>
-
-<h3 id="A-New-Year-and-the-Christmas-Ornament"><a href="#A-New-Year-and-the-Christmas-Ornament" class="headerlink" title="A - New Year and the Christmas Ornament"></a>A - New Year and the Christmas Ornament</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $y,b,r$，你需要求 $y^\prime,b^\prime,r^\prime$ 使得 $y^\prime\le y,b^\prime\le b,r^\prime\le r$，且 $y^\prime+1&#x3D;b^\prime&#x3D;r^\prime-1$，求 $y^\prime+b^\prime+r^\prime$ 最大值</p>
+<h3 id="A-New-Year-and-the-Christmas-Ornament"><a href="#A-New-Year-and-the-Christmas-Ornament" class="headerlink" title="A - New Year and the Christmas Ornament"></a>A - New Year and the Christmas Ornament</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $y,b,r$，你需要求 $y^\prime,b^\prime,r^\prime$ 使得 $y^\prime\le y,b^\prime\le b,r^\prime\le r$，且 $y^\prime+1=b^\prime=r^\prime-1$，求 $y^\prime+b^\prime+r^\prime$ 最大值</p>
 <p>$1\le y\le100,2\le b\le100,3\le r\le100$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>必定有一个 $x^\prime$ 满足 $x^\prime&#x3D;x$，枚举一下是哪个然后取最小值一定能得到最大的满足条件的</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>必定有一个 $x^\prime$ 满足 $x^\prime=x$，枚举一下是哪个然后取最小值一定能得到最大的满足条件的</p>
 <h3 id="B-New-Year-and-the-Treasure-Geolocation"><a href="#B-New-Year-and-the-Treasure-Geolocation" class="headerlink" title="B - New Year and the Treasure Geolocation"></a>B - New Year and the Treasure Geolocation</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个点以及 $n$ 个向量，你需要给每个点搭配一个向量，使得点 + 向量均指向同一个点，保证有解</p>
 <p>$1\le n\le1000$</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p> $y$ 最小，且 $y$ 最小的前提下 $x$ 最小的点，一定搭配 $y$ 最大，且 $y$ 最大的前提下 $x$ 最大的点，由于必定有解，所以输出这个点即可</p>
@@ -320,23 +319,25 @@
 <p>将 $f(k)$ 从小到大去重排序输出</p>
 <p>$2\le n\le10^9$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>与 $n$ 的 $\gcd$ 相等的 $k$ 的 $f$ 值一定也相等</p>
-<p>因此答案为 $\sum_{d|n}\frac nd+d\times\frac{(n&#x2F;d)(n&#x2F;d-1)}2$，复杂度 $O(\sqrt n)$</p>
+<p>因此答案为 $\sum_{d|n}\frac nd+d\times\frac{(n/d)(n/d-1)}2$，复杂度 $O(\sqrt n)$</p>
 <h3 id="D-New-Year-and-the-Permutation-Concatenation"><a href="#D-New-Year-and-the-Permutation-Concatenation" class="headerlink" title="D - New Year and the Permutation Concatenation"></a>D - New Year and the Permutation Concatenation</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$，定义 $a$ 为 $1\sim n$ 的所有排列按字典序排序后依次拼接得到的数组，求这个数组有多少长为 $n$ 的连续子段的和为 $\frac12n(n+1)$</p>
 <p>$1\le n\le10^6$，对 $998244353$ 取模</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑求解字典序中下一个排列的方式，我们找到最后一个满足 $p_k&lt;p_{k+1}$ 的 $k$，然后将 $p_k$ 替换为 $p_{k+1}\sim p_n$ 中最小的大于 $p_k$ 的，并将这个后缀剩下的数从小到大排序</p>
-<p>只有递降后缀不会贡献答案，因此我们枚举长度为 $k$ 的递降后缀个数，那么答案就为：<br>$$<br>n!\times n-\sum_{k&#x3D;1}^{n-1}\frac{n!}{k!}<br>$$<br>复杂度 $O(n)$</p>
+<p>只有递降后缀不会贡献答案，因此我们枚举长度为 $k$ 的递降后缀个数，那么答案就为：</p>
+<script type="math/tex; mode=display">
+n!\times n-\sum_{k=1}^{n-1}\frac{n!}{k!}</script><p>复杂度 $O(n)$</p>
 <h3 id="E-New-Year-and-the-Acquaintance-Estimation"><a href="#E-New-Year-and-the-Acquaintance-Estimation" class="headerlink" title="E - New Year and the Acquaintance Estimation"></a>E - New Year and the Acquaintance Estimation</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>有一个 $n+1$ 个点的无重边无自环的无向图，给定其中 $n$ 个点的度数，问剩下一个点的度数的所有可能值</p>
 <p>$1\le n\le5\times10^5$</p>
-<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>存在一个结论：如果我们将一个图所有的点度数从大到小排序 $d_1,d_2,\cdots,d_n$，那么存在这样的图当且仅当 $\sum_{i&#x3D;1}^n d_i$ 是偶数且对于所有 $k$，$\sum_{i&#x3D;1}^k d_i\le k(k-1)+\sum_{i&#x3D;k+1}^n\min(d_i,k)$ 均成立</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>存在一个结论：如果我们将一个图所有的点度数从大到小排序 $d_1,d_2,\cdots,d_n$，那么存在这样的图当且仅当 $\sum_{i=1}^n d_i$ 是偶数且对于所有 $k$，$\sum_{i=1}^k d_i\le k(k-1)+\sum_{i=k+1}^n\min(d_i,k)$ 均成立</p>
 <p><del>证明咕了</del></p>
-<p>那么我们将已知度数从大到小排序，一个 $k$ 不管插入新点的度数在前或在后，都会对新点度数有一个上&#x2F;下界限制，而这个限制是可以预处理出的，所以我们直接枚举度数，然后二分找出在哪两个已知度数之间，调用预处理的限制判断即可</p>
+<p>那么我们将已知度数从大到小排序，一个 $k$ 不管插入新点的度数在前或在后，都会对新点度数有一个上/下界限制，而这个限制是可以预处理出的，所以我们直接枚举度数，然后二分找出在哪两个已知度数之间，调用预处理的限制判断即可</p>
 <p>复杂度 $O(n\log n)$</p>
 <h3 id="F-New-Year-and-the-Mallard-Expedition"><a href="#F-New-Year-and-the-Mallard-Expedition" class="headerlink" title="F - New Year and the Mallard Expedition"></a>F - New Year and the Mallard Expedition</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个首尾相接的线段，每个线段有一个长度 $a_i$ 和一个 <code>WGL</code> 中的属性，你要在这些线段上运动（你可以随时改变方向，不一定要在整数坐标），你在 <code>G</code> 上走 $1$ 的距离需要 $5$ 的时间，在 <code>W</code> 上走 $1$ 的距离需要 $3$ 的时间，在 <code>L</code> 上不能走，但是你可以在任何一种线段上飞，且飞 $1$ 的距离永远需要 $1$ 的时间</p>
 <p>你有一个属性叫做能量，你需要保持其非负，初始为 $0$，飞行 $1$ 的距离会消耗 $1$ 的能量，在 <code>G</code> 或 <code>W</code> 上走 $1$ 单位距离都会增加 $1$ 的能量，问从第一个线段的开头走到最后一个线段的结尾的最小时间，保证有解（即第一个线段属性不为 <code>L</code>）</p>
 <p>$1\le n\le10^5$</p>
 <h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>反悔贪心。</p>
 <p>我们如果不需要攒能量的话在 <code>G</code> 上最快运动速度是 $3$，在 <code>W</code> 上最快运动速度是 $2$，称这种状态为跑</p>
-<p>那么我们初始假设所有线段都是跑过的，但是这样能量显然不够，因此如果遇到 <code>L</code>&#x2F;<code>G</code>（不难发现飞过 <code>W</code> 没有意义），会有一系列反悔措施能使答案变得更优</p>
+<p>那么我们初始假设所有线段都是跑过的，但是这样能量显然不够，因此如果遇到 <code>L</code>/<code>G</code>（不难发现飞过 <code>W</code> 没有意义），会有一系列反悔措施能使答案变得更优</p>
 <p>我们开一个桶 $cnt_i$，表示当前有多少距离可以增加 $1$ 的能量需要增加 $i$ 的时间</p>
 <ol>
 <li>遇到 <code>W</code>，我们假设跑过，那么 $cnt_1$ 会加 $1$，代表我们可以将其又跑改为走</li>
@@ -753,6 +754,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

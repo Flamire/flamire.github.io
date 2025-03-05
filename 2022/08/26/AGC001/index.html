@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            AGC001 | Wonderhoy!
+            AGC001 | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -308,22 +308,27 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<span id="more"></span>
-
 <h2 id="AGC001"><a href="#AGC001" class="headerlink" title="AGC001"></a>AGC001</h2><h3 id="A-BBQ-Easy-Safe"><a href="#A-BBQ-Easy-Safe" class="headerlink" title="A - BBQ Easy [Safe]"></a>A - BBQ Easy [Safe]</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $2n$ 个数 $a_1,a_2,\cdots,a_{2n}$，要求分成 $n$ 个包含两个数的组，使得每个组的最小值之和最大</p>
 <p>$1\le n\le100$</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>排序后求 $a_1+a_3+\cdots+a_{2n-1}$</p>
 <p>复杂度 $O(n\log n)$</p>
-<h3 id="B-Mysterious-Light-Safe"><a href="#B-Mysterious-Light-Safe" class="headerlink" title="B - Mysterious Light [Safe]"></a>B - Mysterious Light [Safe]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>有边长为 $n$ 的等边三角形 $\Delta ABC$，在 $AB$ 边上有一点 $P$，满足 $AP&#x3D;x$，从 $P$ 朝平行于 $BC$ 的方向射出一束光，这条光会在三角形的边上以及自己曾经经过的路线上反弹，求光线回到 $P$ 时经过的路线长度</p>
+<h3 id="B-Mysterious-Light-Safe"><a href="#B-Mysterious-Light-Safe" class="headerlink" title="B - Mysterious Light [Safe]"></a>B - Mysterious Light [Safe]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>有边长为 $n$ 的等边三角形 $\Delta ABC$，在 $AB$ 边上有一点 $P$，满足 $AP=x$，从 $P$ 朝平行于 $BC$ 的方向射出一束光，这条光会在三角形的边上以及自己曾经经过的路线上反弹，求光线回到 $P$ 时经过的路线长度</p>
 <p>$1\le x&lt;n\le 10^{12}$</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>考虑这条光的路径，一定是先反射两次之后在一个平行四边形内乱射</p>
 <p>定义 $F(n,m)$ 表示一个边长为 $n$ 和 $m$ 的平行四边形内，光从一个 120° 角的角平分线射出并到达对角时经过的长度</p>
-<p>那么有转移式子：<br>$$<br>F(n,m)&#x3D;\left{\begin{matrix}<br>n,&amp;n&#x3D;m\<br>F(m,n),&amp;n&lt;m\<br>F(n-m,m)+2m,&amp;n&gt;m<br>\end{matrix}\right.<br>$$<br>把减法换成取模就是 $O(\log n)$ 了</p>
+<p>那么有转移式子：</p>
+<script type="math/tex; mode=display">
+F(n,m)=\left\{\begin{matrix}
+n,&n=m\\
+F(m,n),&n<m\\
+F(n-m,m)+2m,&n>m
+\end{matrix}\right.</script><p>把减法换成取模就是 $O(\log n)$ 了</p>
 <h3 id="C-Shorten-Diameter-Safe"><a href="#C-Shorten-Diameter-Safe" class="headerlink" title="C - Shorten Diameter [Safe]"></a>C - Shorten Diameter [Safe]</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，求最少删多少点使得剩下的树联通且直径长度 $\le k$</p>
 <p>$1\le n\le2000$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>枚举删完后的直径中点，那么距离这个点 $&gt;\frac k2$ 的肯定都不能要，把所有中点的答案取一个 min 即可</p>
 <p>实现细节：在每条边之间都加一个新点，这样就避免了讨论中点在点上还是在边上的问题</p>
 <p>复杂度 $O(n^2)$</p>
-<h3 id="D-Arrays-and-Palindrome-Euclid"><a href="#D-Arrays-and-Palindrome-Euclid" class="headerlink" title="D - Arrays and Palindrome [Euclid]"></a>D - Arrays and Palindrome [Euclid]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $m$ 的正整数数组 $a$，满足 $\sum a_i&#x3D;n$，你需要重排数组 $a$ 并构造一个正整数数组 $b$，满足 $\sum b_i&#x3D;n$，且对于一个长为 $n$ 字符串 $s$，如果满足对于任意 $i$，满足 $s[(a_1+a_2+\cdots+a_{i-1}+1):(a_1+a_2+\cdots+a_i)]$ 是回文串，且对于任意 $i$，满足 $s[(b_1+b_2+\cdots+b_{i-1}+1):(b_1+b_2+\cdots+b_i)]$ 是回文串，那么可以推断出 $s$ 的所有字符全相等</p>
+<h3 id="D-Arrays-and-Palindrome-Euclid"><a href="#D-Arrays-and-Palindrome-Euclid" class="headerlink" title="D - Arrays and Palindrome [Euclid]"></a>D - Arrays and Palindrome [Euclid]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $m$ 的正整数数组 $a$，满足 $\sum a_i=n$，你需要重排数组 $a$ 并构造一个正整数数组 $b$，满足 $\sum b_i=n$，且对于一个长为 $n$ 字符串 $s$，如果满足对于任意 $i$，满足 $s[(a_1+a_2+\cdots+a_{i-1}+1):(a_1+a_2+\cdots+a_i)]$ 是回文串，且对于任意 $i$，满足 $s[(b_1+b_2+\cdots+b_{i-1}+1):(b_1+b_2+\cdots+b_i)]$ 是回文串，那么可以推断出 $s$ 的所有字符全相等</p>
 <p>给出一种构造方案，无解输出 <code>Impossible</code>。</p>
 <p>$1\le n\le10^5,1\le m\le100$</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>人类智慧题。</p>
@@ -336,17 +341,19 @@
 <p>如果 $a$ 中有 $1$ 个奇数，我们把奇数放到 $a$ 的开头，剩下的随意</p>
 <p>如果 $a$ 中的有 $2$ 个奇数，我们把奇数放到 $a$ 的开头和末尾，剩下的随意</p>
 <p>那么我们的 $b$ 就是 $[a_1-1,a_2,a_3,\cdots,a_{m-1},a_m+1]$，注意去除掉长度变成 $0$ 的段</p>
-<p>特判 $n&#x3D;1$ 的情况</p>
+<p>特判 $n=1$ 的情况</p>
 <p>复杂度 $O(n)$</p>
-<h3 id="E-BBQ-Hard-Keter"><a href="#E-BBQ-Hard-Keter" class="headerlink" title="E - BBQ Hard [Keter]"></a>E - BBQ Hard [Keter]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数组 $a_i$ 和 $b_i$，求：<br>$$<br>\sum_{i&#x3D;1}^n\sum_{j&#x3D;i+1}^n\binom{a_i+b_i+a_j+b_j}{a_i+a_j}<br>$$<br>$2\le n\le2\times10^5,1\le a_i,b_i\le2000$，对 $10^9+7$ 取模</p>
-<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>乘 $2$ 再加上 $i&#x3D;j$ 的情况，我们就可以把 $j$ 的范围也变为 $[1,n]$</p>
+<h3 id="E-BBQ-Hard-Keter"><a href="#E-BBQ-Hard-Keter" class="headerlink" title="E - BBQ Hard [Keter]"></a>E - BBQ Hard [Keter]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数组 $a_i$ 和 $b_i$，求：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n\sum_{j=i+1}^n\binom{a_i+b_i+a_j+b_j}{a_i+a_j}</script><p>$2\le n\le2\times10^5,1\le a_i,b_i\le2000$，对 $10^9+7$ 取模</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>乘 $2$ 再加上 $i=j$ 的情况，我们就可以把 $j$ 的范围也变为 $[1,n]$</p>
 <p>对于一个特定 $(i,j)$，这相当于求 $(-a_i,-b_i)$ 走到 $(a_j,b_j)$ 的情况，而我们要求的就是对于所有这些情况之和</p>
 <p>那么我们把点放在一个二维平面上，所有 $(-a_i,-b_i)$ 为起点，所有 $(a_i,b_i)$ 为终点，然后令 $dp_{x,y}$ 表示所有起点到达 $(x,y)$ 的方案数之和，直接对于每个整点转移即可</p>
 <p>复杂度 $O(n+(\max a_i)^2)$</p>
-<h3 id="F-Wide-Swap-Euclid"><a href="#F-Wide-Swap-Euclid" class="headerlink" title="F - Wide Swap [Euclid]"></a>F - Wide Swap [Euclid]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的排列 $p_i$，你可以交换两个排列中的元素 $p_i,p_j$，当且仅当 $j-i\ge k$ 且 $|p_i-p_j|&#x3D;1$</p>
+<h3 id="F-Wide-Swap-Euclid"><a href="#F-Wide-Swap-Euclid" class="headerlink" title="F - Wide Swap [Euclid]"></a>F - Wide Swap [Euclid]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的排列 $p_i$，你可以交换两个排列中的元素 $p_i,p_j$，当且仅当 $j-i\ge k$ 且 $|p_i-p_j|=1$</p>
 <p>问交换之后得到的字典序最小的排列</p>
 <p>$1\le n\le5\times10^5$</p>
-<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>我们考虑求出原排列的逆排列 $a_i$，也即「$i$ 出现在哪个位置」，那么我们可以交换 $a_i,a_j$ 当且仅当 $|i-j|&#x3D;1$ 且 $|a_i-a_j|\ge k$，这看起来就比原问题好看多了。</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>我们考虑求出原排列的逆排列 $a_i$，也即「$i$ 出现在哪个位置」，那么我们可以交换 $a_i,a_j$ 当且仅当 $|i-j|=1$ 且 $|a_i-a_j|\ge k$，这看起来就比原问题好看多了。</p>
 <p>$p$ 的字典序最小，相当于先让第一位最小，再让第二位最小，以此类推，那么就相当于在 $a$ 中让 $1$ 的位置最小，再让 $2$ 的位置最小，以此类推</p>
 <p>如果存在 $i&lt;j$，满足 $a_i&lt;a_j$，那么它们的相对顺序改变一定不优，如果满足 $|a_i-a_j|&lt;k$，那么相对顺序一定无法改变，也即如果 $i&lt;j$，$a_i&lt;a_j+k$，那么它们的相对顺序一定不会改变，这样一定是最优的 $a$</p>
 <p>因此，我们按下标顺序考虑 $a$ 序列，增量构造出排列 $b$，每次找到当前的 $b$ 中最后一个 $&lt;a_i+k$ 的数，然后将 $a_i$ 插入在这个数之后，用平衡树实现即可</p>
@@ -761,6 +768,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

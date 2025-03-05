@@ -37,15 +37,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            task9 | Wonderhoy!
+            task9 | Flamiblog
         
     </title>
 
@@ -132,7 +132,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -242,7 +242,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -291,43 +291,48 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<span id="more"></span>
-
 <p>[TOC]</p>
-<h3 id="1-CF1375H-Set-Merging-E-⭐"><a href="#1-CF1375H-Set-Merging-E-⭐" class="headerlink" title="1.  CF1375H - Set Merging [E] ⭐"></a>1.  CF1375H - Set Merging [E] ⭐</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $1\sim n$ 的排列 $a$，初始有 $i$ 个集合 $S_i&#x3D;{a_i}$，计数器 $cnt&#x3D;n$</p>
+<h3 id="1-CF1375H-Set-Merging-E-⭐"><a href="#1-CF1375H-Set-Merging-E-⭐" class="headerlink" title="1.  CF1375H - Set Merging [E] ⭐"></a>1.  CF1375H - Set Merging [E] ⭐</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $1\sim n$ 的排列 $a$，初始有 $i$ 个集合 $S_i=\{a_i\}$，计数器 $cnt=n$</p>
 <p>你可以将两个<strong>值域不交</strong>的集合取并，具体地，每次你可以进行这样的操作：</p>
 <ul>
 <li>$cnt\leftarrow cnt+1$</li>
 <li>$S_{cnt}\leftarrow S_u\cup S_v$</li>
 </ul>
 <p>当且仅当 $S_u$ 中的最大值小于 $S_v$ 的最大值</p>
-<p>现在给出 $q$ 个目标集合，每个集合形如 $T_i&#x3D;{a_u|u\in[l_i,r_i]}$</p>
-<p>你需要进行若干次操作，并给出 $k_1,k_2,\cdots,k_q$，使得 $S_{k_i}&#x3D;T_i$ 成立，你需要保证 $cnt\le2.2\times10^6$</p>
+<p>现在给出 $q$ 个目标集合，每个集合形如 $T_i=\{a_u|u\in[l_i,r_i]\}$</p>
+<p>你需要进行若干次操作，并给出 $k_1,k_2,\cdots,k_q$，使得 $S_{k_i}=T_i$ 成立，你需要保证 $cnt\le2.2\times10^6$</p>
 <p>$1\le n\le2^{12},1\le q\le2^{16}$</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>这个值域不交的限制很怪，这限制了我们最后区间 $[l,r]$ 的集合一定是通过 $[l,r]$ 中值 $\le y$ 的元素集合，以及 $[l,r]$ 中值 $&gt;y$ 的元素集合合并得到</p>
 <p>那么我们不妨对值域分治，如果当前分治值域为 $L,R$，中点为 $M$，那么将 $[l,r]$ 中 $\le M$ 的数和 $&gt;M$ 的数递归下去处理</p>
 <p>注意到一个值域区间如果包含的数的集合相同的两个询问是可以合并起来的，我们发现这样合并之后复杂度就是对的。</p>
 <p>具体地，一个值域区间 $[L,R]$ 最多会有 $\min(q,\frac12len(len-1))$ 个本质不同的询问，其中 $len$ 为 $R-L+1$</p>
 <p>我的分析好像有点常数问题，所以我们贺一下 editorial 的。</p>
-<p>不妨设 $n&#x3D;2^N,q&#x3D;2^Q$，那么我们需要计算的式子即为：<br>$$<br>\sum_{i&#x3D;0}^N2^{N-i}\min(2^{2i-1},2^Q)<br>$$<br>对于 $i\le\frac Q2$ 的情况，式子即为：<br>$$<br>\sum_{i&#x3D;0}^{Q&#x2F;2}2^{N-i}2^{2i-1}&#x3D;2^{N-1}\sum_{i&#x3D;0}^{Q&#x2F;2}2^i\le2^{N+Q&#x2F;2}<br>$$<br>对于 $i&gt;\frac Q2$ 的情况，式子即为：<br>$$<br>\sum_{i&#x3D;Q&#x2F;2+1}^N2^{N-i}2^Q&#x3D;2^Q\sum_{i&#x3D;0}^{N-Q&#x2F;2-1}2^i\le 2^{N+Q&#x2F;2}<br>$$<br>两部分加起来就是 $2n\sqrt q$，可以通过</p>
+<p>不妨设 $n=2^N,q=2^Q$，那么我们需要计算的式子即为：</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^N2^{N-i}\min(2^{2i-1},2^Q)</script><p>对于 $i\le\frac Q2$ 的情况，式子即为：</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{Q/2}2^{N-i}2^{2i-1}=2^{N-1}\sum_{i=0}^{Q/2}2^i\le2^{N+Q/2}</script><p>对于 $i&gt;\frac Q2$ 的情况，式子即为：</p>
+<script type="math/tex; mode=display">
+\sum_{i=Q/2+1}^N2^{N-i}2^Q=2^Q\sum_{i=0}^{N-Q/2-1}2^i\le 2^{N+Q/2}</script><p>两部分加起来就是 $2n\sqrt q$，可以通过</p>
 <hr>
 <h3 id="2-CF768G-The-Winds-of-Winter-S"><a href="#2-CF768G-The-Winds-of-Winter-S" class="headerlink" title="2.  CF768G - The Winds of Winter [S]"></a>2.  CF768G - The Winds of Winter [S]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的有根树，对于每个点 $u$，如下定义 $f(u)$：</p>
 <p>将 $u$ 从有根树中删除，形成一个森林，你需要删除一条边并加上一条边，使得这张图仍然是森林，$f(u)$ 为森林中树大小最大值的最小值</p>
-<p>对每个 $u&#x3D;1,2,\cdots,n$，求 $f(u)$</p>
+<p>对每个 $u=1,2,\cdots,n$，求 $f(u)$</p>
 <p>$1\le n\le10^5$</p>
-<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>对于一个 $u$，$f(u)&#x3D;\max(mx^\prime,\min\limits_x(mn+|x-\frac12(mx-mn)|))$，其中 $mx,mx^\prime,mn$ 分别表示删掉 $u$ 后最大，次大，最小的子树大小，$x$ 为 $mx$ 的任意一个子树的大小，我们需要选取一个最接近 $\frac12(mx-mn)$ 的子树大小·</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>对于一个 $u$，$f(u)=\max(mx^\prime,\min\limits_x(mn+|x-\frac12(mx-mn)|))$，其中 $mx,mx^\prime,mn$ 分别表示删掉 $u$ 后最大，次大，最小的子树大小，$x$ 为 $mx$ 的任意一个子树的大小，我们需要选取一个最接近 $\frac12(mx-mn)$ 的子树大小·</p>
 <p>直接树上启发式合并即可。</p>
 <p>复杂度 $O(n\log^2n)$</p>
 <hr>
 <h3 id="3-CF718E-Matvey’s-Birthday-S"><a href="#3-CF718E-Matvey’s-Birthday-S" class="headerlink" title="3.  CF718E - Matvey’s Birthday [S]"></a>3.  CF718E - Matvey’s Birthday [S]</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$，字符集为 <code>a~h</code> 的字符串 $s$，按照如下方式建图：</p>
 <ul>
-<li>在满足 $|a-b|&#x3D;1$ 或 $s_a&#x3D;s_b$ 的点 $a,b$ 之间建一条长度为 $1$ 的无向边</li>
+<li>在满足 $|a-b|=1$ 或 $s_a=s_b$ 的点 $a,b$ 之间建一条长度为 $1$ 的无向边</li>
 </ul>
 <p>求任意两点间最短路的最大值，以及达到最大值的点对数</p>
 <p>$2\le n\le10^5$</p>
-<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>考虑如何求两点间的最短路，容易发现要么使用 $s_a&#x3D;s_b$ 的边，要么不使用 $s_a&#x3D;s_b$ 的边</p>
-<p>如果使用了，我们枚举使用的边满足 $s_a&#x3D;s_b&#x3D;c$，那么 $x$ 与 $y$ 之间的距离就为 $dis_{x,c}+1+dis_{y,c}$，其中 $dis_{p,q}$ 表示从第 $p$ 个位置出发，到一个字符为 $q$ 的位置的最小距离，这个是容易 01-bfs 求出的</p>
-<p>但是枚举每个点对显然不行，因此我们考虑观察一些性质，注意到如果 $s_x&#x3D;s_y$ 相同，那么 $|dis_{x,c}-dis_{y,c}|\le1$ 一定成立，也就是说对于一种字符的点，$dis_x$ 这一列的数最多有 $2^{|\Sigma|}$ 种情况，我们可以将字符与 $dis$ 均相同的数合并在一起</p>
-<p>注意到我们还需要考虑不经过 $s_a&#x3D;s_b$ 的边的情况，这种情况就是下标之差，因此我们对于每个等价类，还需要记一下最左出现和最右出现，那么我们就可以枚举等价类，求出等价类之间的距离最大值，也就可以解决第一问</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>考虑如何求两点间的最短路，容易发现要么使用 $s_a=s_b$ 的边，要么不使用 $s_a=s_b$ 的边</p>
+<p>如果使用了，我们枚举使用的边满足 $s_a=s_b=c$，那么 $x$ 与 $y$ 之间的距离就为 $dis_{x,c}+1+dis_{y,c}$，其中 $dis_{p,q}$ 表示从第 $p$ 个位置出发，到一个字符为 $q$ 的位置的最小距离，这个是容易 01-bfs 求出的</p>
+<p>但是枚举每个点对显然不行，因此我们考虑观察一些性质，注意到如果 $s_x=s_y$ 相同，那么 $|dis_{x,c}-dis_{y,c}|\le1$ 一定成立，也就是说对于一种字符的点，$dis_x$ 这一列的数最多有 $2^{|\Sigma|}$ 种情况，我们可以将字符与 $dis$ 均相同的数合并在一起</p>
+<p>注意到我们还需要考虑不经过 $s_a=s_b$ 的边的情况，这种情况就是下标之差，因此我们对于每个等价类，还需要记一下最左出现和最右出现，那么我们就可以枚举等价类，求出等价类之间的距离最大值，也就可以解决第一问</p>
 <p>考虑第二问如何处理，对于等价类 $(i,S)$ 和 $(j,T)$，假设他们的距离最大值等于答案，那么我们就需要求出取到最大值的方案数，注意到此时最短路长度相当于 $\min(|x-y|,val)$，其中 $val$ 是一个能通过 $S$ 和 $T$ 求出的常数，那么也就是求数组内距离大于某个定值的点对数，容易前缀和处理</p>
 <p>总复杂度 $O(n|\Sigma|+(|\Sigma|2^{|\Sigma|})^2+|\Sigma|2^{|\Sigma|}n)$</p>
 <hr>
@@ -352,13 +357,13 @@
 <hr>
 <h3 id="5-CF1558F-Strange-Sort-S"><a href="#5-CF1558F-Strange-Sort-S" class="headerlink" title="5.  CF1558F - Strange Sort [S]"></a>5.  CF1558F - Strange Sort [S]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $1\sim n$ 的排列 $a$，保证 $n$ 为奇数，按照如下进行若干轮操作：</p>
 <ul>
-<li>如果当前为第奇数轮操作，对于所有 $i&#x3D;1,3,5,\cdots,n-2$，如果 $a_i&gt;a_{i+1}$，那么交换 $a_i,a_{i+1}$</li>
-<li>如果当前为第偶数轮操作，对于所有 $i&#x3D;2,4,6,\cdots,n-1$，如果 $a_i&gt;a_{i+1}$，那么交换 $a_i,a_{i+1}$</li>
+<li>如果当前为第奇数轮操作，对于所有 $i=1,3,5,\cdots,n-2$，如果 $a_i&gt;a_{i+1}$，那么交换 $a_i,a_{i+1}$</li>
+<li>如果当前为第偶数轮操作，对于所有 $i=2,4,6,\cdots,n-1$，如果 $a_i&gt;a_{i+1}$，那么交换 $a_i,a_{i+1}$</li>
 </ul>
 <p>求多少轮后 $a$ 被排好序</p>
 <p>$3\le n\le2\times10^5$</p>
 <h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>注意到排好序相当于对每个 $m$，$\le m$ 的数都在最前面，那么我们对于一个 $m$ 考虑，将排列变为 $01$</p>
-<p>手模可以发现，如果我们设 $tim_i$ 表示第 $i$ 个 $0$ 到达第 $i$ 个位置的时间，那么有递推式 $tim_i&#x3D;\max(x_i-i+[2\nmid x_i],tim_{i-1}+1)$，其中 $x_i$ 表示第 $i$ 个 $0$ 的初始位置，并且在 $x_i&#x3D;i$ 时 $tim_i&#x3D;0$</p>
+<p>手模可以发现，如果我们设 $tim_i$ 表示第 $i$ 个 $0$ 到达第 $i$ 个位置的时间，那么有递推式 $tim_i=\max(x_i-i+[2\nmid x_i],tim_{i-1}+1)$，其中 $x_i$ 表示第 $i$ 个 $0$ 的初始位置，并且在 $x_i=i$ 时 $tim_i=0$</p>
 <p>那么我们要求的答案就是对于所有 $m$，最后一个 $0$ 的 $tim$ 最大值</p>
 <p>最后一个 $0$ 的 $tim$ 可以用 $\max_{x_p\neq p}(x_p-p+[2\nmid x_p]+b_p)$ 来计算，其中 $b_p$ 表示第 $p$ 个 $0$ 后面还有多少 $0$</p>
 <p>从 $m$ 到 $m+1$ 相当于每次添加一个 $0$，上述式子是容易用线段树维护的</p>
@@ -388,12 +393,12 @@
 <p>你需要从 $a$ 中选出一个大小为 $k$ 的子集 $S$，使得这个子集 $S$ 满足以下两个条件中的一种：</p>
 <ul>
 <li>$S$ 中的元素两两 $\gcd$ 不为 $1$</li>
-<li>对于任意 $x\in S$，存在一个 $y\in S$ 使得 $\gcd(x,y)&#x3D;1$</li>
+<li>对于任意 $x\in S$，存在一个 $y\in S$ 使得 $\gcd(x,y)=1$</li>
 </ul>
 <p>$6\le 2k\le10^5,2\le a_i\le10^7$</p>
-<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>我们在 $\gcd&#x3D;1$ 的数之间连边，那么相当于求一个独立集，或者求一个集合使得导出子图不包含孤立点</p>
-<p>那么如果对每个点求一下度数，度数 $&#x3D;0$ 的点数如果 $\ge k$，那么直接输出度数为 $0$ 的点即可</p>
-<p>否则，至少有 $\frac n2$ 个点度数不为 $0$，我们手玩一下，可以发现无法构造的情况当且仅当剩下的点形成了一个匹配，而这种情况我们直接取度数 $&#x3D;0$ 的点和匹配一边的点即可构造一个独立集</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>我们在 $\gcd=1$ 的数之间连边，那么相当于求一个独立集，或者求一个集合使得导出子图不包含孤立点</p>
+<p>那么如果对每个点求一下度数，度数 $=0$ 的点数如果 $\ge k$，那么直接输出度数为 $0$ 的点即可</p>
+<p>否则，至少有 $\frac n2$ 个点度数不为 $0$，我们手玩一下，可以发现无法构造的情况当且仅当剩下的点形成了一个匹配，而这种情况我们直接取度数 $=0$ 的点和匹配一边的点即可构造一个独立集</p>
 <p>不是匹配的情况写一些愚蠢的特判就可以构造一个不包含孤立点的子集</p>
 <p>现在问题是如何得知这个图的信息：</p>
 <p>首先是求度数，这个可以对质因子容斥，即对每个 $\mu\neq0$ 的点，存有多少数是该数的倍数，然后对于一个数枚举一个质因子的子集，复杂度 $O(n2^{\omega(a_i)})$</p>
@@ -402,8 +407,8 @@
 <h3 id="8-CF1368H-Breadboard-Capacity-E-✔️"><a href="#8-CF1368H-Breadboard-Capacity-E-✔️" class="headerlink" title="8.  CF1368H - Breadboard Capacity [E] ✔️"></a>8.  CF1368H - Breadboard Capacity [E] ✔️</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="D:\Flamire\blog\Flamiblog\source_posts\task9\8-1.png"
-                     
+                     data-src="D:\Flamire\blog\Flamiblog\source\_posts\task9\8-1.png"
+                      alt=""
                 ></p>
 <p>给定 $n,m$，有一个 $n\times m$ 的电路板，电路板的上下左右的每个格子外面都有一个颜色为蓝或红的元件，你需要将尽可能多对相同颜色的元件用电线接在一起，满足：</p>
 <ul>
@@ -419,8 +424,8 @@
 <h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="D:\Flamire\blog\Flamiblog\source_posts\task9\8-2.png"
-                     
+                     data-src="D:\Flamire\blog\Flamiblog\source\_posts\task9\8-2.png"
+                      alt=""
                 ></p>
 <p>首先，这是一个最大流。直接连出一张网格图，然后将源点向一种颜色连边，另一种颜色向汇点连边</p>
 <p>那么，这是一个最小割。也即我们需要在上图绿点之间连边，用最小的长度将蓝色元件和红色元件分开</p>
@@ -430,16 +435,14 @@
 </li>
 <li><p>其次，中间显然不会有奇度点，因为这样一定有一条边两侧区域的颜色是一样的，这条边可以删掉</p>
 </li>
-<li><p>那么我们可以将这个割看成若干条从边界出发走到边界的路径，而注意到如果一条路径的两条边界不相对，这显然是不优的，因为我们可以直接将其折到边界上，不增加代价，显然不劣</p>
-</li>
-<li><p>上一条也限制了我们的路径不能相交</p>
-</li>
-<li><p>那么现在割的形态形如若干条上边界到下边界的路径（也可能是左边界到右边界，不过这是对称的，下面均只讨论上下的情况），注意到这些路径一定是竖直的直线，因为否则我们可以将其折成一段竖直的，和一段贴着上边界或下边界的，这显然不劣</p>
-</li>
-<li><p>也就是说，割的形态一定是首先由若干条竖直的线从上边界到下边界，然后对于割开的每个连通块，再在边界上连边将某一种颜色的全部割出去</p>
-</li>
+<li>那么我们可以将这个割看成若干条从边界出发走到边界的路径，而注意到如果一条路径的两条边界不相对，这显然是不优的，因为我们可以直接将其折到边界上，不增加代价，显然不劣</li>
+<li>上一条也限制了我们的路径不能相交</li>
+<li>那么现在割的形态形如若干条上边界到下边界的路径（也可能是左边界到右边界，不过这是对称的，下面均只讨论上下的情况），注意到这些路径一定是竖直的直线，因为否则我们可以将其折成一段竖直的，和一段贴着上边界或下边界的，这显然不劣</li>
+<li>也就是说，割的形态一定是首先由若干条竖直的线从上边界到下边界，然后对于割开的每个连通块，再在边界上连边将某一种颜色的全部割出去</li>
 </ul>
-<p>相当于我们选择若干分界点 $0&#x3D;x_0&lt;x_1&lt;x_2&lt;\cdots&lt;x_k&lt;x_{k+1}&#x3D;m$，使得这个式子最小：<br>$$<br>\sum_{i&#x3D;1}^{k+1}\min(cntR[x_{i-1}+1:x_i],cntB[x_{i-1}+1:x_i])<br>$$<br>其中 $cntR[l:r],cntB[l:r]$ 分别表示 $[l,r]$ 列内，上边界与下边界中有多少红色与蓝色，特别地，我们认为第一列包含左边界，第 $m$ 列包含右边界</p>
+<p>相当于我们选择若干分界点 $0=x_0&lt;x_1&lt;x_2&lt;\cdots&lt;x_k&lt;x_{k+1}=m$，使得这个式子最小：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{k+1}\min(cntR[x_{i-1}+1:x_i],cntB[x_{i-1}+1:x_i])</script><p>其中 $cntR[l:r],cntB[l:r]$ 分别表示 $[l,r]$ 列内，上边界与下边界中有多少红色与蓝色，特别地，我们认为第一列包含左边界，第 $m$ 列包含右边界</p>
 <p>这个不难用线段树维护，存一下左端点与右端点当前区域颜色即可，区间反转也是容易的，可以维护 $4$ 个矩阵，但观察一些性质可以只维护两个</p>
 <p>复杂度 $O(n\log n)$</p>
 <hr>
@@ -470,7 +473,6 @@
 <p>那么现在每个叶子都对应了一个区间，并且这个区间内部显然是联通的，也就是说我们只需要建出区间之间的边即可</p>
 <p>可以按照如下方式构建边：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void link(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	if(leaf(x)&amp;&amp;leaf(y))&#123;e.emplace_back(x,y,min(w[x],w[y]));return;&#125;</span><br><span class="line">	if(leaf(x))link(x,ch[y][0]),link(x,ch[y][1]);</span><br><span class="line">	else if(leaf(y))link(ch[x][0],y),link(ch[x][1],y)</span><br><span class="line">	else link(ch[x][0],ch[y][0]),link(ch[x][1],ch[y][1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
 <p>当 $x$ 和 $y$ 都为叶子时我们插入一条 $x$ 到 $y$，边权为两个点被删除时间最小值的边</p>
 <p>那么最后遍历一遍然后用并查集维护即可</p>
 <p>分析一下这样做的边数：点数显然是 $O(nm)$，而每个点只可能在合并祖先的左右儿子的时候被访问到一次，因此总贡献的复杂度为 $O(n)$，也就是说边数是 $O(n^2m)$</p>
@@ -497,10 +499,10 @@
 <p>$2\le n\le4000$</p>
 <h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><p>我们可以将两个字符视为一个元素，以下下标均建立在这个假设之上</p>
 <p>注意到我们操作 $i-1,i$ 产生的效果相当于将第 $i$ 个元素 reverse 后插入在序列前面</p>
-<p>那么如果我们用这种操作完成的条件是 $00&#x2F;11$ 的个数相等，并且 $s$ 中 $01&#x2F;10$ 个数等于 $t$ 中 $10&#x2F;01$ 个数</p>
-<p>$00&#x2F;11$ 个数显然无法改变，那么我们需要考虑的就是能否用一次操作将 $01&#x2F;10$ 个数改对</p>
-<p>定义 $f(s)$ 为 $s$ 中 $01$ 个数减去 $10$ 个数，那么我们期望的是 $f(s)&#x3D;-f(t)$</p>
-<p>如果 $|f(s)|\ge|f(t)|$，那么我们可以说明一定可以 reverse 一个 $s$ 的前缀来让 $f(s)&#x3D;-f(t)$，具体地，$s$ 的前缀的 $f$ 值一定包含了 $0\sim f(s)$ 中的所有数，那么 reverse 这些前缀就能得到 $-f(s)\sim f(s)$ 中的所有奇偶性与 $f(s)$ 相同的数，又因 $f(t)$ 与 $f(s)$ 同奇偶，因此我们可以 reverse 一个前缀得到 $f(t)$</p>
+<p>那么如果我们用这种操作完成的条件是 $00/11$ 的个数相等，并且 $s$ 中 $01/10$ 个数等于 $t$ 中 $10/01$ 个数</p>
+<p>$00/11$ 个数显然无法改变，那么我们需要考虑的就是能否用一次操作将 $01/10$ 个数改对</p>
+<p>定义 $f(s)$ 为 $s$ 中 $01$ 个数减去 $10$ 个数，那么我们期望的是 $f(s)=-f(t)$</p>
+<p>如果 $|f(s)|\ge|f(t)|$，那么我们可以说明一定可以 reverse 一个 $s$ 的前缀来让 $f(s)=-f(t)$，具体地，$s$ 的前缀的 $f$ 值一定包含了 $0\sim f(s)$ 中的所有数，那么 reverse 这些前缀就能得到 $-f(s)\sim f(s)$ 中的所有奇偶性与 $f(s)$ 相同的数，又因 $f(t)$ 与 $f(s)$ 同奇偶，因此我们可以 reverse 一个前缀得到 $f(t)$</p>
 <p>对于 $|f(s)|&lt;|f(t)|$ 的情况，我们 reverse 一个 $t$ 的前缀即可，其含义就为操作完之后再操作一次前缀</p>
 <p>剩下的用上述方法构造即可，复杂度 $O(n^2)$</p>
 <hr>
@@ -536,19 +538,19 @@
 <h4 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h4><p>首先可以离散化。</p>
 <p>显然有一个 $O(n^3)$ 做法：枚举上下边界，然后对右边界进行 two-pointers</p>
 <p>考虑优化这个做法，two-pointers 的过程显然不太能优化，因此我们考虑移动下边界，快速维护出每个右边界对应的位置 $f_i$</p>
-<p>加点非常困难，因此我们考虑删点，也即下边界从最下面向上移动，注意到如果我们删点的时候删掉了某一个颜色，那么设 $prv_i$ 与 $nxt_i$ 分别表示这个颜色前一次&#x2F;后一次出现的位置，那么相当于我们将 $[i,nxt_i)$ 内所有 $f_j\ge prv_i$ 的点 $j$ 设为 $prv_i$</p>
+<p>加点非常困难，因此我们考虑删点，也即下边界从最下面向上移动，注意到如果我们删点的时候删掉了某一个颜色，那么设 $prv_i$ 与 $nxt_i$ 分别表示这个颜色前一次/后一次出现的位置，那么相当于我们将 $[i,nxt_i)$ 内所有 $f_j\ge prv_i$ 的点 $j$ 设为 $prv_i$</p>
 <p>由于 $f$ 是单增的，这可以使用线段树实现</p>
 <p>复杂度 $O(n^2\log n)$</p>
 <hr>
-<h3 id="16-CF1718D-Permutation-for-Burenka-E"><a href="#16-CF1718D-Permutation-for-Burenka-E" class="headerlink" title="16.  CF1718D - Permutation for Burenka [E]"></a>16.  CF1718D - Permutation for Burenka [E]</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>定义两个长为 $n$ 的元素互不相同的数组 $a,b$ 相似当且仅当对于每个区间 $[l,r]$ 都有 $\text{argmax}(a[l:r])&#x3D;\text{argmax}(b[l:r])$</p>
+<h3 id="16-CF1718D-Permutation-for-Burenka-E"><a href="#16-CF1718D-Permutation-for-Burenka-E" class="headerlink" title="16.  CF1718D - Permutation for Burenka [E]"></a>16.  CF1718D - Permutation for Burenka [E]</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>定义两个长为 $n$ 的元素互不相同的数组 $a,b$ 相似当且仅当对于每个区间 $[l,r]$ 都有 $\text{argmax}(a[l:r])=\text{argmax}(b[l:r])$</p>
 <p>给定一个 $1\sim n$ 的排列 $p$，以及一个数组 $a$，$a$ 中有 $k$ 个位置为 $0$</p>
-<p>给定一个大小为 $k-1$ 的集合 $S$，$q$ 次询问，每次给定一个 $d$，保证 $S\cup{d}$ 与 $a$ 中元素均互不相同，求是否能将 $S\cup{d}$ 填入 $a$ 中 $0$ 的位置，使得 $a$ 与 $p$ 相似</p>
+<p>给定一个大小为 $k-1$ 的集合 $S$，$q$ 次询问，每次给定一个 $d$，保证 $S\cup\{d\}$ 与 $a$ 中元素均互不相同，求是否能将 $S\cup\{d\}$ 填入 $a$ 中 $0$ 的位置，使得 $a$ 与 $p$ 相似</p>
 <p>$1\le n,q\le3\times10^5,0\le a_i\le10^6,1\le d,s_i\le10^6$</p>
 <h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><p>套套套。</p>
 <p>两个数组相似当且仅当其笛卡尔树相同。</p>
 <p>注意到将一个集合能填到 $a$ 上，相当于我们求出每个节点子树里的最大值和祖先的最小值，得到一个区间 $[l_i,r_i]$，那么我们需要给集合中每一个数分配一个位置，使得 $S_i\in[l_i,r_i]$，未知节点之间的大小关系可以忽略，因为不难说明一定可以调整得到一个祖先均大于后代的树</p>
-<p>也就是说我们现在得到了一些区间 $[l_i,r_i]$，要将 $S\cup{d}$ 每一个数对应一个区间，判断是否可行</p>
-<p>根据 Hall 定理，不难发现我们需要检验的是对于任意区间 $[L,R]$，被其完全包含的 $[l_i,r_i]$ 个数小于其中 $S\cup{d}$ 元素个数，这个容易线段树扫一遍检验</p>
+<p>也就是说我们现在得到了一些区间 $[l_i,r_i]$，要将 $S\cup\{d\}$ 每一个数对应一个区间，判断是否可行</p>
+<p>根据 Hall 定理，不难发现我们需要检验的是对于任意区间 $[L,R]$，被其完全包含的 $[l_i,r_i]$ 个数小于其中 $S\cup\{d\}$ 元素个数，这个容易线段树扫一遍检验</p>
 <p>但是 $d$ 不固定，我们可以先对 $S$ 扫一遍，然后看加入 $d$ 会产生哪些影响，具体地，如果我们线段树维护 $[L,R]-N([L,R])$（$[L,R]$ 为区间个数，$N([L,R])$ 为范围内数个数），那么影响相当于将所有经过 $d$ 的区间权值 $+1$</p>
 <p>如果区间权值出现 $-2$ 显然无解，否则我们对每个 $R$ 找到最近的值为 $-1$ 的左端点 $ml_R$，那么最后的 $d$ 一定需要同时在所有 $ml_R$ 存在的 $[ml_R,R]$ 里，直接求出区间交判断即可</p>
 <p>复杂度 $O(n\log n)$</p>
@@ -566,29 +568,29 @@
 <p>然后我就不会了。</p>
 <p>editorial 说，我们可以首先二分出最大的 $2^k$ 使得列数是 $2^k$ 的倍数，由于我们只需要判断 $2^1\sim 2^7$ 内的数，因此需要 $3$ 次</p>
 <p>不妨设询问 $d$ 得到的答案为 $f(d)$，那么行数即为 $|f(2^k)-2f(2^{k+1})|$，仔细一想这好像很有道理，因为询问 $2^k$ 的时候与该列相交的次数一定为奇数，而询问 $2^{k+1}$ 得到的一定是除以 $2$ 后两边的数</p>
-<p>注意到二分出 $2^k$ 时一定已经求了 $f(2^{k+1})$（除了 $k&#x3D;7$ 的情况，但这种情况 $f(2^{k+1})&#x3D;0$，特判一下），因此最后就在 $4$ 次操作内解决了这个问题</p>
+<p>注意到二分出 $2^k$ 时一定已经求了 $f(2^{k+1})$（除了 $k=7$ 的情况，但这种情况 $f(2^{k+1})=0$，特判一下），因此最后就在 $4$ 次操作内解决了这个问题</p>
 <hr>
-<h3 id="18-CF1726G-A-Certain-Magical-Party-S"><a href="#18-CF1726G-A-Certain-Magical-Party-S" class="headerlink" title="18.  CF1726G - A Certain Magical Party [S]"></a>18.  CF1726G - A Certain Magical Party [S]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人，每个人有一个开心度 $a_i$ 和一个属性 $b_i\in{0,1}$</p>
+<h3 id="18-CF1726G-A-Certain-Magical-Party-S"><a href="#18-CF1726G-A-Certain-Magical-Party-S" class="headerlink" title="18.  CF1726G - A Certain Magical Party [S]"></a>18.  CF1726G - A Certain Magical Party [S]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人，每个人有一个开心度 $a_i$ 和一个属性 $b_i\in\{0,1\}$</p>
 <p>你需要给这些人安排一个顺序，然后从左到右执行，对于当前的人 $i$：</p>
 <ul>
-<li>如果 $b_i&#x3D;0$，令 $x$ 表示剩下的人中 $a$ 值小于自己的数量，则 $a_i\leftarrow a_i+x$</li>
-<li>如果 $b_i&#x3D;1$，令 $x$ 表示剩下的人中 $a$ 值大于自己的数量，则 $a_i\leftarrow a_i+x$</li>
+<li>如果 $b_i=0$，令 $x$ 表示剩下的人中 $a$ 值小于自己的数量，则 $a_i\leftarrow a_i+x$</li>
+<li>如果 $b_i=1$，令 $x$ 表示剩下的人中 $a$ 值大于自己的数量，则 $a_i\leftarrow a_i+x$</li>
 </ul>
 <p>求有多少顺序使得执行完之后所有人的 $a$ 值相等，对 $998244353$ 取模</p>
 <p>$1\le n\le2\times10^5,1\le a_i\le2n$</p>
 <h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><p>简单题。</p>
 <p>这个操作很奇怪，所以我们先考虑一下有没有什么入手点</p>
 <p>注意到所有人的开心度都是单增的，并且只会变化一次</p>
-<p>观察 $a$ 最小的人，如果有一个 $b&#x3D;0$ 的，那么只能是所有人都相等，直接判断是否满足，输出 $n!$ 或 $0$</p>
-<p>否则，如果有 $\ge2$ 个 $b&#x3D;1$ 的，那么这两个人最后的开心度一定不等，输出 $0$</p>
-<p>那么只能恰有 $1$ 个 $b&#x3D;1$ 的，而这个 $b&#x3D;1$ 加完后的开心度一定为 $mn+n-1$，称其为 $aim$</p>
+<p>观察 $a$ 最小的人，如果有一个 $b=0$ 的，那么只能是所有人都相等，直接判断是否满足，输出 $n!$ 或 $0$</p>
+<p>否则，如果有 $\ge2$ 个 $b=1$ 的，那么这两个人最后的开心度一定不等，输出 $0$</p>
+<p>那么只能恰有 $1$ 个 $b=1$ 的，而这个 $b=1$ 加完后的开心度一定为 $mn+n-1$，称其为 $aim$</p>
 <p>如果有人 $&gt;aim$，那么显然无解，判掉。</p>
-<p>这启发我们从小到大考虑所有人，设当前的人为 $i$，共有 $c_0$ 个 $b&#x3D;0$，$c_1$ 个 $b&#x3D;1$：</p>
+<p>这启发我们从小到大考虑所有人，设当前的人为 $i$，共有 $c_0$ 个 $b=0$，$c_1$ 个 $b=1$：</p>
 <ul>
-<li>对于 $b&#x3D;0$ 的人，我们判一下前面的人数 $W$，那么如果 $i+W\ge aim$，因为 $i\le aim$，因此一定有恰好 $1$ 个位置可以插入到前面的序列使得最后加出来 $a$ 值是正确的，乘上 $c_0!$ 即可，否则无解</li>
-<li>对于 $b&#x3D;1$ 的人，需要分两种情况讨论：<ul>
-<li>$i&lt;aim$，那么此时如果有两个 $b&#x3D;1$，根据前面的推理一定无解，输出 $0$，否则判断一下 $i+W+c_0\ge aim$，若成立这一个 $b&#x3D;1$ 的人一定有恰好一个位置插入到前面，否则无解</li>
-<li>$i&#x3D;aim$，那么这些人放在哪里都不会产生任何影响，乘上 $\binom n{c_1}c_1!$</li>
+<li>对于 $b=0$ 的人，我们判一下前面的人数 $W$，那么如果 $i+W\ge aim$，因为 $i\le aim$，因此一定有恰好 $1$ 个位置可以插入到前面的序列使得最后加出来 $a$ 值是正确的，乘上 $c_0!$ 即可，否则无解</li>
+<li>对于 $b=1$ 的人，需要分两种情况讨论：<ul>
+<li>$i&lt;aim$，那么此时如果有两个 $b=1$，根据前面的推理一定无解，输出 $0$，否则判断一下 $i+W+c_0\ge aim$，若成立这一个 $b=1$ 的人一定有恰好一个位置插入到前面，否则无解</li>
+<li>$i=aim$，那么这些人放在哪里都不会产生任何影响，乘上 $\binom n{c_1}c_1!$</li>
 </ul>
 </li>
 </ul>
@@ -612,14 +614,24 @@
 <p>复杂度 $O(n\log n)$</p>
 <hr>
 <h3 id="20-CF1528F-AmShZ-Farm-K-✔️"><a href="#20-CF1528F-AmShZ-Farm-K-✔️" class="headerlink" title="20.  CF1528F - AmShZ Farm [K] ✔️"></a>20.  CF1528F - AmShZ Farm [K] ✔️</h3><h4 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h4><p>定义一个长为 $n$ 的数组 $a$ 是 <strong>more-equal</strong> 的当且仅当其每个元素都属于 $[1,n]$ 并且可以通过给每个元素加上一个非负整数使其变为一个 $1\sim n$ 的排列</p>
-<p>对于一个长为 $n$ 的 <strong>more-equal</strong> 的数组 $a$ 和一个长为 $k$ 的数组 $b$，定义它们是 <strong>compatible</strong> 的当且仅当 $\forall b_i,1\le b_i\le n$，且 $a_{b_1}&#x3D;a_{b_2}&#x3D;\cdots,a_{b_k}$</p>
+<p>对于一个长为 $n$ 的 <strong>more-equal</strong> 的数组 $a$ 和一个长为 $k$ 的数组 $b$，定义它们是 <strong>compatible</strong> 的当且仅当 $\forall b_i,1\le b_i\le n$，且 $a_{b_1}=a_{b_2}=\cdots,a_{b_k}$</p>
 <p>给定 $n,k$，求有多少对 <strong>compatible</strong> 的序列，对 $998244353$ 取模</p>
 <p>$1\le n\le10^9,1\le k\le10^5$</p>
 <h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><p>考虑 <strong>more-equal</strong> 的限制，一个显然的判定条件是 $\le i$ 的元素个数要 $\ge i$，但这看起来就不是很能做。</p>
 <p>考虑一个经典（？）的模型转化：依次考虑 $a_1,a_2,\cdots,a_n$，每次如果一个数在前面出现过，那么它就会往后走，走到第一个没有数出现的位置，然后加一个 $n+1$ 的节点接成环，那么一个序列 <strong>more-equal</strong> 当且仅当 $n+1$ 最后没有被占用</p>
 <p>这时方案数已经很好算了，因为这个环上任意位置都是等价的，也就是说最后 $n+1$ 是空的概率是 $\frac1{n+1}$，那么方案数就是 $(n+1)^{n-1}$</p>
 <p>考虑算上 $k$ 的贡献，由于所有数又是等价的，因此我们只用算一个数的贡献，再乘 $n+1$，而这个 $n+1$ 和概率的 $\frac1{n+1}$ 的贡献抵消了</p>
-<p>对于一个数，我们枚举它用了多少次：<br>$$<br>\sum_{i&#x3D;0}^n\binom nii^kn^{n-i}\<br>\sum_{i&#x3D;0}^n\binom nin^{n-i}\sum_{j&#x3D;0}^k\binom ij{k\brace j}j!\<br>\sum_{j&#x3D;0}^k{k\brace j}j!\sum_{i&#x3D;0}^n\binom ni\binom ijn^{n-i}\<br>\sum_{j&#x3D;0}^k{k\brace j}j!\binom nj\sum_{i&#x3D;j}^n\binom {n-j}{i-j}n^{n-i}\<br>\sum_{j&#x3D;0}^k{k\brace j}j!\binom nj(n+1)^{n-j}<br>$$<br>考虑有如下事情：<br>$$<br>m^n&#x3D;\sum_{i&#x3D;0}^m\binom mi{n\brace i}i!\<br>$$<br>使用二项式反演可以得到：<br>$$<br>{n\brace m}m!&#x3D;\sum_{i&#x3D;0}^m(-1)^{m-i}\binom mii^n<br>$$<br>这个是可以卷积的，因此我们可以 $O(k\log k)$ 求出一行的第二类斯特林数，那么将其代入上面的式子就可以求出答案</p>
+<p>对于一个数，我们枚举它用了多少次：</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^n\binom nii^kn^{n-i}\\
+\sum_{i=0}^n\binom nin^{n-i}\sum_{j=0}^k\binom ij{k\brace j}j!\\
+\sum_{j=0}^k{k\brace j}j!\sum_{i=0}^n\binom ni\binom ijn^{n-i}\\
+\sum_{j=0}^k{k\brace j}j!\binom nj\sum_{i=j}^n\binom {n-j}{i-j}n^{n-i}\\
+\sum_{j=0}^k{k\brace j}j!\binom nj(n+1)^{n-j}</script><p>考虑有如下事情：</p>
+<script type="math/tex; mode=display">
+m^n=\sum_{i=0}^m\binom mi{n\brace i}i!\\</script><p>使用二项式反演可以得到：</p>
+<script type="math/tex; mode=display">
+{n\brace m}m!=\sum_{i=0}^m(-1)^{m-i}\binom mii^n</script><p>这个是可以卷积的，因此我们可以 $O(k\log k)$ 求出一行的第二类斯特林数，那么将其代入上面的式子就可以求出答案</p>
 <p>复杂度 $O(k\log k)$</p>
 <hr>
 <h3 id="21-CF704E-Iron-Man-E"><a href="#21-CF704E-Iron-Man-E" class="headerlink" title="21.  CF704E - Iron Man [E]"></a>21.  CF704E - Iron Man [E]</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>一棵 $n$ 个点的树，上面有 $m$ 辆车，第 $i$ 辆车会在 $t_i$ 时刻在 $u_i$ 出现，向 $v_i$ 以一单位时间 $c_i$ 条边的速度行驶，运动是连续的</p>
@@ -645,11 +657,22 @@
 <p>$2\le n\le2\times10^5,1\le q\le2\times10^5$</p>
 <h4 id="题面-21"><a href="#题面-21" class="headerlink" title="题面"></a>题面</h4><h5 id="Flamire-做法-4"><a href="#Flamire-做法-4" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p><a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/article/pm0686rj" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <h5 id="题解做法-4"><a href="#题解做法-4" class="headerlink" title="题解做法"></a>题解做法</h5><p>不妨设 $X\le Y$</p>
-<p>考虑将原题写成一个线性规划的形式，令变量 $a_i,b_i$ 分别表示 $i,i+1$ 操作了多少次 $X,Y&#x2F;Y,X$</p>
-<p>那么这个问题可以写成：<br>$$<br>\text{minimize}\sum a_i+b_i\<br>Xa_1+Yb_1\le A_1\<br>Ya_{i-1}+Xa_{i-1}+Xa_i+Ya_i\le A_i\<br>Ya_{n-1}+Xa_{n-1}\le A_n\<br>a_i,b_i\ge0<br>$$<br>对偶：<br>$$<br>\text{maximize}\sum A_ix_i\<br>Xx_{i-1}+Yx_i\le1\<br>Yx_{i-1}+Xx_i\le1\<br>x_i\ge0<br>$$<br>神说，对偶之后的线性规划，存在一个最优解满足每个变量取值只有可能是 $0,\frac 1Y,\frac1{X+Y}$</p>
+<p>考虑将原题写成一个线性规划的形式，令变量 $a_i,b_i$ 分别表示 $i,i+1$ 操作了多少次 $X,Y/Y,X$</p>
+<p>那么这个问题可以写成：</p>
+<script type="math/tex; mode=display">
+\text{minimize}\sum a_i+b_i\\
+Xa_1+Yb_1\le A_1\\
+Ya_{i-1}+Xa_{i-1}+Xa_i+Ya_i\le A_i\\
+Ya_{n-1}+Xa_{n-1}\le A_n\\
+a_i,b_i\ge0</script><p>对偶：</p>
+<script type="math/tex; mode=display">
+\text{maximize}\sum A_ix_i\\
+Xx_{i-1}+Yx_i\le1\\
+Yx_{i-1}+Xx_i\le1\\
+x_i\ge0</script><p>神说，对偶之后的线性规划，存在一个最优解满足每个变量取值只有可能是 $0,\frac 1Y,\frac1{X+Y}$</p>
 <p>神说，考虑最优解，一定是超空间里限制形成的凸包的某个端点，也就是说相当于我们选了一个子集的限制，让它们取等，唯一确定了一组合法 $x$ 的解</p>
 <p>如果我们将一个涉及两个 $x_p,x_q$ 的取等限制看成 $p$ 到 $q$ 的一条边，$x_i\ge 0$ 的取等限制看成 $i$ 到 $i$ 的自环，那么最后确定出来的每个连通块至少有一个环，而由于我们只有 $i-i$ 与 $i-(i+1)$ 的边，因此环长度为 $2$ 或 $1$，环长为 $2$ 时这个连通块一定都为 $\frac1{X+Y}$，环长为 $1$ 时这个连通块都为 $0$ 或 $\frac1Y$（$\frac1X$ 太大了，会违反限制）</p>
-<p>那么直接 $dp_{i,0&#x2F;1&#x2F;2}$ 表示 $x_i$ 的取值即可，线段树维护矩乘容易做到 $O(n\log n)$</p>
+<p>那么直接 $dp_{i,0/1/2}$ 表示 $x_i$ 的取值即可，线段树维护矩乘容易做到 $O(n\log n)$</p>
 <hr>
 <h3 id="23-CF1083F-The-Fair-Nut-and-Amusing-Xor-S"><a href="#23-CF1083F-The-Fair-Nut-and-Amusing-Xor-S" class="headerlink" title="23.  CF1083F - The Fair Nut and Amusing Xor [S]"></a>23.  CF1083F - The Fair Nut and Amusing Xor [S]</h3><h4 id="题面-22"><a href="#题面-22" class="headerlink" title="题面"></a>题面</h4><p>给定 $n,k$，以及长为 $n$ 的数列 $a,b$，定义 $f(a,b)$ 为：每次将 $a$ 中一个长为 $k$ 的子段异或上 $x$，让 $a$ 变为 $b$ 的最小操作次数，不可能则为 $-1$</p>
 <p>$q$ 次询问，每次单点修改 $a$ 或 $b$ 中的一个值，求 $f(a,b)$</p>
@@ -670,16 +693,27 @@
 <p>首先，这个推出和可以看成是在两个前缀和之间连了一条边，我们最后要求 $m$ 对点是联通的</p>
 <p>不难发现这是一个三角剖分，三角剖分上是可以 dp 的（其实就是在原来的线段树上 dp）</p>
 <p>注意到对于当前区间 $[l,r)$，与 $l$ 联通的连通块和与 $r$ 联通的连通块在下标范围上一定是不交的，也就是说一段前缀属于 $l$，一段后缀属于 $r$（这中间可能有些点与 $l,r$ 均不联通）</p>
-<p>我们对这个设 dp 状态，令 $f_{x,i}$ 表示 $l$ 与 $r$ 不联通，$l$ 所属连通块最大下标为 $i$ 的方案数，$g_x$ 表示 $l$ 与 $r$ 联通的方案数，那么我们首先考虑两边合并：<br>$$<br>f_{x,i}\leftarrow f_{lc,i}\times f_{rc,j}[i+1\ \text{与}\ j\ \text{之间的点不向外连}]\<br>f_{x,i}\leftarrow f_{lc,i}\times g_{rc}\<br>f_{x,i}\leftarrow g_{lc}\times f_{rc,i}\<br>g_x\leftarrow g_{lc}\times g_{rc}\<br>$$<br>最后再决策一下 $l$ 到 $r$ 的边是否选择：<br>$$<br>g_x\leftarrow g_x+f_{x,i}<br>$$<br>这里最麻烦的是 $i+1$ 和 $j$ 之间的点不向外连的限制，这里我们可以使用 xor-hashing 解决，即给每个 $V_{L_i},V_{R_i}$ 异或上同一个随机值，然后对 $V$ 求前缀和，这样 $i+1$ 与 $j$ 之间不向外连当且仅当 $V_i&#x3D;V_j$</p>
+<p>我们对这个设 dp 状态，令 $f_{x,i}$ 表示 $l$ 与 $r$ 不联通，$l$ 所属连通块最大下标为 $i$ 的方案数，$g_x$ 表示 $l$ 与 $r$ 联通的方案数，那么我们首先考虑两边合并：</p>
+<script type="math/tex; mode=display">
+f_{x,i}\leftarrow f_{lc,i}\times f_{rc,j}[i+1\ \text{与}\ j\ \text{之间的点不向外连}]\\
+f_{x,i}\leftarrow f_{lc,i}\times g_{rc}\\
+f_{x,i}\leftarrow g_{lc}\times f_{rc,i}\\
+g_x\leftarrow g_{lc}\times g_{rc}\\</script><p>最后再决策一下 $l$ 到 $r$ 的边是否选择：</p>
+<script type="math/tex; mode=display">
+g_x\leftarrow g_x+f_{x,i}</script><p>这里最麻烦的是 $i+1$ 和 $j$ 之间的点不向外连的限制，这里我们可以使用 xor-hashing 解决，即给每个 $V_{L_i},V_{R_i}$ 异或上同一个随机值，然后对 $V$ 求前缀和，这样 $i+1$ 与 $j$ 之间不向外连当且仅当 $V_i=V_j$</p>
 <p>那么我们得到了一个 $O(n^2)$ 的做法，考虑如何优化</p>
-<p>我们观察这个转移形式非常优美，我们可以考虑把 $V$ 放到下标后重写一下转移（即 $f_{x,v}$ 表示所有 $V_i&#x3D;v$ 的状态和）：<br>$$<br>f_{x,i}\leftarrow f_{lc,i}\times f_{rc,i}\<br>f_{x,i}\leftarrow f_{lc,i}\times g_{rc}\<br>f_{x,i}\leftarrow g_{lc}\times f_{rc,i}\<br>$$<br>这个就可以直接线段树合并优化了，复杂度 $O(n\log n)$</p>
+<p>我们观察这个转移形式非常优美，我们可以考虑把 $V$ 放到下标后重写一下转移（即 $f_{x,v}$ 表示所有 $V_i=v$ 的状态和）：</p>
+<script type="math/tex; mode=display">
+f_{x,i}\leftarrow f_{lc,i}\times f_{rc,i}\\
+f_{x,i}\leftarrow f_{lc,i}\times g_{rc}\\
+f_{x,i}\leftarrow g_{lc}\times f_{rc,i}\\</script><p>这个就可以直接线段树合并优化了，复杂度 $O(n\log n)$</p>
 <hr>
-<h3 id="25-SNOI2024-平方数-E"><a href="#25-SNOI2024-平方数-E" class="headerlink" title="25.  SNOI2024 - 平方数 [E]"></a>25.  SNOI2024 - 平方数 [E]</h3><h4 id="题面-24"><a href="#题面-24" class="headerlink" title="题面"></a>题面</h4><p>给定 $a_1,a_2,\cdots,a_n$，求有多少 $[l,r]$ 满足 $\prod_{i&#x3D;l}^ra_i$ 是平方数，并输出字典序前 $10^5$ 小的 $[l,r]$</p>
+<h3 id="25-SNOI2024-平方数-E"><a href="#25-SNOI2024-平方数-E" class="headerlink" title="25.  SNOI2024 - 平方数 [E]"></a>25.  SNOI2024 - 平方数 [E]</h3><h4 id="题面-24"><a href="#题面-24" class="headerlink" title="题面"></a>题面</h4><p>给定 $a_1,a_2,\cdots,a_n$，求有多少 $[l,r]$ 满足 $\prod_{i=l}^ra_i$ 是平方数，并输出字典序前 $10^5$ 小的 $[l,r]$</p>
 <p>$1\le n\le3\times10^5,1\le a_i\le10^{36}$</p>
 <h4 id="题解-24"><a href="#题解-24" class="headerlink" title="题解"></a>题解</h4><p>魔怔。</p>
 <p>这题看起来不是很正常，所以考虑不正常的做法</p>
 <p>直接质因数分解肯定不太行，因此我们考虑一些非确定性做法</p>
-<p>考虑平方数在任何模意义下一定都是二次剩余，那么我们可以随机 $T&#x3D;60$ 个不为任意 $a_i$ 因数的质数，然后求前缀积的 $(p-1)&#x2F;2$ 次方，那么一个 $[l,r]$ 是平方数的必要条件是 $l-1$ 和 $r$ 的前缀积在所有模数下 $(p-1)&#x2F;2$ 次方都相同</p>
+<p>考虑平方数在任何模意义下一定都是二次剩余，那么我们可以随机 $T=60$ 个不为任意 $a_i$ 因数的质数，然后求前缀积的 $(p-1)/2$ 次方，那么一个 $[l,r]$ 是平方数的必要条件是 $l-1$ 和 $r$ 的前缀积在所有模数下 $(p-1)/2$ 次方都相同</p>
 <p>直接判一下即可，复杂度 $O(Tn\log a)$</p>
 <p>但实际上这个会 T，并且还有人卡了 $\le10^6$ 质数的判断，那怎么办。</p>
 <p>从 $5\times10^6$ 之后开始搜 $60$ 个质数即可。</p>
@@ -696,7 +730,9 @@
 <p>也就是说我们需要求有至少一个点的 $R$ 是全集的 $S$ 的数量</p>
 <p>$R$ 是全集的点是一个连通块，因此我们可以使用点减边容斥，考虑如何求一个点 $u$ 的 $R_u$ 是全集的方案数</p>
 <p>直接做不好做，我们考虑对每个叶子是否属于 $R_u$ 进行容斥，而一个子树内的叶子情况是类似的，我们可以如下简化：</p>
-<p>对于第 $i$ 棵子树，子树大小为 $s_i$，叶子个数为 $a_i$，我们钦定其中 $x_i$ 个数不在 $R_u$ 中，那么这种钦定对答案的贡献就是：<br>$$<br>(-1)^{\sum x_i}\times 2^{\sum(n-s_i)x_i+\frac12((\sum x_i)^2-\sum x_i^2)}<br>$$<br>这个式子可以写成卷积的形式，边的处理是类似的，直接卷是 $O(n^2\log n)$ 的</p>
+<p>对于第 $i$ 棵子树，子树大小为 $s_i$，叶子个数为 $a_i$，我们钦定其中 $x_i$ 个数不在 $R_u$ 中，那么这种钦定对答案的贡献就是：</p>
+<script type="math/tex; mode=display">
+(-1)^{\sum x_i}\times 2^{\sum(n-s_i)x_i+\frac12((\sum x_i)^2-\sum x_i^2)}</script><p>这个式子可以写成卷积的形式，边的处理是类似的，直接卷是 $O(n^2\log n)$ 的</p>
 <p>然后我就被卡常了。</p>
 <p>实际上对于父亲的子树，可以不容斥直接计算每个叶子都必须可达的方案数（相当于每个叶子会乘上 $2^{n-s_i-\sum x_i}-1$），这样复杂度就是树形背包的 $O(n^2)$ 了</p>
 <hr>
@@ -709,34 +745,34 @@
 <p>建立一个二分图，左部为行，右部为颜色，在行和列之间两两连边，我们需要做的就是将这个二分图拆成列数个完美匹配</p>
 <p>这个是二分图边染色问题，我们可以一个二分图拆成最大度数个匹配</p>
 <p>但是这个不能直接套到这题上来，因为我们一直信息是一个左上角，形状有点怪</p>
-<p>有一个部分分是 $C&#x3D;n$，先考虑这个怎么做，可以改一下上面的建模：</p>
+<p>有一个部分分是 $C=n$，先考虑这个怎么做，可以改一下上面的建模：</p>
 <p>建立一个二分图，左部为列，右部为颜色，如果某列可以填某个颜色，那么在它们之间连边，我们需要做的就是将这个二分图拆成 $n-R$ 个匹配，分别填到每行</p>
 <p>这个可以直接用二分图边染色，由于度数最大值为 $n-R$，所以也是一定有解的</p>
-<p>那么对于 $C\neq n$ 的情况，考虑将其补成 $C&#x3D;n$ 的情况，继续使用上面的建模：</p>
+<p>那么对于 $C\neq n$ 的情况，考虑将其补成 $C=n$ 的情况，继续使用上面的建模：</p>
 <p>建立一个二分图，左部为行，右部为颜色，如果某行可以填某个颜色，那么在它们之间连边，我们需要做的就是将这个二分图拆成 $n-C$ 个匹配，分别填到每行</p>
-<p>注意到这里可能出现无解的情况，但是无解一定能够说明原题无解（上面 $R$ 行已经填不了了），如果有解，那么我们使用 $C&#x3D;n$ 的情况一定能构造出解，因此我们任意取一组解即可</p>
+<p>注意到这里可能出现无解的情况，但是无解一定能够说明原题无解（上面 $R$ 行已经填不了了），如果有解，那么我们使用 $C=n$ 的情况一定能构造出解，因此我们任意取一组解即可</p>
 <p>复杂度 $O(n^3)$</p>
 <h5 id="notes：二分图边染色"><a href="#notes：二分图边染色" class="headerlink" title="notes：二分图边染色"></a>notes：二分图边染色</h5><p>给定一个二分图，要求用最小的颜色数给每条边染色，使得不存在两个有公共点的边的颜色相同</p>
 <p>这个问题的答案是最大度数，最大度数显然是下界，对于上界，我们可以给出构造性证明：</p>
 <p>增量构造，每次加一条边 $(x,y)$，设 $x,y$ 所有邻边颜色的 $\text{mex}$ 分别为 $l_x,l_y$：</p>
 <ul>
-<li>如果 $l_x&#x3D;l_y$，那么直接将 $(x,y)$ 染成 $l_x$</li>
+<li>如果 $l_x=l_y$，那么直接将 $(x,y)$ 染成 $l_x$</li>
 <li>否则不妨设 $l_x&lt;l_y$，我们希望将这条边染成 $l_x$，为了做到这件事情我们需要进行一些调整，具体地，我们从 $y$ 开始，走一条颜色为 $l_x,l_y,l_x,\cdots$ 交替的增广路，由于 $x$ 没有 $l_x$ 的边，因此 $x$ 一定不会被这条增广路经过，我们把这条增广路上的所有边颜色 $l_x\rightarrow l_y,l_y\rightarrow l_x$，这样调整后一定可以将 $(x,y)$ 染为 $l_x$</li>
 </ul>
 <p>不难发现上述构造过程中颜色一定不超过最大度数，复杂度是 $O(mn)$ 的</p>
 <h5 id="notes：-k-正则二分图"><a href="#notes：-k-正则二分图" class="headerlink" title="notes：$k$-正则二分图"></a>notes：$k$-正则二分图</h5><p>注意到 $k$-正则二分图一定是满足 Hall 定理的，也即其有一个完美匹配</p>
 <p>对于 $k$-正则二分图，我们可以通过每次删掉一个完美匹配，规约到更小规模的问题，从而构造一个二分图边染色</p>
-<p>但是直接用 Dinic 做是 $O(km\sqrt n)$ 的（$m&#x3D;kn$），复杂度不够优秀。</p>
+<p>但是直接用 Dinic 做是 $O(km\sqrt n)$ 的（$m=kn$），复杂度不够优秀。</p>
 <p>考虑优化求完美匹配的过程：</p>
-<h6 id="对于-k-2-d-的情况"><a href="#对于-k-2-d-的情况" class="headerlink" title="对于 $k&#x3D;2^d$ 的情况"></a>对于 $k&#x3D;2^d$ 的情况</h6><p>每次找一个欧拉回路，把左到右的边和右到左的边拆成两个图，选择其中一个图递归解决</p>
-<p>复杂度 $2^dn+2^{d-1}n+\cdots+n&#x3D;O(2^dn)&#x3D;O(m)$</p>
+<h6 id="对于-k-2-d-的情况"><a href="#对于-k-2-d-的情况" class="headerlink" title="对于 $k=2^d$ 的情况"></a>对于 $k=2^d$ 的情况</h6><p>每次找一个欧拉回路，把左到右的边和右到左的边拆成两个图，选择其中一个图递归解决</p>
+<p>复杂度 $2^dn+2^{d-1}n+\cdots+n=O(2^dn)=O(m)$</p>
 <h6 id="对于-k-任意的情况"><a href="#对于-k-任意的情况" class="headerlink" title="对于 $k$ 任意的情况"></a>对于 $k$ 任意的情况</h6><p>考虑一个神秘算法：</p>
 <p>重复 $n$ 次，每次找到左边一个未匹配点，然后开始沿增广路随机游走（即左到右走非匹配边，右到左走匹配边），直到走到左边一个匹配点</p>
 <p>将走出来的路径上的环全砍掉，然后把这条增广路上的所有边状态翻转</p>
 <p>可以证明，当两边各剩下 $T$ 个点未匹配时，期望步数是 $O(\frac nT)$ 的，也就是说整体复杂度是 $O(n\log n)$ 的</p>
 <hr>
 <h3 id="28-USACO24FEB-Minimum-Sum-of-Maximum-K-✔️"><a href="#28-USACO24FEB-Minimum-Sum-of-Maximum-K-✔️" class="headerlink" title="28.  USACO24FEB - Minimum Sum of Maximum [K] ✔️"></a>28.  USACO24FEB - Minimum Sum of Maximum [K] ✔️</h3><h4 id="题面-27"><a href="#题面-27" class="headerlink" title="题面"></a>题面</h4><p>给定 $a_1,a_2,\cdots,a_n$，其中有 $k$ 个元素被钉住了</p>
-<p>你可以随意交换没有被钉住的元素的顺序，求 $\sum_{i&#x3D;1}^{n-1}\max(a_i,a_{i+1})$ 的最小值</p>
+<p>你可以随意交换没有被钉住的元素的顺序，求 $\sum_{i=1}^{n-1}\max(a_i,a_{i+1})$ 的最小值</p>
 <p>$2\le n\le300,0\le k\le6$</p>
 <h4 id="题解-27"><a href="#题解-27" class="headerlink" title="题解"></a>题解</h4><p>神仙题。</p>
 <p>可以在两端加入两个 $10^6$，当作被钉住的元素，那么考虑两个被钉住的元素之间的其他元素怎么排，不妨设这两个被钉住的元素分别为 $v$ 和 $w$，且 $v\le w$</p>
@@ -751,7 +787,7 @@
 <p>有三种转移：</p>
 <ul>
 <li>$l$ 或 $r$ 没有用在 $S$ 中的区间上（也即用在了 $S$ 的祖先上），从 $dp_{l+1,r,S}$ 和 $dp_{l,r-1,S}$ 转移</li>
-<li>$S$ 是一整棵子树，且 $l$ 和 $r$ 都用上了，那么我们选择一个区间 $i$ 作为根，从 $dp_{l+1,r-1,S-{i}}+\max(c_r,w_i)-\min(c_l,v_i)$ 转移</li>
+<li>$S$ 是一整棵子树，且 $l$ 和 $r$ 都用上了，那么我们选择一个区间 $i$ 作为根，从 $dp_{l+1,r-1,S-\{i\}}+\max(c_r,w_i)-\min(c_l,v_i)$ 转移</li>
 <li>$S$ 是若干棵子树，且 $l$ 和 $r$ 都用上了，从任意一个位置将其裂成两部分，每部分都是若干完整的子树：枚举一个 $T\subset S(T\neq\varnothing)$，从 $dp_{l,m,T}+dp_{m+1,r,S-T}$ 转移过来，看起来我们还要枚举一个 $m$，这样复杂度就带 $n^3$ 了，不过实际上可以发现，如果 $[l,m]$ 内部还有不用在 $T$ 上的节点，那么我们把 $[l,m]$ 缩短一定不劣，也就是说 $m$ 取 $l+siz_T-1$ 是最优的，其中 $siz_T$ 是 $T$ 中所有段容量之和</li>
 </ul>
 <p>转移即可，复杂度 $O(3^kn^2)$</p>
@@ -762,13 +798,13 @@
 <h4 id="题解-28"><a href="#题解-28" class="headerlink" title="题解"></a>题解</h4><p>火大了。</p>
 <p>这个题看起来就是倍增，但是需要考虑怎么倍增。</p>
 <p>我们发现，我们如果知道 $ t\bmod2^k$ 的模数，我们就可以一直处理直到某个点 $p$ 满足 $T_p&gt;2^k$</p>
-<p>因此我们考虑按如下方式设倍增数组：$g_{i,t}$ 表示从 $i$ 出发，时间模 $T_i$ 余 $t$，走到第一个 $T_j&gt;T_i$ 的时间&#x2F;位置，$f_{i,t,o}$ 表示从 $i$ 点出发，时间模 $T_i$ 余 $t$，走 $2^o$ 步会走到哪里，并且只有 $2^o&lt;g_{i,t}$ 的 $f_{i,t,o}$ 有定义</p>
+<p>因此我们考虑按如下方式设倍增数组：$g_{i,t}$ 表示从 $i$ 出发，时间模 $T_i$ 余 $t$，走到第一个 $T_j&gt;T_i$ 的时间/位置，$f_{i,t,o}$ 表示从 $i$ 点出发，时间模 $T_i$ 余 $t$，走 $2^o$ 步会走到哪里，并且只有 $2^o&lt;g_{i,t}$ 的 $f_{i,t,o}$ 有定义</p>
 <p>用这个我们可以求出任意一个点向后走 $\Delta$ 步的结果，具体地：</p>
 <p>如果当前走 $g$ 仍然在 $\Delta$ 步以内，那么我们就走一步 $g$，否则找到不超过 $\Delta$ 步的最大的 $f$，然后走一步 $f$</p>
 <p>分析一下这样做的复杂度：每走一步 $f$ 会让我们的 $\Delta$ 减半，走完 $f$ 之后的 $T_i$ 是不确定的，而每走一步 $g$ 会让 $T_i$ 至少变大 $1$，而 $T$ 的最大值为 $O(\log n)$，因此我们求一次的复杂度是 $O(\log n\log V)$ 的</p>
 <p>用这个预处理倍增数组+处理询问，复杂度是 $O(n\log n\log^2V+q\log n\log V)$ 的，无法通过</p>
 <p>这个做法的缺陷在于没有利用到 $f$ 是倍增数组的性质，具体地，走完 $f$ 之后的 $T_i$ 可能变小，这样我们无法快速求出右半部分的答案，这导致了我们的复杂度是三个 $\log$ 的，因此我们考虑重设一下 $f$ 的状态使其 $T_i$ 不变小</p>
-<p>我们令 $f_{i,t,o}$ 表示从 $i$ 出发，时间模 $T_i$ 余 $t$，走到第 $2^o$ 个 $T_j&#x3D;T_i$ 的时间&#x2F;位置，这样倍增的时候就容易常数时间推出下一层</p>
+<p>我们令 $f_{i,t,o}$ 表示从 $i$ 出发，时间模 $T_i$ 余 $t$，走到第 $2^o$ 个 $T_j=T_i$ 的时间/位置，这样倍增的时候就容易常数时间推出下一层</p>
 <p>现在考虑如何利用 $f$ 求答案：</p>
 <p>如果当前走 $g$ 仍然在 $\Delta$ 步内，那么就走一步 $g$，否则一直走 $f$，然后走一步原来的边</p>
 <p>这样的复杂度：$g$ 每走一次，能达到的最大 $T$ 就至少减 $1$，而每一个 $T$ 我们最多会走 $\log V$ 次 $f$，因此求一次的复杂度依然是 $O(\log n\log V)$ 的</p>
@@ -1172,6 +1208,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

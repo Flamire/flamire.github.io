@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            CF1539 | Wonderhoy!
+            CF1539 | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -308,29 +308,28 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<span id="more"></span>
-
 <h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人参加比赛，第 $i$ 个人在 $ix$ 时刻开始，在 $ix+t$ 时刻结束，每个人的不满意度为他结束比赛时恰好开始比赛或开始了比赛但还未结束的人数，求所有人，$1\le n,x,t\le10^9$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑首先将 $t-&#x3D;t%x$，这样问题就转化为 $x$ 的整倍上的问题，答案就为 $\sum_{i&#x3D;1}^n\min(\frac tx,n-i)$，分 $n-i$ 与 $\frac tx$ 大小讨论即可</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑首先将 $t-=t\%x$，这样问题就转化为 $x$ 的整倍上的问题，答案就为 $\sum_{i=1}^n\min(\frac tx,n-i)$，分 $n-i$ 与 $\frac tx$ 大小讨论即可</p>
 <h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>定义小写字母串上的操作 $f(s)$ 为将 $s$ 中的每个 <code>a</code> 替换为 1 个 <code>a</code>，将每个 <code>b</code> 替换为 2 个 <code>b</code>，将每个 <code>c</code> 替换为 3 个 <code>c</code>，给出一个长度为 $n$ 的字符串 $s$，有 $q$ 次询问，每次给出 $l,r$，求 $|f(s[l:r])|$</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>前缀和</p>
 <h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个数 $a_1,a_2,\cdots,a_n$，你至多可以添加 $k$ 个任意的数，然后将其分为若干组（下标不一定连续），使得每组排序后任意相邻两个元素的差不超过 $x$，问最小组数，$1\le n\le200000,0\le k\le10^{18},1\le x\le10^{18}$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>首先将 $a$ 排序，一开始假设每个数自成一组，考虑如果要将相邻两个数合到一个组内至少需要添加多少个数，不难得到如果相邻两个数之间的差是 $y$，若 $x|y$，则需要 $\frac yx-1$ 个数，否则需要 $\lfloor\frac yx\rfloor$ 个数，我们每合并一组数，组数就会减少 1，所以要尽量多合并，那么将需要的数的个数从小到大排序，贪心选择即可</p>
 <h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 种商品，每种商品多有无限个，价格均为 $2$，你需要买 $a_i$ 件第 $i$ 种商品，并且当你购买了 $\ge b_i$ 件商品时，第 $i$ 种商品的价格会降为 $1$，你现在要安排买商品的顺序，使花费最小，求这个最小花费，$1\le n\le10^5,1\le b_i\le10^{14},1\le\sum a_i\le10^{14}$</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑花费最小相当于价格为 $1$ 的商品买的尽量多</p>
-<p>令 $N&#x3D;\sum a_i$，我们倒着考虑，考虑购买 $b_i$ 件商品后价格为 $1$，等价于在买的顺序的后 $N-b_i$ 件时价格为 $1$</p>
+<p>令 $N=\sum a_i$，我们倒着考虑，考虑购买 $b_i$ 件商品后价格为 $1$，等价于在买的顺序的后 $N-b_i$ 件时价格为 $1$</p>
 <p>一个贪心的想法是，从后往前填，我们每次找到满足当前填的数的个数 $\le N-b_i$，且 $b_i$ 最大的还未填进去的商品，然后将其放在当前位置，这样可以使价格为 $1$ 的商品尽量多</p>
 <p>但 $N$ 是 $10^{14}$ 量级，显然无法直接模拟，考虑不同的 $b_i$ 最多只有 $n$ 个，我们可以将商品按 $b_i$ 排序，每次从大到小把商品批量填入即可</p>
 <h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>你的左手与右手中分别有一张卡片，上面都是 $0$，有 $n$ 次询问，每次询问给出 $x,l_1,r_1,l_2,r_2$，你需要选择你的一张卡片，将其换成 $x$，使得交换后你的左手卡片在 $[l_1,r_1]$ 中，右手卡片在 $[l_2,r_2]$，问能不能满足所有要求，如果能请给出一种交换方案，$2\le n\le10^5,2\le m\le10^9$</p>
 <h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>令 $dpL[i]$ 为前 $i$ 次交换后，第 $i$ 次交换了左手上的卡片，且右手的卡片能连续满足的最大的下标的要求（即右手上的卡片能满足 $[i,dpL[i]]$ 中的所有右手要求），$dpR[i]$ 同理</p>
 <p>我们预处理数组 $goL[i]$ 及 $goR[i]$，表示左右手第 $i$ 张卡片能连续满足的最大的下标，若全不能满足，则为 $i-1$，可以通过二分+st表求出</p>
 <p>考虑第 $i+1$ 位要换哪只手，以从 $dpL$ 出发的转移为例，$dpR$ 同理</p>
-<p>如果要换左手，则必须满足 $goL[i+1]\ge i+1$ 且 $dpL[i]\ge i+1$，转移式为 $dpL[i+1]&#x3D;\max(dpL[i+1],dpL[i])$</p>
-<p>如果要换右手，则必须满足 $goR[i+1]\ge i+1$ 且 $goL[i]\ge i+1$，转移式为 $dpR[i+1]&#x3D;\max(dpR[i+1],goL[i])$</p>
+<p>如果要换左手，则必须满足 $goL[i+1]\ge i+1$ 且 $dpL[i]\ge i+1$，转移式为 $dpL[i+1]=\max(dpL[i+1],dpL[i])$</p>
+<p>如果要换右手，则必须满足 $goR[i+1]\ge i+1$ 且 $goL[i]\ge i+1$，转移式为 $dpR[i+1]=\max(dpR[i+1],goL[i])$</p>
 <p>最后判断 $dpL[n]$ 与 $dpR[n]$ 是否 $\ge n$ 即可</p>
 <h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个数 $a_1,a_2,\cdots,a_n$，定义 $f(l,r,x)$ 为将 $a_l,a_{l+1},\cdots,a_r$ 从小到大排序后（相等的元素谁在前都可以）原下标为 $x$ 的元素到子区间的中点的最大距离（差的绝对值），若区间长度为奇数，则其中点为 $\frac{l+r}2$，否则其中点为 $\frac{l+r+1}2$，求 $f$ 的最大值，$1\le n\le200000$</p>
 <h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>不难发现一个长度为 $len$ 的区间的中点为 $\lfloor\frac{len}2\rfloor+1$，对于一个元素 $a_i$，我们分两种情况考虑：</p>
 <ol>
-<li>$a_i$ 在中点左边的方案，我们令所有 $&lt; a_i$ 的元素为 $0$，则 $a_i$ 为最靠左的 $1$，设 $0$ 的个数为 $zero$，则距离为 $\lfloor\frac{len}2\rfloor+1-(zero+1)&#x3D;\lfloor\frac{len}2\rfloor-zero$，我们可以将 $\lfloor\frac{len}2\rfloor$ 均摊成每个数 $0.5$，将 $-zero$ 均摊每个 $0$ 分得 $-1$，所以每个 $0$ 贡献 $-0.5$，每个 $1$ 贡献 $0.5$，但当 $len$ 为奇数时，这样算出的是一个浮点数，这是因为我们多加了一个 $\lfloor\frac{len}2\rfloor$ 的 $0.5$，所以下取整即可，考虑将贡献 $\times2$，从小到大枚举 $a_i$，每次查询包含 $i$ 的最大子段和，处理完 $a_i$ 后将 $a_i$ 从 $1$ 变为 $0$（贡献 $-2$），需要维护前缀和的区间加，区间查询最小值最大值，线段树维护 </li>
+<li>$a_i$ 在中点左边的方案，我们令所有 $&lt; a_i$ 的元素为 $0$，则 $a_i$ 为最靠左的 $1$，设 $0$ 的个数为 $zero$，则距离为 $\lfloor\frac{len}2\rfloor+1-(zero+1)=\lfloor\frac{len}2\rfloor-zero$，我们可以将 $\lfloor\frac{len}2\rfloor$ 均摊成每个数 $0.5$，将 $-zero$ 均摊每个 $0$ 分得 $-1$，所以每个 $0$ 贡献 $-0.5$，每个 $1$ 贡献 $0.5$，但当 $len$ 为奇数时，这样算出的是一个浮点数，这是因为我们多加了一个 $\lfloor\frac{len}2\rfloor$ 的 $0.5$，所以下取整即可，考虑将贡献 $\times2$，从小到大枚举 $a_i$，每次查询包含 $i$ 的最大子段和，处理完 $a_i$ 后将 $a_i$ 从 $1$ 变为 $0$（贡献 $-2$），需要维护前缀和的区间加，区间查询最小值最大值，线段树维护 </li>
 <li>$a_i$ 在中点右边的方案，令所有 $\le a_i$ 的元素为 $0$，距离为 $zero-\lfloor\frac{len}2\rfloor-1$，奇数时多减了一个 $0.5$，所以需要向上取整，每个 $1$ 贡献 $-0.5$，每个 $0$ 贡献 $0.5$，其余处理相似</li>
 </ol>
 <p>最后两部分取 max 即可</p>
@@ -743,6 +742,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            Red Right Hand | Wonderhoy!
+            Red Right Hand | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -308,11 +308,10 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<span id="more"></span>
-
 <ul>
 <li>Safe：做出来，觉得简单的题</li>
 <li>Euclid：做出来，但不觉得简单的题</li>
-<li>Keter：没做出来&#x2F;看题解做出来&#x2F;过题但根本不知道为什么过了 的题</li>
+<li>Keter：没做出来/看题解做出来/过题但根本不知道为什么过了 的题</li>
 <li>Apollyon：无法自行解决的题目</li>
 </ul>
 <p>[TOC]</p>
@@ -323,7 +322,7 @@
 <p>一个点 $x$ 会产生 $k$ 个 lca，这 $k$ 个 lca 一定要在一条到根的链上，我们将这 $k$ 个 lca 中最深的称为 $x$ 的「切入点」</p>
 <p>我们将所有不在「已知树」内的点按深度考虑，依次往「已知树」上挂，我们对「已知树」的每个点维护当前考虑的深度向上一层的该点的子孙 $link$，然后将新来的点它的「切入点」的 $link$ 下面，到下一个深度时更新对每个「已知树」中的点的 $link$（这个「已知树」不包含后来挂上去的点）</p>
 <p>复杂度 $O(nk)$</p>
-<h2 id="2-CF839E-Mother-of-Dragons-Keter"><a href="#2-CF839E-Mother-of-Dragons-Keter" class="headerlink" title="2.  CF839E - Mother of Dragons [Keter]"></a>2.  CF839E - Mother of Dragons [Keter]</h2><h3 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h3><p>有一个 $n$ 个点的无向图，你需要给每一个点赋一个实数点权 $a_i$ 使 $\sum a_i&#x3D;k$，一条边 $(u,v)$ 的权值为 $a_ua_v$，求权值和的最大值</p>
+<h2 id="2-CF839E-Mother-of-Dragons-Keter"><a href="#2-CF839E-Mother-of-Dragons-Keter" class="headerlink" title="2.  CF839E - Mother of Dragons [Keter]"></a>2.  CF839E - Mother of Dragons [Keter]</h2><h3 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h3><p>有一个 $n$ 个点的无向图，你需要给每一个点赋一个实数点权 $a_i$ 使 $\sum a_i=k$，一条边 $(u,v)$ 的权值为 $a_ua_v$，求权值和的最大值</p>
 <p>$1\le n\le40,1\le k\le1000$</p>
 <h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>结论：最优方案是取出原图的最大团，并将 $k$ 的权值平均分给团中的点</p>
 <p>证明先鸽着。</p>
@@ -331,9 +330,9 @@
 <h2 id="3-CF838D-Airplane-Arrangements-Keter"><a href="#3-CF838D-Airplane-Arrangements-Keter" class="headerlink" title="3.  CF838D - Airplane Arrangements [Keter]"></a>3.  CF838D - Airplane Arrangements [Keter]</h2><h3 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h3><p>有 $n$ 个位置，$m$ 个人，第 $i$ 个人会从第 $a_i$ 个位置出发，向左或向右行走，找到第一个没有被标记的位置，然后标记这个位置并消失，如果一个人没有找到符合条件的位置，那么你就是失败的。</p>
 <p>求有多少安排每个人出现位置以及行走方向的方法，使得你不是失败的，答案对 $10^9+7$ 取模</p>
 <p>$1\le m\le n\le10^6$</p>
-<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>打表得 $ans&#x3D;2(n-m+1)(2(n+1))^{m-1}$。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>打表得 $ans=2(n-m+1)(2(n+1))^{m-1}$。</p>
 <p>说明：</p>
-<p>考虑我们在 $n$ 后面再添加一个位置 $n+1$，并将它看做一个环，$1$ 与 $n+1$ 相邻，那么人们会在这个环上逆时针&#x2F;顺时针走，你是失败的当且仅当第 $n+1$ 个位置被标记</p>
+<p>考虑我们在 $n$ 后面再添加一个位置 $n+1$，并将它看做一个环，$1$ 与 $n+1$ 相邻，那么人们会在这个环上逆时针/顺时针走，你是失败的当且仅当第 $n+1$ 个位置被标记</p>
 <p>考虑由于这 $n+1$ 个位置的地位是均等的，因此在 $n+1$ 被标记的概率是 $\frac{m}{n+1}$，未被标记的概率是 $\frac{n+1-m}{n+1}$，答案为 $\frac{n+1-m}{n+1}(2(n+1))^m$，即原式。</p>
 <h2 id="4-CF814E-An-unavoidable-detour-for-home-Euclid"><a href="#4-CF814E-An-unavoidable-detour-for-home-Euclid" class="headerlink" title="4.  CF814E - An unavoidable detour for home [Euclid]"></a>4.  CF814E - An unavoidable detour for home [Euclid]</h2><h3 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h3><p>求有多少 $n$ 个点的无权无向图，满足：</p>
 <ol>
@@ -344,8 +343,10 @@
 <p>$3\le n\le50,2\le d_i\le3$</p>
 <h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>按最短路长度分层转移，考虑题目要求使得这个无向图第 $i$ 层的每一个点有且仅有一条边与第 $i-1$ 层的点相连</p>
 <p>我们令 $dp(i,j)$ 表示前 $i$ 个点，最后一层有 $j$ 个点的方案数</p>
-<p>那么 $dp(i,j)&#x3D;\sum_{1\le k\le i-j}dp(i-j,k)\times ways$，其中 $ways$ 表示 $[i-j-k+1,i-j]$ 与 $[i-j+1,i]$ 为相邻层时 $[i-j-k+1,i-j]$ 内部与 $[i-j-k+1,i-j]$ 和 $[i-j+1,i]$ 之间的边的方案数</p>
-<p>由于 $[i-j-k+1,i-j]$ 中的每一个点都要与上一层连边，因此它们在考虑范围内的度数为 $1$ 或 $2$，我们可以将 $[i-j+1,i]$ 内的点视作度数为 $1$ 的点，但我们需要保证这些点不直接相连，考虑容斥统计，我们枚举度数为 $2$ 的点成环的个数，经过一番组合计数得到：<br>$$<br>ways&#x3D;\sum_{c&#x3D;0}^bcyc_c\binom bc\left(\sum_{i&#x3D;0}^{\lfloor\frac x2\rfloor}(-1)^i\binom x{2i}\frac{(2i)!}{i!2^i}\frac{x+a-2i}{(\frac{x+a-2i}2)!2^{\frac{x+a-2i}2}}\frac{(\frac{x+a-2i}2+b-c-1)!}{(\frac{x+a-2i}2-1)!}\right)<br>$$<br>其中 $cyc_c$ 表示 $c$ 个度数为 $2$ 的点形成若干个环的方案数，不难 dp 得出</p>
+<p>那么 $dp(i,j)=\sum_{1\le k\le i-j}dp(i-j,k)\times ways$，其中 $ways$ 表示 $[i-j-k+1,i-j]$ 与 $[i-j+1,i]$ 为相邻层时 $[i-j-k+1,i-j]$ 内部与 $[i-j-k+1,i-j]$ 和 $[i-j+1,i]$ 之间的边的方案数</p>
+<p>由于 $[i-j-k+1,i-j]$ 中的每一个点都要与上一层连边，因此它们在考虑范围内的度数为 $1$ 或 $2$，我们可以将 $[i-j+1,i]$ 内的点视作度数为 $1$ 的点，但我们需要保证这些点不直接相连，考虑容斥统计，我们枚举度数为 $2$ 的点成环的个数，经过一番组合计数得到：</p>
+<script type="math/tex; mode=display">
+ways=\sum_{c=0}^bcyc_c\binom bc\left(\sum_{i=0}^{\lfloor\frac x2\rfloor}(-1)^i\binom x{2i}\frac{(2i)!}{i!2^i}\frac{x+a-2i}{(\frac{x+a-2i}2)!2^{\frac{x+a-2i}2}}\frac{(\frac{x+a-2i}2+b-c-1)!}{(\frac{x+a-2i}2-1)!}\right)</script><p>其中 $cyc_c$ 表示 $c$ 个度数为 $2$ 的点形成若干个环的方案数，不难 dp 得出</p>
 <p>总复杂度 $O(n^5)$</p>
 <h2 id="5-CF802C-Heidi-and-Library-hard-Keter"><a href="#5-CF802C-Heidi-and-Library-hard-Keter" class="headerlink" title="5.  CF802C - Heidi and Library (hard) [Keter]"></a>5.  CF802C - Heidi and Library (hard) [Keter]</h2><h3 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h3><p>你有一个容量为 $k$ 的书架，初始为空，你在任意时刻可以扔掉一本书或者花费 $c_i$ 的代价购进第 $i$ 本书</p>
 <p>第 $i$ 天会有人来看第 $a_i$ 本书，此时你需要保证你的书架里有这一本书</p>
@@ -358,10 +359,10 @@
 <p>我们给每天买的这本书建两个点，入点 $x_i$ 出点 $y_i$<del>（其中 $x_i$ 的意义为“买进的第 $a_i$ 本书”，$y_i$ 的意义为“最后第 $i$ 天买进的书去哪了”）</del>那么我们需要连如下一些边（$(u,v,w,c)$ 表示 $u\rightarrow v$ 流量为 $w$，费用为 $c$ 的边）：</p>
 <ol>
 <li>$(S,x_i,1,c_{a_i})$，这条边一定会被流，表示当日买进了第 $a_i$ 本书</li>
-<li>$(y_i,T,1,0)$，这条边一定会被流，表示第 $i$ 天买进的书被扔掉&#x2F;卖掉了</li>
+<li>$(y_i,T,1,0)$，这条边一定会被流，表示第 $i$ 天买进的书被扔掉/卖掉了</li>
 <li>$(x_i,y_i,1,0)$，表示第 $i$ 天买进的书当天就被扔掉了</li>
 <li>$(x_i,x_{i+1},k-1,0)$，表示第 $i$ 天书架里的书留到了第 $i+1$ 天，注意这里容量是 $k-1$，因为下一天还要买进来一本书</li>
-<li>$(x_{i-1},y_{lst_i},1,-c_{a_i})$，其中 $lst_i$ 表示 $i$ 以前最大的 $j$ 使得 $a_j&#x3D;a_i$，这表示在第 $lst_i$ 天的书留到第 $i-1$ 天被卖掉了</li>
+<li>$(x_{i-1},y_{lst_i},1,-c_{a_i})$，其中 $lst_i$ 表示 $i$ 以前最大的 $j$ 使得 $a_j=a_i$，这表示在第 $lst_i$ 天的书留到第 $i-1$ 天被卖掉了</li>
 </ol>
 <p>复杂度 $O(费用流)$</p>
 <h2 id="6-CF773D-Perishable-Roads-Keter"><a href="#6-CF773D-Perishable-Roads-Keter" class="headerlink" title="6.  CF773D - Perishable Roads [Keter]"></a>6.  CF773D - Perishable Roads [Keter]</h2><h3 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h3><p>给定一个 $n$ 个点的带权无向完全图，现在有一个首都，你需要给每个点指定一个出边，使得从任意一个点出发沿着出边走均能到达首都，而且从每个点出发经过的边权最小值之和最小，请对每个点作为首都的情况求出最小值</p>
@@ -376,14 +377,13 @@
 <p>考虑这样的话我们建源点，向每个点 $i$ 连长度为 $2\min e_{u,i}$ 的边，这样能涵盖这两种情况的答案，跑一边最短路即可</p>
 <p>复杂度 $O(n^2)$</p>
 <h2 id="7-CF687E-TOF-Safe"><a href="#7-CF687E-TOF-Safe" class="headerlink" title="7.  CF687E - TOF [Safe]"></a>7.  CF687E - TOF [Safe]</h2><h3 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h3><div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dfs</span>(v)</span><br><span class="line">&#123;</span><br><span class="line">     set count[v] = count[v] + <span class="number">1</span></span><br><span class="line">     <span class="keyword">if</span>(count[v] &lt; <span class="number">1000</span>)</span><br><span class="line">     &#123;</span><br><span class="line">          foreach u in neighbors[v]</span><br><span class="line">          &#123;</span><br><span class="line">               <span class="keyword">if</span>(visited[u] is equal to <span class="literal">false</span>)</span><br><span class="line">               &#123;</span><br><span class="line">                    <span class="built_in">dfs</span>(u)</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">break</span></span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     set visited[v] = <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">main</span>()</span><br><span class="line">&#123;</span><br><span class="line">     input the <span class="built_in">digraph</span>()</span><br><span class="line">     <span class="built_in">TOF</span>()</span><br><span class="line">     foreach <span class="number">1</span>&lt;=i&lt;=n</span><br><span class="line">     &#123;</span><br><span class="line">          set count[i] = <span class="number">0</span> , visited[i] = <span class="literal">false</span></span><br><span class="line">     &#125;</span><br><span class="line">     foreach <span class="number">1</span> &lt;= v &lt;= n</span><br><span class="line">     &#123;</span><br><span class="line">          <span class="keyword">if</span>(visited[v] is equal to <span class="literal">false</span>)</span><br><span class="line">          &#123;</span><br><span class="line">               <span class="built_in">dfs</span>(v)</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     ... <span class="comment">// And do something cool and magical but we can&#x27;t tell you what!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
 <p>给定输入的 $n$ 个点 $m$ 条边的有向图，<code>TOF</code> 函数内会用某种方式对每个 $i$ 重排 <code>neighbors[i]</code>，求所有可能的重排方式中，之后 <code>dfs</code> 调用次数的最小值</p>
 <p>$1\le n,m\le5000$</p>
 <h3 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h3><p>搁这搁这呢。。。</p>
 <p>题面翻译：给定一张有向图，你需要删掉其中的一些边，把它拆成若干个内向基环树，使得原来有出度的点现在仍有出度，要求环长之和最小</p>
 <p>考虑缩点后显然答案为所有出度为 $0$ 的强联通分量内的最小环之和，可以用 bfs 求出，特判一下强联通分量为一个点的情况</p>
 <p>复杂度 $O(n^2)$</p>
-<h2 id="8-CF639E-Bear-and-Paradox-Safe"><a href="#8-CF639E-Bear-and-Paradox-Safe" class="headerlink" title="8.  CF639E - Bear and Paradox [Safe]"></a>8.  CF639E - Bear and Paradox [Safe]</h2><h3 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h3><p>有 $n$ 道题，第 $i$ 道题的初始分数是 $p_i$，███████ 做完第 $i$ 道题需要 $t_i$ 的时间，我们定义 $T&#x3D;t_1+t_2+\cdots+t_n$</p>
+<h2 id="8-CF639E-Bear-and-Paradox-Safe"><a href="#8-CF639E-Bear-and-Paradox-Safe" class="headerlink" title="8.  CF639E - Bear and Paradox [Safe]"></a>8.  CF639E - Bear and Paradox [Safe]</h2><h3 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h3><p>有 $n$ 道题，第 $i$ 道题的初始分数是 $p_i$，███████ 做完第 $i$ 道题需要 $t_i$ 的时间，我们定义 $T=t_1+t_2+\cdots+t_n$</p>
 <p>如果 ███████ 在第 $x$ 时刻做完第 $i$ 道题，那么 ███████ 会获得 $p_i(1-\frac{cx}T)$ 的分数。不难发现，███████ 一共有 $n!$ 种做这些题的顺序，这些顺序中能获得最大的分数的我们称为「优秀的」</p>
 <p>现在你需要求最大的 $c\in[0,1]$，使得对于任意「优秀的」方案，不存在 $i,j$ 满足 $p_i&gt;p_j$ 且 ███████ 在 $i$ 上获得的分数小于在 $j$ 上的分数</p>
 <p>$1\le n\le150000$</p>
@@ -397,7 +397,7 @@
 <p>你需要猜出这个串是什么。</p>
 <p>$1\le n\le100$</p>
 <h3 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h3><p>这个 $0.777$ 是骗人的，根本用不了那么多。</p>
-<p>考虑你询问一个区间 $[l,r]$，那么你就能得到 ${s[l],s[r]},{s[l+1],s[r-1]},\cdots$</p>
+<p>考虑你询问一个区间 $[l,r]$，那么你就能得到 $\{s[l],s[r]\},\{s[l+1],s[r-1]\},\cdots$</p>
 <p>那么如果我们询问了一个长度为奇数的区间，我们就可以确定中间的位置</p>
 <p>因此，我们分两种情况考虑：</p>
 <ol>
@@ -405,12 +405,12 @@
 <li>$n$ 是偶数，我们询问 $[1,n-1],[\frac n2,n],[\frac n2,n-1]$</li>
 </ol>
 <p>不难发现这样可以推出答案</p>
-<p><strong>注意特判 $n&#x3D;1$ 的情况</strong></p>
+<p><strong>注意特判 $n=1$ 的情况</strong></p>
 <h2 id="10-CF1218A-Bubble-Reactor-Safe"><a href="#10-CF1218A-Bubble-Reactor-Safe" class="headerlink" title="10.  CF1218A - Bubble Reactor [Safe]"></a>10.  CF1218A - Bubble Reactor [Safe]</h2><h3 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h3><p>你有一张 $n$ 个点 $n$ 条边的无向图，你首先需要选定一个点将其标记，接下来你需要重复 $n-1$ 次“选择与一个已标记的点直接相连的未标记点并将其标记”，标记一个点会获得“与该点直接或通过若干未标记点相连的点的未标记点个数”的收益，求最大收益</p>
 <p>$3\le n\le15000$</p>
 <h3 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h3><p>流汗黄豆。</p>
 <p>找到环后直接在环上区间 dp，复杂度 $O(n^2)$，能过。</p>
-<h2 id="11-CF1201E-Knightmare-easy-hard-Euclid"><a href="#11-CF1201E-Knightmare-easy-hard-Euclid" class="headerlink" title="11.  CF1201E - Knightmare (easy&#x2F;hard) [Euclid]"></a>11.  CF1201E - Knightmare (easy&#x2F;hard) [Euclid]</h2><h3 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h3><p>交互题。</p>
+<h2 id="11-CF1201E-Knightmare-easy-hard-Euclid"><a href="#11-CF1201E-Knightmare-easy-hard-Euclid" class="headerlink" title="11.  CF1201E - Knightmare (easy/hard) [Euclid]"></a>11.  CF1201E - Knightmare (easy/hard) [Euclid]</h2><h3 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h3><p>交互题。</p>
 <p>$n\times m(2|n,2|m)$ 的国际象棋棋盘上 $(x_1,y_1)$ 有一只白马，$(x_2,y_2)$ 有一只黑马，白马先走，游戏轮流进行，每次每人走一步，白马的目标点是 $(\frac n2,\frac m2)$，黑马的目标点是 $(\frac n2+1,\frac m2)$，如果一只马到了目标点并且另一只马一步之内杀不掉它，那么它就赢了，同时如果一个马被杀掉了，那么活着的那只马就赢了，如果经过 $350$ 步仍无法分出胜负那么平局</p>
 <p>交互库邀请你和她一起玩这个游戏，由于交互库很有礼貌，所以她让你选择你要用哪只马，你想获胜。</p>
 <p>$1\le n\le1000$</p>
@@ -422,19 +422,19 @@
 <li>否则，选黑马，按最短路线往 $tB$ 走，白马不会追上你。</li>
 </ol>
 <p>这样不会超过 $350$ 步，可以通过此题</p>
-<h2 id="12-CF1158D-Winding-polygonal-line-Euclid"><a href="#12-CF1158D-Winding-polygonal-line-Euclid" class="headerlink" title="12.  CF1158D - Winding polygonal line [Euclid]"></a>12.  CF1158D - Winding polygonal line [Euclid]</h2><h3 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h3><p>有 $n$ 个点，你要连一条不自交的折线经过这里的所有点（且只能以这些点为起点&#x2F;终点&#x2F;拐点），这条折线上会有 $n-2$ 次转向，给出长为 $n-2$ 的字符串 $s$，由 <code>L</code> 和 <code>R</code> 组成，表明第 $i$ 次转向是左转还是右转，要求构造一条符合要求的折线。</p>
+<h2 id="12-CF1158D-Winding-polygonal-line-Euclid"><a href="#12-CF1158D-Winding-polygonal-line-Euclid" class="headerlink" title="12.  CF1158D - Winding polygonal line [Euclid]"></a>12.  CF1158D - Winding polygonal line [Euclid]</h2><h3 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h3><p>有 $n$ 个点，你要连一条不自交的折线经过这里的所有点（且只能以这些点为起点/终点/拐点），这条折线上会有 $n-2$ 次转向，给出长为 $n-2$ 的字符串 $s$，由 <code>L</code> 和 <code>R</code> 组成，表明第 $i$ 次转向是左转还是右转，要求构造一条符合要求的折线。</p>
 <p>$1\le n\le2000$</p>
 <h3 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h3><p>我们称构造出的答案为 $p_1,p_2,\cdots,p_n$</p>
 <p>构造策略如下：</p>
-<p>首先考虑前两个点，我们钦定 $p_1$ 为 $y$ 坐标最小的点，将，然后如果 $s_1&#x3D;L$，我们钦定剩余点极角排序后半圆内，最靠逆时针方向的点为 $p_2$，否则我们钦定最靠顺时针方向的点为 $p_2$</p>
+<p>首先考虑前两个点，我们钦定 $p_1$ 为 $y$ 坐标最小的点，将，然后如果 $s_1=L$，我们钦定剩余点极角排序后半圆内，最靠逆时针方向的点为 $p_2$，否则我们钦定最靠顺时针方向的点为 $p_2$</p>
 <p>然后对于 $s_i(1\le i\le n-2)$（我们现在已 $p_i,p_{i+1}$，求 $p_{i+2}$），分四种情况讨论：</p>
 <ol>
-<li>$s_i&#x3D;L,s_i&#x3D;s_{i+1}$，以 $p_{i+1}$ 为中心极角排序，取 $p_{i+2}$ 为 $\overrightarrow{p_ip_{i+1}}$ 这条射线的<strong>顺</strong>时针半平面中的最靠<strong>逆</strong>时针的点</li>
-<li>$s_i&#x3D;L,s_i\neq s_{i+1}$，以 $p_{i+1}$ 为中心极角排序，取 $p_{i+2}$ 为 $\overrightarrow{p_ip_{i+1}}$ 这条射线的<strong>顺</strong>时针半平面中的最靠<strong>顺</strong>时针的点</li>
-<li>$s_i&#x3D;R,s_i&#x3D;s_{i+1}$，以 $p_{i+1}$ 为中心极角排序，取 $p_{i+2}$ 为 $\overrightarrow{p_ip_{i+1}}$ 这条射线的<strong>逆</strong>时针半平面中的最靠<strong>顺</strong>时针的点</li>
-<li>$s_i&#x3D;R,s_i\neq s_{i+1}$，以 $p_{i+1}$ 为中心极角排序，取 $p_{i+2}$ 为 $\overrightarrow{p_ip_{i+1}}$ 这条射线的<strong>逆</strong>时针半平面中的最靠<strong>逆</strong>时针的点</li>
+<li>$s_i=L,s_i=s_{i+1}$，以 $p_{i+1}$ 为中心极角排序，取 $p_{i+2}$ 为 $\overrightarrow{p_ip_{i+1}}$ 这条射线的<strong>顺</strong>时针半平面中的最靠<strong>逆</strong>时针的点</li>
+<li>$s_i=L,s_i\neq s_{i+1}$，以 $p_{i+1}$ 为中心极角排序，取 $p_{i+2}$ 为 $\overrightarrow{p_ip_{i+1}}$ 这条射线的<strong>顺</strong>时针半平面中的最靠<strong>顺</strong>时针的点</li>
+<li>$s_i=R,s_i=s_{i+1}$，以 $p_{i+1}$ 为中心极角排序，取 $p_{i+2}$ 为 $\overrightarrow{p_ip_{i+1}}$ 这条射线的<strong>逆</strong>时针半平面中的最靠<strong>顺</strong>时针的点</li>
+<li>$s_i=R,s_i\neq s_{i+1}$，以 $p_{i+1}$ 为中心极角排序，取 $p_{i+2}$ 为 $\overrightarrow{p_ip_{i+1}}$ 这条射线的<strong>逆</strong>时针半平面中的最靠<strong>逆</strong>时针的点</li>
 </ol>
-<p>昂，就这样，是不是看起来很对呢&#x2F;cy <del>我也不知道为啥对</del></p>
+<p>昂，就这样，是不是看起来很对呢/cy <del>我也不知道为啥对</del></p>
 <h2 id="13-CF1140F-Extending-Set-of-Points-Euclid"><a href="#13-CF1140F-Extending-Set-of-Points-Euclid" class="headerlink" title="13.  CF1140F - Extending Set of Points [Euclid]"></a>13.  CF1140F - Extending Set of Points [Euclid]</h2><h3 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h3><p>对于一个平面直角坐标系内的点集 $S$，我们定义运算 $f(S)$ 为：如果存在一个点 $(a,b)\notin S$ 且存在 $x,y$ 使 $(x,b)\in S,(x,y)\in S,(a,y)\in S$，那么我们将 $(a,b)$ 加入 $S$，如此往复，直到不能加点为止，此时的 $S$ 为运算的结果</p>
 <p>现在有一个点集 $T$，初始为空，有 $q$ 次操作，每次加入或删除一个点，每次操作后求 $|f(S)|$</p>
 <p>$1\le q,x_i,y_i\le3\times10^5$</p>
@@ -453,12 +453,12 @@
 <h3 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h3><p>乍一看是道 dp 题，没想到是个线代题。</p>
 <p>考虑矩阵的秩等于非零子式的最高阶数，出于某些原因，我们只用考虑关于左上-右下对角线对称的子式<del>（editorial 也没给证明我能怎么办）</del></p>
 <p>考虑这样的子式一定对应着原图的一个导出子图，那么这样的子式也是一个森林</p>
-<p>考虑一个矩阵的行列式为 $\sum_{\pi}(-1)^{sgn(\pi)}\prod_{i&#x3D;1}^n A_{i,\pi_i}$，对于一个排列 $\pi$，它的贡献非零当且仅当 $A_{i,\pi_i}$ 均为 $1$，这意味着 $i\rightarrow \pi_i$ 这些边在这个子图中均存在，会形成若干个环，但是森林里没有环，因此只能全是一条边的两个端点形成的环，而这就是原图的一个完美匹配，只有完美匹配的排列才会对行列式做出贡献，所以行列式非零的子图一定有完美匹配。</p>
+<p>考虑一个矩阵的行列式为 $\sum_{\pi}(-1)^{sgn(\pi)}\prod_{i=1}^n A_{i,\pi_i}$，对于一个排列 $\pi$，它的贡献非零当且仅当 $A_{i,\pi_i}$ 均为 $1$，这意味着 $i\rightarrow \pi_i$ 这些边在这个子图中均存在，会形成若干个环，但是森林里没有环，因此只能全是一条边的两个端点形成的环，而这就是原图的一个完美匹配，只有完美匹配的排列才会对行列式做出贡献，所以行列式非零的子图一定有完美匹配。</p>
 <p>又因森林的完美匹配唯一，所以如果有完美匹配一定恰好有一个排列对行列式做出贡献，所以如果有完美匹配那么一定行列式非零</p>
 <p>因此我们要找到最大的行列式非零的子式，相当于找到最大的有完美匹配的子图，相当于找到原图的最大匹配</p>
 <p><strong>因此秩的大小等于最大匹配边数的$\times2$</strong></p>
 <p>那么我们需要求出最大匹配数的期望，我们令 $f_u$ 表示只考虑 $u$ 子树内的边，$u$ 与儿子匹配的概率</p>
-<p>我们以“能往下匹配就往下匹配”的方式来最大匹配，那么 $u$ 不与儿子匹配的情况当且仅当儿子都已经匹配或边断掉，由此我们可以得到转移式 $f_u&#x3D;1-\prod (\frac12f_v+\frac12)$</p>
+<p>我们以“能往下匹配就往下匹配”的方式来最大匹配，那么 $u$ 不与儿子匹配的情况当且仅当儿子都已经匹配或边断掉，由此我们可以得到转移式 $f_u=1-\prod (\frac12f_v+\frac12)$</p>
 <p>复杂度 $O(n)$</p>
 <h2 id="16-CF1060F-Shrinking-Tree-Keter"><a href="#16-CF1060F-Shrinking-Tree-Keter" class="headerlink" title="16.  CF1060F - Shrinking Tree [Keter]"></a>16.  CF1060F - Shrinking Tree [Keter]</h2><h3 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h3><p>给定一棵 $n$ 个点的树，$n-1$ 次操作，每次操作随机选一条边 $(u,v)$，将 $u,v$ 所连的所有其他点连到一个新点上，并将 $u,v$ 删除，这个新点的编号在 $u,v$ 中随机选</p>
 <p>对于每个 $i$，求 $i$ 这个编号留到最后的概率</p>
@@ -473,7 +473,7 @@
 </ol>
 <p>接下来考虑如何合并这棵树与 $u$ 已经计算的子树，设我们合并完的状态为 $h_i$，那么我们枚举最后 $a+b$ 次操作内有 $a$ 个在已经计算的子树内，有 $b$ 个在新子树内，那么转移式为：$h_{a+b}\leftarrow f_{u,a}g_b\frac{\binom{a+b}a\binom{siz_u-a+siz_v-b}{siz_u-a}}{\binom{siz_u+siz_v}{siz_u}}$</p>
 <p>复杂度 $O(n^4)$</p>
-<h2 id="17-CF1033F-Boolean-Computer-Safe"><a href="#17-CF1033F-Boolean-Computer-Safe" class="headerlink" title="17.  CF1033F - Boolean Computer [Safe]"></a>17.  CF1033F - Boolean Computer [Safe]</h2><h3 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h3><p>有 $n$ 个 $w$ 位的二进制数 $a_1,a_2,\cdots,a_n$，有 $m$ 次询问，每次给出一个位运算函数 $f$，用一个长为 $w$ 的由 <code>A</code>，<code>O</code>，<code>X</code>，<code>a</code>，<code>o</code>，<code>x</code> 组成的字符串表示，分别表示两个数从高到低的第 $i$ 位进行 <code>AND</code>，<code>OR</code>，<code>XOR</code>，<code>NAND</code>，<code>NOR</code>，<code>NXOR</code> 操作，求有多少有序对 $(i,j)$ 满足 $f(a_i,a_j)&#x3D;0$</p>
+<h2 id="17-CF1033F-Boolean-Computer-Safe"><a href="#17-CF1033F-Boolean-Computer-Safe" class="headerlink" title="17.  CF1033F - Boolean Computer [Safe]"></a>17.  CF1033F - Boolean Computer [Safe]</h2><h3 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h3><p>有 $n$ 个 $w$ 位的二进制数 $a_1,a_2,\cdots,a_n$，有 $m$ 次询问，每次给出一个位运算函数 $f$，用一个长为 $w$ 的由 <code>A</code>，<code>O</code>，<code>X</code>，<code>a</code>，<code>o</code>，<code>x</code> 组成的字符串表示，分别表示两个数从高到低的第 $i$ 位进行 <code>AND</code>，<code>OR</code>，<code>XOR</code>，<code>NAND</code>，<code>NOR</code>，<code>NXOR</code> 操作，求有多少有序对 $(i,j)$ 满足 $f(a_i,a_j)=0$</p>
 <p>$1\le w\le12,1\le n\le3\times10^4,1\le m\le5\times10^4$</p>
 <h3 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h3><p>考虑枚举其中的一个操作数，另一个操作数的每一位就只有 0，1，任意 三种情况，那么我们可以用 $O(w3^w)$ 的复杂度预处理出这部分的答案，这样的总复杂度是 $O(w3^w+mw2^w)$，无法通过</p>
 <p>考虑我们枚举操作时从 $0$ 到 $2^w-1$，二进制位改变的次数是 $O(2^w)$ 量级的，所以我们计算 $i$ 时可以继承 $i-1$ 的信息，然后修改与 $i$ 不同的位，这样我们把复杂度降到了 $O(w3^w+m2^w)$</p>
@@ -486,10 +486,10 @@
 <h3 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h3><p>不懂为啥这题还 *2800</p>
 <p>直接无脑扫描线，用 set 维护当前的连续段</p>
 <p>复杂度 $O(n\log n)$</p>
-<h2 id="20-CF938F-Erasing-Substrings-Keter"><a href="#20-CF938F-Erasing-Substrings-Keter" class="headerlink" title="20.  CF938F - Erasing Substrings [Keter]"></a>20.  CF938F - Erasing Substrings [Keter]</h2><h3 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h3><p>给定一个长为 $n$ 的串，令 $k&#x3D;\lfloor\log_2n\rfloor$，你要进行 $k$ 次操作，第 $i$ 次删除一个长为 $2^{i-1}$ 的子串，求最后剩下的串字典序最小的可能</p>
+<h2 id="20-CF938F-Erasing-Substrings-Keter"><a href="#20-CF938F-Erasing-Substrings-Keter" class="headerlink" title="20.  CF938F - Erasing Substrings [Keter]"></a>20.  CF938F - Erasing Substrings [Keter]</h2><h3 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h3><p>给定一个长为 $n$ 的串，令 $k=\lfloor\log_2n\rfloor$，你要进行 $k$ 次操作，第 $i$ 次删除一个长为 $2^{i-1}$ 的子串，求最后剩下的串字典序最小的可能</p>
 <p>$1\le n\le5000$</p>
-<h3 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h3><p>不难，但是我没做出来。降智了&#x2F;cy</p>
-<p>令 $dp_{i,S}$ 表示前 $i$ 位，使用了 $S$ 集合中的操作，是否可能成为最小值，每次转移时我们先对每个为真的 $dp_{i,S}$ 将 $dp_{i+1,S}$ 赋为真，然后 $j&#x3D;{0\rightarrow 2^n-1}$，如果 $dp_{i+1,j}$ 为真那么将 $dp_{i+1,j\cup{x}}(x\notin j)$ 赋为真，最后再检查有哪些是最小值</p>
+<h3 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h3><p>不难，但是我没做出来。降智了/cy</p>
+<p>令 $dp_{i,S}$ 表示前 $i$ 位，使用了 $S$ 集合中的操作，是否可能成为最小值，每次转移时我们先对每个为真的 $dp_{i,S}$ 将 $dp_{i+1,S}$ 赋为真，然后 $j={0\rightarrow 2^n-1}$，如果 $dp_{i+1,j}$ 为真那么将 $dp_{i+1,j\cup\{x\}}(x\notin j)$ 赋为真，最后再检查有哪些是最小值</p>
 <p>复杂度 $O(n^2\log n)$ </p>
 
 		</div>
@@ -900,6 +900,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

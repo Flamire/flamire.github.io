@@ -37,15 +37,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            task7 | Wonderhoy!
+            task7 | Flamiblog
         
     </title>
 
@@ -132,7 +132,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -242,7 +242,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -292,25 +292,23 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>[TOC]</p>
 <span id="more"></span>
-
 <hr>
 <h3 id="1-JOISC2021-IOI-热病-E"><a href="#1-JOISC2021-IOI-热病-E" class="headerlink" title="1.  JOISC2021 - IOI 热病 [E]"></a>1.  JOISC2021 - IOI 热病 [E]</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人，$0$ 时刻第 $i$ 个人在 $(x_i,y_i)$，每个人会选择一个上下左右中的一个方向，并沿这个方向一直以 $1$ 的速度运动</p>
 <p>$0$ 时刻，第 $1$ 个人感染了 IOI 热病，接下来的任意时刻，如果有两个人处于同一坐标，且存在一个人感染了 IOI 热病，那么另一个人也会被感染，并且不存在被感染的人治愈的情况</p>
 <p>求最后最多有多少人被感染</p>
 <p>$1\le n\le10^5,1\le x_i,y_i\le5\times10^8$，$(x_i,y_i)$ 互不相同</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><img  
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://img2020.cnblogs.com/blog/1394345/202106/1394345-20210630225906538-591600554.png"
                       alt="img" style="zoom:67%;" 
-                >
-
+                ></p>
 <p>当确定第一个人 S 向上后，讨论一下就可以发现其他人的方向都是确定的，因此我们现在要解决的就是给定所有人的方向，求感染人数，将这个旋转做 4 遍就可以得到原题答案</p>
 <p>考虑这是一个最短路的过程，我们需要求出每个人最早被感染的时刻</p>
-<p>考察从 $P$ 出发的转移的形态（以 $P$ 向上为例），那么会涉及经过 $P$ 的斜率为 $-1,\infty,1$ 的直线的某个前缀&#x2F;后缀，且对于每种斜率都有一个固定的方向</p>
+<p>考察从 $P$ 出发的转移的形态（以 $P$ 向上为例），那么会涉及经过 $P$ 的斜率为 $-1,\infty,1$ 的直线的某个前缀/后缀，且对于每种斜率都有一个固定的方向</p>
 <p>直接用线段树维护是非常愚蠢的，所以我们考虑如下做法：</p>
 <p>Dijkstra 每次只需要求出距离最小值，而我们从 $P$ 向外转移时，可能成为次近点的只有可能是每条直线上最近的点，那么我们可以只插入这三个点，并且弹出一个点时将下一个点加入</p>
-<p>具体地，我们 Dijkstra 的堆中每个点是一个四元组 $(v,dis,k,0&#x2F;1)$，表示点 $v$，更新的距离为 $dis$，并且下一个次近点的方向的斜率是 $k$，$0&#x2F;1$ 表示我们下一个次近点在正方向还是负方向</p>
+<p>具体地，我们 Dijkstra 的堆中每个点是一个四元组 $(v,dis,k,0/1)$，表示点 $v$，更新的距离为 $dis$，并且下一个次近点的方向的斜率是 $k$，$0/1$ 表示我们下一个次近点在正方向还是负方向</p>
 <p>那么我们每个点只会加入 $O(1)$ 个新点，总复杂度 $O(n\log n)$，但是常数巨大（说不定是我写丑了）</p>
 <p>非常难写。</p>
 <hr>
@@ -321,20 +319,20 @@
 <p>结论：对于任意一个数列，所有可构造的 A 的个数组成一个区间</p>
 <p>证明：</p>
 <p>我们证明，如果存在两种决策 $s,t$，那么 A 的个数在 $s$ 与 $t$ 的 A 的个数之间的都是可构造的</p>
-<p>首先，如果 $s$ 与 $t$ 有相同选择 $s_i&#x3D;t_i$，那么我们可以从 $i$ 分成左右两部分，归纳说明</p>
+<p>首先，如果 $s$ 与 $t$ 有相同选择 $s_i=t_i$，那么我们可以从 $i$ 分成左右两部分，归纳说明</p>
 <p>那么我们现在只需要说明 $s,t$ 没有相同选择的情况，称 $s$ 中的决策为 <code>C</code>，$t$ 中的决策为 <code>D</code></p>
 <p>我们说明如下事情：我们可以每次改变 $s$ 中的一个选择，将 $s$ 变为 $t$，且经过的所有决策均为合法决策，容易发现这与原命题等价</p>
 <p>考虑将 $s_1$ 替换为 <code>D</code>，不合法的条件是 $D_1&gt;C_2$</p>
-<p>在此条件下，我们尝试将 $s_2$ 替换为 <code>D</code>，不合法的条件是 $D_2&lt;C_1$ 或 $D_2&gt;C_3$，但由于 $D_1&lt;C_2$，所以只可能 $D_2&gt;C_3$</p>
-<p>由此可得对任意 $i$，$D_i&lt;C_{i+1}$，那么也即 $D_{n-1}&gt;C_n$，那么可以将 $s_n$ 替换为 <code>D</code></p>
+<p>在此条件下，我们尝试将 $s_2$ 替换为 <code>D</code>，不合法的条件是 $D_2<C_1$ 或 $D_2>C_3$，但由于 $D_1<C_2$，所以只可能 $D_2>C_3$</p>
+<p>由此可得对任意 $i$，$D_i<C_{i+1}$，那么也即 $D_{n-1}>C_n$，那么可以将 $s_n$ 替换为 <code>D</code></p>
 <p>因此得证。</p>
-<p>那么有了这个，我们直接转移每个前缀最少&#x2F;最多用几个 <code>A</code> 即可，复杂度 $O(n)$</p>
+<p>那么有了这个，我们直接转移每个前缀最少/最多用几个 <code>A</code> 即可，复杂度 $O(n)$</p>
 <hr>
-<h3 id="3-JOISC2021-汉堡肉-K-✔️"><a href="#3-JOISC2021-汉堡肉-K-✔️" class="headerlink" title="3.  JOISC2021 - 汉堡肉 [K] ✔️"></a>3.  JOISC2021 - 汉堡肉 [K] ✔️</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个二维平面上的矩形，你需要给出一个可重点集 $S$ 满足 $|S|&#x3D;k$ 且每个矩形至少包含一个 $S$ 中的点</p>
+<h3 id="3-JOISC2021-汉堡肉-K-✔️"><a href="#3-JOISC2021-汉堡肉-K-✔️" class="headerlink" title="3.  JOISC2021 - 汉堡肉 [K] ✔️"></a>3.  JOISC2021 - 汉堡肉 [K] ✔️</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个二维平面上的矩形，你需要给出一个可重点集 $S$ 满足 $|S|=k$ 且每个矩形至少包含一个 $S$ 中的点</p>
 <p>$1\le n\le2\times10^5,1\le k\le4$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>考虑最左的右边界 $r_\min$，如果一个点在 $r_\min$ 左边，那么一定调整到 $r_\min$ 上一定不劣，而至少有一个点在 $r_\min$ 上，否则会有矩形无法被覆盖，类似地求出 $l_\max,u_\min,d_\min$</p>
 <p>对于 $k\le 3$，四条直线上都至少有一个点，所以一定有一个点在交点上，那么枚举这个交点是哪一个，就可以转化为 $k-1$ 的问题，那么复杂度就是 $O(4^kn)$</p>
-<p>对于 $k&#x3D;4$，我们需要处理的情况就是四个点分别在四条直线上，考虑每个矩形：</p>
+<p>对于 $k=4$，我们需要处理的情况就是四个点分别在四条直线上，考虑每个矩形：</p>
 <ul>
 <li>经过了 $\ge3$ 条直线，那么一定完全经过某条直线，可以直接忽略</li>
 <li>经过了 $0$ 条直线，说明这种情况不合法</li>
@@ -453,7 +451,9 @@
 <p>对于一个基环树考虑。</p>
 <p>我们选择一个环上的基准点 $S$，那么对于每个苹果，它一定会经过 $S$，那么我们拆成经过 $S$ 前和经过 $S$ 后</p>
 <p>经过 $S$ 前推一下式子就可以发现是求子树内小于等于某数的数的个数，这个可以用喜欢的数据结构维护。</p>
-<p>经过 $S$ 后，我们可以将所有苹果第一次到达 $S$ 的时间 $t_i$ 排序，那么每次询问 $(k,T)$ 就相当于求：<br>$$<br>\sum_{t_i\le T-w_k}\left\lfloor\frac{T-w_k-t_i}{W}\right\rfloor+1<br>$$<br>其中 $W$ 是环长，$w_k$ 是从 $S$ 到达 $k$ 的时间，都是与 $i$ 无关的常量</p>
+<p>经过 $S$ 后，我们可以将所有苹果第一次到达 $S$ 的时间 $t_i$ 排序，那么每次询问 $(k,T)$ 就相当于求：</p>
+<script type="math/tex; mode=display">
+\sum_{t_i\le T-w_k}\left\lfloor\frac{T-w_k-t_i}{W}\right\rfloor+1</script><p>其中 $W$ 是环长，$w_k$ 是从 $S$ 到达 $k$ 的时间，都是与 $i$ 无关的常量</p>
 <p>这个下取整很讨厌，我们想办法把它干掉。</p>
 <p>我们按 $t_i$ 从小到达加入，并且从小到达考虑所有询问 $T$，那么我们可以将所有 $t_i$ 变成 $t_i\bmod W$，进行一个“基准化”，这样查询的时候可以关于余数讨论一下，而多算的数对于每个都是一定的</p>
 <p>那么我们现在只要维护加入一个 $t_i\bmod W$，求小于等于某数的个数，这个也可以用喜欢的数据结构维护。</p>
@@ -469,12 +469,12 @@
 <p>每天早上，如果第 $i$ 个人染病，那么当天中午 $i-1$ 和 $i+1$ 会被传染</p>
 <p>你需要选择一些治疗方案使得最后所有人均被治愈，求最小代价和或判断无解</p>
 <p>$1\le n,t_i,c_i\le10^9,1\le m\le10^5$</p>
-<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><p>以时间为 $x$ 坐标，人的编号为 $y$ 坐标，那么每个治疗方案都是一条竖直的线段，而我们需要从 $x&#x3D;0$ 走一条斜率为 $-1&#x2F;0&#x2F;-1$ 的折线不经过任意一条线段走到 $x&#x3D;+\infty$（这里可能需要把每个线段两端各增长 $0.5$）</p>
+<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><p>以时间为 $x$ 坐标，人的编号为 $y$ 坐标，那么每个治疗方案都是一条竖直的线段，而我们需要从 $x=0$ 走一条斜率为 $-1/0/-1$ 的折线不经过任意一条线段走到 $x=+\infty$（这里可能需要把每个线段两端各增长 $0.5$）</p>
 <p>一个经典思路是转化成下底到上底的最短路</p>
-<p>观察一下性质，每个线段 ban 掉的位置是一个 45° 倾斜的正方形（对于端点在 $y&#x3D;1$ 和 $y&#x3D;n$ 就是一个直角三角形）</p>
+<p>观察一下性质，每个线段 ban 掉的位置是一个 45° 倾斜的正方形（对于端点在 $y=1$ 和 $y=n$ 就是一个直角三角形）</p>
 <p>我们第一步的 ban 掉的区域一定是从一个直角三角形开始，不断合并进来一个联通的正方形，直到 ban 掉的区域与上底联通为止</p>
-<p>注意到由于我们的斜率只能是 $-1&#x2F;0&#x2F;-1$，画一下图可以发现我们任意时刻有用的 ban 区域一定是一个直角三角形（如果我们加入出了两个直角三角形的并，那么之后扩展一定是用的新加入的那个，要不然这步操作将毫无意义）</p>
-<p>将直角三角形转化为 $y&#x3D;1$ 上的区间，那么每个治疗方案相当于：如果当前区间包含 $[l_1,r_1]$，可以花费 $c$ 的代价将其变为 $[l_2,r_2]$</p>
+<p>注意到由于我们的斜率只能是 $-1/0/-1$，画一下图可以发现我们任意时刻有用的 ban 区域一定是一个直角三角形（如果我们加入出了两个直角三角形的并，那么之后扩展一定是用的新加入的那个，要不然这步操作将毫无意义）</p>
+<p>将直角三角形转化为 $y=1$ 上的区间，那么每个治疗方案相当于：如果当前区间包含 $[l_1,r_1]$，可以花费 $c$ 的代价将其变为 $[l_2,r_2]$</p>
 <p>容易发现这是一个二维偏序，可以直接主席树优化建图，复杂度 $O(m\log^2 m)$</p>
 <p>但是有高明做法。</p>
 <p>考虑把点权放在每个点的出边上统计，那么现在每个点的出边权值均相同，这样的图的 dijkstra 可以使用数据结构模拟转移</p>
@@ -518,7 +518,10 @@
 <p>你在任意时刻不能闲着，求最大得分</p>
 <p>$1\le n,m\le10^6$</p>
 <h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><p>首先对 $A$ 和 $B$ 取前缀和。</p>
-<p>令 $f_{i,j}$ 表示两道菜分别完成了 $i&#x2F;j$ 道工序，最大得分，那么有如下两种转移：<br>$$<br>f_{i,j}\leftarrow f_{i-1,j}+[A_i+B_j\le S_i]P_i\<br>f_{i,j}\leftarrow f_{i,j-1}+[A_i+B_j\le T_j]Q_j\<br>$$<br>容易发现 $A_i+B_j\le S_i$ 对于特定 $i$，满足条件的 $j$ 是一个前缀，且 $A_i+B_j\le T_j$ 对于特定 $j$，满足条件的 $i$ 是一个前缀</p>
+<p>令 $f_{i,j}$ 表示两道菜分别完成了 $i/j$ 道工序，最大得分，那么有如下两种转移：</p>
+<script type="math/tex; mode=display">
+f_{i,j}\leftarrow f_{i-1,j}+[A_i+B_j\le S_i]P_i\\
+f_{i,j}\leftarrow f_{i,j-1}+[A_i+B_j\le T_j]Q_j\\</script><p>容易发现 $A_i+B_j\le S_i$ 对于特定 $i$，满足条件的 $j$ 是一个前缀，且 $A_i+B_j\le T_j$ 对于特定 $j$，满足条件的 $i$ 是一个前缀</p>
 <p>我们枚举 $j$ 从小到大，考虑如何快速维护 $i$ 的转移</p>
 <p>每次 $j$ 改变，我们需要先将一个前缀加上 $Q_j$，然后执行 $f_i\leftarrow f_{i-1}+w_i$，其中 $w_i$ 是 $P_i$ 或 $0$</p>
 <p>这启发我们维护差分，那么第一步就是单点修改，考虑如何处理第二步</p>
@@ -529,7 +532,7 @@
 <p>那么我们每次把所有 $w$ 或 $d$ 变化涉及的位置全部断开重新暴力合并，复杂度就是 $O((n+m)\log m)$ 的</p>
 <hr>
 <h3 id="15-JOISC2019-选定城市-E"><a href="#15-JOISC2019-选定城市-E" class="headerlink" title="15.  JOISC2019 - 选定城市 [E]"></a>15.  JOISC2019 - 选定城市 [E]</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，每条边均为双向，两个方向各有一个权值</p>
-<p>$q$ 次询问，每次询问给定一个参数 $k$，你需要选择点集 $S$ 使得 $|S|&#x3D;k$ 且满足如下条件的边 $(u\rightarrow v,w)$ 的权值之和最小：</p>
+<p>$q$ 次询问，每次询问给定一个参数 $k$，你需要选择点集 $S$ 使得 $|S|=k$ 且满足如下条件的边 $(u\rightarrow v,w)$ 的权值之和最小：</p>
 <ul>
 <li>将 $u,v$ 之间的两条边删去后，包含 $v$ 的联通块不包含任意一个 $S$ 中的点</li>
 </ul>
@@ -540,17 +543,17 @@
 <p>那么直接套点分治，复杂度 $O(n\log^2n)$</p>
 <h5 id="做法-2-1"><a href="#做法-2-1" class="headerlink" title="做法 2"></a>做法 2</h5><p>事实上，可以证明当 $k\ge2$ 时 $k+1$ 的最优解是可以通过 $k$ 的最优解构造的</p>
 <p>证明没什么意思，所以不放了。</p>
-<p>那么我们直接找出 $k&#x3D;2$ 的最优解，然后以其中任意一个点开始长链剖分贪心即可</p>
-<p>$k&#x3D;1$ 是 trivial 的</p>
+<p>那么我们直接找出 $k=2$ 的最优解，然后以其中任意一个点开始长链剖分贪心即可</p>
+<p>$k=1$ 是 trivial 的</p>
 <p>复杂度 $O(n\log n)$</p>
 <hr>
-<h3 id="16-JOISC2019-开关游戏-S"><a href="#16-JOISC2019-开关游戏-S" class="headerlink" title="16.  JOISC2019 - 开关游戏 [S]"></a>16.  JOISC2019 - 开关游戏 [S]</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的 01 串 $s,t$，你每次可以选择 $s$ 的一个连续子串，将其全赋为 0&#x2F;1 或将其取反</p>
+<h3 id="16-JOISC2019-开关游戏-S"><a href="#16-JOISC2019-开关游戏-S" class="headerlink" title="16.  JOISC2019 - 开关游戏 [S]"></a>16.  JOISC2019 - 开关游戏 [S]</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的 01 串 $s,t$，你每次可以选择 $s$ 的一个连续子串，将其全赋为 0/1 或将其取反</p>
 <p>求将 $s$ 变为 $t$ 的最小步数</p>
 <p>$1\le n\le10^6$ </p>
 <h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><p>注意到一定存在一种最优方式使得我们先做所有赋值操作，再做取反操作</p>
 <p>而取反操作部分的最少次数是差分为 1 的位置个数除以 2，那么我们需要合理使用赋值操作来让这个值变小</p>
 <p>另一件事情是我们的赋值操作一定不会重合，那么我们就可以 dp 了</p>
-<p>令 $f_{i,0&#x2F;1}$ 表示前 $i$ 个数，赋值操作完后 $s_i$ 是 $0&#x2F;1$，$\frac12\text{差分为 1 个数}+\text{赋值次数}$ 的最小值</p>
+<p>令 $f_{i,0/1}$ 表示前 $i$ 个数，赋值操作完后 $s_i$ 是 $0/1$，$\frac12\text{差分为 1 个数}+\text{赋值次数}$ 的最小值</p>
 <p>列出式子后前缀 min 优化 dp 即可</p>
 <p>复杂度 $O(n)$</p>
 <hr>
@@ -568,7 +571,9 @@
 <p>分类讨论一下，可以发现一段连续区间的边合并起来的分段函数也是 3 段的，那么直接用线段树暴力维护即可</p>
 <p>复杂度 $O(n\log n)$</p>
 <hr>
-<h3 id="18-JOISC2019-蛋糕拼接-3-S"><a href="#18-JOISC2019-蛋糕拼接-3-S" class="headerlink" title="18.  JOISC2019 - 蛋糕拼接 3 [S]"></a>18.  JOISC2019 - 蛋糕拼接 3 [S]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个二元组 $(v_i,c_i)$，你需要从中选出 $m$ 个并任意重排成 $(V_1,C_1),(V_2,C_2),\cdots,(V_k,C_k)$，使得下式最大：<br>$$<br>\sum_{i&#x3D;1}^mV_i+\sum_{i&#x3D;1}^m|C_{i+1}-C_i|<br>$$<br>这里认为 $C_{m+1}&#x3D;C_1$</p>
+<h3 id="18-JOISC2019-蛋糕拼接-3-S"><a href="#18-JOISC2019-蛋糕拼接-3-S" class="headerlink" title="18.  JOISC2019 - 蛋糕拼接 3 [S]"></a>18.  JOISC2019 - 蛋糕拼接 3 [S]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个二元组 $(v_i,c_i)$，你需要从中选出 $m$ 个并任意重排成 $(V_1,C_1),(V_2,C_2),\cdots,(V_k,C_k)$，使得下式最大：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^mV_i+\sum_{i=1}^m|C_{i+1}-C_i|</script><p>这里认为 $C_{m+1}=C_1$</p>
 <p>求最大值</p>
 <p>$3\le m\le n\le2\times10^5$</p>
 <h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><p>决策单调性模板。</p>
@@ -584,12 +589,12 @@
 <p>$1\le n\le5\times10^5$</p>
 <h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><p>首先，在某个点集虚树内部的边一定不可能是坏边，那么我们先用并查集将这个处理出来</p>
 <p>容易发现剩下的边都是坏边，那么我们现在的连通块依然是一棵树的结构，我们每次可以选择两个点，然后把这两个点之间的路径全部缩起来</p>
-<p>根据经典结论，最小操作次数是 $\lceil\text{叶子个数}&#x2F;2\rceil$</p>
+<p>根据经典结论，最小操作次数是 $\lceil\text{叶子个数}/2\rceil$</p>
 <p>复杂度 $O(n\log n)$</p>
 <hr>
 <h3 id="20-JOISC2019-矿石-K"><a href="#20-JOISC2019-矿石-K" class="headerlink" title="20.  JOISC2019 - 矿石 [K]"></a>20.  JOISC2019 - 矿石 [K]</h3><h4 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
-<p>有一个数列 $a_1,a_2,\cdots,a_{2n}$，满足对每个 $i$ 恰有一个 $i\neq j,a_i&#x3D;a_j$</p>
-<p>有一个集合 $S$，初始为空，每次询问你可以向 $S$ 中插入一个数或删除一个数，然后你会得到 ${a_x|x\in S}$ 中的不同数个数</p>
+<p>有一个数列 $a_1,a_2,\cdots,a_{2n}$，满足对每个 $i$ 恰有一个 $i\neq j,a_i=a_j$</p>
+<p>有一个集合 $S$，初始为空，每次询问你可以向 $S$ 中插入一个数或删除一个数，然后你会得到 $\{a_x|x\in S\}$ 中的不同数个数</p>
 <p>你需要在 $10^6$ 次内求出每个数与哪个数相等</p>
 <p>$1\le n\le4.3\times10^4$</p>
 <h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><p>玩原神玩的。</p>
@@ -600,7 +605,7 @@
 <p>注意到这个可以直接增量构造，每次检查 $i$ 与当前的黑集合是否有边，有边则染白，否则染黑</p>
 <p>那么至此我们就得到了一个 $O(n\log n)$ 次询问的算法</p>
 <p>之后就是若干没有营养的卡常，这里只说其中的一种</p>
-<p>注意到我们的分治操作次数满足 $F(n)&#x3D;F(m)+F(n-m)+(n-m)+n$</p>
+<p>注意到我们的分治操作次数满足 $F(n)=F(m)+F(n-m)+(n-m)+n$</p>
 <p>进行一些数学讨论或者直接暴力 dp 可以得到一个常数 $C$，我们按这个比例分治左右长度就可以减小一点操作数</p>
 <hr>
 <h3 id="21-USACO22JAN-Minimizing-Haybales-S"><a href="#21-USACO22JAN-Minimizing-Haybales-S" class="headerlink" title="21.  USACO22JAN - Minimizing Haybales [S]"></a>21.  USACO22JAN - Minimizing Haybales [S]</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的序列 $h_1,h_2,\cdots,h_n$</p>
@@ -609,8 +614,8 @@
 <p>$1\le n\le10^5$</p>
 <h4 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h4><p>字典序，那么直接从开头开始贪</p>
 <p>注意到如果 $i$ 前面存在 $j$ 满足 $|h_j-h_i|&gt;k$，那么 $j$ 和 $i$ 的相对位置关系一定不会变</p>
-<p>那么我们每次就是要找到最小的 $h_i$ 使得不存在 $j&lt;i,|h_j-h_i|&gt;k$</p>
-<p>直接对每个 $i$ 维护 $j&lt;i,|h_j-h_i|&gt;k$ 的 $j$ 个数，注意到我们每次只会把一个个数为 $0$ 数换到前面并将它删除，那么每次就是对值域 $[1,h_i-k)$ 和 $(h_i+k,+\infty)$ 的区间 $-1$，可以用值域线段树维护</p>
+<p>那么我们每次就是要找到最小的 $h_i$ 使得不存在 $j<i,|h_j-h_i|>k$</p>
+<p>直接对每个 $i$ 维护 $j<i,|h_j-h_i|>k$ 的 $j$ 个数，注意到我们每次只会把一个个数为 $0$ 数换到前面并将它删除，那么每次就是对值域 $[1,h_i-k)$ 和 $(h_i+k,+\infty)$ 的区间 $-1$，可以用值域线段树维护</p>
 <p>一开始求个数可以用喜欢的数据结构实现。</p>
 <p>复杂度 $O(n\log n)$</p>
 <hr>
@@ -640,21 +645,21 @@
 <hr>
 <h3 id="24-USACO22FEB-Sleeping-in-Class-E-✔️"><a href="#24-USACO22FEB-Sleeping-in-Class-E-✔️" class="headerlink" title="24.  USACO22FEB - Sleeping in Class [E] ✔️"></a>24.  USACO22FEB - Sleeping in Class [E] ✔️</h3><h4 id="题面-23"><a href="#题面-23" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个数 $a_1,a_2,\cdots,a_n$，你可以进行两种操作：</p>
 <ul>
-<li>将 $a_i$ 拆成 $x,y$，满足 $x,y\ge0,x+y&#x3D;a_i$，在原位插入</li>
+<li>将 $a_i$ 拆成 $x,y$，满足 $x,y\ge0,x+y=a_i$，在原位插入</li>
 <li>将 $a_i,a_{i+1}$ 合并为 $a_i+a_{i+1}$，在原位插入</li>
 </ul>
 <p>$Q$ 次询问，每次给定 $q$，求最少多少次操作能将所有数都变为 $q$ 的倍数，询问之间独立</p>
 <p>$2\le n\le10^5,1\le a_i\le10^{18},1\le Q\le10^5,1\le q\le10^{18}$</p>
 <h4 id="题解-23"><a href="#题解-23" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1-2"><a href="#做法-1-2" class="headerlink" title="做法 1"></a>做法 1</h5><p>首先做一些显然的推导，最后我们要求的就是将 $a_i$ 做前缀和后有多少 $q$ 的倍数，我们可以通过这个 $O(1)$ 求出答案</p>
 <p>以下均假设 $a_i$ 是求完前缀和后的结果，<strong>那么注意到有用的 $q$ 一定整除 $a_n$</strong></p>
-<p>考虑质因数分解，那么每个数都可以被表示为 $\prod p_i^{\alpha_i}$ 的形式，一个 $a_i&#x3D;\prod p_j^{\alpha_j}$ 对答案的贡献相当于对所有满足 $\forall\alpha^\prime_j\ge\alpha_j$ 的 $q$ 的答案 $+1$，注意到这是一个高维前缀和</p>
+<p>考虑质因数分解，那么每个数都可以被表示为 $\prod p_i^{\alpha_i}$ 的形式，一个 $a_i=\prod p_j^{\alpha_j}$ 对答案的贡献相当于对所有满足 $\forall\alpha^\prime_j\ge\alpha_j$ 的 $q$ 的答案 $+1$，注意到这是一个高维前缀和</p>
 <p>那么总复杂度是 $O(d(a)\omega(a)\log d(a))$</p>
 <h5 id="做法-2-2"><a href="#做法-2-2" class="headerlink" title="做法 2"></a>做法 2</h5><p>质因数分解，考虑对每个 $q$ 直接求解</p>
-<p>设 $q&#x3D;\prod p_i^{\alpha_i}$，那么我们只需要将所有整除 $p_i^{\alpha_i}$ 的数取交即可</p>
+<p>设 $q=\prod p_i^{\alpha_i}$，那么我们只需要将所有整除 $p_i^{\alpha_i}$ 的数取交即可</p>
 <p>这个东西可以用 bitset 实现，但是这样我们一次询问需要取 $\omega(a_n)$ 次 bitset 交，这非常不好。</p>
 <p>注意到我们预处理的复杂度其实完全没有达到瓶颈，因此我们可以考虑多预处理一些东西</p>
 <p>我们将所有质因子 shuffle 一下，然后将相邻的一些质因子分为一个块，一个块内对所有 $\prod(\alpha_i+1)$ 情况全预处理出 bitset，这样每次询问只需要取 $\text{块数}$ 次 bitset 交</p>
-<p>最后我写的方式是依次查看质因子，当 $\prod(\alpha_i+1)$ 大于定值 $LIM&#x3D;250$ 时新分一个块</p>
+<p>最后我写的方式是依次查看质因子，当 $\prod(\alpha_i+1)$ 大于定值 $LIM=250$ 时新分一个块</p>
 <p>这样复杂度是 $O(nk\cdot LIM+Qk\cdot\frac{n}w)$，其中 $k$ 是块数，大概在 $4$ 左右</p>
 <h5 id="notes"><a href="#notes" class="headerlink" title="notes"></a>notes</h5><p>注意到上面两种做法都用到了质因数分解，但是 $a_i$ 的大小可达 $10^{23}$，我总共收集了三种不同的处理方式：</p>
 <ul>
@@ -663,13 +668,12 @@
 <li><p>对 $\le10^6$ 的质因子暴力分解，对 $&gt;10^6$ 的质因子特殊考虑（只会有最多三个 $&gt;10^6$ 的质因子，也就是除掉 $\le10^6$ 的质因子后只有 $8$ 种情况，直接预处理这 $8$ 种数之间的倍数关系即可）</p>
 </li>
 <li><p>“相对分解”，考虑我们本质上是对 $a_n$ 分解，$a_n$ 的质因数不会很多，并且我们用到的质因数分解性质只有唯一性，那么我们没必要分出来的因子都是质数，只要两两互质即可</p>
-<p>也就意味着我们可以直接动态维护一个因子集合 $S$，每次加入一个 $q$ 就将 $q$ 与 $S$ 中所有数取 $\gcd$，如果发现 $g&#x3D;\gcd(q,x)&gt;1$ 就将 $x&#x2F;q$ 不断除 $g$ 直到 $x&#x2F;q$ 不为 $g$ 的倍数为止，然后将此时的 $q^\prime,g$ 重新加入</p>
+<p>也就意味着我们可以直接动态维护一个因子集合 $S$，每次加入一个 $q$ 就将 $q$ 与 $S$ 中所有数取 $\gcd$，如果发现 $g=\gcd(q,x)&gt;1$ 就将 $x/q$ 不断除 $g$ 直到 $x/q$ 不为 $g$ 的倍数为止，然后将此时的 $q^\prime,g$ 重新加入</p>
 <p>复杂度不会算，大概是 $O(n\log^2a)$？</p>
 </li>
 </ul>
 <hr>
 <h3 id="25-USACO22FEB-Phone-Numbers-E"><a href="#25-USACO22FEB-Phone-Numbers-E" class="headerlink" title="25.  USACO22FEB - Phone Numbers [E]"></a>25.  USACO22FEB - Phone Numbers [E]</h3><h4 id="题面-24"><a href="#题面-24" class="headerlink" title="题面"></a>题面</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br></pre></td></tr></table></figure></div>
-
 <p>你有一个如上的数字键盘，你每次可以可以输入一个键，或者两个有公共边的键，或者一个 $2\times2$ 方格内的键</p>
 <p>但不幸的是，你的手指很大，如果你一次输入的键数 $&gt;1$，那么这些键会以随机顺序输入，你最后得到的字符串可能不是一开始想输入的字符串</p>
 <p>给定字符串 $s$，问你有多少 $t$ 满足如果想输入 $t$，存在一种输入方式使得最后可能实际输入了 $s$，答案对 $10^9+7$ 取模</p>
@@ -680,7 +684,7 @@
 <p>考虑压状态：</p>
 <p>首先如果 $dp_{i-3}$ 不为真或后面的数不是 $s[i-3:i]$ 的重排，那么 $i-3$ 显然不重要了，我们不用考虑，否则最多只有 $24\times2^3$ 种状态</p>
 <p>进一步考虑，在上面的前提下，如果 $dp_{i-2}$ 不为真或后面的数不是 $s[i-2:i+1]$ 的重排，那么 $i-2$ 也不重要了，也不用考虑，否则最多只有 $12\times2^2$ 种状态</p>
-<p>这样推下去，那么我们的状态总共有 $24\times8+12\times4+4\times2+1\times1&#x3D;249$ 种状态，可以接受</p>
+<p>这样推下去，那么我们的状态总共有 $24\times8+12\times4+4\times2+1\times1=249$ 种状态，可以接受</p>
 <p>复杂度 $O(249|s|\times10\times\text{poly}(4))$</p>
 <hr>
 <h3 id="26-USACO22OPEN-262144-Revisited-K-✨"><a href="#26-USACO22OPEN-262144-Revisited-K-✨" class="headerlink" title="26.  USACO22OPEN - 262144 Revisited [K] ✨"></a>26.  USACO22OPEN - 262144 Revisited [K] ✨</h3><h4 id="题面-25"><a href="#题面-25" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数列 $a_1,a_2,\cdots,a_n$，每次你可以选择一个 $i$，然后将 $a_i,a_{i+1}$ 合并为 $\max(a_i,a_{i+1})+1$</p>
@@ -692,8 +696,11 @@
 <p>存在一档部分分是 $a_i$ 递增，那么我们枚举每个 $r$，然后从 $r-1$ 向左合并出若干个极长的答案为 $a_r$ 的区间，那么我们就可以快速统计右端点为 $r$ 的答案，并且这个结构也是可以快速维护的，即如果 $a_r\neq a_{r+1}$ 那么我们进行一次暴力的合并，每进行一次长度一定减半，因此复杂度是对的</p>
 <p>那么我们考虑推广这个做法，我们按最右边的最大值 $a_{id}$ 分治，拆成 $[l,id-1]$ 和 $[id+1,r]$ 递归求解，并对两边分别求出 尽量向左合并 $F$ 和 尽量向右合并 $R$ 合并出来是什么样子</p>
 <p>现在我们要求所有经过 $id$ 的位置的贡献，注意到如果我们支持 $R_l$ 的随机访问，那么我们就可以枚举 $ans-a_{id}$，就可以在 $O(|F_r|\log n)$ 的复杂度内求出经过 $id$ 的答案</p>
-<p>我们可以用两个数组分别维护 $F&#x2F;R$，对每个区间分配内存，合并时我们可以暴力合并，因为这样 $F&#x2F;R$ 的长度一定减半</p>
-<p>考虑这种做法的复杂度，首先我们提出去一个 $\log$，注意到 $[id+1,r]$ 的最大值一定小于 $id$，也即会合并至少一次，那么剩下的部分就是：<br>$$<br>G(l,r)&#x3D;G(l,id-1)+\frac12G(id+1,r)\<br>F(l,r)&#x3D;F(l,id-1)+F(id+1,r)+\frac12G(id+1,r)<br>$$<br>注意到我们定义 $H(l,r)&#x3D;F(l,r)+G(l,r)$ 就可以得到 $H(l,r)&#x3D;H(l,id-1)+H(id+1,r)$，那么 $H(l,r)$ 就是 $O(n)$ 的</p>
+<p>我们可以用两个数组分别维护 $F/R$，对每个区间分配内存，合并时我们可以暴力合并，因为这样 $F/R$ 的长度一定减半</p>
+<p>考虑这种做法的复杂度，首先我们提出去一个 $\log$，注意到 $[id+1,r]$ 的最大值一定小于 $id$，也即会合并至少一次，那么剩下的部分就是：</p>
+<script type="math/tex; mode=display">
+G(l,r)=G(l,id-1)+\frac12G(id+1,r)\\
+F(l,r)=F(l,id-1)+F(id+1,r)+\frac12G(id+1,r)</script><p>注意到我们定义 $H(l,r)=F(l,r)+G(l,r)$ 就可以得到 $H(l,r)=H(l,id-1)+H(id+1,r)$，那么 $H(l,r)$ 就是 $O(n)$ 的</p>
 <p>一种比较直观的理解方式是每个点只会在它祖先中向右走的链上产生贡献，并且在向右走的链上每产生一次贡献影响就会减半</p>
 <p>总复杂度 $O(n\log n)$</p>
 <hr>
@@ -1094,6 +1101,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

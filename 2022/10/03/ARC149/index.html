@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            ARC149 | Wonderhoy!
+            ARC149 | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -309,7 +309,6 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>有个弱智忘了有 arc 了，晚 10min 进场，我不说是谁</p>
 <span id="more"></span>
-
 <h3 id="A-Repdigit-Number"><a href="#A-Repdigit-Number" class="headerlink" title="A - Repdigit Number"></a>A - Repdigit Number</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定 $n,m$，求最大的正整数 $x$，满足 $x\le10^n,m|x$，且 $x$ 十进制表示中各数位均相同</p>
 <p>$1\le n\le10^5,1\le m\le10^9$</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>最多只有 $9n$ 中可能的 $x$，我们可以预处理出形如 $11\cdots1$ 的数模 $m$ 的余数，然后暴力计算即可</p>
@@ -323,7 +322,7 @@
 <h3 id="C-Avoid-Prime-Sum"><a href="#C-Avoid-Prime-Sum" class="headerlink" title="C - Avoid Prime Sum"></a>C - Avoid Prime Sum</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>构造一个 $n\times n$ 的网格，每个格子上写一个数，满足 $1\sim n^2$ 都恰好出现一次，并且任意两个四联通格子和不为质数</p>
 <p>$3\le n\le1000$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>考虑两个奇数加在一起一定是合数，两个偶数加在一起一定也是合数，那么我们上面填奇数，下面填偶数，这样只需要处理中间的交界处</p>
-<p>我们考虑使用 $3$ 的倍数来做这件事情，我们将奇数中模 $3$ 余 $1$ 的数与偶数中模 $3$ 余 $2$ 的数放在边界处，这样的数一边大约有 $\frac{n^2}6$ 个，因此当 $n\ge6$ 时这种构造可行，对于 $n&#x3D;3,4,5$ 时我们手动构造</p>
+<p>我们考虑使用 $3$ 的倍数来做这件事情，我们将奇数中模 $3$ 余 $1$ 的数与偶数中模 $3$ 余 $2$ 的数放在边界处，这样的数一边大约有 $\frac{n^2}6$ 个，因此当 $n\ge6$ 时这种构造可行，对于 $n=3,4,5$ 时我们手动构造</p>
 <h3 id="D-Simultaneous-Sugoroku"><a href="#D-Simultaneous-Sugoroku" class="headerlink" title="D - Simultaneous Sugoroku"></a>D - Simultaneous Sugoroku</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>数轴上有 $n$ 个点，坐标依次为 $x_1,x_2,\cdots,x_n$，有 $m$ 次操作，第 $i$ 次操作的属性为 $d_i$， 一个属性为 $d$ 的操作会使每一个负半轴上的点向正方向移动 $d$ 的距离，使每一个正半轴上的点向负方向移动 $d$ 的距离（$0$ 上的点不变）</p>
 <p>问每个点会不会到 $0$，如果会，输出最早到达 $0$ 的操作，否则输出最后的坐标</p>
 <p>$1\le n\le3\times10^5,1\le x_n\le10^6$</p>
@@ -740,6 +739,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -38,15 +38,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            tdpc 题面翻译 | Wonderhoy!
+            tdpc 题面翻译 | Flamiblog
         
     </title>
 
@@ -133,7 +133,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -243,7 +243,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -305,7 +305,6 @@
 			<p>题解先鸽着。</p>
 <p>一套 atcoder 的<del>老少咸宜</del>的 dp 题，题目比较有代表性<del>（就是比较裸的意思）</del></p>
 <span id="more"></span>
-
 <h2 id="A-コンテスト-contest"><a href="#A-コンテスト-contest" class="headerlink" title="A - コンテスト(contest)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_contest" >A<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - コンテスト(contest)</h2><p>一场比赛有 $n$ 道题，第 $i$ 道题分数为 $a_i$，你现在可以选择做一个子集的题（可以为空），得到的总分为这个子集中的题目分数之和，求总分有多少种</p>
 <p>$1\le n\le100,1\le a_i\le100$</p>
 <h2 id="B-ゲーム-game"><a href="#B-ゲーム-game" class="headerlink" title="B - ゲーム(game)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_game" >B<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - ゲーム(game)</h2><p>两个数组 $a,b$，分别有 $n,m$ 项，有两个玩家轮流进行操作，每次操作玩家可以取走一个非空数组内的第一个元素，两个玩家都希望自己的得分最大，问先手的得分</p>
@@ -317,7 +316,7 @@
 <li>第三轮 (($1$ 和 $2$ 中的胜者)与($3$ 和 $4$ 中的胜者))中的胜者与(($5$ 和 $6$ 中的胜者)与($7$ 和 $8$ 中的胜者))中的胜者比赛，$\cdots$</li>
 <li>经过 $k$ 轮后剩下的那个人是 shengzhe</li>
 </ul>
-<p>每个人有一个能力值 $r_i$，如果能力值为 $a$ 与 $b$ 的两个人比赛，则能力值为 $a$ 的人获胜的概率为 $1&#x2F;(1+10^{(a-b)&#x2F;400})$，求第 $i$ 个人成为 shengzhe 的概率</p>
+<p>每个人有一个能力值 $r_i$，如果能力值为 $a$ 与 $b$ 的两个人比赛，则能力值为 $a$ 的人获胜的概率为 $1/(1+10^{(a-b)/400})$，求第 $i$ 个人成为 shengzhe 的概率</p>
 <p>$1\le k\le10,0\le r_i\le4000$</p>
 <h2 id="D-サイコロ-dice"><a href="#D-サイコロ-dice" class="headerlink" title="D - サイコロ(dice)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_dice" >D<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - サイコロ(dice)</h2><p>将一个 $6$ 面的骰子扔 $n$ 遍，求最后所有点数的乘积是 $D$ 的倍数的概率</p>
 <p>$1\le n\le100,1\le D\le10^{18}$</p>
@@ -340,9 +339,9 @@
 <h2 id="K-ターゲット-target"><a href="#K-ターゲット-target" class="headerlink" title="K - ターゲット(target)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_target" >K<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - ターゲット(target)</h2><p>若圆 $C_1, C_2, \cdots, C_k$ 满足对于所有在 $[1, k - 1]$ 中的 $i$，圆 $C_i$ strictly 包含 $C_{i+1}$，则称它们是一个大小为 $k$ 的 <em>target</em>。给定 $n$ 个圆，第 $i$ 个圆圆心为 $(x_i,0)$，半径为 $r_i$，请选出一个子集，求能组成的最大 <em>target</em> 的大小。</p>
 <p>$1\le n\le10^5,0\le x_i\le10^9,1\le r_i\le10^9$。</p>
 <h2 id="L-猫-cat"><a href="#L-猫-cat" class="headerlink" title="L - 猫(cat)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_cat" >L<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - 猫(cat)</h2><p>你现在有 $n$ 只猫，猫 $i$ 和猫 $j$ 的相配度是 $f_{i, j}$。一个猫的幸福度是跟它距离 $1$ 以内的猫跟它的相配度的和。你现在要把猫 $1$ 到猫 $n$ 在数轴上排列，若 $i$ 只猫的坐标为 $x_i$（$x_i$ 不一定为整数），则需要满足 $x_1&lt;x_2&lt;\cdots&lt;x_n$，求最大的幸福值总和</p>
-<p>$1\le n\le1000,|f_{i,j}|\le1000,f_{i,i}&#x3D;0,f_{i,j}&#x3D;f_{j,i}$</p>
-<h2 id="M-家-house"><a href="#M-家-house" class="headerlink" title="M - 家(house)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_house" >M<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - 家(house)</h2><p>有一个 $H$ 层的房子，每层的构造都一样，有 $R$ 个房间，任意一层的第 $i$ 个房间与第 $j$ 个房间有双向通路当且仅当 $g_{i,j}&#x3D;1$，每一个房间都有向下的楼梯，楼梯只能下不能上，求你从 $H$ 层的第 $1$ 个房间到达 $1$ 层的第 $1$ 个房间且不经过重复房间的方案数，答案对 $10^9+7$ 取模</p>
-<p>$2\le H\le10^9,1\le R\le16,0\le g_{i,j}\le1,g_{i,i}&#x3D;0,g_{i,j}&#x3D;g_{j,i}$</p>
+<p>$1\le n\le1000,|f_{i,j}|\le1000,f_{i,i}=0,f_{i,j}=f_{j,i}$</p>
+<h2 id="M-家-house"><a href="#M-家-house" class="headerlink" title="M - 家(house)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_house" >M<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - 家(house)</h2><p>有一个 $H$ 层的房子，每层的构造都一样，有 $R$ 个房间，任意一层的第 $i$ 个房间与第 $j$ 个房间有双向通路当且仅当 $g_{i,j}=1$，每一个房间都有向下的楼梯，楼梯只能下不能上，求你从 $H$ 层的第 $1$ 个房间到达 $1$ 层的第 $1$ 个房间且不经过重复房间的方案数，答案对 $10^9+7$ 取模</p>
+<p>$2\le H\le10^9,1\le R\le16,0\le g_{i,j}\le1,g_{i,i}=0,g_{i,j}=g_{j,i}$</p>
 <h2 id="N-木-tree"><a href="#N-木-tree" class="headerlink" title="N - 木(tree)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_tree" >N<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - 木(tree)</h2><p>你要将一棵 $n$ 个节点的树描在纸上，第 $i$ 条边连接第 $a_i$ 个点与第 $b_i$ 个点，起初所有边没有被描出，你需要依次描出这些边，使得任何时刻所有已经描出的<strong>边</strong>都在一个连通块内，求有多少种合法的描边顺序，对 $10^9+7$ 取模</p>
 <p>$2\le n\le1000,1\le a_i,b_i\le n$</p>
 <h2 id="O-文字列-string"><a href="#O-文字列-string" class="headerlink" title="O - 文字列(string)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_string" >O<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - 文字列(string)</h2><p><del>经典咏流传</del></p>
@@ -356,14 +355,14 @@
 <p>$2\le n\le1000,1\le k\le50$</p>
 <h2 id="Q-連結-concatenation"><a href="#Q-連結-concatenation" class="headerlink" title="Q - 連結(concatenation)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_concatenation" >Q<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - 連結(concatenation)</h2><p>有 $n$ 个 $01$ 串 $w_1,w_2,\cdots,w_n$，你需要从中选择一些字符串并拼接成一个新的字符串（同一个字符串可以选择多次），问你总共能拼出多少本质不同的长度为 $L$ 的 $01$ 串（字符串相同但分法不同也算作一种）</p>
 <p>$1\le n\le510,1\le|w_i|\le8,\le L\le100$，$w_i$ 互不相同</p>
-<h2 id="R-グラフ-graph"><a href="#R-グラフ-graph" class="headerlink" title="R - グラフ(graph)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_graph" >R<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - グラフ(graph)</h2><p>一张 $n$ 个点的有向图，$g_{i,j}&#x3D;1$ 表示 $i$ 到 $j$ 有一条有向边，起初所有点都是白色的，现在你要选择两条路径（不一定是简单路径），并将它们所经过的点全部染黑，求黑点最多有多少个</p>
+<h2 id="R-グラフ-graph"><a href="#R-グラフ-graph" class="headerlink" title="R - グラフ(graph)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_graph" >R<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - グラフ(graph)</h2><p>一张 $n$ 个点的有向图，$g_{i,j}=1$ 表示 $i$ 到 $j$ 有一条有向边，起初所有点都是白色的，现在你要选择两条路径（不一定是简单路径），并将它们所经过的点全部染黑，求黑点最多有多少个</p>
 <p>$1\le n\le300$</p>
 <h2 id="S-マス目-grid"><a href="#S-マス目-grid" class="headerlink" title="S - マス目(grid)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_grid" >S<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - マス目(grid)</h2><p>有一个 $h\times w$ 的矩形，你要将其中一个包含 $(1,1)$ 与 $(h,w)$ 的四连通块染成黑色，求方案数，答案对 $10^9+7$ 取模</p>
 <p>$2\le h\le6,2\le w\le100$</p>
-<h2 id="T-フィボナッチ-sequence"><a href="#T-フィボナッチ-sequence" class="headerlink" title="T - フィボナッチ(sequence)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci" >T<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - フィボナッチ(sequence)</h2><p>数列 ${a_i}$ 满足：</p>
+<h2 id="T-フィボナッチ-sequence"><a href="#T-フィボナッチ-sequence" class="headerlink" title="T - フィボナッチ(sequence)"></a><a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci" >T<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> - フィボナッチ(sequence)</h2><p>数列 $\{a_i\}$ 满足：</p>
 <ul>
-<li>$a_1&#x3D;a_2&#x3D;\cdots&#x3D;a_k&#x3D;1$</li>
-<li>$a_i&#x3D;a_{i-1}+a_{i-2}+\cdots+a_{i-k}(i&gt;k)$</li>
+<li>$a_1=a_2=\cdots=a_k=1$</li>
+<li>$a_i=a_{i-1}+a_{i-2}+\cdots+a_{i-k}(i&gt;k)$</li>
 </ul>
 <p>求 $a_n\bmod10^9+7$</p>
 <p>$2\le k\le1000,1\le k\le10^9$</p>
@@ -772,6 +771,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

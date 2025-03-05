@@ -38,15 +38,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            CSP2022 | Wonderhoy!
+            CSP2022 | Flamiblog
         
     </title>
 
@@ -133,7 +133,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -243,7 +243,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -304,12 +304,11 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>别写正解。</p>
 <span id="more"></span>
-
 <p>严重策略失误。</p>
 <p>上来先把四个题都看了一遍，发现好像都不是很会，比较慌（题面怎么写这么长啊？？）</p>
 <p>开场了，先看 T1，一直在想维护最大路径经过的点等奇怪东西，过了一会还是不会，更慌了，去看 T2</p>
 <p>T2 一看这不弱智题吗，当场写了个 st 表就挂了，然后开始调，调试的过程中由于闷热的环境和奇怪的键盘等因素非常暴躁，最后整个把分类讨论撕了直接开始 4*4 的暴力求解，代码写的非常优美，写完过掉大样例发现已经过去 90min 了，按照模拟赛的经验正常情况下应该已经开始写第二题了。</p>
-<p>非常暴躁地在 T1 和 T3 之间横跳，感觉 T3 好像只要判出度为 1 就行了，于是没有 $t&#x3D;4$ 的情况都比较好做，打了个 tag 然后去看 T1 了</p>
+<p>非常暴躁地在 T1 和 T3 之间横跳，感觉 T3 好像只要判出度为 1 就行了，于是没有 $t=4$ 的情况都比较好做，打了个 tag 然后去看 T1 了</p>
 <p>T1 又在草稿纸上玩了一会发现合理分配一下枚举好像就是可以的，写完了过了大样例，这时候大概是还剩 100min 左右？</p>
 <p>到此为止，失误基本还在可控的范围内。</p>
 <p>但是，但是。</p>
@@ -319,8 +318,8 @@
 <p>我非常自信地以为做出来这题我就稳了。</p>
 <p>然后呢？然后肯定过不了样例啊，在第二个样例上挂了，手模了一遍才发现是可以用路径外的点的，看了眼表发现只剩 30min 了</p>
 <p>fk.</p>
-<p>然后最后 30min rush 了一下 T3 的 60，由于 $k&#x3D;1$ 的情况一定都在路径上，所以如果我 T4 没写挂的话应该是能获得 16 的</p>
-<p>最后 100+100+60+16&#x3D;276 光荣垫底了</p>
+<p>然后最后 30min rush 了一下 T3 的 60，由于 $k=1$ 的情况一定都在路径上，所以如果我 T4 没写挂的话应该是能获得 16 的</p>
+<p>最后 100+100+60+16=276 光荣垫底了</p>
 <p>出了考场发现怎么全世界都切了 T3，我人傻了。</p>
 <p>然后听同学说了一句哈希维护，想了想发现真 tm 有道理啊，好像 T4 也有许多暴力分</p>
 <p>所以说，<strong>假做法害人</strong>。</p>
@@ -730,6 +729,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

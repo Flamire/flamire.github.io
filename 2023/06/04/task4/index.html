@@ -37,15 +37,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            task4 | Wonderhoy!
+            task4 | Flamiblog
         
     </title>
 
@@ -132,7 +132,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -242,7 +242,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -304,11 +304,10 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://i.loli.net/2019/04/02/5ca2b0fce8b8c.png"
-                     
+                      alt=""
                 ></p><ol><li>白色，被区间半覆盖的点</li><li>深灰，被区间完全覆盖到的点（即打上 tag 的点）</li><li>橙色，没有被区间覆盖到，但在处理区间时会接到父亲的 pushdown</li><li>浅灰，被区间完全覆盖到但没打 tag</li><li>黄色，没被区间覆盖到，父亲也不会被 pushdown</li></ol><p>我们令 $f_{T,u}$ 表示处理完前 $T$ 次修改操作后 $u$ 有 tag 的方案数，但是写一写发现橙点无法转移，因为 $u$ 的 tag 是否非零是 $1-u$ 这条链上的 tag 是否非零的或</p><p>那么我们再定义一个 $g_{T,u}$，表示处理完前 $T$ 次修改操作后 $1-u$ 上的所有点都没有 tag 的方案数</p><p>对五类点分别写一下转移，前三类点总数只有 $O(\log n)$ 个，可以暴力转移，而后两类点是 $O(\log n)$ 次子树乘，可以直接打懒标记维护</p><p>我们最后的答案就是所有 $f$ 之和，那么再维护一下 $f$ 的子树和即可</p><p>复杂度 $O(n\log n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="2-ZJOI2019-语言-Safe"><a href="#2-ZJOI2019-语言-Safe" class="headerlink" title="2.  ZJOI2019 - 语言 [Safe]"></a>2.  ZJOI2019 - 语言 [Safe]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，每个点上有一个集合 $S$</p>
 <p>$m$ 次操作，第 $i$ 次操作给 $u_i-v_i$ 路径上所有节点的 $S$ 插入一个 $i$</p>
@@ -319,23 +318,21 @@
               <p>考虑枚举二元组中的一个，设其为 $u$，那么我们就是要求经过 $u$ 的路径的并集大小</p><p>我们将问题反过来，转化为求不在任意一条经过 $u$ 的路径上的点的个数，如果我们用数据结构维护这件事情，将经过 $u$ 的路径看做路径加，那么就是求全局 $0$ 的个数</p><p>现在的问题就是如何对每个 $u$ 快速得到经过 $u$ 的所有路径，那么我们可以使用树上差分，dfs 处理每个 $u$，对路径 $s,t$，在处理到 $s$ 和 $t$ 时对 $s-t$ 路径 $+1$，处理到 $\text{lca}(s,t)$ 和 $\text{fa}(\text{lca}(s,t))$ 时对 $s-t$ 路径 $-1$，这样我们进行 $u$ 子树中的所有操作就等价于对于经过 $u$ 的路径都进行路径 $+1$，而这需要一个线段树合并</p><p>时间复杂度 $O(n\log^2n)$，空间复杂度 $O(n\log^2 n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="3-ZJOI2019-Minimax-搜索-Keter-✔️"><a href="#3-ZJOI2019-Minimax-搜索-Keter-✔️" class="headerlink" title="3.  ZJOI2019 - Minimax 搜索 [Keter] ✔️"></a>3.  ZJOI2019 - Minimax 搜索 [Keter] ✔️</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个节点的树，以 $1$ 为根，按照如下方式定义非叶子点的点权 $w_i$：</p>
 <ul>
-<li>如果 $2\nmid dep_i$，$w_i&#x3D;\max_{j\in son_i}w_j$</li>
-<li>否则，$w_i&#x3D;\min_{j\in son_i}w_j$</li>
+<li>如果 $2\nmid dep_i$，$w_i=\max_{j\in son_i}w_j$</li>
+<li>否则，$w_i=\min_{j\in son_i}w_j$</li>
 </ul>
-<p>初始叶子都满足 $w_i&#x3D;i$</p>
+<p>初始叶子都满足 $w_i=i$</p>
 <p>对一个非空叶子集合 $S$，定义它的权值 $w(S)$ 为：你可以任意改变叶子节点的权值，最后根节点的点权（$w_1$）发生改变时，$\max_{i\in leaf}|i-w_i|$ 的最小值</p>
-<p>对 $k&#x3D;1,2,\cdots,n$，求有多少非空叶子集合 $S$ 满足 $w(S)&#x3D;k$</p>
+<p>对 $k=1,2,\cdots,n$，求有多少非空叶子集合 $S$ 满足 $w(S)=k$</p>
 <p>$2\le n\le2\times10^5$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>什么 b 题。</p><p>首先看 $k$ 固定了怎么做，$&#x3D;k$ 不好做，所以转化成 $\le k$。</p><p>那么考虑什么时候 $w_1$ 会发生改变，令 $W&#x3D;w_1$，那么所有 $w_i&#x3D;W$ 的点一定形成一条根到叶子的链，并且 $w_1$ 发生改变当且仅当这条链上的任意一个节点值发生改变</p><p>考虑第一个权值发生改变的点，如果该点满足 $2\nmid dep$， 那么一定是点权变大，否则一定是点权变小，这意味着我们在这个子树中一定把叶子的权值改为 $i+k$ 或 $i-k$，是一个确定的值</p><p>因此，我们可以考虑把相邻的点权为 $W$ 的点之间的边断开，并在这个得到的森林上进行 dp</p><p>具体地，令 $f_i$ 表示考虑 $i$ 子树内的叶子集合，能够使 $w_i&lt;W$ 的集合数量，由于每个集合只能 $&lt;W$ 或 $&gt;W$，那么 $w_i&gt;W$ 的集合数量就等于 $cnt_i-f_i$，其中 $cnt_i$ 是 $i$ 子树中的叶子集合数量，有转移：<br>$$<br>f_i&#x3D;\left{\begin{aligned}\prod_{v\in son_i}f_v,\quad&amp;2\nmid dep_i\cnt_i-\prod_{v\in son_i}(cnt_v-f_v),\quad&amp;2\mid dep_i\end{aligned}\right.<br>$$<br>那么就有答案的式子：<br>$$<br>ans&#x3D;tot-\prod_{w_u&#x3D;W}([2\nmid dep_u]f_u+<a href="cnt_u-f_u">2\mid dep_u</a>)<br>$$<br>这样我们就有一个 $O(n^2)$ 的做法了！</p><p>但是这是 ZJOI D1T3，所以需要一些无意义的加强。</p><p>考虑随着 $k$ 增大，每个叶子的 $f$ 最多改变一次，所以我们可以上 ddp。</p><p>那 ddp 是什么呢。</p><p>考虑每个点，我们要将一堆子树合并起来，在 ddp 中，我们先将所有轻子树合并起来，然后将重儿子到父亲的转移写成一个和轻子树的信息有关的形式（通常是矩阵），这样只要轻子树的 dp 值不发生变化我们就可以用线段树等数据结构快速跳过一条重链上的转移</p><p>但我们改一个点的时候，还会影响一些轻子树合并起来的值，由于轻边只有 $O(\log)$ 条，所以一次操作会对应着树剖线段树上的 $O(\log)$ 次单点修改，那么两部分的复杂度都是 $O(n\log^2 n)$ 的</p><p>怎么运用到这题中呢。</p><p>原来的转移太丑了，我们改写一下，定义 $g_u$，使得当 $2\nmid dep_u$ 时 $g_u&#x3D;cnt_u-f_u$，否则 $g_u&#x3D;f_u$</p><p>那么我们有：<br>$$<br>g_u&#x3D;cnt_u-\prod_{v\in son_u}g_v\<br>ans&#x3D;tot-\prod_{w_u&#x3D;W}(cnt_u-g_u)<br>$$<br>可以将其写成：<br>$$<br>g_u&#x3D;cnt_u+(-\prod_{v\in son_u,v\neq hson}g_v)g_{hson}<br>$$<br>那么我们维护轻子树的 $g$ 值乘积，就可以快速转移了。</p><p>维护这个值的过程中可能出现乘 $0$ 和除 $0$ 的情况，因此还需要存一下当前乘了多少个 $0$</p><p>复杂度 $O(n\log^2n)$</p>
+              <p>什么 b 题。</p><p>首先看 $k$ 固定了怎么做，$=k$ 不好做，所以转化成 $\le k$。</p><p>那么考虑什么时候 $w_1$ 会发生改变，令 $W=w_1$，那么所有 $w_i=W$ 的点一定形成一条根到叶子的链，并且 $w_1$ 发生改变当且仅当这条链上的任意一个节点值发生改变</p><p>考虑第一个权值发生改变的点，如果该点满足 $2\nmid dep$， 那么一定是点权变大，否则一定是点权变小，这意味着我们在这个子树中一定把叶子的权值改为 $i+k$ 或 $i-k$，是一个确定的值</p><p>因此，我们可以考虑把相邻的点权为 $W$ 的点之间的边断开，并在这个得到的森林上进行 dp</p><p>具体地，令 $f_i$ 表示考虑 $i$ 子树内的叶子集合，能够使 $w_i<W$ 的集合数量，由于每个集合只能 $<W$ 或 $>W$，那么 $w_i&gt;W$ 的集合数量就等于 $cnt_i-f_i$，其中 $cnt_i$ 是 $i$ 子树中的叶子集合数量，有转移：</p><script type="math/tex; mode=display">f_i=\left\{\begin{aligned}\prod_{v\in son_i}f_v,\quad&2\nmid dep_i\\cnt_i-\prod_{v\in son_i}(cnt_v-f_v),\quad&2\mid dep_i\end{aligned}\right.</script><p>那么就有答案的式子：</p><script type="math/tex; mode=display">ans=tot-\prod_{w_u=W}([2\nmid dep_u]f_u+[2\mid dep_u](cnt_u-f_u))</script><p>这样我们就有一个 $O(n^2)$ 的做法了！</p><p>但是这是 ZJOI D1T3，所以需要一些无意义的加强。</p><p>考虑随着 $k$ 增大，每个叶子的 $f$ 最多改变一次，所以我们可以上 ddp。</p><p>那 ddp 是什么呢。</p><p>考虑每个点，我们要将一堆子树合并起来，在 ddp 中，我们先将所有轻子树合并起来，然后将重儿子到父亲的转移写成一个和轻子树的信息有关的形式（通常是矩阵），这样只要轻子树的 dp 值不发生变化我们就可以用线段树等数据结构快速跳过一条重链上的转移</p><p>但我们改一个点的时候，还会影响一些轻子树合并起来的值，由于轻边只有 $O(\log)$ 条，所以一次操作会对应着树剖线段树上的 $O(\log)$ 次单点修改，那么两部分的复杂度都是 $O(n\log^2 n)$ 的</p><p>怎么运用到这题中呢。</p><p>原来的转移太丑了，我们改写一下，定义 $g_u$，使得当 $2\nmid dep_u$ 时 $g_u=cnt_u-f_u$，否则 $g_u=f_u$</p><p>那么我们有：</p><script type="math/tex; mode=display">g_u=cnt_u-\prod_{v\in son_u}g_v\\ans=tot-\prod_{w_u=W}(cnt_u-g_u)</script><p>可以将其写成：</p><script type="math/tex; mode=display">g_u=cnt_u+(-\prod_{v\in son_u,v\neq hson}g_v)g_{hson}</script><p>那么我们维护轻子树的 $g$ 值乘积，就可以快速转移了。</p><p>维护这个值的过程中可能出现乘 $0$ 和除 $0$ 的情况，因此还需要存一下当前乘了多少个 $0$</p><p>复杂度 $O(n\log^2n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="4-JOISC2023-D1T1-Two-Currencies-Safe"><a href="#4-JOISC2023-D1T1-Two-Currencies-Safe" class="headerlink" title="4.  JOISC2023 D1T1 - Two Currencies [Safe]"></a>4.  JOISC2023 D1T1 - Two Currencies [Safe]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>有一棵 $n$ 个点的树，一些边上可能有人在收费，第 $i$ 个人在第 $p_i$ 条边上，会收 $1$ 个金币或者 $c_i$ 个银币</p>
 <p>$m$ 次询问，每次询问有一个人要从 $s_i$ 走到 $t_i$，她有 $x_i$ 个金币和 $y_i$ 个银币，她将给路上遇到的所有人缴费，问她是否能走到 $t_i$，以及求最多剩下的金币数</p>
@@ -344,19 +341,17 @@
               <div class='content'>
               <p>直接主席树上二分即可。</p>
               </div>
-            </details>	
-
+            </details>    
 <hr>
 <h3 id="5-JOISC2023-D1T3-Passport-Keter-⭐"><a href="#5-JOISC2023-D1T3-Passport-Keter-⭐" class="headerlink" title="5.  JOISC2023 D1T3 - Passport [Keter] ⭐"></a>5.  JOISC2023 D1T3 - Passport [Keter] ⭐</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个国家，第 $i$ 个国家的护照能访问 $[L_i,R_i]$ 内的所有国家，保证 $L_i\le i\le R_i$</p>
 <p>每次操作，你可以在你当前所在的国家办一张护照，或者走到任意一个你有某个护照能访问的国家</p>
-<p>对 $x&#x3D;1,2,\cdots,n$，假设你初始在 $x$，问你最少办多少张护照才能访问 $1\sim n$ 中的所有点，或者判断无解</p>
+<p>对 $x=1,2,\cdots,n$，假设你初始在 $x$，问你最少办多少张护照才能访问 $1\sim n$ 中的所有点，或者判断无解</p>
 <p>$2\le n\le2\times10^5$</p>
 <h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>x 说这题太简单了，但我没做出来，并且我看题解觉得挺好玩的。</p><p>这题相当于我们有一个区间 $I$，初始为 $[x,x]$，我们每次需要选择一个 $y\in I$，并执行 $I\leftarrow I\cup[L_y,R_y]$，问将 $i$ 变为 $[1,n]$ 的最小步数</p><p>这等价于要求最后的 $I$ 同时包含 $1$ 和 $n$，除了满足 $I\subseteq[L_y,R_y]$ 的操作，剩下的操作一定是 $I\leftarrow [\min L[I_l:I_r],R]$ 或 $I\leftarrow[L,\max R[I_l:I_r]]$，最后要达到包含某个满足 $I\subseteq[L_y,R_y]$ 的 $y$ 或者 $I_l&#x3D;1$ 或 $I_r&#x3D;n$</p><p>那么我们发现，直接把每次操作改成 $I\leftarrow[L_y,R_y]$ 其实并不影响这部分的答案</p><p>而 $I\subseteq[L_y,R_y]$，其实也是 $I\leftarrow[L_y,R_y]$，也就是说我们可以认为 $I$ 每一步一定是某个 $[L_y,R_y]$</p><p>那么相当于我们对每个 $i$ 从 $i$ 向 $[L_i,R_i]$ 中的所有点建边，要从 $x$ 出发走一个 “Y” 形的分叉路径，使得其中一个叉到了 $1$，另一个叉到了 $n$，并求这个 “Y” 的最小边数</p><p>然后就比较简单了，由于起点不确定但终点确定，所以将所有边反向，考虑中间的分叉点 $x$，我们可以建一个虚拟点 $vir$ 向每个 $x$ 连 $dis[1\rightarrow x]+dis[n\rightarrow x]$ 的边，那么最后的答案就是 $vir$ 到每个点的最短路</p><p>复杂度 $O(n\log n)$ 或 $O(n\log^2 n)$</p>
+              <p>x 说这题太简单了，但我没做出来，并且我看题解觉得挺好玩的。</p><p>这题相当于我们有一个区间 $I$，初始为 $[x,x]$，我们每次需要选择一个 $y\in I$，并执行 $I\leftarrow I\cup[L_y,R_y]$，问将 $i$ 变为 $[1,n]$ 的最小步数</p><p>这等价于要求最后的 $I$ 同时包含 $1$ 和 $n$，除了满足 $I\subseteq[L_y,R_y]$ 的操作，剩下的操作一定是 $I\leftarrow [\min L[I_l:I_r],R]$ 或 $I\leftarrow[L,\max R[I_l:I_r]]$，最后要达到包含某个满足 $I\subseteq[L_y,R_y]$ 的 $y$ 或者 $I_l=1$ 或 $I_r=n$</p><p>那么我们发现，直接把每次操作改成 $I\leftarrow[L_y,R_y]$ 其实并不影响这部分的答案</p><p>而 $I\subseteq[L_y,R_y]$，其实也是 $I\leftarrow[L_y,R_y]$，也就是说我们可以认为 $I$ 每一步一定是某个 $[L_y,R_y]$</p><p>那么相当于我们对每个 $i$ 从 $i$ 向 $[L_i,R_i]$ 中的所有点建边，要从 $x$ 出发走一个 “Y” 形的分叉路径，使得其中一个叉到了 $1$，另一个叉到了 $n$，并求这个 “Y” 的最小边数</p><p>然后就比较简单了，由于起点不确定但终点确定，所以将所有边反向，考虑中间的分叉点 $x$，我们可以建一个虚拟点 $vir$ 向每个 $x$ 连 $dis[1\rightarrow x]+dis[n\rightarrow x]$ 的边，那么最后的答案就是 $vir$ 到每个点的最短路</p><p>复杂度 $O(n\log n)$ 或 $O(n\log^2 n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="6-JOISC2023-D2T1-Belt-Conveyor-Keter-⭐"><a href="#6-JOISC2023-D2T1-Belt-Conveyor-Keter-⭐" class="headerlink" title="6.  JOISC2023 D2T1 - Belt Conveyor [Keter] ⭐"></a>6.  JOISC2023 D2T1 - Belt Conveyor [Keter] ⭐</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
 <p>给你有一棵 $n$ 个点的树，每条边有方向，但你不知道这些方向。</p>
@@ -367,10 +362,9 @@
 <p>$1\le n\le10^5$</p>
 <h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>考虑链上的情况，有一种想法是我们将点按 $\bmod3$ 分类，然后对 $x&#x3D;0&#x2F;1&#x2F;2$，进行 $3$ 次操作，每次在 $\bmod3&#x3D;x$ 的所有点上放一个物品，这样我们就可以确定所有 $\bmod3&#x3D;x$ 的点的至少一条出边</p><p>那对于另一条出边，我们可以再问一次，只不过这次将原来走出去那条边反向，这样我们就可以在 $6$ 次询问内解决这个问题</p><p>那我们尝试类比到树上，每次问 $dep\bmod3&#x3D;x$ 的点，那么这样我们依然能得到每个 $dep\bmod3&#x3D;x$ 的至少一条出边，但是我们如果每次堵一条出边的话，操作次数是 $O(\max deg)$ 的，非常伤心。</p><p>但我们好像通过上面的操作每次干掉了 $\frac13$ 的边，如果我们每次都可以这样的话，那操作次数就是 $O(\log_{1.5}n)$ 的</p><p>那么我们只要存一个 $buc_{0&#x2F;1&#x2F;2}$，表示 $dep\bmod3&#x3D;x$ 的点有多少点还有至少一条出边没确定，这样就可以达到这个目的，最多需要 $27$ 次操作左右</p>
+              <p>考虑链上的情况，有一种想法是我们将点按 $\bmod3$ 分类，然后对 $x=0/1/2$，进行 $3$ 次操作，每次在 $\bmod3=x$ 的所有点上放一个物品，这样我们就可以确定所有 $\bmod3=x$ 的点的至少一条出边</p><p>那对于另一条出边，我们可以再问一次，只不过这次将原来走出去那条边反向，这样我们就可以在 $6$ 次询问内解决这个问题</p><p>那我们尝试类比到树上，每次问 $dep\bmod3=x$ 的点，那么这样我们依然能得到每个 $dep\bmod3=x$ 的至少一条出边，但是我们如果每次堵一条出边的话，操作次数是 $O(\max deg)$ 的，非常伤心。</p><p>但我们好像通过上面的操作每次干掉了 $\frac13$ 的边，如果我们每次都可以这样的话，那操作次数就是 $O(\log_{1.5}n)$ 的</p><p>那么我们只要存一个 $buc_{0/1/2}$，表示 $dep\bmod3=x$ 的点有多少点还有至少一条出边没确定，这样就可以达到这个目的，最多需要 $27$ 次操作左右</p>
               </div>
             </details>
-
 <hr>
 <h3 id="7-CF618F-Double-Knapsack-Keter-⭐"><a href="#7-CF618F-Double-Knapsack-Keter-⭐" class="headerlink" title="7.  CF618F - Double Knapsack [Keter] ⭐"></a>7.  CF618F - Double Knapsack [Keter] ⭐</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>给定两个大小为 $n$ 的可重集 $A,B$，其中每个元素都是 $[1,n]$ 内的整数</p>
 <p>你需要选一个 $A$ 的非空子集和一个 $B$ 的非空子集，使得它们的元素和相等</p>
@@ -378,22 +372,20 @@
 <p>$1\le n\le10^6$</p>
 <h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>高考真题，还不快做做。</p><p>我们把钦定选出来的是子段，那么对 $A$ 和 $B$ 求前缀和，设它们是 $a$ 和 $b$，那么也就是要求 $a_i-a_j&#x3D;b_{i^\prime}-b_{j^\prime}$，移项可得 $a_i-b_{i^\prime}&#x3D;a_j-b_{j^\prime}$</p><p>使用魔法，如果 $a_n\le b_n$，我们对 $i&#x3D;0,1,\cdots,n$，找到最后一个 $\le a_i$ 的 $b_x$，那么所有 $a_i-b_x$ 都在 $[0,n-1]$ 之间，一共有 $n+1$ 个数，放到 $n$ 个抽屉里，一定有 $i$ 和 $j$ 满足所对应的 $a$ 和 $b$ 的差相同，并且由于 $a$ 互不相等，所以其所对应的 $b$ 也不同，那么就成功构造了</p><p>复杂度 $O(n)$</p>
+              <p>高考真题，还不快做做。</p><p>我们把钦定选出来的是子段，那么对 $A$ 和 $B$ 求前缀和，设它们是 $a$ 和 $b$，那么也就是要求 $a_i-a_j=b_{i^\prime}-b_{j^\prime}$，移项可得 $a_i-b_{i^\prime}=a_j-b_{j^\prime}$</p><p>使用魔法，如果 $a_n\le b_n$，我们对 $i=0,1,\cdots,n$，找到最后一个 $\le a_i$ 的 $b_x$，那么所有 $a_i-b_x$ 都在 $[0,n-1]$ 之间，一共有 $n+1$ 个数，放到 $n$ 个抽屉里，一定有 $i$ 和 $j$ 满足所对应的 $a$ 和 $b$ 的差相同，并且由于 $a$ 互不相等，所以其所对应的 $b$ 也不同，那么就成功构造了</p><p>复杂度 $O(n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="8-JOISC2023-D2T2-Council-Euclid"><a href="#8-JOISC2023-D2T2-Council-Euclid" class="headerlink" title="8.  JOISC2023 D2T2 - Council [Euclid]"></a>8.  JOISC2023 D2T2 - Council [Euclid]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人和 $m$ 个提案，已知 01 数组 $A_{i,j}$，表示第 $i$ 个人会给第 $j$ 个提案投赞成票还是反对票</p>
 <p>现在你要 ban 掉两个人，接下来剩下的人将进行投票，所有赞成票数 $\ge\left\lfloor\dfrac n2\right\rfloor$ 的提案将被通过</p>
 <p>现在你 ban 掉了第 $k$ 个人，你还要再 ban 一个人，求最后最多有多少提案被通过</p>
-<p>对 $k&#x3D;1,2,\cdots,n$ 求答案</p>
+<p>对 $k=1,2,\cdots,n$ 求答案</p>
 <p>$1\le n\le3\times10^5,1\le m\le20$</p>
 <h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>比特题的难点在于把脑子转过来。</p><p>如果一个提案赞成票数 $\ge\left\lfloor\dfrac n2\right\rfloor+2$，那么肯定稳了，如果 $&lt;\left\lfloor\dfrac n2\right\rfloor$，那么肯定寄了。</p><p>如果一个提案赞成票数 $&#x3D;\left\lfloor\dfrac n2\right\rfloor+1$，并且 $k$ 投了反对票，那么一定稳了，否则一定取决于我们再 ban 一个人的票，如果是反对票，那么这个提案通过，否则不通过</p><p>赞成票数 $&#x3D;\left\lfloor\dfrac n2\right\rfloor$ 的情况是类似的。</p><p>那么现在我们要求，对于一个 ${1,2,\cdots,m}$ 的子集 $S$，只保留其中的每个人在 $S$ 中的票，求 $0$ 的个数的最大值和次大值（次大值是为了排除我们算出来最优解 $&#x3D;k$ 的情况）</p><p>令 $S$ 的答案是 $f_S$，那么相当于对于每个投票状态为 $T$ 的人，可以向 $f_S$ 贡献 $|S\cap T|$</p><p>那么我们枚举 $S\cap T$，以 $X&#x3D;S\cap T$ 为中转，所有 $X$ 的超集转移到 $X$，再从 $X$ 转移到所有超集的 $f_S$，转移的值为 $|X|$，这样一定不大于正确答案</p><p>高维前缀和即可，复杂度 $O(m2^m+nm)$</p>
+              <p>比特题的难点在于把脑子转过来。</p><p>如果一个提案赞成票数 $\ge\left\lfloor\dfrac n2\right\rfloor+2$，那么肯定稳了，如果 $&lt;\left\lfloor\dfrac n2\right\rfloor$，那么肯定寄了。</p><p>如果一个提案赞成票数 $=\left\lfloor\dfrac n2\right\rfloor+1$，并且 $k$ 投了反对票，那么一定稳了，否则一定取决于我们再 ban 一个人的票，如果是反对票，那么这个提案通过，否则不通过</p><p>赞成票数 $=\left\lfloor\dfrac n2\right\rfloor$ 的情况是类似的。</p><p>那么现在我们要求，对于一个 $\{1,2,\cdots,m\}$ 的子集 $S$，只保留其中的每个人在 $S$ 中的票，求 $0$ 的个数的最大值和次大值（次大值是为了排除我们算出来最优解 $=k$ 的情况）</p><p>令 $S$ 的答案是 $f_S$，那么相当于对于每个投票状态为 $T$ 的人，可以向 $f_S$ 贡献 $|S\cap T|$</p><p>那么我们枚举 $S\cap T$，以 $X=S\cap T$ 为中转，所有 $X$ 的超集转移到 $X$，再从 $X$ 转移到所有超集的 $f_S$，转移的值为 $|X|$，这样一定不大于正确答案</p><p>高维前缀和即可，复杂度 $O(m2^m+nm)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="9-JOISC2023-D3T1-Chorus-Keter-✔️"><a href="#9-JOISC2023-D3T1-Chorus-Keter-✔️" class="headerlink" title="9.  JOISC2023 D3T1 - Chorus [Keter] ✔️"></a>9.  JOISC2023 D3T1 - Chorus [Keter] ✔️</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $2n$ 的只由 <code>A,B</code> 组成的字符串 $s$，保证 <code>A</code> 和 <code>B</code> 各有 $n$ 个，$s$ 发出的声音是悦耳的当且仅当 $s$ 可以被拆分为恰好 $k$ 个形如 $A^xB^x$ 的子序列</p>
 <p>一次操作可以交换两个相邻字符，求最少操作多少次才能使 $s$ 发出的声音是悦耳的</p>
@@ -403,43 +395,38 @@
               <p>我们将 $A$ 看做 $+1$，$B$ 看做 $-1$，对这个字符串求前缀和得到一条折线</p><p>容易发现，我们要求的其实就是这个字符串最少能够拆分成多少个形如 $A^xB^x$ 的子序列</p><p>那么首先这条折线不能经过 $y&lt;0$ 的部分。</p><p>考虑原字符串上的一种贪心，我们每次找到一段极长的前缀 <code>A</code>，然后再带走后面等量的 <code>B</code>，重复这样的操作，最后选择的次数一定是最少的</p><p>那么对应到这个折线上就是每次选一段最长的“先向右上走 $x$ 步，再向右下走 $x$ 步”（称这个过程为走了一次），并且不能走到折线上方</p><p>其实我们可以把这个最长的限制扔掉，因为一定不会比最优解更优</p><p>接下来考虑交换操作，容易发现一定是把 <code>BA</code> 交换成 <code>AB</code>，对应到折线上也就是向上 “拓展” 一格</p><p>那么也就是说，我们先选定一些 “向右上走 $x$ 步，再向右下走 $x$ 步”，交换的代价就是这条折线 $T$ 在 $s$ 的折线上方围出的面积</p><p>就可以 dp 了，令 $dp_{i,j}$ 表示现在折线 $T$ 走到了 $(i,0)$，一共走了 $j$ 次，最小的面积</p><p>xtq：“首先我们猜一下这个 dp 是凸的，因为不凸就没法做了”，所以我们可以把 $j$ 扔掉套一个凸优化</p><p>剩下的部分就是一维问题了，设 $i$ 向左上走与 $s$ 折线的交点为 $t$，那么设 $dp_i$ 的转移点为 $j$，则需要讨论 $j$ 和 $t$ 的大小关系</p><p>$j&gt;x$ 的部分可以用一个滑动窗口，$j\le x$ 的部分符合斜率优化的形式，并且 $t$ 递增，因此可以斜率优化处理</p><p>那么总复杂度就是 $O(n\log n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="10-JOISC2023-D3T2-Cookie-Keter-✔️"><a href="#10-JOISC2023-D3T2-Cookie-Keter-✔️" class="headerlink" title="10.  JOISC2023 D3T2 - Cookie [Keter] ✔️"></a>10.  JOISC2023 D3T2 - Cookie [Keter] ✔️</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>一个元素在 $1\sim n$ 内的可重集，满足有 $a_i$ 个 $i$，你需要将其划分成若干个集合，使得每个集合内部元素互不相同，并且每个集合的大小都在一个特定的集合 $B$ 内</p>
 <p>判断无解，或给出划分集合数最小的一种构造</p>
 <p>$1\le n,\sum a_i\le15000$</p>
 <h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>倒着考虑，我们最后 $i$ 次划分出的集合最多将每个 $a$ 减小 $i$，那么设倒数第 $i$ 次划分的集合大小是 $C_i$，有一个显然的必要条件是 $\sum_{j&#x3D;1}^iC_j\le\sum_j\min(a_j,i)$，并且 $\sum C_j&#x3D;\sum a_j$</p><p>事实上，将 $C$ 从大到小排序，那么上述式子对于所有 $i$ 都成立就是充要条件</p><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>proof </summary>              <div class='content'>              <p>具体地，我们证明对于 $C_1\ge C_2\ge\cdots\ge C_p$，满足上述条件，那么一定可以操作成 $C_1\ge C_2\ge\cdots\ge C_{p-1}$，并仍满足上述条件</p><p>设 $w_i&#x3D;\sum\min(a_j,i),s_i&#x3D;\sum_{j&#x3D;1}^iC_j,cnt_i&#x3D;\sum[a_j&#x3D;i]$</p><p>首先最大值显然 $\le p$，此时 $C_p\le C_1\le w_1$，说明我们一定可以进行一次 $C_p$ 的操作</p><p>我们钦定 $C_p$ 操作的是最大的若干个数，考虑操作之后 $w_i$ 的变化，那么就是 $w_i\leftarrow w_i-\max(0,C_p-\sum_{j&gt;i}cnt_j)$，如果 $\max$ 取到 $0$ 那么显然仍然成立，我们只需要说明 $s_i\le w_i-(C_p-\sum_{j&gt;i}cnt_j)$ 即可</p><p>由于 $w_i&#x3D;\sum_{j&#x3D;1}^icnt_j\cdot j+\sum_{j&#x3D;i+1}^pcnt_j\cdot i$，那么操作后会变成 $w^\prime_i&#x3D;\sum_{j&#x3D;1}^icnt_j\cdot j+\sum_{j&#x3D;i+1}^pcnt_j(i+1)-C_p$，也就等于 $w_{i+1}-C_p$，而 $C_{i+1}\ge C_p$，因此 $s_i\le s_{i+1}-C_p\le w_{i+1}-C_p$，说明对 $1\le i\le p-1$，操作后条件仍成立</p>              </div>            </details><p>那么我们就可以 dp 了，令 $dp_{i,j,k}$ 表示考虑了前 $i$ 大箱子的大小，一共选了 $j$ 个 $C$，$\sum C&#x3D;k$ 是否可能</p><p>由于 $b_i\times j\le n$，因此前两维最多 $O(n\log n)$，那么再套一个 bitset 优化，复杂度就是 $O(\frac{n^2\log n}{\omega})$ 的了</p>
+              <p>倒着考虑，我们最后 $i$ 次划分出的集合最多将每个 $a$ 减小 $i$，那么设倒数第 $i$ 次划分的集合大小是 $C_i$，有一个显然的必要条件是 $\sum_{j=1}^iC_j\le\sum_j\min(a_j,i)$，并且 $\sum C_j=\sum a_j$</p><p>事实上，将 $C$ 从大到小排序，那么上述式子对于所有 $i$ 都成立就是充要条件</p><p><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>proof </summary>              <div class='content'>              <p>具体地，我们证明对于 $C_1\ge C_2\ge\cdots\ge C_p$，满足上述条件，那么一定可以操作成 $C_1\ge C_2\ge\cdots\ge C_{p-1}$，并仍满足上述条件</p><p>设 $w_i=\sum\min(a_j,i),s_i=\sum_{j=1}^iC_j,cnt_i=\sum[a_j=i]$</p><p>首先最大值显然 $\le p$，此时 $C_p\le C_1\le w_1$，说明我们一定可以进行一次 $C_p$ 的操作</p><p>我们钦定 $C_p$ 操作的是最大的若干个数，考虑操作之后 $w_i$ 的变化，那么就是 $w_i\leftarrow w_i-\max(0,C_p-\sum_{j&gt;i}cnt_j)$，如果 $\max$ 取到 $0$ 那么显然仍然成立，我们只需要说明 $s_i\le w_i-(C_p-\sum_{j&gt;i}cnt_j)$ 即可</p><p>由于 $w_i=\sum_{j=1}^icnt_j\cdot j+\sum_{j=i+1}^pcnt_j\cdot i$，那么操作后会变成 $w^\prime_i=\sum_{j=1}^icnt_j\cdot j+\sum_{j=i+1}^pcnt_j(i+1)-C_p$，也就等于 $w_{i+1}-C_p$，而 $C_{i+1}\ge C_p$，因此 $s_i\le s_{i+1}-C_p\le w_{i+1}-C_p$，说明对 $1\le i\le p-1$，操作后条件仍成立</p>              </div>            </details></p><p>那么我们就可以 dp 了，令 $dp_{i,j,k}$ 表示考虑了前 $i$ 大箱子的大小，一共选了 $j$ 个 $C$，$\sum C=k$ 是否可能</p><p>由于 $b_i\times j\le n$，因此前两维最多 $O(n\log n)$，那么再套一个 bitset 优化，复杂度就是 $O(\frac{n^2\log n}{\omega})$ 的了</p>
               </div>
             </details>
-
 <hr>
 <h3 id="11-JOISC2023-D3T3-Tourism-Euclid-⭐"><a href="#11-JOISC2023-D3T3-Tourism-Euclid-⭐" class="headerlink" title="11.  JOISC2023 D3T3 - Tourism [Euclid] ⭐"></a>11.  JOISC2023 D3T3 - Tourism [Euclid] ⭐</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，给定一个长度为 $m$ 的点的序列 $c_1,c_2,\cdots,c_m$（可能有重复）</p>
 <p>$q$ 次询问，每次询问给出 $l,r$，求最小的包含 $c_l,c_{l+1},\cdots,c_r$ 的连通块点数</p>
 <p>$1\le n,q\le10^5,1\le m\le n$</p>
 <h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>以下讨论均假设选的是边数，最后 $+1$ 即可</p><p class='h5' id="Sol-Flamire"><a href="#Sol-Flamire" class="headerlink" title="Sol [Flamire]"></a>Sol [Flamire]</h5><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>              <div class='content'>              <p>信息不是很好合并，所以直接考虑根号。</p><p>根据经典结论，假设将区间内的点按 dfn 排序后是 $p_1,p_2,\cdots,p_k$，那么答案就是 $\frac12(\sum dis(p_i,p_{i+1})+dis(p_n,p_1))$，$dis(p_n,p_1)$ 是好算的，考虑前面的部分</p><p>那么每次加入&#x2F;删除一个数我们需要快速找到前驱后继，这样我们就获得了一个 $O(n\sqrt n\log n)$ 的做法</p><p>但是这太慢了。</p><p>用一个 rmq 求 lca，我们的瓶颈就只剩找到前驱后继了，而考虑如果我们建一个链表，那么删除的时候就可以 $O(1)$ 找到前驱后继，而只有插入是 $O(\log n)$ 的</p><p>仿照回滚莫队，写一个 “不插入莫队”（其实还有插入，但只有 $O(n)$ 次），就可以做到复杂度 $O(n\sqrt n)$</p>              </div>            </details><h5 id="Sol-Tutis"><a href="#Sol-Tutis" class="headerlink" title="Sol [Tutis]"></a>Sol [Tutis]</h5><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>              <div class='content'>              <p>分治，每次分治所有在 $[l,r]$ 区间内的询问，处理所有经过 $m$ 的询问</p><p>那么我们现在知道这些询问一定都经过 $m$ 了，我们把 $c_l,c_{l+1},\cdots,c_r$ 的虚树建出来，然后从 $c_m$ 开始 dfs</p><p>对于每条边 $(u,v,w)$，找到深度更浅的那个，设其为 $u$，那么对于所有存在点在 $v$ 子树内的询问，答案会 $+w$</p><p>这样的区间一定是对某个 $x,y$ 满足 $l\le x\lor y\le r$ 的区间，那么这就是一个二位数点了，可以直接树状数组</p><p>复杂度 $O(n\log^2n)$ </p>              </div>            </details><h5 id="Sol-Radewoosh"><a href="#Sol-Radewoosh" class="headerlink" title="Sol [Radewoosh]"></a>Sol [Radewoosh]</h5><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>              <div class='content'>              <p>考虑那个按 dfn 的排序的结论，其实只要我们保证不算重，就可以把排序的顺序省去，用任意顺序都可以</p><p>那么我们考虑如下的操作：对 $r$ 进行扫描线，每次新加一个点把 $c_{i-1}-c_i$ 路径上的点都赋值为 $i-1$，把 $c_i$ 赋值为 $i$，每个询问 $[l,r]$ 就是查询 $\ge l$ 的点数</p><p>用树剖拍到线段上，然后再用 set 维护连续段就可以做到 $O(n\log^2n)$</p>              </div>            </details>
+              <p>以下讨论均假设选的是边数，最后 $+1$ 即可</p><p class='h5' id="Sol-Flamire"><a href="#Sol-Flamire" class="headerlink" title="Sol [Flamire]"></a>Sol [Flamire]</h5><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>              <div class='content'>              <p>信息不是很好合并，所以直接考虑根号。</p><p>根据经典结论，假设将区间内的点按 dfn 排序后是 $p_1,p_2,\cdots,p_k$，那么答案就是 $\frac12(\sum dis(p_i,p_{i+1})+dis(p_n,p_1))$，$dis(p_n,p_1)$ 是好算的，考虑前面的部分</p><p>那么每次加入/删除一个数我们需要快速找到前驱后继，这样我们就获得了一个 $O(n\sqrt n\log n)$ 的做法</p><p>但是这太慢了。</p><p>用一个 rmq 求 lca，我们的瓶颈就只剩找到前驱后继了，而考虑如果我们建一个链表，那么删除的时候就可以 $O(1)$ 找到前驱后继，而只有插入是 $O(\log n)$ 的</p><p>仿照回滚莫队，写一个 “不插入莫队”（其实还有插入，但只有 $O(n)$ 次），就可以做到复杂度 $O(n\sqrt n)$</p>              </div>            </details><h5 id="Sol-Tutis"><a href="#Sol-Tutis" class="headerlink" title="Sol [Tutis]"></a>Sol [Tutis]</h5><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>              <div class='content'>              <p>分治，每次分治所有在 $[l,r]$ 区间内的询问，处理所有经过 $m$ 的询问</p><p>那么我们现在知道这些询问一定都经过 $m$ 了，我们把 $c_l,c_{l+1},\cdots,c_r$ 的虚树建出来，然后从 $c_m$ 开始 dfs</p><p>对于每条边 $(u,v,w)$，找到深度更浅的那个，设其为 $u$，那么对于所有存在点在 $v$ 子树内的询问，答案会 $+w$</p><p>这样的区间一定是对某个 $x,y$ 满足 $l\le x\lor y\le r$ 的区间，那么这就是一个二位数点了，可以直接树状数组</p><p>复杂度 $O(n\log^2n)$ </p>              </div>            </details><h5 id="Sol-Radewoosh"><a href="#Sol-Radewoosh" class="headerlink" title="Sol [Radewoosh]"></a>Sol [Radewoosh]</h5><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>              <div class='content'>              <p>考虑那个按 dfn 的排序的结论，其实只要我们保证不算重，就可以把排序的顺序省去，用任意顺序都可以</p><p>那么我们考虑如下的操作：对 $r$ 进行扫描线，每次新加一个点把 $c_{i-1}-c_i$ 路径上的点都赋值为 $i-1$，把 $c_i$ 赋值为 $i$，每个询问 $[l,r]$ 就是查询 $\ge l$ 的点数</p><p>用树剖拍到线段上，然后再用 set 维护连续段就可以做到 $O(n\log^2n)$</p>              </div>            </details>
               </div>
             </details>
-
 <hr>
 <h3 id="12-HNOI2019-JOJO-Keter-✔️"><a href="#12-HNOI2019-JOJO-Keter-✔️" class="headerlink" title="12.  HNOI2019 - JOJO [Keter] ✔️"></a>12.  HNOI2019 - JOJO [Keter] ✔️</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>有一个字符串 $s$，初始为空，每次操作添加 $x$ 个 $c$ 字符或者回溯到第 $x$ 次操作之后的状态</p>
-<p>每次操作后求出 $\sum \text{next}_i$，其中 $\text{next}_i$ 表示最大的满足 $1\le j&lt;n\land s[1:j]&#x3D;s[|s|-j+1:|s|]$ 的 $j$，没有则视作 $0$</p>
+<p>每次操作后求出 $\sum \text{next}_i$，其中 $\text{next}_i$ 表示最大的满足 $1\le j&lt;n\land s[1:j]=s[|s|-j+1:|s|]$ 的 $j$，没有则视作 $0$</p>
 <p>$1\le n\le10^5,1\le x\le10^4$，保证每次 1 操作添加的字符和当前字符串末尾不相同</p>
 <h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>阴间题，但好像又很厉害。</p><p>恶补字符串.jpg</p><p>细节很多，下面只说大致想法<del>，剩下的自己多对拍对拍就出来了</del></p><p>首先考虑没有回溯操作，那么如果两个串相等，除了开头和结尾的两段都应该是完全相同的，开头的段可以在 “细节很多” 中处理掉，那么就转换成我们类似于普通 kmp 的问题了，每次匹配当前的 $(x,c)$ 中的一段区间</p><p>但是 kmp 的复杂度是均摊的，没办法回溯，我们想要一种改进方法使得 kmp 的复杂度不是均摊的</p><p> 考虑一个串的 next，设其为 $x$，如果 $x\le\frac12|s|$，那么直接跳就可以让长度减半，否则这个字符串存在一个周期 $p&#x3D;|s|-x$，并且 $\ge\frac12|s|$ 的 border 都形如 $|s|-kp$，那么我们检查一下 $|s|-p$ 是否能匹配上，如果否，那么可以直接跳到 $|s|\bmod p+p$</p><p>正确性的话，设 $|s|\bmod p+p&#x3D;|s|-wp$，那么对于 $i&lt;w$，长为 $|s|-ip$ 的后缀的 border 一定是 $|s|-(i+1)p$，否则 $s$ 的最小周期就不为 $p$，那么最大 border 也不为 $x$，而由于 $|s|-ip$ 和 $|s|-(i+1)p$ 的下一个字符是相同的（周期为 $p$），因此可以直接跳过</p><p>那么我们每次操作至少会把长度变为原来的 $\frac23$，因此复杂度是 $O(n\log n)$ 的</p>
+              <p>阴间题，但好像又很厉害。</p><p>恶补字符串.jpg</p><p>细节很多，下面只说大致想法<del>，剩下的自己多对拍对拍就出来了</del></p><p>首先考虑没有回溯操作，那么如果两个串相等，除了开头和结尾的两段都应该是完全相同的，开头的段可以在 “细节很多” 中处理掉，那么就转换成我们类似于普通 kmp 的问题了，每次匹配当前的 $(x,c)$ 中的一段区间</p><p>但是 kmp 的复杂度是均摊的，没办法回溯，我们想要一种改进方法使得 kmp 的复杂度不是均摊的</p><p> 考虑一个串的 next，设其为 $x$，如果 $x\le\frac12|s|$，那么直接跳就可以让长度减半，否则这个字符串存在一个周期 $p=|s|-x$，并且 $\ge\frac12|s|$ 的 border 都形如 $|s|-kp$，那么我们检查一下 $|s|-p$ 是否能匹配上，如果否，那么可以直接跳到 $|s|\bmod p+p$</p><p>正确性的话，设 $|s|\bmod p+p=|s|-wp$，那么对于 $i&lt;w$，长为 $|s|-ip$ 的后缀的 border 一定是 $|s|-(i+1)p$，否则 $s$ 的最小周期就不为 $p$，那么最大 border 也不为 $x$，而由于 $|s|-ip$ 和 $|s|-(i+1)p$ 的下一个字符是相同的（周期为 $p$），因此可以直接跳过</p><p>那么我们每次操作至少会把长度变为原来的 $\frac23$，因此复杂度是 $O(n\log n)$ 的</p>
               </div>
             </details>
-
 <h4 id="notes"><a href="#notes" class="headerlink" title="notes"></a>notes</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>press here for evil things </summary>
               <div class='content'>
-              <p>字符串相关。</p><p>从这篇 <a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/ix-35/noi-yi-lun-fu-xi-ii-zi-fu-chuan" >blog<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 贺过来的。</p><p><strong>结论：$p$ 是 $S$ 的周期，当且仅当 $|S|-p$ 是 $|S|$ 的 border</strong></p><p>周期说明 $S_i&#x3D;S_{i+p}$ 对于任意 $1\le i\le|S|-p$ 都成立，那么也就是 $S[1:|S|-p]&#x3D;S[p+1:|S|]$</p><p><strong>结论：对于 $S$ 的最大 border $x$，$S$ 的 border 集合为 $S[1:x]$ 的所有 border 集合并上 $x$</strong></p><p>显然。</p><p><strong>结论：如果 $S$ 有 border，那么 $S$ 一定有 $\le\frac{|S|}2$ 的 border</strong></p><p><strong>弱周期引理：对于 $S$ 的周期 $p,q$，如果 $p+q\le|S|$，那么 $\gcd(p,q)$ 也是 $|S|$ 的周期</strong></p><p>根据周期的定义，$S_i&#x3D;S_{i+p}&#x3D;S_{i+q}$</p><p>这里假设字符串是 0-index 的，对于一个 $S_x$ 进行考虑，我们重复进行以下操作</p><p>如果 $x&lt;p$，那么 $x\leftarrow x+q$，否则 $x\leftarrow x-p$</p><p>由于 $p+q\le|S|$，所以 $0\le x&lt;|S|$ 始终成立，而这样 $x$ 能够取遍所有 $(x+kq)\bmod p$，那么也就是说 $x$ 能取到所有 $(x+k\gcd(p,q))\bmod p$</p><p>现在我们有：</p><ul><li>$S_i&#x3D;S_{(i+\gcd(p,q))\bmod p}$，其中 $0\le i&lt;p$</li><li>$S_i&#x3D;S_{i+p}$</li></ul><p>那么我们就可以有 $S_i&#x3D;S_{i+\gcd(p,q)}$</p><p><strong>周期引理：对于 $S$ 的周期 $p,q$，如果 $p+q-\gcd(p,q)\le|S|$，那么 $\gcd(p,q)$ 也是 $|S|$ 的周期</strong></p><p>咕。</p><p><strong>短周期结构：$S$ 的所有 $\le\frac{|S|}2$ 的周期都是最短周期的倍数</strong></p><p>显然。</p><p><strong>长 border 结构：$S$ 的所有 $\ge\frac{|S|}2$ 的 border 构成一个等差数列，并且这个等差数列再延伸一项就是 $|S|$</strong></p><p>由上一条显然。</p><p><strong>border 结构：$S$ 的所有 border 能表示成 $O(\log n)$ 个值域不交的等差数列</strong></p><p>归纳证明。</p><p>由上一条，$S$ 所有 $\ge\frac{|S|}2$ 的 border 构成一个等差数列，设 $\le\frac{|S|}2$ 的最大 border 为 $x$，那么 $S$ 剩下的 border 一定是 $S[1:x]$ 的 border，而 $x\le\frac{|S|}2$，因此最多拆成 $O(\log n)$ 个</p>
+              <p>字符串相关。</p><p>从这篇 <a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/ix-35/noi-yi-lun-fu-xi-ii-zi-fu-chuan" >blog<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 贺过来的。</p><p><strong>结论：$p$ 是 $S$ 的周期，当且仅当 $|S|-p$ 是 $|S|$ 的 border</strong></p><p>周期说明 $S_i=S_{i+p}$ 对于任意 $1\le i\le|S|-p$ 都成立，那么也就是 $S[1:|S|-p]=S[p+1:|S|]$</p><p><strong>结论：对于 $S$ 的最大 border $x$，$S$ 的 border 集合为 $S[1:x]$ 的所有 border 集合并上 $x$</strong></p><p>显然。</p><p><strong>结论：如果 $S$ 有 border，那么 $S$ 一定有 $\le\frac{|S|}2$ 的 border</strong></p><p><strong>弱周期引理：对于 $S$ 的周期 $p,q$，如果 $p+q\le|S|$，那么 $\gcd(p,q)$ 也是 $|S|$ 的周期</strong></p><p>根据周期的定义，$S_i=S_{i+p}=S_{i+q}$</p><p>这里假设字符串是 0-index 的，对于一个 $S_x$ 进行考虑，我们重复进行以下操作</p><p>如果 $x&lt;p$，那么 $x\leftarrow x+q$，否则 $x\leftarrow x-p$</p><p>由于 $p+q\le|S|$，所以 $0\le x&lt;|S|$ 始终成立，而这样 $x$ 能够取遍所有 $(x+kq)\bmod p$，那么也就是说 $x$ 能取到所有 $(x+k\gcd(p,q))\bmod p$</p><p>现在我们有：</p><ul><li>$S_i=S_{(i+\gcd(p,q))\bmod p}$，其中 $0\le i&lt;p$</li><li>$S_i=S_{i+p}$</li></ul><p>那么我们就可以有 $S_i=S_{i+\gcd(p,q)}$</p><p><strong>周期引理：对于 $S$ 的周期 $p,q$，如果 $p+q-\gcd(p,q)\le|S|$，那么 $\gcd(p,q)$ 也是 $|S|$ 的周期</strong></p><p>咕。</p><p><strong>短周期结构：$S$ 的所有 $\le\frac{|S|}2$ 的周期都是最短周期的倍数</strong></p><p>显然。</p><p><strong>长 border 结构：$S$ 的所有 $\ge\frac{|S|}2$ 的 border 构成一个等差数列，并且这个等差数列再延伸一项就是 $|S|$</strong></p><p>由上一条显然。</p><p><strong>border 结构：$S$ 的所有 border 能表示成 $O(\log n)$ 个值域不交的等差数列</strong></p><p>归纳证明。</p><p>由上一条，$S$ 所有 $\ge\frac{|S|}2$ 的 border 构成一个等差数列，设 $\le\frac{|S|}2$ 的最大 border 为 $x$，那么 $S$ 剩下的 border 一定是 $S[1:x]$ 的 border，而 $x\le\frac{|S|}2$，因此最多拆成 $O(\log n)$ 个</p>
               </div>
             </details>
-
 <hr>
 <h3 id="13-联合省选-2020-冰火战士-Safe"><a href="#13-联合省选-2020-冰火战士-Safe" class="headerlink" title="13.  联合省选 2020 - 冰火战士 [Safe]"></a>13.  联合省选 2020 - 冰火战士 [Safe]</h3><h4 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h4><p>有两队人，每个人有一个温度 $x_i$ 和一个能量 $y_i$</p>
 <p>你现在要选定一个 $t$，第一队中 $x_i\le t$ 的人会参与比赛，第二队中 $x_i\ge t$ 的人会参与比赛</p>
@@ -452,26 +439,25 @@
               <p>树状数组上二分模板题。</p>
               </div>
             </details>
-
 <hr>
-<h3 id="14-联合省选-2020-组合数问题-Euclid"><a href="#14-联合省选-2020-组合数问题-Euclid" class="headerlink" title="14.  联合省选 2020 - 组合数问题 [Euclid]"></a>14.  联合省选 2020 - 组合数问题 [Euclid]</h3><h4 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $m$ 次多项式 $f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i$ 以及常数 $n,x,p$，请计算<br>$$<br>\left(\sum_{k&#x3D;0}^nf(k)x^k\binom nk\right)\bmod p<br>$$<br>$1\le n,x,p\le10^9,1\le m\le\min(n,1000),1\le a_i\le10^9$</p>
+<h3 id="14-联合省选-2020-组合数问题-Euclid"><a href="#14-联合省选-2020-组合数问题-Euclid" class="headerlink" title="14.  联合省选 2020 - 组合数问题 [Euclid]"></a>14.  联合省选 2020 - 组合数问题 [Euclid]</h3><h4 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $m$ 次多项式 $f(x)=\sum_{i=0}^ma_ix^i$ 以及常数 $n,x,p$，请计算</p>
+<script type="math/tex; mode=display">
+\left(\sum_{k=0}^nf(k)x^k\binom nk\right)\bmod p</script><p>$1\le n,x,p\le10^9,1\le m\le\min(n,1000),1\le a_i\le10^9$</p>
 <h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>首先显然可以将 $f(k)$ 的每一项拆开，那么当 $x&#x3D;1$ 时问题就变为求 $\sum_i a_i\sum_k\binom nkk^i$</p><p>$\binom nkk^i$ 不是很好做，我们可以改成 $\binom nk\binom ki$</p><p>由于 $n^k&#x3D;\sum_{i&#x3D;0}^k{k\brace i}n^{\underline i}$，那么我们就可以将 $f(x)$ 转成一个下降幂多项式，设其 $x^{\underline k}$ 项为 $b_k$</p><p>进行一些推式子：<br>$$<br>\sum_{i&#x3D;0}^mb_i\sum_{k&#x3D;0}^nk^{\underline i}x^k\binom nk\<br>&#x3D;\sum_{i&#x3D;0}^mb_ii!\sum_{k&#x3D;0}^nx^k\binom nk\binom ki\<br>&#x3D;\sum_{i&#x3D;0}^mb_ii!\binom ni\sum_{k&#x3D;0}^n\binom{n-i}{k-i}x^k\<br>&#x3D;\sum_{i&#x3D;0}^mb_ii!\binom nix^i\sum_{k&#x3D;0}^{n-i}\binom{n-i}kx^k\<br>&#x3D;\sum_{i&#x3D;0}^mb_ii!\binom nix^i(x+1)^{n-i}<br>$$<br>整体计算是 $O(m^2)$ 的，瓶颈在于转下降幂多项式</p>
+              <p>首先显然可以将 $f(k)$ 的每一项拆开，那么当 $x=1$ 时问题就变为求 $\sum_i a_i\sum_k\binom nkk^i$</p><p>$\binom nkk^i$ 不是很好做，我们可以改成 $\binom nk\binom ki$</p><p>由于 $n^k=\sum_{i=0}^k{k\brace i}n^{\underline i}$，那么我们就可以将 $f(x)$ 转成一个下降幂多项式，设其 $x^{\underline k}$ 项为 $b_k$</p><p>进行一些推式子：</p><script type="math/tex; mode=display">\sum_{i=0}^mb_i\sum_{k=0}^nk^{\underline i}x^k\binom nk\\=\sum_{i=0}^mb_ii!\sum_{k=0}^nx^k\binom nk\binom ki\\=\sum_{i=0}^mb_ii!\binom ni\sum_{k=0}^n\binom{n-i}{k-i}x^k\\=\sum_{i=0}^mb_ii!\binom nix^i\sum_{k=0}^{n-i}\binom{n-i}kx^k\\=\sum_{i=0}^mb_ii!\binom nix^i(x+1)^{n-i}</script><p>整体计算是 $O(m^2)$ 的，瓶颈在于转下降幂多项式</p>
               </div>
             </details>
-
 <hr>
 <h3 id="15-联合省选-2020-树-Safe"><a href="#15-联合省选-2020-树-Safe" class="headerlink" title="15.  联合省选 2020 - 树 [Safe]"></a>15.  联合省选 2020 - 树 [Safe]</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，点权为 $v_1,v_2,\cdots,v_n$</p>
-<p>对于一个节点 $u$，定义 $val(u)&#x3D;\bigoplus_x(v_x+dis(x,u))$，其中 $x$ 在 $u$ 子树中，$dis(x,u)$ 是 $x$ 到 $u$ 路径的边数</p>
-<p>求 $\sum_{i&#x3D;1}^nval(i)$</p>
+<p>对于一个节点 $u$，定义 $val(u)=\bigoplus_x(v_x+dis(x,u))$，其中 $x$ 在 $u$ 子树中，$dis(x,u)$ 是 $x$ 到 $u$ 路径的边数</p>
+<p>求 $\sum_{i=1}^nval(i)$</p>
 <p>$1\le n,v_i\le525010$</p>
 <h4 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>首先显然可以拆位。设当前考虑的是第 $i$ 位</p><p>考虑一个 $x$ 会对哪些点的 $val$ 产生影响，那么首先会给到根链 $\oplus v_x$，其次对于每次影响到第 $i$ 位的进位，都会给祖先链 $\oplus2^i$</p><p>在第一次进位之后，之后就是每 $2^i$ 级祖先异或一次了，是好维护的，而第一次进位也很好找。</p><p>复杂度 $O(n\log n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="16-联合省选-2020-作业题-Keter"><a href="#16-联合省选-2020-作业题-Keter" class="headerlink" title="16.  联合省选 2020 - 作业题 [Keter]"></a>16.  联合省选 2020 - 作业题 [Keter]</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个点 $m$ 条边的无向图 $G$，边有边权，定义一棵生成树的权值为其 边权和 乘 边权 gcd</p>
 <p>求所有生成树的权值和，对 $998244353$ 取模</p>
@@ -481,45 +467,41 @@
               <p>首先显然可以莫反一下把 gcd 搞掉，现在问题变为多次计算只保留边权为 $d$ 的倍数后的所有生成树的边权和</p><p>这个问题似乎是一个经典套路，我们把边权变成一次函数 $(1+wx)$，这样按照普通的矩阵树定理求出来的多项式的一次项就是答案</p><p>但是求行列式的消元中间可能出现无法求逆元的情况，注意到我们只需要消成上三角，假设此时是第 $i$ 轮，那么此时我们找一个常数项非零的 $j&gt;i$ 换过来，如果不存在这样的 $j$，说明该列 $\ge i$ 的位置常数项都为 $0$，因此直接将一次项系数求逆即可</p><p>那么单次复杂度就是 $O(n^3)$</p><p>但是我们要求 $O(\sum d(w_i))$ 次，总复杂度 $O(dn^5)$（其中 $d$ 是最大因数个数），无法通过</p><p>注意到一个 $d$ 需要考虑当且仅当有至少 $n-1$ 个 $w_i$ 是其倍数，所以求的次数就变成了 $\frac{\sum d(w_i)}{n-1}$，那么总复杂度就是 $O(dn^4)$，$d$ 的最大值是 $144$，可以通过</p>
               </div>
             </details>
-
 <hr>
 <h3 id="17-联合省选-2020-丁香之路-Keter-⭐"><a href="#17-联合省选-2020-丁香之路-Keter-⭐" class="headerlink" title="17.  联合省选 2020 - 丁香之路 [Keter] ⭐"></a>17.  联合省选 2020 - 丁香之路 [Keter] ⭐</h3><h4 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h4><p>一张 $n$ 个点的无向完全图，$i-j$ 之间的边的权值是 $|i-j|$，给定 $m$ 条特殊边，以及起点 $s$</p>
-<p>对 $t&#x3D;1,2,\cdots,n$，求 $s$ 到 $t$ ，且经过所有 $m$ 条特殊边的路径的最小权值和</p>
+<p>对 $t=1,2,\cdots,n$，求 $s$ 到 $t$ ，且经过所有 $m$ 条特殊边的路径的最小权值和</p>
 <p>$1\le n\le2500,1\le m\le\frac12n(n-1)$</p>
 <h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>2020 省选唯一能打的题。</p><p>每条边经过至少一次，这看起来有点像欧拉回路，考虑如何把这道题转化成欧拉回路的问题</p><p>那么也就相当于我们要在这 $m$ 条边的基础上添加一些边，使得这张图有欧拉路。</p><p>那么我们再在 $s-t$ 之间建一条边，就相当于要求这张图有欧拉回路。</p><p>欧拉回路要求图联通并且所有点度数都是偶数，那么我们可以考虑贪心来完成这个过程</p><p>具体地，我们先找出此时的所有奇点，并对相邻的两个奇点 $u,v$，连上 $(u)-(u+1)-(u+2)-\cdots-(v)$ 路径上的边</p><p>然后问题转化成我们现在有若干个连通块，我们要让它们联通，那么这就是一个最小生成树，但是注意到我们只用取相邻的 $\deg&gt;0$ 的点之间的边即可，因此只有 $O(n)$ 条</p><p>考虑证明这个贪心的正确性：</p><p>称 $s-t$ 和给定的 $m$ 条边为黑边，其余的边为白边</p><p>可以说明，满足如下条件的图仅有一个：</p><ul><li>包含所有黑边</li><li>白边长度为 $1$</li><li>无白色重边</li><li>所有点的度数都为偶数</li></ul><p>满足的条件的也就是我们连完奇点后建出来的图。</p><p>那么考虑任意一个最优解 $E$，将所有长度不为 $1$ 的白边 $u-v$ 拆成 $(u)-(u+1)-(u+2)-\cdots-(v)$，然后删除所有白色重边，由上面的结论，得到的一定是连完奇点后建出来的图</p><p>那么剩下的就只有白色重边了，要将这张图的所有连通块连起来，最小值显然是 mst</p><p>对每个 $t$ 都做一遍，复杂度 $O(n^2\log n+m)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="18-NOI2022-冒泡排序-Keter-✨"><a href="#18-NOI2022-冒泡排序-Keter-✨" class="headerlink" title="18.  NOI2022 - 冒泡排序 [Keter] ✨"></a>18.  NOI2022 - 冒泡排序 [Keter] ✨</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>有一个长为 $n$ 的数列 $a_1,a_2,\cdots,a_n$，给定 $m$ 条限制形如 “$a[l_i:r_i]$ 的最小值为 $v_i$”</p>
 <p>求对于所有满足条件的 $a$，其逆序对数最小为多少，或输出无解</p>
 <p>$1\le n,m\le10^6,0\le v_i\le10^9$</p>
 <p>特殊性质 A：$0\le v_i\le1$</p>
-<p>特殊性质 B：$l_i&#x3D;r_i$</p>
+<p>特殊性质 B：$l_i=r_i$</p>
 <p>特殊性质 C：$[l_i,r_i]$ 两两不交</p>
 <h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>显然可以离散化，因为一定存在最优解使得每个 $a_i$ 都是某个 $v$</p><p>先考虑特殊性质 B，那么这相当于有一些位置已经被固定了</p><p>从前到后扫这个序列，维护当前位置 $i$，选择 $x$ 会产生的逆序对数 $c_{i,x}$（这里包括原来固定的数和已经决策的数）</p><p>可以说明，如果 $c_{i,x}\ge c_{i,y}$，那么对于任意 $j&gt;i$ 也满足 $c_{j,x}\ge c_{j,y}$</p><p>因此，我们直接取 $c$ 的最小值（相同取下标较小的）即可</p><p>接下来考虑特殊性质 C</p><p>首先一个显然的事情是我们直接令 $a_{l_i}&#x3D;v_i$ 一定最优，因为否则可以将 $v_i$ 交换过来</p><p>那么现在问题变成了有一些位置已经固定，另外一些位置有限制 $a_i\ge lim_i$</p><p>我们仍然按照特殊性质 B 去做，但是每次只取下标 $\ge lim_i$ 的 $c$ 的最小值，可以说明这样是正确的</p><p>具体地，设选择的下标为 $k$，如果我们选择了一个下标 $&gt;k$ 的，那么肯定不如选择 $k$，如果选择的下标 $&lt;k$，设其为 $w$，那么我们将之后所有在 $[w,k]$ 之间的数都替换为 $k$，不会更劣（因为此时所有 $y\in [w,k]$ 都满足 $c_{i,y}\le c_{i,k}$，那么在之后也一定满足这个条件，大概？）</p><p>那么再考虑特殊性质 A</p><p>我们希望运用前两个特殊性质的结论，那么我们就希望将限制也转化成有若干位置 $&#x3D;v_i$，若干位置 $\ge v_i$ 的形式</p><p>对于 $v_i&#x3D;1$，显然整个区间都必须是 $0$</p><p>对于 $v_i&#x3D;0$ 的区间，我们按照如下方式选取被钦定 $&#x3D;0$ 的位置：</p><p>将所有 $v_i&#x3D;0$ 的区间按左端点从大到小排序，然后从大到小考虑每个位置 $i$，如果当前存在一个区间只有当前位置还可以被钦定成 $&#x3D;0$（也即之前可以被钦定成 $&#x3D;0$ 的位置没有被钦定），那么我们将当前这个位置钦定 $&#x3D;0$，也就是说，只要还可以合法就让下一个钦定 $&#x3D;0$ 的位置尽量靠前</p><p>证明的话，如果不这么选，考虑任意一个最优解，从后往前第一个会被贪心钦定成 $&#x3D;0$，但实际不为 $0$ 的位置 $x$，那么我们将 $x$ 与这个最优解中后面第一个 $0$ 交换，序列一定仍然合法，并且不会更劣</p><p>对于原问题，我们就可以捏出来这样一个算法：</p><p>按 $v_i$ 从大到小考虑，每次对于所有 $v_i&#x3D;V$ 的区间，我们希望钦定其中 $&#x3D;V$ 的位置，具体地，我们将所有 $v_i&#x3D;V$ 的区间按左端点从大到小考虑，每次如果当前位置不钦定仍然合法，就不钦定，否则钦定当前位置 $&#x3D;V$</p><p>在这之后，将所有被限制 $&#x3D;V$ 或 $\ge V$ 的位置从序列中删除，因为它们显然不能被钦定成等于更小的 $v_i$ 的位置</p><p>那么就可以得到每个位置的 $&#x3D;k$ 或 $\ge k$ 的限制，用特殊性质 C 的方法维护即可，复杂度 $O(n\log n)$</p>
+              <p>显然可以离散化，因为一定存在最优解使得每个 $a_i$ 都是某个 $v$</p><p>先考虑特殊性质 B，那么这相当于有一些位置已经被固定了</p><p>从前到后扫这个序列，维护当前位置 $i$，选择 $x$ 会产生的逆序对数 $c_{i,x}$（这里包括原来固定的数和已经决策的数）</p><p>可以说明，如果 $c_{i,x}\ge c_{i,y}$，那么对于任意 $j&gt;i$ 也满足 $c_{j,x}\ge c_{j,y}$</p><p>因此，我们直接取 $c$ 的最小值（相同取下标较小的）即可</p><p>接下来考虑特殊性质 C</p><p>首先一个显然的事情是我们直接令 $a_{l_i}=v_i$ 一定最优，因为否则可以将 $v_i$ 交换过来</p><p>那么现在问题变成了有一些位置已经固定，另外一些位置有限制 $a_i\ge lim_i$</p><p>我们仍然按照特殊性质 B 去做，但是每次只取下标 $\ge lim_i$ 的 $c$ 的最小值，可以说明这样是正确的</p><p>具体地，设选择的下标为 $k$，如果我们选择了一个下标 $&gt;k$ 的，那么肯定不如选择 $k$，如果选择的下标 $&lt;k$，设其为 $w$，那么我们将之后所有在 $[w,k]$ 之间的数都替换为 $k$，不会更劣（因为此时所有 $y\in [w,k]$ 都满足 $c_{i,y}\le c_{i,k}$，那么在之后也一定满足这个条件，大概？）</p><p>那么再考虑特殊性质 A</p><p>我们希望运用前两个特殊性质的结论，那么我们就希望将限制也转化成有若干位置 $=v_i$，若干位置 $\ge v_i$ 的形式</p><p>对于 $v_i=1$，显然整个区间都必须是 $0$</p><p>对于 $v_i=0$ 的区间，我们按照如下方式选取被钦定 $=0$ 的位置：</p><p>将所有 $v_i=0$ 的区间按左端点从大到小排序，然后从大到小考虑每个位置 $i$，如果当前存在一个区间只有当前位置还可以被钦定成 $=0$（也即之前可以被钦定成 $=0$ 的位置没有被钦定），那么我们将当前这个位置钦定 $=0$，也就是说，只要还可以合法就让下一个钦定 $=0$ 的位置尽量靠前</p><p>证明的话，如果不这么选，考虑任意一个最优解，从后往前第一个会被贪心钦定成 $=0$，但实际不为 $0$ 的位置 $x$，那么我们将 $x$ 与这个最优解中后面第一个 $0$ 交换，序列一定仍然合法，并且不会更劣</p><p>对于原问题，我们就可以捏出来这样一个算法：</p><p>按 $v_i$ 从大到小考虑，每次对于所有 $v_i=V$ 的区间，我们希望钦定其中 $=V$ 的位置，具体地，我们将所有 $v_i=V$ 的区间按左端点从大到小考虑，每次如果当前位置不钦定仍然合法，就不钦定，否则钦定当前位置 $=V$</p><p>在这之后，将所有被限制 $=V$ 或 $\ge V$ 的位置从序列中删除，因为它们显然不能被钦定成等于更小的 $v_i$ 的位置</p><p>那么就可以得到每个位置的 $=k$ 或 $\ge k$ 的限制，用特殊性质 C 的方法维护即可，复杂度 $O(n\log n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="19-NOI2020-制作菜品-Keter-⭐"><a href="#19-NOI2020-制作菜品-Keter-⭐" class="headerlink" title="19.  NOI2020 - 制作菜品 [Keter] ⭐"></a>19.  NOI2020 - 制作菜品 [Keter] ⭐</h3><h4 id="题面-18"><a href="#题面-18" class="headerlink" title="题面"></a>题面</h4><p>$T$ 组数据</p>
-<p>有 $n$ 种食材，第 $i$ 种食材有 $d_i$ 质量，你需要做 $m$ 道菜，每道菜的质量为 $k$，保证 $\sum d_i&#x3D;mk$</p>
+<p>有 $n$ 种食材，第 $i$ 种食材有 $d_i$ 质量，你需要做 $m$ 道菜，每道菜的质量为 $k$，保证 $\sum d_i=mk$</p>
 <p>每道菜至多使用两种食材，并且每种食材使用的质量必须是正整数</p>
 <p>构造方案或判断无解</p>
 <p>$1\le T\le10,1\le n\le500,n-2\le m\le5000,1\le k\le5000$</p>
 <h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>通过魔法，我们注意到 $m&#x3D;n-1$ 时一定有解，具体地，我们通过如下方式归纳证明：</p><p>将 $d$ 从小到大排序，那么我们有如下结论：</p><ul><li>当 $m&#x3D;n-1$ 时，$d_1&lt;k$</li></ul><p>证明：如果 $d_1\ge k$，那么 $\sum d_i\ge nk&gt;mk$，矛盾</p><ul><li>当 $m&#x3D;n-1$ 时，$d_1+d_n\ge k$</li></ul><p>证明：如果 $d_1+d_n&lt;k$，那么 $d_n\le k-1-d_1$，$\sum d_i\le d_1+(n-1)(k-1-d_1)&#x3D;(n-1)k-(n-1)-(n-2)d_1&lt;(n-1)k&#x3D;mk$</p><p>因此我们可以每次用 $d_1$ 的全部和 $d_2$ 的一部分组成一道菜，那么此时 $m$ 和 $n$ 都减 1，因此可以归纳证明</p><p>通过魔法，我们继续注意到 $m\ge n-1$ 时一定有解，具体地，我们通过如下方式归纳证明：</p><ul><li>当 $m&gt;n-1$ 时，一定存在 $d_i&gt;k$，或者 $\forall d_i&#x3D;k$</li></ul><p>证明：如果 $\forall d_i\le k$，那么 $\sum d_i\le nk\le mk$，只有当 $d_i$ 全 $&#x3D;k$ 时可以去等</p><p>全 $&#x3D;k$ 的情况显然有解，否则我们可以选一个 $d_i\ge k$，用它做一道菜，这样在 $n$ 不变的情况下将 $m$ 减 1，最后转化成 $m&#x3D;n-1$ 的情况</p><p>现在只剩 $m&#x3D;n-2$ 的情况了，我们不妨大胆猜一下，将原来的问题拆分成两部分，转化成 $m&#x3D;n-1$ 的问题</p><p>事实上，这是正确的，具体地，我们通过如下方式证明：</p><p>充分性显然。</p><p>必要性，考虑任意一个最优解，由于 $m&#x3D;n-2$，所以如果将每道菜看成一条边，那么建出的图一定形成至少两个连通块，并且一定存在一个连通块是树，取一个树为一个集合，剩下的部分为另一个集合，就是两个 $m&#x3D;n-1$ 的问题</p><p>那么我们直接背包找出是否可以划分，如果不能则输出无解，否则做两个 $m&#x3D;n-1$ 的问题即可</p><p>复杂度 $O(\frac{n^2k}{\omega}+nm\log n)$</p>
+              <p>通过魔法，我们注意到 $m=n-1$ 时一定有解，具体地，我们通过如下方式归纳证明：</p><p>将 $d$ 从小到大排序，那么我们有如下结论：</p><ul><li>当 $m=n-1$ 时，$d_1&lt;k$</li></ul><p>证明：如果 $d_1\ge k$，那么 $\sum d_i\ge nk&gt;mk$，矛盾</p><ul><li>当 $m=n-1$ 时，$d_1+d_n\ge k$</li></ul><p>证明：如果 $d_1+d_n&lt;k$，那么 $d_n\le k-1-d_1$，$\sum d_i\le d_1+(n-1)(k-1-d_1)=(n-1)k-(n-1)-(n-2)d_1&lt;(n-1)k=mk$</p><p>因此我们可以每次用 $d_1$ 的全部和 $d_2$ 的一部分组成一道菜，那么此时 $m$ 和 $n$ 都减 1，因此可以归纳证明</p><p>通过魔法，我们继续注意到 $m\ge n-1$ 时一定有解，具体地，我们通过如下方式归纳证明：</p><ul><li>当 $m&gt;n-1$ 时，一定存在 $d_i&gt;k$，或者 $\forall d_i=k$</li></ul><p>证明：如果 $\forall d_i\le k$，那么 $\sum d_i\le nk\le mk$，只有当 $d_i$ 全 $=k$ 时可以去等</p><p>全 $=k$ 的情况显然有解，否则我们可以选一个 $d_i\ge k$，用它做一道菜，这样在 $n$ 不变的情况下将 $m$ 减 1，最后转化成 $m=n-1$ 的情况</p><p>现在只剩 $m=n-2$ 的情况了，我们不妨大胆猜一下，将原来的问题拆分成两部分，转化成 $m=n-1$ 的问题</p><p>事实上，这是正确的，具体地，我们通过如下方式证明：</p><p>充分性显然。</p><p>必要性，考虑任意一个最优解，由于 $m=n-2$，所以如果将每道菜看成一条边，那么建出的图一定形成至少两个连通块，并且一定存在一个连通块是树，取一个树为一个集合，剩下的部分为另一个集合，就是两个 $m=n-1$ 的问题</p><p>那么我们直接背包找出是否可以划分，如果不能则输出无解，否则做两个 $m=n-1$ 的问题即可</p><p>复杂度 $O(\frac{n^2k}{\omega}+nm\log n)$</p>
               </div>
             </details>
-
 <hr>
 <h3 id="20-NOI2020-超现实树-Keter-✨"><a href="#20-NOI2020-超现实树-Keter-✨" class="headerlink" title="20.  NOI2020 - 超现实树 [Keter] ✨"></a>20.  NOI2020 - 超现实树 [Keter] ✨</h3><h4 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h4><p>本题中二叉树均无标号，且区分左右儿子</p>
-<p>给定二叉树集合 $S&#x3D;{T_1,T_2,\cdots,T_m}$</p>
+<p>给定二叉树集合 $S=\{T_1,T_2,\cdots,T_m\}$</p>
 <p>对二叉树 $T$，一次生长操作可以将某个 $T$ 中的一个叶子替换为任意一棵非空二叉树（不一定要在 $S$ 中）</p>
 <p>判断是否有无穷多个二叉树不能由 $S$ 中的任何一棵树进行若干次生长操作得到</p>
 <p>$1\le m\le\text{点数}\le2\times10^6$</p>
@@ -553,11 +535,11 @@
 <h3 id="21-联合省选-2021-图函数-Euclid"><a href="#21-联合省选-2021-图函数-Euclid" class="headerlink" title="21.  联合省选 2021 - 图函数 [Euclid]"></a>21.  联合省选 2021 - 图函数 [Euclid]</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个点 $m$ 条边的有向图 $G$，边按输入顺序编号</p>
 <p>定义 $f(u,G)$：</p>
 <ol>
-<li>初始 $cnt&#x3D;0$</li>
+<li>初始 $cnt=0$</li>
 <li>枚举 $i:1\rightarrow n$，如果 $u\rightarrow i$ 和 $i\rightarrow u$ 的路径都存在，则将 $cnt$ 加 1，并将 $i$ 从 $G$ 中删去</li>
 <li>最后 $f(u,G)$ 的值就是 $cnt$ 的值</li>
 </ol>
-<p>定义 $h(G)$ 为 $\sum_{i&#x3D;1}^nf(i,G)$，设 $G$ 删除前 $i$ 条边后得到的图为 $G_i$，求 $h(G_0),h(G_1),\cdots,h(G_m)$</p>
+<p>定义 $h(G)$ 为 $\sum_{i=1}^nf(i,G)$，设 $G$ 删除前 $i$ 条边后得到的图为 $G_i$，求 $h(G_0),h(G_1),\cdots,h(G_m)$</p>
 <p>$1\le n\le10^3,1\le m\le2\times10^5$</p>
 <h4 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h4><p>$f(u,G)$ 其实就是有多少点 $v$ 满足存在一个环（不一定简单）只经过编号 $\ge v$ 的点</p>
 <p>如果对于每一对 $(u,v)$，我们都能求出来只经过 $\ge u$ 的点的到达 $u,v$ 的环，边的编号最小值最大是多少，那么经过一次差分我们就能求出答案</p>
@@ -990,6 +972,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

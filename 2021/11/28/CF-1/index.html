@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            rand | Wonderhoy!
+            rand | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -311,8 +311,8 @@
 <h2 id="1-CF1004F-Sonya-and-Bitwise-OR"><a href="#1-CF1004F-Sonya-and-Bitwise-OR" class="headerlink" title="1.  CF1004F - Sonya and Bitwise OR"></a>1.  CF1004F - Sonya and Bitwise OR</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>给定 $n,m,x$，以及一个长为 $n$ 的数组 $a_1,a_2,\cdots,a_n$</p>
 <p>有 $m$ 次操作，操作为下面两种的一种：</p>
 <ol>
-<li>$1\ i\ y$，表示将 $a_i$ 赋值为 $y$</li>
-<li>$2\ l\ r$，求有多少有序对 $(x,y)$ 满足 $l\le x\le y\le r$，并且 $a_l|a_{l+1}|\cdots|a_r\ge x$，其中 $|$ 代表按位或</li>
+<li>$1 i y$，表示将 $a_i$ 赋值为 $y$</li>
+<li>$2 l r$，求有多少有序对 $(x,y)$ 满足 $l\le x\le y\le r$，并且 $a_l|a_{l+1}|\cdots|a_r\ge x$，其中 $|$ 代表按位或</li>
 </ol>
 <p>$1\le n,m\le10^5,0\le x&lt;2^{20}$，保证任意时刻 $0\le a_i&lt;2^{20}$</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>考虑使用线段树维护每个区间的答案，那么在合并时需要我们求出跨过区间中点的满足条件的答案个数</p>
@@ -327,14 +327,14 @@
 <li><code>?</code> $t$，表示如果此时 $t$ 时刻来了一个人，那么他需要等多长时间才能开始办事</li>
 </ol>
 <p>$1\le q\le3\times10^5$</p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>假设我们已经将所有人按照时间排序，那么一个人 $x$ 办上事的时间是 $\max(t_i+d_i+d_{i+1}+\cdots+d_{x-1})(1\le i\le x)$，化为 $t_i+sum_{x-1}-sum_{i-1}$，用平衡树&#x2F;线段树维护即可，复杂度 $O(n\log n)$</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>假设我们已经将所有人按照时间排序，那么一个人 $x$ 办上事的时间是 $\max(t_i+d_i+d_{i+1}+\cdots+d_{x-1})(1\le i\le x)$，化为 $t_i+sum_{x-1}-sum_{i-1}$，用平衡树/线段树维护即可，复杂度 $O(n\log n)$</p>
 <h2 id="3-CF1063E-Lasers-and-Mirrors"><a href="#3-CF1063E-Lasers-and-Mirrors" class="headerlink" title="3.  CF1063E - Lasers and Mirrors"></a>3.  CF1063E - Lasers and Mirrors</h2><h3 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h3><p>你有一个 $n\times n$ 的棋盘，现在对于每一个 $i$，第 $i$ 列上方射入了颜色为 $i$ 的光线，给定数列 $a_i$，表示第 $i$ 列下方放置了颜色为 $i$ 的接收器</p>
 <p>你现在要在这个棋盘中的一些格子放置倾斜 45° 的平面镜，用 <code>\</code> 与 <code>/</code> 表示，使得尽可能多的接收器接收到对应颜色的光线</p>
 <p>$1\le n\le1000$</p>
-<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>如果 $a_i&#x3D;i$，那么答案一定是 $n$，否则答案为 $n-1$</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>如果 $a_i=i$，那么答案一定是 $n$，否则答案为 $n-1$</p>
 <p>证明：考虑第一个有镜子的行，必定会淘汰掉至少一个光线，因此答案最多为 $n-1$，否则我们可以如下构造出 $n-1$ 的解</p>
 <p>情况 1：考虑如果当前我们有 $m$ 列，第 $i$ 列没有光射入，第 $j$ 列没有接收器，$i\neq j$，且如果将除 $i,j$ 外的列的光与接收器颜色连边，那么所有颜色形成一条链</p>
-<p>当 $m&#x3D;2$ 时直接反射即可</p>
+<p>当 $m=2$ 时直接反射即可</p>
 <p>否则我们用第一行将可以第 $i$ 列的接收器所对应的光反射过来，设其在列 $x$，那么问题转化为 $m-1$ 列，第 $x$ 列没有射入光，第 $j$ 列没有接收器的情况，那么我们就在 $m-1$ 步内完成了这一类情况</p>
 <p>情况 2：考虑如果当前有 $m$ 列，这 $m$ 列的光与发射器的排列成一个大环，以及一个在最右侧的空余列（既没有光射入也没有接收器）</p>
 <p>我们可以将第 $m$ 列的光反射到空余列，并转化为有 $m+1$ 列，第 $m$ 列没有光射入，第 $m+1$ 列没有接收器的情况，用 $m$ 行解决即可，这样我们将这 $m$ 行的第一行与将第 $m$ 行反射到第 $m+1$ 行合并，就可以得到这个问题 $m$ 行的解</p>
@@ -344,20 +344,27 @@
 <li>该环不包括被扔掉的光线，那么可以转化为情况 2，消耗 <code>环长</code> 行</li>
 </ol>
 <p>再加上最开始扔掉光线的行，一共 $n$ 行解决</p>
-<h2 id="4-CF1063D-Candies-for-Children"><a href="#4-CF1063D-Candies-for-Children" class="headerlink" title="4.  CF1063D - Candies for Children"></a>4.  CF1063D - Candies for Children</h2><h3 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h3><p>给定 $n,l,r,k$，现在有 $n$ 个小朋友顺次顺时针排成一圈，有一个装有 $k$ 个糖果的盒子，从第 $l$ 个小朋友开始顺时针传，每个小朋友有一个属性 $k_i(k_i\in{1,2})$，表示每当盒子传到这个小朋友时她会拿走 $k_i$ 块糖（如果剩下的糖果数不足 $k_i$ 则全部拿走），已知第 $r$ 个小朋友拿走了最后一块糖，问最多可能有多少小朋友的 $k_i&#x3D;2$</p>
+<h2 id="4-CF1063D-Candies-for-Children"><a href="#4-CF1063D-Candies-for-Children" class="headerlink" title="4.  CF1063D - Candies for Children"></a>4.  CF1063D - Candies for Children</h2><h3 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h3><p>给定 $n,l,r,k$，现在有 $n$ 个小朋友顺次顺时针排成一圈，有一个装有 $k$ 个糖果的盒子，从第 $l$ 个小朋友开始顺时针传，每个小朋友有一个属性 $k_i(k_i\in\{1,2\})$，表示每当盒子传到这个小朋友时她会拿走 $k_i$ 块糖（如果剩下的糖果数不足 $k_i$ 则全部拿走），已知第 $r$ 个小朋友拿走了最后一块糖，问最多可能有多少小朋友的 $k_i=2$</p>
 <p>$1\le n,k\le10^{11},1\le l,r\le n$</p>
-<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>设有 $x$ 个小朋友的 $k_i&#x3D;2$，那么：<br>$$<br>\left{<br>\begin{aligned}<br>k\bmod(n+x)\ge id\<br>k\bmod(n+x)\ge x-(n-id)+id\<br>k\bmod(n+x)\le 2id-1\<br>\end{aligned}<br>\right.<br>$$<br>整理后整除分块解不等式即可，复杂度 $O(\sqrt n)$</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>设有 $x$ 个小朋友的 $k_i=2$，那么：</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+k\bmod(n+x)\ge id\\
+k\bmod(n+x)\ge x-(n-id)+id\\
+k\bmod(n+x)\le 2id-1\\
+\end{aligned}
+\right.</script><p>整理后整除分块解不等式即可，复杂度 $O(\sqrt n)$</p>
 <h2 id="5-CF682E-Alyona-and-Triangles"><a href="#5-CF682E-Alyona-and-Triangles" class="headerlink" title="5.  CF682E - Alyona and Triangles"></a>5.  CF682E - Alyona and Triangles</h2><h3 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h3><p>给定 $n$ 个整点，保证其中任意三点组成的三角形面积不超过 $S$，要求构造一个整点三角形，使得其包含所有的 $n$ 个点，且面积不超过 $4S$</p>
 <p>$1\le n\le5000,1\le S\le10^{18}$</p>
 <h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p>结论：任选一个面积最大的由这 $n$ 个点组成的三角形，分别过其三个顶点作对边平行线组成的三角形即为答案</p>
 <p>证明：如果有点在三角形外，如图（面积最大的三角形为紫色三角形，答案三角形为直线围出的三角形）：</p>
-<img  
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://i.loli.net/2021/11/13/VoFDsElPntKSdHa.png"
                       alt="CF-1_1.png" style="zoom: 33%;" 
-                >
-
+                ></p>
 <p>那么蓝色三角形的面积一定大于紫色三角形，矛盾</p>
 <p>现在我们要找出这 $n$ 个点组成的最大的三角形</p>
 <p>不难发现这个三角形端点一定在凸包上，我们不妨假设三角形顶点分别是 $A,B,C$（顺时针顺序），那么我们先枚举 $A$，接下来随着 $B$ 顺时针移动时，$C$ 的最优取值一定也顺时针移动，维护一下即可，复杂度 $O(n^2)$</p>
@@ -388,7 +395,7 @@
 <h2 id="11-CF513D1-Constrained-Tree"><a href="#11-CF513D1-Constrained-Tree" class="headerlink" title="11.  CF513D1 - Constrained Tree"></a>11.  CF513D1 - Constrained Tree</h2><h3 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h3><p>有 $c$ 个限制 $a_i,b_i,typ_i$，要求构造一棵 $n$ 个点的二叉树，使得其前序遍历为 $1,2,\cdots,n$，且对于每个限制 $a_i,b_i,typ_i$，其中 $typ_i$ 为 <code>LEFT</code> 或 <code>RIGHT</code>，表示 $b_i$ 需要在 $a_i$ 对应的子树内</p>
 <p>$1\le n\le100,1\le c\le50$</p>
 <h3 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h3><p>令 $dp_{i,x}$ 表示编号为 $i$ 的点的子树有 $x$ 个点是否可能，枚举左子树大小记录转移点转移即可，复杂度 $O(n^2c)$</p>
-<h2 id="12-CF452F-Permutation"><a href="#12-CF452F-Permutation" class="headerlink" title="12.  CF452F - Permutation"></a>12.  CF452F - Permutation</h2><h3 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h3><p>给定长为 $n$ 的排列 $p$，判断是否存在 $x,y,z$，满足 $1\le x&lt;y&lt;z\le n,p_y&#x3D;\frac{p_x+p_z}2$</p>
+<h2 id="12-CF452F-Permutation"><a href="#12-CF452F-Permutation" class="headerlink" title="12.  CF452F - Permutation"></a>12.  CF452F - Permutation</h2><h3 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h3><p>给定长为 $n$ 的排列 $p$，判断是否存在 $x,y,z$，满足 $1\le x&lt;y&lt;z\le n,p_y=\frac{p_x+p_z}2$</p>
 <p>$1\le n\le3\times10^5$</p>
 <h3 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h3><p>考虑求出 $id_i$，表示 $i$ 在排列中出现的位置，那么问题相当于我们要找到三个下标 $x,y,z$，使得 $x,z$ 关于 $y$ 对称且 $id_x,id_y,id_z$ 递增或递降</p>
 <p>对于一个 $y$，如果我们将小于 $id_x$ 的数视为 0，将大于 $id_x$ 的数视为 1，那么如果以 $y$ 为中心的最长串是回文串，那么无法取出，否则可以取出，每次单点修改哈希判断即可</p>
@@ -397,7 +404,7 @@
 <p>$0\le u,v\le p-1,3\le p\le10^9+9$，$p$ 为质数</p>
 <h3 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h3><p>考虑这个操作形成的图看起来很随机，于是我们可以考虑乱搞</p>
 <p>不难发现操作是可逆的</p>
-<h4 id="做法-1"><a href="#做法-1" class="headerlink" title="做法 1"></a>做法 1</h4><p>随机生成 $x$ 个长度为 $100$ 的从 $u$ 开始的路径，将它们存到一个 set 中，然后再随机生成从 $v$ 开始的路径，直到路径的结束点在集合内为止，根据生日悖论，期望运行时间是 $O(200\cdot x\log p+200\cdot\frac px\log p)$，取 $x&#x3D;\sqrt p$ 最优</p>
+<h4 id="做法-1"><a href="#做法-1" class="headerlink" title="做法 1"></a>做法 1</h4><p>随机生成 $x$ 个长度为 $100$ 的从 $u$ 开始的路径，将它们存到一个 set 中，然后再随机生成从 $v$ 开始的路径，直到路径的结束点在集合内为止，根据生日悖论，期望运行时间是 $O(200\cdot x\log p+200\cdot\frac px\log p)$，取 $x=\sqrt p$ 最优</p>
 <h4 id="做法-2"><a href="#做法-2" class="headerlink" title="做法 2"></a>做法 2</h4><p>直接双向 bfs，据 CF editorial 不会访问超过 $10^7$ 个点</p>
 <h2 id="14-CF983E-NN-country"><a href="#14-CF983E-NN-country" class="headerlink" title="14.  CF983E - NN country"></a>14.  CF983E - NN country</h2><h3 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h3><p>给定一棵 $n$ 个点的树，这棵树上有 $m$ 条路径，你每一步可以选择一条经过你所在的点的路径，并走到这条路径上的任意一个点</p>
 <p>$q$ 次询问，每次询问从 $u$ 到 $v$ 最少要多少步，如果不能到达则输出 $-1$</p>
@@ -415,7 +422,7 @@
 <h2 id="15-CF958C3-Encryption-hard"><a href="#15-CF958C3-Encryption-hard" class="headerlink" title="15.  CF958C3 - Encryption (hard)"></a>15.  CF958C3 - Encryption (hard)</h2><h3 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h3><p>给定一个长度为 $n$ 的序列 $a$，要求将其拆为 $k$ 个非空连续段，使得这些段内数和对 $p$ 取模的和最小，求最小和</p>
 <p>$1\le n\le5\times10^5,2\le k,p\le100$</p>
 <h3 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h3><p>挺奇妙的一个题，看了眼题解想出来了。。</p>
-<p>考虑朴素 dp：$dp[i][j]$ 表示前 $i$ 个数分为 $j$ 段的方案，那么转移为 $dp[i][j]&#x3D;\min(dp[k][j-1]+((sum_k-sum_i)\bmod p))$，这样复杂度是 $O(n^2k)$ 的，无法通过</p>
+<p>考虑朴素 dp：$dp[i][j]$ 表示前 $i$ 个数分为 $j$ 段的方案，那么转移为 $dp[i][j]=\min(dp[k][j-1]+((sum_k-sum_i)\bmod p))$，这样复杂度是 $O(n^2k)$ 的，无法通过</p>
 <p>不难发现 $dp[i][j]\equiv sum_i\pmod p$，而 $0\le(sum_k-sum_i)\bmod p&lt;p$，因此从 $dp[k][j-1]$ 转移来的值会是大于等于 $dp[k][j-1]$ 的第一个模 $p$ 同余于 $sum_i$ 的数，不难发现直接从最大的 $dp[k][j-1]$ 转移过来最优，因此直接 $O(1)$ 转移，复杂度 $O(nk)$</p>
 <h2 id="16-CF924D-Contact-ATC"><a href="#16-CF924D-Contact-ATC" class="headerlink" title="16.  CF924D - Contact ATC"></a>16.  CF924D - Contact ATC</h2><h3 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h3><p>有 $n$ 坨飞机，第 $i$ 坨飞机的坐标为 $x_i$，正方向上的速度是 $v_i$（若为负数则表示向负方向运动），且保证每坨飞机都是朝原点方向运动（$x_iv_i&lt;0$）</p>
 <p>给定一个数 $w$，保证任何一个 $v$ 的绝对值都大于 $w$，对于一个无序飞机对 $(i,j)$，如果你可以选择一个 $[-w,w]$ 内的实数使得将 $i$ 和 $j$ 的速度加上这个值后他们同时到达原点，那么我们称它为好的</p>
@@ -433,23 +440,38 @@
 <p>已知第 $i$ 个人赢第 $j$ 个人的概率是 $p$，求比赛的期望对决数，对 $998244353$ 取模</p>
 <p>$2\le n\le2000$</p>
 <h3 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h3><p>dp。</p>
-<p>对于集合 $S$，我们令 $f(S)$ 表示集合 $S$ 的期望轮数，则我们枚举哈密顿路上的最后一个强联通分量的集合 $T$，那么我们得到<br>$$<br>f(S)&#x3D;\sum_{T\subseteq S}(f(T)+f(S-T)+\frac12|T|(|T|-1)+|T|(|S|-|T|))t(T)edgeW(S-T,T)\<br>$$<br>其中，$t(T)$ 代表 $T$ 集合内部的边形成一个强联通分量的概率，$edgeW(S,T)$ 表示 $S$ 集合内的点与 $T$ 集合内的点之间的边全部指向 $T$ 集合内的点的概率</p>
-<p>考虑如果 $|T|$ 确定，那么 $t(T)$ 显然是可以确定的，当 $|T|&#x3D;x$ 时，我们记 $t^\prime(x)$ 为对于所有满足条件的 $T$ 的 $t(T)$ 之和。采用容斥，然后枚举最后一个，写出表达式为：<br>$$<br>t^\prime(x)&#x3D;1-\sum_{y&#x3D;1}^{x-1}t^\prime(y)\sum_{|S|&#x3D;y,|S|\in{1,2,\cdots,x}}edgeW({1,2,\cdots,x}-S,S)\<br>$$<br>考虑 $f$ 的值也只与集合大小有关，并且在 $t^\prime$ 与 $f$ 的转移式中，当集合的大小确定时 $edgeW$ 前面的系数均不变，只有 $edgeW$ 的值发生变化，因此可以通过分配率将它们结合在一起，这样转移式便脱离了枚举集合。我们令 $f^\prime$ 为集合大小为 $x$ 时所有满足条件的 $f(S)$ 之和，可以得到 $t^\prime$ 与 $f^\prime$ 的转移式：<br>$$<br>f^\prime(x)&#x3D;\sum_{y&#x3D;1}^{x}(f^\prime(y)+f^\prime(x-y)+\frac12y(y-1)+y(x-y))t^\prime(y)edgeW^\prime(x,y)\<br>t^\prime(x)&#x3D;1-\sum_{y&#x3D;1}^{x-1}t^\prime(y)edgeW^\prime(x,y)<br>$$<br> 其中 $edgeW^\prime(x,y)$ 表示有 $x$ 个点，对于所有满足 $|T|&#x3D;y$ 的集合 $T$，$edgeW({1,2,\cdots,x}-T,T)$ 之和</p>
-<p>考虑这个式子会涉及到 $f^\prime(x)$ 转移到自己，因此需要移项，得到：<br>$$<br>f^\prime(x)&#x3D;\frac{\left(\sum_{y&#x3D;1}^{x}(f^\prime(y)+f^\prime(x-y)+\frac12y(y-1)+y(x-y))t^\prime(y)edgeW^\prime(x,y)\right)}{1-t^\prime(x)edgeW^\prime(x,x)}<br>$$<br>那么接下来我们需要求出 $edgeW^\prime(x,y)$，考虑其等于：<br>$$<br>\begin{aligned}<br>edgeW^\prime(x,y)&amp;&#x3D;\sum_{T\in{1,2,\cdots,x},|T|&#x3D;y}p^{\sum_{i\in T}i-rk_i}(1-p)^{\sum_{i\in T}(x-i)-(y-rk_i)}\<br>&amp;&#x3D;\sum_{T\in{1,2,\cdots,x},|T|&#x3D;y}p^{-\frac12y(y+1)}(1-p)^{y(x-y)+\frac12y(y+1)}\left(\frac p{1-p}\right)^{\sum_{i\in T}i}\<br>&amp;&#x3D;p^{-\frac12y(y+1)}(1-p)^{y(x-y)+\frac12y(y+1)}\sum_{T}\left(\frac p{1-p}\right)^{\sum_{i\in T}i}<br>\end{aligned}<br>$$<br>我们令 $h(x,y)&#x3D;\sum_{T&#x3D;{1,2,\cdots,x},|T|&#x3D;y}\left(\frac p{1-p}\right)^{\sum_{i\in T}i}$ ，则 $h(x,y)&#x3D;\left(\frac p{1-p}\right)^{\sum_T\sum_{i\in T}i}$，不难得到转移式 $h(x,y)&#x3D;h(x-1,y)+h(x-1,y-1)\left(\frac p{1-p}\right)^x$</p>
+<p>对于集合 $S$，我们令 $f(S)$ 表示集合 $S$ 的期望轮数，则我们枚举哈密顿路上的最后一个强联通分量的集合 $T$，那么我们得到</p>
+<script type="math/tex; mode=display">
+f(S)=\sum_{T\subseteq S}(f(T)+f(S-T)+\frac12|T|(|T|-1)+|T|(|S|-|T|))t(T)edgeW(S-T,T)\\</script><p>其中，$t(T)$ 代表 $T$ 集合内部的边形成一个强联通分量的概率，$edgeW(S,T)$ 表示 $S$ 集合内的点与 $T$ 集合内的点之间的边全部指向 $T$ 集合内的点的概率</p>
+<p>考虑如果 $|T|$ 确定，那么 $t(T)$ 显然是可以确定的，当 $|T|=x$ 时，我们记 $t^\prime(x)$ 为对于所有满足条件的 $T$ 的 $t(T)$ 之和。采用容斥，然后枚举最后一个，写出表达式为：</p>
+<script type="math/tex; mode=display">
+t^\prime(x)=1-\sum_{y=1}^{x-1}t^\prime(y)\sum_{|S|=y,|S|\in\{1,2,\cdots,x\}}edgeW(\{1,2,\cdots,x\}-S,S)\\</script><p>考虑 $f$ 的值也只与集合大小有关，并且在 $t^\prime$ 与 $f$ 的转移式中，当集合的大小确定时 $edgeW$ 前面的系数均不变，只有 $edgeW$ 的值发生变化，因此可以通过分配率将它们结合在一起，这样转移式便脱离了枚举集合。我们令 $f^\prime$ 为集合大小为 $x$ 时所有满足条件的 $f(S)$ 之和，可以得到 $t^\prime$ 与 $f^\prime$ 的转移式：</p>
+<script type="math/tex; mode=display">
+f^\prime(x)=\sum_{y=1}^{x}(f^\prime(y)+f^\prime(x-y)+\frac12y(y-1)+y(x-y))t^\prime(y)edgeW^\prime(x,y)\\
+t^\prime(x)=1-\sum_{y=1}^{x-1}t^\prime(y)edgeW^\prime(x,y)</script><p> 其中 $edgeW^\prime(x,y)$ 表示有 $x$ 个点，对于所有满足 $|T|=y$ 的集合 $T$，$edgeW(\{1,2,\cdots,x\}-T,T)$ 之和</p>
+<p>考虑这个式子会涉及到 $f^\prime(x)$ 转移到自己，因此需要移项，得到：</p>
+<script type="math/tex; mode=display">
+f^\prime(x)=\frac{\left(\sum_{y=1}^{x}(f^\prime(y)+f^\prime(x-y)+\frac12y(y-1)+y(x-y))t^\prime(y)edgeW^\prime(x,y)\right)}{1-t^\prime(x)edgeW^\prime(x,x)}</script><p>那么接下来我们需要求出 $edgeW^\prime(x,y)$，考虑其等于：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+edgeW^\prime(x,y)&=\sum_{T\in\{1,2,\cdots,x\},|T|=y}p^{\sum_{i\in T}i-rk_i}(1-p)^{\sum_{i\in T}(x-i)-(y-rk_i)}\\
+&=\sum_{T\in\{1,2,\cdots,x\},|T|=y}p^{-\frac12y(y+1)}(1-p)^{y(x-y)+\frac12y(y+1)}\left(\frac p{1-p}\right)^{\sum_{i\in T}i}\\
+&=p^{-\frac12y(y+1)}(1-p)^{y(x-y)+\frac12y(y+1)}\sum_{T}\left(\frac p{1-p}\right)^{\sum_{i\in T}i}
+\end{aligned}</script><p>我们令 $h(x,y)=\sum_{T=\{1,2,\cdots,x\},|T|=y}\left(\frac p{1-p}\right)^{\sum_{i\in T}i}$ ，则 $h(x,y)=\left(\frac p{1-p}\right)^{\sum_T\sum_{i\in T}i}$，不难得到转移式 $h(x,y)=h(x-1,y)+h(x-1,y-1)\left(\frac p{1-p}\right)^x$</p>
 <p>至此，所有式子都可以 $O(n^2)$ 计算，因此可以解决该问题</p>
-<h2 id="18-CF860E-Arkady-and-Nobody-men"><a href="#18-CF860E-Arkady-and-Nobody-men" class="headerlink" title="18.  CF860E - Arkady and Nobody-men"></a>18.  CF860E - Arkady and Nobody-men</h2><h3 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h3><p>给定一棵 $n$ 个点的树，定义 $r(a,b)$ （其中 $b$ 为 $a$ 的祖先）为 $b$ 子树（不含 $b$）中深度小于等于 $a$ 的数的个数，令 $z_a&#x3D;\sum_{b是a的祖先}r(a,b)$，求每个点的 $z$</p>
+<h2 id="18-CF860E-Arkady-and-Nobody-men"><a href="#18-CF860E-Arkady-and-Nobody-men" class="headerlink" title="18.  CF860E - Arkady and Nobody-men"></a>18.  CF860E - Arkady and Nobody-men</h2><h3 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h3><p>给定一棵 $n$ 个点的树，定义 $r(a,b)$ （其中 $b$ 为 $a$ 的祖先）为 $b$ 子树（不含 $b$）中深度小于等于 $a$ 的数的个数，令 $z_a=\sum_{b是a的祖先}r(a,b)$，求每个点的 $z$</p>
 <p>$1\le n\le5\times10^5$</p>
 <h3 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h3><p>考虑按深度添加节点，那么我们求一个点的 $z$ 就相当于求这个点到根的链上的子树大小和，树剖维护即可，复杂度 $O(n\log^2n)$，卡常可过</p>
 <h2 id="19-CF235C-Cyclical-Quest"><a href="#19-CF235C-Cyclical-Quest" class="headerlink" title="19.  CF235C - Cyclical Quest"></a>19.  CF235C - Cyclical Quest</h2><h3 id="题面-18"><a href="#题面-18" class="headerlink" title="题面"></a>题面</h3><p>给定一个串 $s$ 以及若干个串 $t$，对于每个 $t$，求有多少 $s$ 的子串与 $t$ 循环同构</p>
 <p>$|s|\le10^6,\sum|t|\le10^6$</p>
 <h3 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h3><p>对 $s$ 建 SAM，然后在 $t$ 上匹配即可</p>
-<h2 id="20-CF204D-Little-Elephant-and-Retro-Strings"><a href="#20-CF204D-Little-Elephant-and-Retro-Strings" class="headerlink" title="20.  CF204D - Little Elephant and Retro Strings"></a>20.  CF204D - Little Elephant and Retro Strings</h2><h3 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h3><p>如果一个由 <code>B</code> 和 <code>W</code> 组成的串内，存在两个不相交子串 $s_1,s_2$，使得 $|s_1|&#x3D;|s_2|&#x3D;k$，且 $s_1$ 内所有字符均为 <code>B</code>，$s_2$ 内所有字符均为 <code>W</code>，则称这个串是伟大而又神圣的</p>
+<h2 id="20-CF204D-Little-Elephant-and-Retro-Strings"><a href="#20-CF204D-Little-Elephant-and-Retro-Strings" class="headerlink" title="20.  CF204D - Little Elephant and Retro Strings"></a>20.  CF204D - Little Elephant and Retro Strings</h2><h3 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h3><p>如果一个由 <code>B</code> 和 <code>W</code> 组成的串内，存在两个不相交子串 $s_1,s_2$，使得 $|s_1|=|s_2|=k$，且 $s_1$ 内所有字符均为 <code>B</code>，$s_2$ 内所有字符均为 <code>W</code>，则称这个串是伟大而又神圣的</p>
 <p>给定一个由 <code>B</code>，<code>X</code>，<code>W</code> 组成的长为 $n$ 的串，你需要将每个 <code>X</code> 替换为 <code>B</code> 或 <code>W</code>，使得这个串是伟大而又神圣的，求有多少种方案，对 $10^9+7$ 取模，$1\le k\le n\le10^6$</p>
 <h3 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h3><p>对于每个伟大而又神圣的串，我们放在第一个全 <code>B</code> 的长为 $k$ 的子串处统计</p>
 <p>枚举全 <code>B</code> 串的位置 $[x:x+k-1]$，那么 $[1:k-1]$ 内不能有长为 $k$ 的全 <code>B</code> 串，$[x+k:n]$ 内必有一个长为 $k$ 的全 <code>W</code> 串，这两个都可以通过 dp 求得，复杂度 $O(n)$</p>
-<h2 id="21-CF176D-Hyper-String"><a href="#21-CF176D-Hyper-String" class="headerlink" title="21.  CF176D - Hyper String"></a>21.  CF176D - Hyper String</h2><h3 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h3><p>给定若干个小写字母串 $t_1,t_2,\cdots,t_n$，再给定一个长为 $m$ 的序列 $id_1,id_2,\cdots,id_m$，定义 $T&#x3D;t_{id_1}t_{id_2}t_{id_3}\cdots t_{id_m}$，给定 $S$，求 $S$ 与 $T$ 的 lcs 长度</p>
+<h2 id="21-CF176D-Hyper-String"><a href="#21-CF176D-Hyper-String" class="headerlink" title="21.  CF176D - Hyper String"></a>21.  CF176D - Hyper String</h2><h3 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h3><p>给定若干个小写字母串 $t_1,t_2,\cdots,t_n$，再给定一个长为 $m$ 的序列 $id_1,id_2,\cdots,id_m$，定义 $T=t_{id_1}t_{id_2}t_{id_3}\cdots t_{id_m}$，给定 $S$，求 $S$ 与 $T$ 的 lcs 长度</p>
 <p>$1\le n,m,|S|\le2000,\sum|t_i|\le10^6,\forall |t_i|&gt;0$</p>
-<h3 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h3><p>令 $dp[i][j]$ 表示 $S[1:i]$ 在 $T$ 中能匹配完的最早位置，则 $dp[i][j]&#x3D;\min(dp[i-1][j],nxt(dp[i-1][j-1],S[i]))$，$O(n^2)$ 转移即可</p>
+<h3 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h3><p>令 $dp[i][j]$ 表示 $S[1:i]$ 在 $T$ 中能匹配完的最早位置，则 $dp[i][j]=\min(dp[i-1][j],nxt(dp[i-1][j-1],S[i]))$，$O(n^2)$ 转移即可</p>
 
 		</div>
 
@@ -859,6 +881,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

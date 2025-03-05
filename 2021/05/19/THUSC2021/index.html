@@ -38,15 +38,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            THUSC2021 | Wonderhoy!
+            THUSC2021 | Flamiblog
         
     </title>
 
@@ -133,7 +133,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -243,7 +243,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -304,7 +304,6 @@
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>梦游了一周，不知道自己在干啥</p>
 <span id="more"></span>
-
 <h3 id="12-9"><a href="#12-9" class="headerlink" title="12.9"></a>12.9</h3><p>出去玩回北京还没坐热就又要去 ZJ 了，感觉很奇妙</p>
 <p>火车上电了一路，中间去打了会月赛，切了两道题就又去电竞了</p>
 <p><del>钻石工业化生产</del></p>
@@ -313,7 +312,7 @@
 <p>上来先看 T1，想了一堆奇怪的 dp，都没法转移，果断放弃</p>
 <p>然后看 T3，感觉似乎可以枚举最后序列中的两个位置然后统计它们对应的括号在原来为逆序对的方案数，想了一个 $O(n^4)$ 的做法，直接弃了</p>
 <p>最后看 T2，感觉操作貌似和环有什么关系，于是就把字符串排到了环上，然后发现每次操作是把头指针向前挪一位并选择是否交换两个元素，感觉枚举最后所有 1 的位置并把环切成两段，然后一段逆时针转，一段顺时针转，其中顺时针的圈数是 1 的个数有关的，逆时针的圈数是和最远的 1 的距离有关的，但是细节很多+复杂度显然爆炸，所以就没写</p>
-<p>最后只写了一个 T1 的 10pts 暴力，10+0+0&#x3D;10，被全世界吊打，给 BNDS 丢脸了</p>
+<p>最后只写了一个 T1 的 10pts 暴力，10+0+0=10，被全世界吊打，给 BNDS 丢脸了</p>
 <p><del>orz xcyle 手刃 T2，吊打 XJ 所有人</del></p>
 <p><del>对面的 hehezhou 一直在电，这就是神仙吗</del></p>
 <p>后来发现我 T2 的思路和正解很接近，虽然说再给我几个小时我可能也调不出来</p>
@@ -323,7 +322,7 @@
 <p>把所有题都看了一遍，感觉只有 T1 可做</p>
 <p>结果 T1 只想到 $O(n^5)$ 的做法，细节还特别多</p>
 <p>看旁边的 xcyle 飞速切掉了，十分害怕，于是也开始想正解，结果想到还剩 45min 的时候没有任何结果，发现暴力还没写，于是开始 rush 暴力，rush 的过程中还发现自己是 $O(n^6)$ 的，后来调不出来直接弃疗，静静地看着旁边的 xcyle 卷题</p>
-<p>最后啥也没交，0+0+0&#x3D;0</p>
+<p>最后啥也没交，0+0+0=0</p>
 <p><del>由于初试爆0，您无权查看高分代码，请下次努力</del></p>
 <p>下午听讲题，T1 感觉很玄妙，再给我任意多的时间也做不出来（</p>
 <p>比赛经验分享听到一半就跑路了，然后用看周围神仙电竞的空闲时间把 T1 改了</p>
@@ -342,24 +341,24 @@
 <p>hehezhou：T1 的部分分是假的</p>
 </blockquote>
 <p>我人傻了</p>
-<p>xcyle 直接熟练运用二分技巧得出第一个点是 n&#x3D;8, m&#x3D;9，然后就是喜闻乐见的面向数据编程</p>
+<p>xcyle 直接熟练运用二分技巧得出第一个点是 n=8, m=9，然后就是喜闻乐见的面向数据编程</p>
 <p>结果发现我 $2^{72}$ long long 存不下了，于是打了个多模 hash</p>
 <p>然后去看 T3，想了一会感觉可以直接黑白拆开考虑，然后就不知道了，不太会处理重叠的情况</p>
-<p>百度搜索 生命游戏，然后刷 <a class="link"   target="_blank" rel="noopener" href="https://www.conwaylife.com/" >wiki<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 刷了 1h+，想起来自己还没有写 T3 的 10 分 sb 分，又回来打了一下</p>
-<p>最后 20+0+10&#x3D;30，终于不是 BNDS 垫底了！！！！11</p>
+<p>百度搜索 生命游戏，然后刷 <a class="link"   target="_blank" rel="noopener" href="https://www.conwaylife.com" >wiki<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 刷了 1h+，想起来自己还没有写 T3 的 10 分 sb 分，又回来打了一下</p>
+<p>最后 20+0+10=30，终于不是 BNDS 垫底了！！！！11</p>
 <p>听讲题在 Mr_Wu 的帮助下听懂了 T1T3，感觉 T3 太恶心就没改</p>
 <p>下午照例刷生命游戏 wiki+看神仙打 generals</p>
 <p>晚上想起来还要改题，于是就把 T1 改了，把 day1 的 T3 改了</p>
 <h3 id="12-13"><a href="#12-13" class="headerlink" title="12.13"></a>12.13</h3><p>XJ 集训第四天</p>
 <p>终于争气了一回<del>（指排名在前 50%）</del></p>
 <p>看 T1 感觉很有思路啊！想都没想就开始码，过了样例直接交了，Wrong Answer 0pts</p>
-<p>然后是非常下饭的调试阶段，ST 表 $i,j$ 写反花了好长时间才看出来，并发现自己的 $t&#x3D;2$ subtask 假了，获得了 30pts</p>
+<p>然后是非常下饭的调试阶段，ST 表 $i,j$ 写反花了好长时间才看出来，并发现自己的 $t=2$ subtask 假了，获得了 30pts</p>
 <p>在考场外稍稍冷静了一下，没有得到任何有用的结果，<del>于是加入原力的黑暗面</del>，试图暴力过题</p>
 <p>写了个找到第一个满足区间并不为空，然后直接往后暴力 dp 的 $O(n^2)$ 做法，50pts</p>
 <p>考虑到 dp 递增，于是写了个一旦不为最小值直接 break，70pts</p>
 <p>如果 dp 递增那么 dp 可以直接 $O(n)$ 求得，100pts</p>
 <p>于是就最慢的点不到 400ms 踩爆 std</p>
-<p>然后在 T2T3 上随便拿了点分，100+10+15&#x3D;125</p>
+<p>然后在 T2T3 上随便拿了点分，100+10+15=125</p>
 <p>讲题时听懂了 T1，改了，但没完全改<del>（就是没调出来的意思）</del></p>
 <h3 id="12-14"><a href="#12-14" class="headerlink" title="12.14"></a>12.14</h3><p>上午把昨天 T1 改了，然后看 xcyle 打块</p>
 <p>看到一半 xxy 起来讲话，虽然我一个字都没听懂就是了，问 xcyle 说他也没有听懂</p>
@@ -383,7 +382,7 @@
 <p>花了 2.5h 只想到了一个 $O(n^2)$ 的做法，心态有点差，直接转行暴力人</p>
 <p>先把 T1 的 50pts 码完，然后按实现难度排了个序，感觉通信题不太阳间，T3-&gt;T2-&gt;T4</p>
 <p>先写完了 T3 的 20pts，然后去看 T2，手玩了一堆部分分，写了 4 个 sol，期望得分 60pts，然而交上去只有 50pts，$O(n^2)$ 做法第 3 个包 T 了，甚是不懂，本地数据开 O2 0.7s 就能过</p>
-<p>没时间看 T4 了，最后 50+50+20+0&#x3D;120</p>
+<p>没时间看 T4 了，最后 50+50+20+0=120</p>
 <p>貌似 T2 的链的部分分还要反过来跑一边，挂掉 10pts</p>
 <p>出来发现全世界都切题了，于是我这个暴力人被吊着打</p>
 <blockquote>
@@ -420,14 +419,14 @@
 <p>Flamire：即使将函数删空也会被杀死，如何处理？</p>
 </blockquote>
 <p>然后管理员就不理我了</p>
-<p>最后 40+20&#x3D;60，被吊锤</p>
+<p>最后 40+20=60，被吊锤</p>
 <p>紫金港体验极差，到会场的时候已经讲到 T4 了</p>
 <p><del>居然还有吐槽大会这种环节</del></p>
 <p>感觉 T4 貌似还有点可做，是我蠢了</p>
 <p>然后是听工程题，发现 balls 原来是依赖于 cornellbox 的？？？我直接谔谔</p>
 <p>科普了一大堆光线渲染的知识，然后疯狂延迟，到 17:30 才领完纸跑路</p>
 <p>回去的路上开始快乐颓废</p>
-<h3 id="12-inf"><a href="#12-inf" class="headerlink" title="12.inf"></a>12.inf</h3><p>两天 110+60&#x3D;170，“成绩良好”，被所有人吊着锤<br>、<br>就当是来观光，见见世面的8</p>
+<h3 id="12-inf"><a href="#12-inf" class="headerlink" title="12.inf"></a>12.inf</h3><p>两天 110+60=170，“成绩良好”，被所有人吊着锤<br>、<br>就当是来观光，见见世面的8</p>
 
 		</div>
 
@@ -833,6 +832,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -38,15 +38,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            NOIP2021 游记 | Wonderhoy!
+            NOIP2021 游记 | Flamiblog
         
     </title>
 
@@ -133,7 +133,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -243,7 +243,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -315,13 +315,13 @@
 <p>然后感觉两边和一定差不多，可以从中间分开什么的，朝贪心的方面想，用暴力输出各种奇怪东西尝试找性质，未果，大概过去了 105min？</p>
 <p>此时觉得花的时间有点多去看了眼 T4，发现自己好像会 44，便继续看 T3</p>
 <p>然后回到 T3，想了想 dp，感觉可以从小到大加数，每次只能加在两边，然后推贡献的式子，<strong>式子推错了</strong>，第一次推出来和新加的数没关系，开始写了发现有点问题，第二次推出来的和 $\sum a_i^2$ 有关系，然后复杂度 $O(n^3a_i^3)$ 直接爆炸，并坚定地认为这题不可做，码了个 $O(2^nn\log n)$ 滚蛋了</p>
-<p>然后开始 rush T4，还剩 75min 左右，得分期望从 $44\rightarrow32\rightarrow24$，最后连 $24$ 也没调出来，最后 10min 的时候上去检查了一下代码，然后接着调，最后 1 分钟（遵循 one 的教导：不能有任何一道题不交）把过不了样例的代码调试输出删掉交上去了 &#x2F;cy</p>
-<p>赛后发现全世界 都会 T3&#x2F;拿到了可观的分数，重新推了一下发现我考场上想的那个 dp 是可行的，能获得 $88$ 分，同是初中选手有好多人获得了 T3 高分&#x2F;cy&#x2F;cy&#x2F;cy</p>
+<p>然后开始 rush T4，还剩 75min 左右，得分期望从 $44\rightarrow32\rightarrow24$，最后连 $24$ 也没调出来，最后 10min 的时候上去检查了一下代码，然后接着调，最后 1 分钟（遵循 one 的教导：不能有任何一道题不交）把过不了样例的代码调试输出删掉交上去了 /cy</p>
+<p>赛后发现全世界 都会 T3/拿到了可观的分数，重新推了一下发现我考场上想的那个 dp 是可行的，能获得 $88$ 分，同是初中选手有好多人获得了 T3 高分/cy/cy/cy</p>
 <p><del>$O(2^n)$ 居然在 infoj 和 luogu 上都干过去了 $n\le50$ 的点，获得了 60 分，这是我没有想到的</del></p>
-<p>期望得分 $100+100+48+0&#x3D;248$</p>
-<p>如果拿满 T4：$100+100+48+44&#x3D;292$</p>
-<p>如果 T3 没推错：$100+100+88+0&#x3D;288$</p>
-<p>如果两个都没翻车：$100+100+88+44&#x3D;332$，可以多拿将近 100 分。</p>
+<p>期望得分 $100+100+48+0=248$</p>
+<p>如果拿满 T4：$100+100+48+44=292$</p>
+<p>如果 T3 没推错：$100+100+88+0=288$</p>
+<p>如果两个都没翻车：$100+100+88+44=332$，可以多拿将近 100 分。</p>
 <p>傻逼。</p>
 <p>有拿高分的能力却一直拿不到，真是傻逼极了。</p>
 <p>就算是会了考场上写不出来又算啥啊，傻逼。</p>
@@ -732,6 +732,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

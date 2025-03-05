@@ -38,15 +38,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            10月做题记录 | Wonderhoy!
+            10月做题记录 | Flamiblog
         
     </title>
 
@@ -133,7 +133,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -243,7 +243,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -314,11 +314,11 @@
 <p>当 $2\nmid n$ 时，$n\mid0+1+\cdots (n-1)$，所以我们可以考虑尽量选出余数互不相同的数</p>
 <p>这样的话，我们 $i$ 与 $i+n$ 中只能够选择一个，且必须选一个，那么“选且仅选一个”关系形成了一个二分图，而一个合法的黑白染色对应着一种选法，这里我们不妨假设选出所有黑点，而我们要求的就是满足 $\ge n$ 的数有偶数个的染色方案</p>
 <p>每个连通块有两种染色方式，两种染色方式的 $\ge n$ 的数个数的奇偶性可能为：奇奇，偶偶，奇偶。而由于 $n$ 是奇数，所以至少有一个“奇偶”，那么我们可以先将所有“奇奇”与“偶偶”选完，然后再用一个“奇偶”将奇偶性调节为偶数，剩下的“奇偶”均选择个数为偶数的选择方式</p>
-<h3 id="2-CF8E-Beads"><a href="#2-CF8E-Beads" class="headerlink" title="2.  CF8E - Beads"></a>2.  CF8E - Beads</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>我们定义两个 01 串是等价的，当且仅当可以从第一个 01 串反转每一位&#x2F;前后翻转&#x2F;翻转并反转得到第二个 01 串。</p>
+<h3 id="2-CF8E-Beads"><a href="#2-CF8E-Beads" class="headerlink" title="2.  CF8E - Beads"></a>2.  CF8E - Beads</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>我们定义两个 01 串是等价的，当且仅当可以从第一个 01 串反转每一位/前后翻转/翻转并反转得到第二个 01 串。</p>
 <p>我们将除全 0 串与全 1 串除外的所有长度为 $n$ 的 01 串分为若干组，满足同组内的 01 串都是等价的，不同组内的 01 串一定不等价，我们将这些组按其中字典序最小的串排序，求第 $k$ 组的字典序最小的串</p>
 <p>$1\le n\le50,1\le k\le10^{16}$</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>先把全 0 串与全 1 串加上，方便讨论</p>
-<p>考虑什么样的串会成为组中的最小串，显然，它需要小于等于它的反转&#x2F;翻转&#x2F;反转翻转串，那么它的第一位一定是 0，如果末位是 0，那么它一定小于反转翻转串，只用考虑翻转串，这要求 $s[2:\lfloor\frac n2\rfloor]$ 小于等于翻转后的 $s[n-\lfloor\frac n2\rfloor+1:n-1]$，对于末位是 1 的情况同理</p>
+<p>考虑什么样的串会成为组中的最小串，显然，它需要小于等于它的反转/翻转/反转翻转串，那么它的第一位一定是 0，如果末位是 0，那么它一定小于反转翻转串，只用考虑翻转串，这要求 $s[2:\lfloor\frac n2\rfloor]$ 小于等于翻转后的 $s[n-\lfloor\frac n2\rfloor+1:n-1]$，对于末位是 1 的情况同理</p>
 <p>那么我们可以考虑直接枚举答案的前 25 位分别算有多少个串符合要求，如果和超过了 $k$，那么我们按字典序遍历这个块内的符合要求的串，找到第 $k$ 个即可</p>
 <p>复杂度 $O(2^{\frac n2})$</p>
 <h3 id="3-CF11D-Simple-Task"><a href="#3-CF11D-Simple-Task" class="headerlink" title="3.  CF11D - Simple Task"></a>3.  CF11D - Simple Task</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，保证无重边自环，求该图的简单环个数，$1\le n\le19$</p>
@@ -329,9 +329,14 @@
 <p>求每次剪掉的子矩阵的左上角坐标及子矩阵权值</p>
 <p>$1\le a\le n\le1000,1\le b\le m\le1000$</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑我们可以通过单调队列预处理出每个 $a\times b$ 子矩阵的最小值，那么我们可以预处理出每个 $a\times b$ 子矩阵的权值，然后按题意模拟即可</p>
-<h3 id="5-CF1580D-Subsequence"><a href="#5-CF1580D-Subsequence" class="headerlink" title="5.  CF1580D - Subsequence"></a>5.  CF1580D - Subsequence</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>有一个长度为 $n$ 的数列 $a$，定义长度为 $m$ 的子序列 $a_{b_1},a_{b_2},\cdots,a_{b_m}$ 的权值如下：<br>$$<br>\sum_{i&#x3D;1}^m(m\cdot a_{b_i})-\sum_{i&#x3D;1}^m\sum_{j&#x3D;1}^mf(\min(b_i,b_j),\max(b_i,b_j))<br>$$<br>其中 $f(i,j)$ 表示 $\min(a_i,a_{i+1},\cdots,a_j)$，求权值最大的长度为 $m$ 的子序列</p>
+<h3 id="5-CF1580D-Subsequence"><a href="#5-CF1580D-Subsequence" class="headerlink" title="5.  CF1580D - Subsequence"></a>5.  CF1580D - Subsequence</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>有一个长度为 $n$ 的数列 $a$，定义长度为 $m$ 的子序列 $a_{b_1},a_{b_2},\cdots,a_{b_m}$ 的权值如下：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^m(m\cdot a_{b_i})-\sum_{i=1}^m\sum_{j=1}^mf(\min(b_i,b_j),\max(b_i,b_j))</script><p>其中 $f(i,j)$ 表示 $\min(a_i,a_{i+1},\cdots,a_j)$，求权值最大的长度为 $m$ 的子序列</p>
 <h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>牛逼题。</p>
-<p>将贡献变换：<br>$$<br>&#x3D;\sum_{i&#x3D;1}^m\sum_{j&#x3D;1}^m(a_{b_i}-f(\min(b_i,b_j),\max(b_i,b_j)))\<br>&#x3D;\sum_{i&#x3D;1}^m\sum_{j&#x3D;i+1}^m(a_i+a_j-2\min(a_i,a_{i+1},\cdots,a_j))<br>$$<br>可以发现，这类似于笛卡尔树上的路径长度 $dis_u+dis_v-2dis_{LCA(u,v)}$，只要我们令每条边的权值为父亲与儿子的点权差即可，转化为笛卡尔树上的问题，树形背包求解，复杂度 $O(nm)$</p>
+<p>将贡献变换：</p>
+<script type="math/tex; mode=display">
+=\sum_{i=1}^m\sum_{j=1}^m(a_{b_i}-f(\min(b_i,b_j),\max(b_i,b_j)))\\
+=\sum_{i=1}^m\sum_{j=i+1}^m(a_i+a_j-2\min(a_i,a_{i+1},\cdots,a_j))</script><p>可以发现，这类似于笛卡尔树上的路径长度 $dis_u+dis_v-2dis_{LCA(u,v)}$，只要我们令每条边的权值为父亲与儿子的点权差即可，转化为笛卡尔树上的问题，树形背包求解，复杂度 $O(nm)$</p>
 <h3 id="6-CF19E-Fairy"><a href="#6-CF19E-Fairy" class="headerlink" title="6.  CF19E - Fairy"></a>6.  CF19E - Fairy</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，求有哪些边满足删掉这条边之后可以使这个图变成二分图</p>
 <p>$1\le n\le10^4,0\le m\le10^4$</p>
 <h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>神仙题。</p>
@@ -343,8 +348,8 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/202110_1.png"
-                     
+                     data-src="202110_1.png"
+                      alt=""
                 ></p>
 <p>其中蓝色为偶环，红色为奇环，紫色构成了一个奇环，因此删除绿链上的边无法消除所有奇环，这是因为紫环是由蓝环异或红环得到，而绿链在这两个环中都存在，于是被抵消掉了（感性理解）</p>
 <p>因此我们建出 dfs 树后打差分标记即可</p>
@@ -362,7 +367,7 @@
 <p>称 $S$ 是 $s,t$ 的公共祖先，当且仅当 $S$ 通过这 $n$ 种变换规则分别变成 $s$ 和 $t$，求 $S$ 的最小长度</p>
 <p>$1\le n\le50$</p>
 <h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>就这也配黑题？？？</p>
-<p>令 $dps[l][r][x]$ 表示 $s[l:r]$ 是否能由字符 $x$ 得出，转移时枚举第一步使用的变换规则 $x\rightarrow ab$，然后枚举断点 $k$ 从 $dps[l][k][a]&amp;dps[k+1][r][b]$ 转移即可，这一步复杂度 $O(|s|^3n)$，对于 $t$ 同样处理出 $dpt[l][r][x]$</p>
+<p>令 $dps[l][r][x]$ 表示 $s[l:r]$ 是否能由字符 $x$ 得出，转移时枚举第一步使用的变换规则 $x\rightarrow ab$，然后枚举断点 $k$ 从 $dps[l][k][a]\&amp;dps[k+1][r][b]$ 转移即可，这一步复杂度 $O(|s|^3n)$，对于 $t$ 同样处理出 $dpt[l][r][x]$</p>
 <p>令 $f[i][j]$ 表示 $s[1:i]$ 与 $t[1:j]$ 的答案，这里直接暴力枚举上一个字符是由哪个区间变换而来的即可，复杂度 $O(|s|^2|t|^2n)$</p>
 <h3 id="9-CF73D-FreeDiv"><a href="#9-CF73D-FreeDiv" class="headerlink" title="9.  CF73D - FreeDiv"></a>9.  CF73D - FreeDiv</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，你需要依次执行以下两步操作：</p>
 <ol>
@@ -376,8 +381,8 @@
 <p>考虑没有 $\min$ 的情况，那么将某两个连通块在第一步连边时会导致 $cnt$ 减 $1$，其他的均不变，所以相当于在不等式左边减 $2$，那么我们只要一直选任意两个连通块即可</p>
 <p>但现在有了 $\min$，我们的 $deg_u$ 超过一个值就会产生损失，而我们想让这个不等式尽快成立就需要最小化损失，我们每次取点数最少的两个连通块连在一起即可，用堆维护</p>
 <p>复杂度 $O(n\log n)$</p>
-<h3 id="10-CF1017F-The-Neutral-Zone"><a href="#10-CF1017F-The-Neutral-Zone" class="headerlink" title="10.  CF1017F - The Neutral Zone"></a>10.  CF1017F - The Neutral Zone</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>设整数 $x$ 的质因数分解为 $p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}$，定义 $f(x)&#x3D;Ax^3+Bx^2+Cx+D$，$\textrm{exlog}_f(x)&#x3D;\alpha_1f(p_1)+\alpha_2f(p_2)+\cdots+\alpha_kf(p_k)$</p>
-<p>给定整数 $n$，求 $\sum_{i&#x3D;1}^n\textrm{exlog}_f(i)$，答案对 $2^{32}$ 取模</p>
+<h3 id="10-CF1017F-The-Neutral-Zone"><a href="#10-CF1017F-The-Neutral-Zone" class="headerlink" title="10.  CF1017F - The Neutral Zone"></a>10.  CF1017F - The Neutral Zone</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>设整数 $x$ 的质因数分解为 $p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}$，定义 $f(x)=Ax^3+Bx^2+Cx+D$，$\textrm{exlog}_f(x)=\alpha_1f(p_1)+\alpha_2f(p_2)+\cdots+\alpha_kf(p_k)$</p>
+<p>给定整数 $n$，求 $\sum_{i=1}^n\textrm{exlog}_f(i)$，答案对 $2^{32}$ 取模</p>
 <p>$1\le n\le3\times10^8$，空间 $16MB$</p>
 <h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><h5 id="做法-1"><a href="#做法-1" class="headerlink" title="做法 1"></a>做法 1</h5><p>分块打表，将所有 $B$ 的倍数的答案打表，然后暴力计算中间的每一个 $\textrm{exlog}_f(i)$</p>
 <h5 id="做法-2"><a href="#做法-2" class="headerlink" title="做法 2"></a>做法 2</h5><p>考虑如果我们求出了所有质数，那么我对于一个质数 $p$，可以在 $O(\log_pn)$ 的时间内求出 $p$ 对答案产生的贡献，而质数约有 $O(\frac n{\ln n})$ 个，所以这部分是 $O(n)$</p>
@@ -789,6 +794,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

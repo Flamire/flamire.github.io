@@ -38,15 +38,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            BJOI2021 | Wonderhoy!
+            BJOI2021 | Flamiblog
         
     </title>
 
@@ -133,7 +133,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -243,7 +243,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -303,7 +303,6 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<span id="more"></span>
-
 <h2 id="3-20"><a href="#3-20" class="headerlink" title="3.20"></a>3.20</h2><p>BJOI 第一次集训</p>
 <p>T1: 一张 $n$ 个点 $m$ 条边的带权无向图，从 $m$ 条边中等概率随机选择一条将权值变为 $0$，求最小生成树权值和，$1\le n\le 10^5,1\le m\le 2\times10^5$</p>
 <p>T2: 有四种物品，分别有 $n_1,n_2,n_3,n_4$ 个，求排成一排且任意两个相邻物品不同种的方案数，对 $10^9+7$ 取模，$0\le n_1,n_2\le200,0\le n_3,n_4\le50000$</p>
@@ -320,7 +319,7 @@
 <p>然后看 T2，想了 30min，感觉很 nb，于是打了个 80pts 的弱智 dp 就跑了</p>
 <p>T3 感觉很有思路的亚子，但又感觉细节非常多，于是在 T2 T3 间反复横跳，后来觉得 T2 实在不会做，弃掉看 T3</p>
 <p>T3 觉得和 列队的平衡树动态开点做法差不多，但由于之前没有写过，再加上此时时间只剩 2h，所以放弃正解，想拿点部分分，发现 $n,m,k$ 都小于 $100$ 与只有 $3,4$ 操作比较好做，当时脑抽分析错了可持久化线段树区间修改的复杂度，于是痛失只有 $1,2$ +只有 $1,2,3,4$ 的 $30$ 分，考试结束前 10min 调完</p>
-<p>期望得分 100+80+35&#x3D;215，实际得分 0+80+35&#x3D;115</p>
+<p>期望得分 100+80+35=215，实际得分 0+80+35=115</p>
 <p>T1 将保留 6 位小数理解为误差不超过 $10^{-6}$，于是最后保留了 8 位小数，当场暴毙，rk 62（如果 T1 没挂是 rk 16）</p>
 <p>听同学们讲 T2 发现这类题见过不止一次，我甚至还讲过（tdpcO），然后我次次做不出来（心情复杂.jpg）</p>
 <p>下午讲题时忘了在干什么了，<del>BNDS 反复被点名</del></p>
@@ -330,11 +329,11 @@
 <h2 id="3-21"><a href="#3-21" class="headerlink" title="3.21"></a>3.21</h2><p>BJOI 第二次集训</p>
 <p>T1: 有一个 $n\times m$ 的棋盘，你可以花费 $c_{i,j}$ 的代价将 $(i,j)$ 染黑，并且如果任意两行两列的四个交叉点上有三个黑色格，那么你可以不花费代价将剩下的那个交叉点染黑，问染黑棋盘的最小代价， $1\le n,m\le5000$</p>
 <p>T2: 有一个 $n\times n$ 的方格，其中有 $k$ 个障碍点，要选出 $c$ 个点，使这 $c$ 个点不为障碍点，且每行，每列，正对角线，负对角线上分别至少选出一个点，求方案数，$1\le n\le32,1\le k\le7$</p>
-<p>T3: Alice 有一个 $1\sim n$ 中的正整数 $y$，每一次 Bob 可以选择一个整数 $x$，Alice 需回答 $y$ 是否大于等于 $x$，Alice 可以至多说一次谎，Alice 想让猜的轮数尽量多，Bob 想让猜的轮数尽量少，对于 $i&#x3D;1,2,\cdots,n$，当 Bob 第一轮问 $i$，并且 Alice 回答”是“的情况下，求双方在之后都使用最优策略时 Bob 需要的轮数，$2\le n\le2000$</p>
+<p>T3: Alice 有一个 $1\sim n$ 中的正整数 $y$，每一次 Bob 可以选择一个整数 $x$，Alice 需回答 $y$ 是否大于等于 $x$，Alice 可以至多说一次谎，Alice 想让猜的轮数尽量多，Bob 想让猜的轮数尽量少，对于 $i=1,2,\cdots,n$，当 Bob 第一轮问 $i$，并且 Alice 回答”是“的情况下，求双方在之后都使用最优策略时 Bob 需要的轮数，$2\le n\le2000$</p>
 <p>开场对着 T1 瞪了 1h，听着周围键盘声心里很慌，然后手模了一个样例发现恰好要 $n+m-1$ 个付费黑格就可以覆盖整个棋盘，然后又根据奇怪的覆盖方式想到连通性，于是便胡出了 MST 做法，花了 30min 左右敲完</p>
 <p>然后看了看 T2，发现只会指数级 sb 容斥，写到一半发现似乎可以优化，写完暴力去上了个厕所，发现优化假了</p>
 <p>T3 没有任何思路，尝试打表，然后 $n\le8$ 没打完，最后还CE了</p>
-<p>期望得分：100+10+0&#x3D;110，实际得分 80+10+0&#x3D;90</p>
+<p>期望得分：100+10+0=110，实际得分 80+10+0=90</p>
 <p>T1 生成数据时取模过多导致直接 T 掉，挂掉了 20pts，rk20</p>
 <p><del>Mr_Wu 直接手撕 T2 获得 100pts orz</del></p>
 <p>下午讲题时 T2 掉线，T3 只听懂了 $O(n^3)$ 做法<del>，然后就和 Mr_Wu 去探险去了</del></p>
@@ -342,52 +341,52 @@
 <h2 id="3-27"><a href="#3-27" class="headerlink" title="3.27"></a>3.27</h2><p>BJOI 第三次集训</p>
 <p>T1: 一张 $n\times m$ 的地图上，每个格子是 <code>#</code> 或 <code>.</code>，其中 <code>#</code> 代表该格子有积木块，<code>.</code> 代表该格子为空，定义一个积木为一个极大的 <code>#</code> 四联通块，所有积木会同时下落，而下落的过程中如果底面碰到了其他积木或地板则停下，问对于每个 <code>.</code>，将其替换为 <code>#</code> 后，$(R,C)$ 处的 <code>#</code> 会下落到第几行，$1\le n\times m\le10^5$</p>
 <p>T2: 给定一个长度为 $n$ 的排列 $a_i$，有 $k$ 次操作，每次随机交换两个不同的数，求期望 $\times(\frac{n(n-1)}2)^k$，对 $998244353$ 取模，$1\le n\le10^5,1\le k\le10^9$</p>
-<p>T3: 给定一个常数 $C$，定义函数 $F(x)$ 是好的当且仅当其定义域与值域均在 $\Z$ 上，且对于任意的 $x$，$F(2F(x)-x+1)&#x3D;F(x)+C$，有 $n$ 个数对 $(x_i,y_i)$，求 $\sum_{i&#x3D;1}^n|F(x_i)-y_i|$ 的最小值，$1\le n\le10^4,1\le C\le60$</p>
+<p>T3: 给定一个常数 $C$，定义函数 $F(x)$ 是好的当且仅当其定义域与值域均在 $\Z$ 上，且对于任意的 $x$，$F(2F(x)-x+1)=F(x)+C$，有 $n$ 个数对 $(x_i,y_i)$，求 $\sum_{i=1}^n|F(x_i)-y_i|$ 的最小值，$1\le n\le10^4,1\le C\le60$</p>
 <p>上来发现 T1 之前学长讲过类似的题目，然后当时没听懂，于是<del>ptsd发作</del>就没有多看，直接去看了 T2</p>
 <p>T2 想了 1h，发现还是只会 $O(n^3)$ 的 40pts，然后列好式子开始码</p>
 <p>一码就码了 2h……</p>
 <p>然后回来发现 T1 的 40 分貌似很好拿，但是写不完了，心情非常欢乐</p>
-<p>最后 T1 没 rush 出来，期望得分 0+40+0&#x3D;40，实际得分 0+12+0&#x3D;12，T2 莫名挂掉，被全世界吊着锤，rk62</p>
+<p>最后 T1 没 rush 出来，期望得分 0+40+0=40，实际得分 0+12+0=12，T2 莫名挂掉，被全世界吊着锤，rk62</p>
 <p>下午讲题半听懂了 T1(?)，T2T3 半掉线</p>
 <p>hzk 讲课带来了一堆非传统题，感觉很玄妙</p>
 <p><strong>fun fact: 永远不要在一道题上花费过多的时间</strong></p>
 <h2 id="3-28"><a href="#3-28" class="headerlink" title="3.28"></a>3.28</h2><p>BJOI 第四次集训</p>
 <p>T1: 一个条长度为 $n$ 的链，即边为 $(i-1,i)(1\le i\le n)$，求有多少路径从 $0$ 出发回到 $0$，并且恰好经过 $(i-1,i)$ 这条边 $2d_i$ 次，求方案数，$1\le n,d_i\le10^5$</p>
 <p>T2: 给一个正整数集合 $S$，$S$ 的每个元素在 $[1,n]$ 中，$f_n$ 为节点重量之和为 $n$ 的标号有根⼆叉树的数量，其中每个节点的重量均 $\in S$，如果 $T$ 能经过若干次交换子树的左右儿子操作边为 $T^\prime$，则 $T$ 与 $T^\prime$ 视为同一棵树，对于每个 $1\le i\le n$，求 $f_i\bmod2$</p>
-<p>T3: 令 $f_0(x)&#x3D;x^n,f_i(x)&#x3D;\sum_{j&#x3D;0}^{n}f_{i-1}(j)$，给定 $n,m,x$，求 $f_m(x)\bmod998244353$</p>
-<p>第一眼感觉 T2 很毒瘤，然后 T1 没有什么想法，于是先去做 T3，推了推式子，发现能 $O(n+x)$，加上 $n&#x3D;1$ 有 40pts，放进待完成队列就跑去看 T1 去了</p>
+<p>T3: 令 $f_0(x)=x^n,f_i(x)=\sum_{j=0}^{n}f_{i-1}(j)$，给定 $n,m,x$，求 $f_m(x)\bmod998244353$</p>
+<p>第一眼感觉 T2 很毒瘤，然后 T1 没有什么想法，于是先去做 T3，推了推式子，发现能 $O(n+x)$，加上 $n=1$ 有 40pts，放进待完成队列就跑去看 T1 去了</p>
 <p>T1 感觉没有办法按当前点 dp，便想能不能直接按每条边考虑，然后发现需要把 2-&gt;3 与和之相配对的 3-&gt;2 插在一个 1-&gt;2 与 2-&gt;1 之间，需要把 3-&gt;4 插在 2-&gt;3 与 3-&gt;2 之间，直接相乘即可，写完过了大样例</p>
 <p>然后滚回去写 T3 的暴力，发现我需要处理 $i^x$，于是多了一个快速幂的 log，可能被卡掉分</p>
 <p>最后想到了 T2 的 $O(n^2)$ 的情况，但中间步骤无法取模，不会处理 $\bmod2$，unsigned long long 能存的范围甚至连 $O(n^3)$ 的上界都不到，于是直接自然溢出写了一个 $O(n^3)$ 的暴力</p>
 <p>然后打开 emacs 和人机下了 1h 的五子棋，荣获 won 1 lost 16</p>
-<p>期望得分 100+20+35&#x3D;155，实际得分 100+40+30&#x3D;170，T2 用 unsigned long long 自然溢出是对的，T3 被卡掉了 10 分</p>
+<p>期望得分 100+20+35=155，实际得分 100+40+30=170，T2 用 unsigned long long 自然溢出是对的，T3 被卡掉了 10 分</p>
 <p>下午讲题听懂了 T2<del>，学到了 bitset 这个好玩的东西</del>，T3 完全掉线</p>
 <p>EI 讲课带来新科技转置原理，开场 3min 直接掉线</p>
 <h2 id="3-29-4-9"><a href="#3-29-4-9" class="headerlink" title="3.29~4.9"></a>3.29~4.9</h2><p>纸飞机txdy</p>
 <h2 id="4-10"><a href="#4-10" class="headerlink" title="4.10"></a>4.10</h2><p>T1(card): 有 $n$ 张正面朝上的卡片，正面上的数是 $a_i$，背面的数是 $b_i$，可以翻不超过 $m$ 张卡片，问最后朝上的数字极差最小为多少，$1\le n\le10^6$</p>
-<p>T2(matrix): 给定 $(n-1)\times(m-1)$ 的矩阵 $b$，求矩阵 $a$，使 $b_{i,j}&#x3D;a_{i-1,j-1}+a_{i-1,j}+a_{i,j-1}+a_{i,j}$，其中矩阵 $a$ 的元素在 $[0,10^6]$ 中，$T$ 组数据，$1\le T\le10,1\le n,m\le300$</p>
-<p>T3(graph): 给定一个 $n$ 个点的图 $G$，定义函数 $f(u,G)$：将变量 $cnt$ 初始化为 $0$：枚举 $v$ 从 $1$ 到 $n$，若 $u$ 能到达 $v$ 且 $v$ 能到达 $u$，那么将 $cnt+1$ 并删除 $v$ 与和 $v$ 有关的所有边，定义 $h(G)&#x3D;f(1,G)+f(2,G)+\cdots+f(n,G)$，定义 $G_i$ 为删除 $G$ 输入顺序中的前 $i$ 条边后的图，对于 $i&#x3D;0,1,\cdots,n$，求 $h(G_i)$</p>
+<p>T2(matrix): 给定 $(n-1)\times(m-1)$ 的矩阵 $b$，求矩阵 $a$，使 $b_{i,j}=a_{i-1,j-1}+a_{i-1,j}+a_{i,j-1}+a_{i,j}$，其中矩阵 $a$ 的元素在 $[0,10^6]$ 中，$T$ 组数据，$1\le T\le10,1\le n,m\le300$</p>
+<p>T3(graph): 给定一个 $n$ 个点的图 $G$，定义函数 $f(u,G)$：将变量 $cnt$ 初始化为 $0$：枚举 $v$ 从 $1$ 到 $n$，若 $u$ 能到达 $v$ 且 $v$ 能到达 $u$，那么将 $cnt+1$ 并删除 $v$ 与和 $v$ 有关的所有边，定义 $h(G)=f(1,G)+f(2,G)+\cdots+f(n,G)$，定义 $G_i$ 为删除 $G$ 输入顺序中的前 $i$ 条边后的图，对于 $i=0,1,\cdots,n$，求 $h(G_i)$</p>
 <p>7:10 就被门卫放进去了，到了考场说不让进，于是就在户外楼梯上坐了 30min<del>，后面的貌似直接被门卫拦下了，我也因此没有拿到教练发的巧克力</del></p>
 <p>上来直接看 T1，想了 45min 左右才想出一个 $O(n\log n)$ 的 set 做法，然后边写边改，最后在 9:30 左右写完了一个 $O(n)$ 算法，大样例大概 0.2s，想打一个对拍，但写完暴力发现太难调，并且只剩下 2h，于是就没有写</p>
-<p>T2 也看了 45min 左右，还是只会（当时认为）$n,m\le3$ 与 $m&#x3D;2$，发现时间不多于是决定赶紧写一下，于是就花了 15min 打了一下，自己造了几个样例都过了</p>
+<p>T2 也看了 45min 左右，还是只会（当时认为）$n,m\le3$ 与 $m=2$，发现时间不多于是决定赶紧写一下，于是就花了 15min 打了一下，自己造了几个样例都过了</p>
 <p>T3 想了想 44pts，发现不会，直接打了 $O(nm^3)$ 的 16pts</p>
-<p>期望得分 100+50+16&#x3D;166</p>
+<p>期望得分 100+50+16=166</p>
 <p>出考场发现 T2 要判构造出的解是否小于等于 $10^6$，然后我两种情况都没有判断，于是当场暴毙</p>
 <p><del>其实如果不判断根本过不了样例，但出于神必原因，并没有注意到这一点</del></p>
 <p>T1 各路 pbb 上众仙激烈讨论，叉掉了一堆假做法，不过好像没有人和我一样，感觉药丸</p>
-<p>得分：$[0,100]+<a href="10?">0,50</a>+16&#x3D;???$</p>
+<p>得分：$[0,100]+<a href="10?">0,50</a>+16=???$</p>
 <p>upd: T1 挂了</p>
 <p><strong>fun fact: 认真读题，不要漏掉要求</strong></p>
 <p><strong>fun fact: 写对拍！！！！！！</strong></p>
 <h2 id="4-11"><a href="#4-11" class="headerlink" title="4.11"></a>4.11</h2><p>T1(gem): 给定序列 $p$，$p$ 的元素互不相同，值域为 $[1,m]$，给定一棵 $n$ 个点的树，点有点权，有 $q$ 次询问，每次询问给出 $u,v$，求最长的 $p$ 的前缀使得其为 $u$ 到 $v$ 的路径组成的序列的子序列，$1\le |p|\le m\le50000,1\le n,q\le200000$</p>
-<p>T2(ranklist): 有 $n$ 支队伍参加 ACM，第 $i$ 支队伍在封榜前过了 $a_i$ 题，封榜后过了 $b_i$ 题，满足 $\sum_{i&#x3D;1}^nb_i&#x3D;m$，主办方会以 $b_i$ 不降的顺序依次公布 $b_i$，将 $a_i+&#x3D;b_i$，并实时更新排行榜，排行榜上 $a_i$ 越大越靠前，如果 $a_i$ 相等，则编号小的靠前，你观察到每公布一个 $b_i$，被公布的这支队伍会成为第一，现在给出 $n,m,a$，求最后排行榜上的顺序有多少情况，$1\le n\le13,1\le m\le500,1\le a_i\le10^4$、</p>
+<p>T2(ranklist): 有 $n$ 支队伍参加 ACM，第 $i$ 支队伍在封榜前过了 $a_i$ 题，封榜后过了 $b_i$ 题，满足 $\sum_{i=1}^nb_i=m$，主办方会以 $b_i$ 不降的顺序依次公布 $b_i$，将 $a_i+=b_i$，并实时更新排行榜，排行榜上 $a_i$ 越大越靠前，如果 $a_i$ 相等，则编号小的靠前，你观察到每公布一个 $b_i$，被公布的这支队伍会成为第一，现在给出 $n,m,a$，求最后排行榜上的顺序有多少情况，$1\le n\le13,1\le m\le500,1\le a_i\le10^4$、</p>
 <p>T3(dominator): 一张 $n$ 个点 $m$ 条边的有向图，定义 $u$ 支配 $v$ 当且仅当所以从 $1$ 到 $v$ 的所有路径都经过 $u$，一个节点支配它自己，一个节点的支配集为所有支配它的节点的集合，有 $q$ 次询问，每次询问加入边 $u\rightarrow v$，问有多少点的支配集发生变化，$1\le n\le3000,1\le m\le 2n,1\le q\le2\times10^4$</p>
 <h1 id="Huge-text-爷就是今日小丑hhaahahahaahhahahahaahahaahhahhaah"><a href="#Huge-text-爷就是今日小丑hhaahahahaahhahahahaahahaahhahhaah" class="headerlink" title="$\Huge\text{爷就是今日小丑hhaahahahaahhahahahaahahaahhahhaah}$"></a>$\Huge\text{爷就是今日小丑hhaahahahaahhahahahaahahaahhahhaah}$</h1><p>对着 T1 看了 20min，胡了一个倍增做法，从 $u$ 开始倍增找 $p_1,p_2,\cdots$，从 $v$ 开始倍增找 $p_n,p_{n-1},\cdots$，写到 9:40，发现假了，又仔细想了想，貌似可以二分 $v$ 的起点 $p_{mid}$，但是需要支持查询一个节点最深的权值为 $x$，然而我并不会，想来想去只会 45pts 的暴力，觉得性价比不是很高，于是打了个 tag 去看后面的题，此时还剩 3h</p>
 <p>T2 看到 $n\le13$，第一想法状压，发现复杂度上天，又考虑了一会想出一个 $O(n\times n!)$ 的 60pts 暴力，20min 写完</p>
 <p>T3 看了 30min 胡出来了一个 $O(nq)$，写完过了三个大样例，然后决定写个对拍，拍了几组就拍挂了，发现算法假了，此时还剩 100min 左右，但是感觉暴力套个 bitset 应该能有 75，但是写完了才发现又假了，于是就只有 45 了，写完后用暴力和树的拍了一下，调过后只剩 40min</p>
 <p>回到 T1 目测写不完链的部分分，于是打了个 25 的暴力直接走人，调完的时候还剩 15min 左右</p>
 <p><del>然后自闭</del></p>
-<p>期望得分 25+60+45&#x3D;130</p>
+<p>期望得分 25+60+45=130</p>
 <p>出了考场发现好多人切 T1，Mr_Wu 一句”主席树“点醒梦中人<del>（我考试的时候怎么就没想到呢）</del></p>
 <p><strong>fun fact: 想明白再开始写！！！！先看看能不能叉掉！！！</strong></p>
 <p>怎么说呢……成绩不算是很理想吧……</p>
@@ -801,6 +800,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

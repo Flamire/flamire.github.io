@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            CF1738 | Wonderhoy!
+            CF1738 | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -310,7 +310,6 @@
 			<p>被吊起来打了！！！！！！！！！！！！11</p>
 <p>果然我打 CF 的时候智商是随机的。</p>
 <span id="more"></span>
-
 <h3 id="A-Glory-Addicts"><a href="#A-Glory-Addicts" class="headerlink" title="A - Glory Addicts"></a>A - Glory Addicts</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>你有 $n$ 个技能，你要将它们以某种顺序使用，使得每个技能恰好使用一次</p>
 <p>每个技能有两个属性 $a_i,b_i$，如果本次使用的技能和上一次使用的技能的 $a_i$ 不同，那么会打出 $2b_i$ 的伤害，否则只有 $b_i$ 的伤害</p>
 <p>求最大伤害</p>
@@ -326,14 +325,14 @@
 <p>$1\le n\le100,1\le a_i\le10^9$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>身败名裂。</p>
 <p>不难发现游戏胜负只与奇数与偶数的个数有关</p>
-<p>令 $dp_{x,y,0&#x2F;1}$ 表示当前有 $x$ 个偶数，$y$ 个奇数，且先手想要让最后的和模 $2$ 余 $0&#x2F;1$，直接转移即可</p>
+<p>令 $dp_{x,y,0/1}$ 表示当前有 $x$ 个偶数，$y$ 个奇数，且先手想要让最后的和模 $2$ 余 $0/1$，直接转移即可</p>
 <p>复杂度 $O(n^2)$</p>
 <h3 id="D-Permutation-Addicts"><a href="#D-Permutation-Addicts" class="headerlink" title="D - Permutation Addicts"></a>D - Permutation Addicts</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>对于一个排列 $a$ 和一个整数 $k(0\le k\le n)$，我们定义 $f(a,k)$ 为如下的数列 $b$：</p>
 <ol>
 <li>对于 $a_i\le k$，令 $b_{a_i}$ 为 $a_1\sim a_i$ 中最后一个满足 $a_j&gt;k$ 的 $a_j$，如果不存在则为 $n+1$</li>
 <li>对于 $a_i&gt;k$，令 $b_{a_i}$ 为 $a_1\sim a_i$ 中最后一个满足 $a_j\le k$ 的 $a_j$，如果不存在则为 $0$</li>
 </ol>
-<p>给定 $b$，还原 $a,k$ 使得 $f(a,k)&#x3D;b$，保证有解</p>
+<p>给定 $b$，还原 $a,k$ 使得 $f(a,k)=b$，保证有解</p>
 <p>$1\le n\le10^5$</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>哈哈！求 $a$ 和求 $k$ 一点关系没有！！！！没想到吧！！！！！！</p>
 <p>求 $k$ ：</p>
@@ -346,8 +345,8 @@
 <h3 id="E-Balance-Addicts"><a href="#E-Balance-Addicts" class="headerlink" title="E - Balance Addicts"></a>E - Balance Addicts</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的序列 $a$，问有多少将其划分成若干连续子段的方式，使子段的和组成一个回文串，对 $998244353$ 取模</p>
 <p>$1\le n\le10^5,0\le a_i\le10^9$</p>
 <h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>考虑这个 $0$ 很烦，所以我们先考虑没有 $0$ 的情况</p>
-<p>我们令 $f(i,j)$ 表示 $a_i,a_{i+1},\cdots,a_j$ 的答案，那么 $f(i,j)&#x3D;2f(x,y)$，其中 $x,y$ 为第一个满足 $a_i+a_{i+1}+\cdots+a_x&#x3D;a_y+a_{y+1}+\cdots+a_r$ 的下标，$\times2$ 为是否与下一段合并</p>
-<p>那么我们加入 $0$，相当于对和下一段合并的方案数乘了一个系数，经过一些简单的组合，我们可以得出如果回文串的两段与向内一个的两段之间分别有 $n$ 个和 $m$ 个 $0$，那么乘上的系数为 $\sum_{i&#x3D;0}^{\min(n,m)}\binom{n+1}i\binom{m+1}i$，直接计算即可</p>
+<p>我们令 $f(i,j)$ 表示 $a_i,a_{i+1},\cdots,a_j$ 的答案，那么 $f(i,j)=2f(x,y)$，其中 $x,y$ 为第一个满足 $a_i+a_{i+1}+\cdots+a_x=a_y+a_{y+1}+\cdots+a_r$ 的下标，$\times2$ 为是否与下一段合并</p>
+<p>那么我们加入 $0$，相当于对和下一段合并的方案数乘了一个系数，经过一些简单的组合，我们可以得出如果回文串的两段与向内一个的两段之间分别有 $n$ 个和 $m$ 个 $0$，那么乘上的系数为 $\sum_{i=0}^{\min(n,m)}\binom{n+1}i\binom{m+1}i$，直接计算即可</p>
 <p>复杂度 $O(n)$</p>
 <h3 id="F-Connectivity-Addicts"><a href="#F-Connectivity-Addicts" class="headerlink" title="F - Connectivity Addicts"></a>F - Connectivity Addicts</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
 <p>有一个 $n$ 个点的无向图，你不知道这个无向图是什么，但你知道第 $i$ 个点的度数为 $d_i$</p>
@@ -771,6 +770,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

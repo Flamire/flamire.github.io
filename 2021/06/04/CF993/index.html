@@ -39,15 +39,15 @@
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/GaQMhl6bUAUrOPt.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="icon" type="image/png" href="/images/momo.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/momo.jpg">
     <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/GaQMhl6bUAUrOPt.jpg">
+    <link rel="shortcut icon" href="/images/momo.jpg">
     <!--- Page Info-->
     
     <title>
         
-            CF993 | Wonderhoy!
+            CF993 | Flamiblog
         
     </title>
 
@@ -134,7 +134,7 @@
             
             <a class="logo-title" href="/">
                 
-                Wonderhoy!
+                Flamiblog
                 
             </a>
         </div>
@@ -244,7 +244,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-				<img src="/GaQMhl6bUAUrOPt.jpg">
+				<img src="/images/momo.jpg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -308,9 +308,8 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>有 blog 了，发过来了</p>
-<p>被整个机房吊起来打了&#x2F;dk</p>
+<p>被整个机房吊起来打了/dk</p>
 <span id="more"></span>
-
 <h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>你有一个平行于坐标轴的正方形 A，与一个与坐标轴成 $45^\circ$ 的正方形 B，问两个正方形有没有交</p>
 <h4 id="考场经历"><a href="#考场经历" class="headerlink" title="考场经历"></a>考场经历</h4><ul>
 <li>00:02 想到将 B 的中心与 A 分成左上，左下，右上，右下，内部五种关系讨论</li>
@@ -343,15 +342,15 @@
 <li>否则，输出 -1</li>
 </ol>
 <p>复杂度 $O(nm)$</p>
-<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 架敌舰，在直线 $x&#x3D;-100$ 上，有 $m$ 架敌舰，在直线 $x&#x3D;100$ 上，你有两架战舰，你需要把它们安排在 $x&#x3D;0$ 上，所有敌舰会同时向你的两架战舰发射激光，激光会摧毁它接触到的所有敌舰，问你最多能够靠敌舰的激光摧毁多少架敌舰，$1\le n,m\le60$</p>
-<h4 id="考试经历"><a href="#考试经历" class="headerlink" title="考试经历"></a>考试经历</h4><p>一直把 $x&#x3D;0$ 当成 $y&#x3D;0$，考后听 801 说才读对题</p>
-<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>显然有意义的位置一定是某一艘 $x&#x3D;-100$ 的敌舰与某一艘 $x&#x3D;100$ 的敌舰的连线的中点，最多 $O(nm)$ 个</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 架敌舰，在直线 $x=-100$ 上，有 $m$ 架敌舰，在直线 $x=100$ 上，你有两架战舰，你需要把它们安排在 $x=0$ 上，所有敌舰会同时向你的两架战舰发射激光，激光会摧毁它接触到的所有敌舰，问你最多能够靠敌舰的激光摧毁多少架敌舰，$1\le n,m\le60$</p>
+<h4 id="考试经历"><a href="#考试经历" class="headerlink" title="考试经历"></a>考试经历</h4><p>一直把 $x=0$ 当成 $y=0$，考后听 801 说才读对题</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>显然有意义的位置一定是某一艘 $x=-100$ 的敌舰与某一艘 $x=100$ 的敌舰的连线的中点，最多 $O(nm)$ 个</p>
 <p>那我们可以枚举两边的敌舰，处理出每个有意义的位置对于每个敌舰是否能消灭的情况（可用 bitset 或 2 个 long long 存），这部分复杂度 $O(nm)$</p>
 <p>然后分别枚举自己的两架战舰的位置，然后将情况或起来求 1 的个数，需要使用较快的求 1 的个数的方式，这部分复杂度 $O(n^2m^2)$</p>
 <p>总复杂度 $O(n^2m^2)$</p>
 <h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个数组 $(a_i,b_i)$，你现在要将它们分为两个集合 $A,B$，满足对于 $B$ 中每个元素，都能找到一个 $j$，使 $a_i&lt; a_j$，求 $\dfrac{\sum_{i\in A}a_i}{\sum_{i\in A}b_i}$ 乘 1000 上取整，$1\le n\le50$</p>
 <h4 id="考场经历-2"><a href="#考场经历-2" class="headerlink" title="考场经历"></a>考场经历</h4><p>看都没看</p>
-<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑二分，判断 $\dfrac{\sum_{i\in A}a_i}{\sum_{i\in A}b_i}$ 是否能小于等于 $k$，即 $\sum_{i\in A}a_i-kb_i\le 0$，那么我们令 $c_i:&#x3D;a_i-kb_i$，我们需要找出一种方案使得 $c_i$ 的和最小</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>考虑二分，判断 $\dfrac{\sum_{i\in A}a_i}{\sum_{i\in A}b_i}$ 是否能小于等于 $k$，即 $\sum_{i\in A}a_i-kb_i\le 0$，那么我们令 $c_i:=a_i-kb_i$，我们需要找出一种方案使得 $c_i$ 的和最小</p>
 <p>显然我们可以以原 $a_i$ 从大到小排序，这样能使后面的数组成为 $B$ 集合中的数组的 $A$ 集合中对应的数组必定在它前面，令 $dp[i][j][k]$ 表示前 $i$ 个数组中，有 $j$ 个 $a$ 相等的元素还没有接东西，有 $k$ 个 $a$ 不等的元素还没有接东西，直接转移即可，复杂度 $O(n^3\log n)$</p>
 <h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>有一个长度为 $n$ 的序列与一个整数 $x$，对于每个 $k(0\le k\le n)$，求出该序列中恰好有 $k$ 个小于 $x$ 的数的子区间，$1\le n\le2\cdot10^5$</p>
 <h4 id="考场经历-3"><a href="#考场经历-3" class="headerlink" title="考场经历"></a>考场经历</h4><ul>
@@ -364,7 +363,7 @@
 </ul>
 <h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>将小于 $x$ 的数替换为 $1$，大于等于 $x$ 的数替换为 $0$，转化为求和为 $k$ 的子区间个数</p>
 <p>考虑序列中的 $1$ 一定将原序列分为若干段，每段中全是 $0$（可以为空），且将区间端点在这段区间被移动不影响总和，我们可以将其视为一个整体，总共有 $q$ 个 $1$，$0$ 段长度分别为 $a_0,a_1\cdots,a_q$</p>
-<p>首先处理掉和为 $0$ 的情况，那么 $k(1\le k\le q)$ 的答案为 $\sum\limits_{i&#x3D;0}^{q-k}(a_i+1)(a_{i+k}+1)$，令 $b_i&#x3D;a_i+1,b^\prime_i&#x3D;b_{q-i}$，求卷积即可</p>
+<p>首先处理掉和为 $0$ 的情况，那么 $k(1\le k\le q)$ 的答案为 $\sum\limits_{i=0}^{q-k}(a_i+1)(a_{i+k}+1)$，令 $b_i=a_i+1,b^\prime_i=b_{q-i}$，求卷积即可</p>
 
 		</div>
 
@@ -774,6 +773,22 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
