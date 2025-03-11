@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-06T11:50:36.728Z">
+<meta property="article:modified_time" content="2025-03-11T02:34:14.546Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-06 19:50:36</span>
-            <span class="mobile">2025-03-06 19:50:36</span>
+            <span class="desktop">2025-03-11 10:34:14</span>
+            <span class="mobile">2025-03-11 10:34:14</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -341,6 +341,83 @@
               <p>首先考虑 $k=0$ 怎么做。</p><p>那么不妨考虑两人手里的最大值 $mx$，如果两边 $mx$ 数量不相等那么一定是 $mx$ 多的一方赢</p><p>如果相等的话，这些 $mx$ 一定配对消除，那么我们就把原问题拆成了一些子问题，后面有 $(mx,mx)$ 的子问题可以随便处置，最后一个没有 $(mx,mx)$ 的子问题则还是一样的</p><p>那么再考虑有炸弹牌的情况。</p><p>注意到我们可以只考虑 X 赢或者平手的情况，Y 赢的情况可以减出来。</p><p>记炸弹牌为 $\times$，首先把炸弹牌炸掉的牌全列出来，形成若干个 $(?,\times)$ 的对，那么还是从大到小填数，考虑填一个数 $v$ 的时候会发生什么</p><p>那么当前会有一些 $(?,\times)$ 的对，有一些 $(&gt;v,\times)$ 的对，以及有一些只有一个 $\times$ 的位置（即最后 X 赢了手里剩下的炸弹）</p><p>首先我们会把若干个 $(?,\times)$ 填成 $(v,\times)$，接下来我们需要填一些 $v$ 在段内，那么我们每个段会填两种东西，一种是一个配对的 $(v,v)$，表示这两张 $v$ 最后一起消去了，或者填单独的 $v$，表示这个 $v$ 没有和其他的 $v$ 一起消去</p><p>那么 $(v,\times),(?,\times),(&gt;v,\times)$ 这三种段都是可以随便填 $(v,v)$ 的，填完 $(v,v)$ 后，$(v,v)$ 前面的部分就可以随便填 $&lt;v$ 的数了</p><p>而单独的 $v$ 相当于影响两个人在这个段内的胜负，而段对胜负的要求，相当于是 $(v,\times),(?,\times)$ 要求该段内两个人 $v$ 的数量必须相等，否则无法让它们匹配，而 $(&gt;v,\times)$ 要求该段内 X 的 $v$ 数量不小于 Y 的 $v$ 数量，也就是说我们可以枚举向多少个 $(&gt;v,\times)$ 的对里插入了多余的 $v$，插入完之后，这个 $v$ 后面也是随意插 $v$ 的段</p><p>上述是大概的想法，接下来整体描述一下做法：</p><p>从大到小填数，令 $dp_{v,x,y,0/1}$，表示当前填到了值 $v$，有 $x$ 个 $(?,\times)$ 的段，有 $y$ 个 $(&gt;v,\times)$ 的段还未分出胜负，最后一个段是 X 赢/平局 的概率</p><p>此时除了这 $x+y+0/1$ 个段之外，其他的段都是随便填 $\le v$ 的数，这样的段数量我们可以通过 $&gt;v$ 的数个数和 $k$ 之类的东西算出</p><p>转移的时候我们如下东西：</p><ul><li>$a$，表示有多少个 $(?,\times)$ 被填成了 $(v,\times)$</li><li>$b,b^\prime$，有多少个 $(&gt;v,\times)$ 的段中，X 填入了更多的 $v$，最后一个段特殊枚举</li><li>$c$，表示我们一共填入了多少对配对的 $(v,v)$</li></ul><p>转移的话，需要注意的是 $b$ 枚举的段会多产生一个能随意填入 $v$ 的段，把各种乱七八糟的系数都算一下可以做到 $O(1)$ 转移</p><p>初值的话，枚举有多少炸弹牌被使用了，如果使用了 $k$ 个就是 $dp_{A,k,0,1}\leftarrow 1$，否则使用了 $i$ 个，我们可以视作第 $i+1$ 个炸弹是 $(\infty,\times)$，就是 $dp_{A,i,1,0}\leftarrow1$</p><p>总复杂度 $O(nk^4)$</p>
               </div>
             </details>
+<hr>
+<h3 id="5-QOJ10100-Exchanging-Kubic-3-E"><a href="#5-QOJ10100-Exchanging-Kubic-3-E" class="headerlink" title="5.  QOJ10100 - Exchanging Kubic 3 [E]"></a>5.  QOJ10100 - Exchanging Kubic 3 [E]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的数组 $a_1,a_2,\cdots,a_n$，每次你可以选择 $i,j$，使得 $|i-j|=1$ 且 $a_i\ge0$，然后执行 $a_j\leftarrow a_j+a_i,a_i\leftarrow0$</p>
+<p>求让所有 $a_i\ge0$ 的最小步数，或者判断不可能</p>
+<p>$1\le n\le5\times10^5,|a_i|\le10^9$</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>无解是直接判一下总和 $&lt;0$。</p><p>取一下前缀和，操作相当于选择一个 $s_{i-1}\le s_i$，然后执行 $s_{i-1}\leftarrow s_i$ 或 $s_i\leftarrow s_{i-1}$，最后我们的目标是让 $s_i$ 递增</p><p>注意到我们执行的是赋值的操作，那么对于任意 $s_i$，我们找到所有被赋值成 $s_i$ 的位置，要么最后被赋值成 $s_i$ 的位置不存在，要么其形成一个包含 $i$ 的区间（如果区间不包含 $i$ 的话一定不优）</p><p>那么我们根据这个不变的 $s_i$ 位置设状态，就可以列出转移方程：</p><script type="math/tex; mode=display">f_i\leftarrow f_j+i-j-1+\sum_{x=j+1}^k[b_x<b_j]+\sum_{x=k+1}^{i-1}[b_x>b_i]</script><p>其中要求 $a_j\le a_i$，这样复杂度是 $O(n^3)$ 的</p><p>那么我们按照 $a$ 的大小从小到大扫，维护一个 $g_k$ 表示所有中间点选在 $k$ 的转移最小值，那么枚举到一个 $i$ 的时候，我们需要干如下两件事情：</p><script type="math/tex; mode=display">f_i\leftarrow g_k+2(i-k-1)-(tcnt_{i-1}-tcnt_k),&[k\in [0,i-1)]\\g_k\leftarrow f_i+k-i+cnt_k-cnt_i,&[k\in [i,n]]</script><p>其中 $cnt_i$ 表示前缀 $&lt;a_i$ 的数量，$tcnt_i$ 表示前缀 $\le a_i$ 的数量，那么复杂度就降到了 $O(n^2)$</p><p>将上述两个操作用线段树优化，我们需要支持如下的事情：</p><ul><li>将区间 $g_k$ 的值对 $k+cnt_k+C$ 取 $\min$</li><li>区间加 $cnt,tcnt$</li><li>求区间 $g_k-2k+tcnt_k$ 的最小值</li></ul><p>这个可以通过线段树上打 tag 维护，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="6-AGC015F-Kenus-the-Ancient-Greek-E"><a href="#6-AGC015F-Kenus-the-Ancient-Greek-E" class="headerlink" title="6.  AGC015F - Kenus the Ancient Greek [E]"></a>6.  AGC015F - Kenus the Ancient Greek [E]</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>对于非负整数 $a,b$，定义 $f(a,b)$ 如下：</p>
+<ul>
+<li>$f(a,b)=f(b,a)$</li>
+<li>$f(0,a)=0$</li>
+<li>如果 $a&gt;0$ 且 $a\le b$，则 $f(a,b)=f(b\bmod a,a)+1$</li>
+</ul>
+<p>$q$ 组询问，每次询问给定 $X,Y$，求 $1\le x\le X,1\le y\le Y$ 的 $f(x,y)$ 最大值，并计数有多少对 $(x,y)$ 得到了这个最大值，对 $10^9+7$ 取模</p>
+<p>$1\le q\le3\times10^5,1\le X,Y\le10^{18}$</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>这个问题看起来很不可做。但是我们可以先从第一问进行入手。</p>
+<p>我们首先自动只保留 $a\le b$ 的点，那么首先注意到所有 $(a,b)$ 状态的前驱都是唯一的，也就是说这形成了一棵类似树一样的结构</p>
+<p>我们从 $(1,2)$ 开始每次扩展，那么如果想要操作步数最多的话就是每次令 $(a,b)$ 变成 $(b,a+b)$，这样得到的就是斐波那契数，那么根据经典结论可知答案量级是 $O(\log V)$ 的，称这个值为 $k$</p>
+<p>那么考虑计数，一个暴力就是我们当前有一个 $(a,b,stp)$，我们每次进行如下两种操作之一：</p>
+<ul>
+<li>A 操作：$(a,b,stp)\leftarrow(a,a+b,stp)$</li>
+<li>B 操作：$(a,b,stp)\leftarrow(b,a+b,stp+1)$</li>
+</ul>
+<p>我们最后计数的就是得到的 $stp=k$</p>
+<p>定义 $F_0=0,F_1=1,F_n=F_{n-1}+F_{n-2}$，原本我们的最优解得到的是 $(F_{k+1},F_{k+2})$，如果一开始我们是从 $(0,2)$ 出发，最后得到的就至少是 $(2F_{k+1},2F_{k+2})$，而这个对位大于 $(F_{k+2},F_{k+3})$，那么此时 $k$ 最大的性质就被打破了</p>
+<p>也就是说我们起始的节点一定是 $(1,2,1)$。</p>
+<p>从这里已经可以初见端倪了，我们可以发现我们有可能进行不了很多次 A 操作。</p>
+<p>但是最后一次 B 操作之后可以进行很多很多次 A 操作，那么我们特殊处理这部分。</p>
+<p>具体地，如果我们在最后一次 B 操作之前，进行了两次 A 操作，那么我们只要说明，在除了这两次操作之外没有其它 A 操作的情况下，数已经过大了即可</p>
+<p>设这两次 A 操作之前数对为 $(a,b)$，这两次之间隔了 $u$ 次 B 操作，那么在经过第二次 A 操作之后，我们再做一次 B 操作，得到的情况会是（规定 $F_{-1}=1$ ）：</p>
+<script type="math/tex; mode=display">
+(a,b)\rightarrow(a,a+b)\rightarrow(F_{u-1}a+F_{u}(a+b),F_ua+F_{u+1}(a+b))\\
+=(F_{u+1}a+F_ub,F_{u+2}a+F_{u+1}b)\rightarrow(F_{u+1}a+F_ub,F_{u+3}a+F_{u+2}b)\\
+\rightarrow(F_{u+3}a+F_{u+2}b,(F_{u+1}+F_{u+3})a+(F_u+F_{u+2})b)</script><p>而此时我们在 $(a,b)$ 上进行了 $u+1$ 次 B 操作，如果我们在 $(a,b)$ 上直接进行 $u+2$ 次 B 操作得到的值比这个值对位小，那么后面我们一直做 B 操作，由于 $k$ 的最大性，说明这种情况不需要考虑</p>
+<p>$u+2$ 次 B 操作后会得到 $(F_{u+1}a+F_{u+2}b,F_{u+2}a+F_{u+3}b)$，左边显然小于，对右边作差，得到 $2F_{u+1}a+(F_u-F_{u+1})b$，重新整理得到 $F_{u+1}(2a-b)+F_ub$，由于 $(a,b)$ 是斐波那契数，所以 $2a-b\ge0$，因此该式 $\ge0$</p>
+<p>那么我们只需要考虑除了最后一次 B 操作之外，只进行了一步 A 操作的数对，那么直接爆搜算方案数即可，复杂度 $O(\log V)$</p>
+<hr>
+<h3 id="7-CF1787I-Treasure-Hunt-E-⭐"><a href="#7-CF1787I-Treasure-Hunt-E-⭐" class="headerlink" title="7.  CF1787I - Treasure Hunt [E] ⭐"></a>7.  CF1787I - Treasure Hunt [E] ⭐</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>对于一个序列 $b_1,b_2,\cdots,b_c$，定义 $f(b)$ 为：最大的 $\sum_{i=1}^qb_i+\sum_{i=s}^tb_i$，其中 $q,s,t$ 都是整数（可以为负），满足 $s&gt;q$ 或 $t\le q$，并且如果 $i<1$ 或 $i>c$ 我们认为 $b_i=0$，并且求和下指标大于上指标我们也认为是 $0$</p>
+<p>给定长为 $n$ 的序列 $a_1,a_2,\cdots,a_n$，求 $\sum_{1\le l\le r\le n}f(a[l:r])$，对 $998244353$ 取模</p>
+<p>$1\le n\le10^6,|a_i|\le10^6$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到那个乱七八糟的东西就是区间最大前缀和加上区间最大子段和，非常弱智。</p><p>区间最大前缀和是好求的，直接建笛卡尔树即可</p><p>考虑如何求区间最大子段和之和。</p><p class='h5' id="Flamire-做法"><a href="#Flamire-做法" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>分治。</p><p>当前区间是 $[L,R]$，处理跨过分治端点 $M$ 的贡献，那么答案形式就应该是 $\max(lans,rans,lsuf+rpre)$</p><p>此时如果我们假定 $lans\ge rans$，那么讨论一下 $rpre$ 和 $lans-lsuf$ 的大小，进行一个二分，可以 $O(\log n)$ 定位到分界点，那么就可以在 $O(n\log^2n)$ 内的时间计算出答案</p><p>但是这还不够优。</p><p>观察一下性质：对于一个序列，我们往右边插入一个数，那么最大子段和的左右端点一定都会向右移动，这个可以通过简单分类讨论得到</p><p>也就是说，我们固定了一个左端点 $l$，那么 $r$ 从 $M+1\rightarrow R$ 的过程中一定是左边一段取到 $lans$，中间一段取到 $lsuf+rpre$，右边一段取到 $rans$，我们只要找到这个分界点即可</p><p>而 $l$ 从 $M\rightarrow L$ 的过程中，我们每次往左边插入一个数，那么最大子段和的左右端点一定都会向左一定，也就是说这两个分界点都一定是单调向左的</p><p>那么我们就可以 $O(R-L)$ 计算一个区间的答案，总复杂度 $O(n\log n)$</p><h5 id="线性做法"><a href="#线性做法" class="headerlink" title="线性做法"></a>线性做法</h5><p>$l$ 从大到小扫描线，考虑此时每个 $r$ 的最大子段和的结构。</p><p>求出前缀和 $s$，那么我们就是要选择 $l-1\le x\le y\le r$ 使得 $s_y-s_x$ 最大，我们把它改成 $[l,r]$</p><p>那么考虑加一个 $s_l$ 的影响：</p><ul><li>$s_l&gt;s_{l+1}$，那么右边的任何东西都不会改变 $x$ 的选择，去选成 $x=l$</li><li>$s_l\le s_{l+1}$，那么右边所有满足 $s_x\ge s_l$ 的 $x$ 会改成选择 $x=l$，而一个可以注意到的事情就是我们把每个 $r$ 的 $(x,y)$ 对写出来，$s_x$ 一定是递增的，这个可以通过上面的结论推出，也就是说我们维护一个 $x$ 的单调栈，那么每次就是把前面的一些段改成 $x$</li></ul><p>那么此时考虑 $y$ 的选择，一段恒定的 $x$ 内的 $y$ 一定是选择前缀最大值，那么我们对每段 $x$ 再开一个单调栈，维护所有 $y$ 的取值，那么合并 $x$ 段的时候我们使用链表，然后往前考虑单调栈内 $y$ 的弹出</p><p>这样复杂度是 $O(n)$ 的</p>
+              </div>
+            </details>
+<hr>
+<h3 id="8-CF1458E-Nim-Shortcuts-E"><a href="#8-CF1458E-Nim-Shortcuts-E" class="headerlink" title="8.  CF1458E - Nim Shortcuts [E]"></a>8.  CF1458E - Nim Shortcuts [E]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>有两堆石子 $a,b$，两个人轮流操作，每人每次会从一堆中取出任意堆石子，不能操作者负</p>
+<p>同时，还额外有 $n$ 个位置 $(x_i,y_i)$，如果一个人即将操作，并且当前 $a=x_i,b=y_i$，那么他也会直接输掉</p>
+<p>现在有 $m$ 次询问，每次给定一个初始局面 $(u_i,v_i)$，查询先手胜还是后手胜</p>
+<p>$1\le n,m\le10^5,0\le x_i,y_i,u_i,v_i\le10^9$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑画到一个矩形上，首先 $(0,0)$ 和所有 $(x_i,y_i)$ 是负，那么会推出来同行同列的位置都是胜</p><p>考虑从上到下扫 $x$ 推理：我们每次维护一个当前所有 $y_i$ 的集合，每次选出这个集合的 mex，然后判断一下 $mex$ 是否小于当前行 $y$ 最小的负位置，如果是把 $(x,mex)$ 判定为负，然后加入 $y_i$ 的集合</p><p>由于值域是 $10^9$，所以需要使用连续段优化，复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="9-CF1566H-Xor-quiz-E"><a href="#9-CF1566H-Xor-quiz-E" class="headerlink" title="9.  CF1566H - Xor-quiz [E]"></a>9.  CF1566H - Xor-quiz [E]</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $c$，有一个<strong>均匀随机</strong>生成的元素为 $[1,c]$ 的集合 $A$，现在你已知 $|A|=n$</p>
+<p>你可以进行一次询问，一次询问给出 $k$ 个 $[1,c]$ 内的整数 $q_1,q_2,\cdots,q_k$，对每个 $q_i$，你会知道所有 $x\in A$ 且 $\gcd(x,y)=1$ 的 $x$ 的异或和</p>
+<p>你需要保证 $k\le\lceil0.65c\rceil$，还原出一个集合 $A^\prime$，使得 $|A^\prime|=n$ 且 $A$ 和 $A^\prime$ 在所有 $c$ 种可能的询问上都是一样的</p>
+<p>$100\le c\le10^6,0\le n\le c$</p>
+<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>神经病。</p><p>我们可以把 $\mu\neq0$ 的数全问一遍，这样会问 $6/\pi^2$ 次，低于 $\lceil0.65c\rceil$</p><p>然后经过一些异或我们可以得到对每个 $\mu(i)\neq0$ 的数 $i$ 得到 $w_i$ 表示 $A$ 中所有包含质因子恰为 $i$ 这个集合的数的异或和</p><p>那么我们就是要对每个 $i$ 构造一个集合，使得它的异或和为 $w_i$，且所有 $i$ 的集合总大小加起来 $=n$</p><p>注意到 $n$ 的大小一定是在 $c/2$ 附近，那么我们对每个 $i$，建线性基然后分类讨论一下自由元个数，如果自由元个数 $\le7$ 我们就暴力枚举 $128$ 种情况，否则我们随机 $128$ 组，把大小拿出来跑背包用 bitset 优化</p><p>是对的。</p>
+              </div>
+            </details>
+<hr>
+<h3 id="10-AGC052D-Equal-LIS-E-⭐"><a href="#10-AGC052D-Equal-LIS-E-⭐" class="headerlink" title="10.  AGC052D - Equal LIS [E] ⭐"></a>10.  AGC052D - Equal LIS [E] ⭐</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $1\sim n$ 的排列 $p$，求是否能将 $a$ 分为两个非空的子序列 $u,v$，使得 $u$ 和 $v$ 的 LIS 长度相等</p>
+<p>$1\le n\le2\times10^5$</p>
+<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>太恐怖了啊。</p><p class='h5' id="Flamire-思路"><a href="#Flamire-思路" class="headerlink" title="Flamire 思路"></a>Flamire 思路</h5><p>这种题一种思路是考虑有哪些情况显然可以有解，不断筛选，最后得到一个判定条件</p><p>那么首先注意到我们一种策略是从前往后选数，那么每次我们左边的 LIS 会 $+1$ 或不变，右边的 LIS 会 $-1$ 或不变，构造不出来的情况就是左边的 LIS 为 $k$，右边的 LIS 为 $k+1$，向右挪动 $1$ 后左边为 $k+1$，右边为 $k$，设这一步挪动的元素为 $p$</p><p>此时我们可以得到一些性质：左边的 LIS 为 $k$，且存在一个长为 $k$ 的 LIS 能拼上 $a_p$，右边同理，这也就意味着我们整体的 LIS 为 $2k+1$，且 $p$ 为必经点</p><p>同时我们也可以对值域进行一个类似的过程，我们也能得到下边上边的 LIS 均为 $k$</p><p>画到二维平面上，按 $(p,a_p)$ 把平面划分为四个象限，那么我们得到的条件就是一二，二三，三四，四一象限内的 LIS 都 $=k$</p><p>那么我们找出一三象限内长为 $k$ 的 LIS，如果除了这个 LIS 之外一三象限还有其它元素，不妨设是一象限，且这个元素为 $x$，那么我们可以令 $u$ 为一象限内所有点去掉 $x$，并上 $a_p$，此时 $u$ 的 LIS $=k+1$，外部 $v$ 的 LIS 是 $k+1$，因为存在三象限并上 $x$ 的选法，而剩下的 LIS 一定都 $\le k+1$，那么这种就是可以构造的</p><p>所以现在一三象限除了一个长为 $k$ 的上升序列之外不能有其它元素</p><p>但是这样还是有可能构造出来解。比如 <code>1 2 4 5 6 7 3 8</code></p><p>也就是说我们可以选择一个三四一/三二一象限的子序列</p><p>但是具体地，我们取一个长为 $k+1$ 的上升序列，满足其至少存在一段位置不属于整体 LIS</p><p>如果我们保留了恰好 $k+1$ 个整体 LIS 内的点，并且这段点在整体 LIS 中的位置是一段区间，那么可以说明这个东西的 LIS 一定恰好 $=k+1$，因为想要 $&gt;k+1$ 只能是三四一/三二一象限的上升子序列，而如果这些子序列 $&gt;k+1$ 就违反了整体 LIS 的最长性</p><p>那么我们找到中间这个不属于的段最短的上升子序列，我们取一个最长的整体 LIS 前缀使得其仍然能拼上，然后取 $k-len$ 个整体 LIS 的后缀，由于这个段是最短的，可以发现这样的 LIS 一定 $=k+1$</p><p>也就是说，最后无解的条件就是 LIS 为奇数，且我们取任意一条 LIS，所有 $\ge k+1$ 的上升 LIS 都完全被这个 LIS 包含</p><h5 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路"></a>题解思路</h5><p>上面那个想法其实效率很低。</p><p>考虑一种刻画 LIS 的方式：令 $f(i)$ 表示以 $a_i$ 结尾的 LIS，那么任意一个 LIS 一定在 $f(i)$ 上也是严格递增的，并且 $f(i)$ 的值域有一些限制</p><p>一件显然的事情是任意一条 LIS 上的 $f(i)$ 一定是 $1,2,3,\cdots$ 排下去的</p><p>具体地，我们求出原来的 LIS，如果其长度为 $2k$，那么我们把所有 $f(i)\le k$ 的位置选出作为一个子序列，剩下的作为另一个子序列，此时两边都至少包含 $k$ 个 LIS 中的元素，而 $f(i)$ 种类数又 $=k$，所以 LIS $=k$</p><p>那么偶数就是可以构造的。</p><p>考虑 LIS 长度为 $2k+1$ 的情况，此时如果我们存在一个长为 $k+1$ 的子序列 $i_1,i_2,\cdots,i_{k+1}$ 满足其至少存在一个位置 $x$ 不属于原来的 LIS，那么我们可以如下构造：</p><ul><li>对于所有 $i_j\neq x$，把所有 $f(t)=f(i_j)$ 的 $t$ 放入第一个子序列</li><li>将 $x$ 放入第一个子序列</li><li>对于其余所有元素，放入第二个子序列</li></ul><p>此时两个子序列的 $f$ 种类数都是 $k+1$，而第一个子序列包含一个长为 $k+1$ 的上升子序列，第二个子序列至少包含整体 LIS 的 $k+1$ 个元素，因此构造成立</p><p>否则所有长为 $k+1$ 的子序列都一定在长为 $2k+1$ 的 LIS 内，而两边的 LIS 至少要 $\ge k+1$，因此无法选出</p>
+              </div>
+            </details>
+<hr>
 
 		</div>
 
@@ -355,7 +432,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-03-06 19:50:36
+                    :</strong> 2025-03-11 10:34:14
             </li>
         
         <li>
@@ -465,7 +542,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task15</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%9B%BE%E6%8E%92%E5%88%97-E"><span class="nav-text">1.  联合省选 2025 - 图排列 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B2%81%E6%9C%88-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">2.  联合省选 2025 - 岁月 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B0%81%E5%8D%B0-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">3.  联合省选 2025 - 封印 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ10103-Quad-Kingdoms-Chess-2-E"><span class="nav-text">4.  QOJ10103 - Quad Kingdoms Chess 2 [E]</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%9B%BE%E6%8E%92%E5%88%97-E"><span class="nav-text">1.  联合省选 2025 - 图排列 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B2%81%E6%9C%88-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">2.  联合省选 2025 - 岁月 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B0%81%E5%8D%B0-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">3.  联合省选 2025 - 封印 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ10103-Quad-Kingdoms-Chess-2-E"><span class="nav-text">4.  QOJ10103 - Quad Kingdoms Chess 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-QOJ10100-Exchanging-Kubic-3-E"><span class="nav-text">5.  QOJ10100 - Exchanging Kubic 3 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-AGC015F-Kenus-the-Ancient-Greek-E"><span class="nav-text">6.  AGC015F - Kenus the Ancient Greek [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-CF1787I-Treasure-Hunt-E-%E2%AD%90"><span class="nav-text">7.  CF1787I - Treasure Hunt [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-CF1458E-Nim-Shortcuts-E"><span class="nav-text">8.  CF1458E - Nim Shortcuts [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-CF1566H-Xor-quiz-E"><span class="nav-text">9.  CF1566H - Xor-quiz [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-AGC052D-Equal-LIS-E-%E2%AD%90"><span class="nav-text">10.  AGC052D - Equal LIS [E] ⭐</span></a></li></ol>
 
 	</div>
 </div>
