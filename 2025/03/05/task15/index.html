@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-11T02:34:14.546Z">
+<meta property="article:modified_time" content="2025-03-19T02:41:31.144Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-11 10:34:14</span>
-            <span class="mobile">2025-03-11 10:34:14</span>
+            <span class="desktop">2025-03-19 10:41:31</span>
+            <span class="mobile">2025-03-19 10:41:31</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -359,27 +359,11 @@
 </ul>
 <p>$q$ 组询问，每次询问给定 $X,Y$，求 $1\le x\le X,1\le y\le Y$ 的 $f(x,y)$ 最大值，并计数有多少对 $(x,y)$ 得到了这个最大值，对 $10^9+7$ 取模</p>
 <p>$1\le q\le3\times10^5,1\le X,Y\le10^{18}$</p>
-<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>这个问题看起来很不可做。但是我们可以先从第一问进行入手。</p>
-<p>我们首先自动只保留 $a\le b$ 的点，那么首先注意到所有 $(a,b)$ 状态的前驱都是唯一的，也就是说这形成了一棵类似树一样的结构</p>
-<p>我们从 $(1,2)$ 开始每次扩展，那么如果想要操作步数最多的话就是每次令 $(a,b)$ 变成 $(b,a+b)$，这样得到的就是斐波那契数，那么根据经典结论可知答案量级是 $O(\log V)$ 的，称这个值为 $k$</p>
-<p>那么考虑计数，一个暴力就是我们当前有一个 $(a,b,stp)$，我们每次进行如下两种操作之一：</p>
-<ul>
-<li>A 操作：$(a,b,stp)\leftarrow(a,a+b,stp)$</li>
-<li>B 操作：$(a,b,stp)\leftarrow(b,a+b,stp+1)$</li>
-</ul>
-<p>我们最后计数的就是得到的 $stp=k$</p>
-<p>定义 $F_0=0,F_1=1,F_n=F_{n-1}+F_{n-2}$，原本我们的最优解得到的是 $(F_{k+1},F_{k+2})$，如果一开始我们是从 $(0,2)$ 出发，最后得到的就至少是 $(2F_{k+1},2F_{k+2})$，而这个对位大于 $(F_{k+2},F_{k+3})$，那么此时 $k$ 最大的性质就被打破了</p>
-<p>也就是说我们起始的节点一定是 $(1,2,1)$。</p>
-<p>从这里已经可以初见端倪了，我们可以发现我们有可能进行不了很多次 A 操作。</p>
-<p>但是最后一次 B 操作之后可以进行很多很多次 A 操作，那么我们特殊处理这部分。</p>
-<p>具体地，如果我们在最后一次 B 操作之前，进行了两次 A 操作，那么我们只要说明，在除了这两次操作之外没有其它 A 操作的情况下，数已经过大了即可</p>
-<p>设这两次 A 操作之前数对为 $(a,b)$，这两次之间隔了 $u$ 次 B 操作，那么在经过第二次 A 操作之后，我们再做一次 B 操作，得到的情况会是（规定 $F_{-1}=1$ ）：</p>
-<script type="math/tex; mode=display">
-(a,b)\rightarrow(a,a+b)\rightarrow(F_{u-1}a+F_{u}(a+b),F_ua+F_{u+1}(a+b))\\
-=(F_{u+1}a+F_ub,F_{u+2}a+F_{u+1}b)\rightarrow(F_{u+1}a+F_ub,F_{u+3}a+F_{u+2}b)\\
-\rightarrow(F_{u+3}a+F_{u+2}b,(F_{u+1}+F_{u+3})a+(F_u+F_{u+2})b)</script><p>而此时我们在 $(a,b)$ 上进行了 $u+1$ 次 B 操作，如果我们在 $(a,b)$ 上直接进行 $u+2$ 次 B 操作得到的值比这个值对位小，那么后面我们一直做 B 操作，由于 $k$ 的最大性，说明这种情况不需要考虑</p>
-<p>$u+2$ 次 B 操作后会得到 $(F_{u+1}a+F_{u+2}b,F_{u+2}a+F_{u+3}b)$，左边显然小于，对右边作差，得到 $2F_{u+1}a+(F_u-F_{u+1})b$，重新整理得到 $F_{u+1}(2a-b)+F_ub$，由于 $(a,b)$ 是斐波那契数，所以 $2a-b\ge0$，因此该式 $\ge0$</p>
-<p>那么我们只需要考虑除了最后一次 B 操作之外，只进行了一步 A 操作的数对，那么直接爆搜算方案数即可，复杂度 $O(\log V)$</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>这个问题看起来很不可做。但是我们可以先从第一问进行入手。</p><p>我们首先自动只保留 $a\le b$ 的点，那么首先注意到所有 $(a,b)$ 状态的前驱都是唯一的，也就是说这形成了一棵类似树一样的结构</p><p>我们从 $(1,2)$ 开始每次扩展，那么如果想要操作步数最多的话就是每次令 $(a,b)$ 变成 $(b,a+b)$，这样得到的就是斐波那契数，那么根据经典结论可知答案量级是 $O(\log V)$ 的，称这个值为 $k$</p><p>那么考虑计数，一个暴力就是我们当前有一个 $(a,b,stp)$，我们每次进行如下两种操作之一：</p><ul><li>A 操作：$(a,b,stp)\leftarrow(a,a+b,stp)$</li><li>B 操作：$(a,b,stp)\leftarrow(b,a+b,stp+1)$</li></ul><p>我们最后计数的就是得到的 $stp=k$</p><p>定义 $F_0=0,F_1=1,F_n=F_{n-1}+F_{n-2}$，原本我们的最优解得到的是 $(F_{k+1},F_{k+2})$，如果一开始我们是从 $(0,2)$ 出发，最后得到的就至少是 $(2F_{k+1},2F_{k+2})$，而这个对位大于 $(F_{k+2},F_{k+3})$，那么此时 $k$ 最大的性质就被打破了</p><p>也就是说我们起始的节点一定是 $(1,2,1)$。</p><p>从这里已经可以初见端倪了，我们可以发现我们有可能进行不了很多次 A 操作。</p><p>但是最后一次 B 操作之后可以进行很多很多次 A 操作，那么我们特殊处理这部分。</p><p>具体地，如果我们在最后一次 B 操作之前，进行了两次 A 操作，那么我们只要说明，在除了这两次操作之外没有其它 A 操作的情况下，数已经过大了即可</p><p>设这两次 A 操作之前数对为 $(a,b)$，这两次之间隔了 $u$ 次 B 操作，那么在经过第二次 A 操作之后，我们再做一次 B 操作，得到的情况会是（规定 $F_{-1}=1$ ）：</p><script type="math/tex; mode=display">(a,b)\rightarrow(a,a+b)\rightarrow(F_{u-1}a+F_{u}(a+b),F_ua+F_{u+1}(a+b))\\=(F_{u+1}a+F_ub,F_{u+2}a+F_{u+1}b)\rightarrow(F_{u+1}a+F_ub,F_{u+3}a+F_{u+2}b)\\\rightarrow(F_{u+3}a+F_{u+2}b,(F_{u+1}+F_{u+3})a+(F_u+F_{u+2})b)</script><p>而此时我们在 $(a,b)$ 上进行了 $u+1$ 次 B 操作，如果我们在 $(a,b)$ 上直接进行 $u+2$ 次 B 操作得到的值比这个值对位小，那么后面我们一直做 B 操作，由于 $k$ 的最大性，说明这种情况不需要考虑</p><p>$u+2$ 次 B 操作后会得到 $(F_{u+1}a+F_{u+2}b,F_{u+2}a+F_{u+3}b)$，左边显然小于，对右边作差，得到 $2F_{u+1}a+(F_u-F_{u+1})b$，重新整理得到 $F_{u+1}(2a-b)+F_ub$，由于 $(a,b)$ 是斐波那契数，所以 $2a-b\ge0$，因此该式 $\ge0$</p><p>那么我们只需要考虑除了最后一次 B 操作之外，只进行了一步 A 操作的数对，那么直接爆搜算方案数即可，复杂度 $O(\log V)$</p>
+              </div>
+            </details>
 <hr>
 <h3 id="7-CF1787I-Treasure-Hunt-E-⭐"><a href="#7-CF1787I-Treasure-Hunt-E-⭐" class="headerlink" title="7.  CF1787I - Treasure Hunt [E] ⭐"></a>7.  CF1787I - Treasure Hunt [E] ⭐</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>对于一个序列 $b_1,b_2,\cdots,b_c$，定义 $f(b)$ 为：最大的 $\sum_{i=1}^qb_i+\sum_{i=s}^tb_i$，其中 $q,s,t$ 都是整数（可以为负），满足 $s&gt;q$ 或 $t\le q$，并且如果 $i<1$ 或 $i>c$ 我们认为 $b_i=0$，并且求和下指标大于上指标我们也认为是 $0$</p>
 <p>给定长为 $n$ 的序列 $a_1,a_2,\cdots,a_n$，求 $\sum_{1\le l\le r\le n}f(a[l:r])$，对 $998244353$ 取模</p>
@@ -390,7 +374,7 @@
               </div>
             </details>
 <hr>
-<h3 id="8-CF1458E-Nim-Shortcuts-E"><a href="#8-CF1458E-Nim-Shortcuts-E" class="headerlink" title="8.  CF1458E - Nim Shortcuts [E]"></a>8.  CF1458E - Nim Shortcuts [E]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>有两堆石子 $a,b$，两个人轮流操作，每人每次会从一堆中取出任意堆石子，不能操作者负</p>
+<h3 id="8-CF1458E-Nim-Shortcuts-S"><a href="#8-CF1458E-Nim-Shortcuts-S" class="headerlink" title="8.  CF1458E - Nim Shortcuts [S]"></a>8.  CF1458E - Nim Shortcuts [S]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>有两堆石子 $a,b$，两个人轮流操作，每人每次会从一堆中取出任意堆石子，不能操作者负</p>
 <p>同时，还额外有 $n$ 个位置 $(x_i,y_i)$，如果一个人即将操作，并且当前 $a=x_i,b=y_i$，那么他也会直接输掉</p>
 <p>现在有 $m$ 次询问，每次给定一个初始局面 $(u_i,v_i)$，查询先手胜还是后手胜</p>
 <p>$1\le n,m\le10^5,0\le x_i,y_i,u_i,v_i\le10^9$</p>
@@ -418,6 +402,132 @@
               </div>
             </details>
 <hr>
+<h3 id="11-AGC016F-Games-on-DAG-E"><a href="#11-AGC016F-Games-on-DAG-E" class="headerlink" title="11.  AGC016F - Games on DAG [E]"></a>11.  AGC016F - Games on DAG [E]</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个点 $m$ 条边的 DAG，保证 $1,2,\cdots,n$ 是合法的拓扑序</p>
+<p>两个人在这个上面玩游戏，初始节点 $1,2$ 上分别有一个棋子，两个人轮流操作，每次选定一个棋子将其移动一步</p>
+<p>现在从这个边集中保留一个子集，求所有有多少边集的子集会使先手必胜，对 $10^9+7$ 取模</p>
+<p>$2\le n\le15,1\le m\le\frac12n(n-1)$</p>
+<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>题目问的就是 $\text{SG}(1)=\text{SG}(2)$ 的方案数</p><p>可以尝试爆搜 mex，但是状态数是 $\text{Bell}(n)$ 的，稍微有点大。</p><p>考虑按 mex 的值加数，可以发现我们并不关心 mex 的值具体是多少，令 $f_S$ 表示当前考虑完了某个 mex 的前缀，当前 $S$ 内的点已经被赋上了 mex，剩下的点 mex 更大，并且我们已经保证了剩下的点连向每种小值都至少有一条边</p><p>转移就是再枚举当前考虑的 mex 的点的集合 $T$，设 $S\cup T$ 的补为 $U$，那么我们需要处理的边有：</p><ul><li>$T$ 内部，边都不能存在</li><li>$U\rightarrow T$，每个点至少存在一条出边</li><li>$T\rightarrow U$，边随意</li></ul><p>总复杂度可以做到 $O(n3^n)$ 或 $O(3^n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="12-CF1666A-Admissible-Map-E-K-✔️"><a href="#12-CF1666A-Admissible-Map-E-K-✔️" class="headerlink" title="12.  CF1666A - Admissible Map [E/K] ✔️"></a>12.  CF1666A - Admissible Map [E/K] ✔️</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的由 <code>LRUD</code> 组成的字符串 $s$</p>
+<p>定义一个 <code>LRUD</code> 的方向矩阵是 admissible 的当且仅当其所有方向连出来的图没有连到外面的边，并且内部的边形成若干个环</p>
+<p>你需要统计有多少子串，可以通过一个 admissible 的方向矩形，把每一行依次拼接得到</p>
+<p>$1\le n\le20000$</p>
+<p>加强版：$1\le n\le10^5$</p>
+<h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>很厉害的题。</p><p>直接做不是很好得到低于 $n^2$ 的复杂度，考虑分析一些性质：</p><p>可以发现任意一个包含 <code>UD</code> 的串最多只有一种行长让其合法，具体地，这个合法的行长可以通过讨论直接得到：</p><ul><li>如果 $s_i=\texttt{L}/\texttt{U}$，那么一定不可行</li><li>如果 $s_i=\texttt{R}$，如果 $s_{i+1}=\texttt{L}$，那么我们到 $i+2$ 接着 check，否则说明必须有一个 $\texttt{U}$ 指向 $s_i$，而这个 $\texttt{U}$ 必须是 $s_i$ 后面的第一个 $\texttt{U}$</li><li>如果 $s_i=\texttt{D}$，那么我们找到接下来的一段 $\texttt{LLL…LL}$，那么必须有一个 $\texttt{U}$ 指向最后一个 $\texttt{L}$，同理也必须是第一个 $\texttt{U}$</li></ul><p>那么我们特判全是 $\texttt{RL}$ 的串，对于原串的每一个 $l$，可以求出其如果想合法需要的行长，那么接下来的事情就是如何判断合法</p><p>一个暴力是我们可以依次扫每一行，然后进行一些边界上的 check，中间的部分用哈希维护入度和出度，这样我们就可以做到在 $O(\frac{n}{len})$ 的时间复杂度内 check 一个左端点</p><p>但是考虑我们的 check 可以直接从上一个推过来，所以我们可以同时对于一种 $len$ 做到 $O(n)$ check 所有的左端点</p><p>根号分治一下，可以做到总复杂度 $O(n\sqrt n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="12-NOI2023-深搜-E"><a href="#12-NOI2023-深搜-E" class="headerlink" title="12.  NOI2023 - 深搜 [E]"></a>12.  NOI2023 - 深搜 [E]</h3><h4 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树 $T$，以及 $m$ 条非树边，它们共同形成一张无向图 $G$，保证这 $n+m-1$ 条边互不相同</p>
+<p>给定一个大小为 $k$ 的集合 $S$，求有多少保留这 $m$ 条非树边的一个子集的方式，使得剩下的图 $G^\prime$ 中，存在一个 $s\in S$ 使得 $T$ 是以 $s$ 为根的一棵合法的 dfs 树</p>
+<p>答案对 $10^9+7$ 取模</p>
+<p>$1\le n,m\le5\times10^5$</p>
+<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>合法的 dfs 树即为没有横叉边</p><p>考虑容斥，我们枚举一个集合然后判断其全部合法的方案数</p><p>那么一定是一些边必须不选，剩下的边可选可不选</p><p>设我们选定的点集是 $T$，如果我们把 $T$ 的虚树建出来，所有可选可不选的边即为所有在虚树某条边内部的边，以及我们把 $T$ 虚树上的所有边断掉之后，每个子树以 $T$ 中的点为根的祖孙边数量</p><p>预处理 $f_i$ 表示 $i$ 子树内以 $i$ 为根时返祖边数量，$g_i$ 表示子树外类似的事情</p><p>对着虚树 dp，令 $dp_u$ 表示虚树内存在 $u$ 这个节点，子树内的边方案数，转移的话我们再额外维护一个转移系数 $cdp_v$，计算从 $dp_v$ 转移过来的时候会多乘多少贡献，最后我们在虚树的根处统计贡献</p><p>到一个点 $u$ 的时候，我们需要做如下两个事情：</p><ul><li>求出 $dp_u$，这部分就是跑一个大小上限为 $3$ 的背包，为 $3$ 是因为根处如果有 $=2$ 棵子树的话，我们需要额外处理一些横叉边的贡献</li><li>对子树内的点的 $cdp$ 进行一些更新，具体地我们需要加上 lca 为 $u$ 的非树边的影响（实际上我们只用考虑从 $u$ 出发到子树内的非树边，因为横叉边在除了根处之外不会产生贡献，而根处我们需要特判）</li></ul><p>根处的话，如果子树数量 $=2$，设选择的两个点为 $(x,y)$，我们需要额外乘上完全在 $x-y$ 这条链内的非树边的贡献，这个可以用 dsu on tree 实现，但是由于一条非树边只会在一个位置被操作到，所以总共的区间操作还是 $O(n+m)$ 次的</p><p>总之就是一堆乱七八糟的东西，最后可以用区间乘区间求和线段树维护，复杂度 $O((n+m)\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="13-UER12-电子运动-K-⭐"><a href="#13-UER12-电子运动-K-⭐" class="headerlink" title="13.  UER12 - 电子运动 [K] ⭐"></a>13.  UER12 - 电子运动 [K] ⭐</h3><h4 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的 <code>+-?</code> 字符串 $s$，每个 <code>?</code> 会以 $\frac12$ 的概率变成 <code>+</code> 或 <code>-</code></p>
+<p>初始有一个概率序列 $a_1,a_2,\cdots,a_n$，你会选择以 $a_i$ 的概率在 $i$ 位置放置粒子，这个粒子每次会运动：</p>
+<ul>
+<li>如果当前为 <code>-</code>，那么粒子会向右运动，并将这个位置变为 <code>+</code></li>
+<li>如果当前为 <code>+</code>，那么粒子会向左运动，并将这个位置变为 <code>-</code></li>
+</ul>
+<p>粒子最后会从右边或左边掉出去，对 $i=0,1,2,\cdots,n$ 求最后有 $i$ 个 <code>+</code> 的概率，对 $998244353$ 取模</p>
+<p>$1\le n\le5\times10^5$</p>
+<h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到粒子的位置每次 $+1$ 会减少一个 <code>+</code>，每次 $-1$ 会增加一个 <code>+</code>，因此如果起点为 $x$，只有最后的两种可能就是 $cnt+x$ 和 $cnt-(n+1-x)$，而这两个相差 $n+1$，一定恰好有一个在 $[0,n]$ 内</p><p>也就是说最后 <code>+</code> 的个数就是 $(cnt+x)\bmod (n+1)$，用 ntt 优化即可</p>
+              </div>
+            </details>
+<hr>
+<h3 id="14-联合省选-2023-染色数组-E"><a href="#14-联合省选-2023-染色数组-E" class="headerlink" title="14.  联合省选 2023 - 染色数组 [E]"></a>14.  联合省选 2023 - 染色数组 [E]</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>定义一个长为 $n$ 的数组 $a$ 是完美的当且仅当其有至少两种方式将每个元素染上红色或绿色，满足红色的元素严格递增，绿色的元素严格递降</p>
+<p>定义一个染色方案的得分为：</p>
+<ul>
+<li>对于每个红色元素 $j$，计数 $1\le i<j$ 且 $a_i>a_j$ 的 $i$ 的数量 $cnt$，对得分贡献 $cnt\cdot a_j$</li>
+<li>对于每个绿色元素 $j$，计数 $1\le i&lt;j$ 且 $a_i&lt;a_j$ 的 $i$ 的数量 $cnt$，对得分贡献 $cnt\cdot a_j$</li>
+</ul>
+<p>定义一个完美数组的得分为所有染色方案得分的最大值</p>
+<p>现在给定 $n,m,t$，已知了 $a_1,a_2,\cdots,a_t$，$a_{t+1},a_{t+2},\cdots,a_n$ 在 $[1,m]$ 中任取，求：</p>
+<ul>
+<li>完美数组的数量</li>
+<li>完美数组的得分和</li>
+</ul>
+<p>答案对 $998244353$ 取模</p>
+<p>$T$ 组数据。</p>
+<p>$1\le T\le5,2\le n\le50,1\le t\le n,1\le m\le200,1\le a_i\le m$</p>
+<h4 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>大跃进时代的题目。</p><p>考虑刻画完美数组这件事情：首先判断有没有解完美可以进行一个 dp，存两个值表示当 $a_i$ 为红色的时候，绿色的结尾的最大值，以及 $a_i$ 为绿色的时候，红色的结尾的最大值</p><p>但是这个看起来不够好，因为我们转移的时候需要进行很多讨论</p><p>注意到如果我们把序列沿着红色绿色第一次交叉的位置切开，那么前面的部分一定是每次加入一个数 $a_{i+1}$，在原来的 $(prv,a_i,nxt)$ 内，其中 $prv$ 为 $a_i$ 的值域前驱，$nxt$ 为 $a_i$ 的值域后继，分类讨论一下可以发现只有 $prv&lt;a_{i+1}&lt;a_i$ 和 $a_i&lt;a_{i+1}&lt;nxt$ 的情况可以插入，分别插入成 $(prv,a_{i+1},a_i)$ 和 $(a_i,a_{i+1},nxt)$</p><p>那么考虑不断给前缀插入，直到插入不动为止，设这个位置为 $id$，那么我们对 $[id+1,n]$ 倒序进行一个类似的插入，分类讨论一下此时的解数，我们有的条件是 $a_{id}=a_{id+1}$ 或 $a_{id+1}\not\in(prv_l,nxt_l)$：</p><ul><li>如果 $(prv_l,nxt_l)$ 和 $(prv_r,nxt_r)$ 无交，那么在 $id$ 处无解，并且在别的地方也不可能有解</li><li>如果 $(prv_l,nxt_l)$ 和 $(prv_r,nxt_r)$ 有交，且 $a_{id}\not\in(prv_r,nxt_r)$，那么在 $id$ 处恰有一组解，并且在别的地方也不可能有解</li><li>否则在 $id$ 处至少有两组解</li></ul><p>此时我们已经可以考虑 dp 了，注意到我们状态中只需要保留 $(prv,a_i)$ 或 $(a_i,nxt)$ 中的一个，这个可以用前缀和优化到 $O(nm^2)$</p><p>考虑第二问。</p><p>可以手模一下存在至少两组解的方案的形态，注意到一定是中间有一个递增/递降的序列，并且恰有一个元素可以被选成绿色/红色，其余都为另一个颜色</p><p>讨论一下贡献可以发现改变的一定是最靠右的元素</p><p>那么在交叉及前面的贡献就可以通过 $O(n^2m^2)$ 的 dp 求得，记录一下较小的部分选的数的个数</p><p>右边的贡献需要使用巨大组合数讨论，也可以做到 $O(n^2m^2)$</p><p>总复杂度 $O(n^2m^2)$，卡常。</p>
+              </div>
+            </details>
+<hr>
+<h3 id="15-CF2055F-Cosmic-Divide-E"><a href="#15-CF2055F-Cosmic-Divide-E" class="headerlink" title="15.  CF2055F - Cosmic Divide [E]"></a>15.  CF2055F - Cosmic Divide [E]</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n$ 行的凸的方格连通块（多格骨牌），第 $i$ 行占据了 $[l_i,r_i]$ 列的方格，凸性即为每一行占据的都是一个区间，每一列占据的也是一个区间</p>
+<p>你需要把这个骨牌分成两个完全一样的，可以通过平移得到的骨牌，请判断是否可行</p>
+<p>$1\le n\le2\times10^5,1\le l_i\le r_i\le10^9$</p>
+<h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到如果我们确定了骨牌向下移动的距离，那么我们就可以唯一确定一组解，判断这组解是否合法即可，那么我们就得到了一个 $O(n^2)$ 的做法。</p><p>但是对于所有向下移动的距离都 check 一遍复杂度太高了，我们需要加速。</p><p>我们的 check 中一些部分可以通过哈希加速，唯一不能加速的部分就是判断得到的骨牌连通</p><p>那么我们猜测一下，通过其它所有判断的距离一定不会很多，写一下可以发现事实确实是这样的，可以通过</p><p>editorial 说可以证明通过这些 check 的距离最多有 $9$ 个，因此这个算法是 $O(n)$ 的。</p><p>一个更容易想到的证明是 $len$ 序列一定要是一个 $(1+x^d)$ 的倍数，而拆成分圆多项式之后我们相当于是要选择一些数使得它们的 $\varphi$ 之和 $\le n$，而 $\varphi(k)\ge\frac k{\log\log k}$，所以最多有 $O(\sqrt n\log\log n)$ 个可以通过一个比较松的 check 的距离</p>
+              </div>
+            </details>
+<hr>
+<h3 id="16-CF1949H-Division-Avoidance-E"><a href="#16-CF1949H-Division-Avoidance-E" class="headerlink" title="16.  CF1949H - Division Avoidance [E]"></a>16.  CF1949H - Division Avoidance [E]</h3><h4 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h4><p>二维平面上，初始 $(0,0)$ 被染黑，其它的格子均为白色。</p>
+<p>一次操作，你可以选择一个黑色格子 $(a,b)$，然后如果 $(a,b+1)$ 和 $(a+1,b)$ 均为白色，那你可以将 $(a,b)$ 变白，将 $(a,b+1)$ 和 $(a+1,b)$ 都染黑</p>
+<p>现在给定 $n$ 个坐标 $(x_i,y_i)$，你需要判断是否能将这几个格子同时变成白色</p>
+<p>$1\le n\le10^6,0\le x_i,y_i\le10^9$</p>
+<h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>容易注意到这个过程其实是很容易无解的。根据经典分析我们可以把一个格子赋上 $2^{-x-y}$ 的权值。</p><p>但是这并没有什么用。</p><p>考虑 $x=0$ 的所有格子，我们可以将 ban 掉的格子视为在这个格子上 $+1$，最后我们要让所有格子都 $\le1$</p><p>按 $x$ 扫描线，我们肯定是希望向后推的东西越少越好，那么分讨一下几种情况：</p><ul><li>全是 $1$，显然不会向后推任何东西，因此我们可以把全是 $1$ 的前缀都扔掉</li><li>形如 $2,1,1,1,\cdots,1,?$，我们会向下推一段连续的 $1$，并且向后推一个 $1$</li><li>开头为 $3$，此时我们可以发现如果下一个位置不是 $0$，那么一定无解，否则一定会向下向右各推一个 $2$</li></ul><p>模拟即可，颜色段均摊一下可以做到复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="17-CF1887F-Minimum-Segments-E"><a href="#17-CF1887F-Minimum-Segments-E" class="headerlink" title="17.  CF1887F - Minimum Segments [E]"></a>17.  CF1887F - Minimum Segments [E]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>对于一个序列 $a_1,a_2,\cdots,a_n$，定义序列 $r$ 为：$r_i$ 表示最小的 $j\ge i$ 使得 $a[i:j]$ 中包含 $a$ 中出现过的所有元素，不存在则为 $n+1$</p>
+<p>现在给定一个序列 $r$，要求还原一个可能的 $a$ 或者判断无解</p>
+<p>$1\le n\le2\times10^5$</p>
+<h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p class='h5' id="Flamire-思路"><a href="#Flamire-思路" class="headerlink" title="Flamire 思路"></a>Flamire 思路</h5><p>考虑把 $[i,r_i]$ 带来的限制描述成更正常的形式。</p><p>称 $prv_i$ 表示 $i$ 前第一个值等于 $i$ 的点，$nxt_i$ 表示 $i$ 后第一个值等于 $i$ 的点</p><p>如果 $r_i\neq r_{i+1}$，那么一个显然的事情就是 $prv_{r_{i+1}}=i$</p><p>否则的话 $r_i=r_{i+1}$，此时就是说 $i$ 加入到这个区间内并没有出现新元素，也就是说 $nxt_i\le r_i$</p><p>并且我们还需要保证每个区间恰好出现了所有颜色的限制，这个可以描述为 $[r_i+1:n]$ 的元素的 $prv\ge i$</p><p>那么把这些取一下交，我们就得到了一些关于 $prv$ 和 $nxt$ 的限制（注意仔细讨论 $0$ 和 $n+1$ 的情况），现在考虑如何构造</p><p>具体地，我们会有 $prv_i\ge limp_i$，$nxt_i\le limn_i$ 的两种限制</p><p>我们的构造只要在有解的时候都能构造出解就好了，构造出来的东西不合法我们可以直接输出无解。</p><p>首先假设我们枚举了颜色数 $c$，最后就是要把所有东西串到 $c$ 条链上，$i$ 从 $1$ 到 $n$ 枚举，枚举到 $i$ 的时候考虑确定 $prv_i$，如果已经确定了的话我们不管，否则我们需要用一个数据结构维护当前所有的 $c$ 条链底，且下一条边还没有被钦定过的链底集合</p><p>在这之中，如果选择的是 $j$，那么我们需要满足 $j\ge limp_i$，且 $i\le limn_j$，此时我们一定取下标最小的 $j$，因为 $limp,limn$ 都是递增的，此时取了，相当于把限制最严的元素选了，如果此时选不了，那么之后也选不了了，因此这样贪心是正确的</p><p>用堆或者队列实现，那么我们就得到了一个 $O(n^2\log n)/O(n^2)$ 的做法。</p><p>注意到我们构造不出来解的条件是某一时刻堆为空，或者此时堆顶元素的限制过于严了，而我们发现，当 $c$ 减小的时候堆顶元素一定不会变小</p><p>也就是说我们取最小的 $c$ 保证过程中堆都不会为空即可，总复杂度 $O(n\log n)/O(n)$</p><h5 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路"></a>题解思路</h5><p>其实和上面基本一样，但是说不定理解起来更简单一点。</p><p>颜色数有一个简单的上界是 $\min r_i-i+1$</p><p>颜色数的下界更复杂的一点，我们取 $\{r_i\}$ 为所有关键点集合，$c\ge1+\max([i+1:r_i] 中的关键点数)$，因为任意 $r_i$ 都满足 $a_{r_i}$ 与 $a[i:r_i-1]$ 中的任意元素颜色不同</p><p>可以发现对于 $c$ 在这个区间内都是可以构造的，我们依然构造每个点的 $prv$：</p><ul><li>如果 $r_i\neq r_{i+1}$，那么 $a_{r_{i+1}}=a_i$</li><li>否则我们找到 $0\sim i-1$ 内第一个后继还没有确定的位置连过去（$0$ 位置可以连 $c$ 次）</li></ul><p>这样每个区间内自由元的颜色是在不断轮换的，而我们的上界保证了自由元数量是充足的。</p>
+              </div>
+            </details>
+<hr>
+<h3 id="18-AGC031E-Snuke-the-Phantom-Thief-E-⭐"><a href="#18-AGC031E-Snuke-the-Phantom-Thief-E-⭐" class="headerlink" title="18.  AGC031E - Snuke the Phantom Thief [E] ⭐"></a>18.  AGC031E - Snuke the Phantom Thief [E] ⭐</h3><h4 id="题面-18"><a href="#题面-18" class="headerlink" title="题面"></a>题面</h4><p>给定平面上 $n$ 个点 $(x_i,y_i)$，第 $i$ 个点的价值为 $v_i$，你需要从中选择一些点，满足 $m$ 条限制，每条限制为以下四种中的一种：</p>
+<ul>
+<li><code>L</code>：$x$ 坐标 $\le a_i$ 的点最多选 $b_i$ 个</li>
+<li><code>R</code>：$x$ 坐标 $\ge a_i$ 的点最多选 $b_i$ 个</li>
+<li><code>U</code>：$y$ 坐标 $\ge a_i$ 的点最多选 $b_i$ 个</li>
+<li><code>D</code>：$y$ 坐标 $\le a_i$ 的点最多选 $b_i$ 个</li>
+</ul>
+<p>求选的点的最大价值和</p>
+<p>$1\le n\le80,1\le x_i,y_i\le100,1\le m\le320$</p>
+<h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p class='h5' id="做法-1"><a href="#做法-1" class="headerlink" title="做法 1"></a>做法 1</h5><p>这个看起来有点流。考虑如何描述这个限制。</p><p>直接对每个点建点的话我们需要处理一个点的两种限制，这个不太好做。</p><p>但是如果我们把点看成 $x$ 坐标和 $y$ 坐标的边的话，这个就相对更好限制一些。</p><p>如果只有 <code>R</code> 和 <code>D</code> 限制的话，我们给 $x$ 坐标和 $y$ 坐标分别建一条 $i$ 到 $i+1$ 的链，$x$ 链的边权连 $x\ge i+1$ 最多选多少个，$y$ 链的边权连 $y\le i$ 最多选多少个</p><p>而此时加入 <code>L</code> 和 <code>U</code> 限制的话，我们并没有比较好的办法去限制另一边最多选多少个</p><p>那么考虑枚举一个总共选的个数 $c$，限制就变成一个前缀要至少选一些点，可以使用上下界网络流建模，最后求流量恰好为 $c$ 的最小费用</p><p>这样需要跑 $n$ 次 $O(n)$ 个点和 $O(n)$ 条边的网络流，总复杂度 $O(n^3\log n)$</p><h5 id="做法-2"><a href="#做法-2" class="headerlink" title="做法 2"></a>做法 2</h5><p>考虑如何写这个限制：对于 <code>L</code> 限制一个 $x\le a_i$ 的点最多选 $b_i$ 个的限制，相当于 $x$ 坐标从小到大第 $b_i+1$ 个点的坐标要 $&gt;a_i$，类似如果我们枚举了总个数 $c$，对于 <code>R</code> 限制也可以这样做，最后我们会得到 $x$ 坐标从小到大第 $i$ 个点需要在一个区间 $[L_i,R_i]$ 内</p><p>注意到我们可以把这个条件弱化一下，改成在每一个 $[L_i,R_i]$ 内部选一个点，可以发现这样依然是正确的</p><p>那么对每个区间建 $O(n)$ 条边，网络流建模是容易的</p><p>这样需要跑 $n$ 次 $O(n)$ 个点和 $O(n^2)$ 条边的网络流，总复杂度 $O(n^4)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="19-AGC035E-Develop-E-✔️"><a href="#19-AGC035E-Develop-E-✔️" class="headerlink" title="19.  AGC035E - Develop [E] ✔️"></a>19.  AGC035E - Develop [E] ✔️</h3><h4 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h4><p>最开始一个有一个集合 $S$ 包含所有整数，给定 $n,k$，接下来每步操作你可以进行如下事情：</p>
+<ul>
+<li>选择一个 $1\le x\le n$，且 $x\in S$，将 $x$ 从 $S$ 中删去，然后对于 $x-2$ 和 $x+k$，如果它们不在 $S$ 中则将其加入 $S$</li>
+</ul>
+<p>求能得到多少种不同的集合 $S$，答案对给定数 $m$ 取模</p>
+<p>$1\le k\le n\le150,10^8\le m\le10^9$</p>
+<h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p class='h5' id="Flamire-做法"><a href="#Flamire-做法" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><p>倒过来，那么就是每次如果 $x-2,x+k$ 都存在，我们可以将 $x$ 加入 $S$，最后要让所有东西都加入 $x$</p><p>首先 $k$ 如果是偶数的话那就非常好求了，只讨论 $k$ 是奇数的情况</p><p>手模这个过程，发现我们如果有一段 $\ge y$ 的奇数全选了，那么在这之后，我们选择了一个 $\ge y-k-2$ 的偶数，我们就可以把大于等于这个偶数的偶数全都补全</p><p>那么一个初步的想法就是维护奇数和偶数的这个最后一个全选的位置 $x,y$，然后新加一个元素 $i$ 进行一些转移</p><p>但是还是有一些问题的，因为我们忽略了一些元素，我们需要考虑这些元素有没有可能再带来转移</p><p>如果我们新加的奇数 $i\ge x-k-2$，那么它会把 $i$ 以上的所有奇数全都补全， 此时如果存在一个偶数 $z&lt;x$，那么 $z$ 会把 $z$ 以上的偶数也全都补全，这是我们之前的转移考虑不到的</p><p>而注意到此时每个奇偶性只有最小的 $z$ 有用，而 $z&gt;i$ 且 $z+k+2&lt;y$，说明此时一定有 $x\le y$</p><p>那么我们记录一下 $i,x,y$，以及较小那一侧的 $z$，就可以做到 $O(n^4)$ 状态，$O(1)$ 转移，总复杂度 $O(n^4)$</p><p>事实上，可以进一步注意到需要记录 $z$ 的时候一定是 $y$ 之后都不再会有用的情况，所以此时我们可以只记 $(x,z)$，但是这样也会带来其一定的问题，说不定可以做到 $O(n^3)$？</p><h5 id="题解做法"><a href="#题解做法" class="headerlink" title="题解做法"></a>题解做法</h5><p>用一点更好的东西来描述这个操作。</p><p>我们让 $x\rightarrow x-2,x\rightarrow x+k$ 连边，如果我们要删除的集合形成了环的话，我们一定无法做到这件事情，因为环上至少有一个点在集合内，而如果不存在环的话，我们可以直接按拓扑序删除，因此这个是充要条件</p><p>考虑计数不存在环的集合。我们把两条 $x-2$ 的链拎出来，把其中一条偏移一下，以 $k=3$ 为例：</p><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.luogu.com.cn/upload/image_hosting/0li8nm8m.png"
+                      alt=""
+                ></p><p>此时我们可以发现任意一个简单环一定长为 $k+2$，即走若干个左边的点，然后走横边到右边再走若干个右边的点，再回到起点</p><p>那么我们按层转移，令 $dp_{i,p,q}$ 表示第 $i$ 层，从第 $i$ 层右部点能走到的最靠前的右部点是 $q$，从第 $i$ 层左部点能走到的最靠前的左部点是 $p$，我们需要保证 $p$ 大于第 $i$ 层左部点 $-k$</p><p>转移容易做到 $O(1)$，复杂度 $O(n^3)$</p>
+              </div>
+            </details>
+<hr>
 
 		</div>
 
@@ -432,7 +542,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-03-11 10:34:14
+                    :</strong> 2025-03-19 10:41:31
             </li>
         
         <li>
@@ -542,7 +652,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task15</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%9B%BE%E6%8E%92%E5%88%97-E"><span class="nav-text">1.  联合省选 2025 - 图排列 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B2%81%E6%9C%88-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">2.  联合省选 2025 - 岁月 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B0%81%E5%8D%B0-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">3.  联合省选 2025 - 封印 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ10103-Quad-Kingdoms-Chess-2-E"><span class="nav-text">4.  QOJ10103 - Quad Kingdoms Chess 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-QOJ10100-Exchanging-Kubic-3-E"><span class="nav-text">5.  QOJ10100 - Exchanging Kubic 3 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-AGC015F-Kenus-the-Ancient-Greek-E"><span class="nav-text">6.  AGC015F - Kenus the Ancient Greek [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-CF1787I-Treasure-Hunt-E-%E2%AD%90"><span class="nav-text">7.  CF1787I - Treasure Hunt [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-CF1458E-Nim-Shortcuts-E"><span class="nav-text">8.  CF1458E - Nim Shortcuts [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-CF1566H-Xor-quiz-E"><span class="nav-text">9.  CF1566H - Xor-quiz [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-AGC052D-Equal-LIS-E-%E2%AD%90"><span class="nav-text">10.  AGC052D - Equal LIS [E] ⭐</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%9B%BE%E6%8E%92%E5%88%97-E"><span class="nav-text">1.  联合省选 2025 - 图排列 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B2%81%E6%9C%88-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">2.  联合省选 2025 - 岁月 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B0%81%E5%8D%B0-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">3.  联合省选 2025 - 封印 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ10103-Quad-Kingdoms-Chess-2-E"><span class="nav-text">4.  QOJ10103 - Quad Kingdoms Chess 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-QOJ10100-Exchanging-Kubic-3-E"><span class="nav-text">5.  QOJ10100 - Exchanging Kubic 3 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-AGC015F-Kenus-the-Ancient-Greek-E"><span class="nav-text">6.  AGC015F - Kenus the Ancient Greek [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-CF1787I-Treasure-Hunt-E-%E2%AD%90"><span class="nav-text">7.  CF1787I - Treasure Hunt [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-CF1458E-Nim-Shortcuts-S"><span class="nav-text">8.  CF1458E - Nim Shortcuts [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-CF1566H-Xor-quiz-E"><span class="nav-text">9.  CF1566H - Xor-quiz [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-AGC052D-Equal-LIS-E-%E2%AD%90"><span class="nav-text">10.  AGC052D - Equal LIS [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-AGC016F-Games-on-DAG-E"><span class="nav-text">11.  AGC016F - Games on DAG [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-CF1666A-Admissible-Map-E-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">12.  CF1666A - Admissible Map [E&#x2F;K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-NOI2023-%E6%B7%B1%E6%90%9C-E"><span class="nav-text">12.  NOI2023 - 深搜 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-UER12-%E7%94%B5%E5%AD%90%E8%BF%90%E5%8A%A8-K-%E2%AD%90"><span class="nav-text">13.  UER12 - 电子运动 [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2023-%E6%9F%93%E8%89%B2%E6%95%B0%E7%BB%84-E"><span class="nav-text">14.  联合省选 2023 - 染色数组 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-CF2055F-Cosmic-Divide-E"><span class="nav-text">15.  CF2055F - Cosmic Divide [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-CF1949H-Division-Avoidance-E"><span class="nav-text">16.  CF1949H - Division Avoidance [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-CF1887F-Minimum-Segments-E"><span class="nav-text">17.  CF1887F - Minimum Segments [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-AGC031E-Snuke-the-Phantom-Thief-E-%E2%AD%90"><span class="nav-text">18.  AGC031E - Snuke the Phantom Thief [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-AGC035E-Develop-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">19.  AGC035E - Develop [E] ✔️</span></a></li></ol>
 
 	</div>
 </div>
