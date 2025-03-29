@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2024-11-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-05T10:07:12.341Z">
+<meta property="article:modified_time" content="2025-03-28T09:17:52.847Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-05 18:07:12</span>
-            <span class="mobile">2025-03-05 18:07:12</span>
+            <span class="desktop">2025-03-28 17:17:52</span>
+            <span class="mobile">2025-03-28 17:17:52</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -362,8 +362,8 @@
               <p>对于三个数 $a&lt;b&lt;c$，只有两种本质不同的排列方式：</p><ul><li>$a+b+(c\bmod a)$，有下界 $a+b$，上界 $b+c$</li><li>$a+(b\bmod a)+(c\bmod b)$，有上界 $c$</li></ul><p>考虑分析一些性质：</p><ul><li>设 $mx_i$ 表示第 $i$ 大数，那么答案 $\ge mx_2+mx_3$</li><li>那么也就是说，两类的最大值 $c$ 必须为 $mx_1$，否则无法超过 $mx_2+mx_3$</li><li>第一类 $b$ 的值与 $a$ 无关，因此一定取 $mx_2$</li><li>如果 $2mx_3&gt;mx_1$，那么 $(mx_1\bmod mx_3)+mx_3=mx_1$，即第一类可以取到上界 $mx_1+mx_2$，此时我们不用管第二类了，因为一定不优，直接输出答案即可</li><li>此时第二类如果 $b\le mx_3$，则上界为 $2mx_3$，小于 $mx_2+mx_3$，因此第二类想要有用必须取 $b=mx_2$</li></ul><p>现在我们已经确定两类均满足 $b=mx_2,c=mx_1$，接下来考虑如何找到使其最大的 $a$</p><p>我们要求的是形如 $a+(k\bmod a)$ 的最大值，这个看起来没有什么性质，但是我们可以考虑根据这题的附加条件搞一下</p><p>对于一个 $a_i$，我们分析它在哪些 $b$ 和 $c$ 处会有用：</p><ul><li><p>如果 $a_i\le\frac12 mx_3$，那么 $a+(k\bmod a)\le mx_3$，也就被 $mx_3+mx_2$ 爆了</p></li><li><p>注意到我们有若干个和 $\frac12$ 相关的限制，因此我们考虑在 $2a_i$ 处画一条线：</p><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="task13/6-1.png"
-                      style="zoom: 50%;" 
+                     data-src="/images/task13/6-1.png"
+                      alt=""
                 ></p><p>其中 $prv_i$ 表示 $i$ 左边第 $i$ 个 $&gt;2a_i$ 的点</p></li><li><p>对于绿框内的点，其 $a_i+(k\bmod a_i)=k$，因为 $k\le 2a_i$，也就是说对于这种询问我们直接取 $mx_3$，一定不劣于取 $a_i$，因此不用考虑</p></li><li><p>对于 $prv_2$ 左边的点，如果其要为到 $i$ 区间的次大值或最大值，那么必定需要 $&gt;2a_i$，而此时区间内有三个 $&gt;2a_i$ 的数，也即 $mx_3&gt;2a_i$，此时再取 $a_i$ 不优</p></li><li><p>也即我们需要考虑的点其实只有 $prv_1,prv_2$，以及对称的 $nxt_1,nxt_2$</p></li></ul><p>因此，我们可以对每个数维护一个 vector，表示所有可能有用的决策，这样总和是 $O(n)$ 量级的</p><p>那么每次询问时，我们在 $mx_2,mx_3$ 的 vector 上分别查询一下这个区间的答案</p><p>注意到这时我们查询的是 vector 上一个区间的最大值，并且在查 $mx_3$ 的 vector 时，要求其不能与 $mx_2$ 相同</p><p>一个 vector $v_i$ 上查询的区间一定都经过某一个点，这个点就是原序列中这个 vector 的元素的出现位置 $i$，因此我们可以从 $i$ 为中心，向前向后求一个前缀 max 的东西，再维护一下次大值</p><p>总复杂度 $O(n\log n+q\log n)$，空间复杂度 $O(n)$，但是会被卡空间，需要精细实现</p>
               </div>
             </details>
@@ -714,7 +714,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-03-05 18:07:12
+                    :</strong> 2025-03-28 17:17:52
             </li>
         
         <li>

@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-19T02:41:31.144Z">
+<meta property="article:modified_time" content="2025-03-29T04:09:28.211Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-19 10:41:31</span>
-            <span class="mobile">2025-03-19 10:41:31</span>
+            <span class="desktop">2025-03-29 12:09:28</span>
+            <span class="mobile">2025-03-29 12:09:28</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -528,6 +528,179 @@
               </div>
             </details>
 <hr>
+<h3 id="20-TBA"><a href="#20-TBA" class="headerlink" title="20.  TBA"></a>20.  TBA</h3><hr>
+<h3 id="21-AGC026F-Manju-Game-E-⭐"><a href="#21-AGC026F-Manju-Game-E-⭐" class="headerlink" title="21.  AGC026F - Manju Game [E] ⭐"></a>21.  AGC026F - Manju Game [E] ⭐</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的序列 $a_1,a_2,\cdots,a_n$，两个人轮流操作，一共操作 $n$ 次：</p>
+<ul>
+<li>选择一个还没有被任何一个人占领过的位置，满足这个位置和上一步操作被对手占领的位置相邻，然后占领这个位置</li>
+<li>如果不存在合法的位置，或者是第一步操作，那么就可以任选一个没被占领过的位置占领</li>
+</ul>
+<p>双方都想最大化自己占领的格子的数之和，求最后的数是什么</p>
+<p>$1\le n\le3\times10^5,1\le a_i\le1000$</p>
+<h4 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>偶数比奇数简单。</p><p>首先我们将偶数位置染成黑色，奇数位置染成白色</p><p>注意到先手选出的第一个元素左右边如果是奇数个元素，那么后手就可以选这个段然后抢占先机</p><p>那么对于 $n$ 为偶数的情况，先手至少可以做到 $\max(B,W)$，其中 $B$ 和 $W$ 分别为对应颜色的和，而后手至少可以做到 $\min(B,W)$，只要通过先选两边长度为偶数的段，然后另一边达成对应颜色的值即可</p><p>那么偶数的时候先手的答案就是 $\max(B,W)$</p><p>考虑奇数的情况，那么如果先手选择了白色位置，后手一定可以选择所有黑色的点，这个不优于我们直接选端点，所以这种情况我们可以只考虑先手恰好获得 $W$ 的情况</p><p>接下来考虑先手选择黑色位置，那么后手就是选择一边继续做这个问题</p><p>也就是说最后先手选择的位置一定形如一段黑色，一段白色，一段黑色，而我们要最大化的就是白色段中 $W-B$ 的值</p><p>考虑先手如果选定了一个值 $v$，表示希望这个 $W-B\ge v$，怎么样才能保证选到，可以发现如果存在黑点集合 $S_i$，那么如果所有 $(S_i,S_{i+1})$（开区间）内的 $W-B$ 都 $\ge v$，先手一定可以让 $W-B\ge v$</p><p>即，如果黑点 $u,v(u&lt;v)$ 之间的 $W-B\ge v$，我们就连一条 $u\rightarrow v$ 的有向边，最后先手能取到 $\ge v$ 的条件就是 $0$ 能到 $n+1$</p><p>充分性的话，先手只要一直操作路径上经过的点，区间内选不出来的话就直接选当前区间的 $W-B$，由我们的假设这一定是 $\ge v$ 的</p><p>必要性的话，设当前的区间为 $[l,r]$，先手操作了 $x$，那么一定有 $l$ 到不了 $x$ 或 $x$ 到不了 $r$，选择到不了的那边下去递归即可</p><p>那么总复杂度就是 $O(n\log V)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="22-AGC056E-Cheese-K-✔️"><a href="#22-AGC056E-Cheese-K-✔️" class="headerlink" title="22.  AGC056E - Cheese [K] ✔️"></a>22.  AGC056E - Cheese [K] ✔️</h3><h4 id="题面-21"><a href="#题面-21" class="headerlink" title="题面"></a>题面</h4><p>环上有 $n$ 个点，顺时针编号为 $1,2,\cdots,n$，每两个点之间有一只老鼠，现在我们进行 $n-1$ 次如下操作：</p>
+<ul>
+<li>选择一个位置放置一个奶酪，以 $a_i$ 的概率选到位置 $i$，奶酪会顺时针运动，每次经过一个老鼠，如果这个老鼠之前没有吃过奶酪，那么它会以 $\frac12$ 的概率吃掉奶酪，否则什么也不做，奶酪会一直运动到被吃掉位置</li>
+</ul>
+<p>最后会恰好剩一只老鼠没有吃过奶酪，求每只老鼠最后没吃过奶酪的概率，对 $998244353$ 取模</p>
+<p>$1\le n\le40$</p>
+<h4 id="题解-21"><a href="#题解-21" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>很考验水平的题目。</p><p>直接做非常不好做，无论你怎么存状态看起来都做不了。</p><p>此时，你需要拥有足够的直觉，发现一件事情：如果最开始选的奶酪的起始位置集合一样，那么我们把问题转化为每次选择一个奶酪，让它运动到下一个老鼠的位置进行判定，最后的答案不变</p><p>一个感性理解是每个老鼠的判定过程和顺序几乎无关，在同一个位置的若干个奶酪，它们往后推的顺序对答案没有任何影响</p><p>那也就是说我们直接考虑一种起始位置最后会导致每只老鼠没吃过奶酪的概率</p><p>不妨假设我们算的是 $n$ 后面的老鼠的概率，那么我们拆成两部分计算：一部分是我们把所有奶酪推到 $n$ 的过程，另一部分是我们知道 $0$ 位置有 $x$ 个奶酪，然后不断绕圈</p><p>可以用 dp 算出，单次复杂度 $O(n^4)$，总复杂度 $O(n^5)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="23-JOISC2025-展覧会-3-E-✔️"><a href="#23-JOISC2025-展覧会-3-E-✔️" class="headerlink" title="23.  JOISC2025 - 展覧会 3 [E] ✔️"></a>23.  JOISC2025 - 展覧会 3 [E] ✔️</h3><h4 id="题面-22"><a href="#题面-22" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个数的序列 $a_1,a_2,\cdots,a_n$，以及 $m$ 个区间 $[l_i,r_i]$，生成一个长为 $m$ 的序列 $b_1,b_2,\cdots,b_m$，其中 $b_i$ 为 $a[l_i,r_i]$ 的最大值</p>
+<p>你需要重排 $a$，使得 $b$ 的字典序最大，求这个字典序最大的 $b$</p>
+<p>$1\le n\le10^5,1\le m\le10^5,1\le a_i\le n$</p>
+<h4 id="题解-22"><a href="#题解-22" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>The problem can be reduced to iterating over $v$ from $n$ to $1$, each time we delete a lexicographically smallest set of intervals which can be covered with $cnt_v$ elements.</p><p>To check this for a certain set of intervals $S$, a simple greedy will be taking the minimum $r$ of all uncovered intervals, and placing a element with value $v$ at this position. This runs in $O(|S|\log|S|)$ by sorting and will calculate the minimum number of elements needed to cover all intervals in $S$, we will call this value $f(S)$.</p><p>We can run this greedy in both directions, from left to right, each time taking the rightmost one, and vice versa. We name the $i$-th element on these paths $sr_i$ and $sl_i$, respectively.</p><p>To calculate the maximal prefix that can be covered for some $v$, we can run brute force check on lengths $2^0,2^1,2^2,\cdots$, until we locate that the maximal prefix is in range $[2^l,2^{l+1})$. Then we can run binary search in the range, our complexity is bounded by $O(len\log^2 len)$, where $len$ is the length of the maximal prefix. This can be further optimized to $O(len\log len)$ if we sort the first $2^{l+1}$ intervals preemptively, which means that we don’t have to sort during the binary search.</p><p>Suppose for some $v$, we have calculated the maximal prefix $S$ which can be covered, then it follows that $f(S)=cnt_v$ (or the trivial case that $S$ contains all intervals). To check whether a new interval can be added to $S$, we only need to check whether $f(S)$ increases.</p><p><strong>Observation 1</strong>: $f(S)$ increases iff the new interval does not intersect with any $[sl_i,sr_i]$.</p><p>This can be inferred from the definition of $sr$ and $sl$, with some minor reasoning.</p><p>Now, with some extra effort, we will have a solution that runs in $O(nm)$. When $n$ becomes larger, we will need to find an efficient way to maintain $sr$ and $sl$.</p><p><strong>Observation 2</strong>: Each interval will only enter and exit $sr$ at most <strong>once</strong>. The same holds for $sl$.</p><p>This is due to each $sr_i$ being decreasing over time, and that each interval can only enter $sr$ at one position, or else we can deduce that $f(S)$ has increased.</p><p>Each time we add an interval to $S$, we can run binary search to find its place among $sr$, and try to update one by one. We will need to maintain the “next” of each value with some data structures (I used a segment tree). We will perform linear updates to $sr$ and $sl$ in total.</p><p>Using the above, if we do an $O(m)$ check for all $v$, we can pass $a_i\le 5$. To optimize, the only task which remains is to locate the next interval that can be added to $S$ efficiently.</p><p>If we only need to check for a single $[sl_i,sr_i]$, that is, find the first interval which intersects with $[sl_i,sr_i]$. This can be solved by keeping two sets on a segment tree over positions $1,2,\cdots,n$, which yields a complexity of $O(\log^2 n)$ insertion/deletion, and $O(\log n)$ query.</p><p>A simple idea will be keeping a data structure containing the first interval for every $[sl_i,sr_i]$, each time we take the minimum, check if it is not already in $S$, and add it to $S$. However, this is incorrect, as an interval can be the first interval for lots of $[sl_i,sr_i]$, and we have no way of updating them all efficiently.</p><p><strong>Observation 3</strong>: If we take the $sr$ and $sl$ of $S$, all intervals that <strong>contains</strong> at least one $[sl_i,sr_i]$ can always be added to $S$. Adding them will also have no influence on $sr$ and $sl$.</p><p>Therefore, after we calculate the maximal prefix, we take the current $sr$ and $sl$ and add all intervals satisfying the condition above. After this process, any interval will intersect with at most two $[sl_i,sr_i]$’s in the future, so we will have linear updates to this set in total.</p><p>Notice that all our insertions to the sets on segment tree structure is increasing, and only at the beginning. We only need to perform queries and deletions in the main algorithm. Therefore, we can replace sets with linked-lists to optimize it to $O(\log n)$.</p><p>Total complexity: $O(n\log n)$.</p>
+              </div>
+            </details>
+<hr>
+<h3 id="24-JOISC2025-ビ太郎の旅-2-S"><a href="#24-JOISC2025-ビ太郎の旅-2-S" class="headerlink" title="24.  JOISC2025 - ビ太郎の旅 2 [S]"></a>24.  JOISC2025 - ビ太郎の旅 2 [S]</h3><h4 id="题面-23"><a href="#题面-23" class="headerlink" title="题面"></a>题面</h4><p>有一个 $n\times m$ 的矩形 $a$，$(i,j)$ 位置的高度为 $a_{i,j}$，你在上面的某一个位置，你可以不断进行如下操作：</p>
+<ul>
+<li>从当前所在位置跳起，若当前位置的高度为 $x$，你会跳到 $x+L+0.5$ 的高度，其中 $L$ 是一个给定常数</li>
+<li>你可以任意向四联通的格子移动，需要满足你移动到的格子都低于你当前高度</li>
+<li>最后你在移动到的格子降落</li>
+</ul>
+<p>$q$ 次询问，第 $i$ 次询问给定一个起点 $(a,b)$ 和一个终点 $(c,d)$，求如果想要从 $(a,b)$ 到 $(c,d)$，最少操作多少次，或者输出无法到达</p>
+<p>$2\le n\times m\le3\times10^5,1\le q\le3\times10^5$</p>
+<h4 id="题解-23"><a href="#题解-23" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>我们一定会访问到高度 $\le x+L+0.5$ 的最高的点，因此可以想到建 kruskal 重构树</p><p>建完之后判断是否有解就是起点到 LCA 的路径是否都满足与父亲的边权差 $\le L$，操作次数的话预处理一下跳一步 $L$ 最多能跳到哪个祖先，然后倍增一下即可</p><p>复杂度 $O((nm+q)\log nm)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="25-JOISC2025-救急車-E"><a href="#25-JOISC2025-救急車-E" class="headerlink" title="25.  JOISC2025 - 救急車 [E]"></a>25.  JOISC2025 - 救急車 [E]</h3><h4 id="题面-24"><a href="#题面-24" class="headerlink" title="题面"></a>题面</h4><p>有一个 $L\times L$ 的方格，其中 $(1,1),(1,L),(L,1),(L,L)$ 分别有一所医院</p>
+<p>现在有 $n$ 个病人分别在 $(x_i,y_i)$ 的位置，你需要给每个病人分配到一个医院，然后救护车会去接这些病人。</p>
+<p>你需要满足每个医院被分配的所有病人，到医院的曼哈顿距离之和 $\le\frac12T$</p>
+<p>请判断是否可能</p>
+<p>$3\le L\le10000,1\le n\le160,1\le T\le20000$</p>
+<h4 id="题解-24"><a href="#题解-24" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>有四种选择，不好搞。</p><p>仔细观察一下数据范围，我们发现值域很小，也就是说我们的做法可以和值域带一点关系。</p><p>考虑观察一些性质：可以发现选到左上和右下的代价恰好是 $x$ 和 $2L-x$，那么一件显然的事情就是我们按照到左上的距离排序，选择到左上的一定是前面的一些，选择到右下的一定是后面的一些</p><p>而对于左下和右上有类似的事情，也就说我们可以用 $O(n^2)$ 的时间枚举两条分界线之后，每一个块内就只有两个医院可以选，那么我们就可以进行一个 $O(nT)$ 的背包 dp 求出选择一边的医院选择了 $v$ 的距离和，另一边的医院最少距离和</p><p>那么就可以得到一个 $O(n^3T)$ 的做法。</p><p>按照其中一条分界线的顺序做前缀后缀 dp 就可以把复杂度降到 $O(n^2T)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="26-JOISC2025-スタンプラリー-4-S"><a href="#26-JOISC2025-スタンプラリー-4-S" class="headerlink" title="26.  JOISC2025 - スタンプラリー 4 [S]"></a>26.  JOISC2025 - スタンプラリー 4 [S]</h3><h4 id="题面-25"><a href="#题面-25" class="headerlink" title="题面"></a>题面</h4><p>有一个 $2n$ 个点的环，依次编号为 $1,2,\cdots,2n$，每条边上有一个盖章点，第 $i$ 个盖章点的颜色为 $a_i$，一共 $n$ 种颜色每种颜色恰好出现两次</p>
+<p>现在有一个人，要从一个点 $x$ 出发开始顺时针遍历所有盖章点，然后在盖章纸上盖章，需要遵循以下规则：</p>
+<ul>
+<li>盖章纸有两个空，每个空只能被盖一次</li>
+<li>在一个颜色为 $x$ 的盖章点，可以盖任意个颜色为 $x$ 的章，但是需要盖完第一个空才能盖第二个空</li>
+</ul>
+<p>这个人想要最后盖完自己的盖章纸，并且让自己能得到至少 $K$ 种不同的盖章纸，为此，他可以交换一些盖章点</p>
+<p>具体地，他可以花费 $X$ 的代价交换两个相邻的盖章点，你可以进行这个操作任意多次，但是限制是你不能跨过 $x$ 点进行交换，即你不能交换 $x-1$ 到 $x$，和 $x$ 到 $x+1$ 边上的盖章点</p>
+<p>同时，你从 $x$ 开始还会有 $c_x$ 的代价</p>
+<p>$q$ 次询问，每次给定一个 $K$，求最小代价和</p>
+<p>$2\le n\le5\times10^5,1\le q\le5\times10^5$</p>
+<h4 id="题解-25"><a href="#题解-25" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>把每种颜色看成区间，那么代价就是 $n^2$ 减去不交的区间个数，而如果我们将每个位置是左端点还是右端点用 <code>R</code> 和 <code>L</code> 标出来，这个就是 <code>RL</code> 子序列的数量</p><p>那么每次交换最多可以让种类数 $+1$，并且存在一种操作方案一直 $+1$，也就是说我们一个起点的代价就是 $c_x+\max(0,K-K^\prime)\times X$，其中 $K^\prime$ 为初始的种类数</p><p>对每个起点预先求出来 $K^\prime$ 即可，这个可以直接通过用树状数组维护 <code>RL</code> 字符串求出</p><p>复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="27-JOISC2025-宇宙怪盗-E"><a href="#27-JOISC2025-宇宙怪盗-E" class="headerlink" title="27.  JOISC2025 - 宇宙怪盗 [E]"></a>27.  JOISC2025 - 宇宙怪盗 [E]</h3><h4 id="题面-26"><a href="#题面-26" class="headerlink" title="题面"></a>题面</h4><p>交互题。</p>
+<p>给定一个 $n$ 个点 $m$ 条边的无向连通图，交互库在上面选择了两个点 $a,b$，保证 $a\neq b$，你需要猜出这两个点</p>
+<p>你可以进行询问：一次询问，你需要给 $m$ 条边中的每一条指定一个方向，交互库会回答你 $a$ 是否能到达 $b$</p>
+<p>请在 $300$ 次询问内猜出两个点</p>
+<p>$2\le n\le10000,1\le m\le15000$</p>
+<p>有 80pts 保证 $m=n-1$</p>
+<h4 id="题解-26"><a href="#题解-26" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先考虑树的情况。</p><p>如果我们能找到一条边，使得我们知道 $a$ 在其中一边，$b$ 在另一边，那么我们可以通过按照 dfn 顺序二分分别求得 $a,b$</p><p>更一般地，如果我们能将点分为两个不交的连通块，满足 $a$ 在一边，$b$ 在另一边，我们也能进行如上的过程</p><p>找一条路径上的边这个可以往二分的思路上去想，树上二分可以考虑使用二度点分治，我使用的是合并果子点分治，这时候我们二分的两侧可能并不是连通块，并且中间会空一个点，不过问题不大</p><p>手玩一下可以得到一个三步判断 $a,b$ 是否分属两边集合的策略：</p><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/task15/27-1.png"
+                      alt=""
+                ></p><p>如果失败了，我们无法得知 $a,b$ 在两个集合的哪边，所以我们需要下去并行二分，而由于这是一棵树，所以并行的时候，不同的二分连通块之间我们不需要在乎它们边的顺序</p><p>并行的时候如果成功了，我们还需要将此时所有的正在二分的集合拉出来，然后再在这些集合上进行二分，找到是哪一组集合成功了</p><p>找到之后我们就可以用原来的 dfn 二分了。</p><p>实际上常数应该是四倍分治树深度？不过写出来好像常数很小。</p><p>接下来考虑扩展到图上，那么一个自然的想法就是随便拉一棵生成树出来跑这个过程。</p><p>这样我们唯一需要考虑的就是非树边应该怎么办。我们希望非树边对整个过程没有任何影响。</p><p>对于将 $a,b$ 分开之后的 dfn 二分过程，是比较容易消除非树边影响的，假设当前我们知道 $a$ 在 $S$ 集合内，我们要判断它是否在 $T$ 集合内（$T\subset S$），我们可以让 $S-T$ 向外的连边都向内指，这样就不会影响二分的过程</p><p>对于并行二分，讨论的时候会痛苦一些，具体地，假设我们当前想进行的询问是 $(S_{1,x},S_{1,y}),(S_{2,x},S_{2,y}),\cdots,$，分别表示我们要询问在 $S_{i,x},S_{i,y}$ 的内部树边已经确定了一些顺序，并且 $S_{i,x}$ 和 $S_{i,y}$ 之间的边都是连向 $S_{i,y}$ 的，那么我们的目标就是让不存在某个集合 $S_i$ 能走一条非树边走到其它集合，再走一些边走回到 $S_i$ 的两个集合</p><p>这个是可以达成的，具体地我们按照如下方式定向：</p><ul><li><p>对于连到不在任意 $S_i$ 内的点 $u$，我们让这条边向内连（其实都无所谓，只要指定一个方向即可）</p></li><li><p>对于两端都在某个 $S_i$ 内的边 $u-v$，我们给所有 $S_i$ 随便定一个拓扑序，从拓扑序先的连向拓扑序后的</p><p>这样还是会有一些问题，因为我们的分治树是合并果子点分治，不同集合之间会重复一个分治中心，这个会让我们上面的构造坏掉一点，因此我们继续做出调整</p><p>让同一个分治中心 $u$ 的集合在 $S_i$ 拓扑序内相邻，并且将包含 $u$ 的那个 $S_{i,u/v}$ 排到段内最后一个，对于在以 $u$ 为分治中心的集合之间的连边，我们按照如下方式定向：</p><ul><li>如果是从某个 $S_{?,x}$ 连向 $S_{?,y}$ 的，那么我们将这条边的方向定为 $x$ 到 $y$</li><li>否则按照拓扑序定向</li></ul></li></ul><p>这个做法看起来就很烂。并且分讨得也很烂。可能是因为合并果子点分治的结构不是很好，导致要进行关于中心点的分讨。</p><p>最后询问数还是和树的情况一样的。</p>
+              </div>
+            </details>
+<hr>
+<h3 id="28-JOISC2025-勇者ビ太郎-3-S"><a href="#28-JOISC2025-勇者ビ太郎-3-S" class="headerlink" title="28.  JOISC2025 - 勇者ビ太郎 3 [S]"></a>28.  JOISC2025 - 勇者ビ太郎 3 [S]</h3><h4 id="题面-27"><a href="#题面-27" class="headerlink" title="题面"></a>题面</h4><p>比太郎在打关。关有一个 $[0,L]$ 内的难度系数 $l$</p>
+<p>一共会有 $T$ 秒时间，一共有 $n$ 个敌人，第 $i$ 个敌人会在第 $t_i$ 秒出现，血量为 $l\times h_i$，危险值为 $p_i$</p>
+<p>比太郎每秒可以选择一个血量非零的敌人，对它进行攻击，让它的血量 $-1$</p>
+<p>最后如果敌人的血量分别为 $h^\prime_1,h^\prime_2,\cdots,h^\prime_n$，那么你的罚分是 $\sum h^\prime_ip_i$</p>
+<p>$q$ 次询问，每次给定一个 $m$，查询如果你想让最优策略下你能使罚分 $\le m$，那么最高的难度系数 $l$ 可以是多少</p>
+<p>$1\le n\le6000,1\le L\le10^7,1\le q\le10^6$</p>
+<h4 id="题解-27"><a href="#题解-27" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>容易发现我们的策略是每次删 $p$ 最大的人，但是时刻维护最大值并不是很好做，所以我们可以考虑枚举一个值 $v$，然后把数分成 $\ge v$ 和 $&lt;v$ 两个部分</p><p>考虑直接把每个 $l$ 最后的值求出来</p><p>我们要做的就是每次加上一个 $l\times h_i$，再减去时间间隔，对 $0$ 取 $\max$，给 $l$ 的答案加上最后的值</p><p>这个操作就是最大后缀和，那么我们就可以写成 $O(n)$ 个关于 $l$ 的一次函数取 $\max$，容易知道凸包上只有 $n$ 段，并且斜率还是有序的，因此可以 $O(n)$ 的复杂度把凸包求出来，再用差分加到答案上</p><p>每次询问二分即可</p><p>复杂度 $O(n^2+L+q\log L)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="29-JOISC2025-会議-E-✔️"><a href="#29-JOISC2025-会議-E-✔️" class="headerlink" title="29.  JOISC2025 - 会議 [E] ✔️"></a>29.  JOISC2025 - 会議 [E] ✔️</h3><h4 id="题面-28"><a href="#题面-28" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的包含 <code>ABC?</code> 的字符串 $s$，保证开头结尾为 <code>A</code></p>
+<p>$q$ 次询问，每次询问给定 $c_A,c_B,c_C$，保证 $c_A+c_B+c_C=[\texttt{?} 的个数]$，求恰好将 $c_A$ 个 <code>?</code> 填成 <code>A</code>，$c_B$ 个 <code>?</code> 填成 <code>B</code>，$c_C$ 个 <code>?</code> 填成 <code>C</code> 后最少有多少 $s_i\neq s_{i+1}$ 的位置</p>
+<p>$2\le n\le3\times10^5,1\le q\le2\times10^5$</p>
+<h4 id="题解-28"><a href="#题解-28" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>我们有两种东西：</p><ul><li>形如 <code>A????A</code>，有 $len$ 个位置，一开始只能选 <code>A</code>，$+2$ 后能选 <code>AB</code> 或 <code>AC</code>，$+3$ 后能选 <code>ABC</code></li><li>形如 <code>A????B</code>，有 $len$ 个位置，一开始只能选 <code>AB</code>，$+1$ 后能选 <code>ABC</code></li></ul><p>但是至此这个看起来还是不是很好做，考虑找一些特殊情况</p><p>如果我们整个字符串里只有 <code>A????A</code>，并且 $c_A=0$，那么我们就是要判断能不能选出一些 $len$ 加起来恰好等于 $c_B$，所以这个问题不弱于背包。</p><p>那么这个看起来就有点不好了，那么我们考虑仔细分析一下如何解决这种情况。</p><p>注意到不能的话，我们就至少要选一个 $+3$，而这个显然选越大的越优，那么我们就一定会把 $len$ 最大的变成 <code>ABC</code>，此时可以发现，我们就可以凑出任意 $c_B$ 了</p><p>更一般地，如果我们有一个段长为 $x$，并且它最后变成了 <code>AB</code> 或 <code>AC</code>，还有一个段是长为 $v$，可以选 <code>ABC</code>，且 $x\le v$，那么这两个段合起来可以等效为一个长为 $x+v$ 可以选 <code>ABC</code> 的段</p><p>此时这个问题看起来就可做一点了，因为背包我们是能做的，那么考虑重新入手一下这个问题。</p><p>首先，如果我们已经确定了最后每个段的类型，那么我们可以通过一些简单的约束判断是否有解，具体地，我们对每种字符，比如 <code>A</code>，只能选 <code>A</code> 的段之和要 $\le c_A$，并且能选 <code>A</code> 的段之和要 $\ge c_A$，比那个且这个也是充要条件，这个可以通过 Hall 定理说明，因此我们需要做的事情就是花费代价改变段的类型，使得其符合这个限制</p><p>画到韦恩图上就是角内的和要小于等于一个东西，圈内的和要大于等于一个东西，下面我们会使用这种表述</p><p>那么我们根据圈限制满足的数量分类讨论：</p><ul><li><p>所有圈内的元素都足够多，此时只可能出现一些角上的元素太多了，那么我们就需要把它们往外推，此时对每种字符我们一定是不断把最大的往外推，直到合法了为止，这个可以二分求得</p></li><li><p>恰有一个圈内的元素不够多，设其为 <code>C</code>，那么此时可能出现 <code>A</code> 和 <code>B</code> 角元素太多了，容易发现我们这时推 <code>A</code>，<code>AB</code>，<code>B</code> 的方向一定是推到 <code>AC</code>，<code>ABC</code>，<code>BC</code>，那么首先我们推掉 <code>A</code> 角和 <code>B</code> 角的一段必须推的后缀，剩下的部分就是有一些数代价为 $1$，有一些数代价为 $2$，我们要选一些数，使得其的值加起来大于等于某个界，然后最小化代价和</p><p>这个可以通过按性价比从大到小贪心实现，如果我们最后选择的是一个 $2$ 的元素，那么我们需要讨论两种反悔的情况，分别是不选这个 $2$ 选一个 $1$，或者反悔掉一个之前选的 $1$，如果两种有一种成立则我们可以让代价和 $-1$，否则不变</p><p>可以通过二分+一堆预处理加速</p></li><li><p>恰有两个圈内的元素不够多，设其为 <code>B</code> 和 <code>C</code>，那么此时必然会出现 <code>A</code> 角内的元素太多了，我们需要将这个 <code>A</code> 的元素向外推，推出来会变成 <code>AB</code> 或 <code>AC</code>，这个也是导致我们要使用背包的情况</p><p>那么首先我们往外推的显然是一段后缀，即最大的几个，于是有一个后缀是被确定必须往外推的</p><p>然后我们想套用一下之前的结论，可以发现，我们只要代价 $+1$，把这个往外推的后缀里最大值变成 <code>ABC</code>，此时后缀里所有数都会变成 <code>ABC</code> 任选的，现在对于 <code>B</code> 和 <code>C</code>，我们相当于是必选的一定分别小于 $c_B,c_C$，并且总共可选的 $\ge c_B+c_C$，所以稳赢了。</p><p>也就是说我们只需要判断一段 <code>A</code> 角的后缀能不能凑出来一段区间内的任意值（使 $c_B,c_C$ 限制均满足的区间）即可</p><p>这个我们可以预处理出来每种数第一次能被凑出来的为止，这个我们可以使用多重背包二进制优化 + bitset 做到 $O(n\sqrt n/w)$，单次查询就是 rmq，可以用喜欢的数据结构实现</p></li></ul><p>因此总复杂度是 $O(n\sqrt n/w+q\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="30-JOISC2025-マルチコミュニケーション-S"><a href="#30-JOISC2025-マルチコミュニケーション-S" class="headerlink" title="30.  JOISC2025 - マルチコミュニケーション [S]"></a>30.  JOISC2025 - マルチコミュニケーション [S]</h3><h4 id="题面-29"><a href="#题面-29" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人，每个人有一个板，初始恰有一个人的板上会被写上 <code>T</code>，其余人的板上都写着 <code>F</code>，每个人知道自己的板上写了什么</p>
+<p>接下来进行如下操作 $L$ 轮：</p>
+<ul>
+<li>每个人将自己板上的字符擦除，然后根据之前看到过的所有字符决策在板上写 <code>T</code> 或 <code>F</code></li>
+<li>在所有人写完之后，每个人根据自己之前看到过的所有字符决策一个 $pos$，表示然后他会看到第 $pos$ 个人当前板上的字符</li>
+</ul>
+<p>所有人需要配合使得经过 $L$ 轮之后，每个人需要知道一开始谁的板上写的是 <code>T</code></p>
+<p>请构造如下三种情况时的策略：</p>
+<ul>
+<li>$n=4,L=2$</li>
+<li>$n=32,L=8$</li>
+<li>$n=48,L=9$</li>
+</ul>
+<h4 id="题解-29"><a href="#题解-29" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>这个范围看起来很 $\log$，然后我们要找的就是一个人距离 <code>T</code> 有多远，因此可以考虑倍增</p><p>对于 $n=4$，我们的长度是 $1\rightarrow1$</p><p>对于 $n=32$，我们的长度是 $1\rightarrow2\rightarrow4\rightarrow8\rightarrow8\rightarrow4\rightarrow2\rightarrow1$</p><p>对于 $n=48$，我们的长度是 $1\rightarrow2\rightarrow4\rightarrow8\rightarrow16\rightarrow8\rightarrow4\rightarrow2\rightarrow1$</p><p>每种都刚好能覆盖对应 $n$ 的长度</p>
+              </div>
+            </details>
+<hr>
+<h3 id="31-JOISC2025-電子回路-2-E-K"><a href="#31-JOISC2025-電子回路-2-E-K" class="headerlink" title="31.  JOISC2025 - 電子回路 2 [E/K]"></a>31.  JOISC2025 - 電子回路 2 [E/K]</h3><h4 id="题面-30"><a href="#题面-30" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $2n+1$ 个点的二叉树，每个非叶子节点都有恰好两个儿子，因此一共有 $n$ 个非叶子节点</p>
+<p>每个节点上有一个变量 $x_i$，每个非叶子节点上有一个逻辑门 $\otimes_i$，这个逻辑门可能为 $\text{AND}$ 或 $\text{OR}$，但是你不知道它们是什么，你需要通过询问来确定每个门是什么，保证 $\text{OR}$ 门不超过 $R$ 个</p>
+<p>一次询问，每次询问你需要给每个 $x$ 赋一个值，然后根据如下规则运算：</p>
+<ul>
+<li>对于一个叶子节点 $u$，其最后值即为自己的变量 $w_u\leftarrow x_u$</li>
+<li>对于一个非叶子节点 $u$，其最后值为 $w_u\leftarrow(w_{lc}\otimes_uw_{rc})\text{ XOR }x_u$</li>
+</ul>
+<p>最后你会得到根的 $w$ 值</p>
+<p>你需要在 $1000$ 次询问内确定每个门是 $\text{AND}$ 还是 $\text{OR}$</p>
+<p>$1\le n\le8000,1\le R\le\min(n,120)$</p>
+<h4 id="题解-30"><a href="#题解-30" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先有一个 $O(n)$ 做法，我们从上到下按 dfn 序，每次查询一个门是 $\text{AND}$ 还是 $\text{OR}$，由于上面的门都已知，所以我们可以直接将这个节点的运算结果保留到最后</p><p>那么我们这个询问方式是容易扩展到一次询问若干个无祖孙关系的点中是否有 $\text{OR}$ 的，但是这不能对我们的复杂度做什么改进，因为我们处理不了链（即非叶子节点串成一条链）的情况</p><p>对于链的话，我们可以一次询问出一段区间内有没有 $\text{OR}$，具体地，如果上面的东西都已知，我们可以把一段区间内上面挂着的叶子节点全填成 $1$，这样有一个 $\text{OR}$ 门上面的运算结果就会是 $1$</p><p>用这个扩展一下上面的做法，我们可以询问若干个无祖孙关系的链中是否有 $\text{OR}$</p><p>由此，可以想到重链剖分，我们把树剖完之后，每次询问到根恰有 $i$ 条轻边的所有重链</p><p>这样我们就得到了一个 $R\log n$ 次询问的做法，但是会被卡询问次数</p><p>优化一下的话，可以考虑按 $B$ 个分一块，每次先询问一个块内有没有 $\text{OR}$，有的话再继续向下二分，询问次数是 $\frac nB+R\log B$ 的，取 $B=32$ 即可通过</p>
+              </div>
+            </details>
+<hr>
+<h3 id="32-JOISC2025-移住計画-S-⭐"><a href="#32-JOISC2025-移住計画-S-⭐" class="headerlink" title="32.  JOISC2025 - 移住計画 [S] ⭐"></a>32.  JOISC2025 - 移住計画 [S] ⭐</h3><h4 id="题面-31"><a href="#题面-31" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，根为 $1$，初始点 $i$ 上有 $a_i$ 个人，$q$ 次操作，每次进行如下操作中的一种：</p>
+<ul>
+<li><code>1 x y</code>，保证 $x\ge y$，将所有深度为 $x$ 的节点上的人，移动到其祖先中的深度为 $y$ 的节点</li>
+<li><code>2 u w</code>，将 $a_u\leftarrow a_u+w$</li>
+<li><code>3 u</code>，查询 $a_u$ 的值</li>
+</ul>
+<p>$2\le n\le2\times10^6,1\le q\le2\times10^6$</p>
+<h4 id="题解-31"><a href="#题解-31" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>建一棵重构树，对每种深度建一个节点，进行 <code>1 x y</code> 操作的时候，我们对 $x,y$ 分别新建一个节点 $dx,dy$，$dy$ 的两个儿子分别指向原来 $x,y$ 深度的点，$dx$ 是叶子</p><p>2 操作对 $dep_u$ 新建一个节点，然后在新的节点上挂一个 $(u,w)$</p><p>3 操作就是查询一个重构树子树内，点属于原树子树的二元组值之和</p><p>这个可以转化成二维数点，复杂度 $O((n+q)\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="33-JOISC2025-ういろう-E"><a href="#33-JOISC2025-ういろう-E" class="headerlink" title="33.  JOISC2025 - ういろう [E]"></a>33.  JOISC2025 - ういろう [E]</h3><h4 id="题面-32"><a href="#题面-32" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的数组 $a_1,a_2,\cdots,a_n$，$q$ 次询问，每次询问给定一个 $[l,r]$，然后令 $b\leftarrow a[l:r]$，求一下问题的答案：</p>
+<ul>
+<li>最多将 $b$ 中多少个元素变为原来的相反数，使得 $b$ 的任意前缀和仍 $\ge0$</li>
+</ul>
+<p>$1\le n\le2\times10^5,1\le a_i\le100,1\le q\le2\times10^5$</p>
+<h4 id="题解-32"><a href="#题解-32" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先我们需要会解决单次询问，单次询问有很多种贪心的方法，但是注意到这题值域很小，所以我们可能需要一个和值域相关的东西</p><p>我们的限制就是前缀内选的数之和小于等于某个东西，那么也就是说如果我们前面选择了 $i$，后面没选择 $j$，且 $a_i\ge a_j$，我们一定可以调整一下使其不劣</p><p>最优解就一定满足任意值选的都是一段后缀。</p><p>大胆一点可以发现如果我们从小到大扫值，每次选极长的后缀，最后贪心得到的结果是对的</p><p>这是因为假设值 $x$ 是第一个没有选到极长后缀的，那么我们可以说明我们把 $x+1$ 后缀中第一个数不选，然后将 $x$ 的后缀延长一个值是合法的</p><p>也就是说，我们已经可以每次二分后缀分界点，得到一个 $O(nA\log n)$ 的做法了，常数很小，可以通过</p><p>但事实上我们可以不用二分，注意到如果我们选了 $t$ 个值 $v$，那么我们直接认为一个前缀和是所有 $\le v$ 的值全选负，$&gt;v$ 的值全选正，额外 $+2tv$，这个是正确的，因为我们值算大的部分一定在选择的后缀之外，也就是说它们本来就是合法的，我们不会把不合法的变合法</p><p>然后就可以推式子，把一次处理变成一次 rmq 查询，可以用 $O(n)-O(1)$ rmq 优化到 $O(nA)$</p>
+              </div>
+            </details>
 
 		</div>
 
@@ -542,7 +715,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-03-19 10:41:31
+                    :</strong> 2025-03-29 12:09:28
             </li>
         
         <li>
@@ -652,7 +825,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task15</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%9B%BE%E6%8E%92%E5%88%97-E"><span class="nav-text">1.  联合省选 2025 - 图排列 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B2%81%E6%9C%88-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">2.  联合省选 2025 - 岁月 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B0%81%E5%8D%B0-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">3.  联合省选 2025 - 封印 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ10103-Quad-Kingdoms-Chess-2-E"><span class="nav-text">4.  QOJ10103 - Quad Kingdoms Chess 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-QOJ10100-Exchanging-Kubic-3-E"><span class="nav-text">5.  QOJ10100 - Exchanging Kubic 3 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-AGC015F-Kenus-the-Ancient-Greek-E"><span class="nav-text">6.  AGC015F - Kenus the Ancient Greek [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-CF1787I-Treasure-Hunt-E-%E2%AD%90"><span class="nav-text">7.  CF1787I - Treasure Hunt [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-CF1458E-Nim-Shortcuts-S"><span class="nav-text">8.  CF1458E - Nim Shortcuts [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-CF1566H-Xor-quiz-E"><span class="nav-text">9.  CF1566H - Xor-quiz [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-AGC052D-Equal-LIS-E-%E2%AD%90"><span class="nav-text">10.  AGC052D - Equal LIS [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-AGC016F-Games-on-DAG-E"><span class="nav-text">11.  AGC016F - Games on DAG [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-CF1666A-Admissible-Map-E-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">12.  CF1666A - Admissible Map [E&#x2F;K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-NOI2023-%E6%B7%B1%E6%90%9C-E"><span class="nav-text">12.  NOI2023 - 深搜 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-UER12-%E7%94%B5%E5%AD%90%E8%BF%90%E5%8A%A8-K-%E2%AD%90"><span class="nav-text">13.  UER12 - 电子运动 [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2023-%E6%9F%93%E8%89%B2%E6%95%B0%E7%BB%84-E"><span class="nav-text">14.  联合省选 2023 - 染色数组 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-CF2055F-Cosmic-Divide-E"><span class="nav-text">15.  CF2055F - Cosmic Divide [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-CF1949H-Division-Avoidance-E"><span class="nav-text">16.  CF1949H - Division Avoidance [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-CF1887F-Minimum-Segments-E"><span class="nav-text">17.  CF1887F - Minimum Segments [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-AGC031E-Snuke-the-Phantom-Thief-E-%E2%AD%90"><span class="nav-text">18.  AGC031E - Snuke the Phantom Thief [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-AGC035E-Develop-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">19.  AGC035E - Develop [E] ✔️</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%9B%BE%E6%8E%92%E5%88%97-E"><span class="nav-text">1.  联合省选 2025 - 图排列 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B2%81%E6%9C%88-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">2.  联合省选 2025 - 岁月 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2025-%E5%B0%81%E5%8D%B0-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">3.  联合省选 2025 - 封印 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ10103-Quad-Kingdoms-Chess-2-E"><span class="nav-text">4.  QOJ10103 - Quad Kingdoms Chess 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-QOJ10100-Exchanging-Kubic-3-E"><span class="nav-text">5.  QOJ10100 - Exchanging Kubic 3 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-AGC015F-Kenus-the-Ancient-Greek-E"><span class="nav-text">6.  AGC015F - Kenus the Ancient Greek [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-CF1787I-Treasure-Hunt-E-%E2%AD%90"><span class="nav-text">7.  CF1787I - Treasure Hunt [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-CF1458E-Nim-Shortcuts-S"><span class="nav-text">8.  CF1458E - Nim Shortcuts [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-CF1566H-Xor-quiz-E"><span class="nav-text">9.  CF1566H - Xor-quiz [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-AGC052D-Equal-LIS-E-%E2%AD%90"><span class="nav-text">10.  AGC052D - Equal LIS [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-AGC016F-Games-on-DAG-E"><span class="nav-text">11.  AGC016F - Games on DAG [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-CF1666A-Admissible-Map-E-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">12.  CF1666A - Admissible Map [E&#x2F;K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-NOI2023-%E6%B7%B1%E6%90%9C-E"><span class="nav-text">12.  NOI2023 - 深搜 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-UER12-%E7%94%B5%E5%AD%90%E8%BF%90%E5%8A%A8-K-%E2%AD%90"><span class="nav-text">13.  UER12 - 电子运动 [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E8%81%94%E5%90%88%E7%9C%81%E9%80%89-2023-%E6%9F%93%E8%89%B2%E6%95%B0%E7%BB%84-E"><span class="nav-text">14.  联合省选 2023 - 染色数组 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-CF2055F-Cosmic-Divide-E"><span class="nav-text">15.  CF2055F - Cosmic Divide [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-CF1949H-Division-Avoidance-E"><span class="nav-text">16.  CF1949H - Division Avoidance [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-CF1887F-Minimum-Segments-E"><span class="nav-text">17.  CF1887F - Minimum Segments [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-AGC031E-Snuke-the-Phantom-Thief-E-%E2%AD%90"><span class="nav-text">18.  AGC031E - Snuke the Phantom Thief [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-AGC035E-Develop-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">19.  AGC035E - Develop [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-TBA"><span class="nav-text">20.  TBA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-AGC026F-Manju-Game-E-%E2%AD%90"><span class="nav-text">21.  AGC026F - Manju Game [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-AGC056E-Cheese-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">22.  AGC056E - Cheese [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-JOISC2025-%E5%B1%95%E8%A6%A7%E4%BC%9A-3-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">23.  JOISC2025 - 展覧会 3 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-JOISC2025-%E3%83%93%E5%A4%AA%E9%83%8E%E3%81%AE%E6%97%85-2-S"><span class="nav-text">24.  JOISC2025 - ビ太郎の旅 2 [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-JOISC2025-%E6%95%91%E6%80%A5%E8%BB%8A-E"><span class="nav-text">25.  JOISC2025 - 救急車 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-JOISC2025-%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%97%E3%83%A9%E3%83%AA%E3%83%BC-4-S"><span class="nav-text">26.  JOISC2025 - スタンプラリー 4 [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-JOISC2025-%E5%AE%87%E5%AE%99%E6%80%AA%E7%9B%97-E"><span class="nav-text">27.  JOISC2025 - 宇宙怪盗 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28-JOISC2025-%E5%8B%87%E8%80%85%E3%83%93%E5%A4%AA%E9%83%8E-3-S"><span class="nav-text">28.  JOISC2025 - 勇者ビ太郎 3 [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29-JOISC2025-%E4%BC%9A%E8%AD%B0-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">29.  JOISC2025 - 会議 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30-JOISC2025-%E3%83%9E%E3%83%AB%E3%83%81%E3%82%B3%E3%83%9F%E3%83%A5%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-S"><span class="nav-text">30.  JOISC2025 - マルチコミュニケーション [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31-JOISC2025-%E9%9B%BB%E5%AD%90%E5%9B%9E%E8%B7%AF-2-E-K"><span class="nav-text">31.  JOISC2025 - 電子回路 2 [E&#x2F;K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-JOISC2025-%E7%A7%BB%E4%BD%8F%E8%A8%88%E7%94%BB-S-%E2%AD%90"><span class="nav-text">32.  JOISC2025 - 移住計画 [S] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-JOISC2025-%E3%81%86%E3%81%84%E3%82%8D%E3%81%86-E"><span class="nav-text">33.  JOISC2025 - ういろう [E]</span></a></li></ol>
 
 	</div>
 </div>
