@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-01T11:16:35.077Z">
+<meta property="article:modified_time" content="2025-04-05T11:18:04.606Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-01 19:16:35</span>
-            <span class="mobile">2025-04-01 19:16:35</span>
+            <span class="desktop">2025-04-05 19:18:04</span>
+            <span class="mobile">2025-04-05 19:18:04</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -305,6 +305,34 @@
               </div>
             </details>
 <hr>
+<h3 id="2-QOJ8329-Excuse-E"><a href="#2-QOJ8329-Excuse-E" class="headerlink" title="2.  QOJ8329 - Excuse [E]"></a>2.  QOJ8329 - Excuse [E]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$，重复如下操作 $n$ 次生成 $a$ 序列：</p>
+<ul>
+<li>抛一个均匀硬币，将第一次正面朝上前背面朝上的次数加入到 $a$ 序列末尾</li>
+</ul>
+<p>求 $\text{mex}(a)$ 的期望，对 $998244353$ 取模</p>
+<p>$1\le n\le10^5$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑首先列出一个式子，不妨求 $\text{mex}\ge i$ 的概率，那么就是要求 $0,1,\cdots,i-1$ 都在序列中出现至少一次</p><p>而计算这个我们可以使用容斥，对每个位置我们认为其为 $0,1,\cdots,i-1,\times$ 中的一个，要求 $0,1,\cdots,i-1$ 都没选过至少一次，系数为 $(-1)^{选的个数+i}$</p><p>这个写成生成函数即为 $\prod_{j=1}^i(e^{x/2^j}-1)$，而我们要求的就是所有这样生成函数之和，最后再卷上一个 $e$，其 $n$ 次项系数乘上 $n!$</p><p>计算这个可以考虑倍增，每次就是复合上一个 $\frac1{2^w}x$，这是可以做到的</p><p>复杂度 $O(n\log^2n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="3-CF1326F2-Wise-Men-K-⭐"><a href="#3-CF1326F2-Wise-Men-K-⭐" class="headerlink" title="3.  CF1326F2 - Wise Men [K] ⭐"></a>3.  CF1326F2 - Wise Men [K] ⭐</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n$ 个点的完全无向图，每条边有边权 <code>0</code> 或 <code>1</code></p>
+<p>对每个长为 $n-1$ 的 <code>01</code> 串，求有多少哈密顿路径使得路径上的权值按顺序排序得到的是这个串</p>
+<p>$2\le n\le18$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>wow.</p><p>直接存 01 串非常不好做，因此我们可以考虑转变一下求的东西。</p><p>如果我们就选择一些位置钦定它们是 <code>1</code>，其余位置随意，那么我们是可以通过一次差分求出最后的答案的</p><p>而这个转化后的问题就相对好做一些了，我们相当于就是将一些 <code>1</code> 链拼起来，每种长度的链可以提前 dp 出来，存在一个 $fc_{c,S}$ 里，表示长为 $c$，且经过的点集为 $S$ 的 <code>1</code> 链个数</p><p>注意到在这个转化后的问题，我们只关系 <code>1</code> 链长度的可重集，所以实际上不同的问题数量只有分拆数即 $P(n)=385$ 种，对于一个问题我们需要做的就是一个 or 卷积，这个是可以做到 $O(P(n)2^n)$ 的</p><p>所以最后总复杂度就是 $O(P(n)2^n+n^22^n)$ 的</p>
+              </div>
+            </details>
+<hr>
+<h3 id="4-QOJ2068-Fast-as-Ryser-E"><a href="#4-QOJ2068-Fast-as-Ryser-E" class="headerlink" title="4.  QOJ2068 - Fast as Ryser [E]"></a>4.  QOJ2068 - Fast as Ryser [E]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，每个边的权值均为 $c$，求所有匹配的权值乘积之和，对 $10^9+7$ 取模</p>
+<p>$1\le n\le36$</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>坏消息：科技题</p><p>好消息：科技我见过</p><p>考虑对考虑把 $n$ 补到偶数，然后在每个 $2i$ 和 $2i+1$ 之间连一条辅助边，这样我们会</p>
+              </div>
+            </details>
 
 		</div>
 
@@ -319,7 +347,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-04-01 19:16:35
+                    :</strong> 2025-04-05 19:18:04
             </li>
         
         <li>
@@ -429,7 +457,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task16</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-THUPC2025-I%E2%80%99m-Here-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">1.  THUPC2025 - I’m Here [E] ✔️</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-THUPC2025-I%E2%80%99m-Here-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">1.  THUPC2025 - I’m Here [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-QOJ8329-Excuse-E"><span class="nav-text">2.  QOJ8329 - Excuse [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1326F2-Wise-Men-K-%E2%AD%90"><span class="nav-text">3.  CF1326F2 - Wise Men [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ2068-Fast-as-Ryser-E"><span class="nav-text">4.  QOJ2068 - Fast as Ryser [E]</span></a></li></ol>
 
 	</div>
 </div>
