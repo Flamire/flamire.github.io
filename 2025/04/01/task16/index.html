@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-05T11:18:04.606Z">
+<meta property="article:modified_time" content="2025-04-07T12:19:48.723Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-05 19:18:04</span>
-            <span class="mobile">2025-04-05 19:18:04</span>
+            <span class="desktop">2025-04-07 20:19:48</span>
+            <span class="mobile">2025-04-07 20:19:48</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -311,7 +311,7 @@
 </ul>
 <p>求 $\text{mex}(a)$ 的期望，对 $998244353$ 取模</p>
 <p>$1\le n\le10^5$</p>
-<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>考虑首先列出一个式子，不妨求 $\text{mex}\ge i$ 的概率，那么就是要求 $0,1,\cdots,i-1$ 都在序列中出现至少一次</p><p>而计算这个我们可以使用容斥，对每个位置我们认为其为 $0,1,\cdots,i-1,\times$ 中的一个，要求 $0,1,\cdots,i-1$ 都没选过至少一次，系数为 $(-1)^{选的个数+i}$</p><p>这个写成生成函数即为 $\prod_{j=1}^i(e^{x/2^j}-1)$，而我们要求的就是所有这样生成函数之和，最后再卷上一个 $e$，其 $n$ 次项系数乘上 $n!$</p><p>计算这个可以考虑倍增，每次就是复合上一个 $\frac1{2^w}x$，这是可以做到的</p><p>复杂度 $O(n\log^2n)$</p>
               </div>
@@ -320,7 +320,7 @@
 <h3 id="3-CF1326F2-Wise-Men-K-⭐"><a href="#3-CF1326F2-Wise-Men-K-⭐" class="headerlink" title="3.  CF1326F2 - Wise Men [K] ⭐"></a>3.  CF1326F2 - Wise Men [K] ⭐</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n$ 个点的完全无向图，每条边有边权 <code>0</code> 或 <code>1</code></p>
 <p>对每个长为 $n-1$ 的 <code>01</code> 串，求有多少哈密顿路径使得路径上的权值按顺序排序得到的是这个串</p>
 <p>$2\le n\le18$</p>
-<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>wow.</p><p>直接存 01 串非常不好做，因此我们可以考虑转变一下求的东西。</p><p>如果我们就选择一些位置钦定它们是 <code>1</code>，其余位置随意，那么我们是可以通过一次差分求出最后的答案的</p><p>而这个转化后的问题就相对好做一些了，我们相当于就是将一些 <code>1</code> 链拼起来，每种长度的链可以提前 dp 出来，存在一个 $fc_{c,S}$ 里，表示长为 $c$，且经过的点集为 $S$ 的 <code>1</code> 链个数</p><p>注意到在这个转化后的问题，我们只关系 <code>1</code> 链长度的可重集，所以实际上不同的问题数量只有分拆数即 $P(n)=385$ 种，对于一个问题我们需要做的就是一个 or 卷积，这个是可以做到 $O(P(n)2^n)$ 的</p><p>所以最后总复杂度就是 $O(P(n)2^n+n^22^n)$ 的</p>
               </div>
@@ -328,11 +328,66 @@
 <hr>
 <h3 id="4-QOJ2068-Fast-as-Ryser-E"><a href="#4-QOJ2068-Fast-as-Ryser-E" class="headerlink" title="4.  QOJ2068 - Fast as Ryser [E]"></a>4.  QOJ2068 - Fast as Ryser [E]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，每个边的权值均为 $c$，求所有匹配的权值乘积之和，对 $10^9+7$ 取模</p>
 <p>$1\le n\le36$</p>
-<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>坏消息：科技题</p><p>好消息：科技我见过</p><p>考虑对考虑把 $n$ 补到偶数，然后在每个 $2i$ 和 $2i+1$ 之间连一条辅助边，这样我们会</p>
+              <p>见过这个科技。</p><p>考虑对考虑把 $n$ 补到偶数，然后在每个 $2i$ 和 $2i+1$ 之间连一条辅助边，这样我们一共会有 $n/2$ 条辅助边，称为 $n/2$ 组</p><p>而一个匹配就是一种选一些边，和这些辅助边一起将所有点串成了一些环和链</p><p>那么我们求出组的集合组成一个环或者一个链的权值和，最后用集合幂级数 exp 即可</p><p>而这个是容易 dp 求出的</p><p>因此总复杂度 $O(2^{n/2}n^2)$</p>
               </div>
             </details>
+<hr>
+<h3 id="5-ATxmascon22F-Fast-as-Fast-as-Ryser-K"><a href="#5-ATxmascon22F-Fast-as-Fast-as-Ryser-K" class="headerlink" title="5.  ATxmascon22F - Fast as Fast as Ryser [K]"></a>5.  ATxmascon22F - Fast as Fast as Ryser [K]</h3><h4 id="题面-4"><a href="#题面-4" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的无向图，对每个 $k=0,1,\cdots,n/2$ 求有多少大小为 $k$ 条边的匹配，对 $2^{64}$ 取模</p>
+<p>$1\le n\le40$</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>别集合幂级数了。</p><p>集合幂级数也可以从上面的东西扩展出来一个做法，但是我不想写。</p><p>考虑假设我们不需要记匹配的边数，那么有一个做法是我们每次选择一条包含最大未选点的环或者链，然后每次在当前结构的末尾加一个点</p><p>具体地，设当前访问过的组集合为 $S$，$S$ 中最大未选组为 $u$，我们定义如下规则：</p><ul><li>额外记一个状态变量，状态变量的值为 $0/1/2$</li><li>$0$ 状态表示我们从 $u$ 开始要走一个环，已经加入环上的组，除了 $u$ 都已经在 $S$ 内了，我们需要走若干个组之后走回 $u$，这种可以 dp 解决</li><li>$1/2$ 状态表示我们从某个点开始走一条链，且当前有没有已经经过 $u$，这种也可以 dp 解决</li></ul><p>那么这个复杂度是 $O(2^nn^2)$ 的</p><p>注意到如果我们再记一个个数 $j$，表示当前选过多少条链，那么注意到一个 $j$ 的状态，其 $S$ 的最大的 $j$ 组一定都被选过了，也就是说我们最后的状态数是 $\sum 2^ii^2(n-i)$ 的，因此总复杂度为 $O(2^nn^2)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="6-QOJ4983-Imbalance-K-✔️"><a href="#6-QOJ4983-Imbalance-K-✔️" class="headerlink" title="6.  QOJ4983 - Imbalance [K] ✔️"></a>6.  QOJ4983 - Imbalance [K] ✔️</h3><h4 id="题面-5"><a href="#题面-5" class="headerlink" title="题面"></a>题面</h4><p>一个长为 $n$ 的 01 串，其中一个长度为 $m$ 的前缀已知，求有多少 01 串满足任意长为 $k$ 的子区间都满足 01 个数不相等，对 $998244353$ 取模</p>
+<p>$1\le m+1\le k\le n\le114$，保证 $k$ 为偶数</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先有一种显然的暴力方法是 $O(n2^k)$ 的，我们只要记一下前 $k-1$ 位的状态，新加入一个位判断是否满足条件即可</p><p>尝试做一下可以发现这个题不太好多项式复杂度，而这个限制相当于任意 $s_i\neq s_{i+k}$，因此我们可以考虑列成矩阵，然后数据分治</p><p>那么我们现在就是要解决一个 $\frac nk$ 行的问题，直接暴力可以枚举每一行的开头和结尾，做到 $O(nk^{2(n/k)})$ 之类的复杂度，太高了</p><p>考虑提前枚举 $s_0,s_k,s_{2k},\cdots,s_{\lfloor n/k\rfloor k},s_n$，那么我们可以认为我们最后就是要求每个 $(0,s_{ik})$ 要走到 $(k,s_{(i+1)k})$，$(0,s_{\lfloor n/k\rfloor k})$ 走到 $(n\bmod k,s_n)$ 的不交路径数量，这个可以用 lgv 引理求</p><p>但是我们还没有解决前缀已知的问题，这个我们可以把 $(m,s_m)$ 平移到 $(0,0)$，然后后面的类似平移，然后把前面路径访问过的点 ban 掉</p><p>还有一个问题是此时 lgv 可能算出来一些不对的路径，因为我们的点对还有可能有一些错位匹配也能形成不交路径</p><p>这个我们可以把 $(n\bmod k,[&gt;s_n])$ 的点全 ban 掉来处理</p><p>那么最后就是 dp 一遍求方案数，然后求一下行列式即可，复杂度 $O((\frac k2)^{n/k+1}(\frac nk)^3)$，写出来是可以跑过 $L&gt;22$ 的，对于 $L\le 22$ 的部分我们跑 $O(n2^k)$ 的暴力。</p>
+              </div>
+            </details>
+<hr>
+<h3 id="7-QOJ7932-AND-OR-closure-S"><a href="#7-QOJ7932-AND-OR-closure-S" class="headerlink" title="7.  QOJ7932 - AND-OR closure [S]"></a>7.  QOJ7932 - AND-OR closure [S]</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>给定一个大小为 $n$ 的集合 $A$，你需要求出最小的集合 $B$ 使得 $A\subseteq B$，且对于任意两个数 $x,y\in B$，均有 $(x\text{ OR }y),(x\text{ AND }y)\in B$</p>
+<p>求最小的 $B$ 的大小</p>
+<p>$1\le n\le2\times10^5,0\le a_i&lt;2^{40}$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>$B$ 就是 $A$ 中的元素不断做 $\text{AND}$ 和 $\text{OR}$ 可能得到的所有数</p><p>观察一些浅显的性质：如果两个二进制位 $i,j$，满足 $A$ 中包含 $i$ 的数一定都包含 $j$，那么 $B$ 中的元素一定不会出现 $i$ 为 $0$，$j$ 为 $1$ 的数</p><p>而我们发现去除掉 $A$ 中全 $1$ 或全 $0$ 的位，然后合并相同的位之后，满足这个条件的数一定是可以生成的</p><p>具体地，这个是一张 DAG，我们将其划分成两个点集 $S,T$，使得不存在 $T\rightarrow S$ 的边，最后 $S$ 中的位都为 $1$，$T$ 中的位都为 $0$，我们先把 $A$ 中的数全或在一起得到 $X$，然后每次选择一个 $T$ 中的节点 $u$，将所有不包含 $u$ 这一位的数全或在一起得到 $Y_u$，然后执行 $X\leftarrow X\text{ AND }Y_u$，这样操作之后 $u$ 能到的位会都变成 $0$，其余位都不变</p><p>因此我们只需要求 DAG 集合划分的方案数即可，这个我们可以按拓扑序折半，然后枚举前半，对后半进行高维前缀和即可做到 $O(2^{n/2}n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="8-QOJ7938-Graph-Race-S"><a href="#8-QOJ7938-Graph-Race-S" class="headerlink" title="8.  QOJ7938 - Graph Race [S]"></a>8.  QOJ7938 - Graph Race [S]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n$ 个点 $m$ 条边的无向图，每个点有属性 $a_i,b_i$，对所有与 $1$ 有连边的点 $v$，求 $\max_{u\neq v}\{a_u-b_u\cdot dis(u,v)\}$</p>
+<p>$2\le n\le3\times10^5,1\le m\le3\times10^5$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>建出从 $1$ 出发的最短路 DAG，从 $v$ 出发直接能到的点距离为原来的 $dis-1$，走过一条 $dis_x=dis_y$ 的边能到的点距离为原来的 $dis$，其余点的距离为 $dis+1$</p><p>DAG 上 dp 一下即可</p><p>复杂度 $O(n+m)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="9-QOJ5166-回文匹配-K"><a href="#9-QOJ5166-回文匹配-K" class="headerlink" title="9.  QOJ5166 - 回文匹配 [K]"></a>9.  QOJ5166 - 回文匹配 [K]</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>对于一个字符串 $s$，定义 $P(s)$ 为 $s$ 中所有回文串出现的位置</p>
+<p>对于两个字符串 $s,t$，定义 $s$ 和 $t$ 回文匹配当且仅当 $P(s)=P(t)$</p>
+<p>给定 $n$ 个字符串 $s_i$，$q$ 次询问，每次给定 $i,j$，求有多少 $s_j$ 的子串和 $s_i$ 回文匹配</p>
+<p>两种部分分，第一种部分分每个 $s_i$ 由输入给出，保证 $\sum|s_i|\le5\times10^5$，第二种部分分每个 $s_i$ 定义为之前的某个字符串 $s_{f_i}$ 后面拼上一个字符 $c_i$</p>
+<p>$1\le n,q\le5\times10^5$</p>
+<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>这个 $P(s)=P(t)$ 的限制条件太复杂了，我们考虑造一些更简单的限制条件</p><p>如果我们能把每个字符串映射成一个序列 $fr$，满足每个字符串的 $fr_i$ 只与前缀 $[1:i]$ 有关，且两个字符串相等当且仅当其 $fr$ 序列相等，那么我们就可以在这个上面建立一些字符串算法的结构</p><p>而这里我们可以取 $fr$ 序列为以 $i$ 结尾的最长回文后缀长度，只要说明可以只通过 $fr$ 构造出来 $P$ 集合即可，而这个我们可以归纳，假设我们已经构造出来了长为 $i-1$ 的前缀的 $P$，加入 $fr_i$ 之后我们首先会向 $P$ 中加入这个最长的回文后缀 $[i-fr_i+1,i]$，然后任意更小的回文后缀一定是 $[i-fr_i+1:i]$ 的回文前缀，这个是可以从我们之前的信息定位到的，所以我们可以确定出来 $[1:i]$ 前缀的 $P$</p><p>那么我们只要把 $fr$ 序列匹配即可，直接在字符串上做这个询问，我们可以建 ac 自动机，然后离线树状数组处理询问，因此我们也考虑建出这个 $fr$ 的 ac 自动机</p><p>直接仿照建 ac 自动机的过程，唯一的区别就是我们现在跳 fail 的时候新加的 $fr$ 会变化，每次需要重新求，因此对于第一种部分分我们直接建 ac 自动机的复杂度就是 $O(\sum |s_i|\log |s_i|)$ 的</p><p>第二种部分分限制我们不能均摊建 ac 自动机和回文自动机。</p><p>首先解决回文自动机，注意到我们回文自动机在 trie 树上建，和其它串是无关的，因此我们可以 dfs 建树</p><p>而 dfs 建树的时候我们需要解决均摊找 fail，也就是不断跳 fail 链，判断前面一个字符是否等于新加的字符，从节点 $u$ 跳到 $fail_u$ 的时候我们一定知道 $fail_u$ 前面的字符，所以我们可以处理出 $lnk(u,c)$ 表示从 $u$ 开始一直跳，直到跳到某个串前面的字符为 $c$ 时跳到的节点，注意这里面不包含 $u$，所以我们需要单独判一下</p><p>这个复杂度就是 $O(n|\Sigma|)$，接下来解决 ac 自动机的部分</p><p>注意到我们在一个 $fr$ 串后面加一个字符，最多只可能有字符集种新的 $fr$ 的可能，所以我们还是建 trie 图，只不过建 trie 图的过程使用记忆化搜索，即可做到只用求 $n|\Sigma|$ 次 $fr$，即复杂度 $O(n|\Sigma|\log n)$</p><p>事实上这个状态数也不超过 $n\log n$，因为我们一个等差数列前面的字符一定是相等的，任意一个点向后加一个字符也最多有 $\log n$ 种情况，所以我们的复杂度实际上可以分析到 $O(n\min(|\Sigma|,\log n)\log n)$</p><p>但如果我们对一个节点，直接将其放到到原串中的任意出现位置，然后枚举所有字符在这个位置后面加入得到的 $fr$，以及跳到的节点，将这个 pair 插入到转移里，也可以得到我们想要的值，而对于所有字符一起求我们就可以先倍增到足够小的长度，然后再调用 $lnk$ 数组 $O(1)$ 求出这个位置，因此这样做的复杂度应该是 $O(n\min(|\Sigma|,\log n))$</p><p>询问复杂度是 $O(q\log n)$ 的</p>
+              </div>
+            </details>
+<hr>
+<h3 id="10-QOJ8703-天气预测-K-✔️"><a href="#10-QOJ8703-天气预测-K-✔️" class="headerlink" title="10.  QOJ8703 - 天气预测 [K] ✔️"></a>10.  QOJ8703 - 天气预测 [K] ✔️</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>给定一棵大小为 $n$ 的树，每个节点有一个点权 $a_i$，其中 $a_i$ 以 $p_i$ 的概率为 $1$，以 $(1-p_i)$ 的概率为 $0$</p>
+<p>按照如下规则定义 $w_u$：保证树上每个点都有偶数个儿子，对于点 $u$，$w_u$ 定义为所有儿子 $v$ 的 $w_v$ 组成的可重集，并上 $\{a_u\}$ 之后众数的值</p>
+<p>$q$ 次修改，每次修改一个位置的 $p_i$，求所有修改前以及每次修改后 $w_1$ 为 $1$ 的概率，对 $998244353$ 取模</p>
+<p>$1\le n\le2\times10^5,1\le q\le5\times10^4$</p>
+<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>$q=1$ 已经需要 ntt 了，所以考场上我们已经可以放弃这道题了。</p><p>首先考虑菊花怎么做，即只有一层的问题。</p><p>此时我们就是需要维护 $n$ 个一次式乘起来的多项式小于等于 $\frac n2$ 的系数之和，并且我们还要支持修改，这个看起来就不是很好做</p><p>存在根号做法，但我们有 polylog 的做法。</p><p>考虑线段树分治，我们就是在一些区间上插入一个一次式，然后一开始乘上一个 $\frac1{1-x}$，我们就是要求每个线段树上叶子到根路径上所有一次式的乘积的 $\frac n2$ 次项</p><p>这个可以在线段树上 dfs，注意到 dfs 到区间 $[L,R]$ 时，我们需要保留的项数是子树内任意一条链上的一次式的个数最大值，那么我们对每一个点考虑，每个点所有一次式到根路径的长度的并 的总和是 $O(n+q\log n)$ 的，因此可以做到复杂度 $O((n+q\log n)\log^2n)$，其中 $\log^2$ 是分治 ntt</p><p>接下来考虑放到树上做。看起来需要一个动态 dp 之类的东西，使用树剖也可以得到一个 $\log^3$ 的做法，但是这不太好写，我们考虑另一种解决动态 dp 问题的方法</p><p>考虑离线下来线段树分治，然后在原树上 dfs，假设我们已经得到了每个儿子 $v$ 的线段树，维护 $v$ 在 $0\sim q$ 时刻答案的连续段，我们想要并上 $u$ 算出 $u$ 在 $0\sim q$ 时刻答案的连续段，可以进行如下过程：</p><ul><li>在所有儿子的时间线段树上同时进行线段树合并，如果此时我们发现递归到的节点至多有一个不是叶子，那么我们取这个不是叶子的点，将剩下的点视作对这个点子树的答案进行某种区间修改，打一个懒标记上去</li></ul><p>这样我们最后合并出来的线段树上就存下了 $u$ 在 $0\sim q$ 时刻的答案</p><p>把这个过程套回来，进一个线段树节点的时候，我们需要保留的项数是当前我们还在合并的不同根的数量，而根据线段树合并的分析，这个就是我们一开始线段树的总结点数，因此是 $O(n+q\log n)$ 的</p><p>那么我们的总时间复杂度就是 $O(n\log^2n+q\log^3n)$</p>
+              </div>
+            </details>
+<hr>
 
 		</div>
 
@@ -347,7 +402,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-04-05 19:18:04
+                    :</strong> 2025-04-07 20:19:48
             </li>
         
         <li>
@@ -457,7 +512,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task16</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-THUPC2025-I%E2%80%99m-Here-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">1.  THUPC2025 - I’m Here [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-QOJ8329-Excuse-E"><span class="nav-text">2.  QOJ8329 - Excuse [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1326F2-Wise-Men-K-%E2%AD%90"><span class="nav-text">3.  CF1326F2 - Wise Men [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ2068-Fast-as-Ryser-E"><span class="nav-text">4.  QOJ2068 - Fast as Ryser [E]</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-THUPC2025-I%E2%80%99m-Here-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">1.  THUPC2025 - I’m Here [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-QOJ8329-Excuse-E"><span class="nav-text">2.  QOJ8329 - Excuse [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1326F2-Wise-Men-K-%E2%AD%90"><span class="nav-text">3.  CF1326F2 - Wise Men [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ2068-Fast-as-Ryser-E"><span class="nav-text">4.  QOJ2068 - Fast as Ryser [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ATxmascon22F-Fast-as-Fast-as-Ryser-K"><span class="nav-text">5.  ATxmascon22F - Fast as Fast as Ryser [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-QOJ4983-Imbalance-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">6.  QOJ4983 - Imbalance [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-QOJ7932-AND-OR-closure-S"><span class="nav-text">7.  QOJ7932 - AND-OR closure [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-QOJ7938-Graph-Race-S"><span class="nav-text">8.  QOJ7938 - Graph Race [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-QOJ5166-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D-K"><span class="nav-text">9.  QOJ5166 - 回文匹配 [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-QOJ8703-%E5%A4%A9%E6%B0%94%E9%A2%84%E6%B5%8B-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">10.  QOJ8703 - 天气预测 [K] ✔️</span></a></li></ol>
 
 	</div>
 </div>
