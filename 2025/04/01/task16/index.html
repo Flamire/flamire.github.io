@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-07T12:19:48.723Z">
+<meta property="article:modified_time" content="2025-05-03T15:03:39.669Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-07 20:19:48</span>
-            <span class="mobile">2025-04-07 20:19:48</span>
+            <span class="desktop">2025-05-03 23:03:39</span>
+            <span class="mobile">2025-05-03 23:03:39</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -291,6 +291,7 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>[TOC]</p>
+<p>有人问了我题号后面的 emoji 是啥意思。</p>
 <h3 id="1-THUPC2025-I’m-Here-E-✔️"><a href="#1-THUPC2025-I’m-Here-E-✔️" class="headerlink" title="1.  THUPC2025 - I’m Here [E] ✔️"></a>1.  THUPC2025 - I’m Here [E] ✔️</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的有根树，保证 $1,2,\cdots,n$ 组成了一个合法的 dfs 序</p>
 <p>第 $i$ 轮你可以进行如下操作：</p>
 <ul>
@@ -388,7 +389,148 @@
               </div>
             </details>
 <hr>
-
+<h3 id="11-CF1662J-Training-Camp-✔️"><a href="#11-CF1662J-Training-Camp-✔️" class="headerlink" title="11.  CF1662J - Training Camp [] ✔️"></a>11.  CF1662J - Training Camp [] ✔️</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n\times n$ 的拉丁方 $a$（权值为 $1\sim n$），每个位置额外有一个 01 权值 $c_{i,j}$，你需要选 $n$ 个位置，使得每行每列恰好选了一个位置，并且对于任意没选的位置 $(x,y)$，满足 $a_{x,y}$ 要么大于第 $x$ 行和第 $y$ 列选的两个数，要么小于第 $x$ 行和第 $y$ 列选的两个数</p>
+<p>求选的位置的 $c$ 之和的最大值</p>
+<p>$1\le n\le128$</p>
+<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑什么样的限制是合法的，那个奇怪的条件没被满足就说明存在一个 $(x,y)$ 使得选的两个数一个大于它一个小于它</p><p>如果我们将大于同行同列的，和小于同行同列的分为两个集合，这个就渐渐有割的形状了</p><p>我们将同行的点值为 $i$ 的向值为 $i+1$ 的连边，那么最后我们这两个集合应该是被选的点割开的</p><p>严谨说明一下：我们要割掉一些点，使得小数与大数不连通，即如果要满足条件，我们的点一定是一个割，如果是割，也一定满足条件</p><p>那么我们对 $n\times n$ 种选择分别拆点，然后每个点像同行同列的值域后继连边，$S$ 向所有值为 $1$ 的位置连边，值为 $n$ 的向 $T$ 连边，最后我们需要割掉一些点使得 $S$ 和 $T$ 连通</p><p>但我们还没有限制其它东西，比如每行每列选一个，和选的 $c$ 之和最大</p><p>这个我们只要给割每个点的代价都加上一个小无穷（ $&gt;n$ ），就限制了这件事情</p><p>复杂度是 $n^2$ 个点，$n^2$ 条边，流量 $n^2$ 的网络流</p>
+              </div>
+            </details>
+<hr>
+<h3 id="12-ATcf17final-I-Full-Tournament-E"><a href="#12-ATcf17final-I-Full-Tournament-E" class="headerlink" title="12.  ATcf17final I - Full Tournament [E]"></a>12.  ATcf17final I - Full Tournament [E]</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>有 $2^n$ 个人依次编号为 $1\sim 2^n$ 排成一排，定义如下的竞技过程，将所有人排名：</p>
+<ul>
+<li>称一个 $i$ 阶竞技为对排成一排的 $2^i$ 个人进行排名的过程</li>
+<li>若 $i=0$，则不会做任何事情，这个人自动排名第一</li>
+<li>否则，从左到右每个 $2i-1$ 位置的人会和 $2i$ 位置的人进行比赛，编号小的一方总会获胜，然后胜者进行 $i-1$ 阶竞技决出第 $1,2,\cdots,2^{i-1}$ 名，败者进行 $i-1$ 阶竞技决出第 $2^{i-1}+1,2^{i-1}+2,\cdots,2^i$ 名</li>
+</ul>
+<p>现在给定一个排名，其中有些位置被挖去，要求还原任何一个满足条件的 $2^n$ 个人的初始顺序，或者判断无解</p>
+<p>$1\le n\le18$</p>
+<h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>下面都将下标减 $1$。</p><p class='h5' id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h5><p><em>我一开始做这道题可能想的有点错，后面补充了一下证明。感觉可能并不一定是最简单的思维方式，但是还是放在这里供大家参考。</em></p><p>我们最后需要构造的是初始顺序，一种简单的想法是让初始顺序中胜者一定排在左边。这是一个很美好的想法，但我们需要证明只考虑这种情况就是正确的。</p><p>事实上，这确实是正确的，如果我们定义胜者总是排在左边的初始顺序是标准的，那么我们说明任意一种可能得到的排名一定可以被一个标准的初始顺序得到，证明如下：</p><p>我们对一个排名，取任意能生成它的初始顺序，我们的目标是将其调整为标准的，设这个初始顺序第一次出现左边输给右边是在第 $i$ 层</p><p>此时所有比赛一定形如：将这个长为 $2^n$ 的序列分成长为 $2^i$ 的块，每块内称左边的 $2^{i-1}$ 个元素组成的序列为 $a$，右边的 $2^{i-1}$ 个元素组成的序列为 $b$，由于下面的层都是左边的人胜，所以第 $i$ 层的所有比赛就是 $a$ 和 $b$ 对位比赛</p><p>此时我们进行如下调整：对于所有 $a_j&gt;b_j$ 的位置 $j$，交换 $a_j$ 和 $b_j$</p><p>这样调整后，如果前 $i-1$ 层仍然满足条件，则可以说明我们 $i$ 步操作后生成的集合一样，后面生成的排名应该也不变</p><p>而前 $i-1$ 层确实是满足条件的，交换完产生的两个序列分别为 $\min(a_j,b_j)$ 和 $\max(a_j,b_j)$，而在 $a_j\ge a_k(k\subseteq j),b_j\ge b_k(k\subseteq j)$ 的条件下，不难发现一定有 $\min(a_j,b_j)\ge\min(a_k,b_k)(k\subseteq j)$，$\max$ 同理</p><p>那么我们就成功地把任意一种初始顺序调整为了标准顺序。</p><p>而手玩容易发现一个标准顺序 $p$ 生成的排名一定就是 $p$ 做蝴蝶变换的结果（二进制位翻转）</p><p>那么我们首先对一开始的排名做一个蝴蝶变换，剩下的条件就是 $a_i\le a_{i\text{ OR } 2^j}$，可以建出一张 DAG</p><p>现在我们的问题就是，给定一张 DAG，上面某些点已经填好了标号，要求将 $1\sim n$ 中剩下的数填上去，使得最后标号形成合法的拓扑序（ $u\rightarrow v$ 则代表 $id_u&gt;id_v$ ）</p><p>这个是可以解决的，我们对每个点求出一个限制条件 $[l_i,r_i]$，表示从已知的信息我们可以推出第 $i$ 个点的标号在 $[l_i,r_i]$ 内，而我们就是要把每个标号匹配一个限制条件，然后再额外满足未知点之间两两满足拓扑序关系</p><p>由于拓扑序靠前的点一定 $l$ 和 $r$ 的限制条件都更大，因此我们按 $r$ 从大到小扫描线，每次贪心选择 $l$ 最大的，多个 $l$ 相同的取下标最大的就是对的</p><p>复杂度 $O(2^nn)$</p><h5 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路"></a>题解思路</h5><p>结论：一个排名合法当且仅当 $\forall i,j,a_i\le a_{i\text{ OR }2^j}$</p><p>必要性：考虑归纳证明，设我们已知 $n^\prime&lt;n$ 的所有 $n^\prime$ 对应的比赛都成立了，那么我们考虑说明 $n$ 阶比赛也满足性质</p><p>首先当 $j=0,1,\cdots,n-2$ 的时候可以通过更小的 $n$ 的结论推出一定成立，接下来考虑证明 $j=n-1$ 的部分：</p><p>考虑最后一轮比赛，我们做的实际上是把两个 $n-1$ 阶比赛的结果对位比较，然后第 $k$ 场比赛由两边排名为 $k$ 的人决出第 $2k$ 和 $2k+1$ 名</p><p>对于一个偶数 $i=2k$，那么最后排名为 $i$ 的人应该是第 $k$ 场比赛的胜者，而排名为 $i+2^{n-1}$ 的人应该是第 $k+2^{n-2}$ 场比赛的胜者</p><p>我们知道左边排名为 $k$ 的要比左边排名为 $k+2^{n-2}$ 的厉害，且右边排名为 $k$ 的要比右边排名为 $k+2^{n-2}$ 的厉害，那么 $i$ 应该就是这四个人中最厉害的，所以 $a_i\le a_{i+2^{n-1}}$</p><p>充分性是容易说明的，只要按蝴蝶变换构造即可</p><p>剩下的部分就和上面是类似的了</p>
+              </div>
+            </details>
+<hr>
+<h3 id="13-QOJ5573-Holiday-Regifting-K-⭐"><a href="#13-QOJ5573-Holiday-Regifting-K-⭐" class="headerlink" title="13.  QOJ5573 - Holiday Regifting [K] ⭐"></a>13.  QOJ5573 - Holiday Regifting [K] ⭐</h3><h4 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h4><p>给定一张 $n$ 个点 $m$ 条边的 DAG，保证 $1,2,\cdots,n$ 为一个合法的拓扑序，每个点有一个容量 $c_i$</p>
+<p>点 $1$ 会不断接受礼物，每接受一个礼物后，礼物会以如下规则传递：</p>
+<ul>
+<li>如果一个点发现自己的礼物个数达到了 $c_i$ 个，那么这个点会给每个出边指向的点恰好传递一个礼物，然后将自己的礼物数清零，保证每个点的 $c_i$ 大于等于出边个数</li>
+</ul>
+<p>礼物在传递过程中点 $1$ 不会继续接受新的礼物</p>
+<p>一开始所有点上都没有礼物，求点 $1$ 接受多少次礼物之后，礼物会再次全部消失，答案对 $998244353$ 取模</p>
+<p>$1\le n\le10^4,0\le m\le3\times10^4,2\le c_i\le10^5$</p>
+<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>很酷。</p><p>直接计算每个点的周期不好算，考虑一种思路：我们逐次加入每个点，然后维护 $1\sim i$ 的整体周期</p><p>那么我们加入一个点的时候，如果我们能计算出来 $f_i$ 表示 $i$ 在一个 $1\sim i-1$ 的周期下会收到多少礼物，那么我们就知道需要给周期乘上 $\frac{f_i}{\gcd(f_i,c_i)}$</p><p>但是 $f_i$ 也很大，我们不好直接求出来，不过注意到我们只需要求出 $f_i\bmod c_i$ 的值即可知道每次需要乘多少</p><p>所以考虑一个分步计算的过程：</p><ul><li>我们不断维护出 $1\sim i$ 周期下，后面的每个点会收到多少礼物，对 $c_i$ 取模</li><li>在求出一个新的 $i$，设 $x=\frac{f_i}{\gcd(f_i,c_i)}$，我们首先需要做的一件事情是将所有 $f_i$ 乘 $x$</li><li>然后按拓扑序依次遍历每个点，对所有出边贡献 $\lfloor\frac {f_i}{c_i}\rfloor$，然后令 $f_i\leftarrow f_i\bmod c_i$</li></ul><p>相当于我们只要满了就贡献给后面的点，这样对 $\bmod c_i$ 的值是不影响的，但是可以控制我们的值域在 $c_i^2$ 以内</p><p>最后总复杂度即为 $O(n^2+nm)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="14-QOJ4217-Graph-Coloring-S"><a href="#14-QOJ4217-Graph-Coloring-S" class="headerlink" title="14.  QOJ4217 - Graph Coloring [S]"></a>14.  QOJ4217 - Graph Coloring [S]</h3><h4 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $n$ 个点的竞赛图，将边染成不超过 $14$ 种颜色，使得不存在两条边 $i\rightarrow j$ 和 $j\rightarrow k$ 同色</p>
+<p>$1\le n\le3000$</p>
+<h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>使用 $\binom{14}7$ 为标号，任意两个不同标号 $i,j$ 一定有一位 $i$ 是 $0$，$j$ 是 $1$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="15-ARC138C-Rotate-and-Play-Game-S"><a href="#15-ARC138C-Rotate-and-Play-Game-S" class="headerlink" title="15.  ARC138C - Rotate and Play Game [S]"></a>15.  ARC138C - Rotate and Play Game [S]</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数列 $a_1,a_2,\cdots,a_n$，一个人和一个波特在上面博弈，人先手：</p>
+<ul>
+<li>每轮人可以任意选一个还没被取过的数把它取掉</li>
+<li>每轮波特会选择下标最小的还没被去过的数把它去掉</li>
+</ul>
+<p>人会在已知波特的策略下最大化选的自己取的数的和，这个即为人的得分</p>
+<p>在所有操作前，你可以选择一个 $k$，将 $a$ 向左循环移位 $k$ 位，求一个使人得分最大的 $k$，以及这个最大的得分</p>
+<p>$2\le n\le2\times10^5,1\le a_i\le10^9$，保证 $n$ 为偶数</p>
+<h4 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>对于一个集合 $S$，人可以选择出这个集合 $S$ 的条件即为：我们创建一个新的数组 $c$，在 $S$ 中的数 $c$ 值都为 $-1$，否则为 $1$，那么 $c$ 的任意前缀和 $\ge-1$</p><p>取出 $a$ 中最大的 $\frac n2$ 个元素作为 $S$，求一个 $c$ 的前缀和数组，将 $c$ 中最小值循环移位到开头即可</p>
+              </div>
+            </details>
+<hr>
+<h3 id="16-QOJ10330-Median-Operations-E"><a href="#16-QOJ10330-Median-Operations-E" class="headerlink" title="16.  QOJ10330 - Median Operations [E]"></a>16.  QOJ10330 - Median Operations [E]</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>给定一个 $1\sim n$ 的排列 $p$，保证 $n$ 为奇数</p>
+<p>你会不断进行如下操作：选择 $p$ 一个长为奇数的子区间，将其中的元素删除，然后在这个位置插入一个这个子区间的中位数</p>
+<p>最后会只剩下一个数，对每个 $k=1,2,\cdots,n$，求是否存在一种操作方式使得剩下的数是 $k$</p>
+<p>$3\le n\le2\times10^5$</p>
+<h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>显然可以变成只有 $-1,0,1$ 的问题。</p><p>结论：对于一个长为奇数的操作区间，我们可以将其拆成若干次长为 $3$ 的操作区间</p><p>结论：对于任意一个只包含 $-1,1$ 的串，经过若干次操作后，其能得到的和一定是一段区间内的所有奇偶性对的数</p><p>我们最后的目标就是要在不操作 $0$ 的情况下，让整个数列和为 $0$，因此我们只要支持单点修改，求出一个区间的最大和最小和即可</p><p>如果我们要最小化 $-1$ 的数量，那么一定是操作所有 $-1,-1,-1$，那么此时剩下可以改变和的就是 $-1,-1,1,-1,-1$ 一样的结构</p><p>处理这个我们可以使用一个栈（<a class="link"   target="_blank" rel="noopener" href="https://flamire.github.io/2023/02/20/task2/#14-AGC022E-Median-Replace-Euclid" >AGC022E - Median Replace<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>）构建一个自动机来处理</p><p>注意到我们最后判断的是两个数加起来是否 $\ge0$，而一个数最小为 $-2$，所以我们 $1$ 的个数需要保留 $0/1/2/3/\ge4$ 个的状态</p><p>用线段树维护，最后的复杂度就是 $O(30n\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="17-QOJ10322-Matching-Query-E"><a href="#17-QOJ10322-Matching-Query-E" class="headerlink" title="17.  QOJ10322 - Matching Query [E]"></a>17.  QOJ10322 - Matching Query [E]</h3><h4 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的序列 $a_1,a_2,\cdots,a_n$，以及一个常数 $m$，$q$ 次修改，每次修改一个单点的值，每次修改之后，输出如下问题的答案：</p>
+<ul>
+<li>建一张 $n$ 个点的图，满足 $1\le u&lt;v\le n$ 之间有边当且仅当 $a_u+1\equiv a_v\pmod m$，注意 $u,v$ 之间有顺序关系，求这张图的最大匹配</li>
+</ul>
+<p>$2\le n\le3\times10^5,1\le q\le3\times10^5,2\le m\le3\times10^5$</p>
+<h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先考察一次询问怎么做。</p><p>如果我们将 $i$ 和 $i+1$ 匹配，那么 $i$ 被使用的肯定是一段前缀，而 $i-1$ 和 $i$ 匹配使用的一定是一段后缀，这刚好不冲突</p><p>那么我们设 $x_i$ 表示有多少 $i$ 和 $i+1$ 匹配了，那么我们对这个 $x$ 的限制就是：$x_i+x_{i-1}\le cnt_i$，并且从左往右第 $j$ 个 $i$ 的位置比从左往右第 $cnt_{i+1}-x_i+j$ 个 $i+1$ 的位置更靠左，这个可以写成一个 $lim_i$ 的形式，即 $x_i\le lim_i$</p><p>问题就划分为了两部分：维护 $cnt_i,lim_i$，和计算这种情况下的最大 $\sum x_i$</p><p>第一部分，$cnt_i$ 是好维护的，考虑如何快速求 $lim_i$：如果我们将 $i$ 都看作 $1$，$i+1$ 都看作 $-1$，那么第 $j$ 个 $i$ 一定比第 $j+k$ 个 $i+1$ 靠左的条件即为所有前缀和都 $\ge-k$</p><p>那么开 $m$ 棵线段树维护一下即可，每次单点修改只会影响 $O(1)$ 个 $lim$ 和 $cnt$ 的值</p><p>第二部分，我们需要支持单点修改 $lim,cnt$，然后求整体的答案</p><p>可以认为这是一个经典问题。</p><p>注意到如果 $m$ 是偶数，那么这个东西是有网络流建模的，我们把奇数的限制从 $S$ 连出，偶数的限制连向 $T$，建一张图，最大流就是我们所求</p><p>如果 $m$ 是奇数，我们可以考虑把每个 $x$ 拆成两个变量 $y,z$，然后连限制 $y_i,z_i\le\frac12lim_i$，$y_i+z_{i+1}\le \frac12 cnt_i$，$z_i+y_{i+1}\le\frac12cnt_i$，这样就变成了一个 $2m$ 的问题</p><p>但是问题就是我们解出来的最优解可能不是整数，但是注意到如果我们最后的最优解有 $.5$ 状物，我们可以把一个 $.5$ 连续段调整成整数，唯一调整不了的情况是所有数都是 $.5$，这种情况我们的最优解就是此时的和 $-0.5$</p><p>也就是说我们把求出来的答案下取整即可</p><p>求最大流可以用线段树模拟最小割，存 $0/1,0/1$ 表示左右的点有没有被割即可</p><p>复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="18-QOJ10321-Inversions-of-PQ-and-QP-E"><a href="#18-QOJ10321-Inversions-of-PQ-and-QP-E" class="headerlink" title="18.  QOJ10321 - Inversions of PQ and QP [E]"></a>18.  QOJ10321 - Inversions of PQ and QP [E]</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>给定 $n,A,B$，请构造两个 $1\sim n$ 的排列 $p,q$，使得：</p>
+<ul>
+<li>$p_{q_1},p_{q_2},\cdots,p_{q_n}$ 的逆序对数为 $A$</li>
+<li>$q_{p_1},q_{p_2},\cdots,q_{p_n}$ 的逆序对数为 $B$</li>
+</ul>
+<p>给出构造或判断无解</p>
+<p>$1\le n\le2\times10^5,0\le A,B\le\frac12n(n-1)$</p>
+<h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑构造出来两个排列 $x_i$ 和 $y_i$，然后再还原出 $p,q$</p><p>这两个排列需要满足什么性质才能还原 $p,q$ 呢，打表可以发现 $x$ 和 $y$ 的环长集合必须一样</p><p>事实上，这也是很符合直接的，考虑 $x$ 中的一个环，它一定是不断走 $q$ 边 $p$ 边走出的一个环，那么错一位之后，就应该对应着一个不断走 $p$ 边 $q$ 边走出的一个环，也就是 $y$ 中的一个环</p><p>这也为我们提供了一个构造方式：直接将 $x,y$ 中所有环找出来，按长度配对叠在一起，每个点的 $p$ 边和 $q$ 边都会被确定恰好一次</p><p>我们只要构造逆序对数满足条件的 $x,y$ 即可</p><p>注意到如果 $A,B$ 不同奇偶那么一定爆了。</p><p>而逆序对数最大值是由 $\lfloor\frac n2\rfloor$ 个大小为 $2$ 的环取到的，这种环长集合能造出的逆序对数最小为 $\lfloor\frac n2\rfloor$，再拼一下 $\lfloor\frac n2\rfloor+1$ 的（具体地，如果 $n$ 为偶数，我们可以直接用 $\frac n2-1$ 来造，否则我们需要使用 $(n-1)/2$ 个长为 $2$ 的环和一个长为 $3$ 的环），我们就已经能造 $\min(A,B)\ge\lfloor\frac n2\rfloor$ 的情况了</p><p>而我们不妨假设 $A$ 很小，那要在能造出逆序对数为 $A$ 的情况下让最大的逆序对数尽可能大，最大的就是对 $i\in[1,A]$ 交换 $i$ 和 $n+1-i$，这种就是最大的</p><p>不在这个范围内的都是无解的，这个和打表得到的结论是契合的</p><p>构造即可。</p>
+              </div>
+            </details>
+<hr>
+<h3 id="19-QOJ10323-2-Power-Rush-K-⭐"><a href="#19-QOJ10323-2-Power-Rush-K-⭐" class="headerlink" title="19.  QOJ10323 - 2-Power Rush [K] ⭐"></a>19.  QOJ10323 - 2-Power Rush [K] ⭐</h3><h4 id="题面-18"><a href="#题面-18" class="headerlink" title="题面"></a>题面</h4><p>定义 $f(n)$ 为：对于所有可重集 $S$，满足 $S$ 中的元素都为 $2$ 的次幂，且 $S$ 中元素和为 $n$，$S$ 中的元素乘积之和</p>
+<p>给定 $T,a,b$，求 $\sum_{i=0}^{T-1}(f(n_i)\bmod 998244353)\oplus i$，其中 $n_i=(ai+b)\bmod2^{30}$</p>
+<p>$1\le T\le10^7,0\le a,b&lt;2^{30}$</p>
+<h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>wonderhoy.</p><p>这个就是询问 $10^7$ 次求单点。</p><p>首先考虑如何求单点，注意到一件事情：对于一个 $n$，如果 $|S|\ge2$，令 $e$ 为使 $2^e&lt;n$ 最大的 $e$，那么我们将 $S$ 升序排序之后一定存在一个前缀的和为 $n-2^e$</p><p>所以我们可以使用一个 dp，令 $f_{i,l,r}$ 表示我们当前 $n=2^i$，且能够使用 $2^l,2^{l+1},\cdots,2^r$，并且必须使用一个 $2^r$</p><p>然后再处理两个数组 $g_{S,i}$ 和 $h_{S,i}$，用高低位拆开</p><p>最后可以做到复杂度 $O(m^3+2^{m/2}m^2+Tm)$，其中 $m=30$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="20-集训队互测-2023-区间切割-E"><a href="#20-集训队互测-2023-区间切割-E" class="headerlink" title="20.  集训队互测 2023 - 区间切割 [E]"></a>20.  集训队互测 2023 - 区间切割 [E]</h3><h4 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个区间 $[l_i,r_i]$，$m$ 次操作，每次操作给定一个正整数 $x_i$，和一个 $[1,n]$ 的子区间 $[L_i,R_i]$，表示将编号在 $[L_i,R_i]$ 内的区间从 $x_i$ 切割，即：</p>
+<ul>
+<li>如果 $x\not\in[l_i,r_i]$，则不作任何改变</li>
+<li>如果 $x\in[l_i,r_i]$，将 $[l_i,r_i]$ 变成 $[l_i,x_i]$ 和 $[x_i,r_i]$ 中较长的，如果长度相等则变成 $[l_i,x_i]$</li>
+</ul>
+<p>求所有操作之后每个区间变成了什么</p>
+<p>$1\le n\le10^5,1\le m\le10^6,1\le l_i\le r_i\le m$，保证 $x$ 为 $1\sim m$ 的排列</p>
+<h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>小 trick 题。</p><p>注意到一件事情，一个区间 $[l,r]$，我们取出其中间的 $\frac13$ 的位置 $[pl,pr]$，如果 $x<pl$ 或 $x>pr$，那么我们取的一定是包含 $[pl,pr]$ 的部分</p><p>有了这件事情之后，维护就变得容易了，我们只要对 $n$ 个区间扫描线，然后每次找到第一个切到 $[pl,pr]$ 的操作模拟即可</p><p>复杂度 $O(n\log^2n+m\log n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="21-LOJ6703-小-Q-的序列-K-✨"><a href="#21-LOJ6703-小-Q-的序列-K-✨" class="headerlink" title="21.  LOJ6703 - 小 Q 的序列 [K] ✨"></a>21.  LOJ6703 - 小 Q 的序列 [K] ✨</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的序列 $c_1,c_2,\cdots,c_n$，求所有非空子序列 $a_1,a_2,\cdots,a_k$ 的 $\prod_{i=1}^k(a_i+i)$ 之和，对 $998244353$ 取模</p>
+<p>$1\le n\le10^5$</p>
+<h4 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>列出 dp 式：$f_{i,j}\leftarrow f_{i-1,j}+(a_i+j)f_{i-1,j-1}$</p><p>翻转一下系数，原来在 $j$ 的变到 $i-j$：$f_{i,j}\leftarrow f_{i-1,j-1}+(a_i+i-j)f_{i-1,j}$</p><p>对每个 $i$ 看成生成函数，那么就是 $F_i\leftarrow (a_i+i+x)F_{i-1}-xF^\prime_{i-1}$</p><p>这个还是不是很好看，有高人说，我们给前面乘上一个多项式 $H$，让所有转移都是齐次的</p><p>令 $G_i=HF_i$，则 $G_i^\prime=H^\prime F_i+HF_i^\prime$</p><p>而我们需要凑出一个 $-xHF_{i-1}^\prime$ 项，也就是说我们需要一个 $-xG_{i-1}^\prime$，而我们想要所有转移都是齐次的，所以我们只能造一个 $(a_i+i)G_{i-1}$，我们列出现在的转移式 $G_i=(a_i+i)G_{i-1}-xG^\prime_{i-1}$，如果 $xHF_{i-1}$ 和 $-xH^\prime F_{i-1}$ 一起消失掉了这就是非常好的</p><p>即我们的 $H$ 应满足 $H^\prime=-H$</p><p>如果你会一些手段，你可以得到 $H=e^{-x}$，但你不会的话也可以直接递推算出来</p><p>此时转移就是 $g_{i,j}\leftarrow (a_i+i-j)g_{i-1,j}$，那么我们只要对每个 $j$ 都求出 $\prod(a_i+i-j)$ 的值，乘上 $e^x$ 就能得到答案了</p><p>这个可以使用多项式多点求值解决。</p><p>复杂度 $O(n\log^2n)$</p>
+              </div>
+            </details>
+<details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>附件 </summary>
+              <div class='content'>
+              <p>多项式多点求值：</p><p>给定 $n$ 次多项式 $F(x)=\sum_{i=0}^nf_ix^i$，以及 $m$ 个数 $a_1,a_2,\cdots,a_m$，求 $F(a_1),F(a_2),\cdots,F(a_m)$</p><p>首先将 $n,m$ 补齐到同一个数，注意到我们这个是一个关于 $f$ 系数的线性变换，也就是说可以写成矩阵的形式，我们要求的即是：</p><script type="math/tex; mode=display">\begin{bmatrix}f_0&f_1&\cdots&f_{n-1}\end{bmatrix}\begin{bmatrix}1&1&1&\cdots&1\\a_0&a_1&a_2&\cdots&a_{n-1}\\a_0^2&a_1^2&a_2^2&\cdots&a_{n-1}^2\\\vdots&\vdots&\vdots&\ddots&\vdots\\a_0^{n-1}&a_1^{n-1}&a_2^{n-1}&\cdots&a_{n-1}^{n-1}\end{bmatrix}</script><p>的各项系数</p><p>而这个我们不会做，可以转置一下：</p><script type="math/tex; mode=display">\begin{bmatrix}f_0&f_1&\cdots&f_{n-1}\end{bmatrix}\begin{bmatrix}1&a_0&a_0^2&\cdots&a_0^{n-1}\\1&a_1&a_1^2&\cdots&a_1^{n-1}\\1&a_2&a_2^2&\cdots&a_2^{n-1}\\\vdots&\vdots&\vdots&\ddots&\vdots\\1&a_{n-1}&a_{n-1}^2&\cdots&a_{n-1}^{n-1}\\\end{bmatrix}</script><p>而这个就是对所有 $k$，求 $\sum_{i=0}^{n-1}f_ia_i^k$，而这个就是 $\sum\frac{f_i}{1-a_ix}$ 的每一项，可以分治维护分式维护，具体地，每层分治有如下的流程：</p><script type="math/tex; mode=display">P(l,r)=P(l,m)\times Q(m+1,r)+Q(l,m)\times P(m+1,r)\\Q(l,r)=Q(l,m)\times Q(m+1,r)</script><p>边界情况是 $P(i,i)=f_i,Q(i,i)=1-a_ix$，最后的答案为 $P(1,n)\times Q(1,n)^{-1}$</p><p>现在我们要对这个过程转置。</p><p>将这个过程转置可以理解为从最后每个答案贡献到一开始的输入</p><p>$Q$ 和 $f$ 无关，所以我们可以一开始求出，转置完了之后即我们每个分治区间 $[l,r]$，穿进去一个多项式 $F$，然后令 向 $[l,m]$ 中传入 $F\times^T Q(m+1,r)$，向 $[m+1,r]$ 中传入 $F\times^T Q(l,m)$</p><p>$\times^T$ 即为多项式乘法的转置，可以发现这就是差卷积</p><p>$F$ 可以只保留到区间长度，所以复杂度是 $O(n\log^2n)$ 的</p>
+              </div>
+            </details>
+<hr>
+<h3 id="22-UR26-铁轨回收-E-✔️"><a href="#22-UR26-铁轨回收-E-✔️" class="headerlink" title="22.  UR26 - 铁轨回收 [E] ✔️"></a>22.  UR26 - 铁轨回收 [E] ✔️</h3><h4 id="题面-21"><a href="#题面-21" class="headerlink" title="题面"></a>题面</h4><p>给定两个长为 $n$ 的数列 $a_i,b_i$，按照 $i=1,2,\cdots,n-1$ 进行如下操作：</p>
+<ul>
+<li>均匀随机选择一个 $j&gt;i$，令 $a_i\leftarrow0,a_j\leftarrow\min(a_i+a_j,b_j)$</li>
+</ul>
+<p>对 $k=0,1,2,\cdots,b_n$，求最后 $a_n=k$ 的概率，对 $998244353$ 取模</p>
+<p>$1\le n\le50,0\le a_i\le b_i\le30$</p>
+<h4 id="题解-21"><a href="#题解-21" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>最后会形成一棵以 $n$ 为根的树，因此我们可以考虑倒着搜这棵树</p><p>搜到一个点 $i$ 时，我们决策这个点的父亲，以及最后这个父亲点上有多少值是从 $i$ 过来的</p><p>具体地，我们认为一个点溢出 $b$ 时，会把更靠前接受过来的值扔掉，那么我们倒着搜，枚举 $i$ 有多少值，就大概已经可以记状态了</p><p>我们设 $(i,S)$ 表示搜到 $i$ 及以后的点，并且当前要求一些点接受的值 $\ge x_i$，所有 $x_i$ 缩起来的状态是 $S$ 的</p><p>每次加一个新点 $i$，我们枚举 $i$ 的值 $\ge x_i$，设连到的父亲点权为 $\ge x_j$，那么我们直接要求其变为 $\ge x_i$ 和 $\ge\max(0,x_j-x_i)$</p><p>但是这样会算重，所以我们应用一下点减边容斥，再额外减去 $\ge x_i+1$ 和 $\ge\max(0,x_j-x_i)$ 的方案数</p><p>写出来发现跑的很快，但是因为哈希表常数太大过不了，状态数还是很少的，因此我们仔细分析一下能生成的状态数</p><p>相当于我们有一个可重集 $S$，一开始为 $0,1,2,\cdots,b_n$ 中的一个，接下来每次我们可以执行如下两种操作的一种：</p><ul><li>选择一个 $v\in S$，将其分成 $x$ 和 $v-x$，满足 $0\le x\le v$</li><li>选择一个 $v\in S$，将其分成 $x+1$ 和 $v-x$，满足 $0\le x&lt;v$</li></ul><p>最后我们要求有哪些集合可以被得到。</p><p>我们给两种操作生成的元素都 $-1$，如果为 $0$ 就扔掉，那么二操作不会改变总和，一操作会让总和变小 $1$，那么就是大小 $\le n-i$，且和 $\le b_n$ 的非负整数可重集数量</p><p>令 $m=b_n$，这个就是 $O(nm^{0.5}\pi(m))$，转移再乘一个 $m$，再乘一个 $n$ 表示考虑了多少，总复杂度是 $O(n^2m^{1.5}\pi(m))$</p><p>这样我们就可以预处理出来所有 $\le m$ 的划分数加或者删去一个点之后会到哪个划分，可以小常数</p>
+              </div>
+            </details>
+<hr>
+<h3 id="23-AGC017F-Zigzag-E-⭐"><a href="#23-AGC017F-Zigzag-E-⭐" class="headerlink" title="23.  AGC017F - Zigzag [E] ⭐"></a>23.  AGC017F - Zigzag [E] ⭐</h3><h4 id="题面-22"><a href="#题面-22" class="headerlink" title="题面"></a>题面</h4><p>一个边长为 $n$ 的正三角形点阵</p>
+<h4 id="题解-22"><a href="#题解-22" class="headerlink" title="题解"></a>题解</h4>
 		</div>
 
 		
@@ -402,7 +544,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-04-07 20:19:48
+                    :</strong> 2025-05-03 23:03:39
             </li>
         
         <li>
@@ -512,7 +654,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task16</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-THUPC2025-I%E2%80%99m-Here-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">1.  THUPC2025 - I’m Here [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-QOJ8329-Excuse-E"><span class="nav-text">2.  QOJ8329 - Excuse [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1326F2-Wise-Men-K-%E2%AD%90"><span class="nav-text">3.  CF1326F2 - Wise Men [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ2068-Fast-as-Ryser-E"><span class="nav-text">4.  QOJ2068 - Fast as Ryser [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ATxmascon22F-Fast-as-Fast-as-Ryser-K"><span class="nav-text">5.  ATxmascon22F - Fast as Fast as Ryser [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-QOJ4983-Imbalance-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">6.  QOJ4983 - Imbalance [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-QOJ7932-AND-OR-closure-S"><span class="nav-text">7.  QOJ7932 - AND-OR closure [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-QOJ7938-Graph-Race-S"><span class="nav-text">8.  QOJ7938 - Graph Race [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-QOJ5166-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D-K"><span class="nav-text">9.  QOJ5166 - 回文匹配 [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-QOJ8703-%E5%A4%A9%E6%B0%94%E9%A2%84%E6%B5%8B-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">10.  QOJ8703 - 天气预测 [K] ✔️</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-THUPC2025-I%E2%80%99m-Here-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">1.  THUPC2025 - I’m Here [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-QOJ8329-Excuse-E"><span class="nav-text">2.  QOJ8329 - Excuse [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1326F2-Wise-Men-K-%E2%AD%90"><span class="nav-text">3.  CF1326F2 - Wise Men [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ2068-Fast-as-Ryser-E"><span class="nav-text">4.  QOJ2068 - Fast as Ryser [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ATxmascon22F-Fast-as-Fast-as-Ryser-K"><span class="nav-text">5.  ATxmascon22F - Fast as Fast as Ryser [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-QOJ4983-Imbalance-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">6.  QOJ4983 - Imbalance [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-QOJ7932-AND-OR-closure-S"><span class="nav-text">7.  QOJ7932 - AND-OR closure [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-QOJ7938-Graph-Race-S"><span class="nav-text">8.  QOJ7938 - Graph Race [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-QOJ5166-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D-K"><span class="nav-text">9.  QOJ5166 - 回文匹配 [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-QOJ8703-%E5%A4%A9%E6%B0%94%E9%A2%84%E6%B5%8B-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">10.  QOJ8703 - 天气预测 [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-CF1662J-Training-Camp-%E2%9C%94%EF%B8%8F"><span class="nav-text">11.  CF1662J - Training Camp [] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-ATcf17final-I-Full-Tournament-E"><span class="nav-text">12.  ATcf17final I - Full Tournament [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-QOJ5573-Holiday-Regifting-K-%E2%AD%90"><span class="nav-text">13.  QOJ5573 - Holiday Regifting [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-QOJ4217-Graph-Coloring-S"><span class="nav-text">14.  QOJ4217 - Graph Coloring [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-ARC138C-Rotate-and-Play-Game-S"><span class="nav-text">15.  ARC138C - Rotate and Play Game [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-QOJ10330-Median-Operations-E"><span class="nav-text">16.  QOJ10330 - Median Operations [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-QOJ10322-Matching-Query-E"><span class="nav-text">17.  QOJ10322 - Matching Query [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-QOJ10321-Inversions-of-PQ-and-QP-E"><span class="nav-text">18.  QOJ10321 - Inversions of PQ and QP [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-QOJ10323-2-Power-Rush-K-%E2%AD%90"><span class="nav-text">19.  QOJ10323 - 2-Power Rush [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E5%8C%BA%E9%97%B4%E5%88%87%E5%89%B2-E"><span class="nav-text">20.  集训队互测 2023 - 区间切割 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-LOJ6703-%E5%B0%8F-Q-%E7%9A%84%E5%BA%8F%E5%88%97-K-%E2%9C%A8"><span class="nav-text">21.  LOJ6703 - 小 Q 的序列 [K] ✨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-UR26-%E9%93%81%E8%BD%A8%E5%9B%9E%E6%94%B6-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">22.  UR26 - 铁轨回收 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-AGC017F-Zigzag-E-%E2%AD%90"><span class="nav-text">23.  AGC017F - Zigzag [E] ⭐</span></a></li></ol>
 
 	</div>
 </div>
