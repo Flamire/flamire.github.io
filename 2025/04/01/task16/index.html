@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-03T15:03:39.669Z">
+<meta property="article:modified_time" content="2025-05-04T03:56:34.884Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-05-03 23:03:39</span>
-            <span class="mobile">2025-05-03 23:03:39</span>
+            <span class="desktop">2025-05-04 11:56:34</span>
+            <span class="mobile">2025-05-04 11:56:34</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -291,7 +291,10 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>[TOC]</p>
-<p>有人问了我题号后面的 emoji 是啥意思。</p>
+<p>有人问了我题号后面的 emoji 是啥意思，大概就是想打了就打了，纯属主观判断，大致打的时候想法是这样的：</p>
+<p>⭐：有一步比较巧妙/我很喜欢的想法的</p>
+<p>✔️：经过一些推导可以慢慢得出来的，或者至少需要做一会的题，我还比较喜欢的</p>
+<p>✨：纯魔法题，我无法理解这是咋来的</p>
 <h3 id="1-THUPC2025-I’m-Here-E-✔️"><a href="#1-THUPC2025-I’m-Here-E-✔️" class="headerlink" title="1.  THUPC2025 - I’m Here [E] ✔️"></a>1.  THUPC2025 - I’m Here [E] ✔️</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的有根树，保证 $1,2,\cdots,n$ 组成了一个合法的 dfs 序</p>
 <p>第 $i$ 轮你可以进行如下操作：</p>
 <ul>
@@ -529,8 +532,57 @@
               </div>
             </details>
 <hr>
-<h3 id="23-AGC017F-Zigzag-E-⭐"><a href="#23-AGC017F-Zigzag-E-⭐" class="headerlink" title="23.  AGC017F - Zigzag [E] ⭐"></a>23.  AGC017F - Zigzag [E] ⭐</h3><h4 id="题面-22"><a href="#题面-22" class="headerlink" title="题面"></a>题面</h4><p>一个边长为 $n$ 的正三角形点阵</p>
-<h4 id="题解-22"><a href="#题解-22" class="headerlink" title="题解"></a>题解</h4>
+<h3 id="23-AGC017F-Zigzag-E-⭐"><a href="#23-AGC017F-Zigzag-E-⭐" class="headerlink" title="23.  AGC017F - Zigzag [E] ⭐"></a>23.  AGC017F - Zigzag [E] ⭐</h3><h4 id="题面-22"><a href="#题面-22" class="headerlink" title="题面"></a>题面</h4><p>一个边长为 $n$ 的正三角形点阵，第 $i$ 行有 $i$ 个点，你需要选 $m$ 条折线，从 $(1,1)$ 出发，每步从 $(i,j)$ 走到 $(i+1,j)$ 或 $(i+1,j+1)$</p>
+<p>你需要满足如下条件：</p>
+<ul>
+<li>对第 $i,j(i&lt;j)$ 条折线，第 $i$ 条折线必须一直非严格在第 $j$ 条折线左边</li>
+<li>额外给定 $k$ 条限制，形如第 $a$ 条折线的第 $b$ 步必须走到 $(i+1,j)/(i+1,j+1)$</li>
+</ul>
+<p>求满足条件的折线数量，对 $10^9+7$ 取模</p>
+<p>$1\le n\le20,1\le m\le20$</p>
+<h4 id="题解-22"><a href="#题解-22" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>直接 dp 需要记的东西有点多，比如我们需要记 $i,j,k,S$，表示当前是第 $i$ 条折线，现在确定了 $j$ 行及以上的决策，且上一条折线 $j$ 行经过的第二维坐标是 $k$，$S$ 表示当前两条折线的状态拼起来</p><p>这样是 $O(n^32^n)$ 的，并且也很丑。</p><p>这个做法的主要问题在于我们需要同时记录两条折线的状态，能不能只记录一条呢？</p><p>那么一个想法就是一点点调整这个 $i-1$ 的折线，把它变成 $i$ 的折线</p><p>具体地，我们按照如下过程调整：</p><ul><li>初始化折线 $X$ 为 $i-1$ 的折线，扫描 $j=1,2,\cdots,n-1$，如果第 $j$ 步 $i$ 和 $X$ 不一样，那么一定是 $X$ 这一步向左，$i$ 这一步向右，那么我们将 $X$ 调整为这一步向右走，然后一直向左走直到和原来的 $X$ 相撞为止，然后继续进行下一个 $j$ 的过程</li></ul><p>容易发现这样确定的过程是唯一的，那么我们就可以对这个列 dp，令 $dp_{i,j,S}$ 表示我们当前考虑第 $i$ 条折线，确定了前 $j$ 位，当前状态为 $S$，转移是 $O(1)$ 的，容易用滚动数组将空间优化到 $O(2^n)$</p><p>总复杂度 $O(n^22^n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="24-AGC018F-Two-Trees-E-⭐"><a href="#24-AGC018F-Two-Trees-E-⭐" class="headerlink" title="24.  AGC018F - Two Trees [E] ⭐"></a>24.  AGC018F - Two Trees [E] ⭐</h3><h4 id="题面-23"><a href="#题面-23" class="headerlink" title="题面"></a>题面</h4><p>给定两棵 $n$ 个点的有根树 $T_1,T_2$，要求构造整数序列 $x_1,x_2,\cdots,x_n$，使得如下条件成立：</p>
+<ul>
+<li>对于任意一棵树 $T\in\{T_1,T_2\}$，任意一个节点 $u\in[1,n]$，都有 $u$ 的子树 $x$ 值和的绝对值为 $1$</li>
+</ul>
+<p>给出构造或判定无解</p>
+<p>$1\le n\le10^5$</p>
+<h4 id="题解-23"><a href="#题解-23" class="headerlink" title="题解"></a>题解</h4><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>令 $s_{1/2,u}$ 表示 $u$ 在 $T_{1/2}$ 中的子树和，那么所有 $s$ 变量的应为 $\pm1$</p><p>问题可以转化为构造一组 $s_{1/2,u}$ 变量，使得其对所有 $u$ 满足：$s_{1,u}-\sum_{v\in ch_{1,u}} s_{1,v}=s_{2,u}-\sum_{v\in ch_{2,u}}s_{2,v}$</p><p>这个看起来有点感觉了，如果我们把 $s$ 变量看成给 $u$ 到父亲的边定向，那么我们两边的东西就都变成 $u$ 的入度减出度了，这个就极大概率是欧拉回路了。</p><p>但是这个相等的限制我们还是不好做，所以我们做一步操作：将第二棵树上所有值取反</p><p>那么现在就是两个点的入度减出度加起来是 $0$，我们直接把这两个点叠起来跑欧拉回路即可，没有说明无解。</p><p>可以额外发现无解的情况就是 $u$ 在两棵树中儿子个数奇偶性不同，这个确实是无解的，进一步验证了我们是对的。</p><p>复杂度 $O(n)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="25-AGC019F-Yes-or-No-E"><a href="#25-AGC019F-Yes-or-No-E" class="headerlink" title="25.  AGC019F - Yes or No [E]"></a>25.  AGC019F - Yes or No [E]</h3><h4 id="题面-24"><a href="#题面-24" class="headerlink" title="题面"></a>题面</h4><p>有 $n+m$ 个判断题，$n$ 个答案为 <code>Yes</code>，$m$ 个答案为 <code>No</code></p>
+<p>你会以均完全随机的顺序收到这些判断题，你现在要猜出来尽可能多的答案，你回答完一道题之后会立刻知道这道题的答案，你会遵循期望答对题数尽可能多的策略，求期望答对的次数，对 $998244353$ 取模</p>
+<p>$1\le n,m\le5\times10^5$</p>
+<h4 id="题解-24"><a href="#题解-24" class="headerlink" title="题解"></a>题解</h4><h5 id="Flamire-做法"><a href="#Flamire-做法" class="headerlink" title="Flamire 做法"></a>Flamire 做法</h5><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>不妨假设 $n&gt;m$，可以发现这个题的答案是什么和你猜的是什么无关，所以你一定会去猜数量更多的那个</p><p>可以发现我们求的就是从 $(0,0)$ 走到 $(n,m)$ 经过下图中红线的数量：</p><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.luogu.com.cn/upload/image_hosting/yiy0gdr4.png"
+                      alt=""
+                ></p><p>但是直接 dp 是不好优化的。</p><p>考虑以经过 $y=x$ 直线的部分给折线分段，枚举两次相邻的经过 $j,i(j&lt;i)$，那么贡献式应该如下：</p><script type="math/tex; mode=display">\sum_{0\le j<i\le m}\binom{2j}{j}C_{i-j-1}(i-j+i-j+1)\binom{n-i+m-i}{n-i}</script><p>其中 $C$ 为卡特兰数</p><p>这个式子可以用卷积优化到 $O(n\log n)$</p><p>最后一次经过之后的式子是可以类似列的，但是只用枚举一个值，所以是 $O(n)$ 的</p><p>总复杂度 $O(n\log n)$</p>
+              </div>
+            </details>
+<h5 id="题解做法"><a href="#题解做法" class="headerlink" title="题解做法"></a>题解做法</h5><details class="red" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.luogu.com.cn/upload/image_hosting/yiy0gdr4.png"
+                      alt=""
+                ></p><p>任意一个折线经过红线的数量就是 $n$ 加上在 $y=x$ 直线向上的步数</p><p>那么就可以 $O(n)$ 算了。</p>
+              </div>
+            </details>
+<hr>
+
 		</div>
 
 		
@@ -544,7 +596,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-05-03 23:03:39
+                    :</strong> 2025-05-04 11:56:34
             </li>
         
         <li>
@@ -654,7 +706,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task16</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-THUPC2025-I%E2%80%99m-Here-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">1.  THUPC2025 - I’m Here [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-QOJ8329-Excuse-E"><span class="nav-text">2.  QOJ8329 - Excuse [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1326F2-Wise-Men-K-%E2%AD%90"><span class="nav-text">3.  CF1326F2 - Wise Men [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ2068-Fast-as-Ryser-E"><span class="nav-text">4.  QOJ2068 - Fast as Ryser [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ATxmascon22F-Fast-as-Fast-as-Ryser-K"><span class="nav-text">5.  ATxmascon22F - Fast as Fast as Ryser [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-QOJ4983-Imbalance-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">6.  QOJ4983 - Imbalance [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-QOJ7932-AND-OR-closure-S"><span class="nav-text">7.  QOJ7932 - AND-OR closure [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-QOJ7938-Graph-Race-S"><span class="nav-text">8.  QOJ7938 - Graph Race [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-QOJ5166-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D-K"><span class="nav-text">9.  QOJ5166 - 回文匹配 [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-QOJ8703-%E5%A4%A9%E6%B0%94%E9%A2%84%E6%B5%8B-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">10.  QOJ8703 - 天气预测 [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-CF1662J-Training-Camp-%E2%9C%94%EF%B8%8F"><span class="nav-text">11.  CF1662J - Training Camp [] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-ATcf17final-I-Full-Tournament-E"><span class="nav-text">12.  ATcf17final I - Full Tournament [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-QOJ5573-Holiday-Regifting-K-%E2%AD%90"><span class="nav-text">13.  QOJ5573 - Holiday Regifting [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-QOJ4217-Graph-Coloring-S"><span class="nav-text">14.  QOJ4217 - Graph Coloring [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-ARC138C-Rotate-and-Play-Game-S"><span class="nav-text">15.  ARC138C - Rotate and Play Game [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-QOJ10330-Median-Operations-E"><span class="nav-text">16.  QOJ10330 - Median Operations [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-QOJ10322-Matching-Query-E"><span class="nav-text">17.  QOJ10322 - Matching Query [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-QOJ10321-Inversions-of-PQ-and-QP-E"><span class="nav-text">18.  QOJ10321 - Inversions of PQ and QP [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-QOJ10323-2-Power-Rush-K-%E2%AD%90"><span class="nav-text">19.  QOJ10323 - 2-Power Rush [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E5%8C%BA%E9%97%B4%E5%88%87%E5%89%B2-E"><span class="nav-text">20.  集训队互测 2023 - 区间切割 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-LOJ6703-%E5%B0%8F-Q-%E7%9A%84%E5%BA%8F%E5%88%97-K-%E2%9C%A8"><span class="nav-text">21.  LOJ6703 - 小 Q 的序列 [K] ✨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-UR26-%E9%93%81%E8%BD%A8%E5%9B%9E%E6%94%B6-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">22.  UR26 - 铁轨回收 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-AGC017F-Zigzag-E-%E2%AD%90"><span class="nav-text">23.  AGC017F - Zigzag [E] ⭐</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-THUPC2025-I%E2%80%99m-Here-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">1.  THUPC2025 - I’m Here [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-QOJ8329-Excuse-E"><span class="nav-text">2.  QOJ8329 - Excuse [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CF1326F2-Wise-Men-K-%E2%AD%90"><span class="nav-text">3.  CF1326F2 - Wise Men [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ2068-Fast-as-Ryser-E"><span class="nav-text">4.  QOJ2068 - Fast as Ryser [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ATxmascon22F-Fast-as-Fast-as-Ryser-K"><span class="nav-text">5.  ATxmascon22F - Fast as Fast as Ryser [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-QOJ4983-Imbalance-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">6.  QOJ4983 - Imbalance [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-QOJ7932-AND-OR-closure-S"><span class="nav-text">7.  QOJ7932 - AND-OR closure [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-QOJ7938-Graph-Race-S"><span class="nav-text">8.  QOJ7938 - Graph Race [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-QOJ5166-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D-K"><span class="nav-text">9.  QOJ5166 - 回文匹配 [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-QOJ8703-%E5%A4%A9%E6%B0%94%E9%A2%84%E6%B5%8B-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">10.  QOJ8703 - 天气预测 [K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-CF1662J-Training-Camp-%E2%9C%94%EF%B8%8F"><span class="nav-text">11.  CF1662J - Training Camp [] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-ATcf17final-I-Full-Tournament-E"><span class="nav-text">12.  ATcf17final I - Full Tournament [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-QOJ5573-Holiday-Regifting-K-%E2%AD%90"><span class="nav-text">13.  QOJ5573 - Holiday Regifting [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-QOJ4217-Graph-Coloring-S"><span class="nav-text">14.  QOJ4217 - Graph Coloring [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-ARC138C-Rotate-and-Play-Game-S"><span class="nav-text">15.  ARC138C - Rotate and Play Game [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-QOJ10330-Median-Operations-E"><span class="nav-text">16.  QOJ10330 - Median Operations [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-QOJ10322-Matching-Query-E"><span class="nav-text">17.  QOJ10322 - Matching Query [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-QOJ10321-Inversions-of-PQ-and-QP-E"><span class="nav-text">18.  QOJ10321 - Inversions of PQ and QP [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-QOJ10323-2-Power-Rush-K-%E2%AD%90"><span class="nav-text">19.  QOJ10323 - 2-Power Rush [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E5%8C%BA%E9%97%B4%E5%88%87%E5%89%B2-E"><span class="nav-text">20.  集训队互测 2023 - 区间切割 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-LOJ6703-%E5%B0%8F-Q-%E7%9A%84%E5%BA%8F%E5%88%97-K-%E2%9C%A8"><span class="nav-text">21.  LOJ6703 - 小 Q 的序列 [K] ✨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-UR26-%E9%93%81%E8%BD%A8%E5%9B%9E%E6%94%B6-E-%E2%9C%94%EF%B8%8F"><span class="nav-text">22.  UR26 - 铁轨回收 [E] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-AGC017F-Zigzag-E-%E2%AD%90"><span class="nav-text">23.  AGC017F - Zigzag [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-AGC018F-Two-Trees-E-%E2%AD%90"><span class="nav-text">24.  AGC018F - Two Trees [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-AGC019F-Yes-or-No-E"><span class="nav-text">25.  AGC019F - Yes or No [E]</span></a></li></ol>
 
 	</div>
 </div>
