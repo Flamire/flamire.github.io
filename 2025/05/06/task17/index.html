@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-05-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-09T05:55:02.211Z">
+<meta property="article:modified_time" content="2025-05-12T11:13:02.864Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-05-09 13:55:02</span>
-            <span class="mobile">2025-05-09 13:55:02</span>
+            <span class="desktop">2025-05-12 19:13:02</span>
+            <span class="mobile">2025-05-12 19:13:02</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -352,6 +352,41 @@
 <p>$1\le n\le2000$</p>
 <h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>TBA</p>
 <hr>
+<h3 id="7-集训队互测-2023-雷同-E-⭐"><a href="#7-集训队互测-2023-雷同-E-⭐" class="headerlink" title="7.  集训队互测 2023 - 雷同 [E] ⭐"></a>7.  集训队互测 2023 - 雷同 [E] ⭐</h3><h4 id="题面-6"><a href="#题面-6" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个物品，每个物品有两个属性 $a_i,c_i$，其中 $a_i$ 由输入给定，$c_i$ 初始为 $0$</p>
+<p>你每次可以指定两个物品 $i,j$，将它们合并，合并会花费 $a_i+a_j+\min(c_i,c_j)$ 的代价，合并完之后新的 $a$ 为 $a_i+a_j$，新的 $c$ 为 $2\max(c_i,c_j)+1$</p>
+<p>求将所有物品合并到一起的最小代价</p>
+<p>多组数据，$\sum n^2\le10^8$</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>合并过程是一棵二叉树，最后的贡献上是 $\sum a_id_i+\sum2^{\min(h_{lc},h_{rc})}-(n-1)$，其中 $d_i$ 为深度</p><p>不难发现如果将 $a$ 升序排序之后，$d$ 一定是递降的，而 $d$ 确定之后，后面 $c$ 带来的贡献就只和树的形态有关</p><p>那么我们只要能够对于一个固定的 $d$ 值，快速求出最优的合并方式，使得 $c$ 的贡献尽可能小</p><p>容易发现这是一个 $d$ 从大到小合并的过程，每次我们会加入一些新点，然后将这些点匹配，从 $2j$ 个点变成 $j$ 个点</p><p>最优的匹配方式就是按照优先深度大的互相匹配，因为可以注意到我们留到后面的子树一定 $h$ 越小越优，而其它合并方式都会被深度大的贪心匹配偏序掉，所以这样就是最优的</p><p>在这种情况下，我们可以列出 dp 状态：$dp_{i,j}$ 表示考虑完前 $i$ 个 $a$，当前还有 $j$ 个节点，一种转移是合并掉一层，从 $dp_{i,j}$ 转移到 $dp_{i,j/2}$，另一种是加一个点，加的新的点会产生 $2^{\text{lowbit}(j)}$ 的 $c$ 值贡献</p><p>复杂度 $O(n^2)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="8-集训队互测-2023-Permutation-Counting-2-E"><a href="#8-集训队互测-2023-Permutation-Counting-2-E" class="headerlink" title="8.  集训队互测 2023 - Permutation Counting 2 [E]"></a>8.  集训队互测 2023 - Permutation Counting 2 [E]</h3><h4 id="题面-7"><a href="#题面-7" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$，求有多少 $1\sim n$ 的排列 $p$ 使得：</p>
+<ul>
+<li>$\sum_{i=1}^{n-1}[p_i&lt;p_{i+1}]=x$</li>
+<li>$\sum_{i=1}^n[p^{-1}_i&lt;p^{-1}_{i+1}]=y$</li>
+</ul>
+<p>对所有 $x,y\in[0,n)$ 求出答案，对给定质数 $MOD$ 取模</p>
+<p>$1\le n\le500,10^9\le MOD\le1.01\times10^9$</p>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>对两个限制同时容斥，那么相当于序列被分为了 $n-x$ 和 $n-y$ 个上升段</p><p>从小到大加入数，相当于我们有 $n-x$ 个数组，我们需要选择一个 $a_1,a_2,\cdots,a_y$，满足 $\sum a=n-y$，每次递增地将它们加入到这 $n-x$ 个数组中</p><p>方案数也即：</p><script type="math/tex; mode=display">\sum_{a_1+a_2+\cdots+a_y=n-y}\prod_{i=1}^k\binom{a_i+x-1}{x-1}</script><p>可以用范德蒙德卷积发现这就是 $\binom{n+xy-1}{xy-1}$</p><p>但是这样会有些段是空的，那么再做一遍二项式反演即可</p><p>最后代码写出来就是 $O(n^2)$ 算一遍组合数，然后做四次二项式反演，非常有趣。</p><p>复杂度 $O(n^3)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="9-集训队互测-2023-没有创意的题目名称-E"><a href="#9-集训队互测-2023-没有创意的题目名称-E" class="headerlink" title="9.  集训队互测 2023 - 没有创意的题目名称 [E]"></a>9.  集训队互测 2023 - 没有创意的题目名称 [E]</h3><h4 id="题面-8"><a href="#题面-8" class="headerlink" title="题面"></a>题面</h4><p>给定一个正整数 $n$ 和一个长为 $n+1$ 的序列 $lim_0,lim_1,\cdots,lim_n$，求有多少长为 $n+1$ 的整数序列 $f_0,f_1,\cdots,f_n$ 满足如下条件：</p>
+<ul>
+<li>对于所有 $0\le i\le n$，$0\le f_i\le lim_i$</li>
+<li>对于任意 $0\le m\le n$，都有 $f_{f_i+f_{m-i}}=f_m$（我们认为 $i&gt;n$ 的位置都满足 $f_i=-1$）</li>
+</ul>
+<p>答案对 $998244353$ 取模</p>
+<p>$1\le n\le2000$</p>
+<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>放弃思考，相信打表。</p><p>当 $lim_i=i$ 的时候答案为 $\frac12n(n+1)+1$，所有合法的序列形如选择两个数 $0\le l\le r\le n$，然后 $0,1,\cdots,l-1$ 后 $[l,r]$ 内的数一直循环</p><p>$f_0=0$ 的时候所有合法序列为选择三个数 $0\le l\le r\le n$，然后先是 $0,1,\cdots,l-1$，之后还是 $r-l+1$ 个一循环，但是循环节内每个数可以选择加上若干倍的 $r-l+1$，使其仍然不超过 $\lfloor\frac n2\rfloor$</p><p>$f_0&gt;0$ 的时候，不妨设 $f_0=c$，那么所有合法的序列为，选择一个 $i|2c$，然后 $i$ 个一循环，循环节如下：</p><ul><li>如果 $i|c$，循环节为 $c,1,2,\cdots,i-1$</li><li>否则循环节为 $c,i/2+1,i/2+2,\cdots,i-1,0,1,\cdots,i/2-1$</li></ul><p>循环节 $[1,i-1]$ 位置上的数均可以加上若干倍的 $i$，需要满足仍然不超过 $\lfloor\frac n2\rfloor$</p><p>之后只要统计不超过 $lim_i$ 的限制方案数即可，复杂度可能可以做到 $O(n^2)$，但 $O(n^3)$ 跑的太快了，我也懒得管了。</p>
+              </div>
+            </details>
 
 		</div>
 
@@ -366,7 +401,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-05-09 13:55:02
+                    :</strong> 2025-05-12 19:13:02
             </li>
         
         <li>
@@ -476,7 +511,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task17</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MX-X12H-%E5%9C%B0%E9%93%81-E"><span class="nav-text">1.  MX-X12H - 地铁 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-AGC020F-Arcs-on-a-Circle-E"><span class="nav-text">2.  AGC020F - Arcs on a Circle [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%A3%AE%E6%9E%97%E6%B8%B8%E6%88%8F-E"><span class="nav-text">3.  集训队互测 2023 - 森林游戏 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ4212-Brackets-E"><span class="nav-text">4.  QOJ4212 - Brackets [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ARC138F-KD-Tree-E"><span class="nav-text">5.  ARC138F - KD Tree [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CF1710D-Recover-the-Tree-E-%E2%AD%90"><span class="nav-text">6.  CF1710D - Recover the Tree [E] ⭐</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MX-X12H-%E5%9C%B0%E9%93%81-E"><span class="nav-text">1.  MX-X12H - 地铁 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-AGC020F-Arcs-on-a-Circle-E"><span class="nav-text">2.  AGC020F - Arcs on a Circle [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%A3%AE%E6%9E%97%E6%B8%B8%E6%88%8F-E"><span class="nav-text">3.  集训队互测 2023 - 森林游戏 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ4212-Brackets-E"><span class="nav-text">4.  QOJ4212 - Brackets [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ARC138F-KD-Tree-E"><span class="nav-text">5.  ARC138F - KD Tree [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CF1710D-Recover-the-Tree-E-%E2%AD%90"><span class="nav-text">6.  CF1710D - Recover the Tree [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E9%9B%B7%E5%90%8C-E-%E2%AD%90"><span class="nav-text">7.  集训队互测 2023 - 雷同 [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-Permutation-Counting-2-E"><span class="nav-text">8.  集训队互测 2023 - Permutation Counting 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%B2%A1%E6%9C%89%E5%88%9B%E6%84%8F%E7%9A%84%E9%A2%98%E7%9B%AE%E5%90%8D%E7%A7%B0-E"><span class="nav-text">9.  集训队互测 2023 - 没有创意的题目名称 [E]</span></a></li></ol>
 
 	</div>
 </div>
