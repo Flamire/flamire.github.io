@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-05-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-12T11:13:02.864Z">
+<meta property="article:modified_time" content="2025-05-13T11:44:54.836Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-05-12 19:13:02</span>
-            <span class="mobile">2025-05-12 19:13:02</span>
+            <span class="desktop">2025-05-13 19:44:54</span>
+            <span class="mobile">2025-05-13 19:44:54</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -371,7 +371,7 @@
 <p>$1\le n\le500,10^9\le MOD\le1.01\times10^9$</p>
 <h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>对两个限制同时容斥，那么相当于序列被分为了 $n-x$ 和 $n-y$ 个上升段</p><p>从小到大加入数，相当于我们有 $n-x$ 个数组，我们需要选择一个 $a_1,a_2,\cdots,a_y$，满足 $\sum a=n-y$，每次递增地将它们加入到这 $n-x$ 个数组中</p><p>方案数也即：</p><script type="math/tex; mode=display">\sum_{a_1+a_2+\cdots+a_y=n-y}\prod_{i=1}^k\binom{a_i+x-1}{x-1}</script><p>可以用范德蒙德卷积发现这就是 $\binom{n+xy-1}{xy-1}$</p><p>但是这样会有些段是空的，那么再做一遍二项式反演即可</p><p>最后代码写出来就是 $O(n^2)$ 算一遍组合数，然后做四次二项式反演，非常有趣。</p><p>复杂度 $O(n^3)$</p>
+              <p>对两个限制同时容斥，那么相当于序列被分为了 $n-x$ 和 $n-y$ 个上升段</p><p>从小到大加入数，相当于我们有 $n-x$ 个数组，我们需要选择一个 $a_1,a_2,\cdots,a_y$，满足 $\sum a=n-y$，每次递增地将它们加入到这 $n-x$ 个数组中</p><p>方案数也即：</p><script type="math/tex; mode=display">\sum_{a_1+a_2+\cdots+a_y=n-y}\prod_{i=1}^k\binom{a_i+x-1}{x-1}</script><p>可以用范德蒙德卷积发现这就是 $\binom{n+xy-1}{xy-1}$</p><p>但是这样会有些段是空的，那么再做一遍二项式反演即可</p><p>最后代码写出来就是 $O(n^2)$ 算一遍组合数，然后做四次二项式反演，很有意思。</p><p>复杂度 $O(n^3)$</p>
               </div>
             </details>
 <hr>
@@ -387,6 +387,24 @@
               <p>放弃思考，相信打表。</p><p>当 $lim_i=i$ 的时候答案为 $\frac12n(n+1)+1$，所有合法的序列形如选择两个数 $0\le l\le r\le n$，然后 $0,1,\cdots,l-1$ 后 $[l,r]$ 内的数一直循环</p><p>$f_0=0$ 的时候所有合法序列为选择三个数 $0\le l\le r\le n$，然后先是 $0,1,\cdots,l-1$，之后还是 $r-l+1$ 个一循环，但是循环节内每个数可以选择加上若干倍的 $r-l+1$，使其仍然不超过 $\lfloor\frac n2\rfloor$</p><p>$f_0&gt;0$ 的时候，不妨设 $f_0=c$，那么所有合法的序列为，选择一个 $i|2c$，然后 $i$ 个一循环，循环节如下：</p><ul><li>如果 $i|c$，循环节为 $c,1,2,\cdots,i-1$</li><li>否则循环节为 $c,i/2+1,i/2+2,\cdots,i-1,0,1,\cdots,i/2-1$</li></ul><p>循环节 $[1,i-1]$ 位置上的数均可以加上若干倍的 $i$，需要满足仍然不超过 $\lfloor\frac n2\rfloor$</p><p>之后只要统计不超过 $lim_i$ 的限制方案数即可，复杂度可能可以做到 $O(n^2)$，但 $O(n^3)$ 跑的太快了，我也懒得管了。</p>
               </div>
             </details>
+<hr>
+<h3 id="10-集训队互测-2023-挑战积和式-K-⭐"><a href="#10-集训队互测-2023-挑战积和式-K-⭐" class="headerlink" title="10.  集训队互测 2023 - 挑战积和式 [K] ⭐"></a>10.  集训队互测 2023 - 挑战积和式 [K] ⭐</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的数组 $a$，请选择一个长为 $k$ 的整数序列 $b$ 满足 $\forall1\le i\le k,b_i\in[1,n]$，求最大的 $\sum_{i=1}^k a_{b_i}-\prod_{i=1}^kb_i$ 的值</p>
+<p>$1\le k,n\le10^6,0\le a_i\le10^9$</p>
+<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>设最优解的和为 $A$，积为 $B$，那么其中的一个元素 $i$ 删掉换成 $1$ 之后会变成 $(A-a_i+a_1,B/b_i)$，这样调整不优当且仅当 $\frac{(a_i-a_1)(b_i-1)}{b_i}&gt;B$，也就是说最优解的 $B$ 应当 $\le2V$</p><p>而 $&gt;1$ 的数最多选 $\log V$ 个，那么我们设一个状态 $dp_{i,j}$ 表示选了 $i$ 个数，乘积为 $j$ 的最大和，这样我们就获得了一个 $O(V\log^2V)$ 的做法</p><p>但是这个还是太高了。</p><p>最后复杂度里不能带 $V$，因此我们可以考虑能不能怎么把乘积分成两半最后合并起来</p><p>引理：对于任意非负实数集合 $S$，满足 $\forall x\in S,0\le x\le\frac23$，$\sum_{x\in S}x\le1$，一定存在一个子集 $T\subseteq S$ 使得 $\frac13\le\sum_{x\in T}x\le\frac23$</p><p>证明：</p><ul><li>如果 $\max S\ge\frac13$，那么我们直接选 $T$ 为这个最大的元素即可</li><li>否则我们将 $S$ 的大小补到偶数，然后从小到大排序，取所有排名为偶数的数作为 $T$ 的元素，此时 $\sum_{x\in T}x$ 显然 $\ge\frac12$，而我们将 $\max S$ 去掉之后可以说明其一定 $\le\frac12(1+\max S)$，即 $\le\frac23$</li></ul><p>那么我们的值域只用保留到 $V^{2/3}$，最后将两个数组合并起来可以用凸包做到线性</p><p>注意到我们上面的说明中只用到了 $|T|=1$ 和 $|T|=\frac k2$，那么我们可以对选的个数快速幂算出，每次转移依然是调和级数的</p><p>那么总复杂度就是 $O(V^{2/3}\log V\log\min(k,\log V))$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="11-CF1707E-Replace-E-⭐"><a href="#11-CF1707E-Replace-E-⭐" class="headerlink" title="11.  CF1707E - Replace [E] ⭐"></a>11.  CF1707E - Replace [E] ⭐</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数列 $a_1,a_2,\cdots,a_n$，定义函数 $f$：输入一个区间 $[l,r]$，返回 $[\min(a[l:r]),\max(a[l:r])]$</p>
+<p>$q$ 次询问，每次给定一个 $l_i,r_i$，求 $[l,r]$ 迭代多少次之后会变成 $[1,n]$，或者判断永远不会变成 $[1,n]$</p>
+<p>$1\le n,q\le10^5,1\le a_i\le n,1\le l_i\le r_i\le n$</p>
+<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到如果两个区间 $[l_1,r_1]\cap[l_2,r_2]\neq\varnothing$，那么 $f([l_1,r_1])\cap f([l_2,r_2])\neq\varnothing$，且 $f([l_1,r_1])\cup f([l_2,r_2])=f([l_1,r_1]\cup[l_2,r_2])$</p><p>证明是容易的。</p><p>那么我们就可以选择一些关键区间，然后倍增处理出这些关键区间经过若干步之后的结果，最后合并起来</p><p>具体地，我们预处理 $to_{u,i,j}$ 表示 $[i,i+2^j]$ 经过 $2^u$ 步之后变成了哪个区间，这样每个询问区间都可以拆成两个关键区间，那么我们询问就是 $O(\log n)$ 的</p><p>总复杂度 $O(n\log^2n+q\log n)$</p>
+              </div>
+            </details>
+<hr>
 
 		</div>
 
@@ -401,7 +419,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-05-12 19:13:02
+                    :</strong> 2025-05-13 19:44:54
             </li>
         
         <li>
@@ -511,7 +529,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task17</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MX-X12H-%E5%9C%B0%E9%93%81-E"><span class="nav-text">1.  MX-X12H - 地铁 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-AGC020F-Arcs-on-a-Circle-E"><span class="nav-text">2.  AGC020F - Arcs on a Circle [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%A3%AE%E6%9E%97%E6%B8%B8%E6%88%8F-E"><span class="nav-text">3.  集训队互测 2023 - 森林游戏 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ4212-Brackets-E"><span class="nav-text">4.  QOJ4212 - Brackets [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ARC138F-KD-Tree-E"><span class="nav-text">5.  ARC138F - KD Tree [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CF1710D-Recover-the-Tree-E-%E2%AD%90"><span class="nav-text">6.  CF1710D - Recover the Tree [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E9%9B%B7%E5%90%8C-E-%E2%AD%90"><span class="nav-text">7.  集训队互测 2023 - 雷同 [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-Permutation-Counting-2-E"><span class="nav-text">8.  集训队互测 2023 - Permutation Counting 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%B2%A1%E6%9C%89%E5%88%9B%E6%84%8F%E7%9A%84%E9%A2%98%E7%9B%AE%E5%90%8D%E7%A7%B0-E"><span class="nav-text">9.  集训队互测 2023 - 没有创意的题目名称 [E]</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MX-X12H-%E5%9C%B0%E9%93%81-E"><span class="nav-text">1.  MX-X12H - 地铁 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-AGC020F-Arcs-on-a-Circle-E"><span class="nav-text">2.  AGC020F - Arcs on a Circle [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%A3%AE%E6%9E%97%E6%B8%B8%E6%88%8F-E"><span class="nav-text">3.  集训队互测 2023 - 森林游戏 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ4212-Brackets-E"><span class="nav-text">4.  QOJ4212 - Brackets [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ARC138F-KD-Tree-E"><span class="nav-text">5.  ARC138F - KD Tree [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CF1710D-Recover-the-Tree-E-%E2%AD%90"><span class="nav-text">6.  CF1710D - Recover the Tree [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E9%9B%B7%E5%90%8C-E-%E2%AD%90"><span class="nav-text">7.  集训队互测 2023 - 雷同 [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-Permutation-Counting-2-E"><span class="nav-text">8.  集训队互测 2023 - Permutation Counting 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%B2%A1%E6%9C%89%E5%88%9B%E6%84%8F%E7%9A%84%E9%A2%98%E7%9B%AE%E5%90%8D%E7%A7%B0-E"><span class="nav-text">9.  集训队互测 2023 - 没有创意的题目名称 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%8C%91%E6%88%98%E7%A7%AF%E5%92%8C%E5%BC%8F-K-%E2%AD%90"><span class="nav-text">10.  集训队互测 2023 - 挑战积和式 [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-CF1707E-Replace-E-%E2%AD%90"><span class="nav-text">11.  CF1707E - Replace [E] ⭐</span></a></li></ol>
 
 	</div>
 </div>
