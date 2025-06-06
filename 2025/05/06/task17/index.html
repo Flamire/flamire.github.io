@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-05-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-13T11:44:54.836Z">
+<meta property="article:modified_time" content="2025-06-06T07:22:42.988Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-05-13 19:44:54</span>
-            <span class="mobile">2025-05-13 19:44:54</span>
+            <span class="desktop">2025-06-06 15:22:42</span>
+            <span class="mobile">2025-06-06 15:22:42</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -295,7 +295,7 @@
 <p>你需要使得每个点都被至少一条折线覆盖，求最小的 $k$，并且要求构造方案</p>
 <p>对于仅求最小 $k$ 的数据：$10^6$ 组询问，$1\le n,m\le10^{18}$</p>
 <p>对于要求构造的数据：$10$ 组询问，$1\le n,m\le1000$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>每条折线要么是左上到右下，要么是左下到右上，不难发现我们可以将其延长到四个角上</p><p>设 $(1,1)$ 出发了 $x$ 条到 $(n,m)$，$(n,1)$ 出发了 $y$ 条到 $(1,m)$</p><p>那么最多覆盖的点数有一个上界：左上角和右下角边长为 $x$ 的等腰三角形显然最多一共有 $x(x-1)$ 个点，另一边同理有 $y(y-1)$ 个点，而中间的部分两边会重复 $xy$ 个点，那么我们能覆盖的点数应该不超过：</p><script type="math/tex; mode=display">y(n+m-2y+1)+x(n+m-2x+1)+x(x-1)+y(y-1)-xy\\=(m+n)(x+y)-x^2-xy-y^2</script><p>减去一个 $nm$ 后这个式子应该 $\ge0$，我们称这个为 $(n,m,x,y)$ 的判别式 $\Delta$</p><p>可以猜测一下这个就是充要条件，写一下可以发现这是对的，注意到 $x,y$ 越靠近越优，我们就能通过仅求最小 $k$ 的部分分</p><p>接下来考虑构造。</p><p>经过充分长时间的手模，可以发现如下事情：</p><p><img  
                      lazyload
@@ -309,7 +309,7 @@
 <h3 id="2-AGC020F-Arcs-on-a-Circle-E"><a href="#2-AGC020F-Arcs-on-a-Circle-E" class="headerlink" title="2.  AGC020F - Arcs on a Circle [E]"></a>2.  AGC020F - Arcs on a Circle [E]</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><p>一个长为 $C$ 的环上随机放 $n$ 段弧，第 $i$ 段弧的长度为 $l_i$，保证 $l_i$ 为整数，每个弧被均匀独立随机地放在圆上的某个实数位置</p>
 <p>求每个点都被弧覆盖的概率，输出浮点数</p>
 <p>$1\le n\le6,1\le C\le50,1\le l_i&lt;C$</p>
-<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>首先我们可以把最大的 $l_i$ 放在序列开头，断环成链</p><p>如果我们已经确定每个弧放的位置的整数部分，那么这个弧一定会覆盖一段 $l_i-1$ 的长度，而它能不能覆盖一个小段就是检查不同弧之间的小数部分大小关系</p><p>因此，只要我们能够提前得知小数部分的大小关系，我们就可以转化成整数上的问题，而小数部分的大小关系可以提前枚举</p><p>枚举大小关系之后我们列一个 dp 状态：$dp_{i,j,S}$ 表示考虑了前 $i$ 个值域上的位置，当前选完的区间覆盖到的最远右端点为 $j$，并且使用的区间集合是 $S$，转移可以做到 $O(1)$</p><p>复杂度 $O((n-1)!2^n(Cn)^2)$</p>
               </div>
@@ -319,7 +319,7 @@
 <p>两个人在上面博弈，每次每人选择一个没有父亲的点，将其删除，得分为自己删除的所有点的点权之和</p>
 <p>两个人都要最大化自己的得分，求最优策略下先手的得分</p>
 <p>$1\le n\le2\times10^5,1\le a_i\le10^9$</p>
-<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>不会做，所以考虑大胆一点。首先把点权变成先手减去后手。</p><p>我们直接仿照树上打怪兽的贪心，每次选点权最大的点出来，认为它一定是紧跟着它父亲后面操作的。</p><p>但是有一点问题：我们合并完的点可能有两种，一种是选完会改变先后手，另一种是不会改变的</p><p>如果选完不会改变先后手，且它的点权还是正的，那么不管是谁操作，都一定会取这个点，这个看起来就很对，所以可以考虑直接和上面合并。</p><p>否则如果选完不会改变先后手，且它的点权是负的，那么这个东西就很没用，我们把这种东西放到最后合并</p><p>如果选完会改变先后手，那么我们就按点权从大到小合并</p><p>具体地，我们按照如下规则给点安排顺序：</p><ul><li>首先是点权非负，且不会改变先后手的点，这些点按照权值从大到小排序</li><li>然后是会改变先后手的点，这些点按照权值从大到小排序</li><li>首先是点权为负，且不会改变先后手的点，这些点按照权值从大到小排序</li></ul><p>每次选出最优先的点和父亲合并即可，正确性不知道</p><p>复杂度 $O(n\log n)$</p>
               </div>
@@ -328,7 +328,7 @@
 <h3 id="4-QOJ4212-Brackets-E"><a href="#4-QOJ4212-Brackets-E" class="headerlink" title="4.  QOJ4212 - Brackets [E]"></a>4.  QOJ4212 - Brackets [E]</h3><h4 id="题面-3"><a href="#题面-3" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $2n$ 的序列 $a$，其中 $1\sim n$ 每个恰好出现两次</p>
 <p>请构造一个字典序最小的长为 $2n$ 的合法括号序列 $s$，使得 $a$ 相等的两个位置在 $s$ 中也相等，或者判断无解</p>
 <p>$1\le n\le2\times10^5$</p>
-<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>贪心：我们从前往后扫，如果将当前这个填成 <code>(</code> 后存在后缀和 $&gt;0$，说明不能这样填，我们就填 <code>)</code>，否则就填 <code>(</code></p><p>如果构造出来解了，那么显然这个解是最大的，否则我们可以说明原问题即无解</p><p>证明：令 $mt_i$ 表示与 $i$ 位置 $a$ 值相等的另一个位置，不妨假设 $i&lt;mt_i$</p><p>如果我们没有构造出来解，我们找到任意一组合法解，从左到右扫每一组相等位置的取值，找到第一个不同的位置，这个位置只能是我们的解构造了 <code>(</code>，而合法解构造了 <code>)</code></p><p>此时我们要说明：我们可以调整合法解使得这个位置取了 <code>)</code></p><p>设这个位置为 $i$，我们可以把合法括号串的判定看成每个左括号去匹配一个它右面的 $1,3,5,\cdots,2n-1$ 位置</p><p>不难发现我们可以调整 $1\sim i-1$ 中的相等对匹配的位置，使得它们匹配是合法位置中最严的</p><p>此时我们找到贪心解中 $mt_i$ 匹配的位置，假设它在合法解中匹配的是 $j,mt_j$，那么 $i$ 一定可以匹配 $j$ 匹配的元素，也就是说我们可以把 $j$ 换成 $i$</p><p>因此上面的贪心就是正确的，复杂度 $O(n\log n)$</p>
               </div>
@@ -341,7 +341,7 @@
 <li>否则，你可以选择一个 $x$，将所有横坐标 $\le x$ 的放在前面递归安排顺序，剩下的东西放在后面递归安排顺序，或者选择一个 $y$，将所有纵坐标 $\le y$ 的放在前面递归安排顺序，剩下的东西放在后面递归安顺序</li>
 </ul>
 <p>$1\le n\le30$</p>
-<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>对第一步操作进行容斥。</p><p>我们选择一个操作的集合 $S$，认为它是第一步就可以操作的，那么这些操作会把平面切成若干个小矩形</p><p>那么可以发现，我们对点的要求就是如果我们把有点的小区域染成黑色，黑色应该是从左下不断向右上移动的</p><p>对这个跑 dp，我们强制一个路径是从左下出发，走到右上角，然后在两个黑色之间必须向上再向右</p><p>定义两个状态，一个 $f$ 表示向上走，$g$ 表示向右走，假设我们要求矩形 $[a,b]\times[c,d]$ 的答案，固定 $a,c$ 后 $f$ 和 $g$ 都只有三维，转移是 $O(n)$ 的</p><p>总复杂度 $O(n^6)$</p>
               </div>
@@ -356,7 +356,7 @@
 <p>你每次可以指定两个物品 $i,j$，将它们合并，合并会花费 $a_i+a_j+\min(c_i,c_j)$ 的代价，合并完之后新的 $a$ 为 $a_i+a_j$，新的 $c$ 为 $2\max(c_i,c_j)+1$</p>
 <p>求将所有物品合并到一起的最小代价</p>
 <p>多组数据，$\sum n^2\le10^8$</p>
-<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>合并过程是一棵二叉树，最后的贡献上是 $\sum a_id_i+\sum2^{\min(h_{lc},h_{rc})}-(n-1)$，其中 $d_i$ 为深度</p><p>不难发现如果将 $a$ 升序排序之后，$d$ 一定是递降的，而 $d$ 确定之后，后面 $c$ 带来的贡献就只和树的形态有关</p><p>那么我们只要能够对于一个固定的 $d$ 值，快速求出最优的合并方式，使得 $c$ 的贡献尽可能小</p><p>容易发现这是一个 $d$ 从大到小合并的过程，每次我们会加入一些新点，然后将这些点匹配，从 $2j$ 个点变成 $j$ 个点</p><p>最优的匹配方式就是按照优先深度大的互相匹配，因为可以注意到我们留到后面的子树一定 $h$ 越小越优，而其它合并方式都会被深度大的贪心匹配偏序掉，所以这样就是最优的</p><p>在这种情况下，我们可以列出 dp 状态：$dp_{i,j}$ 表示考虑完前 $i$ 个 $a$，当前还有 $j$ 个节点，一种转移是合并掉一层，从 $dp_{i,j}$ 转移到 $dp_{i,j/2}$，另一种是加一个点，加的新的点会产生 $2^{\text{lowbit}(j)}$ 的 $c$ 值贡献</p><p>复杂度 $O(n^2)$</p>
               </div>
@@ -369,7 +369,7 @@
 </ul>
 <p>对所有 $x,y\in[0,n)$ 求出答案，对给定质数 $MOD$ 取模</p>
 <p>$1\le n\le500,10^9\le MOD\le1.01\times10^9$</p>
-<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>对两个限制同时容斥，那么相当于序列被分为了 $n-x$ 和 $n-y$ 个上升段</p><p>从小到大加入数，相当于我们有 $n-x$ 个数组，我们需要选择一个 $a_1,a_2,\cdots,a_y$，满足 $\sum a=n-y$，每次递增地将它们加入到这 $n-x$ 个数组中</p><p>方案数也即：</p><script type="math/tex; mode=display">\sum_{a_1+a_2+\cdots+a_y=n-y}\prod_{i=1}^k\binom{a_i+x-1}{x-1}</script><p>可以用范德蒙德卷积发现这就是 $\binom{n+xy-1}{xy-1}$</p><p>但是这样会有些段是空的，那么再做一遍二项式反演即可</p><p>最后代码写出来就是 $O(n^2)$ 算一遍组合数，然后做四次二项式反演，很有意思。</p><p>复杂度 $O(n^3)$</p>
               </div>
@@ -382,7 +382,7 @@
 </ul>
 <p>答案对 $998244353$ 取模</p>
 <p>$1\le n\le2000$</p>
-<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>放弃思考，相信打表。</p><p>当 $lim_i=i$ 的时候答案为 $\frac12n(n+1)+1$，所有合法的序列形如选择两个数 $0\le l\le r\le n$，然后 $0,1,\cdots,l-1$ 后 $[l,r]$ 内的数一直循环</p><p>$f_0=0$ 的时候所有合法序列为选择三个数 $0\le l\le r\le n$，然后先是 $0,1,\cdots,l-1$，之后还是 $r-l+1$ 个一循环，但是循环节内每个数可以选择加上若干倍的 $r-l+1$，使其仍然不超过 $\lfloor\frac n2\rfloor$</p><p>$f_0&gt;0$ 的时候，不妨设 $f_0=c$，那么所有合法的序列为，选择一个 $i|2c$，然后 $i$ 个一循环，循环节如下：</p><ul><li>如果 $i|c$，循环节为 $c,1,2,\cdots,i-1$</li><li>否则循环节为 $c,i/2+1,i/2+2,\cdots,i-1,0,1,\cdots,i/2-1$</li></ul><p>循环节 $[1,i-1]$ 位置上的数均可以加上若干倍的 $i$，需要满足仍然不超过 $\lfloor\frac n2\rfloor$</p><p>之后只要统计不超过 $lim_i$ 的限制方案数即可，复杂度可能可以做到 $O(n^2)$，但 $O(n^3)$ 跑的太快了，我也懒得管了。</p>
               </div>
@@ -390,7 +390,7 @@
 <hr>
 <h3 id="10-集训队互测-2023-挑战积和式-K-⭐"><a href="#10-集训队互测-2023-挑战积和式-K-⭐" class="headerlink" title="10.  集训队互测 2023 - 挑战积和式 [K] ⭐"></a>10.  集训队互测 2023 - 挑战积和式 [K] ⭐</h3><h4 id="题面-9"><a href="#题面-9" class="headerlink" title="题面"></a>题面</h4><p>给定一个长为 $n$ 的数组 $a$，请选择一个长为 $k$ 的整数序列 $b$ 满足 $\forall1\le i\le k,b_i\in[1,n]$，求最大的 $\sum_{i=1}^k a_{b_i}-\prod_{i=1}^kb_i$ 的值</p>
 <p>$1\le k,n\le10^6,0\le a_i\le10^9$</p>
-<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>设最优解的和为 $A$，积为 $B$，那么其中的一个元素 $i$ 删掉换成 $1$ 之后会变成 $(A-a_i+a_1,B/b_i)$，这样调整不优当且仅当 $\frac{(a_i-a_1)(b_i-1)}{b_i}&gt;B$，也就是说最优解的 $B$ 应当 $\le2V$</p><p>而 $&gt;1$ 的数最多选 $\log V$ 个，那么我们设一个状态 $dp_{i,j}$ 表示选了 $i$ 个数，乘积为 $j$ 的最大和，这样我们就获得了一个 $O(V\log^2V)$ 的做法</p><p>但是这个还是太高了。</p><p>最后复杂度里不能带 $V$，因此我们可以考虑能不能怎么把乘积分成两半最后合并起来</p><p>引理：对于任意非负实数集合 $S$，满足 $\forall x\in S,0\le x\le\frac23$，$\sum_{x\in S}x\le1$，一定存在一个子集 $T\subseteq S$ 使得 $\frac13\le\sum_{x\in T}x\le\frac23$</p><p>证明：</p><ul><li>如果 $\max S\ge\frac13$，那么我们直接选 $T$ 为这个最大的元素即可</li><li>否则我们将 $S$ 的大小补到偶数，然后从小到大排序，取所有排名为偶数的数作为 $T$ 的元素，此时 $\sum_{x\in T}x$ 显然 $\ge\frac12$，而我们将 $\max S$ 去掉之后可以说明其一定 $\le\frac12(1+\max S)$，即 $\le\frac23$</li></ul><p>那么我们的值域只用保留到 $V^{2/3}$，最后将两个数组合并起来可以用凸包做到线性</p><p>注意到我们上面的说明中只用到了 $|T|=1$ 和 $|T|=\frac k2$，那么我们可以对选的个数快速幂算出，每次转移依然是调和级数的</p><p>那么总复杂度就是 $O(V^{2/3}\log V\log\min(k,\log V))$</p>
               </div>
@@ -399,13 +399,110 @@
 <h3 id="11-CF1707E-Replace-E-⭐"><a href="#11-CF1707E-Replace-E-⭐" class="headerlink" title="11.  CF1707E - Replace [E] ⭐"></a>11.  CF1707E - Replace [E] ⭐</h3><h4 id="题面-10"><a href="#题面-10" class="headerlink" title="题面"></a>题面</h4><p>给定长为 $n$ 的数列 $a_1,a_2,\cdots,a_n$，定义函数 $f$：输入一个区间 $[l,r]$，返回 $[\min(a[l:r]),\max(a[l:r])]$</p>
 <p>$q$ 次询问，每次给定一个 $l_i,r_i$，求 $[l,r]$ 迭代多少次之后会变成 $[1,n]$，或者判断永远不会变成 $[1,n]$</p>
 <p>$1\le n,q\le10^5,1\le a_i\le n,1\le l_i\le r_i\le n$</p>
-<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+<h4 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
               <p>注意到如果两个区间 $[l_1,r_1]\cap[l_2,r_2]\neq\varnothing$，那么 $f([l_1,r_1])\cap f([l_2,r_2])\neq\varnothing$，且 $f([l_1,r_1])\cup f([l_2,r_2])=f([l_1,r_1]\cup[l_2,r_2])$</p><p>证明是容易的。</p><p>那么我们就可以选择一些关键区间，然后倍增处理出这些关键区间经过若干步之后的结果，最后合并起来</p><p>具体地，我们预处理 $to_{u,i,j}$ 表示 $[i,i+2^j]$ 经过 $2^u$ 步之后变成了哪个区间，这样每个询问区间都可以拆成两个关键区间，那么我们询问就是 $O(\log n)$ 的</p><p>总复杂度 $O(n\log^2n+q\log n)$</p>
               </div>
             </details>
 <hr>
-
+<h3 id="12-CF793E-Problem-of-offices-S"><a href="#12-CF793E-Problem-of-offices-S" class="headerlink" title="12.  CF793E - Problem of offices [S]"></a>12.  CF793E - Problem of offices [S]</h3><h4 id="题面-11"><a href="#题面-11" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的树，根为 $1$，给定四个节点 $A,B,C,D$ 满足它们均为叶子，且两两 lca 为 $1$</p>
+<p>现在取一个欧拉序将其循环无穷多遍，是否可能满足：</p>
+<ul>
+<li>任意两次相邻的 $A,B$ 出现之间间隔的其它叶子个数相等</li>
+<li>任意两次相邻的 $C,D$ 出现之间间隔的其它叶子个数相等</li>
+</ul>
+<p>$5\le n\le5000$</p>
+<h4 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>设两个变量 $x,y$，分别表示 $A,B$ 间的叶子个数和 $C,D$ 间的叶子个数</p><p>可以发现每个子树是否要对 $x,y$ 进行修改是独立的，因此可以分开跑两遍背包</p><p>复杂度 $O(n^2)$ 或 $O(n^2/w)$ 或 $O(n\sqrt n/w)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="13-UNR6-小火车-K-⭐"><a href="#13-UNR6-小火车-K-⭐" class="headerlink" title="13.  UNR6 - 小火车 [K] ⭐"></a>13.  UNR6 - 小火车 [K] ⭐</h3><h4 id="题面-12"><a href="#题面-12" class="headerlink" title="题面"></a>题面</h4><p>给定 $n$ 个整数 $a_1,a_2,\cdots,a_n$，求一个长为 $n$ 的序列 $b$，满足 $b_i\in\{-1,0,1\}$，且 $\sum a_ib_i\equiv0\pmod p$</p>
+<p>保证 $2^n&gt;p$。</p>
+<p>$1\le n\le40,1\le p&lt;2^n,0\le a_i&lt;p$</p>
+<h4 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>我们的问题实际上就是要找两个子集和相等，而 $2^n&gt;p$ 保证了一定存在这样的子集</p><p>在值域上二分。时刻维护一个区间 $[l,r]$，表示和在这个区间内的子集个数 $&gt;r-l+1$，每次从中间分开两边至少有一边个数大于长度</p><p>求子集和在一个区间内的数量可以折半+双指针</p><p>复杂度 $O(2^{n/2}\log p)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="14-CF1483E-Vabank-E"><a href="#14-CF1483E-Vabank-E" class="headerlink" title="14.  CF1483E - Vabank [E]"></a>14.  CF1483E - Vabank [E]</h3><h4 id="题面-13"><a href="#题面-13" class="headerlink" title="题面"></a>题面</h4><p>你想从银行里贪钱。</p>
+<p>你每次操作可以指定一个正整数 $X$，表示你要从银行里贪 $X$ 的钱。</p>
+<p>银行有一个阈值 $M\in[0,10^{14}]$，如果 $X\le M$，那么你会得到 $X$ 块钱，否则你会被罚 $X$ 块钱，如果你的钱数 $&lt;X$，那么你会被警察抓走</p>
+<p>你初始有一块钱，请在不被警察抓走的前提下，$105$ 次操作内求出 $M$ 的值</p>
+<h4 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>首先依次询问 $2^0,2^1,\cdots$，如果被罚钱了立刻停止，这样我们就知道了 $M$ 在 $[2^l,2^{l+1})$ 内</p><p>然后我们在这个区间内二分，假设我们现在知道了 $M\in[L,R]$，我们找到 $[L,R]$ 的中点 $mid$，如果钱数不够 $mid$ 就一直询问 $L$，够 $mid$ 之后就可以询问 $mid$</p><p>这样分析一下次数可以发现是 $2\log V$ 的，总共是 $3\log V$，还是太大了</p><p>改变一下我们的策略，可以发现我们最劣的情况是 $M$ 等于当前二分的左端点 $L$，这种时候我们每次询问 $mid$ 都会失败，钱都会变得很少，因此一个简单的想法就是我们将询问中点向左调一下，但是要怎么调呢？</p><p>由于我们是倍增二分，我们可以假设 $L$ 是远大于 $R-L+1$ 的，所以我们直接将任意剩下来的 $R-L+1$ 量级的钱忽略不计</p><p>这时候我们的钱一定是 $xR+yL$ 的形式，而注意到 $2L\ge R$，所以我们可以将 $y$ 变到 $0/1$</p><p>也就是说，我们将 $R$ 看作 $1$，$L$ 看作 $0.5$，我们就可以得到当前的钱数大于多少倍的 $R$，而这个已经可以记到 dp 状态里了</p><p>令 $dp_{i,j}$ 表示长为 $i$ 的区间，当前钱数是 $R$ 的 $j$ 倍，最少的最坏情况询问次数</p><p>翻转一下状态和值，可以得到一个 $O(\log^2V)$ 的 dp，运行这个 dp 我们就可以求出在这个假设下，一个区间长度的最少询问次数</p><p>每次按照 dp 告诉你的最优转移点去询问即可，实际数据里跑出来是 $101$ 次询问，比官解稍劣一点。</p>
+              </div>
+            </details>
+<hr>
+<h3 id="15-KTSC2025-evolution2-E"><a href="#15-KTSC2025-evolution2-E" class="headerlink" title="15.  KTSC2025 - evolution2 [E]"></a>15.  KTSC2025 - evolution2 [E]</h3><h4 id="题面-14"><a href="#题面-14" class="headerlink" title="题面"></a>题面</h4><p>给定一棵 $n$ 个点的有根树，点有点权 $p$，满足 $p$ 为 $0$ 到 $n-1$ 的排列，且父亲的权值小于儿子的权值。</p>
+<p>你可以向交互库提出询问，每次给定两个整数 $u,v$，交互库会回答 $p_u&lt;p_v$ 是否成立</p>
+<p>设树结构一共有 $P$ 种可能的点权序列符合条件，你需要在 $1.4\log_2P$ 次操作内求出所有 $p$ 的值</p>
+<p>$1\le n\le10000$</p>
+<h4 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h4><details class="" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>green:Sol </summary>
+              <div class='content'>
+              <p>考虑一些极端的情况：</p><p>如果整棵树是一条链，那么 $P=0$，我们需要立刻确定答案</p><p>如果整棵树是一条链，再拼上一个点，那么 $P=n$，我们需要把这个点放到序列里二分</p><p>进一步地，如果整棵树是两条链，长为 $a$ 和 $b$，那么 $P=\binom{a+b}{a}$，我们需要将两个序列通过某种方式归并起来。</p><p>而我们发现，如果我们能在 $k\log_2\binom{a+b}b$ 次操作内归并两个序列，在原树上就直接可以将其变为一条长为 $a+b$ 的链，这样总的 $P$ 就除掉了 $\binom{a+b}a$，也就是说我们可以在 $k\log_2P$ 次操作内解决整个问题</p><p>归并两个序列我写的是，设 $a&lt;b$，每次找到 $a$ 序列中的中点，二分出其在 $b$ 中的位置，然后将 $a,b$ 序列各分为两半左右递归，这样能获得 $91.63104$ 分</p><p>注意到这种策略比较劣的情况是 $a$ 和 $b$ 比较接近的情况，此时我们可以 $a+b-1$ 次操作直接归并</p><p>把 $a+b-1\le 1.4\log_2\binom{a+b}a$ 的情况判掉就可以通过了。</p>
+              </div>
+            </details>
+<hr>
+<h3 id="16-ARC199D-Limestone-K-⭐"><a href="#16-ARC199D-Limestone-K-⭐" class="headerlink" title="16.  ARC199D - Limestone [K] ⭐"></a>16.  ARC199D - Limestone [K] ⭐</h3><h4 id="题面-15"><a href="#题面-15" class="headerlink" title="题面"></a>题面</h4><p>给定 $n,m$，有一个初始全 $0$ 的 $n\times m$ 矩阵 $a$，你可以不断将某一行的前几列赋值成 $1$，或者不断将某一列赋值成 $1$，求对于所有能得到的矩阵 $a$，$a$ 中所有元素之和的和是多少，答案对 $998244353$ 取模</p>
+<p>$1\le nm\le2\times10^5$</p>
+<h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>考虑最后一行的状态，为了唯一计数，不妨假设我们是把第一段极长的 $1$ 用行操作染掉了，那么右边会有一些额外位置是 $1$，这些位置必须一整列都是 $1$，那么我们就可以将这列删掉</p><p>即，我们枚举一个 $x,r$，分别表示极长 $1$ 段的长度，和右边有多少 $1$，算一些系数从 $(i-1,j-r)$ 转移过来</p><p>注意到可以不枚举 $x$，提前预处理系数，总复杂度 $O(nm\min(n,m))$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="17-ARC199A-Flip-Row-or-Col-2-K"><a href="#17-ARC199A-Flip-Row-or-Col-2-K" class="headerlink" title="17.  ARC199A - Flip Row or Col 2 [K]"></a>17.  ARC199A - Flip Row or Col 2 [K]</h3><h4 id="题面-16"><a href="#题面-16" class="headerlink" title="题面"></a>题面</h4><p>给定一个大小为 $n$ 的 $01$ 矩阵，以及两个序列 $r_i,c_i$，保证 $0\le r_i,c_i&lt;\frac n4$，请合适地进行若干次行或列取反操作，使得第 $i$ 行的 $1$ 的个数为 $r_i$，第 $j$ 行 $1$ 的个数为 $c_i$</p>
+<p>给出构造或判断无解</p>
+<p>$1\le n\le1000$</p>
+<h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到我们可以 ban 掉第一行的操作，不改变答案。</p><p>将第一行消为 $0$，此时我们至多进行 $&lt;\frac n4$ 次列操作，对于剩下的每行，如果其 $1$ 的个数 $&gt;\frac n2$，那么我们必须将行取反，否则必须不能取反</p><p>那么现在我们就没有行操作了，每一列 $1$ 的个数必须是 $c_i$ 或 $n-c_i$，相应地执行操作即可</p><p>复杂度 $O(n^2)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="18-EC-Final-2018-Exotic-…-Ancient-City-E-K-✔️"><a href="#18-EC-Final-2018-Exotic-…-Ancient-City-E-K-✔️" class="headerlink" title="18.  EC Final 2018 - Exotic … Ancient City [E/K] ✔️"></a>18.  EC Final 2018 - Exotic … Ancient City [E/K] ✔️</h3><h4 id="题面-17"><a href="#题面-17" class="headerlink" title="题面"></a>题面</h4><p>定义一个 $n\times(m+1)$ 个点的无向图，给定 $e$ 个三元组 $(u_i,v_i,w_i)$，表示对于所有 $1\le j\le m$，$(u_i,j)$ 和 $(v_i,j+1)$ 之间有一条边权为 $w_i$ 的边</p>
+<p>对每个 $k=2,3,\cdots,m+1$，求只保留前 $k$ 列点的图上，最小生成树的权值是多少，保证有解</p>
+<p>$1\le n\le10^5,1\le m\le10^5,1\le e\le2\times10^5,1\le w_i\le30$</p>
+<h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到 $w_i$ 很小，最小生成树有一个求法是对每个 $i$，保留边权 $\le i$ 的边，根据形成的连通块数就能判断出来最少连多少条 $&gt;i$ 的边，全加起来就是最终答案</p><p>首先外层枚举一个 $v$，然后下面我们需要解决的就是加边，每个前缀的连通块数</p><p>如果暴力的话，我们就只需要用并查集不断维护出上一行的连通性，然后加上这一层的边，就知道有多少边是有用的，进而能够推算出连通块数</p><p>进行优化。</p><p>首先考虑如何从上一行的连通性推算出下一行的连通性，可以发现两个点 $(i,x),(i,y)$ 若能只通过 $\le i$ 行的边联通，那么 $(i+1,x),(i+1,y)$ 也能只通过 $\le i+1$ 行的边联通</p><p>考虑从第一行逐次扩展联通性的过程，第一行到第二行时，我们需要将 $(1,i)$ 连向的所有 $(2,?)$ 的点合并起来，这会在联通性上加一些边</p><p>而加的这些边，在第二行扩展到第三行的时候，就相当于我们需要把边端点的两个集合合并，从而又会新加一些边，这样不断扩展下去即可</p><p>而一共只会加 $O(n)$ 次边，因此使用并查集，复杂度是可以均摊的。</p><p>接下来考虑求出每一轮加的边有哪些是有用的，这个我们可以再维护一个并查集，有 $2n$ 个点，初始我们将所有 $(1,u_i)-(2,v_i)$ 加入到并查集中，每次我们加一条边 $(x,y)$ 的时候，就在 $(1,x)-(1,y)$ 加一条边，此时可以通过两个并查集的连通块个数推算出有用的边数</p><p>总复杂度 $O(w(n+m+e)\alpha(n))$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="19-AGC049F-Happy-Sequence-K-✨"><a href="#19-AGC049F-Happy-Sequence-K-✨" class="headerlink" title="19.  AGC049F - Happy Sequence [K] ✨"></a>19.  AGC049F - Happy Sequence [K] ✨</h3><h4 id="题面-18"><a href="#题面-18" class="headerlink" title="题面"></a>题面</h4><p>给定三个长为 $n$ 的非负整数序列 $A,B,C$，你需要求一个对 $A$ 中每个元素进行修改，使得对于任意 $x$，都有 $\sum_{i=1}^n|A_i-x|\le\sum_{i=1}^n|B_i-x|$</p>
+<p>将 $A_i$ 修改为 $t$ 会花费 $C_i(A_i-t)^2$ 的代价，需要满足 $t$ 也是整数，求最小代价和</p>
+<p>$1\le n\le2\times10^5,0\le A_i,B_i\le2\times10^5,1\le C_i\le5$</p>
+<p>加强版：$0\le A_i,B_i\le10^9,1\le C_i\le10^9$</p>
+<h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>太魔法了。</p><p>将 $A_i,B_i$ 排序</p><p>可以观察到最后的序列需要满足 $\sum_{i=1}^nA_i=\sum_{i=1}^nB_i$，也可以观察到 $A_1\ge B_1,A_n\le B_n$</p><p>可以猜出一个性质：题目条件等价于$\sum_{i=1}^p A_i\ge\sum_{i=1}^pB_i$，且 $\sum_{i=1}^nA_i=\sum_{i=1}^nB_i$</p><p>虽然不用这个性质也能做，但是用了会方便一点，称 $f(p)=\sum_{i=1}^pA_i-B_i$，$g(x)=\sum_{i=1}^n|B_i-x|-|A_i-x|$</p><p>证明：</p><p>我们可以证明，$\min g(x)=\min f(p)$</p><p>首先证明 $\min g(x)$ 取到的 $x$ 满足 $\le x$ 的 $A,B $ 数量相等：画出 $g(x)$ 的折线，那么 $g(x)$ 一定开始结尾均斜率为 $0$，且在 $x$ 向右移动的过程中，遇到一个 $B$ 会使斜率 $+2$，遇到一个 $A$ 会使斜率 $-2$，且开头结尾斜率都为 $0$，因此所有极小值的位置一定是某个斜率 $=0$ 的位置，也就是说 $\le x$ 的 $A,B$ 数量相等</p><p>然后证明 $\min f(p)$ 取到的值一定对应某个 $x$，满足 $\le x$ 的 $A,B$ 数量相等：考虑 $f$ 的极小值位置 $i$，必然有 $A_i-B_i\le0,A_{i+1}-B_{i+1}\ge0$，因此取 $x=B_i$ 满足条件</p><p>最后可以验证当 $\le x$ 的 $A,B$ 数量相等时，由于 $\sum_{i=1}^n A_i=\sum_{i=1}^nB_i$，$g$ 和 $f$ 的值确实是相等的，因此得证</p><p>接下来我们都用 $f(p)$ 考虑问题。</p><p>分析操作的性质，由于代价函数是凸的，所以我们可以直接将操作拆成代价为 $C,3C,5C,\cdots$ 的小操作</p><p>如果存在 $x\rightarrow x+1,y\rightarrow y-1$，且 $x+1&gt;y-1$ 的操作，那么我们把这两个操作删了一定更优</p><p>也就是说我们的操作一定满足存在一个分界点 $mid$，使得 $mid$ 左边的东西都向右，$mid$ 右边的东西都向左</p><p>此时可以发现，考察所有操作对每个位置的 $f$ 值的改变，$f(mid)$ 是被增大最多的</p><p>进一步地，考虑最靠右的向右点 $l$，和最靠左的向左点 $r$，那么 $[l,r]$ 内部都是被增大最多的 $f$，而最后这其中一定存在一个 $i$ 满足 $f(i)=0$，否则我们可以将 $l,r$ 操作同时删去 $1$，仍然合法</p><p>而被增大最多却还是 $0$，说明这段区间一定是包含初始 $f$ 的最小值的，因此我们可以找到最开始的最小值 $f(mid)$，然后将 $mid$ 左和 $mid$ 右分为两个单向的子问题</p><p>而对于单向的子问题，考虑固定一个代价 $M$，把所有 $\le M$ 的操作全做掉，然后将每个点看作从此时的出发点，可以向左退掉一些步或向右多走一些步的双向问题，此时上面的结论依然是成立的，所以可以继续下去分治，每层代价范围会减半</p><p>总复杂度为 $O(n\log n\log V)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="20-QOJ9080-Item-Exchange-K-⭐"><a href="#20-QOJ9080-Item-Exchange-K-⭐" class="headerlink" title="20.  QOJ9080 - Item Exchange [K] ⭐"></a>20.  QOJ9080 - Item Exchange [K] ⭐</h3><h4 id="题面-19"><a href="#题面-19" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个人，初始第 $i$ 个人有物品 $i$，并且每个人都有一个 $1\sim n$ 的排列 $w_i$，$w_{i,j}$ 表示第 $i$ 个人对第 $j$ 个物品的喜爱程度</p>
+<p>你需要进行若干次如下操作，使得第 $y$ 个人拥有第 $x$ 个物品：</p>
+<ul>
+<li>选择两个相邻的人 $x,y$，满足这两个人都更喜欢对方手上的物品，然后交换他们的物品</li>
+</ul>
+<p>求是否可能达成，$T$ 组数据</p>
+<p>$1\le n\le200,1\le T\le85$，保证 $n\ge100$ 的数据不超过 $14$ 组</p>
+<h4 id="题解-19"><a href="#题解-19" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>注意到，每个人手上的物品一定是越变越喜欢的。</p><p>注意到，每个物品一定要么向右要么向左。</p><p>假设 $y&lt;x$，注意到，找到最后一个向左的位置 $k$，那么 $&lt;y$ 的位置一定不会动，并且中间一定有恰好 $y-x$ 个向左，$k-x+1$ 个向右，并且我们如果确定了哪些点向左，进行的交换集合就是固定的</p><p>此时我们就有 $O(2^n)$ 的做法了，但我们性质还是太少了，难以优化</p><p>继续观察：对于任意一个 $y&lt;i&lt;k$，我们发现如果固定了它的方向，那么它在任意可行解内向左/向右走到的点都是唯一的</p><p>以向左的情况举例，那么 $y,i$ 必定发生过一次交换，我们找到最大的 $p$ 满足 $p\le\min(i,x)-1$，且 $w_p$ 中 $i$ 比 $y$ 优，$w_{p+1}$ 中 $y$ 比 $i$ 优，则 $y,i$ 一定要在 $p,p+1$ 处交换</p><p>假设 $y,i$ 在某个 $e,e+1$ 位置交换，显然 $e\le x-1$，那么 $[e+1,x]$ 都一定先被 $i$ 经过后被 $y$ 经过，也就是说 $y$ 优于 $i$，而 $w_e$ 中必须 $i$ 优于 $y$，否则无法交换，因此上文中的 $p$ 是唯一可以交换的位置，不存在则该物品无法向左</p><p>对于向右的情况同理。</p><p>现在我们知道每个 $i$ 可以向左走到 $L_i$，或者向右走到 $R_i$，每个 $i$ 只有两种情况，这启示我们使用 2-sat</p><p>考虑加哪些限制。</p><p>注意到选出来的方向一定满足 $L_i$ 要互不相同，且 $R_i$ 要互不相同，可以发现取值数加起来恰好为 $k-y+1$，那么我们只要让任意两个相等的最多选一个，最后一定会每种取值恰有一个</p><p>这之后，我们只要让每次交换都合法即可。</p><p>最后观察一个性质：对于 $y\le i&lt;j\le k$，如果选择了 $i\rightarrow R_i,j\rightarrow L_j$，它们交换的位置是固定的</p><p>这是因为我们知道 $R_i$ 相当于知道了 $i$ 在所有向右中的排名，同理也知道了 $j$ 在所有向左中的排名，它们交换的位置是可以推算出来的，即为 $R_i+L_j-x$</p><p>那么我们对每对 $i,j$，判断一下在 $p=R_i+L_j-x$ 位置交换是否合法，不合法则连边限制它们不能同时取右左</p><p>可以发现这样如果有解，跑出来的解一定 $L,R$ 两两不同，且每一步交换都是合法的，因此为合法方案</p><p>对每个 $k$ 都做一遍，总复杂度 $O(Tn^3)$</p>
+              </div>
+            </details>
+<hr>
+<h3 id="21-QOJ10042-Scheduling-E-K-✔️"><a href="#21-QOJ10042-Scheduling-E-K-✔️" class="headerlink" title="21.  QOJ10042 - Scheduling [E/K] ✔️"></a>21.  QOJ10042 - Scheduling [E/K] ✔️</h3><h4 id="题面-20"><a href="#题面-20" class="headerlink" title="题面"></a>题面</h4><p>有 $n$ 个区间 $[l_i,r_i]$，要求每个区间匹配到一个 $[l_i,r_i]$ 中的位置 $x_i$，并且要求任意两个 $x_i$ 绝对值之差 $\ge2$，给出构造或判断无解</p>
+<p>$1\le n\le2\times10^5$</p>
+<h4 id="题解-20"><a href="#题解-20" class="headerlink" title="题解"></a>题解</h4><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
+              <div class='content'>
+              <p>如果没有不能相邻的限制，那么这个是容易的：我们只要从左到右扫，每次取出右端点最小的位置将其匹配掉</p><p>考虑强行改一下上面的做法，我们维护两个集合 $f_{i,0/1}$，分别表示第 $i$ 个位置选和第 $i$ 个位置不选，得到的右端点集合，那么会有转移：$f_{i,1}\leftarrow f_{i,0},f_{i,0}\leftarrow f_{i-1,0}/f_{i-1,1}$，前一种是好办的，后一种涉及两个状态的比较，不是很好处理</p><p>但是尝试一下可以发现，我们按照任何一种看起来比较有道理的方式比较两个集合，最后都对了</p><p>具体地，我们可以证明如下结论：</p><ul><li>对于任意一个状态 $f_{i,0/1}$，如果其存在合法状态，那么一定有一个集合能够全维偏序同状态的其它所有集合</li><li>对于 $f_{i,0},f_{i,1}$ 都存在合法状态的情况，$f_{i,1}$ 一定能全维偏序 $f_{i,0}$</li></ul><p><details class="green" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Proof </summary>              <div class='content'>              <p>称可以取到状态 $f_{i,0/1}$ 的所有匹配方式（即有哪些区间被选进了匹配）的集合为 $U_{i,0/1}$</p><p>我们证明如下事情：如果 $U_{i,0},U_{i,1}\neq\varnothing$，则 $U_{i,0}\subseteq U_{i,1}$</p><p>对于任意 $U_{i,0}$ 中的集合，设我们是通过选 $S$ 这个集合中的 $x_i$ 将其匹配出来的，我们可以说明可以通过一些调整使得 $S$ 包含 $i$，且仍能匹配原集合</p><p>如果 $S$ 不包含 $i-1$，那么我们直接加上 $i$ 即可</p><p>现在 $S$ 必定包含 $i-1$，如果 $i-1$ 没有匹配区间或者匹配的区间右端点 $\ge i$，那么我们也可以直接调整到 $i$</p><p>因此匹配 $i-1$ 的区间一定右端点 $=i-1$，则其左端点不能为 $i-1$，否则 $U_{i,1}$ 就倒闭了，我们直接选上 $i-2$，用 $i-2$ 替代 $i-1$，这之后如果我们删除掉 $i-1,i-2$ 的位置，这个问题就变成了一个类似的，规模更小的问题，手玩一下可以发现前面的分析依然是成立的，因此得证</p><p>而一开始的两个结论也就可以归纳证明了，相当于是已知 $U_{i-1,0/1}$ 内部有全维偏序，那么根据转移容易推出 $U_{i,0/1}$ 内部也有全维偏序</p>              </div>            </details></p><p>这个直接写就是 $O(n^2)$ 的，瓶颈在于复制 $f_{i,0/1}$，那么额外维护一个 $f^\prime_i$，表示两个集合的交集，当我们需要执行一个复制给另一个时，我们就将两个都清空，将所有内容扔到 $f^\prime_i$ 中，容易做到 $O(n\log n)$</p>
+              </div>
+            </details>
 		</div>
 
 		
@@ -419,7 +516,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-05-13 19:44:54
+                    :</strong> 2025-06-06 15:22:42
             </li>
         
         <li>
@@ -529,7 +626,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">task17</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MX-X12H-%E5%9C%B0%E9%93%81-E"><span class="nav-text">1.  MX-X12H - 地铁 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-AGC020F-Arcs-on-a-Circle-E"><span class="nav-text">2.  AGC020F - Arcs on a Circle [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%A3%AE%E6%9E%97%E6%B8%B8%E6%88%8F-E"><span class="nav-text">3.  集训队互测 2023 - 森林游戏 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ4212-Brackets-E"><span class="nav-text">4.  QOJ4212 - Brackets [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ARC138F-KD-Tree-E"><span class="nav-text">5.  ARC138F - KD Tree [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CF1710D-Recover-the-Tree-E-%E2%AD%90"><span class="nav-text">6.  CF1710D - Recover the Tree [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E9%9B%B7%E5%90%8C-E-%E2%AD%90"><span class="nav-text">7.  集训队互测 2023 - 雷同 [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-Permutation-Counting-2-E"><span class="nav-text">8.  集训队互测 2023 - Permutation Counting 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%B2%A1%E6%9C%89%E5%88%9B%E6%84%8F%E7%9A%84%E9%A2%98%E7%9B%AE%E5%90%8D%E7%A7%B0-E"><span class="nav-text">9.  集训队互测 2023 - 没有创意的题目名称 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%8C%91%E6%88%98%E7%A7%AF%E5%92%8C%E5%BC%8F-K-%E2%AD%90"><span class="nav-text">10.  集训队互测 2023 - 挑战积和式 [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-CF1707E-Replace-E-%E2%AD%90"><span class="nav-text">11.  CF1707E - Replace [E] ⭐</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MX-X12H-%E5%9C%B0%E9%93%81-E"><span class="nav-text">1.  MX-X12H - 地铁 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-AGC020F-Arcs-on-a-Circle-E"><span class="nav-text">2.  AGC020F - Arcs on a Circle [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%A3%AE%E6%9E%97%E6%B8%B8%E6%88%8F-E"><span class="nav-text">3.  集训队互测 2023 - 森林游戏 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-QOJ4212-Brackets-E"><span class="nav-text">4.  QOJ4212 - Brackets [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ARC138F-KD-Tree-E"><span class="nav-text">5.  ARC138F - KD Tree [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CF1710D-Recover-the-Tree-E-%E2%AD%90"><span class="nav-text">6.  CF1710D - Recover the Tree [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E9%9B%B7%E5%90%8C-E-%E2%AD%90"><span class="nav-text">7.  集训队互测 2023 - 雷同 [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-Permutation-Counting-2-E"><span class="nav-text">8.  集训队互测 2023 - Permutation Counting 2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%B2%A1%E6%9C%89%E5%88%9B%E6%84%8F%E7%9A%84%E9%A2%98%E7%9B%AE%E5%90%8D%E7%A7%B0-E"><span class="nav-text">9.  集训队互测 2023 - 没有创意的题目名称 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B-2023-%E6%8C%91%E6%88%98%E7%A7%AF%E5%92%8C%E5%BC%8F-K-%E2%AD%90"><span class="nav-text">10.  集训队互测 2023 - 挑战积和式 [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-CF1707E-Replace-E-%E2%AD%90"><span class="nav-text">11.  CF1707E - Replace [E] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-CF793E-Problem-of-offices-S"><span class="nav-text">12.  CF793E - Problem of offices [S]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-UNR6-%E5%B0%8F%E7%81%AB%E8%BD%A6-K-%E2%AD%90"><span class="nav-text">13.  UNR6 - 小火车 [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-CF1483E-Vabank-E"><span class="nav-text">14.  CF1483E - Vabank [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-KTSC2025-evolution2-E"><span class="nav-text">15.  KTSC2025 - evolution2 [E]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-ARC199D-Limestone-K-%E2%AD%90"><span class="nav-text">16.  ARC199D - Limestone [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-ARC199A-Flip-Row-or-Col-2-K"><span class="nav-text">17.  ARC199A - Flip Row or Col 2 [K]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-EC-Final-2018-Exotic-%E2%80%A6-Ancient-City-E-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">18.  EC Final 2018 - Exotic … Ancient City [E&#x2F;K] ✔️</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-AGC049F-Happy-Sequence-K-%E2%9C%A8"><span class="nav-text">19.  AGC049F - Happy Sequence [K] ✨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-QOJ9080-Item-Exchange-K-%E2%AD%90"><span class="nav-text">20.  QOJ9080 - Item Exchange [K] ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-QOJ10042-Scheduling-E-K-%E2%9C%94%EF%B8%8F"><span class="nav-text">21.  QOJ10042 - Scheduling [E&#x2F;K] ✔️</span></a></li></ol>
 
 	</div>
 </div>
@@ -802,22 +899,6 @@
 
 
 	
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
