@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2022-12-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-05T09:17:50.440Z">
+<meta property="article:modified_time" content="2025-06-26T13:47:41.672Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -262,8 +262,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-05 17:17:50</span>
-            <span class="mobile">2025-03-05 17:17:50</span>
+            <span class="desktop">2025-06-26 21:47:41</span>
+            <span class="mobile">2025-06-26 21:47:41</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -295,7 +295,7 @@
 <h3 id="1-CF1772F2-Magician-and-Pigs-Hard-Version-Keter-⭐"><a href="#1-CF1772F2-Magician-and-Pigs-Hard-Version-Keter-⭐" class="headerlink" title="1.  CF1772F2 - Magician and Pigs (Hard Version) [Keter] ⭐"></a>1.  CF1772F2 - Magician and Pigs (Hard Version) [Keter] ⭐</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n op, op = &#123;</span><br><span class="line"> 1 x, create x HP obj</span><br><span class="line"> 2 x, forall obj -x HP</span><br><span class="line"> 3, repeat all prev op</span><br><span class="line">&#125;</span><br><span class="line">after all op, print #&#123;HP&gt;0 obj&#125;</span><br><span class="line">n[1,8e5], x[1,1e9]</span><br></pre></td></tr></table></figure></div>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><details class="pink" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>Sol </summary>
               <div class='content'>
-              <p>对于之前没有 2 操作的 3 操作，容易处理</p><p>考虑一次操作相当于创建两个平行世界，第一个平行世界中所有 <code>obj</code> 不变，第二个平行世界中所有 <code>obj</code> 都减去某一个定值 $v_i$，这个定值为之前所有 2 操作加上 3 操作的 buff 之后减去的数</p><p>有 $v_i\ge2v_{i-1}$，因此最多有 $O(\log x)$ 次有用的 3 操作，因为如果 $v_i\ge10^9$ 减一次就全寄了</p><p>那么我们相当于对于每一个  1 操作产生的 <code>obj</code>，设它之后的 3 操作的 $v$ 为 $v_1,v_2,\cdots,v_k$，我们要从中选出一个可空的子集使得它的和 $&lt;x$</p><p>由于 $v_i\ge2v_{i-1}$，所以 $\sum_{j<i}v_j<v_i$，因此我们可以定义出一个数的贪心表示方式，用一个二进制数表示，每次从大到小考虑 $v$，如果 $x>v$ 令 $x\leftarrow x-v$，并将二进制数的这一位设为 1，否则设为 0</p><p>不难发现由于有 $\sum_{j&lt;i}v_j&lt;v_i$，$&lt;x$ 的子集个数就是<code>二进制数大小+1</code>（加上空集）</p><p>复杂度 $O(n\log x)$</p>
+              <p>对于之前没有 2 操作的 3 操作，容易处理</p><p>考虑一次操作相当于创建两个平行世界，第一个平行世界中所有 <code>obj</code> 不变，第二个平行世界中所有 <code>obj</code> 都减去某一个定值 $v_i$，这个定值为之前所有 2 操作加上 3 操作的 buff 之后减去的数</p><p>有 $v_i\ge2v_{i-1}$，因此最多有 $O(\log x)$ 次有用的 3 操作，因为如果 $v_i\ge10^9$ 减一次就全寄了</p><p>那么我们相当于对于每一个  1 操作产生的 <code>obj</code>，设它之后的 3 操作的 $v$ 为 $v_1,v_2,\cdots,v_k$，我们要从中选出一个可空的子集使得它的和 $&lt;x$</p><p>由于 $v_i\ge2v_{i-1}$，所以 $\sum_{j &lt; i} v_j<v_i$，因此我们可以定义出一个数的贪心表示方式，用一个二进制数表示，每次从大到小考虑 $v$，如果 $x>v$ 令 $x\leftarrow x-v$，并将二进制数的这一位设为 1，否则设为 0</p><p>不难发现由于有 $\sum_{j&lt;i}v_j&lt;v_i$，$&lt;x$ 的子集个数就是<code>二进制数大小+1</code>（加上空集）</p><p>复杂度 $O(n\log x)$</p>
               </div>
             </details>
 <hr>
@@ -714,7 +714,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-03-05 17:17:50
+                    :</strong> 2025-06-26 21:47:41
             </li>
         
         <li>
@@ -1097,22 +1097,6 @@
 
 
 	
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
