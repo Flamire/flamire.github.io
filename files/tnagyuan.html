@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #2c3e50, #1c2833);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        .info-panel {
+            position: absolute;
+            top: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            transition: opacity 0.5s ease;
+        }
+        
+        .status {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .timer {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .control-btn {
+            position: absolute;
+            bottom: 40px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to right, #2980b9, #3498db);
+        }
+        
+        .control-btn:active {
+            transform: translateY(1px);
+        }
+        
+        /* 雨滴容器 */
+        .rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+        
+        /* 雨滴样式 */
+        .drop {
+            position: absolute;
+            top: -20px;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+            border-radius: 0 0 5px 5px;
+            animation: fall linear infinite;
+        }
+        
+        /* 雨滴溅起效果 */
+        .splash {
+            position: absolute;
+            bottom: 0;
+            width: 15px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            animation: splash linear infinite;
+        }
+        
+        /* 雨滴下落动画 */
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        /* 溅起动画 */
+        @keyframes splash {
+            0% {
+                opacity: 1;
+                transform: scale(0);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+        
+        /* 圣光特效 */
+        .holy-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        /* 汤圆容器 */
+        .tangyuan-container {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 140px;
+            height: 140px;
+            z-index: 20;
+            transition: transform 0.5s ease;
+        }
+        
+        /* 汤圆 */
+        .tangyuan {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #f8f8f8;
+            border-radius: 50%;
+            box-shadow: 
+                0 0 20px rgba(0, 0, 0, 0.1),
+                inset -8px -8px 15px rgba(0, 0, 0, 0.05),
+                inset 8px 8px 15px rgba(255, 255, 255, 0.9);
+            transition: all 2s ease;
+            overflow: hidden;
+        }
+        
+        /* 汤圆名字 */
+        .tangyuan-name {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+            z-index: 25;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transform: rotate(15deg);
+        }
+        
+        /* 芝麻糊 */
+        .sesame-paste {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 0;
+            background: linear-gradient(to top, #1a1a1a, #2a2a2a);
+            border-radius: 60px 60px 0 0;
+            transition: height 3s ease;
+        }
+        
+        /* 漏芝麻糊的孔 */
+        .leak-hole {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 16;
+        }
+        
+        /* 汤圆变湿效果 */
+        .tangyuan.wet {
+            width: 105px;
+            height: 95px;
+            background: #e8e8e8;
+            box-shadow: 
+                0 0 20px rgba(0, 0, 0, 0.2),
+                inset -12px -12px 20px rgba(0, 0, 0, 0.1),
+                inset 12px 12px 20px rgba(255, 255, 255, 0.7);
+        }
+        
+        /* 汤圆变蔫效果 */
+        .tangyuan.wilted {
+            width: 110px;
+            height: 90px;
+            background: #d8d8d8;
+            box-shadow: 
+                0 0 15px rgba(0, 0, 0, 0.3),
+                inset -15px -15px 25px rgba(0, 0, 0, 0.15),
+                inset 15px 15px 25px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* 喷射的芝麻糊 */
+        .sesame-drop {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 15;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            animation: sesame-shoot linear forwards;
+        }
+        
+        /* 芝麻糊喷射动画 */
+        @keyframes sesame-shoot {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            70% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.2);
+                opacity: 0;
+            }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .info-panel {
+                top: 15px;
+                padding: 12px 20px;
+            }
+            
+            .status {
+                font-size: 1.1rem;
+            }
+            
+            .timer {
+                font-size: 0.9rem;
+            }
+            
+            .control-btn {
+                padding: 10px 25px;
+                font-size: 1rem;
+                bottom: 30px;
+            }
+            
+            .tangyuan-container {
+                right: 20px;
+                bottom: 20px;
+                width: 120px;
+                height: 120px;
+            }
+            
+            .tangyuan {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .tangyuan.wet {
+                width: 85px;
+                height: 75px;
+            }
+            
+            .tangyuan.wilted {
+                width: 90px;
+                height: 70px;
+            }
+            
+            .sesame-paste {
+                width: 50px;
+            }
+            
+            .tangyuan-name {
+                font-size: 1.2rem;
+            }
+            
+            .leak-hole {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .sesame-drop {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="info-panel">
+        <div class="status" id="status">当前状态：等待下雨</div>
+        <div class="timer" id="timer"></div>
+    </div>
+    
+    <button class="control-btn" id="rainControl">等雨停</button>
+    
+    <div class="rain" id="rainContainer"></div>
+    
+    <!-- 圣光特效 -->
+    <div class="holy-light" id="holyLight"></div>
+    
+    <!-- 汤圆 -->
+    <div class="tangyuan-container" id="tangyuanContainer">
+        <div class="tangyuan" id="tangyuan">
+            <div class="sesame-paste" id="sesamePaste"></div>
+            <div class="leak-hole" id="leakHole"></div>
+        </div>
+        <div class="tangyuan-name">🍭🔵</div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rainContainer = document.getElementById('rainContainer');
+            const rainControl = document.getElementById('rainControl');
+            const statusElement = document.getElementById('status');
+            const timerElement = document.getElementById('timer');
+            const holyLight = document.getElementById('holyLight');
+            const tangyuan = document.getElementById('tangyuan');
+            const sesamePaste = document.getElementById('sesamePaste');
+            const tangyuanContainer = document.getElementById('tangyuanContainer');
+            const leakHole = document.getElementById('leakHole');
+            
+            let rainInterval;
+            let sesameInterval;
+            let isRaining = false;
+            let rainStartTime = 0;
+            let rainStopTime = 0;
+            let rainTimer = null;
+            let rainDuration = 0;
+            let wetnessLevel = 0;
+            let moveDirection = { x: 0.5, y: 0.5 };
+            let moveInterval;
+            let sesameDrops = [];
+            
+            // 新增变量
+            let rotationAngle = 0.0; // 汤圆旋转角度（弧度）
+            let rotationSpeed = 0.0; // 旋转速度（弧度/帧）
+            const initialSpeed = 0.8; // 初始速度大小
+            let isSlowingDown = false; // 是否正在减速
+            
+            // 初始化随机移动方向
+            function initMoveDirection() {
+                moveDirection = {
+                    x: (Math.random() - 0.5) * initialSpeed,
+                    y: (Math.random() - 0.5) * initialSpeed
+                };
+            }
+            
+            // 移动汤圆
+            function moveTangyuan() {
+                const container = tangyuanContainer;
+                const rect = container.getBoundingClientRect();
+                
+                // 获取当前位置
+                let currentX = parseFloat(container.style.left || (window.innerWidth - rect.width - 40));
+                let currentY = parseFloat(container.style.top || (window.innerHeight - rect.height - 40));
+                
+                // 雨停时逐渐减速
+                if (isSlowingDown) {
+                    const speed = Math.sqrt(moveDirection.x * moveDirection.x + moveDirection.y * moveDirection.y);
+                    if (speed > (isRaining ? 10 : 0.5)) {
+                        // 减速因子
+                        const deceleration = 0.95;
+                        moveDirection.x *= deceleration;
+                        moveDirection.y *= deceleration;
+                    } else {
+                        // 速度足够小后停止减速
+                        isSlowingDown = false;
+                    }
+                }
+                
+                // 计算新位置
+                let newX = currentX + moveDirection.x;
+                let newY = currentY + moveDirection.y;
+                
+                // 边界检测
+                if (newX <= 0 || newX >= window.innerWidth - rect.width) {
+                    moveDirection.x *= -1;
+                    newX = Math.max(0, Math.min(newX, window.innerWidth - rect.width));
+                }
+                
+                if (newY <= 0 || newY >= window.innerHeight - rect.height) {
+                    moveDirection.y *= -1;
+                    newY = Math.max(0, Math.min(newY, window.innerHeight - rect.height));
+                }
+                
+                // 应用新位置
+                container.style.left = newX + 'px';
+                container.style.top = newY + 'px';
+                
+                rotationSpeed = Math.max(rotationSpeed,-Math.PI/100);
+                rotationSpeed = Math.min(rotationSpeed,Math.PI/100);
+                // 更新旋转
+                rotationAngle += rotationSpeed;
+                // 应用旋转
+                tangyuanContainer.style.transform = `rotate(${rotationAngle}rad)`;
+            }
+            
+            // 创建雨滴
+            function createRain() {
+                const drop = document.createElement('div');
+                drop.classList.add('drop');
+                
+                // 随机雨滴属性
+                const left = Math.random() * 100;
+                const animationDuration = (Math.random() * 0.5) + 0.5;
+                const animationDelay = Math.random() * 2;
+                const dropHeight = Math.random() * 10 + 10;
+                
+                // 设置雨滴样式
+                drop.style.left = left + 'vw';
+                drop.style.height = dropHeight + 'px';
+                drop.style.animationDuration = animationDuration + 's';
+                drop.style.animationDelay = animationDelay + 's';
+                
+                // 添加到容器
+                rainContainer.appendChild(drop);
+                
+                // 创建溅起效果
+                const splash = document.createElement('div');
+                splash.classList.add('splash');
+                splash.style.left = (left - 1) + 'vw';
+                splash.style.animationDuration = (animationDuration * 0.5) + 's';
+                splash.style.animationDelay = (animationDuration + animationDelay) + 's';
+                
+                rainContainer.appendChild(splash);
+                
+                // 动画结束后移除元素
+                setTimeout(() => {
+                    drop.remove();
+                    splash.remove();
+                }, (animationDuration + animationDelay) * 1000 + 1000);
+            }
+            
+            // 喷射芝麻糊
+            function shootSesamePaste() {
+                const containerRect = tangyuanContainer.getBoundingClientRect();
+                const centerX = containerRect.left + containerRect.width / 2;
+                const centerY = containerRect.top + containerRect.height / 2;
+                
+                // 计算漏孔位置（考虑旋转角度）
+                const leakHoleDistance = 40; // 漏孔距离中心的距离
+                const leakHoleX = centerX + Math.sin(rotationAngle) * leakHoleDistance;
+                // const leakHoleY = centerY - Math.cos(rotationAngle) * leakHoleDistance;
+                const leakHoleY = centerY - Math.cos(rotationAngle) * leakHoleDistance;
+                
+                // 创建多个芝麻糊滴
+                const dropCount = 3 + Math.floor(wetnessLevel * 5); // 3-8滴
+                
+                for (let i = 0; i < dropCount; i++) {
+                    // triggerHolyLight();
+                    const drop = document.createElement('div');
+                    drop.classList.add('sesame-drop');
+                    
+                    // 随机大小
+                    const size = 10 + Math.random() * 10;
+                    
+                    // 设置初始位置
+                    drop.style.left = leakHoleX + 'px';
+                    drop.style.top = leakHoleY + 'px';
+                    drop.style.width = size + 'px';
+                    drop.style.height = size + 'px';
+                    
+                    document.body.appendChild(drop);
+                    sesameDrops.push(drop);
+                    
+                    // 喷射方向（考虑旋转角度）
+                    const baseAngle = rotationAngle + Math.PI / 2; // 从漏孔向外喷射
+                    const randomAngle = (Math.random() - 0.5) * Math.PI/4; // 随机偏移
+                    const angle = baseAngle + randomAngle;
+                    const distance = 100 + wetnessLevel * 300;
+                    
+                    // 计算目标位置
+                    const targetX = Math.cos(angle) * distance;
+                    const targetY = Math.sin(angle) * distance;
+                    
+                    // 设置CSS变量用于动画
+                    drop.style.setProperty('--tx', `${targetX}px`);
+                    drop.style.setProperty('--ty', `${targetY}px`);
+                    
+                    // 设置动画持续时间和延迟
+                    const duration = 800 + wetnessLevel * 1200;
+                    drop.style.animationDuration = `${duration}ms`;
+                    
+                    // 动画结束后移除
+                    setTimeout(() => {
+                        drop.remove();
+                        sesameDrops = sesameDrops.filter(d => d !== drop);
+                    }, duration);
+                    
+                    // 喷射反作用力 - 改变汤圆移动方向和旋转
+                    if (wetnessLevel > 0.7) {
+                        // 移动反作用力
+                        moveDirection.x -= Math.cos(angle) * 0.02 * wetnessLevel;
+                        moveDirection.y -= Math.sin(angle) * 0.02 * wetnessLevel;
+                        isSlowingDown = true;
+                    }
+                }
+                if (wetnessLevel > 0.7) {
+                    // 旋转反作用力
+                    rotationSpeed += (Math.random() - 0.5) * 0.02 * wetnessLevel;
+                }
+            }
+            
+            // 更新汤圆状态
+            function updateTangyuan() {
+                // 清除之前的类
+                tangyuan.classList.remove('wet', 'wilted');
+                
+                // 根据湿润程度更新汤圆状态
+                if (wetnessLevel > 0.3) {
+                    tangyuan.classList.add('wet');
+                }
+                
+                if (wetnessLevel > 0.6) {
+                    tangyuan.classList.add('wilted');
+                    // 显示漏孔
+                    leakHole.style.opacity = "1";
+                } else {
+                    leakHole.style.opacity = "0";
+                }
+                
+                // 根据湿润程度更新芝麻糊泄漏
+                sesamePaste.style.height = (wetnessLevel > 0.8 ? (wetnessLevel - 0.8) * 60 : 0) + 'px';
+            }
+            
+            // 开始下雨
+            function startRaining() {
+                if (isRaining) return;
+                
+                isRaining = true;
+                isSlowingDown = false;
+                rainStartTime = Date.now();
+                rainContainer.style.opacity = "1";
+                statusElement.textContent = "当前状态：正在下雨";
+                
+                // 开始计时
+                if (rainTimer) clearInterval(rainTimer);
+                rainTimer = setInterval(updateTimer, 100);
+                
+                // 开始移动汤圆
+                if (moveInterval) clearInterval(moveInterval);
+                moveInterval = setInterval(moveTangyuan, 30);
+                
+                // 创建雨滴
+                rainInterval = setInterval(() => {
+                    for (let i = 0; i < 5; i++) {
+                        createRain();
+                    }
+                }, 100);
+                
+                // 开始喷射芝麻糊
+                if (sesameInterval) clearInterval(sesameInterval);
+                startSesameShooting();
+            }
+            
+            // 开始喷射芝麻糊
+            function startSesameShooting() {
+                sesameInterval = setInterval(() => {
+                    if (wetnessLevel > 0.6) {
+                        // 喷射频率随湿润度增加
+                        const interval = Math.max(100, 500 - wetnessLevel * 400);
+                        shootSesamePaste();
+                    }
+                }, 100); // 固定频率，但每次喷射多个芝麻糊滴
+            }
+            
+            // 停止下雨
+            function stopRaining() {
+                if (!isRaining) return;
+                
+                isRaining = false;
+                isSlowingDown = true; // 开始减速
+                rainStopTime = Date.now();
+                clearInterval(rainInterval);
+                clearInterval(sesameInterval);
+                rainContainer.style.opacity = "0";
+                
+                // 计算下雨时间
+                rainDuration = ((rainStopTime - rainStartTime) / 1000).toFixed(2);
+                statusElement.textContent = `雨停了，雨一共下了 ${rainDuration} 秒`;
+                
+                // 触发圣光特效
+                triggerHolyLight();
+                
+                // 重置汤圆状态但不重置位置
+                resetTangyuan();
+                
+                // 设置下一次下雨的随机时间
+                const nextRainTime = Math.random() * 10000 + 5000; // 5-15秒
+                setTimeout(startRaining, nextRainTime);
+            }
+            
+            // 触发圣光特效
+            function triggerHolyLight() {
+                holyLight.style.opacity = "1";
+                
+                // 使用Web Animations API创建动画
+                holyLight.animate([
+                    { opacity: 0.8 },
+                    { opacity: 0 }
+                ], {
+                    duration: 1500,
+                    easing: 'ease-out'
+                });
+                
+                // 1.5秒后完全隐藏
+                setTimeout(() => {
+                    holyLight.style.opacity = "0";
+                }, 1500);
+            }
+            
+            // 重置汤圆状态
+            function resetTangyuan() {
+                wetnessLevel = 0;
+                rotationSpeed = 0; // 重置旋转速度
+                updateTangyuan();
+                
+                // 清除所有芝麻糊滴
+                sesameDrops.forEach(drop => drop.remove());
+                sesameDrops = [];
+            }
+            
+            // 更新计时器显示
+            function updateTimer() {
+                const currentTime = Date.now();
+                let elapsedTime;
+                
+                if (isRaining) {
+                    elapsedTime = ((currentTime - rainStartTime) / 1000).toFixed(2);
+                    timerElement.textContent = `下雨时间：${elapsedTime} 秒`;
+                    
+                    // 更新汤圆湿润程度（最多到1.0）
+                    wetnessLevel = Math.min(1.0, parseFloat(elapsedTime) / 10);
+                    updateTangyuan();
+                    
+                    // 调整喷射频率
+                    if (sesameInterval && wetnessLevel > 0.6) {
+                        // clearInterval(sesameInterval);
+                        // const interval = Math.max(100, 500 - wetnessLevel * 400);
+                        // sesameInterval = setInterval(() => {
+                        //     shootSesamePaste();
+                        // }, interval);
+                    }
+                } else {
+                    elapsedTime = ((currentTime - rainStopTime) / 1000).toFixed(2);
+                    timerElement.textContent = `停雨时间：${elapsedTime} 秒`;
+                }
+            }
+            
+            // 按钮点击事件
+            rainControl.addEventListener('click', function() {
+                if (isRaining) {
+                    stopRaining();
+                } else {
+                    // 如果当前没在下雨，显示停雨时间
+                    const currentTime = Date.now();
+                    const stopDuration = ((currentTime - rainStopTime) / 1000).toFixed(2);
+                    statusElement.textContent = `雨没有在下，自雨停之后已经过去了 ${stopDuration} 秒`;
+                    
+                    // 更新计时器显示
+                    timerElement.textContent = `停雨时间：${stopDuration} 秒`;
+                }
+            });
+            
+            // 初始设置
+            initMoveDirection();
+            
+            // 在随机时间后开始下雨
+            const initialRainTime = Math.random() * 5000 + 2000; // 2-7秒
+            setTimeout(startRaining, initialRainTime);
+            statusElement.textContent = "当前状态：等待下雨";
+        });
+    </script>
+</body>
+</html>
