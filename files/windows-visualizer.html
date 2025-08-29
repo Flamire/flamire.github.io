@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizer for task "windows"</title>
+    <style>
+        :root {
+            --window-bg: #ffffff; --header-bg: #f3f5f7; --tab-bar-bg: #f3f5f7;
+            --tab-bg: #ffffff; --tab-hover-bg: #fafafa; --tab-border: #d1d1d1;
+            --close-btn-hover: #e81123; --cursor-color: #0078d4; --transition-speed: 0.5s;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #eef1f5; display: flex; flex-direction: column; align-items: center;
+            padding: 20px; margin: 0;
+        }
+        .controls {
+            background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0;
+            display: flex; gap: 15px; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.08); flex-wrap: wrap;
+        }
+        .controls label { font-weight: 500; }
+        .controls input { width: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .controls button {
+            padding: 10px 20px; border: none; color: white; border-radius: 4px; cursor: pointer; transition: background-color 0.2s;
+        }
+        .controls button#start-btn { background-color: var(--cursor-color); }
+        .controls button#start-btn:hover { background-color: #005a9e; }
+        .controls button#rerender-btn { background-color: #5cb85c; }
+        .controls button#rerender-btn:hover { background-color: #449d44; }
+        .info { font-size: 16px; font-weight: 500; }
+        
+        #browser-window {
+            width: 95%; max-width: 1200px; border-radius: 8px; background-color: var(--window-bg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #d1d1d1;
+        }
+        .browser-header { height: 40px; background-color: var(--header-bg); border-bottom: 1px solid var(--tab-border); }
+        
+        #simulation-container { position: relative; padding-bottom: 40px; }
+        #tab-bar { position: relative; width: 100%; height: 40px; background-color: var(--tab-bar-bg); padding: 5px 5px 0 5px; box-sizing: border-box; }
+        .tab {
+            position: absolute; height: 35px; top: 5px; background-color: var(--tab-bg);
+            border: 1px solid var(--tab-border); border-bottom: none; border-radius: 6px 6px 0 0;
+            box-sizing: border-box; transition: all var(--transition-speed) ease-in-out;
+            display: flex; align-items: center; padding: 0 10px; z-index: 1;
+        }
+        .tab:hover { background-color: var(--tab-hover-bg); }
+        .tab.closing { opacity: 0; transform: translateY(-20px) scale(0.8); z-index: 0;}
+        .favicon { width: 16px; height: 16px; margin-right: 8px; flex-shrink: 0; }
+        .tab-title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 13px; }
+        .close-btn { margin-left: auto; padding-left: 8px; width: 20px; height: 20px; text-align: center; line-height: 20px; cursor: pointer; border-radius: 50%; font-size: 16px; color: #555; flex-shrink: 0; transition: all 0.2s; }
+        .close-btn:hover { background-color: var(--close-btn-hover); color: white; }
+        
+        #annotations-container { position: absolute; top: 40px; bottom: 0; left: 0; right: 0; pointer-events: none; }
+        .annotation { position: absolute; top: 0; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); transition: all var(--transition-speed) ease-in-out; }
+        .annotation.exiting { opacity: 0; }
+        .tick-line { width: 1px; height: 10px; background-color: #888; }
+        .annotation-label { font-size: 12px; color: #555; padding-top: 2px; }
+        .annotation-label.visited { color: var(--cursor-color); font-weight: bold; font-size: 14px; }
+        
+        #cursor { width: 24px; height: 24px; position: absolute; left: -30px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="%230078d4" stroke="white" stroke-width="1.5"><path d="M4.5 19.5l6-6.5-4-4L2 13.5zM12.5 12.5l5.5-2-3-6-4.5 4.5z"/></svg>'); background-size: contain; transition: all var(--transition-speed) ease-in-out; z-index: 100; pointer-events: none; }
+        
+        #history-section { padding: 20px; }
+        .history-title { font-size: 1.2em; font-weight: 600; margin-bottom: 15px; color: #333; }
+        .history-snapshot { border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 20px; padding: 10px; background: #fafafa; }
+        .history-action-text { font-style: italic; color: #555; margin-bottom: 10px; }
+        .history-bar { position: relative; width: 100%; height: 75px; background-color: var(--tab-bar-bg); }
+        .history-tab { position: absolute; height: 35px; top: 5px; background-color: var(--tab-bg); border: 1px solid var(--tab-border); border-radius: 6px; display: flex; align-items: center; padding: 0 10px; font-size: 12px; }
+    .history-tab { box-sizing: border-box; }
+    .history-tab { box-sizing: border-box; }
+        .history-tab .close-btn { cursor: default; }
+        .history-annotation { position: absolute; top: 40px; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); }
+        .history-click-indicator { position: absolute; top: 12px; width: 24px; height: 24px; border: 2px solid red; border-radius: 50%; transform: translateX(-50%); }
+    .history-bar { position: relative; width: 100%; height: 95px; background-color: var(--tab-bar-bg); }
+    .history-tab { position: absolute; height: 35px; top: 5px; background-color: var(--tab-bg); border: 1px solid var(--tab-border); border-radius: 6px; display: flex; align-items: center; padding: 0 10px; font-size: 12px; }
+    .history-tab { box-sizing: border-box; }
+    .history-move-arrow { position: absolute; top: 70px; left: 0; width: 100%; height: 20px; pointer-events: none; }
+    .history-move-arrow line { stroke: var(--cursor-color); stroke-width: 2; }
+        .history-move-arrow path { fill: var(--cursor-color); }
+    </style>
+</head>
+<body>
+    <h1>Visualizer for task "windows"</h1>
+    <div class="controls">
+        <label>a:</label><input type="number" id="a-input" value="36">
+        <label>n:</label><input type="number" id="n-input" value="6">
+    <label>b:</label><input type="number" id="b-input" value="7">
+        <button id="start-btn">Start / Reset</button>
+        <button id="rerender-btn">Force Re-render</button>
+        <div class="info">Moves: <span id="moves-count">0</span></div>
+        <div class="info">Tabs Left: <span id="tabs-count">0</span></div>
+    </div>
+    <div id="browser-window">
+        <div class="browser-header"></div>
+        <div id="simulation-container">
+            <div id="tab-bar"></div>
+            <div id="annotations-container"></div>
+            <div id="cursor"></div>
+        </div>
+        <div id="history-section">
+            <div class="history-title">History of Operations</div>
+            <div id="history-container"></div>
+        </div>
+    </div>
+    <script>
+        const getEl = (id) => document.getElementById(id);
+        const aInput = getEl('a-input'), nInput = getEl('n-input'), bInput = getEl('b-input');
+        const startBtn = getEl('start-btn'), rerenderBtn = getEl('rerender-btn'), movesCountEl = getEl('moves-count'), tabsCountEl = getEl('tabs-count');
+        const tabBarEl = getEl('tab-bar'), cursorEl = getEl('cursor'), simContainerEl = getEl('simulation-container'), annotationsContainerEl = getEl('annotations-container'), historyContainerEl = getEl('history-container');
+
+        const websites = [
+            { name: "洛谷", domain: "luogu.com.cn" },
+            { name: "Codeforces", domain: "codeforces.com" },
+            { name: "Bilibili", domain: "bilibili.com" },
+            { name: "YouTube", domain: "youtube.com" },
+            { name: "GitHub", domain: "github.com" },
+            { name: "Wikipedia", domain: "wikipedia.org" },
+            { name: "Stack Overflow", domain: "stackoverflow.com" },
+            { name: "MDN", domain: "developer.mozilla.org" },
+            { name: "Reddit", domain: "reddit.com" },
+            { name: "知乎", domain: "zhihu.com" },
+            { name: "百度", domain: "baidu.com" },
+            { name: "腾讯", domain: "qq.com" },
+            { name: "Hacker News", domain: "news.ycombinator.com" },
+            { name: "Google", domain: "google.com" }
+        ];
+
+        let state = { a: 36, n: 6, b: 7, tabs: [], visitedPositions: new Set(), history: [], lastClickCoordinate: null };
+
+        function startSimulation() {
+            Object.assign(state, {
+                a: parseFloat(aInput.value), n: parseInt(nInput.value), b: parseFloat(bInput.value),
+                tabs: [], visitedPositions: new Set(), history: [], lastClickCoordinate: null
+            });
+            cursorEl.style.transition = 'none';
+            cursorEl.style.left = '-30px';
+            movesCountEl.textContent = '0';
+            tabBarEl.innerHTML = ''; 
+            annotationsContainerEl.innerHTML = '';
+            historyContainerEl.innerHTML = '';
+
+        for (let i = 0; i < state.n; i++) {
+                const tabEl = document.createElement('div');
+                tabEl.className = 'tab';
+                const site = websites[Math.floor(Math.random() * websites.length)];
+                tabEl.innerHTML = `<img src="https://www.google.com/s2/favicons?sz=32&domain_url=${site.domain}" class="favicon" alt=""><span class="tab-title">${site.name}</span><div class="close-btn">&#x2715;</div>`;
+                const annotationEl = document.createElement('div');
+                annotationEl.className = 'annotation';
+                annotationEl.innerHTML = `<div class="tick-line"></div><div class="annotation-label"></div>`;
+                const tabData = { id: i, element: tabEl, annotation: annotationEl, closed: false, site };
+                tabEl.querySelector('.close-btn').addEventListener('click', (e) => { e.stopPropagation(); handleCloseClick(tabData); });
+                tabBarEl.appendChild(tabEl);
+                annotationsContainerEl.appendChild(annotationEl);
+                state.tabs.push(tabData);
+            }
+            updateUI();
+        }
+
+            function formatCoord(v) {
+                if (Math.abs(Math.round(v) - v) < 1e-9) return String(Math.round(v));
+                return v.toFixed(2);
+            }
+
+        function handleCloseClick(tabData) {
+            if (tabData.closed) return;
+            captureHistorySnapshot(tabData);
+
+            const livingTabs = state.tabs.filter(t => !t.closed);
+            const currentLen = Math.min(state.b, state.a / livingTabs.length);
+            const tabIndex = livingTabs.findIndex(t => t.id === tabData.id);
+            const targetCoordinate = (tabIndex + 1) * currentLen;
+            const posKey = targetCoordinate.toFixed(2);
+            state.visitedPositions.add(posKey);
+            state.lastClickCoordinate = targetCoordinate;
+            movesCountEl.textContent = state.visitedPositions.size;
+            
+            const closeBtn = tabData.element.querySelector('.close-btn');
+            const btnRect = closeBtn.getBoundingClientRect();
+            const containerRect = simContainerEl.getBoundingClientRect();
+            cursorEl.style.transition = `all var(--transition-speed) ease-in-out`;
+            cursorEl.style.left = `${btnRect.left - containerRect.left}px`;
+            cursorEl.style.top = `${btnRect.top - containerRect.top - 20}px`;
+            
+            tabData.closed = true;
+            tabData.element.classList.add('closing');
+            tabData.annotation.classList.add('exiting');
+            
+            updateUI(); 
+            renderHistory();
+            
+            setTimeout(() => {
+                tabData.element.remove();
+                tabData.annotation.remove();
+            }, 500);
+        }
+        
+        function captureHistorySnapshot(closedTabData) {
+            // snapshot stores tab layout as percentages (left%, width%) and annotation positions as percent (0-100)
+            const snapshot = { tabs: [], annotations: new Map(), actionText: '' };
+            const livingTabs = state.tabs.filter(t => !t.closed);
+            const len = Math.min(state.b, state.a / livingTabs.length);
+
+            const tabBarWidth = tabBarEl.clientWidth || 800; // fallback
+            const closeBtnRightMargin = 10, closeBtnWidth = 20;
+            livingTabs.forEach((tab, index) => {
+                const leftPercent = (index * len / state.a) * 100;
+                const widthPercent = (len / state.a) * 100;
+                const coord = (index + 1) * len;
+
+                // compute center of close button in pixels (same math as updateUI) then convert to percent
+                const tabPixelLeft = (index * len / state.a) * tabBarWidth;
+                const tabPixelWidth = (len / state.a) * tabBarWidth;
+                const centerOfButtonPx = tabPixelLeft + tabPixelWidth - closeBtnRightMargin - (closeBtnWidth / 2);
+                const posPercent = (centerOfButtonPx / tabBarWidth) * 100;
+
+                snapshot.tabs.push({
+                    site: tab.site,
+                    widthPercent: widthPercent,
+                    leftPercent: leftPercent,
+                });
+                const coordKey = coord.toFixed(2);
+                snapshot.annotations.set(coordKey, { posPercent: posPercent, value: formatCoord(coord) });
+            });
+
+            const closedTabIndex = livingTabs.findIndex(t => t.id === closedTabData.id);
+            const closedCoord = (closedTabIndex + 1) * len;
+            snapshot.clickedCoordinate = closedCoord;
+            snapshot.previousCoordinate = state.lastClickCoordinate;
+            snapshot.actionText = `Step ${state.history.length + 1}: Clicked "${closedTabData.site.name}" at coordinate ${formatCoord(closedCoord)}.`;
+            state.history.push(snapshot);
+            // debug: print snapshot annotation positions
+            console.debug('captureHistorySnapshot:', snapshot.tabs.map(t=>({left:t.leftPercent, width:t.widthPercent})), Array.from(snapshot.annotations.values()));
+        }
+
+        function renderHistory() {
+            historyContainerEl.innerHTML = '';
+            // snapshot.annotations contains posPercent (0-100) and value (string)
+            const visitedKeys = new Set(Array.from(state.visitedPositions));
+
+            state.history.forEach(snapshot => {
+                const snapshotEl = document.createElement('div');
+                snapshotEl.className = 'history-snapshot';
+                let tabsHTML = '';
+                snapshot.tabs.forEach(t => {
+                    tabsHTML += `<div class="history-tab" style="left: ${t.leftPercent}%; width: ${t.widthPercent}%;"><img src="https://www.google.com/s2/favicons?sz=32&domain_url=${t.site.domain}" class="favicon" alt="">${t.site.name}<div class="close-btn">&#x2715;</div></div>`;
+                });
+
+                let annotationsHTML = '';
+                // Render annotations present in this snapshot
+                snapshot.annotations.forEach(a => {
+                    // a.value is already formatted string (formatCoord)
+                    const isVisited = visitedKeys.has(a.value) || visitedKeys.has(String(Number(a.value).toFixed ? Number(a.value).toFixed(2) : a.value));
+                    annotationsHTML += `<div class="history-annotation" style="left: ${a.posPercent}%"><div class="tick-line"></div><div class="annotation-label ${isVisited ? 'visited' : ''}">${a.value}</div></div>`;
+                });
+
+                // helper: find annotation posPercent for a given key by searching snapshots up to current index
+                function findAnnotationPosPercent(key, uptoIndex) {
+                    for (let i = 0; i <= uptoIndex; i++) {
+                        const s = state.history[i];
+                        if (!s) continue;
+                        const a = s.annotations.get(key);
+                        if (a && typeof a.posPercent === 'number') return a.posPercent;
+                    }
+                    return null;
+                }
+
+                let indicatorHTML = '';
+                const clickedKey = (typeof snapshot.clickedCoordinate === 'number') ? snapshot.clickedCoordinate.toFixed(2) : null;
+                let clickedAnnotation = null;
+                if (clickedKey) {
+                    const pos = snapshot.annotations.get(clickedKey);
+                    if (pos) clickedAnnotation = pos;
+                    else {
+                        // try to find it in previous snapshots
+                        const percent = findAnnotationPosPercent(clickedKey, state.history.indexOf(snapshot));
+                        if (percent !== null) clickedAnnotation = { posPercent: percent, value: clickedKey };
+                    }
+                }
+                if (clickedAnnotation) {
+                    indicatorHTML += `<div class="history-click-indicator" style="left: ${clickedAnnotation.posPercent}%"></div>`;
+                }
+
+                if (typeof snapshot.previousCoordinate === 'number' && clickedKey) {
+                    const prevKey = snapshot.previousCoordinate.toFixed(2);
+                    if (prevKey !== clickedKey) {
+                        // try to find prev annotation pos in current snapshot first, then earlier snapshots
+                        let prevAnnotation = snapshot.annotations.get(prevKey);
+                        if (!prevAnnotation) {
+                            const percent = findAnnotationPosPercent(prevKey, state.history.indexOf(snapshot) - 1);
+                            if (percent !== null) prevAnnotation = { posPercent: percent, value: prevKey };
+                        }
+                        if (prevAnnotation && clickedAnnotation) {
+                            // use display values for debug/labels if needed
+                            indicatorHTML += `
+                                <svg class="history-move-arrow">
+                                    <defs><marker id="arrowhead" markerWidth="5" markerHeight="3.5" refX="0" refY="1.75" orient="auto"><path d="M0,0 L5,1.75 L0,3.5 Z" /></marker></defs>
+                                    <line x1="${prevAnnotation.posPercent}%" y1="10" x2="${clickedAnnotation.posPercent}%" y2="10" stroke-width="2" marker-end="url(#arrowhead)" />
+                                </svg>`;
+                        }
+                    }
+                }
+
+                snapshotEl.innerHTML = `<div class="history-action-text">${snapshot.actionText}</div><div class="history-bar">${tabsHTML}${annotationsHTML}${indicatorHTML}</div>`;
+                historyContainerEl.appendChild(snapshotEl);
+            });
+            console.debug('renderHistory: visitedKeys=', Array.from(visitedKeys));
+        }
+        
+        function updateUI() {
+            const livingTabs = state.tabs.filter(t => !t.closed);
+            tabsCountEl.textContent = livingTabs.length;
+            if (livingTabs.length === 0) { annotationsContainerEl.innerHTML = ''; return; }
+
+            const tabBarWidth = tabBarEl.clientWidth;
+            const len = Math.min(state.b, state.a / livingTabs.length);
+
+            livingTabs.forEach((tab, index) => {
+                const tabPixelWidth = (len / state.a) * tabBarWidth;
+                const tabPixelLeft = (index * len / state.a) * tabBarWidth;
+                tab.element.style.width = `${tabPixelWidth}px`;
+                tab.element.style.left = `${tabPixelLeft}px`;
+
+                const coordinate = (index + 1) * len;
+                const coordKey = coordinate.toFixed(2);
+                const coordDisplay = formatCoord(coordinate);
+                const isVisitedClass = state.visitedPositions.has(coordKey) ? 'visited' : '';
+                
+                const closeBtnRightMargin = 10, closeBtnWidth = 20;
+                const centerOfButton = tabPixelLeft + tabPixelWidth - closeBtnRightMargin - (closeBtnWidth / 2);
+
+                tab.annotation.style.left = `${centerOfButton}px`;
+                const labelEl = tab.annotation.querySelector('.annotation-label');
+                labelEl.textContent = coordDisplay;
+                labelEl.className = `annotation-label ${isVisitedClass}`;
+            });
+        }
+
+        function forceRender() { updateUI(); renderHistory(); }
+        startBtn.addEventListener('click', startSimulation);
+        rerenderBtn.addEventListener('click', forceRender);
+        window.addEventListener('resize', forceRender);
+        window.onload = startSimulation;
+    </script>
+</body>
+</html>
