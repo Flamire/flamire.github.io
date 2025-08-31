@@ -46,7 +46,6 @@
         }
         .tab:hover { background-color: var(--tab-hover-bg); }
         .tab.closing { opacity: 0; transform: translateY(-20px) scale(0.8); z-index: 0;}
-        .favicon { width: 16px; height: 16px; margin-right: 8px; flex-shrink: 0; }
         .tab-title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 13px; }
         .close-btn { margin-left: auto; padding-left: 8px; width: 20px; height: 20px; text-align: center; line-height: 20px; cursor: pointer; border-radius: 50%; font-size: 16px; color: #555; flex-shrink: 0; transition: all 0.2s; }
         .close-btn:hover { background-color: var(--close-btn-hover); color: white; }
@@ -109,20 +108,20 @@
         const tabBarEl = getEl('tab-bar'), cursorEl = getEl('cursor'), simContainerEl = getEl('simulation-container'), annotationsContainerEl = getEl('annotations-container'), historyContainerEl = getEl('history-container');
 
         const websites = [
-            { name: "洛谷", domain: "luogu.com.cn" },
-            { name: "Codeforces", domain: "codeforces.com" },
-            { name: "Bilibili", domain: "bilibili.com" },
-            { name: "YouTube", domain: "youtube.com" },
-            { name: "GitHub", domain: "github.com" },
-            { name: "Wikipedia", domain: "wikipedia.org" },
-            { name: "Stack Overflow", domain: "stackoverflow.com" },
-            { name: "MDN", domain: "developer.mozilla.org" },
-            { name: "Reddit", domain: "reddit.com" },
-            { name: "知乎", domain: "zhihu.com" },
-            { name: "百度", domain: "baidu.com" },
-            { name: "腾讯", domain: "qq.com" },
-            { name: "Hacker News", domain: "news.ycombinator.com" },
-            { name: "Google", domain: "google.com" }
+            { name: "CloudSync", domain: "cloudsync.com" },
+            { name: "DataForge", domain: "dataforge.io" },
+            { name: "StreamWave", domain: "streamwave.tv" },
+            { name: "ViewTube", domain: "viewtube.com" },
+            { name: "CodeHub", domain: "codehub.dev" },
+            { name: "InfoPedia", domain: "infopedia.org" },
+            { name: "DevOverflow", domain: "devoverflow.com" },
+            { name: "WebDocs", domain: "webdocs.dev" },
+            { name: "Chatter", domain: "chatter.social" },
+            { name: "QueryNow", domain: "querynow.com" },
+            { name: "Searchly", domain: "searchly.com" },
+            { name: "ConnectPlus", domain: "connectplus.com" },
+            { name: "TechNews", domain: "technews.ai" },
+            { name: "FindIt", domain: "findit.com" }
         ];
 
         let state = { a: 36, n: 6, b: 7, tabs: [], visitedPositions: new Set(), history: [], lastClickCoordinate: null };
@@ -143,7 +142,7 @@
                 const tabEl = document.createElement('div');
                 tabEl.className = 'tab';
                 const site = websites[Math.floor(Math.random() * websites.length)];
-                tabEl.innerHTML = `<img src="https://www.google.com/s2/favicons?sz=32&domain_url=${site.domain}" class="favicon" alt=""><span class="tab-title">${site.name}</span><div class="close-btn">&#x2715;</div>`;
+                tabEl.innerHTML = `<span class="tab-title">${site.name}</span><div class="close-btn">&#x2715;</div>`;
                 const annotationEl = document.createElement('div');
                 annotationEl.className = 'annotation';
                 annotationEl.innerHTML = `<div class="tick-line"></div><div class="annotation-label"></div>`;
@@ -242,7 +241,7 @@
                 snapshotEl.className = 'history-snapshot';
                 let tabsHTML = '';
                 snapshot.tabs.forEach(t => {
-                    tabsHTML += `<div class="history-tab" style="left: ${t.leftPercent}%; width: ${t.widthPercent}%;"><img src="https://www.google.com/s2/favicons?sz=32&domain_url=${t.site.domain}" class="favicon" alt="">${t.site.name}<div class="close-btn">&#x2715;</div></div>`;
+                    tabsHTML += `<div class="history-tab" style="left: ${t.leftPercent}%; width: ${t.widthPercent}%;">${t.site.name}<div class="close-btn">&#x2715;</div></div>`;
                 });
 
                 let annotationsHTML = '';
