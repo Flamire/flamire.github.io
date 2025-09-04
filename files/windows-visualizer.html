@@ -124,12 +124,12 @@
             { name: "FindIt", domain: "findit.com" }
         ];
 
-        let state = { a: 36, n: 6, b: 7, tabs: [], visitedPositions: new Set(), history: [], lastClickCoordinate: null };
+        let state = { a: 36, n: 6, b: 7, tabs: [], visitedPositions: new Set(), history: [], lastClickCoordinate: null, moveCount: 0 };
 
         function startSimulation() {
             Object.assign(state, {
                 a: parseFloat(aInput.value), n: parseInt(nInput.value), b: parseFloat(bInput.value),
-                tabs: [], visitedPositions: new Set(), history: [], lastClickCoordinate: null
+                tabs: [], visitedPositions: new Set(), history: [], lastClickCoordinate: null, moveCount: 0
             });
             cursorEl.style.transition = 'none';
             cursorEl.style.left = '-30px';
@@ -170,8 +170,18 @@
             const targetCoordinate = (tabIndex + 1) * currentLen;
             const posKey = targetCoordinate.toFixed(2);
             state.visitedPositions.add(posKey);
+            
+            // 修改这里：计算移动次数而不是去重计数
+            if (state.lastClickCoordinate !== null && 
+                Math.abs(state.lastClickCoordinate - targetCoordinate) > 1e-9) {
+                state.moveCount++;
+            } else if (state.lastClickCoordinate === null) {
+                // 第一次点击，从初始位置移动到第一个标签
+                state.moveCount++;
+            }
+            
             state.lastClickCoordinate = targetCoordinate;
-            movesCountEl.textContent = state.visitedPositions.size;
+            movesCountEl.textContent = state.moveCount;
             
             const closeBtn = tabData.element.querySelector('.close-btn');
             const btnRect = closeBtn.getBoundingClientRect();
